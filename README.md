@@ -201,7 +201,7 @@ loop — but it has not been done.
 ```
 1_website/     ← START HERE. Open index.html. One page, everything, interactive.
 2_python/      One runnable module per pipeline stage
-3_notebooks/   Notebooks -- start with mof_band_analysis.ipynb (Colab, Run All)
+3_notebooks/   mof_band_analysis.ipynb -- the band (Colab, Run All)
 4_reference/   Figures
 5_concepts/    Five deep-dive documents — read these to actually understand the work
 PRESENTATION_SCRIPT.md   The full talk, start to finish

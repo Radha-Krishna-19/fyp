@@ -1,14 +1,15 @@
-# Notebooks
+# Notebook
 
-| Notebook | What it does | Run it? |
+One notebook, one job: compute the multifractal spectra of 8 real MOFs and build the band.
+
+| File | What it is | Run it? |
 |---|---|---|
-| **`mof_band_analysis.ipynb`** | **The main one.** 8 real frameworks downloaded live → spectra → **the band** and its membership tests. | Colab: Run All |
-| `spectrum_corrected.ipynb` | Our 4 test structures on the block quotient graph, with every fix documented inline. Structures are embedded — no files needed. | Colab: Run All |
+| **`mof_band_analysis.ipynb`** | 8 real frameworks downloaded live → spectra → **the band** and its membership tests. Steps 1–8 are the original notebook unchanged; Steps 9–11 are the band. | Colab: Run All |
 | `results.json` | Computed spectra for the 8 frameworks. Lets the band section run without recomputing. | — |
 
 ---
 
-## `mof_band_analysis.ipynb` — start here
+## What it does
 
 Steps 1–8 are the framework analysis: download 8 experimentally reported MOFs from the
 RASPA2 library, build PBC-aware bond graphs, coarse-grain, and compute a multifractal
