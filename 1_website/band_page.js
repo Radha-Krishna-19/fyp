@@ -7,12 +7,12 @@
 //   1. The Delta-alpha band (1-D).  Spectrum WIDTH only. The six grouped
 //      frameworks span 0.835-0.941; the two outliers sit at 0.375 and 0.203.
 //      The gap between the groups is 0.46 against a measured noise floor of
-//      0.106 -- about 4x the noise. This separation is real.
+//      0.105 -- about 4x the noise. This separation is real.
 //
 //   2. The f(alpha) envelope (2-D).  Shade between the highest and lowest
 //      curve and ask whether a candidate falls inside. MEASURED HERE: this
-//      does NOT discriminate. Held out, HKUST-1 (a member) scores 9.4% while
-//      UMCM-1 (a non-member) scores 15.4% -- the non-member scores HIGHER.
+//      does NOT discriminate. Held out, ZIF-8 (a member) scores 0.0% while
+//      UMCM-1 (a non-member) scores 44.7% -- the non-member scores far HIGHER.
 //      The reason is visible in the plot: the narrow curves sit inside the
 //      wide group's alpha range but far below it in f, so an envelope test
 //      is dominated by alpha position rather than by width.
@@ -26,7 +26,7 @@
   const IN_BAND = ['Co-MOF-74', 'ZIF-8', 'Mg-MOF-74', 'Zn-MOF-74',
                    'HKUST-1 (Cu-BTC)', 'Ni-MOF-74'];
   const FAMILY_74 = ['Ni-MOF-74', 'Co-MOF-74', 'Mg-MOF-74', 'Zn-MOF-74'];
-  const NOISE_FLOOR = 0.106;   // spread across the isomorphic MOF-74 graphs
+  const NOISE_FLOOR = 0.105;   // measured spread across the isomorphic MOF-74 graphs
 
   const COLOR = {
     'Co-MOF-74': '#e06c3b', 'Ni-MOF-74': '#e0993b', 'Mg-MOF-74': '#c9873b',
@@ -173,7 +173,7 @@
       g.beginPath(); g.moveTo(X(v), y + 47); g.lineTo(X(v), y + 57); g.stroke();
     });
     g.fillStyle = '#b02a2a'; g.font = '600 10.5px system-ui,sans-serif';
-    g.fillText('gap 0.46  ≈ 4× the 0.106 noise floor', (X(gapLo) + X(gapHi)) / 2, y + 66);
+    g.fillText('gap 0.46  ≈ 4× the 0.105 noise floor', (X(gapLo) + X(gapHi)) / 2, y + 66);
   }
 
   // ------------------------------------------------------------ the curves
@@ -299,7 +299,7 @@
       '<canvas id="band-axis" style="width:100%;height:168px;display:block"></canvas>' +
       '<p class="cap">Each dot is one framework, placed by its spectrum width Δα. Six cluster ' +
         'between 0.835 and 0.941; two sit far below at 0.375 and 0.203. The gap between the ' +
-        'groups is <b>0.46</b>, about <b>four times</b> the 0.106 noise floor measured on ' +
+        'groups is <b>0.46</b>, about <b>four times</b> the 0.105 noise floor measured on ' +
         'structures that are provably identical — so the split is a property of the frameworks, ' +
         'not of the estimator.</p>' +
 
@@ -313,8 +313,8 @@
       '<div class="negbox">' +
         '<b>Measured negative result.</b> Press <i>hold out</i> on any row: the framework is ' +
         'removed from the band, the band is rebuilt from the rest, and its curve is scored ' +
-        'against it. Hold out <b>HKUST-1</b> (a genuine member) and it scores <b>9.4%</b> inside. ' +
-        'Hold out <b>UMCM-1</b> (a non-member) and it scores <b>15.4%</b> — <b>higher</b>. ' +
+        'against it. Hold out <b>ZIF-8</b> (a genuine member) and it scores <b>0.0%</b> inside. ' +
+        'Hold out <b>UMCM-1</b> (a non-member) and it scores <b>44.7%</b> — far <b>higher</b>. ' +
         'The 2-D envelope therefore cannot be used to decide membership on this data, and we ' +
         'report that rather than quoting it as though it worked. The 1-D Δα test in the ' +
         '“held-out Δα” column does separate them correctly.' +

@@ -140,19 +140,19 @@ the noise floor — so the split is a property of the frameworks, not of the met
 | Version | What it is | Does it work? |
 |---|---|---|
 | **Δα band** (1-D) | The range of spectrum *widths* the group spans | ✅ **Yes.** Holding out each framework and re-testing classifies all of them correctly |
-| **f(α) envelope** (2-D) | Shade between the highest and lowest curve, ask if a candidate falls inside | ❌ **No.** Held out, HKUST-1 (a real member) scores 9.4% while UMCM-1 (a non-member) scores **15.4%** |
+| **f(α) envelope** (2-D) | Shade between the highest and lowest curve, ask if a candidate falls inside | ❌ **No.** Held out, ZIF-8 (a real member) scores **0.0%** while UMCM-1 (a non-member) scores **44.7%** |
 
 The envelope fails because the two narrow curves are short arcs sitting *inside* the wide
 group's α range but far below it in f(α) — so the test is dominated by where a curve sits
 in α, not by how wide it is. **We report this as a measured negative result** rather than
-quoting the envelope as though it worked. You can reproduce it yourself with the "hold
-out" buttons in Section 15b of the website.
+quoting the envelope as though it worked. Reproduce it with the "hold out" buttons in
+Section 15b of the website, or by running Step 9 of `3_notebooks/mof_band_analysis.ipynb`.
 
 **What this does *not* show — and this matters when presenting:**
 
 - The four MOF-74 analogues overlapping is *not* evidence. They are the same graph
   (proved isomorphic), so they must overlap. They are the **reproducibility control**.
-- That control measures a noise floor of **0.106**. HKUST-1 (0.844) and ZIF-8 (0.897) sit
+- That control measures a noise floor of **0.105**. HKUST-1 (0.844) and ZIF-8 (0.897) sit
   *inside* the range that identical structures already span, so the honest statement is
   "six frameworks are indistinguishable within noise", not "six frameworks match".
 - **Δα is not a stability or gas-uptake predictor.** Nothing here measures stability. The

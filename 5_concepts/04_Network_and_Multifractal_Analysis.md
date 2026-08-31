@@ -309,11 +309,11 @@ The word "band" is used loosely for two distinct constructions, and testing both
 
 | Version | What it is | Does it discriminate? |
 |---|---|---|
-| **Δα band** (1-D) | The range of spectrum *widths* spanned by the group | **Yes.** Held out and re-tested, every framework is classified correctly |
-| **f(α) envelope** (2-D) | Shade between the highest and lowest curve; score what fraction of a candidate lies inside | **No.** Held out, HKUST-1 (member) scores 9.4%; UMCM-1 (non-member) scores 15.4% |
+| **Δα band** (1-D) | The range of spectrum *widths* spanned by the group | **Yes.** Held out and re-tested, all 8 frameworks are classified correctly |
+| **f(α) envelope** (2-D) | Shade between the highest and lowest curve; score what fraction of a candidate lies inside | **No.** Held out, ZIF-8 (member) scores 0.0%; UMCM-1 (non-member) scores 44.7% |
 
 
-The envelope fails for a reason that is visible once the curves are plotted: the two narrow spectra are **short arcs sitting inside the wide group's α range but far below it in f(α)**. An envelope test therefore measures where a curve sits in α, not how wide it is — and width is the quantity that actually separates these frameworks.
+The failure is stark rather than marginal — a non-member scores more than forty points higher than a member. The reason is visible once the curves are plotted: the two narrow spectra are **short arcs sitting inside the wide group's α range but far below it in f(α)**. An envelope test therefore measures where a curve sits in α, not how wide it is — and width is the quantity that actually separates these frameworks.
 
 
 > **A measured negative result, not a hidden one**
@@ -326,7 +326,7 @@ The envelope fails for a reason that is visible once the curves are plotted: the
 ### 8.2 · What the Δα band does establish
 
 
-Six of the eight frameworks land in a band spanning Δα = 0.835–0.941, and two fall far below it at 0.375 and 0.203. The gap between the two groups is **0.46 — roughly four times the 0.106 noise floor** measured on provably identical structures. That margin is what makes the split a property of the frameworks rather than of the estimator.
+Six of the eight frameworks land in a band spanning Δα = 0.835–0.941, and two fall far below it at 0.375 and 0.203. The gap between the two groups is **0.46 — roughly four times the 0.105 noise floor** measured on provably identical structures. That margin is what makes the split a property of the frameworks rather than of the estimator.
 
 
 The six span **five different metals** (Cu, Ni, Co, Mg, Zn) and two different binding chemistries — carboxylate for HKUST-1 and MOF-74, imidazolate for ZIF-8. So the grouping is **not** by metal and **not** by chemistry.
@@ -345,7 +345,7 @@ That reading is consistent with the two outliers. IRMOF-1 and UMCM-1 both have l
 >
 > **The four MOF-74 curves overlapping is not evidence of anything.** They are the same graph — proved isomorphic in the source notebook — so they *must* overlap. Their role is as a reproducibility control, not as band members.
 >
-> **That control sets a noise floor of 0.106**, measured as the spread across those isomorphic graphs. HKUST-1 (0.844) and ZIF-8 (0.897) differ by less than that floor, so the correct statement is "six frameworks are indistinguishable within the method's noise", not "six frameworks match".
+> **That control sets a noise floor of 0.105**, measured as the spread across those isomorphic graphs. HKUST-1 (0.844) and ZIF-8 (0.897) differ by less than that floor, so the correct statement is "six frameworks are indistinguishable within the method's noise", not "six frameworks match".
 >
 > **Δα is not a stability or gas-uptake predictor.** Nothing in this analysis measures stability, adsorption or binding energy — the graph is unweighted, so it does not even know which element an atom is. Xe/Kr relevance is why these eight frameworks were selected; it is not something the calculation produces. Reading the band as "these MOFs are more stable" is not supported.
 
