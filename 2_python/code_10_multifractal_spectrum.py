@@ -62,6 +62,23 @@ FIX 6 -- the influential-node selection reports its own ambiguity.
     "Top 30% by degree" is not well defined when blocks tie, which in a perfect
     crystal they always do. The selection now reports how many blocks tie at
     the cutoff so the arbitrariness is visible instead of hidden.
+
+FIX 9 -- the partition function was averaged in the wrong order.
+    probability_measures() used to average p_i(r) across box-covering trials
+    FIRST, then compute_tau() raised that averaged value to the power q. That
+    exponentiates an already-smoothed quantity and biases the resulting
+    spectrum narrow -- averaging suppresses exactly the trial-to-trial
+    fluctuation that multifractality is supposed to measure.
+    The correct order: build Z(q,r) = sum_i p_i(r)^q PER TRIAL, take its log,
+    and average ln Z over trials before fitting tau(q).
+    This bug was found independently by a teammate's later notebook
+    (mof_multi_block_spectrum.ipynb), which downloaded a separate set of 8
+    real MOFs and measured, on their HKUST-1 graph: old estimator
+    Delta-alpha = 0.043 +/- 0.023 (54% scatter across seeds), corrected
+    estimator Delta-alpha = 0.80 +/- 0.06 (7% scatter) -- same direction of
+    error, same fix. Re-measured HERE, on our own quotient-graph HKUST-1
+    (different graph, same bug): see spectrum_stability(), which now reports
+    the old-vs-new comparison directly.
 """
 
 from __future__ import annotations
@@ -168,34 +185,54 @@ def box_covering(G, rb, dist, rng):
 
 
 def probability_measures(G, influential_nodes, radii, n_trials=5, seed=0):
-    """p_i(r) = (size of the box covering influential node i) / N.
+    """p_i(r, trial) = (size of the box covering influential node i) / N,
+    kept PER TRIAL rather than averaged (FIX 9 -- see compute_tau).
 
     NOTE (FIX 1): G here is the FULL block graph. It supplies the distances and
     the boxes; the measure is read off only at the influential nodes.
     """
-    N = G.number_of_nodes()
     dist = dict(nx.all_pairs_shortest_path_length(G))
-    acc = {r: {n: [] for n in influential_nodes} for r in radii}
+    N = G.number_of_nodes()
+    trials = {r: [] for r in radii}
     for t in range(n_trials):
         rng = random.Random(seed + t)
         for r in radii:
             node_box, box_size = box_covering(G, r, dist, rng)
-            for n in influential_nodes:
-                if n in node_box:
-                    acc[r][n].append(box_size[node_box[n]] / N)
-    return {r: {n: float(np.mean(v)) for n, v in d.items() if v} for r, d in acc.items()}
+            trials[r].append({n: box_size[node_box[n]] / N
+                               for n in influential_nodes if n in node_box})
+    return trials
 
 
-def compute_tau(pr_avg, radii, r_N, q_values):
-    """tau(q) from the slope of log Z(q,r) against log(r/r_N)."""
+def compute_tau(trials, radii, r_N, q_values):
+    """tau(q) from the slope of <ln Z(q,r)> against log(r/r_N).
+
+    FIX 9 -- the partition function must be built and logged PER TRIAL, then
+    averaged in log space; averaging p_i(r) across trials first (as the
+    original notebook did, and as an earlier version of this module also did)
+    exponentiates an already-smoothed quantity and biases the spectrum narrow.
+
+    This exact bug -- averaging the probability measure before raising it to
+    the power q, instead of averaging ln Z(q,r) over trials -- was found
+    independently in a teammate's later multi-structure notebook
+    (`mof_multi_block_spectrum.ipynb`, Step 5): on the same HKUST-1 graph it
+    measured Delta-alpha = 0.043 +/- 0.023 (54% scatter) with the wrong
+    estimator against Delta-alpha = 0.80 +/- 0.06 (7% scatter) with this one.
+    Reproduced here in spectrum_stability().
+    """
     x = np.log(np.asarray(radii, dtype=float) / r_N)
     tau = []
     for q in q_values:
-        Z = []
+        y = []
         for r in radii:
-            vals = np.array([v for v in pr_avg.get(r, {}).values() if v > 0])
-            Z.append(np.sum(vals ** q) if vals.size else np.nan)
-        y = np.log(np.asarray(Z, dtype=float))
+            ln_Z_per_trial = []
+            for trial in trials.get(r, []):
+                vals = np.array([v for v in trial.values() if v > 0])
+                if vals.size:
+                    Z = np.sum(vals ** q)
+                    if Z > 0:
+                        ln_Z_per_trial.append(np.log(Z))
+            y.append(np.mean(ln_Z_per_trial) if ln_Z_per_trial else np.nan)
+        y = np.asarray(y, dtype=float)
         mask = np.isfinite(y) & np.isfinite(x)
         if mask.sum() < 2:                       # FIX 5: need >=2 points to fit
             tau.append(np.nan)
@@ -298,6 +335,76 @@ def spectrum_stability(cif_path, trials_list=(5, 40), n_seeds=6, top_percent=0.3
             out[trials] = {'alpha_min_spread': max(mins) - min(mins),
                            'alpha_max_spread': max(maxs) - min(maxs)}
     return out
+
+
+def _compute_tau_wrong(trials, radii, r_N, q_values):
+    """The estimator FIX 9 replaced: average p_i(r) across trials FIRST, then
+    raise to the power q. Kept only so its effect can be measured directly
+    against the corrected compute_tau() -- see estimator_comparison()."""
+    pr_avg = {r: {} for r in radii}
+    for r in radii:
+        totals, counts = {}, {}
+        for trial in trials.get(r, []):
+            for n, p in trial.items():
+                totals[n] = totals.get(n, 0.0) + p
+                counts[n] = counts.get(n, 0) + 1
+        pr_avg[r] = {n: totals[n] / counts[n] for n in totals}
+
+    x = np.log(np.asarray(radii, dtype=float) / r_N)
+    tau = []
+    for q in q_values:
+        y = []
+        for r in radii:
+            vals = np.array([v for v in pr_avg.get(r, {}).values() if v > 0])
+            Z = np.sum(vals ** q) if vals.size else np.nan
+            y.append(np.log(Z) if Z and Z > 0 else np.nan)
+        y = np.asarray(y, dtype=float)
+        mask = np.isfinite(y) & np.isfinite(x)
+        tau.append(np.polyfit(x[mask], y[mask], 1)[0] if mask.sum() >= 2 else np.nan)
+    return np.asarray(tau)
+
+
+def estimator_comparison(cif_path, n_box_trials=40, n_seeds=6, top_percent=0.30,
+                         min_blocks=60):
+    """FIX 9, measured: run both estimators on IDENTICAL box coverings (same
+    seeds, same graph) and report the width and seed-to-seed scatter of each.
+
+    This is the same comparison a teammate's notebook ran on a different,
+    independently downloaded dataset (mof_multi_block_spectrum.ipynb, Step 7);
+    reproducing it here, on our own quotient graph, confirms the bug and its
+    fix are real and not an artefact of one particular graph construction.
+    """
+    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    node_blocks, linker_blocks = run_metal_oxo(geom)
+    blocks, edges = build_periodic_block_graph(geom, node_blocks, linker_blocks)
+    n = 1
+    while (len(blocks) * n ** 3) < min_blocks and n < 4:
+        n += 1
+    if n > 1:
+        G, _ = supercell_graph(blocks, edges, n)
+    else:
+        G = nx.MultiGraph(); G.add_nodes_from(range(len(blocks)))
+        for i, j, _t in edges:
+            G.add_edge(i, j)
+    influential, _sel = select_influential(G, top_percent)
+    diameter = max(nx.diameter(nx.Graph(G)) if nx.is_connected(nx.Graph(G)) else 2, 2)
+    radii = list(range(1, diameter + 1))
+    q_values = np.linspace(-10, 10, 41)
+
+    def widths(use_wrong):
+        vals = []
+        for sd in range(n_seeds):
+            trials = probability_measures(G, influential, radii,
+                                          n_trials=n_box_trials, seed=sd * 17)
+            tau = (_compute_tau_wrong if use_wrong else compute_tau)(trials, radii, diameter, q_values)
+            alpha, _f = legendre_transform(q_values, tau)
+            fin = alpha[np.isfinite(alpha)]
+            vals.append(float(fin.max() - fin.min()) if fin.size else float('nan'))
+        vals = np.array(vals)
+        return {'mean_width': float(np.nanmean(vals)), 'sd': float(np.nanstd(vals)),
+                'scatter_pct': float(100 * np.nanstd(vals) / np.nanmean(vals)) if np.nanmean(vals) else float('nan')}
+
+    return {'wrong': widths(True), 'corrected': widths(False)}
 
 
 # ---------------------------------------------------------------- band + test
@@ -421,6 +528,19 @@ if __name__ == '__main__':
     print()
     print("The notebook's default was 5 trials. At that setting the spectrum is not")
     print('reproducible: the same structure gives different answers per random seed.')
+
+    print()
+    print('=' * 92)
+    print('FIX 9 — averaging order (found independently on a separate teammate dataset)')
+    print('=' * 92)
+    cmp = estimator_comparison('HKUST-1.cif', n_box_trials=40, n_seeds=6)
+    for label, key in [('wrong  (average p(r) across trials, then raise to q)', 'wrong'),
+                        ('fixed  (raise to q per trial, average ln Z)', 'corrected')]:
+        d = cmp[key]
+        print(f"  {label:<52} width={d['mean_width']:.3f} +/- {d['sd']:.3f} "
+              f"({d['scatter_pct']:.0f}% scatter)")
+    print()
+    print('  Same graph, same seeds, same box coverings — only the averaging order differs.')
 
     print()
     print('=' * 92)

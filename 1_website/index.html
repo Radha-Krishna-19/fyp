@@ -284,6 +284,31 @@
     border-radius:20px;background:var(--border-soft);color:var(--muted2);margin-bottom:5px;}
   .codecard .ct.ours{background:var(--good-soft);color:#0d6b47;}
 
+
+/* ---- Section 15b: the band ---- */
+.band-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button.mini{font:600 12px/1 system-ui,sans-serif;padding:7px 12px;border-radius:6px;
+  border:1px solid #d3d8e2;background:#fff;color:#33384a;cursor:pointer}
+button.mini:hover{background:#f2f5fa;border-color:#b9c2d4}
+button.mini.active{background:#1f5fa8;border-color:#1f5fa8;color:#fff}
+.band-tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.band-tbl th{background:#1f5fa8;color:#fff;font-weight:600;padding:7px 9px;text-align:left;font-size:12px}
+.band-tbl td{padding:6px 9px;border-bottom:1px solid #e6eaf1}
+.band-tbl tr:nth-child(even) td{background:#f8fafd}
+.swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:middle}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.pill.in{background:#e4f5ec;color:#0d6b47}
+.pill.out{background:#fdeaea;color:#b02a2a}
+p.cap{font-size:12.5px;color:#5a6072;line-height:1.55;margin:10px 0 0}
+h3.sub-head{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+
+.bh{font-size:14px;font-weight:700;color:#1f5fa8;margin:20px 0 8px;padding-bottom:5px;border-bottom:1px solid #e2e7f0}
+.band-tbl td.r,.band-tbl th.r{text-align:right}
+.band-tbl .sd{color:#8a90a0;font-size:11.5px}
+.band-tbl tr.heldrow td{background:#fff8e6!important}
+.band-tbl .ok{color:#0d6b47}.band-tbl .no{color:#b02a2a}
+.negbox{background:#fdf4f4;border-left:4px solid #d13b3b;padding:11px 14px;margin:14px 0;
+  font-size:13px;line-height:1.6;color:#4a2323;border-radius:0 5px 5px 0}
 </style>
 </head>
 <body>
@@ -305,7 +330,7 @@
     <a href="#walkthrough">6 Walkthrough</a><a href="#drawbacks">7 Limitations</a><a href="#pipeline">8 Before/After</a>
     <span class="grp">Network</span>
     <a href="#graph">10 Graph</a><a href="#influence">11 Influence</a><a href="#defect">12 Defects</a>
-    <a href="#fingerprint">13 Laplacian</a><a href="#multifractal">14 Spectrum</a><a href="#paper">15 Paper</a>
+    <a href="#fingerprint">13 Laplacian</a><a href="#multifractal">14 Spectrum</a><a href="#paper">15 Paper</a><a href="#band">15b · The Band</a>
     <span class="grp"></span>
     <a href="#source">Source code</a>
   </div>
@@ -804,6 +829,32 @@
     <b>The published quantities, now computed.</b> <code>u<sub>i</sub>(r) = M<sub>i</sub>(r)/M</code> · <code>U<sub>q</sub>(r) = Σ u<sub>i</sub><sup>q</sup></code> · <code>U<sub>q</sub> ~ (r/d)<sup>τ(q)</sup></code> · <code>α = dτ/dq</code> · <code>f(α) = qα − τ</code> · generalized dimension <code>D(q) = τ(q)/q</code> · asymmetry <code>A = ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code> with α₀ at the maximum of <i>f</i>. Per the paper: width <i>w</i> is structural <b>heterogeneity</b>, α₀ is structural <b>complexity</b>, <i>A</i>&gt;0 means frequent structures dominate ("clump"), <i>A</i>&lt;0 means rare ones do ("thorn").
   </div>
 
+  <!-- ================= 15b : the band ================= -->
+  <h2 class="section-title" id="band"><span class="stitle-num">15b</span>The Band — Eight Real Frameworks</h2>
+  <p class="section-sub">A <b>band</b> is a range that a group of frameworks share, so that a new framework can be tested against it. Two versions of that idea are shown below &mdash; the spectrum <b>width</b> &Delta;&alpha; (which separates the groups cleanly) and the <b>f(&alpha;) envelope</b> (which, measured honestly, does not). Both are reported.</p>
+
+  <p>Four structures are not enough to build a band from. This section uses <b>eight experimentally reported frameworks</b>, downloaded at run time from the RASPA2 structure library and analysed on <b>full atomic graphs</b> of 3,392&ndash;6,120 atoms. That is a larger and different construction from the block quotient graph used in Sections 10&ndash;15, so <b>these widths are not comparable with the block-graph numbers above</b>. All eight appear in the xenon/krypton separation literature, which is why they were chosen.</p>
+
+  <div class="panel"><div id="band-body"></div></div>
+
+  <div class="callout warn">
+    <b>Three things this result is not.</b> Worth knowing before anyone asks.
+    <ul style="margin:8px 0 0 18px;">
+      <li><b>The four MOF-74 curves overlapping is not evidence.</b> They are the same graph &mdash; proved isomorphic in the source notebook &mdash; so they <i>must</i> overlap. They are the reproducibility control, not band members.</li>
+      <li><b>That control sets a noise floor of 0.106</b>, the spread measured across those identical structures. HKUST-1 (0.844) and ZIF-8 (0.897) differ by less than that floor, so the honest statement is &ldquo;six frameworks are <i>indistinguishable within noise</i>&rdquo;, not &ldquo;six frameworks match&rdquo;.</li>
+      <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted &mdash; it does not know which element an atom is, let alone its binding energy. &Delta;&alpha; describes <i>pore-network architecture</i> and nothing else. Reading the band as &ldquo;these MOFs are more stable&rdquo; is not supported by anything computed here.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub-head">What the band does show</h3>
+  <p>Six frameworks spanning <b>five different metals</b> (Cu, Ni, Co, Mg, Zn) and two different binding chemistries &mdash; carboxylate for HKUST-1 and the MOF-74 family, imidazolate for ZIF-8 &mdash; land in one band, while two others separate cleanly. <b>So the grouping is neither by metal nor by chemistry.</b> It is by how uniform the pore network is: a wide &Delta;&alpha; means a structurally heterogeneous pore system, a narrow one means a uniform system. IRMOF-1 and UMCM-1, the two narrow spectra, both have large regular open pores &mdash; which fits.</p>
+
+  <h3 class="sub-head">Finite-size dependence, and why the ranking survives it</h3>
+  <p>&Delta;&alpha; has <b>not</b> converged in supercell size: it grows with the graph, because the fit window spans ln(1/diameter) to ln(0.34), so a larger graph samples a wider range of scales. These are therefore finite-size <i>effective</i> widths at a stated graph size, not asymptotic exponents, and absolute values should always be quoted with the diameter beside them.</p>
+  <p>The ranking still holds, and for a specific reason: <b>the bias runs the wrong way to explain it.</b> IRMOF-1 and UMCM-1 have among the largest graphs in the set (diameters 56 and 63) yet the smallest widths, while the wide group sits at diameters 36&ndash;50. A finite-size artefact would push the biggest graphs toward <i>larger</i> &Delta;&alpha;, not smaller.</p>
+
+  <p class="section-sub">Source: <span class="code-chip">multi_mof_band_spectrum.ipynb</span> &middot; data <span class="code-chip">band_data.js</span> &middot; plotting <span class="code-chip">band_page.js</span></p>
+
   <h2 class="section-title"><span class="stitle-num">16</span>Reproduce Any Number on This Page</h2>
   <p class="section-sub">Everything here is computed live in your browser by <code>mof_network.js</code>. The Python counterpart produces identical results and can be run directly:</p>
   <div class="panel" style="background:var(--code-bg);color:var(--code-text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;">
@@ -858,6 +909,8 @@
 <script src="overview_page.js"></script>
 <script src="network_page.js"></script>
 <script src="app.js"></script>
+<script src="band_data.js"></script>
+<script src="band_page.js"></script>
 <script src="single_page.js"></script>
 </body>
 </html>

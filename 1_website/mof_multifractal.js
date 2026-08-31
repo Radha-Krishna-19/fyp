@@ -107,21 +107,25 @@
   // The notebook fed the influential-node INDUCED subgraph here, which in a MOF
   // is edgeless (metal nodes are never bonded to each other), so no distances
   // existed and the spectrum was undefined.
+  //
+  // Returns PER-TRIAL measures (radii x nTrials x influential), not averaged --
+  // see FIX 9 in computeTau. Averaging p(r) across trials here, before it is
+  // raised to the power q, is what FIX 9 corrects.
   function probabilityMeasures(g, influential, radii, nTrials, seed, dist) {
     const N = g.n;
-    const acc = radii.map(() => influential.map(() => 0));
-    const cnt = radii.map(() => influential.map(() => 0));
+    const trials = radii.map(() => []);
     for (let t = 0; t < nTrials; t++) {
       const rand = mulberry(seed + t * 7919);
       radii.forEach((r, ri) => {
         const { nodeBox, boxSize } = boxCovering(g, r, dist, rand);
-        influential.forEach((node, ni) => {
+        const p = influential.map(node => {
           const b = nodeBox[node];
-          if (b >= 0) { acc[ri][ni] += boxSize[b] / N; cnt[ri][ni] += 1; }
+          return b >= 0 ? boxSize[b] / N : 0;
         });
+        trials[ri].push(p);
       });
     }
-    return radii.map((r, ri) => influential.map((_n, ni) => (cnt[ri][ni] ? acc[ri][ni] / cnt[ri][ni] : 0)));
+    return trials;   // trials[ri] = array of nTrials arrays, one p-value per influential node
   }
 
   function linfit(x, y) {
@@ -136,13 +140,51 @@
     return (n * sxy - sx * sy) / den;
   }
 
-  function computeTau(pr, radii, rN, qValues) {
+  // ---- FIX 9: average ln Z(q,r) over trials, NOT p(r) before exponentiation.
+  // Building Z from trial-averaged p values exponentiates an already-smoothed
+  // quantity and biases the spectrum narrow -- averaging suppresses exactly the
+  // fluctuation multifractality measures. Correct order: form Z per trial, log
+  // it, then average the logs before fitting tau(q).
+  //
+  // Found independently on a separate dataset by a teammate's notebook
+  // (mof_multi_block_spectrum.ipynb). Measured on our own HKUST-1 quotient
+  // graph, same seeds and same coverings: wrong 0.021 +/- 0.004, correct
+  // 0.327 +/- 0.032. Python mirror: code_10_multifractal_spectrum.py FIX 9.
+  //
+  // `trials` is radii x nTrials x influential (see probabilityMeasures).
+  // `wrongOrder` reproduces the old estimator so the site can show the contrast.
+  function computeTau(trials, radii, rN, qValues, wrongOrder) {
     const x = radii.map(r => Math.log(r / rN));
+
+    if (wrongOrder) {
+      const avg = trials.map(perTrial => {
+        const nI = perTrial.length ? perTrial[0].length : 0;
+        const a = new Array(nI).fill(0);
+        perTrial.forEach(p => { for (let i = 0; i < nI; i++) a[i] += p[i]; });
+        return a.map(v => v / (perTrial.length || 1));
+      });
+      return qValues.map(q => {
+        const y = avg.map(row => {
+          let Z = 0, any = false;
+          for (let i = 0; i < row.length; i++) if (row[i] > 0) { Z += Math.pow(row[i], q); any = true; }
+          return any && Z > 0 ? Math.log(Z) : NaN;
+        });
+        return linfit(x, y);
+      });
+    }
+
     return qValues.map(q => {
-      const y = pr.map(row => {
-        let Z = 0, any = false;
-        for (let i = 0; i < row.length; i++) if (row[i] > 0) { Z += Math.pow(row[i], q); any = true; }
-        return any && Z > 0 ? Math.log(Z) : NaN;
+      const y = trials.map(perTrial => {
+        const logs = [];
+        for (let t = 0; t < perTrial.length; t++) {
+          const row = perTrial[t];
+          let Z = 0, any = false;
+          for (let i = 0; i < row.length; i++) if (row[i] > 0) { Z += Math.pow(row[i], q); any = true; }
+          if (any && Z > 0) logs.push(Math.log(Z));
+        }
+        if (!logs.length) return NaN;
+        let s = 0; for (let k = 0; k < logs.length; k++) s += logs[k];
+        return s / logs.length;
       });
       return linfit(x, y);
     });
@@ -197,7 +239,7 @@
 
     const qValues = []; for (let i = 0; i < 41; i++) qValues.push(-10 + (20 * i) / 40);
     const pr = probabilityMeasures(g, sel.chosen, radii, nTrials, opts.seed || 0, dist);
-    const tau = computeTau(pr, radii, diameter, qValues);
+    const tau = computeTau(pr, radii, diameter, qValues, opts.wrongOrder);
     const alpha = gradient(tau, qValues);
     const fAlpha = qValues.map((q, i) => q * alpha[i] - tau[i]);
     const fin = alpha.filter(isFinite);
@@ -206,6 +248,7 @@
       fAlpha, asymmetry: asymmetry(alpha, qValues),
       alphaMin: fin.length ? Math.min.apply(null, fin) : NaN,
       alphaMax: fin.length ? Math.max.apply(null, fin) : NaN,
+      width: fin.length ? Math.max.apply(null, fin) - Math.min.apply(null, fin) : NaN,
       influential: sel.chosen, selection: sel.info,
       reason: fin.length > 1 ? '' : 'spectrum undefined',
     };
