@@ -1,6 +1,6 @@
 // band_data.js
 // Results from the 8-framework multifractal band study, computed in
-// 3_notebooks/multi_mof_band_spectrum.ipynb and exported from its results.json.
+// 3_notebooks/mof_band_analysis.ipynb and exported from its results.json.
 //
 // Structures: downloaded at run time from the RASPA2 library, analysed on FULL
 // ATOMIC graphs of a near-isotropic supercell (3,392-6,120 atoms) -- a different

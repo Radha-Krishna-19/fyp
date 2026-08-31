@@ -4,8 +4,6 @@
 |---|---|---|
 | **`mof_band_analysis.ipynb`** | **The main one.** 8 real frameworks downloaded live → spectra → **the band** and its membership tests. | Colab: Run All |
 | `spectrum_corrected.ipynb` | Our 4 test structures on the block quotient graph, with every fix documented inline. Structures are embedded — no files needed. | Colab: Run All |
-| `multi_mof_band_spectrum.ipynb` | The 8-framework notebook as originally written, kept unmodified for reference. | — |
-| `original_spectrum_notebook.ipynb` | The earliest version, kept to show what was fixed. | — |
 | `results.json` | Computed spectra for the 8 frameworks. Lets the band section run without recomputing. | — |
 
 ---
