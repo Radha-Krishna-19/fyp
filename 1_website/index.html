@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOF Building-Block Analysis — Algorithm, Limitations, Fixes &amp; Network Analysis</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --panel:#ffffff; --border:#e2e6f0; --border-soft:#edf0f7;
+    --text:#1a2033; --muted:#5c6478; --muted2:#7c8296;
+    --accent:#2f6fed; --accent-soft:#eaf1ff; --accent-dark:#1f4fc4;
+    --node:#d64545; --node-soft:#fdeceb; --linker:#2f6fed; --linker-soft:#eaf1ff;
+    --good:#1f9d67; --good-soft:#e8f8f1; --bad:#d64545; --bad-soft:#fdeceb;
+    --code-bg:#1b2130; --code-text:#dbe6f5; --code-accent:#8fd0ff;
+    --radius:14px; --shadow:0 1px 2px rgba(20,25,45,0.04), 0 1px 8px rgba(20,25,45,0.04);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Segoe UI',-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.62;font-size:15.5px;}
+  .container{max-width:1360px;margin:0 auto;padding:0 26px 90px;}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--border-soft);padding:1px 5px;border-radius:4px;font-size:0.9em;}
+  /* ---------- header ---------- */
+  header.hero{background:var(--panel);border-bottom:1px solid var(--border);padding:38px 0 0;}
+  header.hero .container{padding-bottom:0;}
+  header.hero .eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;}
+  header.hero h1{margin:0 0 10px;font-size:30px;font-weight:700;letter-spacing:-0.01em;}
+  header.hero p.lead{margin:0 0 22px;color:var(--muted);max-width:880px;font-size:16px;}
+  .top-nav{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:20px;}
+  .top-nav a{display:flex;align-items:center;gap:8px;color:var(--text);background:var(--bg);border:1px solid var(--border);padding:9px 16px;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:600;}
+  .top-nav a:hover{border-color:var(--accent);color:var(--accent-dark);background:var(--accent-soft);}
+  .top-nav .num{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;}
+  h2.section-title{font-size:23px;font-weight:700;margin:64px 0 8px;letter-spacing:-0.01em;}
+  .section-title .stitle-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;font-size:14px;margin-right:10px;vertical-align:middle;}
+  .section-sub{color:var(--muted);margin:0 0 22px;max-width:920px;font-size:15px;}
+  .callout{background:var(--accent-soft);border:1px solid #d6e4ff;padding:14px 18px;border-radius:10px;margin:16px 0;font-size:13.8px;color:#2a3a5c;}
+  .callout b{color:var(--text);}
+  /* ---------- panels / cards ---------- */
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+  .two-col{display:grid;grid-template-columns:minmax(400px,1.15fr) minmax(420px,1fr);gap:20px;align-items:start;}
+  .two-col{grid-template-columns:1fr;}
+  .canvas-wrap{position:relative;background:linear-gradient(160deg,#101828,#0a0f1c);border:1px solid var(--border);border-radius:var(--radius);height:480px;overflow:hidden;box-shadow:var(--shadow);}
+  .canvas-wrap canvas{width:100%;height:100%;display:block;cursor:grab;}
+  .labels-layer{position:absolute;inset:0;pointer-events:none;}
+  .hover-tip{position:absolute;display:none;background:#0a0e18;border:1px solid #2a3350;color:#eaf0fb;font-size:12px;padding:6px 9px;border-radius:6px;pointer-events:none;z-index:5;max-width:260px;}
+  .canvas-hint{font-size:12px;color:var(--muted2);text-align:center;margin-top:8px;}
+  /* ---------- module tabs (top-level, Section 1) ---------- */
+  .module-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .module-tab{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);color:var(--muted);padding:8px 14px 8px 8px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;}
+  .module-tab .module-tab-num{width:22px;height:22px;border-radius:50%;background:var(--panel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);}
+  .module-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .module-tab.active .module-tab-num{background:rgba(255,255,255,0.25);border-color:transparent;color:#fff;}
+  .module-tab.highlight:not(.active){border-color:#f3c6bd;background:var(--node-soft);color:#a8382c;}
+  .module-tab.highlight:not(.active) .module-tab-num{background:#fff;border-color:#f3c6bd;color:#a8382c;}
+  .step-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+  .step-pill{background:var(--bg);border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:8px;font-size:12.5px;cursor:pointer;}
+  .step-pill.active{background:var(--text);border-color:var(--text);color:#fff;}
+  .module-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--border);}
+  .module-badge{flex:none;font-size:11px;font-weight:700;letter-spacing:0.04em;color:#fff;padding:5px 10px;border-radius:7px;}
+  .module-summary{color:var(--muted);font-size:13.5px;}
+  #pw-title, #w-panel h3{margin:2px 0 10px;font-size:18px;font-weight:700;}
+  .code-unit{margin-bottom:14px;}
+  .code-refs{margin-bottom:6px;}
+  .code-chip{display:inline-block;background:var(--code-bg);color:var(--code-accent);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;padding:4px 10px;border-radius:6px 6px 0 0;}
+  .code-block{background:var(--code-bg);border-radius:0 10px 10px 10px;padding:15px 17px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:var(--code-text);overflow-x:auto;white-space:pre;margin:0;}
+  .explain-block{font-size:14px;color:var(--muted);margin:14px 0;}
+  .explain-block b{color:var(--text);}
+  .threeD-note{background:var(--good-soft);border:1px solid #bfe9d5;border-radius:10px;padding:12px 15px;color:#155e40;}
+  .threeD-note b{color:#0d4a30;}
+  /* ---------- limitation cards (Section 2) ---------- */
+  .lim-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:18px 0;box-shadow:var(--shadow);}
+  .lim-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:6px;}
+  .lim-num{flex:none;width:28px;height:28px;border-radius:8px;background:var(--bad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+  .lim-head h4{margin:2px 0;font-size:16.5px;color:var(--text);}
+  .fix-inline{background:var(--good-soft);border:1px solid #bfe9d5;border-left:4px solid var(--good);border-radius:9px;padding:12px 15px;font-size:13.8px;color:#0d5c3d;}
+  .fix-inline b{color:#0a4a31;}
+  .args-table thead td,.data-table thead td{font-weight:700;color:var(--text);background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:0.03em;}
+  .struct-tab{background:var(--bg);border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;}
+  .struct-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .algo-note{background:#f6f2ff;border:1px solid #ddd0f5;border-left:4px solid #8a56c9;border-radius:9px;padding:12px 15px;margin:12px 0;font-size:13.8px;color:#43307a;}
+  .algo-note b{color:#2e1f5c;}
+  /* ---------- 3D colour legend ---------- */
+  .legend{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:12px 0;padding:9px 14px;background:var(--bg);border:1px solid var(--border);border-radius:9px;font-size:12.5px;}
+  .legend-lead{font-weight:700;color:var(--text);}
+  .legend-item{display:inline-flex;align-items:center;gap:6px;color:var(--muted);}
+  .legend-item i{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,0.15);}
+  /* ---------- argument reference table ---------- */
+  .args-panel{margin:14px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .args-title{background:var(--code-bg);color:var(--code-accent);padding:8px 14px;font-size:12px;font-weight:700;letter-spacing:0.02em;}
+  .args-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);}
+  .args-table tr{border-bottom:1px solid var(--border-soft);}
+  .args-table tr:last-child{border-bottom:none;}
+  .args-table td{padding:8px 14px;vertical-align:top;}
+  .ar-name{width:23%;}
+  .ar-name code{background:var(--accent-soft);color:var(--accent-dark);font-weight:700;font-size:12px;white-space:nowrap;}
+  .ar-type{width:17%;color:var(--muted2);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;}
+  .ar-desc{color:var(--muted);}
+  .ar-desc code{font-size:12px;}
+  /* ---------- live computed-data table ---------- */
+  .data-panel{margin:14px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--panel);}
+  .data-title{background:var(--bg);padding:9px 14px;font-size:12.5px;font-weight:700;border-bottom:1px solid var(--border);}
+  .data-title .data-sub{display:block;font-weight:400;color:var(--muted2);font-size:11.5px;margin-top:2px;}
+  .data-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .data-table tr{border-bottom:1px solid var(--border-soft);}
+  .data-table tr:last-child{border-bottom:none;}
+  .data-table td{padding:7px 14px;vertical-align:top;}
+  .dt-label{color:var(--muted);width:38%;}
+  .dt-value{font-weight:700;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap;width:22%;}
+  .dt-note{color:var(--muted2);font-size:12px;}
+  .stage-nav{display:flex;justify-content:space-between;align-items:center;}
+  .stage-nav button{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:9px 16px;border-radius:9px;cursor:pointer;font-size:13.5px;font-weight:600;}
+  .stage-nav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-dark);}
+  .stage-nav button:disabled{opacity:0.35;cursor:default;}
+  .stage-formula{font-size:12.5px;color:var(--muted2);font-weight:600;}
+  .cif-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:16px 0 22px;font-size:13.5px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+  .cif-row input[type=file]{color:var(--muted);font-size:12.5px;}
+  .cif-row button{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;}
+  .cif-row button:hover{border-color:var(--accent);color:var(--accent-dark);}
+  .cif-status{font-size:12.5px;font-weight:600;}
+  .cif-status.ok{color:var(--good);}
+  .cif-status.err{color:var(--bad);}
+  /* ---------- drawback / fix demos ---------- */
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 8px;}
+  .demo-grid{grid-template-columns:1fr;}
+  .demo-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);}
+  .demo-card h4{margin:0 0 10px;font-size:14px;}
+  .demo-card .tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;margin-left:6px;font-weight:700;}
+  .tag.before{background:var(--bad-soft);color:#a8382c;}
+  .tag.after{background:var(--good-soft);color:#0d6b47;}
+  .mini-canvas{height:280px;}
+  .stat-line{font-size:12.5px;color:var(--muted);margin-top:8px;}
+  .verdict{background:var(--bad-soft);border:1px solid #f3c6bd;border-radius:10px;padding:13px 16px;margin:14px 0 40px;font-size:13.8px;color:#7a2419;}
+  .drawback-block{margin:26px 0;padding:20px 22px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .drawback-block h4{margin:0 0 8px;font-size:15px;color:#a8382c;}
+  .fix-block{margin:26px 0;padding:20px 22px;background:var(--good-soft);border:1px solid #bfe9d5;border-radius:var(--radius);}
+  .fix-block h4{margin:0 0 8px;font-size:15px;color:#0d6b47;}
+  iframe.pipeline-frame{width:100%;height:840px;border:1px solid var(--border);border-radius:var(--radius);background:#0c1120;box-shadow:var(--shadow);}
+  .file-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+  .file-group{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);}
+  .file-group h4{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted2);}
+  .file-group div{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--border-soft);}
+  .file-group div:last-child{border-bottom:none;}
+  .file-group a{color:var(--accent-dark);text-decoration:none;font-weight:600;}
+  .file-group a:hover{text-decoration:underline;}
+  footer{margin-top:60px;padding:24px 0 10px;border-top:1px solid var(--border);color:var(--muted2);font-size:12.5px;}
+  :root{
+    --bg:#f4f6fb; --panel:#ffffff; --border:#e2e6f0; --border-soft:#edf0f7;
+    --text:#1a2033; --muted:#5c6478; --muted2:#7c8296;
+    --accent:#2f6fed; --accent-soft:#eaf1ff; --accent-dark:#1f4fc4;
+    --good:#1f9d67; --good-soft:#e8f8f1; --bad:#d64545; --bad-soft:#fdeceb;
+    --code-bg:#1b2130; --code-text:#dbe6f5; --code-accent:#8fd0ff;
+    --radius:14px; --shadow:0 1px 2px rgba(20,25,45,0.04), 0 1px 8px rgba(20,25,45,0.04);
+  }
+  header.hero{background:var(--panel);border-bottom:1px solid var(--border);padding:34px 0 0;}
+  header.hero .eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+  header.hero h1{margin:0 0 10px;font-size:28px;font-weight:700;letter-spacing:-.01em;}
+  header.hero p.lead{margin:0 0 20px;color:var(--muted);max-width:900px;font-size:16px;}
+  .top-nav a.home{background:var(--accent);border-color:var(--accent);color:#fff;}
+  h2.section-title{font-size:22px;font-weight:700;margin:56px 0 8px;}
+  .section-sub{color:var(--muted);margin:0 0 20px;max-width:940px;font-size:15px;}
+  .callout.warn{background:#fff6e8;border-color:#f0d5a8;color:#8a5a12;}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin:16px 0;}
+  .struct-tab,.mode-btn{background:var(--bg);border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;}
+  .mode-btn.active{background:var(--text);border-color:var(--text);color:#fff;}
+  #btn-defect.active{background:var(--good);border-color:var(--good);color:#fff;}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0;}
+  .toolbar .lbl{font-size:13px;font-weight:700;margin-right:4px;}
+  .grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;align-items:start;}
+  .grid2{grid-template-columns:1fr;}
+  .canvas-box{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);height:430px;box-shadow:var(--shadow);overflow:hidden;}
+  .canvas-box canvas{width:100%;height:100%;display:block;}
+  .chart-box{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);height:280px;box-shadow:var(--shadow);padding:6px;}
+  .chart-box canvas{width:100%;height:100%;display:block;}
+  .tip{position:absolute;display:none;background:#0a0e18;color:#eaf0fb;font-size:12px;padding:7px 10px;border-radius:6px;pointer-events:none;max-width:190px;line-height:1.5;z-index:5;}
+  .data-table thead td{font-weight:700;color:var(--text);background:var(--bg);font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;padding:8px 12px;}
+  .data-table td{padding:8px 12px;vertical-align:top;}
+  .dt-label{color:var(--muted);}
+  .dt-value{font-weight:700;font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .verdict{background:var(--bad-soft);border:1px solid #f3c6bd;border-left:4px solid var(--bad);border-radius:10px;padding:13px 16px;margin:14px 0;font-size:13.6px;color:#7a2419;}
+  .verdict.ok{background:var(--good-soft);border-color:#bfe9d5;border-left-color:var(--good);color:#0d5c3d;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:10px 0;padding:9px 14px;background:var(--bg);border:1px solid var(--border);border-radius:9px;font-size:12.5px;}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px;}
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted2);font-size:12.5px;}
+  :root{
+    --bg:#f4f6fb; --panel:#ffffff; --border:#e2e6f0; --border-soft:#edf0f7;
+    --text:#1a2033; --muted:#5c6478; --muted2:#7c8296;
+    --accent:#2f6fed; --accent-soft:#eaf1ff; --accent-dark:#1f4fc4;
+    --good:#1f9d67; --good-soft:#e8f8f1; --bad:#d64545; --bad-soft:#fdeceb;
+    --warn-soft:#fff6e8; --warn-line:#f0d5a8; --warn-text:#8a5a12;
+    --code-bg:#1b2130; --code-text:#dbe6f5; --code-accent:#8fd0ff;
+    --radius:14px; --shadow:0 1px 2px rgba(20,25,45,.04), 0 1px 8px rgba(20,25,45,.04);
+  }
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Segoe UI',-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:15.5px;}
+  .container{max-width:1180px;margin:0 auto;padding:0 26px 90px;}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--border-soft);padding:1px 5px;border-radius:4px;font-size:.9em;}
+  header.hero{background:var(--panel);border-bottom:1px solid var(--border);padding:36px 0 0;}
+  header.hero h1{margin:0 0 10px;font-size:29px;font-weight:700;letter-spacing:-.01em;}
+  header.hero p.lead{margin:0 0 20px;color:var(--muted);max-width:880px;font-size:16px;}
+  .top-nav a{color:var(--text);background:var(--bg);border:1px solid var(--border);padding:9px 16px;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:600;}
+  h2.st{font-size:22px;font-weight:700;margin:54px 0 8px;}
+  h2.st .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;font-size:14px;margin-right:10px;vertical-align:middle;}
+  h3.sub{font-size:16.5px;margin:26px 0 8px;}
+  p.sd{color:var(--muted);margin:0 0 18px;max-width:900px;}
+  .callout.warn{background:var(--warn-soft);border-color:var(--warn-line);color:var(--warn-text);}
+  .callout.good{background:var(--good-soft);border-color:#bfe9d5;color:#0d5c3d;}
+  .callout.bad{background:var(--bad-soft);border-color:#f3c6bd;color:#7a2419;}
+  .data-table thead td{font-weight:700;background:var(--bg);font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;padding:8px 12px;}
+  .dt-label{color:var(--muted);font-weight:600;}
+  /* part cards */
+  .part{display:grid;grid-template-columns:52px 1fr;gap:16px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin:14px 0;box-shadow:var(--shadow);}
+  .part .badge{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:17px;}
+  .part h4{margin:2px 0 6px;font-size:16.5px;}
+  .part .qa{margin:10px 0 0;font-size:13.8px;}
+  .part .qa b{color:var(--text);}
+  .part .qa div{margin:6px 0;color:var(--muted);}
+  .part .where{margin-top:10px;font-size:12.5px;}
+  .part .where a{color:var(--accent-dark);font-weight:600;text-decoration:none;}
+  .part .where a:hover{text-decoration:underline;}
+  /* roadmap */
+  .road{border-left:3px solid var(--border);margin:18px 0 18px 12px;padding-left:22px;}
+  .road .item{position:relative;margin:0 0 22px;}
+  .road .item:before{content:'';position:absolute;left:-30px;top:5px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--border);}
+  .road .item.done:before{background:var(--good);border-color:var(--good);}
+  .road .item.now:before{background:var(--accent);border-color:var(--accent);}
+  .road .item.next:before{background:#fff;border-color:var(--warn-line);}
+  .road h4{margin:0 0 4px;font-size:15.5px;}
+  .road .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:2px;letter-spacing:.03em;}
+  .tag.done{background:var(--good-soft);color:#0d6b47;}
+  .tag.now{background:var(--accent-soft);color:var(--accent-dark);}
+  .tag.next{background:var(--warn-soft);color:var(--warn-text);}
+  .road p{margin:4px 0;color:var(--muted);font-size:13.8px;}
+  .filemap{width:100%;border-collapse:collapse;font-size:12.8px;}
+  .filemap td{padding:7px 12px;border-bottom:1px solid var(--border-soft);vertical-align:top;}
+  .filemap tr:last-child td{border-bottom:none;}
+  .filemap .f{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;white-space:nowrap;}
+  .filemap .grp td{background:var(--bg);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted2);}
+
+  /* ---------- sticky section nav for the single page ---------- */
+  .sticky-nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);padding:9px 0;margin-bottom:8px;}
+  .sticky-nav .inner{max-width:1360px;margin:0 auto;padding:0 26px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  .sticky-nav a{font-size:12.3px;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 11px;
+    border-radius:999px;border:1px solid transparent;white-space:nowrap;}
+  .sticky-nav a:hover{background:var(--accent-soft);color:var(--accent-dark);}
+  .sticky-nav a.here{background:var(--accent);color:#fff;}
+  .sticky-nav .grp{font-size:10.5px;font-weight:800;color:var(--muted2);letter-spacing:.06em;
+    text-transform:uppercase;padding:0 4px 0 10px;border-left:1px solid var(--border);margin-left:4px;}
+  .sticky-nav .grp:first-child{border-left:none;margin-left:0;padding-left:0;}
+
+  /* ---------- in-page code viewer ---------- */
+  .cv-overlay{position:fixed;inset:0;background:rgba(12,16,26,.72);z-index:200;display:none;
+    align-items:center;justify-content:center;padding:26px;}
+  .cv-overlay.open{display:flex;}
+  .cv-box{background:var(--code-bg);border-radius:14px;width:min(1100px,96vw);height:min(84vh,900px);
+    display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5);}
+  .cv-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #2b3448;flex:none;}
+  .cv-name{color:var(--code-accent);font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:13.5px;}
+  .cv-meta{color:#7f8ba3;font-size:12px;}
+  .cv-btn{background:#252d3f;border:1px solid #38425a;color:#cfe0f5;padding:6px 13px;border-radius:7px;
+    cursor:pointer;font-size:12px;font-weight:600;}
+  .cv-btn:hover{background:#303a51;}
+  .cv-body{overflow:auto;flex:1;}
+  .cv-tbl{border-collapse:collapse;width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.4px;line-height:1.62;}
+  .cv-ln{color:#4d5871;text-align:right;padding:0 12px 0 16px;user-select:none;width:1%;white-space:nowrap;
+    vertical-align:top;border-right:1px solid #232b3c;}
+  .cv-src{color:#dbe6f5;padding:0 18px;white-space:pre;vertical-align:top;}
+  .cv-kw{color:#c792ea;} .cv-st{color:#a5e17a;} .cv-cm{color:#5f6d85;font-style:italic;} .cv-nu{color:#f2b482;}
+
+  /* ---------- clickable file chips ---------- */
+  .fchip{display:inline-flex;align-items:center;gap:7px;background:var(--code-bg);color:var(--code-accent);
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;padding:5px 11px;border-radius:7px;
+    cursor:pointer;border:1px solid transparent;}
+  .fchip:hover{border-color:var(--code-accent);}
+  .fchip::before{content:'{ }';opacity:.55;font-size:10.5px;}
+  .filemap .f{cursor:pointer;color:var(--accent-dark);}
+  .filemap .f:hover{text-decoration:underline;}
+  .file-group div a{cursor:pointer;}
+  .codegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px;margin:14px 0;}
+  .codecard{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:13px 15px;
+    cursor:pointer;box-shadow:var(--shadow);}
+  .codecard:hover{border-color:var(--accent);}
+  .codecard .cf{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:12.6px;color:var(--accent-dark);}
+  .codecard .cd{font-size:12.3px;color:var(--muted);margin-top:4px;}
+  .codecard .ct{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;padding:2px 7px;
+    border-radius:20px;background:var(--border-soft);color:var(--muted2);margin-bottom:5px;}
+  .codecard .ct.ours{background:var(--good-soft);color:#0d6b47;}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Final Year Project</div>
+    <h1>Identifying What a MOF Is Built From — and Fixing the Algorithm That Does It</h1>
+    <p class="lead">One page, start to finish: the problem, the published algorithm shown module by module in 3D, the limitations we found in it, the fixes we propose, the network and multifractal analysis built on top, and every line of source code — all computed live in your browser.</p>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <div class="inner">
+    <span class="grp">Context</span>
+    <a href="#problem">1 Problem</a><a href="#question">2 The Question</a><a href="#parts">3 What We Built</a>
+    <a href="#implementation">4 Files</a><a href="#roadmap">5 Roadmap</a>
+    <span class="grp">Algorithm</span>
+    <a href="#walkthrough">6 Walkthrough</a><a href="#drawbacks">7 Limitations</a><a href="#pipeline">8 Before/After</a>
+    <span class="grp">Network</span>
+    <a href="#graph">10 Graph</a><a href="#influence">11 Influence</a><a href="#defect">12 Defects</a>
+    <a href="#fingerprint">13 Laplacian</a><a href="#multifractal">14 Spectrum</a><a href="#paper">15 Paper</a>
+    <span class="grp"></span>
+    <a href="#source">Source code</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="eyebrow">Final Year Project — Overview</div>
+    <h1>What We Built, Why We Built It, and What Comes Next</h1>
+    <p class="lead">A single page tying the whole project together: the problem, every component we built, what each one actually achieved, an honest answer to the "influential nodes" question, the implementation map, and the roadmap forward.</p>
+    
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ============ 0 ============ -->
+  <h2 class="st" id="problem"><span class="n">1</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
+  <p class="sd">Metal–organic frameworks are designed the way buildings are: you choose components — an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b> — and they assemble into a periodic framework. Everything useful about a MOF (surface area, pore size, thermal and chemical stability, catalytic behaviour) follows from which components were used and how they connect.</p>
+  <p class="sd">So when a MOF exists only as a crystal structure file, the foundational question is: <b>what building blocks is it made of?</b> That is what a decomposition algorithm answers, and every downstream use — database search, similarity matching, machine-learning featurisation, inverse design — inherits whatever answer it gives. If the reported node is not the species that actually exists in the crystal, everything built on top of it is reasoning about a material that does not exist.</p>
+
+  <div class="callout">
+    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file contains atomic positions and the unit cell — and <b>no bonds at all</b>. The format has no field for them. Every bond used by every step of the pipeline is <i>inferred</i> from interatomic distances, never read. That single fact is the origin of several of the limitations we found.
+  </div>
+
+  <!-- ============ 1 ============ -->
+  <h2 class="st" id="question"><span class="n">2</span>The Question We Were Asked — and the Honest Answer</h2>
+  <p class="sd">The brief was to <b>find and highlight the influential nodes, the ones with highest degree</b>. We implemented it, and the result is more interesting than a simple yes.</p>
+
+  <h3 class="sub">1a · Ranking blocks by degree does not work — and here is why</h3>
+  <p class="sd">In a perfect crystal, every symmetry-equivalent block is <i>genuinely identical</i>. Every Cu paddlewheel in HKUST-1 has exactly the same environment as every other. So a "top-k by degree" list is not discovering anything: it is sorting tied values, and whichever ones come out on top depend only on the order the blocks happened to be numbered in.</p>
+
+  <div class="panel"><div id="tie-evidence"></div></div>
+
+  <div class="callout bad">
+    <b>Read the "distinct degree values" column.</b> Every structure has exactly <b>two</b> — one value for nodes, one for linkers. There is no third tier, no gradient, nothing to rank. A "top 12 most influential" list drawn from these numbers is reporting sort order, not chemistry.
+  </div>
+
+  <h3 class="sub">1b · But the degree itself is the single most valuable number in the analysis</h3>
+  <p class="sd">The ranking fails. The <b>measurement</b> succeeds completely — and it is not a consolation prize. A block's degree in the periodic graph <i>is</i> its <b>coordination number</b>: how many connections that building unit makes to the rest of the framework. In reticular chemistry this is the number that determines which net a given pair of building blocks can form at all. A 4-connected node with a 3-connected linker gives <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor the entire field is organised around.</p>
+
+  <div class="panel"><div id="degree-value"></div></div>
+
+  <div class="callout good">
+    <b>So: did we achieve something? Yes — but the deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once. It <b>validates the decomposition</b> (every value matches published crystallography). It <b>identifies the net</b> (the node/linker connectivity pair determines the topology). And it <b>separates MOF families</b>, which is what the spectrum work builds on. The one thing it cannot do is rank identical objects against each other — and knowing that is itself a result worth reporting.
+  </div>
+
+  <div class="callout warn">
+    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different lattice directions</i> collapse into one edge unless the lattice translation is carried on the edge. UiO-66 exposes it hardest: its primitive cell holds a single Zr₆ cluster whose twelve connections all run out to periodic images and back, so a naive build reports <b>6</b> instead of <b>12</b> — or degenerates into a star, one hub joined to everything. We build the <b>labelled quotient graph</b> instead, which is also exactly what Systre consumes.
+  </div>
+
+  <h3 class="sub">1c · Where influence <i>does</i> become a real quantity</h3>
+  <p class="sd">Symmetry is what flattens centrality. Break the symmetry and it immediately becomes informative — so we simulate a <b>missing-linker defect</b>, which is not a contrived test but a real and heavily studied feature of MOF chemistry, UiO-66 especially.</p>
+
+  <div class="panel"><div id="defect-summary"></div></div>
+
+  <div class="callout">
+    Removing one linker splits the blocks into several genuinely different classes, and <b>λ₂ drops</b> — a measure of how much easier the framework has become to cut apart, i.e. how much the defect weakened it. This is the direction where "influential nodes" turns into a real research question: <i>which</i> block, when removed, costs the framework the most.
+  </div>
+
+  <!-- ============ 2 ============ -->
+  <h2 class="st" id="parts"><span class="n">3</span>Everything We Built, and What Each Part Achieved</h2>
+  <p class="sd">Four components. For each: what it does, why it exists, what it achieved, and where to see it.</p>
+
+  <div class="part">
+    <div><div class="badge" style="background:#2f6fed;">A</div></div>
+    <div>
+      <h4>The published pipeline, module by module</h4>
+      <div class="qa">
+        <div><b>What:</b> all seven stages of the MOFid pipeline — CIF input, bond assignment, element classification, the three splitting algorithms (metal-oxo, single-node, all-node), centroid simplification, Systre export, identifier assembly — each with the algorithm in plain terms, the real source code, an argument-by-argument reference, live computed numbers, and a synchronised 3D model. 18 steps.</div>
+        <div><b>Why:</b> you cannot credibly criticise an algorithm you have not first shown you understand. This establishes the baseline precisely, in the field's own terms.</div>
+        <div><b>Achieved:</b> a faithful, runnable Python translation of the published C++, verified against known crystal chemistry on four structures. It doubles as the teaching artefact for the whole project.</div>
+      </div>
+      <div class="where">→ <a href="index.html#walkthrough">Main site, Section 1</a> · <code>code_00</code>–<code>code_07b</code></div>
+    </div>
+  </div>
+
+  <div class="part">
+    <div><div class="badge" style="background:#d64545;">B</div></div>
+    <div>
+      <h4>Limitations of the published algorithm — and proposed fixes</h4>
+      <div class="qa">
+        <div><b>What:</b> four limitations that remain in the published metal-oxo algorithm, each with the fix we propose and live evidence across all four test structures.</div>
+        <div><b>Why:</b> this is the project's actual contribution. The metal-oxo rule decides every node-vs-linker call with a single compositional test (<code>all_oxygens</code>), which is why it is fast and predictable — and also where its limits come from.</div>
+        <div><b>Achieved:</b> the node-completion fix recovers the chemically real SBU. HKUST-1's node goes from a bare <code>Cu2</code> — two copper atoms and nothing else — to the full <code>Cu₂(COO)₄</code> paddlewheel. The other three limitations (oxygen-only bridges, inferred-bond sensitivity, silent conventions) are documented with measured evidence.</div>
+      </div>
+      <div class="where">→ <a href="index.html#drawbacks">Main site, Section 2</a> · <code>code_08_proposed_fixes.py</code></div>
+    </div>
+  </div>
+
+  <div class="part">
+    <div><div class="badge" style="background:#1f9d67;">C</div></div>
+    <div>
+      <h4>Before and after the fixes, in 3D</h4>
+      <div class="qa">
+        <div><b>What:</b> the same crystal decomposed twice — published rule on the left, fixes applied on the right — at <i>identical atomic coordinates</i>, so the only visible difference is the classification itself. Switchable across every structure.</div>
+        <div><b>Why:</b> a claimed improvement should be visible, and it should be visible on more than one favourable example.</div>
+        <div><b>Achieved:</b> +12 atoms recovered into HKUST-1's node, +36 for UiO-66, +18 for MOF-5, and <b>zero change for ZIF-8</b> — correctly, since it has no carboxylate for the fix to act on. A fix that altered ZIF-8 would be a fix that was wrong.</div>
+      </div>
+      <div class="where">→ <a href="index.html#pipeline">Main site, Section 3</a></div>
+    </div>
+  </div>
+
+  <div class="part">
+    <div><div class="badge" style="background:#8a56c9;">D</div></div>
+    <div>
+      <h4>Building-block network analysis</h4>
+      <div class="qa">
+        <div><b>What:</b> treat the decomposed framework as a graph. Build it periodically, measure coordination numbers, compute centrality three ways, take the Laplacian eigenvalue spectrum, and simulate defects.</div>
+        <div><b>Why:</b> this is the extension asked for — influential nodes and a spectrum that could characterise a family of materials.</div>
+        <div><b>Achieved:</b> correct coordination numbers for all four structures (including UiO-66 at 12, which the naive construction gets wrong); the finding that centrality is degenerate in a perfect crystal; a working defect simulation that makes influence measurable; and Laplacian spectra that cleanly separate the four structures.</div>
+      </div>
+      <div class="where">→ <a href="#graph">Network analysis, Section 10</a> · <code>code_09_network_analysis.py</code></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Headline results, computed live</h3>
+  <div class="panel"><div id="results-summary"></div></div>
+
+  <!-- ============ 3 ============ -->
+  <h2 class="st" id="implementation"><span class="n">4</span>Implementation Map</h2>
+  <p class="sd">Every file and what it is responsible for. The Python is the reference implementation and runs standalone; the JavaScript is a port of the same logic so the site can compute everything live in a browser. The two were cross-checked and agree on every value.</p>
+
+  <div class="panel" style="padding:0;overflow:hidden;">
+    <table class="filemap">
+      <tr class="grp"><td colspan="2">Reference implementation — Python, runnable</td></tr>
+      <tr><td class="f">code_00_pipeline_driver.py</td><td>Runs the whole chain end to end for one CIF</td></tr>
+      <tr><td class="f">code_01_cif_input.py</td><td>Module 1 — parse cell, symmetry, atoms. No bonds exist yet</td></tr>
+      <tr><td class="f">code_02_bond_assignment_pbc.py</td><td>Module 2 — infer bonds; 27-image minimum-image search + covalent-radius cutoff</td></tr>
+      <tr><td class="f">code_03_element_classification.py</td><td>Module 3 — <code>is_metal()</code>, the 23-element nonmetal table</td></tr>
+      <tr><td class="f">code_04a_metal_oxo_algorithm.py</td><td>Module 4a — the metal-oxo algorithm, the project's main subject</td></tr>
+      <tr><td class="f">code_04b_single_node_algorithm.py</td><td>Module 4b — single-node algorithm</td></tr>
+      <tr><td class="f">code_04c_all_node_algorithm.py</td><td>Module 4c — all-node algorithm</td></tr>
+      <tr><td class="f">code_05_centroid_simplification.py</td><td>Module 5 — collapse each block to a point (PBC-aware)</td></tr>
+      <tr><td class="f">code_06_systre_topology_export.py</td><td>Module 6 — writes a real <code>.cgd</code> file for Systre</td></tr>
+      <tr><td class="f">code_07a / 07b</td><td>Module 7 — MOFid and MOFkey assembly</td></tr>
+      <tr><td class="f" style="color:#1f9d67">code_08_proposed_fixes.py</td><td><b>Our contribution</b> — the four fixes, each independently switchable</td></tr>
+      <tr><td class="f" style="color:#8a56c9">code_09_network_analysis.py</td><td><b>Our contribution</b> — periodic graph, centrality, Laplacian spectrum</td></tr>
+
+      <tr class="grp"><td colspan="2">Browser engine — JavaScript</td></tr>
+      <tr><td class="f">mof_decompose.js</td><td>CIF parsing, PBC bonding, the three algorithms, and the proposed fixes</td></tr>
+      <tr><td class="f">mof_render.js</td><td>Three.js 3D renderer — on-demand rendering, context-loss recovery</td></tr>
+      <tr><td class="f">mof_network.js</td><td>Quotient graph, Jacobi eigensolver, centrality, defect simulation</td></tr>
+      <tr><td class="f">pipeline_walkthrough.js</td><td>Section 1 of the main site</td></tr>
+      <tr><td class="f">metal_oxo_drawbacks.js</td><td>Sections 2 and 3 of the main site</td></tr>
+      <tr><td class="f">network_page.js / overview_page.js</td><td>The network-analysis and overview sections of this page</td></tr>
+      <tr><td class="f">mof_stages.js / mof_controls.js</td><td>The standalone interactive pipeline tool</td></tr>
+
+      <tr class="grp"><td colspan="2">Pages and data</td></tr>
+      <tr><td class="f">index.html</td><td>The entire site — every section, one page</td></tr>
+      <tr><td class="f">mof_pipeline_viewer.html</td><td>Standalone 7-stage interactive tool</td></tr>
+      <tr><td class="f">*.cif</td><td>HKUST-1, UiO-66, MOF-5, ZIF-8 — the test structures</td></tr>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>Verify any claim on any page:</b><br>
+    <code>python3 code_00_pipeline_driver.py HKUST-1.cif</code> — the full pipeline<br>
+    <code>python3 code_08_proposed_fixes.py</code> — before/after the fixes, all four structures<br>
+    <code>python3 code_09_network_analysis.py</code> — coordination numbers, centralities, spectra
+  </div>
+
+  <!-- ============ 4 ============ -->
+  <h2 class="st" id="roadmap"><span class="n">5</span>Roadmap</h2>
+  <p class="sd">Where the project stands and what the next steps are, including the ones that are blocked and why.</p>
+
+  <div class="road">
+    <div class="item done">
+      <h4>Understand and reproduce the published algorithm <span class="tag done">done</span></h4>
+      <p>All seven modules translated to runnable Python and validated against published crystallography on four structures. Python and JavaScript implementations cross-checked and in agreement.</p>
+    </div>
+    <div class="item done">
+      <h4>Identify the limitations that remain in it <span class="tag done">done</span></h4>
+      <p>Four documented, each with measured evidence rather than assertion: incomplete nodes, oxygen-only bridge chemistry, inferred-bond sensitivity, and silent conventions for rods and solvent.</p>
+    </div>
+    <div class="item done">
+      <h4>Propose and implement fixes <span class="tag done">done</span></h4>
+      <p>Node completion and donor-agnostic bridging change the decomposition; confidence and convention reporting make the hidden choices visible. Each switchable independently so its effect can be measured on its own.</p>
+    </div>
+    <div class="item done">
+      <h4>Build the periodic block graph correctly <span class="tag done">done</span></h4>
+      <p>Labelled quotient graph with lattice translations on the edges. Produces literature-correct coordination numbers where the naive construction fails — UiO-66 at 12 rather than 6.</p>
+    </div>
+    <div class="item now">
+      <h4>Influential nodes and the spectrum <span class="tag now">current</span></h4>
+      <p>Centrality implemented three ways; the degeneracy result established and reported honestly. Laplacian spectra computed and shown to separate the four structures. Defect simulation working — this is the route by which influence becomes a measurable quantity rather than a tie-break.</p>
+    </div>
+    <div class="item next">
+      <h4>Scale to a real dataset <span class="tag next">next — and blocked</span></h4>
+      <p><b>This is the gate on the main claim.</b> The goal of the form "all Zr-based MOFs occupy this region of spectral space" cannot be tested with <b>one</b> zirconium structure, however clean the separation looks on four. It needs a few hundred structures grouped by metal, from CoRE MOF or QMOF. Both analysis modules are written per-CIF, so batching them over a folder requires no change to the algorithms — only a loop, and the disk space.</p>
+    </div>
+    <div class="item next">
+      <h4>Systematic defect study <span class="tag next">next</span></h4>
+      <p>Remove each linker in turn and rank blocks by the damage caused — measured as the drop in λ₂. That produces a genuine influence ranking, grounded in a physical consequence rather than in a tie-break, and connects directly to the well-studied defect chemistry of UiO-66.</p>
+    </div>
+    <div class="item next">
+      <h4>Close the loop with topology <span class="tag next">later</span></h4>
+      <p>Run the exported <code>.cgd</code> files through Systre and check whether the Laplacian spectrum agrees with the RCSR topology assignment. If two structures share a spectrum, they should share a net — a falsifiable test of whether the fingerprint means what we claim.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <b>What we can and cannot claim today.</b> We can claim: the published algorithm reports chemically incomplete nodes in a specific, measurable way; our fix recovers the correct SBU on three of four test structures and correctly leaves the fourth alone; the periodic graph gives coordination numbers matching published crystallography; centrality is degenerate in defect-free crystals; and the Laplacian spectrum separates our four structures. We cannot yet claim anything about Zr-based MOFs <i>as a family</i> — that requires the dataset above, and saying so is more defensible than overreaching.
+  </div>
+
+
+    <div class="eyebrow">Final Year Project — MOF Decomposition Pipeline</div>
+    <h1>The Metal-Oxo Algorithm: How It Works, Where It Falls Short, and How We Fix It</h1>
+    <p class="lead">Metal-organic frameworks are designed by choosing building blocks, so identifying those blocks correctly from a crystal structure is the foundation everything else rests on. This site walks through the published metal-oxo decomposition algorithm module by module with real code beside a live 3D model, examines four limitations that remain in it, and shows in 3D what its output becomes once those limitations are addressed.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ================= SECTION 1: FULL PIPELINE WALKTHROUGH ================= -->
+  <h2 class="section-title" id="walkthrough"><span class="stitle-num">6</span>The Full Pipeline — Code + 3D, Module by Module</h2>
+  <p class="section-sub">Start at Module 1 and work forward — each module shows its real source (verbatim excerpts, real line numbers) beside a live 3D model of HKUST-1 that updates to match. Use the module tabs to jump around, or Previous/Next to move through all 16 steps in order.</p>
+  <div class="callout">
+    <b>What you are looking at.</b> Section 1 is the metal-oxo algorithm exactly as published by the Snurr group (Northwestern) in <code>snurr-group/mofid</code> — the reference implementation the field currently uses. Section 2 examines the limitations that remain in that published algorithm, and Section 3 shows what its output becomes once our proposed fixes are applied.
+  </div>
+
+  <div class="callout">
+    <b>Honesty note:</b> the real MOFid pipeline is C++, which cannot execute inside a browser. Every code panel below shows this folder's own Python translation of the real algorithm (<code>code_XX.py</code> — every one of them is a real, runnable file you can execute yourself: <code>python3 code_04a_metal_oxo_algorithm.py HKUST-1.cif</code>) rather than raw C++. The 3D model itself is driven by a separate, JS port of the same logic (<code>mof_decompose.js</code>) so it can run live in your browser. Both were checked against each other and against known crystal chemistry (e.g. HKUST-1's <code>[Cu][Cu]</code> paddlewheel nodes) before being used here.
+  </div>
+
+  <div class="cif-row">
+    <span>Structure being walked through:</span>
+    <input type="file" id="w-cif-file" accept=".cif">
+    <button id="w-cif-reset">Reset to HKUST-1</button>
+    <span id="w-cif-status" class="cif-status"></span>
+  </div>
+
+
+  <div class="two-col">
+    <div class="panel" id="w-panel"><!-- built by pipeline_walkthrough.js --></div>
+    <div>
+      <div class="canvas-wrap" id="w-canvas-wrap">
+        <canvas id="w-canvas"></canvas>
+        <div class="labels-layer" id="w-labels"></div>
+        <div class="hover-tip" id="w-hovertip"></div>
+      </div>
+      <div class="canvas-hint">Drag to rotate · scroll to zoom · hover an atom/block for details</div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 2: DRAWBACKS + FIX ================= -->
+  <h2 class="section-title" id="drawbacks"><span class="stitle-num">7</span>Limitations of the Published Algorithm — and How We Fix Them</h2>
+  <p class="section-sub">The metal-oxo algorithm is deliberately simple: one compositional test decides every node-versus-linker call. That simplicity is why it is fast and predictable, and it is also where its limits come from. Below are four limitations of the published algorithm itself, each with the fix this project proposes and live evidence measured across all four test structures.</p>
+
+  <div class="callout">
+    <b>Scope.</b> These are properties of the published reference implementation, not defects introduced by us. Every number below is computed in your browser from the real CIF files — nothing on this page is hardcoded. Where a limitation does not affect a given structure, the table says so plainly rather than overstating the case.
+  </div>
+
+  <div id="limitations"></div>
+
+  <h2 class="section-title" id="pipeline"><span class="stitle-num">8</span>Before and After the Fixes — in 3D</h2>
+  <p class="section-sub">The same crystal, decomposed twice: on the left exactly as the published algorithm specifies, on the right with all proposed fixes applied. Both panels are drawn at identical atomic coordinates, so the only visible difference is the classification itself. Switch structures to confirm the fixes generalise rather than working on one favourable example.</p>
+
+  <div class="legend">
+    <span class="legend-lead">Both panels coloured by block:</span>
+    <span class="legend-item"><i style="background:#c0392b"></i>node (inorganic building unit)</span>
+    <span class="legend-item"><i style="background:#2e86c1"></i>linker (organic)</span>
+  </div>
+
+  <div id="struct-tabs" class="module-tabs" style="margin-bottom:14px;"></div>
+
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h4><span class="demo-name" id="s3-before-name"></span> <span class="tag before">PUBLISHED ALGORITHM</span></h4>
+      <div class="canvas-wrap mini-canvas" id="s3-before-wrap"><canvas id="s3-before-canvas"></canvas><div class="labels-layer" id="s3-before-labels"></div><div class="hover-tip" id="s3-before-hovertip"></div></div>
+      <div class="stat-line" id="s3-before-stats"></div>
+    </div>
+    <div class="demo-card">
+      <h4><span class="demo-name" id="s3-after-name"></span> <span class="tag after">WITH PROPOSED FIXES</span></h4>
+      <div class="canvas-wrap mini-canvas" id="s3-after-wrap"><canvas id="s3-after-canvas"></canvas><div class="labels-layer" id="s3-after-labels"></div><div class="hover-tip" id="s3-after-hovertip"></div></div>
+      <div class="stat-line" id="s3-after-stats"></div>
+    </div>
+  </div>
+  <div class="verdict" id="s3-verdict" style="background:var(--good-soft);border-color:#bfe9d5;color:#0d5c3d;"></div>
+
+  <div class="data-panel" id="s3-summary"></div>
+
+  <h2 class="section-title" id="pipeline-tool"><span class="stitle-num">8b</span>The Complete Pipeline, Interactive</h2>
+  <p class="section-sub">All seven stages of the published pipeline on one screen, for any structure you upload.</p>
+  <iframe id="pipeline-frame" class="pipeline-frame" data-src="mof_pipeline_viewer.html" title="Full 7-stage MOF decomposition pipeline, 3D" loading="lazy"></iframe>
+
+  <h2 class="section-title" id="paper-use"><span class="stitle-num">9</span>The Paper We Built On — and Exactly What We Used From It</h2>
+  <p class="section-sub">The network half of this project follows a published method. This section states plainly what the paper provides, which parts we used, which part we initially got wrong, and what we added.</p>
+
+  <div class="panel">
+    <div style="font-size:13px;color:var(--muted2);margin-bottom:4px;">SOURCE</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:4px;">Deciphering the generating rules and functionalities of complex networks</div>
+    <div style="font-size:13.5px;color:var(--muted);">Xiao et al., <i>Scientific Reports</i> <b>11</b>, 22964 (2021) · <a href="https://www.nature.com/articles/s41598-021-02203-4" style="color:var(--accent-dark);font-weight:600;">nature.com/articles/s41598-021-02203-4</a></div>
+  </div>
+
+  <h3 style="font-size:16.5px;margin:24px 0 8px;">What the paper gives us</h3>
+  <div class="panel" style="padding:0;overflow:hidden;">
+  <table class="data-table"><thead><tr><td>Quantity</td><td>Definition</td><td>What it means physically</td></tr></thead><tbody>
+    <tr><td class="dt-value">box-growing</td><td class="dt-note">centre a box on node <i>i</i>, grow radius <i>r</i>, count nodes inside → <code>M<sub>i</sub>(r)</code></td><td class="dt-note">how the network expands as seen from one node. <b>Deterministic</b> — no randomness at all.</td></tr>
+    <tr><td class="dt-value">NFD</td><td class="dt-note">slope of ln <code>M<sub>i</sub>(r)</code> vs ln <i>r</i></td><td class="dt-note">the node-based fractal dimension: the spatial dimension the network fills, seen from node <i>i</i></td></tr>
+    <tr><td class="dt-value">u<sub>i</sub>(r)</td><td class="dt-note"><code>M<sub>i</sub>(r) / M</code>, M = total nodes</td><td class="dt-note">a probability measure — node <i>i</i>'s share of the network at scale <i>r</i></td></tr>
+    <tr><td class="dt-value">U<sub>q</sub>(r)</td><td class="dt-note"><code>Σ<sub>i∈I</sub> u<sub>i</sub>(r)<sup>q</sup></code></td><td class="dt-note">the partition function. <i>q</i>&gt;0 amplifies frequent structures, <i>q</i>&lt;0 amplifies rare ones</td></tr>
+    <tr><td class="dt-value">τ(q)</td><td class="dt-note">from <code>U<sub>q</sub>(r) ~ (r/d)<sup>τ(q)</sup></code></td><td class="dt-note">the mass exponent. Linear in <i>q</i> ⇒ monofractal; curved ⇒ multifractal</td></tr>
+    <tr><td class="dt-value">α, f(α)</td><td class="dt-note"><code>α = dτ/dq</code>, <code>f(α) = qα − τ</code></td><td class="dt-note">the spectrum. Width <i>w</i> = structural <b>heterogeneity</b>; α₀ = structural <b>complexity</b></td></tr>
+    <tr><td class="dt-value">D(q)</td><td class="dt-note"><code>τ(q)/q</code></td><td class="dt-note">generalized dimension — the fractal dimension at each distortion scale</td></tr>
+    <tr><td class="dt-value">A</td><td class="dt-note"><code>ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code></td><td class="dt-note">asymmetry. <i>A</i>&gt;0 "clump" (frequent dominate); <i>A</i>&lt;0 "thorn" (rare dominate)</td></tr>
+    <tr><td class="dt-value">iNMFA</td><td class="dt-note">restrict <i>I</i> to the top ~10% influential nodes</td><td class="dt-note">the variant our brief asks for — the spectrum of the influential nodes only</td></tr>
+  </tbody></table>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="panel" style="border-left:4px solid var(--good);">
+      <h4 style="margin:0 0 8px;font-size:15px;color:#0d6b47;">Used directly, unchanged</h4>
+      <div class="explain-block" style="margin:0;">
+        Every equation above: the box-growing measure, the partition function, the mass exponent, the Legendre transform, the generalized dimension, and the asymmetry metric. <b><span data-code="code_11_nmfa_paper.py" style="cursor:pointer;color:var(--accent-dark);text-decoration:underline;">code_11_nmfa_paper.py</span></b> implements them as written, and each function carries the paper's own formula in its docstring.
+      </div>
+    </div>
+    <div class="panel" style="border-left:4px solid var(--bad);">
+      <h4 style="margin:0 0 8px;font-size:15px;color:#a8382c;">What we initially got wrong</h4>
+      <div class="explain-block" style="margin:0;">
+        We used <b>box-covering</b> — randomly tiling the network — where the paper specifies <b>box-growing</b>. It explicitly contrasts the two. Box-covering is stochastic, which is why an earlier version needed 40 repeat trials to stabilise. The published measure is deterministic: three runs give α₀ = 1.630821 every time.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px;">
+    <b>What we added that the paper does not cover.</b> The paper analyses social, biological and synthetic networks, where nodes are all different. A crystal is not like that. We contribute: (i) a chemically correct, periodic route from a <code>.cif</code> to the block network — the object the method needs as input; (ii) <b>supercell expansion</b>, because a primitive cell of 7 blocks has no range of radii to fit a power law over; and (iii) the finding that <b>iNMFA is degenerate on a defect-free crystal</b>, since the influential blocks are symmetry-equivalent and share one growth curve. That is a genuine boundary condition on the method, not a failure of it.
+  </div>
+
+
+    <div class="eyebrow">Final Year Project — Extension</div>
+    <h1>Building-Block Networks: Influential Nodes &amp; Spectral Fingerprints</h1>
+    <p class="lead">Once a MOF has been decomposed into building blocks, the framework <i>is</i> a graph — blocks are vertices, bonds between them are edges. This page analyses that graph side by side with the real structure: the abstract network on the left, the actual 3D crystal on the right with the same blocks coloured by the same measure — so an "influential node" can be seen as both a graph vertex and a physical cluster.</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ================= 1 ================= -->
+  <h2 class="section-title" id="graph"><span class="stitle-num">10</span>The Block Graph Must Be Periodic</h2>
+  <p class="section-sub">A MOF is infinite. If the block graph is built naively — one edge per pair of blocks that happen to share a bond — periodicity is silently destroyed: two blocks joined by several bonds running in <i>different lattice directions</i> collapse into a single edge. The correct object is the <b>labelled quotient graph</b>, where an edge is identified by <code>(blockA, blockB, translation)</code>. This is the same object Systre consumes.</p>
+
+  <div class="callout warn">
+    <b>Why this matters more than it sounds.</b> UiO-66's primitive cell contains exactly one Zr₆ cluster, and all twelve of its connections run out to periodic images and back. Discard the translations and that cluster reports as 6-connected — or, if the linkers fold in too, the whole cell degenerates into a <b>star</b>: one hub joined to everything, every other vertex of degree 1. A star is not a framework, and it makes every centrality measure meaningless. Toggle the two constructions below and watch the coordination numbers change.
+  </div>
+
+  <div class="toolbar">
+    <span class="lbl">Structure:</span><span id="net-struct-tabs" style="display:flex;gap:8px;flex-wrap:wrap"></span>
+  </div>
+  <div class="toolbar">
+    <span class="lbl">Graph construction:</span>
+    <button id="btn-periodic" class="mode-btn active">Labelled quotient graph (correct)</button>
+    <button id="btn-naive" class="mode-btn">Naive simple graph (loses periodicity)</button>
+    <button id="btn-defect" class="mode-btn" style="margin-left:14px;">Remove one linker (simulate a defect)</button>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:#d81e40"></i>node / inorganic block</span>
+    <span><i style="background:#2e86c1"></i>linker / organic block</span>
+    <span style="color:var(--muted2)">vertex size and the number inside it = coordination number · circular arc = bond to the block's own periodic image</span>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div style="font-size:12.5px;font-weight:700;margin-bottom:6px;">Abstract block graph (2D)</div>
+      <div class="canvas-box"><canvas id="graph-canvas"></canvas><div class="tip" id="graph-tip"></div></div>
+    </div>
+    <div>
+      <div style="font-size:12.5px;font-weight:700;margin-bottom:6px;">The same blocks in the real crystal (3D)</div>
+      <div class="canvas-box" id="mol3d-wrap" style="background:linear-gradient(160deg,#101828,#0a0f1c);">
+        <canvas id="mol3d-canvas"></canvas>
+        <div class="labels-layer" id="mol3d-labels" style="position:absolute;inset:0;pointer-events:none;"></div>
+        <div class="tip" id="mol3d-tip"></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted2);text-align:center;margin-top:6px;">drag to rotate · scroll to zoom · hover a block for its coordination number</div>
+    </div>
+  </div>
+
+  <div class="toolbar" style="margin-top:14px;">
+    <span class="lbl">Colour the 3D model by:</span>
+    <button id="c3d-degree" class="mode-btn active">Coordination number</button>
+    <button id="c3d-central" class="mode-btn">Eigenvector centrality</button>
+    <button id="c3d-role" class="mode-btn">Node vs linker</button>
+    <button id="c3d-top" class="mode-btn" style="margin-left:12px;">★ Highlight the highest-degree blocks</button>
+  </div>
+  <div id="c3d-legend" class="legend"></div>
+
+  <div class="panel">
+    <h3 style="margin:0 0 10px;font-size:15px;">Validation against published crystallography</h3>
+    <div id="validation"></div>
+  </div>
+
+  <!-- ================= 2 ================= -->
+  <h2 class="section-title" id="influence"><span class="stitle-num">11</span>Which Blocks Are Influential?</h2>
+  <p class="section-sub">Three complementary measures. <b>Degree</b> is the raw coordination number. <b>Eigenvector centrality</b> is the principal eigenvector of the adjacency matrix — a block scores highly when it is connected to other high-scoring blocks. <b>Betweenness</b> counts how many shortest paths run through a block, distinguishing bridges from merely well-connected vertices.</p>
+
+  <div class="grid2">
+    <div class="panel" style="margin-top:0;">
+      <h3 style="margin:0 0 10px;font-size:15px;">Centrality of the selected structure</h3>
+      <div id="centrality"></div>
+    </div>
+    <div>
+      <div class="chart-box" style="height:250px;"><canvas id="spectrum-canvas"></canvas></div>
+      <div id="spectrum-stats" style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:8px;"></div>
+    </div>
+  </div>
+  <div id="degeneracy" class="verdict"></div>
+
+  <div class="callout">
+    <b>The result that matters here.</b> In a defect-free crystal every symmetry-equivalent block is genuinely identical, so centrality collapses to just two values — one for nodes, one for linkers. No ranking among the copies can exist, and a "top-k most influential blocks" list computed on a perfect unit cell is really just reporting whichever tied values the sort happened to put first. Influence only becomes a real quantity once that symmetry is broken, which is what the next section does.
+  </div>
+
+  <!-- ================= 3 ================= -->
+  <h2 class="section-title" id="defect"><span class="stitle-num">12</span>Defect Simulation — Making Influence Meaningful</h2>
+  <p class="section-sub">Remove a single linker and recompute. This is not an artificial exercise: missing-linker defects are a real and heavily studied feature of MOF chemistry, and UiO-66 in particular is known for tolerating them. Once one linker is gone the remaining blocks are no longer interchangeable, so centrality separates them — and λ₂ quantifies how much the framework was weakened.</p>
+
+  <div class="panel">
+    <div id="defect-result"></div>
+  </div>
+  <div class="callout">
+    Use the <b>Remove one linker</b> button in Section 1 to apply the defect to the live graph and watch the centrality table above it change. Where a structure shows <i>no</i> change, that is also informative: it means the remaining blocks are still all equivalent by symmetry.
+  </div>
+
+  <!-- ================= 4 ================= -->
+  <h2 class="section-title" id="fingerprint"><span class="stitle-num">13</span>The Spectrum as a Family Fingerprint</h2>
+  <p class="section-sub">The eigenvalues of the graph Laplacian <code>L = D − A</code> are invariant to how the vertices happen to be numbered, so two structures built from the same blocks in the same topology give the same spectrum regardless of atom ordering in the CIF. That is what makes the spectrum usable as a fingerprint. <b>λ₂</b> (algebraic connectivity) measures how hard the net is to cut; <b>λ<sub>max</sub></b> scales with the highest coordination number.</p>
+
+  <div class="grid2">
+    <div>
+      <div class="chart-box"><canvas id="all-spectrum-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">Full Laplacian spectrum of each structure</div>
+    </div>
+    <div>
+      <div class="chart-box"><canvas id="scatter-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">Position in spectral space — a candidate family coordinate</div>
+    </div>
+  </div>
+
+  <div class="panel"><div id="fingerprint-table"></div></div>
+
+  <div class="callout warn">
+    <b>What this does and does not establish.</b> The four structures separate cleanly in spectral space, and λ₂ tracks node connectivity as it should — so the method works. But there is exactly <b>one</b> zirconium structure here. A claim of the form "all Zr-based MOFs occupy this region" cannot be supported from a single example, no matter how clean the separation looks. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per-CIF so it can be run in batch over such a folder without modification.
+  </div>
+
+  <!-- ================= 5 ================= -->
+  <h2 class="section-title" id="multifractal"><span class="stitle-num">14</span>The Multifractal Spectrum — the Family Fingerprint</h2>
+  <p class="section-sub">This is the analysis the brief actually asked for: highlight the influential nodes, compute a <b>spectrum</b>, and test whether frameworks of one family fall inside a common band. The spectrum here is not the Laplacian eigenvalues of Section 4 — it is the <b>multifractal singularity spectrum f(α)</b>, obtained by covering the network with boxes of increasing radius and measuring how the box sizes seen by the influential nodes scale.</p>
+
+  <div class="callout">
+    <b>How it is computed.</b> Cover the block graph with boxes of radius <i>r</i>; each influential node inherits the size of the box covering it, giving a probability measure <i>p<sub>i</sub>(r)</i>. The partition function <i>Z(q,r) = Σ p<sub>i</sub><sup>q</sup></i> scales as <i>r<sup>τ(q)</sup></i>; a log–log fit gives τ(q), and a Legendre transform gives <b>α(q) = dτ/dq</b> and <b>f(α) = qα − τ</b>. A simple fractal would give a single point; a <i>multi</i>fractal gives a curve, and the width of that curve says how unevenly connectivity is distributed across the framework.
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="chart-box" style="height:320px;"><canvas id="mf-curve-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">f(α) for the structure selected in Section 1</div>
+    </div>
+    <div>
+      <div class="chart-box" style="height:320px;"><canvas id="mf-compare-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">α range occupied by each structure — the family separation</div>
+    </div>
+  </div>
+
+  <div class="panel"><div id="mf-table"></div></div>
+  <div id="mf-verdict" class="verdict ok"></div>
+
+  <h3 style="font-size:16px;margin:30px 0 8px;">What had to be corrected to get a spectrum at all</h3>
+  <p class="section-sub">The method is sound; the first implementation returned an undefined spectrum for half the test structures. Each fix below is a specific, checkable defect.</p>
+  <div class="panel"><div id="mf-fixes"></div></div>
+
+  <div class="callout warn">
+    <b>Does this satisfy the brief?</b> The <b>method</b> does: influential nodes are identified, a spectrum is computed, a reference band is built, and a candidate is scored against it — and unrelated frameworks land outside the band while family members land inside. What is <b>not</b> yet established is the <i>family</i> claim. There is exactly one zirconium structure here, so "all Zr-MOFs occupy this band" remains a demonstration of mechanism rather than a result. It needs a few hundred MOFs grouped by metal, from CoRE MOF or QMOF — which is what the original notebook was set up to download, and the analysis code runs per-CIF so it batches unchanged.
+  </div>
+
+  <!-- ================= 6 ================= -->
+  <h2 class="section-title" id="paper"><span class="stitle-num">15</span>Against the Published Method — Box-Growing</h2>
+  <p class="section-sub">The method comes from <b>Xiao et al., "Deciphering the generating rules and functionalities of complex networks", <i>Scientific Reports</i> <b>11</b>, 22964 (2021)</b>. Reading it closely revealed that our implementation — and the original notebook — used the wrong underlying measure.</p>
+
+  <div class="callout warn">
+    <b>Box-covering is not box-growing.</b> The paper proposes <b>box-growing</b> and explicitly contrasts it with the box-counting family. The difference decides everything downstream:
+    <table class="data-table" style="margin-top:10px;background:transparent;">
+      <thead><tr><td></td><td>What the measure is</td><td>Random?</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label">box-<b>covering</b> (what we had)</td><td class="dt-note">tile the whole network with randomly-seeded boxes; a node's measure is the size of whichever box happens to cover it</td><td class="dt-value" style="color:#d64545">yes — needs many trials</td></tr>
+      <tr><td class="dt-label">box-<b>growing</b> (the paper)</td><td class="dt-note">centre a box on node <i>i</i> and grow its radius; the measure is <code>M<sub>i</sub>(r)</code>, the number of nodes within distance <i>r</i></td><td class="dt-value" style="color:#1f9d67">no — fully deterministic</td></tr>
+      </tbody>
+    </table>
+    Because the published measure is deterministic, the reproducibility problem that forced 40 box-covering trials <b>does not exist</b> in the correct method. Repeated runs are bit-identical.
+  </div>
+
+  <div class="panel"><div id="paper-table"></div></div>
+  <div id="paper-verdict" class="verdict"></div>
+
+  <div class="callout">
+    <b>The published quantities, now computed.</b> <code>u<sub>i</sub>(r) = M<sub>i</sub>(r)/M</code> · <code>U<sub>q</sub>(r) = Σ u<sub>i</sub><sup>q</sup></code> · <code>U<sub>q</sub> ~ (r/d)<sup>τ(q)</sup></code> · <code>α = dτ/dq</code> · <code>f(α) = qα − τ</code> · generalized dimension <code>D(q) = τ(q)/q</code> · asymmetry <code>A = ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code> with α₀ at the maximum of <i>f</i>. Per the paper: width <i>w</i> is structural <b>heterogeneity</b>, α₀ is structural <b>complexity</b>, <i>A</i>&gt;0 means frequent structures dominate ("clump"), <i>A</i>&lt;0 means rare ones do ("thorn").
+  </div>
+
+  <h2 class="section-title"><span class="stitle-num">16</span>Reproduce Any Number on This Page</h2>
+  <p class="section-sub">Everything here is computed live in your browser by <code>mof_network.js</code>. The Python counterpart produces identical results and can be run directly:</p>
+  <div class="panel" style="background:var(--code-bg);color:var(--code-text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;">
+    $ python3 code_09_network_analysis.py<br>
+    <span style="color:#8fd0ff">→ coordination numbers, centralities and Laplacian spectra for all four structures</span>
+  </div>
+
+
+  <h2 class="section-title" id="source"><span class="stitle-num">16</span>Every Line of Source Code</h2>
+  <p class="section-sub">Click any file to read it here — full source, line numbers, no download and no web server needed. Modules 00–07 are faithful translations of the published <code>snurr-group/mofid</code> C++; modules 08–11 are this project's own work.</p>
+  <div class="toolbar">
+    <span class="lbl">Show:</span>
+    <button id="cs-all" class="mode-btn active">All files</button>
+    <button id="cs-py" class="mode-btn">Python (the algorithm)</button>
+    <button id="cs-ours" class="mode-btn">Our contributions only</button>
+    <button id="cs-js" class="mode-btn">JavaScript (the site engine)</button>
+  </div>
+  <div id="code-grid" class="codegrid"></div>
+
+  <footer>
+    Every number on this page is computed in your browser from the CIF files in this folder at page load — none is hardcoded.
+    The Python modules in <code>../2_python/</code> reproduce all of them from the command line.
+    Decomposition algorithm: <code>snurr-group/mofid</code>. Multifractal method: Sci Rep <b>11</b>, 22964 (2021).
+  </footer>
+</div>
+
+<script src="three.min.js"></script>
+<script>
+  if (!window.THREE) {
+    document.write('<script src="https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/three.js\/r128\/three.min.js"><\/script>');
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (window.THREE) return;
+    document.querySelectorAll('.canvas-wrap').forEach(function (el) {
+      el.innerHTML = '<div style="color:#ffb4a8;font:13px/1.6 system-ui;padding:22px;text-align:center">' +
+        '<b>3D library not loaded.</b><br>Save <code>three.min.js</code> into this folder, or connect to the internet.<br>' +
+        'Everything else on the page still works.</div>';
+    });
+  });
+</script>
+<script src="mof_decompose.js"></script>
+<script src="mof_render.js"></script>
+<script src="mof_network.js"></script>
+<script src="mof_multifractal.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="code_sources.js"></script>
+<script src="code_viewer.js"></script>
+<script src="pipeline_walkthrough.js"></script>
+<script src="metal_oxo_drawbacks.js"></script>
+<script src="overview_page.js"></script>
+<script src="network_page.js"></script>
+<script src="app.js"></script>
+<script src="single_page.js"></script>
+</body>
+</html>
