@@ -162,7 +162,19 @@ out" buttons in Section 15b of the website.
   similar graph size are meaningful. The ranking survives because the bias runs the *wrong
   way*: the two narrowest spectra come from the two *largest* graphs.
 
-**Where:** `2_python/code_10`, `code_11`, `3_notebooks/`, Sections 14–15 of the website
+**Two versions of "the band" exist, and only one works.** Everything is tested by holding
+a framework out and rebuilding the band without it:
+
+| Version | Result |
+|---|---|
+| **Δα band** (spectrum width) | ✅ classifies **8/8 correctly** |
+| **f(α) envelope** (whole curve) | ❌ **fails** — held out, ZIF-8 (a member) scores 0.0% while UMCM-1 (a non-member) scores 44.7% |
+
+We report the envelope failure as a measured negative result rather than quoting it as
+though it worked.
+
+**Where:** `3_notebooks/mof_band_analysis.ipynb` (the band, with saved outputs),
+`2_python/code_10`, `code_11`, Sections 14–15b of the website
 
 ---
 
@@ -189,7 +201,7 @@ loop — but it has not been done.
 ```
 1_website/     ← START HERE. Open index.html. One page, everything, interactive.
 2_python/      One runnable module per pipeline stage
-3_notebooks/   Self-contained notebooks (run in Colab, no setup)
+3_notebooks/   Notebooks -- start with mof_band_analysis.ipynb (Colab, Run All)
 4_reference/   Figures
 5_concepts/    Five deep-dive documents — read these to actually understand the work
 PRESENTATION_SCRIPT.md   The full talk, start to finish
