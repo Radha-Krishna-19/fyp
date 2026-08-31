@@ -197,10 +197,19 @@ The paper uses **box growing**: for each vertex, grow a ball of radius `r` and c
 
 | Structure | Metal | Blocks | Influential | α range | Width |
 |---|---|---|---|---|---|
-| HKUST-1 | Cu | 112 | 34 | 1.59 – 1.89 | 0.29 |
-| MOF-5 | Zn | 256 | 77 | 1.47 – 1.95 | 0.49 |
-| ZIF-8 | Zn | 288 | 87 | 1.19 – 1.99 | 0.80 |
-| UiO-66 | Zr | 189 | 57 | 1.80 – 2.57 | 0.77 |
+| HKUST-1 | Cu | 112 | 34 | 1.59 – 1.89 | 0.29 ± 0.06 |
+| MOF-5 | Zn | 256 | 77 | 1.47 – 1.95 | 0.49 ± 0.05 |
+| ZIF-8 | Zn | 288 | 87 | 1.19 – 1.99 | 0.80 ± 0.05 |
+| UiO-66 | Zr | 189 | 57 | 1.80 – 2.57 | 0.77 ± 0.06 |
+
+
+> **These widths are approximate, and the reason is the tie degeneracy**
+>
+> In a perfect crystal there are only two distinct degrees, so "the top 30% by degree" is **a tie**. Which blocks get selected depends on the order the blocks happen to be labelled in — and two implementations that build the *same graph* (identical edge sets, verified) can label it differently and report widths differing by more than 0.07.
+>
+> This is the same degeneracy that makes influence unrankable (Section 3.2), reappearing in the spectrum. **iNMFA widths from a defect-free crystal should therefore be quoted with an error bar, not to three decimals.**
+>
+> Two things remove it, and both are used here: the **box-growing NMFA** of Section 5.3 is deterministic, so there is no covering randomness and no selection tie to begin with; and **defects** break the symmetry, after which the selection is well defined. The 8-framework band study of Section 8 is also unaffected, because it runs on full atomic graphs where degrees genuinely vary.
 
 
 On the box-growing NMFA (5.3) the Zr structure separates cleanly: its node fractal dimension is the highest by a clear margin, which is what a 12-connected cluster should give, since more connections per node means mass grows faster with radius.
