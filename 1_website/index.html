@@ -309,6 +309,11 @@ h3.sub-head{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
 .band-tbl .ok{color:#0d6b47}.band-tbl .no{color:#b02a2a}
 .negbox{background:#fdf4f4;border-left:4px solid #d13b3b;padding:11px 14px;margin:14px 0;
   font-size:13px;line-height:1.6;color:#4a2323;border-radius:0 5px 5px 0}
+
+.eqn{font-family:Georgia,serif;font-size:16px;text-align:center;padding:12px;margin:12px 0;
+  background:#f6f8fc;border-radius:6px;color:#1a1a2e}
+ul.tight{margin:8px 0 12px 20px;line-height:1.65}
+ul.tight li{margin-bottom:5px}
 </style>
 </head>
 <body>
@@ -830,32 +835,50 @@ h3.sub-head{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
   </div>
 
   <!-- ================= 15b : the band ================= -->
-  <h2 class="section-title" id="band"><span class="stitle-num">15b</span>The Band — Eight Real Frameworks</h2>
-  <p class="section-sub">A <b>band</b> is a range that a group of frameworks share, so that a new framework can be tested against it. Two versions of that idea are shown below &mdash; the spectrum <b>width</b> &Delta;&alpha; (which separates the groups cleanly) and the <b>f(&alpha;) envelope</b> (which, measured honestly, does not). Both are reported.</p>
+    <!-- ================= 15b : the band ================= -->
+  <h2 class="section-title" id="band"><span class="stitle-num">15b</span>The Band &mdash; 77 Frameworks, Two Corrections and a Retraction</h2>
+  <p class="section-sub">A <b>band</b> is the range of spectrum width &Delta;&alpha; that a group of frameworks shares, so a new framework can be tested for membership. Scaling this from 8 frameworks to <b>77</b> exposed two errors in how we were computing it, and forced us to withdraw a claim. All three are set out here.</p>
 
-  <p>Four structures are not enough to build a band from. This section uses <b>eight experimentally reported frameworks</b>, downloaded at run time from the RASPA2 structure library and analysed on <b>full atomic graphs</b> of 3,392&ndash;6,120 atoms. That is a larger and different construction from the block quotient graph used in Sections 10&ndash;15, so <b>these widths are not comparable with the block-graph numbers above</b>. All eight appear in the xenon/krypton separation literature, which is why they were chosen.</p>
+  <h3 class="sub-head">Correction 1 &mdash; the spectrum had the wrong shape</h3>
+  <p>A multifractal spectrum <i>f</i>(&alpha;) must be an <b>inverted parabola</b> whose peak sits at <i>q</i>&nbsp;=&nbsp;0, where <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;<i>D</i><sub>0</sub>, the fractal dimension. Ours sloped downhill instead. That is a mathematics problem, not a materials result.</p>
+  <p>The paper defines the mass exponent as a <b>ratio</b>:</p>
+  <div class="eqn">&tau;(q) = ln&nbsp;<i>&Pscr;</i><sub>q</sub>(r) &frasl; ln(r&frasl;r<sub>N</sub>)</div>
+  <p>Over several radii that is a straight-line fit <b>through the origin</b> &mdash; the relation <i>&Pscr;</i><sub>q</sub>&nbsp;~&nbsp;(r/r<sub>N</sub>)<sup>&tau;</sup> carries no prefactor. Our code used <code>np.polyfit(x, y, 1)</code> and took the <b>slope</b>, which is a fit with a <b>free intercept</b>. At <i>q</i>&nbsp;=&nbsp;0 that difference is fatal:</p>
+  <ul class="tight">
+    <li>at <i>q</i>&nbsp;=&nbsp;0 every term is <code>pr_i^0 = 1</code>, so <i>&Pscr;</i><sub>0</sub>&nbsp;=&nbsp;|I|, the <i>count</i> of influential nodes;</li>
+    <li>that count is <b>identical at every radius</b>, so the free-intercept fit sees a flat line;</li>
+    <li>a flat line has slope zero, so &tau;(0)&nbsp;=&nbsp;0, so <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;0&middot;&alpha;&nbsp;&minus;&nbsp;0&nbsp;=&nbsp;<b>0</b>.</li>
+  </ul>
+  <p>The peak is pinned to zero and the parabola disappears. Measured across the dataset: <b>&tau;(0)&nbsp;=&nbsp;0 and <i>f</i>(0)&nbsp;=&nbsp;0 in all 77 frameworks, and not one of them peaked at <i>q</i>&nbsp;=&nbsp;0</b>. With the paper's definition ln(r/r<sub>N</sub>)&nbsp;&lt;&nbsp;0, so &tau;(0)&nbsp;=&nbsp;ln|I|&nbsp;/&nbsp;negative&nbsp;&lt;&nbsp;0 and <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;&minus;&tau;(0)&nbsp;&gt;&nbsp;0 &mdash; the peak returns.</p>
+  <div class="callout warn">
+    <b>Verified on a network built from scratch</b>, identical measure and identical data, only the &tau; definition swapped:
+    <table class="data-table" style="margin-top:10px;background:transparent;">
+      <thead><tr><td>&tau; definition</td><td>&tau;(0)</td><td><i>f</i>(0)</td><td>peak at</td><td>inverted parabola?</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label">free-intercept slope (ours)</td><td class="dt-value">0.0000</td><td class="dt-value">0.0000</td><td class="dt-note">q = &minus;4</td><td class="dt-value" style="color:#d64545">no</td></tr>
+      <tr><td class="dt-label">paper: ln&nbsp;<i>&Pscr;</i><sub>q</sub>&frasl;ln(r&frasl;r<sub>N</sub>)</td><td class="dt-value">&minus;3.5028</td><td class="dt-value">+3.5028</td><td class="dt-note">q = 0</td><td class="dt-value" style="color:#1f9d67">yes</td></tr>
+      </tbody>
+    </table>
+    Fixed in the notebook as <code>inmfa(..., tau_mode="paper")</code>, now the default. <code>tau_mode="slope"</code> reproduces the old behaviour so the correction can be demonstrated rather than asserted.
+  </div>
+
+  <h3 class="sub-head">Correction 2 &mdash; and the retraction</h3>
+  <p>With 8 frameworks, &ldquo;the band groups MOFs by pore architecture&rdquo; looked reasonable. With 77 frameworks and published pore diameters it does not hold.</p>
 
   <div class="panel"><div id="band-body"></div></div>
 
-  <div class="callout warn">
-    <b>Three things this result is not.</b> Worth knowing before anyone asks.
-    <ul style="margin:8px 0 0 18px;">
-      <li><b>The four MOF-74 curves overlapping is not evidence.</b> They are the same graph &mdash; proved isomorphic in the source notebook &mdash; so they <i>must</i> overlap. They are the reproducibility control, not band members.</li>
-      <li><b>That control sets a noise floor of 0.105</b>, the spread measured across those identical structures. HKUST-1 (0.844) and ZIF-8 (0.897) differ by less than that floor, so the honest statement is &ldquo;six frameworks are <i>indistinguishable within noise</i>&rdquo;, not &ldquo;six frameworks match&rdquo;.</li>
-      <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted &mdash; it does not know which element an atom is, let alone its binding energy. &Delta;&alpha; describes <i>pore-network architecture</i> and nothing else. Reading the band as &ldquo;these MOFs are more stable&rdquo; is not supported by anything computed here.</li>
-    </ul>
-  </div>
-
-  <h3 class="sub-head">What the band does show</h3>
-  <p>Six frameworks spanning <b>five different metals</b> (Cu, Ni, Co, Mg, Zn) and two different binding chemistries &mdash; carboxylate for HKUST-1 and the MOF-74 family, imidazolate for ZIF-8 &mdash; land in one band, while two others separate cleanly. <b>So the grouping is neither by metal nor by chemistry.</b> It is by how uniform the pore network is: a wide &Delta;&alpha; means a structurally heterogeneous pore system, a narrow one means a uniform system. IRMOF-1 and UMCM-1, the two narrow spectra, both have large regular open pores &mdash; which fits.</p>
-
-  <h3 class="sub-head">Finite-size dependence, and why the ranking survives it</h3>
-  <p>&Delta;&alpha; has <b>not</b> converged in supercell size: it grows with the graph, because the fit window spans ln(1/diameter) to ln(0.34), so a larger graph samples a wider range of scales. These are therefore finite-size <i>effective</i> widths at a stated graph size, not asymptotic exponents, and absolute values should always be quoted with the diameter beside them.</p>
-  <p>The ranking still holds, and for a specific reason: <b>the bias runs the wrong way to explain it.</b> IRMOF-1 and UMCM-1 have among the largest graphs in the set (diameters 56 and 63) yet the smallest widths, while the wide group sits at diameters 36&ndash;50. A finite-size artefact would push the biggest graphs toward <i>larger</i> &Delta;&alpha;, not smaller.</p>
+  <h3 class="sub-head">What this leaves standing</h3>
+  <ul class="tight">
+    <li><b>The method is implemented correctly now.</b> &tau;(q) matches the paper, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time.</li>
+    <li><b>The band exists as a descriptive range</b> &mdash; the interquartile &Delta;&alpha; across 77 frameworks. What it does <i>not</i> yet have is a demonstrated physical meaning.</li>
+    <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted; it does not know which element an atom is.</li>
+    <li><b>What would make the pore claim testable:</b> compare only frameworks of comparable graph size, or normalise the fit window per structure so &Delta;&alpha; stops growing with the graph &mdash; then re-test the correlation.</li>
+  </ul>
+  <p>Finding and reporting a confound in your own headline claim is a stronger position than presenting a correlation that does not survive the first check.</p>
 
   <p class="section-sub">Source: <span class="code-chip">mof_band_analysis.ipynb</span> &middot; data <span class="code-chip">band_data.js</span> &middot; plotting <span class="code-chip">band_page.js</span></p>
 
-  <h2 class="section-title"><span class="stitle-num">16</span>Reproduce Any Number on This Page</h2>
+<h2 class="section-title"><span class="stitle-num">16</span>Reproduce Any Number on This Page</h2>
   <p class="section-sub">Everything here is computed live in your browser by <code>mof_network.js</code>. The Python counterpart produces identical results and can be run directly:</p>
   <div class="panel" style="background:var(--code-bg);color:var(--code-text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;">
     $ python3 code_09_network_analysis.py<br>

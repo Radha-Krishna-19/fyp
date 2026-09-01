@@ -63,6 +63,17 @@ FIX 6 -- the influential-node selection reports its own ambiguity.
     crystal they always do. The selection now reports how many blocks tie at
     the cutoff so the arbitrariness is visible instead of hidden.
 
+FIX 10 -- tau(q) was extracted with the wrong kind of fit.
+    The paper defines tau(q) = ln P_q(r) / ln(r/r_N) -- a fit THROUGH THE
+    ORIGIN. compute_tau() used a free-intercept least-squares slope. At q = 0
+    every term is pr_i^0 = 1, so P_0 = |I| is constant in r; a flat line has
+    slope 0, so tau(0) = 0 and f(alpha_0) = 0. But f(alpha_0) is meant to be
+    D_0, the PEAK of the spectrum -- so the inverted parabola every multifractal
+    spectrum must have was flattened into a monotonically falling curve.
+    Verified on a synthetic network: free-intercept gives tau(0) = 0.0000 and no
+    peak; the paper's definition gives tau(0) = -3.5028, f(0) = +3.5028, and the
+    peak lands exactly at q = 0. tau_mode='slope' reproduces the old behaviour.
+
 FIX 9 -- the partition function was averaged in the wrong order.
     probability_measures() used to average p_i(r) across box-covering trials
     FIRST, then compute_tau() raised that averaged value to the power q. That
@@ -203,7 +214,7 @@ def probability_measures(G, influential_nodes, radii, n_trials=5, seed=0):
     return trials
 
 
-def compute_tau(trials, radii, r_N, q_values):
+def compute_tau(trials, radii, r_N, q_values, tau_mode='paper'):
     """tau(q) from the slope of <ln Z(q,r)> against log(r/r_N).
 
     FIX 9 -- the partition function must be built and logged PER TRIAL, then
@@ -237,8 +248,22 @@ def compute_tau(trials, radii, r_N, q_values):
         if mask.sum() < 2:                       # FIX 5: need >=2 points to fit
             tau.append(np.nan)
             continue
-        slope, _ = np.polyfit(x[mask], y[mask], 1)
-        tau.append(slope)
+        if tau_mode == 'paper':
+            # FIX 10 -- the paper defines tau(q) = ln P_q(r) / ln(r/r_N), which
+            # over several radii is least squares THROUGH THE ORIGIN, because
+            # P_q ~ (r/r_N)^tau carries no prefactor. A free-intercept slope is
+            # a different quantity, and at q = 0 it is catastrophically wrong:
+            # every term is pr_i^0 = 1, so P_0 = |I| is the same at every
+            # radius, a flat line has slope 0, and tau(0) = 0 forces
+            # f(alpha_0) = 0 -- deleting the peak of the spectrum. A
+            # multifractal spectrum must be an inverted parabola peaking at
+            # q = 0 with f(alpha_0) = D_0; with the free-intercept slope it
+            # comes out as a monotonically falling curve instead.
+            xv, yv = x[mask], y[mask]
+            tau.append(float(np.sum(xv * yv) / np.sum(xv * xv)))
+        else:
+            slope, _ = np.polyfit(x[mask], y[mask], 1)
+            tau.append(slope)
     return np.asarray(tau)
 
 
@@ -262,7 +287,8 @@ def asymmetry_metric(alpha, q_values):
     return float(np.log(left / right))
 
 
-def run_inmfa(G_full, influential_nodes, q_values=None, n_box_trials=5, seed=0):
+def run_inmfa(G_full, influential_nodes, q_values=None, n_box_trials=5, seed=0,
+              tau_mode='paper'):
     """FIX 1: box-cover the FULL graph; measure at the influential nodes."""
     if q_values is None:
         q_values = np.linspace(-10, 10, 41)
@@ -285,14 +311,15 @@ def run_inmfa(G_full, influential_nodes, q_values=None, n_box_trials=5, seed=0):
 
     pr = probability_measures(G_full, influential_nodes, radii,
                               n_trials=n_box_trials, seed=seed)
-    tau = compute_tau(pr, radii, diameter, q_values)
+    tau = compute_tau(pr, radii, diameter, q_values, tau_mode=tau_mode)
     alpha, f_alpha = legendre_transform(q_values, tau)
     return {'q_values': q_values, 'tau': tau, 'alpha': alpha, 'f_alpha': f_alpha,
             'asymmetry': asymmetry_metric(alpha, q_values), 'radii': radii,
             'ok': bool(np.any(np.isfinite(alpha))), 'reason': ''}
 
 
-def analyse_mof(cif_path, top_percent=0.30, n_box_trials=40, seed=0, min_blocks=60):
+def analyse_mof(cif_path, top_percent=0.30, n_box_trials=40, seed=0, min_blocks=60,
+                tau_mode='paper'):
     """FIX 7: n_box_trials defaults to 40, not 5 -- see spectrum_stability().
        FIX 8: the cell is expanded until the graph is big enough to scale over."""
     geom = compute_geometry(parse_cif(open(cif_path).read()))
@@ -312,7 +339,8 @@ def analyse_mof(cif_path, top_percent=0.30, n_box_trials=40, seed=0, min_blocks=
             G.add_edge(i, j)
 
     influential, sel = select_influential(G, top_percent)
-    spec = run_inmfa(G, influential, n_box_trials=n_box_trials, seed=seed)
+    spec = run_inmfa(G, influential, n_box_trials=n_box_trials, seed=seed,
+                     tau_mode=tau_mode)
     metals = sorted({geom.symbols[a] for _k, b in blocks for a in b if geom.is_metal[a]})
     return {'cif_path': cif_path, 'K': G.number_of_nodes(), 'supercell': n,
             'n_edges': G.number_of_edges(), 'metals': metals,

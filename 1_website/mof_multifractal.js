@@ -128,13 +128,25 @@
     return trials;   // trials[ri] = array of nTrials arrays, one p-value per influential node
   }
 
-  function linfit(x, y) {
+  // FIX 10 -- the paper defines tau(q) = ln P_q / ln(r/r_N), which over several
+  // radii is least squares THROUGH THE ORIGIN, because P_q ~ (r/r_N)^tau has no
+  // prefactor. A free-intercept slope is a different quantity, and at q = 0 it
+  // is catastrophically wrong: every term is pr_i^0 = 1, so P_0 = |I| is the
+  // same at every radius; a flat line has slope 0, so tau(0) = 0 and
+  // f(alpha_0) = 0. But f(alpha_0) must be D_0, the PEAK -- so the inverted
+  // parabola a multifractal spectrum must have collapses into a falling curve.
+  // Verified: free-intercept gives tau(0)=0 and no peak; through-origin gives
+  // tau(0) = -3.5028, f(0) = +3.5028, peak exactly at q = 0.
+  function linfit(x, y, throughOrigin) {
     let n = 0, sx = 0, sy = 0, sxx = 0, sxy = 0;
     for (let i = 0; i < x.length; i++) {
       if (!isFinite(x[i]) || !isFinite(y[i])) continue;
       n++; sx += x[i]; sy += y[i]; sxx += x[i] * x[i]; sxy += x[i] * y[i];
     }
     if (n < 2) return NaN;                       // FIX 5: need >= 2 points
+    if (throughOrigin !== false) {               // the paper's definition (default)
+      return Math.abs(sxx) < 1e-12 ? NaN : sxy / sxx;
+    }
     const den = n * sxx - sx * sx;
     if (Math.abs(den) < 1e-12) return NaN;
     return (n * sxy - sx * sy) / den;
@@ -153,7 +165,8 @@
   //
   // `trials` is radii x nTrials x influential (see probabilityMeasures).
   // `wrongOrder` reproduces the old estimator so the site can show the contrast.
-  function computeTau(trials, radii, rN, qValues, wrongOrder) {
+  function computeTau(trials, radii, rN, qValues, wrongOrder, tauMode) {
+    const thruOrigin = (tauMode !== 'slope');
     const x = radii.map(r => Math.log(r / rN));
 
     if (wrongOrder) {
@@ -169,7 +182,7 @@
           for (let i = 0; i < row.length; i++) if (row[i] > 0) { Z += Math.pow(row[i], q); any = true; }
           return any && Z > 0 ? Math.log(Z) : NaN;
         });
-        return linfit(x, y);
+        return linfit(x, y, thruOrigin);
       });
     }
 
@@ -186,7 +199,7 @@
         let s = 0; for (let k = 0; k < logs.length; k++) s += logs[k];
         return s / logs.length;
       });
-      return linfit(x, y);
+      return linfit(x, y, thruOrigin);
     });
   }
 
@@ -239,7 +252,7 @@
 
     const qValues = []; for (let i = 0; i < 41; i++) qValues.push(-10 + (20 * i) / 40);
     const pr = probabilityMeasures(g, sel.chosen, radii, nTrials, opts.seed || 0, dist);
-    const tau = computeTau(pr, radii, diameter, qValues, opts.wrongOrder);
+    const tau = computeTau(pr, radii, diameter, qValues, opts.wrongOrder, opts.tauMode);
     const alpha = gradient(tau, qValues);
     const fAlpha = qValues.map((q, i) => q * alpha[i] - tau[i]);
     const fin = alpha.filter(isFinite);
@@ -353,7 +366,8 @@
         for (let k = 0; k < I.length; k++) Z += Math.pow(M[I[k]][ri] / N, q);
         return Z > 0 ? Math.log(Z) : NaN;
       });
-      return linfit(x, y);
+      // The paper's own method, so always the paper's tau: through the origin.
+      return linfit(x, y, true);
     });
     const alpha = gradient(tau, qValues);
     const f = qValues.map((q, i) => q * alpha[i] - tau[i]);

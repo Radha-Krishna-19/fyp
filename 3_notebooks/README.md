@@ -1,74 +1,71 @@
 # Notebook
 
-One notebook, one job: compute the multifractal spectra of 8 real MOFs and build the band.
+One notebook: compute multifractal spectra for 77 real MOFs and build the band.
 
 | File | What it is | Run it? |
 |---|---|---|
-| **`mof_band_analysis.ipynb`** | 8 real frameworks downloaded live → spectra → **the band** and its membership tests. Steps 1–8 are the original notebook unchanged; Steps 9–11 are the band. | Colab: Run All |
-| `results.json` | Computed spectra for the 8 frameworks. Lets the band section run without recomputing. | — |
+| **`mof_band_analysis.ipynb`** | 77 frameworks downloaded live → spectra → **the band**, plus the shape check and the size-confound test. Steps 1–8 are the original notebook; Steps 9–12 are the band analysis. | Colab: Run All |
+| `results.json` | Computed spectra for all 77. Lets Steps 9–12 run without recomputing. | — |
 
 ---
 
 ## What it does
 
-Steps 1–8 are the framework analysis: download 8 experimentally reported MOFs from the
-RASPA2 library, build PBC-aware bond graphs, coarse-grain, and compute a multifractal
-spectrum for each. **Steps 9–11 are the band analysis.**
+Steps 1–8 download 77 experimentally reported MOFs, build PBC-aware bond graphs,
+coarse-grain them, and compute a multifractal spectrum for each.
+**Steps 9–12 are the band analysis**, and they report two corrections and one retraction.
 
-### What the band is
+## Correction 1 — the spectrum had the wrong shape
 
-Each framework produces a spectrum. The **width** of that spectrum, Δα, says how unevenly
-connectivity is spread through the pore network. A **band** is the range a group of
-frameworks shares — so a new framework can be tested for membership with no chemistry
-required.
+A multifractal spectrum `f(α)` must be an **inverted parabola** peaking at `q = 0`, where
+`f(α₀) = D₀`, the fractal dimension. Ours sloped downhill.
 
-### The result
+The paper defines `τ(q) = ln 𝒫_q(r) / ln(r/r_N)` — a straight-line fit **through the
+origin**, because `𝒫_q ~ (r/r_N)^τ` has no prefactor. The code used `np.polyfit(x, y, 1)`
+and took the **slope**, a fit with a **free intercept**. At `q = 0`:
 
-| Framework | Metal | Δα | |
-|---|---|---|---|
-| Co-MOF-74 | Co | 0.941 ± 0.054 | in band |
-| ZIF-8 | Zn | 0.897 ± 0.077 | in band |
-| Mg-MOF-74 | Mg | 0.857 ± 0.070 | in band |
-| Zn-MOF-74 | Zn | 0.857 ± 0.070 | in band |
-| HKUST-1 | Cu | 0.844 ± 0.063 | in band |
-| Ni-MOF-74 | Ni | 0.835 ± 0.057 | in band |
-| **IRMOF-1 (MOF-5)** | Zn | **0.375 ± 0.064** | **outside** |
-| **UMCM-1** | Zn | **0.203 ± 0.028** | **outside** |
+- every term is `pr_i⁰ = 1`, so `𝒫₀ = |I|`, the count of influential nodes
+- that count is the **same at every radius** → the fit sees a flat line
+- a flat line has slope 0 → `τ(0) = 0` → `f(α₀) = 0`
 
-Six frameworks across **five different metals** and **two different binding chemistries**
-share one band; two separate cleanly. The gap between the groups is **0.46**, about **four
-times** the 0.105 noise floor. So the grouping is neither by metal nor by chemistry — it
-tracks **pore-network architecture**.
+The peak is pinned to zero and the parabola disappears. **τ(0) = 0 in all 77 frameworks,
+and none peaked at q = 0.** Fixed via `inmfa(..., tau_mode="paper")`, now the default;
+`tau_mode="slope"` reproduces the old behaviour so the correction is demonstrable.
 
-### Two bands, only one of which works
+| τ definition | τ(0) | f(0) | peak at | parabola? |
+|---|---|---|---|---|
+| free-intercept slope (old) | 0.0000 | 0.0000 | q = −4 | no |
+| paper: `ln 𝒫_q / ln(r/r_N)` | −3.5028 | +3.5028 | **q = 0** | **yes** |
 
-Everything is tested by **holding a framework out** and rebuilding the band without it — a
-curve trivially sits inside a band it helped define.
+## Correction 2 — the averaging order
 
-| Version | Result |
+The partition function must be built **per box-covering trial** and averaged in log space.
+Averaging `p(r)` first and then raising to the power `q` exponentiates an already-smoothed
+quantity. Measured on HKUST-1: 0.021 ± 0.004 (wrong) vs 0.327 ± 0.032 (correct).
+
+## Retraction — the band does not mean pore architecture
+
+| Test | r |
 |---|---|
-| **Δα band** (width only) | ✅ classifies **8/8 correctly** |
-| **f(α) envelope** (whole curve) | ❌ **fails.** Held out, ZIF-8 (a member) scores **0.0%**; UMCM-1 (a non-member) scores **44.7%** |
+| Δα vs pore diameter (LCD), raw | −0.330 |
+| Δα vs LCD, **controlling for graph size** | **+0.057** — vanishes |
+| Δα vs graph size, **controlling for LCD** | **+0.384** — survives |
 
-The envelope fails because the two narrow curves are short arcs sitting *inside* the wide
-group's α range but far below it in f(α) — so the test measures where a curve sits in α,
-not how wide it is. **This is reported as a measured negative result**, not quietly dropped.
+Linear model: graph size alone R² = 0.237; adding pore diameter → 0.240. Pore size buys
+**+0.002**. Δα is tracking **supercell size**, which is set by `MIN_CELL_LENGTH` and the
+`MAX_ATOMS` cap — computational parameters, not chemistry.
 
-### Running it
+On 8 frameworks the pore reading was plausible. On 77 it is not supported.
 
-- **Full run** — Colab, Run All. Downloads the structures and recomputes everything
-  (~10 minutes). Nothing to upload.
-- **Band only** — Steps 9–11 fall back to `results.json` if the earlier steps have not been
-  run, so you can re-run the band analysis instantly. Keep `results.json` beside the
-  notebook. The saved outputs you see were produced this way.
+**What would make it testable:** compare only frameworks of comparable graph size, or
+normalise the fit window per structure so Δα stops growing with the graph, then re-test.
 
-### Honest limits
+## Running it
 
-- **Δα is not a stability or gas-uptake predictor.** The graph is unweighted — it does not
-  know which element an atom is. Δα describes pore architecture only.
-- **The four MOF-74 curves overlapping is not evidence.** They are the same graph, proved
-  isomorphic in Step 7, so they must overlap. They are the reproducibility control, and
-  what they measure is the 0.105 noise floor.
-- **Δα is finite-size dependent** — effective widths at a stated graph size, not asymptotic
-  exponents. The ranking survives because the bias runs the wrong way: the two narrowest
-  spectra come from the two *largest* graphs.
+- **Full run** — Colab, Run All. Downloads the structures and recomputes everything.
+- **Band only** — Steps 9–12 fall back to `results.json` if the earlier steps have not run,
+  so the band analysis executes in seconds. Keep `results.json` beside the notebook.
+
+> **Note:** the `results.json` shipped here was computed with the **old** τ. Re-run the
+> notebook to regenerate it with the corrected definition; the size-confound finding is
+> independent of the τ fix and holds either way.

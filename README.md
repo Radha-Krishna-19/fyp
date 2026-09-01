@@ -107,74 +107,46 @@ weakened the framework.
 ### Part 4 — The multifractal spectrum, and the "band"
 
 The last part of the brief was to find a *spectrum* that groups MOFs into families. We
-implemented the method from **Xiao et al., Scientific Reports 11, 22964 (2021)**.
+implemented the method from **Xiao et al., Scientific Reports 11, 22964 (2021)**, and scaled
+it to **77 experimentally reported frameworks** with published pore diameters.
 
-Every framework gets a curve, `f(α)`, describing how unevenly its connectivity is spread
-out. The **width of that curve, Δα**, is a single number for how structurally
-heterogeneous the pore network is. Plot several MOFs' curves together, and if a group of
-them overlaps, the shaded region they trace out is a **band**. A new MOF whose curve
-falls inside the band belongs to that group.
+Each framework gets a curve `f(α)`. The **width of that curve, Δα**, is one number for how
+unevenly connectivity is distributed. A **band** is the range of Δα a group shares, so a new
+framework can be tested for membership. Across the 77, the interquartile band is
+**Δα = 0.36 – 0.65**.
 
-A teammate extended this to **8 real frameworks downloaded live** from the RASPA2
-structure library, on full atomic graphs of 3,400–6,100 atoms:
+Scaling up exposed two errors in our own implementation, and forced one claim to be withdrawn.
 
-| Framework | Metal | Δα | Group |
-|---|---|---|---|
-| Co-MOF-74 | Co | 0.941 ± 0.054 | in the band |
-| ZIF-8 | Zn | 0.897 ± 0.077 | in the band |
-| Mg-MOF-74 | Mg | 0.857 ± 0.070 | in the band |
-| Zn-MOF-74 | Zn | 0.857 ± 0.070 | in the band |
-| HKUST-1 | Cu | 0.844 ± 0.063 | in the band |
-| Ni-MOF-74 | Ni | 0.835 ± 0.057 | in the band |
-| **IRMOF-1 (MOF-5)** | Zn | **0.375 ± 0.064** | **outside** |
-| **UMCM-1** | Zn | **0.203 ± 0.028** | **outside** |
+**Error 1 — the spectrum had the wrong shape.** A multifractal spectrum must be an
+**inverted parabola** peaking at `q = 0`, where `f(α₀) = D₀`. Ours sloped downhill. The paper
+defines `τ(q) = ln 𝒫_q(r) / ln(r/r_N)` — a fit **through the origin**. Our code took a
+**free-intercept slope**. At `q = 0` every term is `pr_i⁰ = 1`, so `𝒫₀ = |I|` is the same at
+every radius; a flat line has slope zero, forcing `τ(0) = 0` and `f(α₀) = 0` — deleting the
+peak. Measured: τ(0) = 0 in **all 77** frameworks, none peaked at q = 0. Fixed; Python and the
+browser engine now agree at τ(0) = −2.6551 on HKUST-1, with the peak exactly at q = 0.
 
-**What this shows:** six frameworks with completely different metals (Cu, Ni, Co, Mg, Zn)
-and different chemistry (carboxylate vs imidazolate) land in the same band, while two
-others separate cleanly. The grouping is by **pore-network architecture**, and it cuts
-across metal and chemistry. The gap between the groups is **0.46**, about **four times**
-the noise floor — so the split is a property of the frameworks, not of the method.
+**Error 2 — the averaging order.** The partition function must be built per box-covering trial
+and averaged in log space, not averaged first and then raised to the power q. Measured on
+HKUST-1: 0.021 ± 0.004 (wrong) vs 0.327 ± 0.032 (correct).
 
-**Two different things get called "the band" — only one of them works:**
+**Withdrawn — "the band groups MOFs by pore architecture."**
 
-| Version | What it is | Does it work? |
-|---|---|---|
-| **Δα band** (1-D) | The range of spectrum *widths* the group spans | ✅ **Yes.** Holding out each framework and re-testing classifies all of them correctly |
-| **f(α) envelope** (2-D) | Shade between the highest and lowest curve, ask if a candidate falls inside | ❌ **No.** Held out, ZIF-8 (a real member) scores **0.0%** while UMCM-1 (a non-member) scores **44.7%** |
-
-The envelope fails because the two narrow curves are short arcs sitting *inside* the wide
-group's α range but far below it in f(α) — so the test is dominated by where a curve sits
-in α, not by how wide it is. **We report this as a measured negative result** rather than
-quoting the envelope as though it worked. Reproduce it with the "hold out" buttons in
-Section 15b of the website, or by running Step 9 of `3_notebooks/mof_band_analysis.ipynb`.
-
-**What this does *not* show — and this matters when presenting:**
-
-- The four MOF-74 analogues overlapping is *not* evidence. They are the same graph
-  (proved isomorphic), so they must overlap. They are the **reproducibility control**.
-- That control measures a noise floor of **0.105**. HKUST-1 (0.844) and ZIF-8 (0.897) sit
-  *inside* the range that identical structures already span, so the honest statement is
-  "six frameworks are indistinguishable within noise", not "six frameworks match".
-- **Δα is not a stability or gas-uptake predictor.** Nothing here measures stability. The
-  graph is unweighted — it does not even know which element an atom is. Δα describes
-  architecture only.
-- Δα is **finite-size dependent** — it grows with graph size, so only comparisons at
-  similar graph size are meaningful. The ranking survives because the bias runs the *wrong
-  way*: the two narrowest spectra come from the two *largest* graphs.
-
-**Two versions of "the band" exist, and only one works.** Everything is tested by holding
-a framework out and rebuilding the band without it:
-
-| Version | Result |
+| Test | r |
 |---|---|
-| **Δα band** (spectrum width) | ✅ classifies **8/8 correctly** |
-| **f(α) envelope** (whole curve) | ❌ **fails** — held out, ZIF-8 (a member) scores 0.0% while UMCM-1 (a non-member) scores 44.7% |
+| Δα vs pore diameter (LCD), raw | −0.330 |
+| Δα vs LCD, **controlling for graph size** | **+0.057** — vanishes |
+| Δα vs graph size, **controlling for LCD** | **+0.384** — survives |
 
-We report the envelope failure as a measured negative result rather than quoting it as
-though it worked.
+In a linear model, graph size alone gives R² = 0.237; adding pore diameter takes it to 0.240
+— pore size buys **+0.002**. So Δα is tracking **how many atoms are in the supercell**, which
+is set by `MIN_CELL_LENGTH` and the `MAX_ATOMS` cap — computational parameters, not chemistry.
 
-**Where:** `3_notebooks/mof_band_analysis.ipynb` (the band, with saved outputs),
-`2_python/code_10`, `code_11`, Sections 14–15b of the website
+On 8 frameworks the pore reading was plausible. On 77 it is not supported. Two routes make the
+question answerable: compare only frameworks of **comparable graph size**, or **normalise the
+fit window** so Δα stops growing with the graph, then re-test.
+
+**Where:** `3_notebooks/mof_band_analysis.ipynb`, `2_python/code_10`, `code_11`,
+Section 15b of the website
 
 ---
 
@@ -186,13 +158,15 @@ though it worked.
 | 2 | The block network must be built **periodically** | UiO-66 reports 12-connected (correct) vs 6 (naive). All four structures match published crystallography |
 | 3 | Influence cannot be ranked inside a perfect crystal | Only 2 distinct degree values in every structure — a top-k list is sorting ties |
 | 4 | Defects make influence measurable | Remove 1 linker: 2 → 4 distinct centralities, λ₂ 1.44 → 1.19 |
-| 5 | Frameworks group by pore architecture, not by metal | 6 of 8 frameworks share a band across 5 different metals; 2 separate cleanly |
-| 6 | Two estimator bugs found and fixed | Edgeless-subgraph defect, and the log-space averaging bug (found independently by two people on two datasets) |
+| 5 | A Δα band exists across 77 frameworks | Interquartile Δα = 0.36–0.65 |
+| 6 | **That band does not mean pore architecture** | Pore correlation vanishes (−0.33 → +0.06) once graph size is controlled for; size survives (+0.38). Claim withdrawn. |
+| 7 | Three estimator bugs found and fixed | Edgeless subgraph; log-space averaging order; and τ(q) fitted with a free intercept instead of through the origin, which had deleted the peak of every spectrum |
 
-**What we have NOT established:** "all Zr-MOFs fall in one band." We have one Zr
-structure. That is a demonstration of mechanism, not a result. It needs a few hundred
-MOFs grouped by metal (CoRE MOF / QMOF). Every module runs per-CIF, so scaling up is a
-loop — but it has not been done.
+**What we have NOT established:** that the band carries physical meaning. It is currently a
+descriptive range whose main driver is supercell size. The metal-family claim ("all Zr-MOFs
+fall in one band") is also unestablished — it needs many MOFs *per metal* at matched graph
+size. Every module runs per-CIF, so scaling up is a loop; controlling the size confound is
+the real work.
 
 ---
 

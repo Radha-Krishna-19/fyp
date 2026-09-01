@@ -1,42 +1,33 @@
 // band_page.js
-// Section 15b — the multifractal band across eight real frameworks.
+// Section 15b — the multifractal band across 77 real frameworks.
 //
-// TWO different things get called "the band", and only one of them works as a
-// membership test. This section shows both, and says which is which:
+// This section reports two corrections and one retraction:
 //
-//   1. The Delta-alpha band (1-D).  Spectrum WIDTH only. The six grouped
-//      frameworks span 0.835-0.941; the two outliers sit at 0.375 and 0.203.
-//      The gap between the groups is 0.46 against a measured noise floor of
-//      0.105 -- about 4x the noise. This separation is real.
+//   1. THE SHAPE WAS WRONG.  A multifractal spectrum f(alpha) must be an
+//      inverted parabola peaking at q=0, where f(alpha_0)=D_0. Ours sloped
+//      downhill. Cause: the paper defines tau = ln P_q / ln(r/r_N), a fit
+//      THROUGH THE ORIGIN, but the code used a free-intercept least-squares
+//      slope. At q=0 every term is pr_i^0=1, so P_0=|I| is constant in r; a
+//      flat line has slope 0, forcing tau(0)=0 and f(alpha_0)=0 -- deleting
+//      the peak. Fixed in the notebook via tau_mode="paper".
 //
-//   2. The f(alpha) envelope (2-D).  Shade between the highest and lowest
-//      curve and ask whether a candidate falls inside. MEASURED HERE: this
-//      does NOT discriminate. Held out, ZIF-8 (a member) scores 0.0% while
-//      UMCM-1 (a non-member) scores 44.7% -- the non-member scores far HIGHER.
-//      The reason is visible in the plot: the narrow curves sit inside the
-//      wide group's alpha range but far below it in f, so an envelope test
-//      is dominated by alpha position rather than by width.
+//   2. THE BAND IS CONFOUNDED BY GRAPH SIZE.  Delta-alpha correlates with pore
+//      diameter (r=-0.33) but that vanishes once graph size is controlled for
+//      (partial r=+0.06), while size survives controlling for pore diameter
+//      (+0.38). Pore size adds R^2 = +0.002 over size alone. So Delta-alpha
+//      is tracking supercell size, which is set by MIN_CELL_LENGTH and the
+//      MAX_ATOMS cap -- computational parameters, not chemistry.
 //
-// Reporting 2 as a negative result rather than hiding it is the point. The
-// hold-out buttons below let anyone reproduce it.
+// The curves embedded in band_data.js still come from the pre-fix tau, and the
+// page says so. The size-confound finding is independent of the tau fix.
 
 (function () {
   'use strict';
 
-  const IN_BAND = ['Co-MOF-74', 'ZIF-8', 'Mg-MOF-74', 'Zn-MOF-74',
-                   'HKUST-1 (Cu-BTC)', 'Ni-MOF-74'];
-  const FAMILY_74 = ['Ni-MOF-74', 'Co-MOF-74', 'Mg-MOF-74', 'Zn-MOF-74'];
-  const NOISE_FLOOR = 0.105;   // measured spread across the isomorphic MOF-74 graphs
+  let sortKey = 'width', showN = 40;
 
-  const COLOR = {
-    'Co-MOF-74': '#e06c3b', 'Ni-MOF-74': '#e0993b', 'Mg-MOF-74': '#c9873b',
-    'Zn-MOF-74': '#b5623b', 'HKUST-1 (Cu-BTC)': '#c94f7c', 'ZIF-8': '#8a56c9',
-    'IRMOF-1 (MOF-5)': '#1f9d67', 'UMCM-1': '#2f7fd1',
-  };
+  function fmt(v, n) { return (v === null || v === undefined || isNaN(v)) ? '—' : (+v).toFixed(n === undefined ? 3 : n); }
 
-  let held = null;
-
-  // ------------------------------------------------------------- band maths
   function cleanCurve(alpha, f) {
     const pts = [];
     for (let i = 0; i < alpha.length; i++) {
@@ -51,299 +42,180 @@
     return { a, f: y };
   }
 
-  function interp(grid, a, f) {
-    return grid.map(x => {
-      if (x < a[0] || x > a[a.length - 1]) return NaN;
-      let i = 0;
-      while (i < a.length - 2 && a[i + 1] < x) i++;
-      const t = (x - a[i]) / (a[i + 1] - a[i] || 1);
-      return f[i] + t * (f[i + 1] - f[i]);
-    });
-  }
-
-  function buildBand(names, nGrid) {
-    const D = window.BAND_DATA;
-    const curves = names.filter(n => D[n]).map(n => cleanCurve(D[n].alpha, D[n].f_alpha));
-    if (curves.length < 2) return null;
-    const lo = Math.min.apply(null, curves.map(c => c.a[0]));
-    const hi = Math.max.apply(null, curves.map(c => c.a[c.a.length - 1]));
-    nGrid = nGrid || 200;
-    const grid = [];
-    for (let i = 0; i < nGrid; i++) grid.push(lo + ((hi - lo) * i) / (nGrid - 1));
-    const stack = curves.map(c => interp(grid, c.a, c.f));
-    const lower = [], upper = [];
-    grid.forEach((_x, i) => {
-      const v = stack.map(s => s[i]).filter(isFinite);
-      lower.push(v.length ? Math.min.apply(null, v) : NaN);
-      upper.push(v.length ? Math.max.apply(null, v) : NaN);
-    });
-    return { grid, lower, upper, n: curves.length };
-  }
-
-  function scoreAgainst(band, name) {
-    const D = window.BAND_DATA[name];
-    if (!band || !D) return null;
-    const c = cleanCurve(D.alpha, D.f_alpha);
-    const fi = interp(band.grid, c.a, c.f);
-    let inside = 0, tot = 0;
-    for (let i = 0; i < band.grid.length; i++) {
-      if (!isFinite(fi[i]) || !isFinite(band.lower[i]) || !isFinite(band.upper[i])) continue;
-      tot++;
-      if (fi[i] >= band.lower[i] - 1e-9 && fi[i] <= band.upper[i] + 1e-9) inside++;
-    }
-    return { pct: tot ? (100 * inside) / tot : null, n: tot };
-  }
-
-  // 1-D test: is the width inside the band members' width range (+/- noise)?
-  function widthTest(name, members) {
-    const D = window.BAND_DATA;
-    const w = members.filter(n => n !== name).map(n => D[n].width);
-    if (!w.length) return null;
-    const lo = Math.min.apply(null, w), hi = Math.max.apply(null, w);
-    const v = D[name].width;
-    return { lo, hi, v, inside: v >= lo - NOISE_FLOOR && v <= hi + NOISE_FLOOR,
-             margin: v < lo ? lo - v : (v > hi ? v - hi : 0) };
-  }
-
-  // --------------------------------------------------------- the width axis
-  function drawWidthAxis(canvas) {
-    const D = window.BAND_DATA;
+  // ---------------------------------------------------------- the band chart
+  function drawBand(canvas) {
+    const D = window.BAND_DATA, S = window.BAND_STATS;
     if (!canvas || !D) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const W = canvas.clientWidth || 680, H = 168;
+    const W = canvas.clientWidth || 700, H = canvas.clientHeight || 300;
     canvas.width = W * dpr; canvas.height = H * dpr;
-    const g = canvas.getContext('2d');
-    if (!g) return;
-    g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.clearRect(0, 0, W, H);
+    const g = canvas.getContext('2d'); if (!g) return;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
 
-    const padL = 22, padR = 22, y = 104;
-    const pw = W - padL - padR;
-    const lo = 0, hi = 1.05;
-    const X = v => padL + ((v - lo) / (hi - lo)) * pw;
-
-    const members = IN_BAND.filter(n => n !== held);
-    const ws = members.map(n => D[n].width);
-    const bLo = Math.min.apply(null, ws), bHi = Math.max.apply(null, ws);
-
-    // the band
-    g.fillStyle = 'rgba(138,86,201,0.20)';
-    g.fillRect(X(bLo), y - 34, X(bHi) - X(bLo), 68);
-    g.strokeStyle = 'rgba(138,86,201,0.75)'; g.lineWidth = 1.3; g.setLineDash([5, 4]);
-    g.strokeRect(X(bLo), y - 34, X(bHi) - X(bLo), 68);
-    g.setLineDash([]);
-    g.fillStyle = '#6b3fa8'; g.font = '600 11px system-ui,sans-serif'; g.textAlign = 'center';
-    g.fillText('the band  ' + bLo.toFixed(3) + ' – ' + bHi.toFixed(3),
-               (X(bLo) + X(bHi)) / 2, y - 42);
-
-    // axis
-    g.strokeStyle = '#888'; g.lineWidth = 1.2;
-    g.beginPath(); g.moveTo(padL, y); g.lineTo(padL + pw, y); g.stroke();
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif';
-    for (let v = 0; v <= 1.0001; v += 0.2) {
-      g.beginPath(); g.moveTo(X(v), y); g.lineTo(X(v), y + 5); g.stroke();
-      g.fillText(v.toFixed(1), X(v), y + 18);
-    }
-    g.fillText('Δα  (spectrum width)', padL + pw / 2, y + 38);
-
-    // markers, dodged vertically when they collide
-    const pts = Object.keys(D).map(n => ({ n, x: X(D[n].width), w: D[n].width }))
-                              .sort((a, b) => a.x - b.x);
-    let lastX = -999, lane = 0;
-    pts.forEach(pt => {
-      lane = (pt.x - lastX < 46) ? lane + 1 : 0;
-      lastX = pt.x;
-      const yy = y - 8 - (lane % 3) * 15;
-      g.beginPath(); g.arc(pt.x, y, held === pt.n ? 7 : 5, 0, Math.PI * 2);
-      g.fillStyle = COLOR[pt.n] || '#888'; g.fill();
-      if (held === pt.n) { g.strokeStyle = '#222'; g.lineWidth = 2; g.stroke(); }
-      g.save();
-      g.font = (held === pt.n ? '700 ' : '') + '10px system-ui,sans-serif';
-      g.fillStyle = '#33384a'; g.textAlign = 'center';
-      const short = pt.n.replace(' (Cu-BTC)', '').replace(' (MOF-5)', '');
-      g.fillText(short, pt.x, yy);
-      g.restore();
-    });
-
-    // the gap
-    const gapLo = 0.375, gapHi = 0.835;
-    g.strokeStyle = '#b02a2a'; g.lineWidth = 1.4;
-    g.beginPath(); g.moveTo(X(gapLo), y + 52); g.lineTo(X(gapHi), y + 52); g.stroke();
-    [gapLo, gapHi].forEach(v => {
-      g.beginPath(); g.moveTo(X(v), y + 47); g.lineTo(X(v), y + 57); g.stroke();
-    });
-    g.fillStyle = '#b02a2a'; g.font = '600 10.5px system-ui,sans-serif';
-    g.fillText('gap 0.46  ≈ 4× the 0.105 noise floor', (X(gapLo) + X(gapHi)) / 2, y + 66);
-  }
-
-  // ------------------------------------------------------------ the curves
-  function drawCurves(canvas) {
-    const D = window.BAND_DATA;
-    if (!canvas || !D) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const W = canvas.clientWidth || 680, H = canvas.clientHeight || 400;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    const g = canvas.getContext('2d');
-    if (!g) return;
-    g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.clearRect(0, 0, W, H);
-
-    const names = Object.keys(D);
-    let amin = Infinity, amax = -Infinity, fmin = Infinity, fmax = -Infinity;
-    names.forEach(n => {
-      D[n].alpha.forEach(v => { if (isFinite(v)) { amin = Math.min(amin, v); amax = Math.max(amax, v); } });
-      D[n].f_alpha.forEach(v => { if (isFinite(v)) { fmin = Math.min(fmin, v); fmax = Math.max(fmax, v); } });
-    });
-    const padL = 54, padR = 150, padT = 14, padB = 42;
+    const names = Object.keys(D).sort((a, b) => D[a].width - D[b].width);
+    const ws = names.map(n => D[n].width);
+    const wmax = Math.max.apply(null, ws) * 1.06;
+    const padL = 52, padR = 16, padT = 16, padB = 40;
     const pw = W - padL - padR, ph = H - padT - padB;
-    const ax = a => padL + ((a - amin) / (amax - amin || 1)) * pw;
-    const ay = f => padT + ph - ((f - fmin) / (fmax - fmin || 1)) * ph;
+    const X = i => padL + (i / (names.length - 1 || 1)) * pw;
+    const Y = w => padT + ph - (w / wmax) * ph;
 
-    g.strokeStyle = 'rgba(0,0,0,0.07)'; g.lineWidth = 1;
-    for (let i = 0; i <= 4; i++) {
-      const yy = padT + (ph * i) / 4;
-      g.beginPath(); g.moveTo(padL, yy); g.lineTo(padL + pw, yy); g.stroke();
-    }
-    g.strokeStyle = '#666'; g.lineWidth = 1.2;
+    // band region
+    g.fillStyle = 'rgba(138,86,201,0.16)';
+    g.fillRect(padL, Y(S.band_hi), pw, Y(S.band_lo) - Y(S.band_hi));
+    g.strokeStyle = 'rgba(138,86,201,0.6)'; g.setLineDash([5, 4]); g.lineWidth = 1.2;
+    g.strokeRect(padL, Y(S.band_hi), pw, Y(S.band_lo) - Y(S.band_hi));
+    g.setLineDash([]);
+    g.fillStyle = '#6b3fa8'; g.font = '600 11px system-ui,sans-serif'; g.textAlign = 'left';
+    g.fillText('band (interquartile) ' + fmt(S.band_lo, 2) + ' – ' + fmt(S.band_hi, 2),
+               padL + 8, Y(S.band_hi) - 6);
+
+    // axes
+    g.strokeStyle = '#777'; g.lineWidth = 1.1;
     g.beginPath(); g.moveTo(padL, padT); g.lineTo(padL, padT + ph); g.lineTo(padL + pw, padT + ph); g.stroke();
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'center';
-    g.fillText('α', padL + pw / 2, H - 10);
-    for (let i = 0; i <= 4; i++) {
-      const a = amin + ((amax - amin) * i) / 4;
-      g.fillText(a.toFixed(2), ax(a), padT + ph + 15);
+    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
+    for (let k = 0; k <= 4; k++) {
+      const v = (wmax * k) / 4;
+      g.fillText(v.toFixed(2), padL - 6, Y(v) + 4);
+      g.strokeStyle = 'rgba(0,0,0,0.06)'; g.beginPath(); g.moveTo(padL, Y(v)); g.lineTo(padL + pw, Y(v)); g.stroke();
     }
-    g.save(); g.translate(13, padT + ph / 2); g.rotate(-Math.PI / 2);
-    g.fillText('f(α)', 0, 0); g.restore();
-    g.textAlign = 'right';
-    for (let i = 0; i <= 4; i++) {
-      const f = fmin + ((fmax - fmin) * i) / 4;
-      g.fillText(f.toFixed(1), padL - 6, padT + ph - (ph * i) / 4 + 4);
-    }
+    g.textAlign = 'center'; g.fillStyle = '#555';
+    g.fillText('77 frameworks, sorted by Δα', padL + pw / 2, H - 10);
+    g.save(); g.translate(14, padT + ph / 2); g.rotate(-Math.PI / 2);
+    g.fillText('Δα', 0, 0); g.restore();
 
-    const band = buildBand(IN_BAND.filter(n => n !== held));
-    if (band) {
-      g.beginPath();
-      let started = false;
-      band.grid.forEach((x, i) => {
-        if (!isFinite(band.upper[i])) return;
-        if (!started) { g.moveTo(ax(x), ay(band.upper[i])); started = true; }
-        else g.lineTo(ax(x), ay(band.upper[i]));
-      });
-      for (let i = band.grid.length - 1; i >= 0; i--) {
-        if (!isFinite(band.lower[i])) continue;
-        g.lineTo(ax(band.grid[i]), ay(band.lower[i]));
-      }
-      g.closePath();
-      g.fillStyle = 'rgba(138,86,201,0.15)'; g.fill();
-      g.strokeStyle = 'rgba(138,86,201,0.5)'; g.lineWidth = 1.1; g.setLineDash([5, 4]);
-      g.stroke(); g.setLineDash([]);
-    }
-
-    names.forEach(n => {
-      const c = cleanCurve(D[n].alpha, D[n].f_alpha);
-      const isHeld = n === held, outside = !IN_BAND.includes(n);
-      g.beginPath();
-      c.a.forEach((a, i) => (i ? g.lineTo(ax(a), ay(c.f[i])) : g.moveTo(ax(a), ay(c.f[i]))));
-      g.strokeStyle = COLOR[n] || '#888';
-      g.lineWidth = isHeld ? 3.2 : (outside ? 2.6 : 1.7);
-      g.setLineDash(outside && !isHeld ? [7, 4] : []);
-      g.globalAlpha = isHeld ? 1 : (held ? 0.4 : 0.9);
-      g.stroke(); g.setLineDash([]); g.globalAlpha = 1;
+    // points, coloured by graph size — the confound made visible
+    const Ns = names.map(n => D[n].N);
+    const nmin = Math.min.apply(null, Ns), nmax = Math.max.apply(null, Ns);
+    names.forEach((n, i) => {
+      const t = (D[n].N - nmin) / (nmax - nmin || 1);
+      g.beginPath(); g.arc(X(i), Y(D[n].width), 3.6, 0, Math.PI * 2);
+      g.fillStyle = 'rgb(' + Math.round(40 + 200 * t) + ',' + Math.round(90 + 60 * (1 - t)) + ',' + Math.round(190 - 120 * t) + ')';
+      g.fill();
     });
+    g.textAlign = 'right'; g.font = '10px system-ui,sans-serif'; g.fillStyle = '#666';
+    g.fillText('dot colour = supercell size (blue small → red large)', padL + pw, padT + 12);
+  }
 
-    // legend
-    g.textAlign = 'left'; g.font = '10.5px system-ui,sans-serif';
-    Object.keys(D).sort((a, b) => D[b].width - D[a].width).forEach((n, i) => {
-      const yy = padT + 12 + i * 16;
-      g.strokeStyle = COLOR[n]; g.lineWidth = 2.4;
-      g.setLineDash(IN_BAND.includes(n) ? [] : [6, 3]);
-      g.beginPath(); g.moveTo(padL + pw + 12, yy); g.lineTo(padL + pw + 32, yy); g.stroke();
-      g.setLineDash([]);
-      g.fillStyle = held === n ? '#111' : '#444';
-      g.font = (held === n ? '700 ' : '') + '10.5px system-ui,sans-serif';
-      g.fillText(n.replace(' (Cu-BTC)', '').replace(' (MOF-5)', '') + '  ' + D[n].width.toFixed(2),
-                 padL + pw + 37, yy + 3.5);
+  // ------------------------------------------------- the confound bar chart
+  function drawConfound(canvas) {
+    const S = window.BAND_STATS;
+    if (!canvas || !S) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = canvas.clientWidth || 640, H = canvas.clientHeight || 250;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    const g = canvas.getContext('2d'); if (!g) return;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+
+    const bars = [
+      { l: 'pore size (LCD)\nraw', v: S.r_lcd, c: '#2f7fd1' },
+      { l: 'pore size (LCD)\ncontrolling for size', v: S.p_lcd_given_size, c: '#a9cbeb' },
+      { l: 'graph size\nraw', v: S.r_size, c: '#d13b3b' },
+      { l: 'graph size\ncontrolling for LCD', v: S.p_size_given_lcd, c: '#eda8a8' },
+    ];
+    const padL = 54, padB = 52, padT = 18;
+    const pw = W - padL - 16, ph = H - padB - padT;
+    const zero = padT + ph / 2, scale = ph / 2 / 0.6;
+    g.strokeStyle = '#777'; g.lineWidth = 1.1;
+    g.beginPath(); g.moveTo(padL, zero); g.lineTo(padL + pw, zero); g.stroke();
+    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
+    [-0.5, -0.25, 0, 0.25, 0.5].forEach(v => {
+      g.fillText(v.toFixed(2), padL - 6, zero - v * scale + 4);
+      g.strokeStyle = 'rgba(0,0,0,0.06)';
+      g.beginPath(); g.moveTo(padL, zero - v * scale); g.lineTo(padL + pw, zero - v * scale); g.stroke();
     });
+    const bw = pw / bars.length * 0.56;
+    bars.forEach((b, i) => {
+      const cx = padL + (i + 0.5) * (pw / bars.length);
+      const h = b.v * scale;
+      g.fillStyle = b.c;
+      g.fillRect(cx - bw / 2, h >= 0 ? zero - h : zero, bw, Math.abs(h));
+      g.fillStyle = '#222'; g.font = '700 11px system-ui,sans-serif'; g.textAlign = 'center';
+      g.fillText((b.v >= 0 ? '+' : '') + b.v.toFixed(2), cx, h >= 0 ? zero - h - 6 : zero - h + 14);
+      g.fillStyle = '#444'; g.font = '10px system-ui,sans-serif';
+      b.l.split('\n').forEach((ln, k) => g.fillText(ln, cx, padT + ph + 16 + k * 12));
+    });
+    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'left';
+    g.save(); g.translate(14, padT + ph / 2); g.rotate(-Math.PI / 2);
+    g.textAlign = 'center'; g.fillText('correlation with Δα', 0, 0); g.restore();
   }
 
   // ------------------------------------------------------------------- UI
   function render() {
-    const D = window.BAND_DATA;
+    const D = window.BAND_DATA, S = window.BAND_STATS;
     const host = document.getElementById('band-body');
-    if (!host || !D) return;
+    if (!host || !D || !S) return;
 
-    const names = Object.keys(D).sort((a, b) => D[b].width - D[a].width);
-    const envBand = buildBand(IN_BAND.filter(n => n !== held));
+    const names = Object.keys(D).sort((a, b) =>
+      sortKey === 'width' ? D[b].width - D[a].width :
+      sortKey === 'lcd' ? D[b].lcd - D[a].lcd : D[b].N - D[a].N);
 
-    const rows = names.map(n => {
+    const rows = names.slice(0, showN).map(n => {
       const d = D[n];
-      const inb = IN_BAND.includes(n);
-      const wt = held === n ? widthTest(n, IN_BAND) : null;
-      const es = held === n ? scoreAgainst(envBand, n) : null;
-      return '<tr' + (held === n ? ' class="heldrow"' : '') + '>' +
-        '<td><span class="swatch" style="background:' + (COLOR[n] || '#888') + '"></span>' + n + '</td>' +
-        '<td>' + d.metal + '</td>' +
-        '<td>' + d.chemistry + '</td>' +
+      const inb = d.width >= S.band_lo && d.width <= S.band_hi;
+      return '<tr><td>' + n + '</td>' +
         '<td class="r">' + d.N.toLocaleString() + '</td>' +
         '<td class="r">' + d.diameter + '</td>' +
-        '<td class="r"><b>' + d.width.toFixed(3) + '</b> <span class="sd">± ' + d.width_sd.toFixed(3) + '</span></td>' +
-        '<td>' + (inb ? '<span class="pill in">in band</span>' : '<span class="pill out">outside</span>') + '</td>' +
-        '<td class="r">' + (wt ? (wt.inside ? '<b class="ok">inside</b>' : '<b class="no">outside by ' + wt.margin.toFixed(2) + '</b>') : '—') + '</td>' +
-        '<td class="r">' + (es && es.pct !== null ? es.pct.toFixed(1) + '%' : '—') + '</td>' +
-        '<td><button class="mini" data-hold="' + n + '">' + (held === n ? 'restore' : 'hold out') + '</button></td>' +
-        '</tr>';
+        '<td class="r">' + fmt(d.pld, 2) + '</td>' +
+        '<td class="r">' + fmt(d.lcd, 2) + '</td>' +
+        '<td class="r"><b>' + fmt(d.width) + '</b> <span class="sd">± ' + fmt(d.width_sd) + '</span></td>' +
+        '<td>' + (inb ? '<span class="pill in">in band</span>' : '<span class="pill out">outside</span>') + '</td></tr>';
     }).join('');
 
     host.innerHTML =
-      '<h4 class="bh">1 · The Δα band — this is the result that holds</h4>' +
-      '<canvas id="band-axis" style="width:100%;height:168px;display:block"></canvas>' +
-      '<p class="cap">Each dot is one framework, placed by its spectrum width Δα. Six cluster ' +
-        'between 0.835 and 0.941; two sit far below at 0.375 and 0.203. The gap between the ' +
-        'groups is <b>0.46</b>, about <b>four times</b> the 0.105 noise floor measured on ' +
-        'structures that are provably identical — so the split is a property of the frameworks, ' +
-        'not of the estimator.</p>' +
+      '<div class="negbox"><b>Two corrections were needed here, and one claim is withdrawn.</b> ' +
+        'Both are described below. The curves embedded on this page were computed <i>before</i> ' +
+        'the τ fix, so their shape is still the old one; the notebook now defaults to the ' +
+        'paper\'s definition and re-running it regenerates them. The size-confound finding ' +
+        'below is independent of that fix and stands as measured.</div>' +
 
-      '<h4 class="bh">2 · The f(α) curves — and why the envelope is <i>not</i> a valid test</h4>' +
-      '<canvas id="band-canvas" style="width:100%;height:400px;display:block"></canvas>' +
-      '<p class="cap">Shaded = the envelope of the six band members. Dashed curves are the two ' +
-        'outliers. Note their shape: they are <b>short arcs sitting inside the wide group\'s α ' +
-        'range but far below it in f(α)</b>. That geometry is exactly why an envelope test fails ' +
-        'here — it is dominated by where a curve sits in α, not by how wide it is.</p>' +
+      '<h4 class="bh">1 · The Δα band across ' + S.n + ' frameworks</h4>' +
+      '<canvas id="band-canvas" style="width:100%;height:300px;display:block"></canvas>' +
+      '<p class="cap">Each dot is one framework. The shaded region is the interquartile band, ' +
+        'Δα ' + fmt(S.band_lo, 2) + '–' + fmt(S.band_hi, 2) + '. <b>Dot colour is supercell size</b> — ' +
+        'note how strongly colour tracks height. That is the problem, and the next panel measures it.</p>' +
 
-      '<div class="negbox">' +
-        '<b>Measured negative result.</b> Press <i>hold out</i> on any row: the framework is ' +
-        'removed from the band, the band is rebuilt from the rest, and its curve is scored ' +
-        'against it. Hold out <b>ZIF-8</b> (a genuine member) and it scores <b>0.0%</b> inside. ' +
-        'Hold out <b>UMCM-1</b> (a non-member) and it scores <b>44.7%</b> — far <b>higher</b>. ' +
-        'The 2-D envelope therefore cannot be used to decide membership on this data, and we ' +
-        'report that rather than quoting it as though it worked. The 1-D Δα test in the ' +
-        '“held-out Δα” column does separate them correctly.' +
+      '<h4 class="bh">2 · Does the band mean pore architecture? No.</h4>' +
+      '<canvas id="conf-canvas" style="width:100%;height:250px;display:block"></canvas>' +
+      '<p class="cap">Δα correlates with pore diameter at <b>r = ' + fmt(S.r_lcd, 2) + '</b>, which ' +
+        'looks like a real structural result. But controlling for graph size collapses it to ' +
+        '<b>' + fmt(S.p_lcd_given_size, 2) + '</b>, while graph size <i>survives</i> controlling for pore ' +
+        'diameter at <b>+' + fmt(S.p_size_given_lcd, 2) + '</b>. In a linear model, graph size alone gives ' +
+        'R² = ' + fmt(S.r2_size, 2) + '; adding pore diameter takes it to ' + fmt(S.r2_both, 2) + ' — ' +
+        '<b>pore size buys +' + fmt(S.r2_both - S.r2_size, 3) + '</b>.</p>' +
+
+      '<div class="negbox"><b>Withdrawn: “the band groups MOFs by pore architecture.”</b> ' +
+        'On 8 frameworks that reading was plausible. On 77 it does not hold — Δα is tracking ' +
+        'how many atoms are in the supercell, and supercell size is set by <code>MIN_CELL_LENGTH</code> ' +
+        'and the <code>MAX_ATOMS</code> cap, which are computational parameters rather than chemistry. ' +
+        'Two routes make the question answerable: compare only frameworks of comparable graph size, ' +
+        'or normalise the fit window so Δα stops growing with the graph, then re-test.</div>' +
+
+      '<div class="band-controls">' +
+        '<button class="mini' + (sortKey === 'width' ? ' active' : '') + '" id="bs-w">sort by Δα</button>' +
+        '<button class="mini' + (sortKey === 'lcd' ? ' active' : '') + '" id="bs-l">sort by pore size</button>' +
+        '<button class="mini' + (sortKey === 'size' ? ' active' : '') + '" id="bs-n">sort by graph size</button>' +
+        '<button class="mini" id="bs-more">' + (showN >= names.length ? 'show fewer' : 'show all ' + names.length) + '</button>' +
       '</div>' +
+      '<table class="tbl band-tbl"><thead><tr><th>Framework</th><th class="r">Atoms</th>' +
+        '<th class="r">Diam</th><th class="r">PLD Å</th><th class="r">LCD Å</th>' +
+        '<th class="r">Δα</th><th>Band</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<p class="cap">Showing ' + Math.min(showN, names.length) + ' of ' + names.length + '.</p>';
 
-      '<table class="tbl band-tbl"><thead><tr>' +
-        '<th>Framework</th><th>Metal</th><th>Binding</th><th class="r">Atoms</th>' +
-        '<th class="r">Diam</th><th class="r">Δα</th><th>Group</th>' +
-        '<th class="r">Held-out Δα test</th><th class="r">Envelope score</th><th></th>' +
-      '</tr></thead><tbody>' + rows + '</tbody></table>' +
-      (held ? '<p class="cap"><button class="mini" id="bd-reset">Clear hold-out (' + held + ')</button></p>' : '');
-
-    drawWidthAxis(document.getElementById('band-axis'));
-    drawCurves(document.getElementById('band-canvas'));
-
-    if (!render._resize) {
-      render._resize = true;
+    drawBand(document.getElementById('band-canvas'));
+    drawConfound(document.getElementById('conf-canvas'));
+    if (!render._r) {
+      render._r = true;
       window.addEventListener('resize', () => {
-        drawWidthAxis(document.getElementById('band-axis'));
-        drawCurves(document.getElementById('band-canvas'));
+        drawBand(document.getElementById('band-canvas'));
+        drawConfound(document.getElementById('conf-canvas'));
       });
     }
-    host.querySelectorAll('[data-hold]').forEach(b => b.addEventListener('click', () => {
-      const n = b.getAttribute('data-hold');
-      held = (held === n) ? null : n;
-      render();
-    }));
-    const rst = document.getElementById('bd-reset');
-    if (rst) rst.addEventListener('click', () => { held = null; render(); });
+    const b = (id, fn) => { const e = document.getElementById(id); if (e) e.addEventListener('click', fn); };
+    b('bs-w', () => { sortKey = 'width'; render(); });
+    b('bs-l', () => { sortKey = 'lcd'; render(); });
+    b('bs-n', () => { sortKey = 'size'; render(); });
+    b('bs-more', () => { showN = showN >= Object.keys(D).length ? 40 : 999; render(); });
   }
 
   function boot() {
@@ -353,6 +225,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
-  window.MOFBand = { render, buildBand, scoreAgainst, widthTest, cleanCurve,
-                     IN_BAND, FAMILY_74, NOISE_FLOOR };
+  window.MOFBand = { render, cleanCurve };
 })();

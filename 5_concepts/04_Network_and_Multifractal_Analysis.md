@@ -222,7 +222,33 @@ On the box-growing NMFA (5.3) the Zr structure separates cleanly: its node fract
 > The box-growing NMFA in 5.3 is computed differently and is not affected by the bug; its separation stands. Reporting both, and saying which one changed, is the honest presentation.
 
 
-### 5.5 · The averaging-order bug
+### 5.5 · Two bugs in the estimator, both found by checking against the paper
+
+
+#### Bug A — the spectrum had the wrong shape
+
+
+A multifractal spectrum `f(α)` must be an **inverted parabola** whose peak sits at `q = 0`, where `f(α₀) = D₀`, the fractal dimension. Ours sloped downhill instead — which is a mathematics problem, not a property of the materials.
+
+
+The paper defines the mass exponent as a **ratio**, `τ(q) = ln 𝒫_q(r) / ln(r/r_N)`. Over several radii that is a straight-line fit **through the origin**, because the relation `𝒫_q ~ (r/r_N)^τ` carries no prefactor. Our code used a **free-intercept** least-squares slope. At `q = 0` the difference is fatal:
+
+- at `q = 0` every term is `pr_i⁰ = 1`, so `𝒫₀ = |I|` — the *count* of influential nodes;
+- that count is **identical at every radius**, so a free-intercept fit sees a flat line;
+- a flat line has slope zero, so `τ(0) = 0`, and therefore `f(α₀) = 0·α − 0 = 0`.
+
+The peak is pinned to zero and the parabola vanishes. Measured across 77 frameworks: **τ(0) = 0 and f(0) = 0 in every one, and not one peaked at q = 0.** With the paper's definition `ln(r/r_N) < 0`, so `τ(0) = ln|I| / negative < 0` and `f(α₀) = −τ(0) > 0` — the peak returns.
+
+| τ definition | τ(0) | f(0) | peak at | inverted parabola? |
+|---|---|---|---|---|
+| free-intercept slope (ours) | 0.0000 | 0.0000 | q = −4 | **no** |
+| paper: `ln 𝒫_q / ln(r/r_N)` | −3.5028 | +3.5028 | **q = 0** | **yes** |
+
+
+Verified on a network built from scratch with identical data and only the τ definition swapped, then re-verified in both implementations: Python and the browser engine now agree at τ(0) = −2.6551 on HKUST-1. Selectable as `tau_mode="paper"` (the default) or `"slope"` to reproduce the old behaviour.
+
+
+#### Bug B — the averaging order
 
 
 Box covering is random, so it is repeated many times and the results averaged. **The order of those two operations matters.** The partition function must be built per realisation and then averaged in log space. Averaging the probability measure `p_i(r)` across trials *first*, and only then raising it to the power `q`, exponentiates an already-smoothed quantity — which suppresses exactly the fluctuation that multifractality exists to measure, and biases every spectrum narrow.
@@ -294,75 +320,50 @@ Members of the family land inside; unrelated frameworks land outside. The method
 ---
 
 
-## 8 · The band across eight real frameworks
+## 8 · The band across 77 real frameworks
 
 
-The band work above uses our block quotient graph on four structures. It was extended to **eight experimentally reported frameworks**, downloaded at run time from the RASPA2 structure library, and analysed on **full atomic graphs** of 3,400–6,100 atoms rather than coarse-grained block graphs. The eight were chosen because they all appear in the xenon/krypton separation literature.
-
-| Framework | Metal | Atoms | Diameter | Δα | Group |
-|---|---|---|---|---|---|
-| Co-MOF-74 | Co | 5184 | 38 | 0.941 ± 0.054 | in band |
-| ZIF-8 | Zn | 4968 | 40 | 0.897 ± 0.077 | in band |
-| Mg-MOF-74 | Mg | 4536 | 36 | 0.857 ± 0.070 | in band |
-| Zn-MOF-74 | Zn | 4536 | 36 | 0.857 ± 0.070 | in band |
-| HKUST-1 | Cu | 4992 | 50 | 0.844 ± 0.063 | in band |
-| Ni-MOF-74 | Ni | 5184 | 38 | 0.835 ± 0.057 | in band |
-| **IRMOF-1 (MOF-5)** | Zn | 3392 | 56 | **0.375 ± 0.064** | **outside** |
-| **UMCM-1** | Zn | 6120 | 63 | **0.203 ± 0.028** | **outside** |
+The band work was scaled from 8 frameworks to **77**, all experimentally reported, analysed on full atomic graphs and accompanied by published pore diameters (PLD, the pore-limiting diameter, and LCD, the largest cavity diameter). That was enough data to ask a question 8 structures could not answer.
 
 
-### 8.1 · Two different things get called "the band"
+### 8.1 · What a band is
 
 
-The word "band" is used loosely for two distinct constructions, and testing both revealed that only one of them works as a membership test. Reporting both — including the one that fails — is the honest presentation.
-
-| Version | What it is | Does it discriminate? |
-|---|---|---|
-| **Δα band** (1-D) | The range of spectrum *widths* spanned by the group | **Yes.** Held out and re-tested, all 8 frameworks are classified correctly |
-| **f(α) envelope** (2-D) | Shade between the highest and lowest curve; score what fraction of a candidate lies inside | **No.** Held out, ZIF-8 (member) scores 0.0%; UMCM-1 (non-member) scores 44.7% |
+A band is the range of spectrum width Δα that a group of frameworks shares, so a new framework can be tested for membership. Across the 77 the interquartile band is **Δα = 0.36 – 0.65**.
 
 
-The failure is stark rather than marginal — a non-member scores more than forty points higher than a member. The reason is visible once the curves are plotted: the two narrow spectra are **short arcs sitting inside the wide group's α range but far below it in f(α)**. An envelope test therefore measures where a curve sits in α, not how wide it is — and width is the quantity that actually separates these frameworks.
+### 8.2 · Does the band mean pore architecture? No.
 
 
-> **A measured negative result, not a hidden one**
+On 8 frameworks it looked as though it did: the narrow spectra belonged to frameworks with large open pores. On 77, with pore diameters available, that reading does not survive.
+
+| Test | Correlation with Δα |
+|---|---|
+| pore diameter (LCD), raw | −0.330 |
+| pore diameter (LCD), **controlling for graph size** | **+0.057** — vanishes |
+| graph size, raw | +0.487 |
+| graph size, **controlling for pore diameter** | **+0.384** — survives |
+
+| Linear model of Δα | R² |
+|---|---|
+| graph size alone | 0.237 |
+| pore diameter alone | 0.109 |
+| both together | 0.240 |
+| **what pore diameter adds over size** | **+0.002** |
+
+
+> **Retracted: "the band groups MOFs by pore architecture"**
 >
-> A curve trivially lies inside a band it helped define, so the only meaningful test is to **hold a framework out**, rebuild the band from the rest, and score it against that. Doing so is what exposed the failure.
+> The partial correlation collapses to roughly zero once graph size is held fixed, while graph size survives holding pore size fixed. Adding pore diameter to a model that already contains graph size buys about 0.002 of R².
 >
-> The website (Section 15b) has a "hold out" button on every row so anyone can reproduce this in front of you. The 1-D Δα column beside it classifies all eight correctly.
-
-
-### 8.2 · What the Δα band does establish
-
-
-Six of the eight frameworks land in a band spanning Δα = 0.835–0.941, and two fall far below it at 0.375 and 0.203. The gap between the two groups is **0.46 — roughly four times the 0.105 noise floor** measured on provably identical structures. That margin is what makes the split a property of the frameworks rather than of the estimator.
-
-
-The six span **five different metals** (Cu, Ni, Co, Mg, Zn) and two different binding chemistries — carboxylate for HKUST-1 and MOF-74, imidazolate for ZIF-8. So the grouping is **not** by metal and **not** by chemistry.
-
-
-### 8.3 · What it actually measures
-
-
-Δα is the width of the singularity spectrum, and it measures how unevenly connectivity is distributed through the network — in physical terms, **how heterogeneous the pore architecture is**. A wide Δα means the framework has a structurally varied pore network; a narrow one means it is uniform.
-
-
-That reading is consistent with the two outliers. IRMOF-1 and UMCM-1 both have large, regular, open pore systems, and they are the two narrow spectra. UMCM-1 is a genuine mixed-linker framework, which the coarse-graining independently confirms by finding two distinct linker sizes in it.
-
-
-> **Three things this result is NOT — each of which an examiner may probe**
+> **Δα is tracking how many atoms are in the supercell**, and supercell size is set by `MIN_CELL_LENGTH` and the `MAX_ATOMS` cap — computational parameters, not chemistry. This is the finite-size dependence flagged earlier, now measured across a whole dataset instead of three structures.
 >
-> **The four MOF-74 curves overlapping is not evidence of anything.** They are the same graph — proved isomorphic in the source notebook — so they *must* overlap. Their role is as a reproducibility control, not as band members.
->
-> **That control sets a noise floor of 0.105**, measured as the spread across those isomorphic graphs. HKUST-1 (0.844) and ZIF-8 (0.897) differ by less than that floor, so the correct statement is "six frameworks are indistinguishable within the method's noise", not "six frameworks match".
->
-> **Δα is not a stability or gas-uptake predictor.** Nothing in this analysis measures stability, adsorption or binding energy — the graph is unweighted, so it does not even know which element an atom is. Xe/Kr relevance is why these eight frameworks were selected; it is not something the calculation produces. Reading the band as "these MOFs are more stable" is not supported.
+> Two routes make the question answerable: compare only frameworks of **comparable graph size**, or **normalise the fit window** per structure so Δα stops growing with the graph, then re-test the correlation. Reporting the confound is the result; a band built on an uncontrolled size effect would not survive the first person who checked it.
 
 
-### 8.4 · Finite-size dependence
+### 8.3 · What still stands
 
-
-Δα has not converged in supercell size — it grows with the graph, because the fit window spans `ln(1/diameter)` to `ln(0.34)` and a larger graph samples a wider range of scales. These are therefore **finite-size effective widths at a stated graph size**, not asymptotic exponents, and absolute values should always be quoted with the diameter alongside.
-
-
-The ranking survives this caveat, and for a specific reason worth stating: the bias runs the *wrong way* to explain the result. IRMOF-1 and UMCM-1 have among the largest graphs in the set (diameters 56 and 63) yet the smallest widths, while the wide group sits at diameters 36–50. A finite-size artefact would push the biggest graphs toward *larger* Δα, not smaller — so it cannot be what produces the split.
+- **The method is now implemented correctly.** τ(q) matches the paper, the spectrum is a proper inverted parabola, and α₀, the asymmetry A and D(q) are meaningful quantities for the first time.
+- **The band exists as a descriptive range.** What it lacks is a demonstrated physical meaning.
+- **Δα is not a stability or gas-uptake predictor.** The graph is unweighted — it does not know which element an atom is, let alone its binding energy.
+- **The influential-node degeneracy still applies** (Section 3.2): in a defect-free crystal the top-k selection is a tie, so iNMFA widths carry an implementation sensitivity on top of everything above.
