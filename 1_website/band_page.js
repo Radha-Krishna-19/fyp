@@ -42,6 +42,92 @@
     return { a, f: y };
   }
 
+
+  // ------------------------------------------------- the f(alpha) spectra
+  // Draws every curve and marks q = 0 on each. If the data came from the
+  // corrected tau, the q=0 marks sit at the APEX of each curve. If they sit at
+  // the bottom-right instead, the data predates the tau fix -- which the page
+  // detects and says out loud rather than quietly drawing the wrong shape.
+  function tauIsFixed() {
+    const D = window.BAND_DATA;
+    const k = Object.keys(D)[0]; if (!k) return false;
+    const q = D[k].q, f = D[k].f_alpha;
+    let i0 = 0, best = Infinity, pk = 0, mx = -Infinity;
+    q.forEach((v, i) => { if (Math.abs(v) < best) { best = Math.abs(v); i0 = i; } });
+    f.forEach((v, i) => { if (isFinite(v) && v > mx) { mx = v; pk = i; } });
+    return pk === i0;
+  }
+
+  function drawSpectra(canvas) {
+    const D = window.BAND_DATA;
+    if (!canvas || !D) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = canvas.clientWidth || 700, H = canvas.clientHeight || 380;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    const g = canvas.getContext('2d'); if (!g) return;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+
+    const names = Object.keys(D).sort((a, b) => D[b].width - D[a].width);
+    let amin = Infinity, amax = -Infinity, fmin = Infinity, fmax = -Infinity;
+    names.forEach(n => {
+      D[n].alpha.forEach(v => { if (isFinite(v)) { amin = Math.min(amin, v); amax = Math.max(amax, v); } });
+      D[n].f_alpha.forEach(v => { if (isFinite(v)) { fmin = Math.min(fmin, v); fmax = Math.max(fmax, v); } });
+    });
+    const padL = 56, padR = 16, padT = 16, padB = 42;
+    const pw = W - padL - padR, ph = H - padT - padB;
+    const X = a => padL + ((a - amin) / (amax - amin || 1)) * pw;
+    const Y = f => padT + ph - ((f - fmin) / (fmax - fmin || 1)) * ph;
+
+    g.strokeStyle = 'rgba(0,0,0,0.06)'; g.lineWidth = 1;
+    for (let k = 0; k <= 4; k++) {
+      const y = padT + (ph * k) / 4;
+      g.beginPath(); g.moveTo(padL, y); g.lineTo(padL + pw, y); g.stroke();
+    }
+    g.strokeStyle = '#777'; g.lineWidth = 1.1;
+    g.beginPath(); g.moveTo(padL, padT); g.lineTo(padL, padT + ph); g.lineTo(padL + pw, padT + ph); g.stroke();
+    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'center';
+    g.fillText('α  (local scaling exponent)', padL + pw / 2, H - 10);
+    for (let k = 0; k <= 4; k++) {
+      const a = amin + ((amax - amin) * k) / 4;
+      g.fillText(a.toFixed(2), X(a), padT + ph + 15);
+    }
+    g.textAlign = 'right';
+    for (let k = 0; k <= 4; k++) {
+      const f = fmin + ((fmax - fmin) * k) / 4;
+      g.fillText(f.toFixed(1), padL - 6, padT + ph - (ph * k) / 4 + 4);
+    }
+    g.save(); g.translate(15, padT + ph / 2); g.rotate(-Math.PI / 2);
+    g.textAlign = 'center'; g.fillText('f(α)', 0, 0); g.restore();
+
+    // curves, coloured by width so the spread is legible
+    const ws = names.map(n => D[n].width);
+    const wmin = Math.min.apply(null, ws), wmax = Math.max.apply(null, ws);
+    names.forEach(n => {
+      const d = D[n], t = (d.width - wmin) / (wmax - wmin || 1);
+      g.beginPath();
+      let started = false, i0 = 0, best = Infinity;
+      d.alpha.forEach((a, i) => {
+        const f = d.f_alpha[i];
+        if (!isFinite(a) || !isFinite(f)) return;
+        if (!started) { g.moveTo(X(a), Y(f)); started = true; } else g.lineTo(X(a), Y(f));
+        if (Math.abs(d.q[i]) < best) { best = Math.abs(d.q[i]); i0 = i; }
+      });
+      g.strokeStyle = 'rgba(' + Math.round(40 + 200 * t) + ',' + Math.round(100 + 40 * (1 - t)) + ',' + Math.round(190 - 110 * t) + ',0.5)';
+      g.lineWidth = 1.1; g.stroke();
+      // mark q = 0
+      const a0 = d.alpha[i0], f0 = d.f_alpha[i0];
+      if (isFinite(a0) && isFinite(f0)) {
+        g.beginPath(); g.arc(X(a0), Y(f0), 2.6, 0, Math.PI * 2);
+        g.fillStyle = '#111'; g.fill();
+      }
+    });
+    g.textAlign = 'left'; g.font = '10.5px system-ui,sans-serif'; g.fillStyle = '#444';
+    g.fillText('● = q = 0', padL + 10, padT + 14);
+    g.fillText(tauIsFixed() ? '   (at the apex — τ is correct)'
+                            : '   (NOT at the apex — data predates the τ fix)',
+               padL + 60, padT + 14);
+  }
+
   // ---------------------------------------------------------- the band chart
   function drawBand(canvas) {
     const D = window.BAND_DATA, S = window.BAND_STATS;
@@ -169,13 +255,24 @@
         'paper\'s definition and re-running it regenerates them. The size-confound finding ' +
         'below is independent of that fix and stands as measured.</div>' +
 
-      '<h4 class="bh">1 · The Δα band across ' + S.n + ' frameworks</h4>' +
+      '<h4 class="bh">1 · The spectra — ' + S.n + ' curves, ● marks q = 0</h4>' +
+      '<canvas id="spec-canvas" style="width:100%;height:380px;display:block"></canvas>' +
+      '<p class="cap">' + (tauIsFixed()
+        ? 'Every curve peaks at its q = 0 marker, which is what a multifractal spectrum must do — '
+          + 'f(α₀) = D₀ is the apex. τ is being computed as the paper defines it.'
+        : '<b>These curves predate the τ fix.</b> The q = 0 markers sit at the bottom right rather '
+          + 'than at the apex, because a free-intercept fit forces τ(0) = 0 and therefore f(α₀) = 0. '
+          + 'Re-running <span class="code-chip">mof_band_analysis.ipynb</span> regenerates '
+          + '<code>results.json</code> with the corrected definition, and these become proper '
+          + 'inverted parabolas.') + '</p>' +
+
+      '<h4 class="bh">2 · The Δα band across ' + S.n + ' frameworks</h4>' +
       '<canvas id="band-canvas" style="width:100%;height:300px;display:block"></canvas>' +
       '<p class="cap">Each dot is one framework. The shaded region is the interquartile band, ' +
         'Δα ' + fmt(S.band_lo, 2) + '–' + fmt(S.band_hi, 2) + '. <b>Dot colour is supercell size</b> — ' +
         'note how strongly colour tracks height. That is the problem, and the next panel measures it.</p>' +
 
-      '<h4 class="bh">2 · Does the band mean pore architecture? No.</h4>' +
+      '<h4 class="bh">3 · Does the band mean pore architecture? No.</h4>' +
       '<canvas id="conf-canvas" style="width:100%;height:250px;display:block"></canvas>' +
       '<p class="cap">Δα correlates with pore diameter at <b>r = ' + fmt(S.r_lcd, 2) + '</b>, which ' +
         'looks like a real structural result. But controlling for graph size collapses it to ' +
@@ -202,12 +299,14 @@
         '<th class="r">Δα</th><th>Band</th></tr></thead><tbody>' + rows + '</tbody></table>' +
       '<p class="cap">Showing ' + Math.min(showN, names.length) + ' of ' + names.length + '.</p>';
 
+    drawSpectra(document.getElementById('spec-canvas'));
     drawBand(document.getElementById('band-canvas'));
     drawConfound(document.getElementById('conf-canvas'));
     if (!render._r) {
       render._r = true;
       window.addEventListener('resize', () => {
-        drawBand(document.getElementById('band-canvas'));
+        drawSpectra(document.getElementById('spec-canvas'));
+    drawBand(document.getElementById('band-canvas'));
         drawConfound(document.getElementById('conf-canvas'));
       });
     }
@@ -225,5 +324,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
-  window.MOFBand = { render, cleanCurve };
+  window.MOFBand = { render, cleanCurve, tauIsFixed };
 })();
