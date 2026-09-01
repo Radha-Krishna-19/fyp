@@ -37,8 +37,8 @@
   }
 
   // ---------------- source-code browser ----------------
-  const OURS = ['code_08_proposed_fixes.py', 'code_09_network_analysis.py',
-                'code_10_multifractal_spectrum.py', 'code_11_nmfa_paper.py'];
+  const OURS = ['code_09_network_analysis.py', 'code_10_multifractal_spectrum.py',
+                'code_11_nmfa_paper.py', 'band_page.js'];
 
   function initCodeGrid() {
     const grid = document.getElementById('code-grid');

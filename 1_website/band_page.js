@@ -18,8 +18,9 @@
 //      is tracking supercell size, which is set by MIN_CELL_LENGTH and the
 //      MAX_ATOMS cap -- computational parameters, not chemistry.
 //
-// The curves embedded in band_data.js still come from the pre-fix tau, and the
-// page says so. The size-confound finding is independent of the tau fix.
+// band_data.js now carries spectra computed with the CORRECTED tau: all 77 are
+// proper inverted parabolas peaking at q = 0. The size-confound finding is
+// independent of the tau fix and, on the corrected data, is stronger still.
 
 (function () {
   'use strict';
@@ -249,11 +250,10 @@
     }).join('');
 
     host.innerHTML =
-      '<div class="negbox"><b>Two corrections were needed here, and one claim is withdrawn.</b> ' +
-        'Both are described below. The curves embedded on this page were computed <i>before</i> ' +
-        'the τ fix, so their shape is still the old one; the notebook now defaults to the ' +
-        'paper\'s definition and re-running it regenerates them. The size-confound finding ' +
-        'below is independent of that fix and stands as measured.</div>' +
+      '<div class="negbox"><b>These spectra come from the corrected τ.</b> ' +
+        'All ' + S.parabolic + ' of ' + S.n + ' frameworks are proper inverted parabolas peaking at ' +
+        'q = 0, which is what a multifractal spectrum must do. What the band <i>means</i> is a ' +
+        'separate question, answered below.</div>' +
 
       '<h4 class="bh">1 · The spectra — ' + S.n + ' curves, ● marks q = 0</h4>' +
       '<canvas id="spec-canvas" style="width:100%;height:380px;display:block"></canvas>' +

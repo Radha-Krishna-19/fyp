@@ -12,7 +12,7 @@ The sticky navigation bar at the top jumps to any section, so you never need to 
 
 ## PART 0 — The one-sentence version (30 seconds)
 
-> "We took the standard software the field uses to identify what a MOF is built from, showed exactly where it gets the chemistry wrong, fixed it, and then built on top of it the network analysis you asked for — including the influential nodes and the spectrum."
+> "There are hundreds of thousands of MOFs and simulating each one takes hours, so we asked whether a **cheap structural descriptor** — computed from the framework's connectivity in seconds — can group them into useful families instead. We built a visualisation of how a MOF is decomposed into building blocks, then computed multifractal spectra for 77 frameworks and tested what those spectra actually mean."
 
 Then stop and go to Part 1. Don't front-load detail.
 
@@ -54,42 +54,37 @@ Click each tab and say one line:
 
 **The key moment — click Module 4a, step "4 · Classify fragments".**
 
-> "Look at how the decision is made. Three questions. Is the piece a single atom? Then it's a node. Otherwise — is every atom in it oxygen or hydrogen? Then it's a node. Otherwise it's a linker. **That's the entire chemical reasoning of the algorithm.** One test. That simplicity is why it's fast and predictable — and it's also where the problems come from."
+> "Look at how the decision is made. Three questions. Is the piece a single atom? Then it's a node. Otherwise — is every atom in it oxygen or hydrogen? Then it's a node. Otherwise it's a linker. **That's the entire chemical reasoning of the algorithm.** One test. That simplicity is why it's fast enough to run across a whole database — and why it's worth being able to see exactly what it decided."
 
 ---
 
-## PART 3 — What we found wrong, and fixed (4 minutes)
+## PART 3 — Why a graph? (4 minutes)
 
-**Show: Section 7 — Limitations of the Published Algorithm.**
+**Show: Section 3 — Why This Path.**
 
-> "We found four limitations in the published algorithm. Every number on this page is computed live from the real crystal files — nothing is typed in."
+> "The obvious question is why we're attacking a chemistry problem with network theory. Here's the reasoning, and it's short."
 
-**Limitation 1 is the one to spend time on.**
+> "A MOF isn't a molecule — it's a repeating framework. What makes one MOF different from another isn't only *which* atoms it has, it's **how they're wired together**. And wiring is exactly what a graph describes: collapse each building block to a point, each bond between blocks to a line, and you're left with pure connectivity."
 
-> "The algorithm cuts every bond touching a metal. But a carboxylate group — the `–COO–` that binds the metal — attaches *through* its oxygen. So the cut falls **between the metal and the group that chemically belongs to it**. The carboxylate gets filed as linker, and the node is left as bare metal."
+> "That matters because the properties follow the wiring. Gas moves through the pore network, and the pore network **is** the empty space left by that wiring. So describing the connectivity describes what the material can do."
 
-**Show the number:**
+**The scale argument — this is the one that justifies the whole project:**
 
-> "HKUST-1's node comes out as **`Cu2`** — two copper atoms and nothing else. But the actual building unit is a copper *paddlewheel*: two coppers plus four carboxylates. The software is reporting a species that doesn't exist in the crystal."
+> "A gas-uptake simulation takes **hours** per structure. There are **hundreds of thousands** of MOFs. You cannot screen them all. A graph descriptor takes **seconds**. If a cheap structural number can narrow a hundred thousand candidates down to a few hundred worth simulating properly — that's the value. We're not replacing simulation. We're deciding what to simulate."
 
-**Our fix:**
+**Then explain the spectrum in plain terms — do not start with equations.**
 
-> "We extend the node across its coordinating groups — but only when the chemistry checks out. We verify the carbon really is a carboxylate carbon before absorbing it."
+> "Ask a simple question: how much network is near a given block? Draw a ball of radius r around it and count what's inside. Do that for every important block and you get a set of growth curves."
 
-**Show: Section 8 — Before and After the Fixes, in 3D. Click through all four structures.**
+> "If the framework were perfectly uniform, every block would grow at the same rate and one number would describe the whole thing. Real frameworks aren't uniform — some regions are tightly tied, others open into big voids. So you need a **distribution** of growth rates, and that distribution is the spectrum."
 
-| Structure | Published | With our fix | Change |
-|---|---|---|---|
-| HKUST-1 | `Cu2` | `Cu2 C4 O8` | **+12 atoms** |
-| UiO-66 | `Zr6 O8 H4` | `Zr6 O32 C12 H4` | **+36 atoms** |
-| MOF-5 | `Zn4 O` | `Zn4 O13 C6` | **+18 atoms** |
-| ZIF-8 | `Zn` | `Zn` | **no change** |
+**Show the table on screen and read only the middle two rows:**
 
-**Say the ZIF-8 line out loud — do not skip it:**
+> "α is how fast the network grows around one block. **Δα, the width, is how varied the framework is** — narrow means uniform, wide means a mix of tight and open regions. That single number is the fingerprint, and it's what makes a band possible."
 
-> "ZIF-8 doesn't change, and that's the correct result. It has no carboxylate for the fix to act on. **A fix that changed ZIF-8 would be a fix that was wrong.** We show it precisely because it's the honest test."
+**If asked "isn't that throwing away the chemistry?" — answer immediately, don't defend:**
 
-*(Mention the other three limitations briefly: oxygen-only bridge chemistry; bonds being guessed so a borderline contact can flip the answer; rod clusters and solvent handled by silent convention. Say "these are documented with measured evidence on the page" and move on.)*
+> "Yes, deliberately. The graph doesn't know which element an atom is. That's a real limitation and we say so on the page. It's also the point: whatever survives that stripping is **pure architecture**, and architecture transfers across chemistries in a way an element-specific descriptor can't."
 
 ---
 
@@ -177,44 +172,65 @@ ZIF-8     distinct centrality values  2 → 10     λ₂ 0.35 → 0.30
 
 *(The full six-defect table is on screen — point at it, don't read it all.)*
 
-**Then the result:**
+**Then the result — and this is where you have to be careful and precise.**
 
-| Structure | Metal | α range |
-|---|---|---|
-| HKUST-1 | Cu | 1.84 – 1.87 |
-| MOF-5 | Zn | 1.92 – 1.99 |
-| ZIF-8 | Zn | 1.98 – 1.98 |
-| **UiO-66** | **Zr** | **2.31 – 2.65** |
+**Show: Section 16 — The Band.**
 
-> "And this is the result you were looking for. **The zirconium framework sits in its own region — 2.31 to 2.65 — completely above every copper and zinc framework, which stop at 1.99.** The band test agrees: members of the same family land inside the band, and unrelated frameworks don't reach it at all."
+> "We ran this across **77 frameworks**. Two things came out of it, and I want to give you both."
+
+**First, the good part:**
+
+> "All 77 spectra are proper inverted parabolas peaking at q equals zero — which is what a multifractal spectrum has to look like. Getting there took a correction I'll mention in a second. And they land in a **tight band**: Δα from 1.11 to 1.25 across the interquartile range, with the asymmetry negative in **every single one**. That's a consistent family signature."
+
+**The correction — say it before he asks:**
+
+> "Our first spectra weren't parabolic at all, they just sloped downhill. The cause was one line. The paper defines the mass exponent as a **ratio** — that's a fit through the origin. Our code used a least-squares **slope**, which has a free intercept. At q equals zero every term becomes one, so the partition function is just the *count* of nodes — identical at every radius. A flat line has slope zero, so it forced the peak of the spectrum to zero and deleted it. One branch fixed it, and all 77 became parabolic."
+
+**Now the hard part — do not let him find this himself:**
+
+> "But I have to tell you what the band **doesn't** mean. Δα correlates with pore diameter at minus 0.50, which looks like a real structural result. It isn't. When we control for graph size, that correlation collapses to **plus 0.10** — it vanishes. Meanwhile graph size *survives* controlling for pore diameter, at **plus 0.62**. In a linear model, graph size alone gives R-squared 0.53; adding pore diameter takes it to 0.54. **Pore size buys us half a percent.**"
+
+> "So what Δα is mostly tracking is **how many atoms are in the supercell** — and that's set by two parameters in our own config file, not by chemistry. That's the finite-size effect the method is known to have, and on 77 structures we could finally measure it."
 
 ---
 
 ## PART 6 — What we proved, and what we did not (2 minutes)
 
-**Show: Section 5 — Roadmap.**
+**Show: Section 6 — Roadmap.**
 
 Say all of this. Don't let him find the gap himself.
 
 > **"What we can claim:**
-> - The published algorithm reports chemically incomplete nodes, and we can show exactly where and by how much.
-> - Our fix recovers the correct building unit on three of four structures, and correctly leaves the fourth alone.
-> - Our network is right — all four coordination numbers match published crystallography.
-> - Ranking blocks inside a perfect crystal is mathematically empty, and we can show why.
-> - The multifractal method now works, and it does separate the zirconium framework from the copper and zinc ones.
+> - The decomposition is visualised end to end and runs live on any structure you hand it.
+> - Our network is right — all four coordination numbers match published crystallography, including UiO-66 at 12 where the naive construction gives 6.
+> - Ranking blocks inside a perfect crystal is mathematically empty, and we can show why. Introduce a defect and it becomes measurable — λ₂ drops from 1.44 to 1.19 for one missing linker.
+> - The multifractal spectrum is now computed to the paper's definition, and all 77 frameworks give proper parabolas.
+> - Those 77 share a tight, well-defined band.
 >
-> **What we cannot claim yet:**
-> - We have **one** zirconium structure. 'All Zr-MOFs fall in this band' cannot be established from a single example, no matter how clean the separation looks. That needs a few hundred MOFs grouped by metal — from CoRE MOF or QMOF. Our code already runs one file at a time, so running it over a database is a loop, not a rewrite. **That's the next step, and it's the thing standing between a demonstration and a result.**"
+> **What we cannot claim:**
+> - That the band means anything chemical **yet**. It's confounded by graph size, and we've quantified exactly how badly. Reporting that is the result — a band built on an uncontrolled size effect wouldn't survive the first person who checked it.
+> - Anything about different metals. Our 77 structures all have Zn₄O nodes, so the set is single-metal. And they're hypothetical MOFs — computer-generated, never synthesised. We requested the experimental database and the server returned these; nothing was checking, and now it is.
+>
+> **The next steps are concrete, not open research:**
+> - Compare only frameworks at comparable graph size, so the confound is held fixed.
+> - Or normalise the fit window per structure so Δα stops growing with the graph — then re-test.
+> - Then run it on a set with real metal diversity."
 
 ---
 
 ## The questions he will ask — and your answers
 
-**"Isn't your node fix just the single-node algorithm that already exists?"**
-> "It's close for carboxylates, and I should say that directly. The difference is that single-node is a *separate* algorithm with its own topology output, whereas we repair metal-oxo *in place* — which matters because MOFkey, the identifier, is built specifically on metal-oxo."
+**"What does a graph have to do with a MOF?"**
+> "A MOF is a repeating framework, and what distinguishes one from another is how the blocks are wired together. Gas moves through the pore network, and the pore network is the empty space that wiring leaves behind. So the connectivity *is* the thing that determines behaviour — and connectivity is what a graph describes."
 
-**"Why does ZIF-8 not change?"**
-> "It has no carboxylate group, so the node-completion fix has nothing to act on. Its node was already chemically complete. We kept it in deliberately — a fix that changed it would be wrong."
+**"Why not just simulate them?"**
+> "Hours per structure, hundreds of thousands of structures. We're not replacing simulation — we're trying to decide which few hundred are worth simulating."
+
+**"Isn't an unweighted graph throwing away the chemistry?"**
+> "Yes, deliberately, and it's a real limitation we state on the page. It's also the point — whatever survives is pure architecture, which transfers across chemistries in a way an element-specific descriptor can't."
+
+**"Does Δα predict gas uptake?"**
+> "No, and we never claim it does. Nothing here computes adsorption. Δα describes pore-network architecture only."
 
 **"Are those InChIKeys real?"**
 > "No, and it's labelled in the code and on the page. Real InChI needs a separate cheminformatics library. The metal symbols, the format, and the topology field are real; the linker hash is a clearly-marked placeholder."
@@ -229,7 +245,6 @@ Say all of this. Don't let him find the gap himself.
 > Open a terminal:
 > ```
 > python3 code_00_pipeline_driver.py HKUST-1.cif     # the full pipeline
-> python3 code_08_proposed_fixes.py                  # before/after our fixes
 > python3 code_09_network_analysis.py                # coordination numbers
 > python3 code_10_multifractal_spectrum.py           # the spectrum
 > ```
@@ -239,7 +254,7 @@ Say all of this. Don't let him find the gap himself.
 
 ## Closing line
 
-> "So: the algorithm the field uses has a specific, measurable chemistry problem, and we fixed it. On top of that we built the network analysis you asked for — and it gave us one result we expected, the spectrum separating the zirconium framework, and one we didn't, that influence can't be ranked inside a perfect crystal. The next step is scale: run it across a real database so the family claim can actually be tested."
+> "So: we asked whether structure alone can group MOFs cheaply enough to be useful at database scale. The machinery now works correctly — the spectra are proper parabolas, the network reproduces published crystallography, and 77 frameworks land in a tight band. Two of the findings weren't what we expected: influence can't be ranked inside a perfect crystal, and the band we found is currently driven by graph size rather than chemistry. We measured both rather than presenting around them. The next steps are specific — control for graph size, then test against a set with real metal diversity."
 
 ---
 
@@ -249,14 +264,14 @@ Say all of this. Don't let him find the gap himself.
 |---|---|
 | Problem statement | Section 1 — The Problem |
 | The influential-nodes answer | Section 2 — The Question We Were Asked |
-| The 7-stage algorithm + 3D | Section 6 — The Full Pipeline |
-| Limitations + our fixes | Section 7 — Limitations |
-| Before/after in 3D | Section 8 — Before and After the Fixes |
+| **Why a graph at all** | **Section 3 — Why This Path** |
+| What we built | Section 4 — Everything We Built |
+| The pipeline, visualised | Section 7 — The Full Pipeline |
+| Run it on any structure | Section 8 — Interactive Pipeline |
 | Correct vs broken network | Section 10 — The Block Graph Must Be Periodic |
-| Influential nodes highlighted in 3D | Section 11 — Which Blocks Are Influential (★ button) |
 | The tie / degeneracy result | Section 11 — Which Blocks Are Influential |
 | Defect simulation | Section 12 — Defect Simulation |
 | The multifractal spectrum | Section 14 — The Multifractal Spectrum |
-| The published box-growing method | Section 15 — Against the Published Method |
-| Any source file | Section 16 — Every Line of Source Code, or click any filename anywhere |
-| Roadmap and honest limits | Section 5 — Roadmap |
+| **The band, and the confound** | **Section 16 — The Band** |
+| Any source file | Section 17, or click any filename |
+| Roadmap and honest limits | Section 6 — Roadmap |

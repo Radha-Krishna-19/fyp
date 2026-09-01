@@ -2,7 +2,7 @@
 
 **What it is, why it was built this way, and what every section does**
 
-> A guide to the interactive site: the reasoning behind building it instead of writing a report, an explanation of all sixteen sections, the moments worth demonstrating live, and how the whole thing is assembled.
+> A guide to the interactive site: the reasoning behind building it instead of writing a report, an explanation of all seventeen sections, the moments worth demonstrating live, and how the whole thing is assembled.
 
 *Part of the MOF Building-Block Analysis final year project — see the [main README](../README.md).*
 
@@ -51,7 +51,7 @@ metal_oxo_deep_dive/1_website/index.html
 ## 3 · The page, section by section
 
 
-Sixteen sections, in a deliberate order: the problem, then what was built, then the algorithm in detail, then the analysis, then the source. The sticky navigation at the top tracks where you are.
+Seventeen sections, in a deliberate order: the problem, then what was built, then the algorithm in detail, then the analysis, then the source. The sticky navigation at the top tracks where you are.
 
 
 ### Part I — Framing
@@ -70,9 +70,7 @@ Sixteen sections, in a deliberate order: the problem, then what was built, then 
 | # | Section | What it does and why it is there |
 |---|---|---|
 | 6 | The Full Pipeline — Code + 3D | The core of the site. Nine modules, eighteen steps, advanced one at a time. Each step shows the published algorithm in words, the exact code that implements it, and the 3D structure as it stands after that step. Structures can be swapped or uploaded. |
-| 7 | Limitations — and How We Fix Them | Four limitation cards. Each states the drawback, shows **live evidence computed from the currently loaded structure**, gives the proposed fix, and reports the measured effect — including where that effect is zero. |
-| 8 | Before and After the Fixes — in 3D | Two 3D panels, same structure, same coordinates: the published output on the left, the fixed output on the right. The atoms are in identical positions in both, so the only visible difference is the one the fix causes. |
-| 8b | The Complete Pipeline, Interactive | All seven published stages on one screen for any uploaded structure — the pipeline as a tool rather than as a lesson. |
+| 8 | The Complete Pipeline, Interactive | All seven published stages on one screen for any uploaded structure — the pipeline as a tool rather than as a lesson. |
 
 
 > **Why the before/after panels use identical coordinates**
@@ -124,13 +122,13 @@ Not required to use it, but worth knowing if you are asked how it works.
 
 | File | Responsibility |
 |---|---|
-| `index.html` | The single page — all sixteen sections, all styling. |
+| `index.html` | The single page — all seventeen sections, all styling. |
 | `mof_decompose.js` | The decomposition engine: CIF parsing, periodic bond perception, all three published splits, and the fixed variant. |
 | `mof_render.js` | Three.js rendering, with on-demand drawing and WebGL context recovery. |
 | `mof_network.js` | Quotient graph, degrees, centralities, Laplacian spectrum. |
 | `mof_multifractal.js` | Box-covering iNMFA and the paper's box-growing NMFA. |
 | `pipeline_walkthrough.js` | Section 6 — the eighteen steps. |
-| `metal_oxo_drawbacks.js` | Sections 7 and 8 — limitation cards and the before/after panels. |
+| `band_page.js` | Section 16 — the 77-framework band, the spectra, and the size-confound charts. |
 | `code_sources.js` | Every source file, embedded, so the viewer works without a server. |
 | `code_viewer.js` | The click-to-read modal: line numbers, highlighting, copy, Esc to close. |
 | `single_page.js` | Sticky-nav scroll tracking, the code browser grid, and filename wiring. |

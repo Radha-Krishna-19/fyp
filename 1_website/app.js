@@ -2,7 +2,7 @@
 // Bootstraps index.html: wires the Module 4a code+3D walkthrough, the two
 // limitations/fix demos, and the CIF-swap control for the walkthrough.
 // Depends on (loaded before this file, in order): mof_decompose.js,
-// mof_render.js, pipeline_walkthrough.js, metal_oxo_drawbacks.js,
+// mof_render.js, pipeline_walkthrough.js, band_page.js,
 // default_cif_data.js.
 
 (function () {

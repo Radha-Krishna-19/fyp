@@ -239,6 +239,13 @@ The paper defines the mass exponent as a **ratio**, `τ(q) = ln 𝒫_q(r) / ln(r
 
 The peak is pinned to zero and the parabola vanishes. Measured across 77 frameworks: **τ(0) = 0 and f(0) = 0 in every one, and not one peaked at q = 0.** With the paper's definition `ln(r/r_N) < 0`, so `τ(0) = ln|I| / negative < 0` and `f(α₀) = −τ(0) > 0` — the peak returns.
 
+
+> **Fixed, and re-measured on the full dataset**
+>
+> With `tau_mode="paper"` the recomputed spectra give τ(0) = −2.5669 and f(α₀) = +2.5669, and **all 77 of 77 frameworks now peak at q = 0** — proper inverted parabolas.
+>
+> Everything downstream of τ changed with it: α₀, the asymmetry A and D(q) are meaningful quantities for the first time, and the Δα values roughly quadrupled (median 1.20, previously ~0.3).
+
 | τ definition | τ(0) | f(0) | peak at | inverted parabola? |
 |---|---|---|---|---|
 | free-intercept slope (ours) | 0.0000 | 0.0000 | q = −4 | **no** |
@@ -340,7 +347,7 @@ The band work was scaled from 8 frameworks to **77**, drawn from MOFX-DB, analys
 ### 8.1 · What a band is
 
 
-A band is the range of spectrum width Δα that a group of frameworks shares, so a new framework can be tested for membership. Across the 77 the interquartile band is **Δα = 0.36 – 0.65**.
+A band is the range of spectrum width Δα that a group of frameworks shares, so a new framework can be tested for membership. Across the 77 the interquartile band is **Δα = 1.11 – 1.25**, with the asymmetry `A` negative in every single framework — a consistent family signature.
 
 
 ### 8.2 · Does the band mean pore architecture? No.
@@ -350,22 +357,22 @@ On 8 frameworks it looked as though it did: the narrow spectra belonged to frame
 
 | Test | Correlation with Δα |
 |---|---|
-| pore diameter (LCD), raw | −0.330 |
-| pore diameter (LCD), **controlling for graph size** | **+0.057** — vanishes |
-| graph size, raw | +0.487 |
-| graph size, **controlling for pore diameter** | **+0.384** — survives |
+| pore diameter (LCD), raw | −0.497 |
+| pore diameter (LCD), **controlling for graph size** | **+0.101** — vanishes |
+| graph size, raw | +0.730 |
+| graph size, **controlling for pore diameter** | **+0.621** — survives |
 
 | Linear model of Δα | R² |
 |---|---|
-| graph size alone | 0.237 |
-| pore diameter alone | 0.109 |
-| both together | 0.240 |
-| **what pore diameter adds over size** | **+0.002** |
+| graph size alone | 0.533 |
+| pore diameter alone | 0.247 |
+| both together | 0.538 |
+| **what pore diameter adds over size** | **+0.005** |
 
 
 > **Retracted: "the band groups MOFs by pore architecture"**
 >
-> The partial correlation collapses to roughly zero once graph size is held fixed, while graph size survives holding pore size fixed. Adding pore diameter to a model that already contains graph size buys about 0.002 of R².
+> The partial correlation collapses from −0.50 to +0.10 once graph size is held fixed, while graph size survives holding pore size fixed. Adding pore diameter to a model that already contains graph size buys about 0.005 of R².
 >
 > **Δα is tracking how many atoms are in the supercell**, and supercell size is set by `MIN_CELL_LENGTH` and the `MAX_ATOMS` cap — computational parameters, not chemistry. This is the finite-size dependence flagged earlier, now measured across a whole dataset instead of three structures.
 >

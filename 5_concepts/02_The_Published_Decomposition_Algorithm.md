@@ -185,11 +185,10 @@ MOFkey:  <metal>.<linker InChIKey>.MOFkey-v1.<topology>
 ## 5 · Where the project takes over
 
 
-Modules 01–07 are faithful translations of the published algorithm, and are used unchanged as the baseline. The project's own contribution begins after them:
+Modules 01–07 are faithful translations of the published algorithm and are used **entirely unchanged** — this project visualises the pipeline, it does not modify it. The project's own contribution begins after the decomposition:
 
 | Module | Contribution |
 |---|---|
-| `code_08_proposed_fixes.py` | Four independently switchable fixes to the metal-oxo split, plus a quality report that flags where the split is uncertain. |
 | `code_09_network_analysis.py` | The periodic block graph, coordination numbers, centrality measures and Laplacian spectrum. |
 | `code_10_multifractal_spectrum.py` | The iNMFA spectrum, the reference band and the candidate test. |
 | `code_11_nmfa_paper.py` | The published NMFA method reimplemented exactly, using box-growing. |
