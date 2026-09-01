@@ -837,7 +837,16 @@ ul.tight li{margin-bottom:5px}
   <!-- ================= 15b : the band ================= -->
     <!-- ================= 15b : the band ================= -->
   <h2 class="section-title" id="band"><span class="stitle-num">15b</span>The Band &mdash; 77 Frameworks, Two Corrections and a Retraction</h2>
-  <p class="section-sub">A <b>band</b> is the range of spectrum width &Delta;&alpha; that a group of frameworks shares, so a new framework can be tested for membership. Scaling this from 8 frameworks to <b>77</b> exposed two errors in how we were computing it, and forced us to withdraw a claim. All three are set out here.</p>
+    <div class="callout warn">
+    <b>Know what this dataset is.</b> All 77 structures are named <code>hMOF-###</code> &mdash; they come from the <b>hypothetical MOF</b> database: <b>computer-generated candidate structures that have never been synthesised</b>. The notebook requested <code>CoREMOF 2019</code>, which is experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.
+    <ul style="margin:8px 0 0 18px;">
+      <li>Nothing here may be described as <b>&ldquo;experimental&rdquo;</b> or <b>&ldquo;real&rdquo;</b> &mdash; it is a computational screening library.</li>
+      <li><b>Every one of the 77 has a Zn&#8324;O node</b>, so the set is effectively single-metal. It cannot support any claim about behaviour across different metals, including the zirconium question.</li>
+      <li><b>What it is genuinely good for:</b> one node type with many different linkers &mdash; a clean same-node, varied-linker family.</li>
+    </ul>
+  </div>
+
+<p class="section-sub">A <b>band</b> is the range of spectrum width &Delta;&alpha; that a group of frameworks shares, so a new framework can be tested for membership. Scaling this from 8 frameworks to <b>77</b> exposed two errors in how we were computing it, and forced us to withdraw a claim. All three are set out here.</p>
 
   <h3 class="sub-head">Correction 1 &mdash; the spectrum had the wrong shape</h3>
   <p>A multifractal spectrum <i>f</i>(&alpha;) must be an <b>inverted parabola</b> whose peak sits at <i>q</i>&nbsp;=&nbsp;0, where <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;<i>D</i><sub>0</sub>, the fractal dimension. Ours sloped downhill instead. That is a mathematics problem, not a materials result.</p>

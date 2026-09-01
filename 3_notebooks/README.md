@@ -1,17 +1,29 @@
 # Notebook
 
-One notebook: compute multifractal spectra for 77 real MOFs and build the band.
+One notebook: compute multifractal spectra for 77 MOFs and build the band.
 
 | File | What it is | Run it? |
 |---|---|---|
 | **`mof_band_analysis.ipynb`** | 77 frameworks downloaded live → spectra → **the band**, plus the shape check and the size-confound test. Steps 1–8 are the original notebook; Steps 9–12 are the band analysis. | Colab: Run All |
+
+> ## ⚠ What this dataset actually is
+>
+> All 77 structures are named `hMOF-###` — they are from the **hypothetical MOF** database:
+> **computer-generated candidates that have never been synthesised.** The notebook requests
+> `TARGET_DATABASE = "CoREMOF 2019"` (experimental) but the server returned hMOF records and
+> nothing verified it. Step 2 now checks and warns.
+>
+> - **Do not call these "experimental" or "real" structures.**
+> - **Every one has a Zn₄O node**, so this set cannot support any claim about different metals.
+> - What it *is* good for: one node type with many different linkers — a genuine
+>   same-node, varied-linker family.
 | `results.json` | Computed spectra for all 77. Lets Steps 9–12 run without recomputing. | — |
 
 ---
 
 ## What it does
 
-Steps 1–8 download 77 experimentally reported MOFs, build PBC-aware bond graphs,
+Steps 1–8 download 77 MOFs from MOFX-DB, build PBC-aware bond graphs,
 coarse-grain them, and compute a multifractal spectrum for each.
 **Steps 9–12 are the band analysis**, and they report two corrections and one retraction.
 

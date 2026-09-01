@@ -323,7 +323,18 @@ Members of the family land inside; unrelated frameworks land outside. The method
 ## 8 · The band across 77 real frameworks
 
 
-The band work was scaled from 8 frameworks to **77**, all experimentally reported, analysed on full atomic graphs and accompanied by published pore diameters (PLD, the pore-limiting diameter, and LCD, the largest cavity diameter). That was enough data to ask a question 8 structures could not answer.
+The band work was scaled from 8 frameworks to **77**, drawn from MOFX-DB, analysed on full atomic graphs and accompanied by published pore diameters (PLD, the pore-limiting diameter, and LCD, the largest cavity diameter). That was enough data to ask a question 8 structures could not answer.
+
+
+> **Know what this dataset is before quoting anything from it**
+>
+> All 77 structures are named `hMOF-###`. They come from the **hypothetical MOF** database — **computer-generated candidate structures that have never been synthesised**. The notebook requested `CoREMOF 2019`, which *is* experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.
+>
+> **Consequence 1:** nothing computed on this set may be described as "experimental" or "real". It is a computational screening library.
+>
+> **Consequence 2:** every one of the 77 has a **Zn₄O node**, so this set is effectively single-metal. It cannot support any claim about behaviour across different metals — including the supervisor's zirconium question.
+>
+> **What it is genuinely good for:** one node type combined with many different linkers, which makes it a real same-node, varied-linker family — arguably a cleaner test of linker effects than a mixed-metal set would be.
 
 
 ### 8.1 · What a band is

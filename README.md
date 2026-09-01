@@ -108,7 +108,14 @@ weakened the framework.
 
 The last part of the brief was to find a *spectrum* that groups MOFs into families. We
 implemented the method from **Xiao et al., Scientific Reports 11, 22964 (2021)**, and scaled
-it to **77 experimentally reported frameworks** with published pore diameters.
+it to **77 frameworks** from MOFX-DB with published pore diameters.
+
+> **Know what this dataset is.** The 77 are all named `hMOF-###` — they come from the
+> **hypothetical MOF** database: computer-generated candidate structures, **not** materials
+> anyone has synthesised. The notebook *requested* CoRE MOF 2019 (which is experimental) but
+> the server returned hMOF records, and nothing checked. It does now. Two consequences:
+> nothing here may be described as "experimental", and since **every one of the 77 has a
+> Zn₄O node**, this set cannot support any claim about behaviour across different metals.
 
 Each framework gets a curve `f(α)`. The **width of that curve, Δα**, is one number for how
 unevenly connectivity is distributed. A **band** is the range of Δα a group shares, so a new
