@@ -4,7 +4,9 @@ One notebook: compute multifractal spectra for 77 MOFs and build the band.
 
 | File | What it is | Run it? |
 |---|---|---|
-| **`mof_band_analysis.ipynb`** | 77 frameworks downloaded live → spectra → **the band**, plus the shape check and the size-confound test. Steps 1–8 are the original notebook; Steps 9–12 are the band analysis. | Colab: Run All |
+| **`mof_band_analysis.ipynb`** | 77 frameworks downloaded live → spectra → **the band**, plus the shape check and the size-confound test. | Colab: Run All |
+| `results.json` | Computed spectra for all 77. Lets Steps 9–12 run without recomputing. | — |
+| `CHANGES.md` | **What changed from the original notebook, and why.** | — |
 
 > ## ⚠ What this dataset actually is
 >
@@ -17,7 +19,7 @@ One notebook: compute multifractal spectra for 77 MOFs and build the band.
 > - **Every one has a Zn₄O node**, so this set cannot support any claim about different metals.
 > - What it *is* good for: one node type with many different linkers — a genuine
 >   same-node, varied-linker family.
-| `results.json` | Computed spectra for all 77. Lets Steps 9–12 run without recomputing. | — |
+
 
 ---
 
