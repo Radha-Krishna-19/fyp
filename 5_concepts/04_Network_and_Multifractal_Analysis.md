@@ -252,7 +252,7 @@ The peak is pinned to zero and the parabola vanishes. Measured across 77 framewo
 | paper: `ln 𝒫_q / ln(r/r_N)` | −3.5028 | +3.5028 | **q = 0** | **yes** |
 
 
-Verified on a network built from scratch with identical data and only the τ definition swapped, then re-verified in both implementations: Python and the browser engine now agree at τ(0) = −2.6551 on HKUST-1. Selectable as `tau_mode="paper"` (the default) or `"slope"` to reproduce the old behaviour.
+Those figures come from a synthetic test graph, where identical data was fitted both ways so only the τ definition differed. On the **real 77-framework dataset** the corrected run gives **τ(0) = −2.5669, f(α₀) = +2.5669, and 77/77 spectra peaking at q = 0**. Python and the browser engine agree at τ(0) = −2.6551 on HKUST-1. Selectable as `tau_mode="paper"` (the default) or `"slope"` to reproduce the old behaviour.
 
 
 #### Bug B — the averaging order

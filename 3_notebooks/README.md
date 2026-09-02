@@ -42,14 +42,16 @@ and took the **slope**, a fit with a **free intercept**. At `q = 0`:
 - that count is the **same at every radius** → the fit sees a flat line
 - a flat line has slope 0 → `τ(0) = 0` → `f(α₀) = 0`
 
-The peak is pinned to zero and the parabola disappears. **τ(0) = 0 in all 77 frameworks,
-and none peaked at q = 0.** Fixed via `inmfa(..., tau_mode="paper")`, now the default;
+The peak is pinned to zero and the parabola disappears. **Before the fix: τ(0) = 0 in all 77 frameworks and none peaked at q = 0.
+After: all 77 peak at q = 0.** Fixed via `inmfa(..., tau_mode="paper")`, now the default;
 `tau_mode="slope"` reproduces the old behaviour so the correction is demonstrable.
 
 | τ definition | τ(0) | f(0) | peak at | parabola? |
 |---|---|---|---|---|
 | free-intercept slope (old) | 0.0000 | 0.0000 | q = −4 | no |
 | paper: `ln 𝒫_q / ln(r/r_N)` | −3.5028 | +3.5028 | **q = 0** | **yes** |
+
+*(verification figures above are from a synthetic test graph. On the real 77-framework run: τ(0) = −2.5669, f(α₀) = +2.5669, and **77/77 peak at q = 0**.)*
 
 ## Correction 2 — the averaging order
 
@@ -61,12 +63,12 @@ quantity. Measured on HKUST-1: 0.021 ± 0.004 (wrong) vs 0.327 ± 0.032 (correct
 
 | Test | r |
 |---|---|
-| Δα vs pore diameter (LCD), raw | −0.330 |
-| Δα vs LCD, **controlling for graph size** | **+0.057** — vanishes |
-| Δα vs graph size, **controlling for LCD** | **+0.384** — survives |
+| Δα vs pore diameter (LCD), raw | −0.497 |
+| Δα vs LCD, **controlling for graph size** | **+0.101** — vanishes |
+| Δα vs graph size, **controlling for LCD** | **+0.621** — survives |
 
-Linear model: graph size alone R² = 0.237; adding pore diameter → 0.240. Pore size buys
-**+0.002**. Δα is tracking **supercell size**, which is set by `MIN_CELL_LENGTH` and the
+Linear model: graph size alone R² = 0.533; adding pore diameter → 0.538. Pore size buys
+**+0.005**. Δα is tracking **supercell size**, which is set by `MIN_CELL_LENGTH` and the
 `MAX_ATOMS` cap — computational parameters, not chemistry.
 
 On 8 frameworks the pore reading was plausible. On 77 it is not supported.
@@ -80,6 +82,5 @@ normalise the fit window per structure so Δα stops growing with the graph, the
 - **Band only** — Steps 9–12 fall back to `results.json` if the earlier steps have not run,
   so the band analysis executes in seconds. Keep `results.json` beside the notebook.
 
-> **Note:** the `results.json` shipped here was computed with the **old** τ. Re-run the
-> notebook to regenerate it with the corrected definition; the size-confound finding is
-> independent of the τ fix and holds either way.
+> **`results.json` here is the corrected run:** all 77 spectra are proper inverted parabolas
+> peaking at q = 0 (τ(0) = −2.5669, f(α₀) = +2.5669). Re-running the notebook reproduces it.

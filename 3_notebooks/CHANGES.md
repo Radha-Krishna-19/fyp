@@ -57,8 +57,10 @@ is **negative**, and `f(α₀) = −τ(0) > 0` — the peak comes back.
 | free-intercept slope | 0.0000 | 0.0000 | q = −4 | no |
 | paper: `ln 𝒫_q / ln(r/r_N)` | −3.5028 | +3.5028 | **q = 0** | **yes** |
 
-Checked across your `results.json`: **τ(0) = 0 in all 77 frameworks, and not one of them
-peaked at q = 0.**
+*(verification figures above are from a synthetic test graph. On the real 77-framework run: τ(0) = −2.5669, f(α₀) = +2.5669, and **77/77 peak at q = 0**.)*
+
+Checked across the pre-fix `results.json`: **τ(0) = 0 in all 77 frameworks, and not one of
+them peaked at q = 0.** After the fix, **all 77 peak at q = 0.**
 
 **The change is one branch**, and both modes are kept so the correction can be shown:
 
@@ -108,19 +110,19 @@ Your notebook computed the spectra but stopped before building a band. These add
 and where the peak lands, so the fix above is demonstrated rather than asserted.
 
 **Step 10 — the band, and whether it means anything.** Builds the Δα band (interquartile
-range across the 77 = **0.36 – 0.65**), then tests what Δα is actually tracking.
+range across the 77 = **1.11 – 1.25**), then tests what Δα is actually tracking.
 
 This is where a claim had to be withdrawn. Δα correlates with pore diameter, which looks
 like a real structural result — but it does not survive controlling for graph size:
 
 | Test | r |
 |---|---|
-| Δα vs pore diameter (LCD), raw | −0.330 |
-| Δα vs LCD, **controlling for graph size** | **+0.057** — vanishes |
-| Δα vs graph size, **controlling for LCD** | **+0.384** — survives |
+| Δα vs pore diameter (LCD), raw | −0.497 |
+| Δα vs LCD, **controlling for graph size** | **+0.101** — vanishes |
+| Δα vs graph size, **controlling for LCD** | **+0.621** — survives |
 
-Linear model: graph size alone gives R² = 0.237; adding pore diameter takes it to 0.240.
-**Pore size buys +0.002.**
+Linear model: graph size alone gives R² = 0.533; adding pore diameter takes it to 0.538.
+**Pore size buys +0.005.**
 
 So Δα is mostly tracking **how many atoms are in the supercell** — and that is set by
 `MIN_CELL_LENGTH` and the `MAX_ATOMS` cap, which are computational parameters, not
@@ -150,6 +152,6 @@ question answerable:
 | verify returned database + metals | the data is hMOF and single-metal, not what was claimed |
 | Steps 9–12 | build the band, and test what it actually measures |
 
-Nothing was removed and no results were transcribed. `results.json` here still comes from
-the **old** τ — re-run the notebook to regenerate it with the corrected definition. The
-size-confound finding is independent of the τ fix and holds either way.
+Nothing was removed and no results were transcribed. `results.json` is the corrected run —
+all 77 spectra peak at q = 0. The size-confound finding is independent of the τ fix and is
+stronger on the corrected data.
