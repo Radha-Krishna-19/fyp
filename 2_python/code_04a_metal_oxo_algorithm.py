@@ -99,16 +99,45 @@ def detect_initial_nodes_and_linkers(geom: Geometry) -> Dict[int, str]:
         1. deleteBonds(&split_mol, true)          -- code_03.delete_bonds
         2. fragments = split_mol.Separate()        -- _connected_components
         3. for each fragment: NumAtoms()==1 / all_oxygens / else            """
-    split_bonds = delete_bonds(geom, only_metals=True)          # 1. cut metal bonds
-    fragments = _connected_components(set(range(geom.n)), split_bonds)  # 2. Separate()
+    # ---- 1. CUT every bond that touches a metal ----------------------------
+    # This single line IS the metal-oxo rule. Everything else in this function is
+    # bookkeeping over the pieces it leaves behind.
+    # WHY IT WORKS AT ALL: in a MOF the inorganic and organic parts meet at
+    # metal-ligand bonds, so severing those separates the two by construction.
+    # WHAT IT COSTS: a carboxylate (-COO) binds through BOTH its oxygens, so both
+    # get cut and the whole group lands on the linker side. The node therefore
+    # comes back as bare metal (HKUST-1 -> 'Cu2', not the full paddlewheel).
+    # That is a known property of the published rule, not a bug in this code --
+    # and it does not affect CONNECTIVITY, which is what we actually analyse.
+    split_bonds = delete_bonds(geom, only_metals=True)
 
+    # ---- 2. Whatever is still joined together is one block -----------------
+    # Connected components of the surviving bond graph. Equivalent to Open
+    # Babel's Separate(): walk the graph, everything mutually reachable is a piece.
+    fragments = _connected_components(set(range(geom.n)), split_bonds)
+
+    # ---- 3. Label each fragment 'node' or 'linker' -------------------------
+    # role maps ATOM INDEX -> which side it belongs to. Per-atom rather than
+    # per-fragment because later steps re-group atoms and need the label to travel
+    # with the atom.
     role: Dict[int, str] = {}
-    for frag in fragments:                                       # 3. classify
+    for frag in fragments:
+
+        # CASE A: a lone atom. After cutting every metal bond, an isolated atom is
+        # essentially always a metal that had no non-metal neighbours left -- e.g.
+        # ZIF-8's single Zn. Classified as a node.
         if len(frag) == 1:
-            # A single, isolated atom (almost always a bare metal ion) -> node
             for a in frag:
                 role[a] = 'node'
             continue
+
+        # CASE B: the compositional test -- the entire chemical reasoning of the
+        # algorithm, in one line. If a fragment contains ONLY oxygen and hydrogen,
+        # it is inorganic (an oxo/hydroxo bridge inside the cluster, like the
+        # mu4-O at the centre of MOF-5's Zn4O) and belongs to the node. Anything
+        # containing carbon is organic and is a linker.
+        # This is why the algorithm is fast and predictable: no chemical knowledge
+        # base, no lookup, no bond-order perception -- just "is there carbon here".
         all_oxygens = all(geom.symbols[a] in ('O', 'H') for a in frag)
         tag = 'node' if all_oxygens else 'linker'
         for a in frag:

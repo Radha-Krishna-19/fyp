@@ -91,36 +91,71 @@ def build_periodic_block_graph(geom: Geometry, node_blocks, linker_blocks):
     legitimate and is kept -- that is how a framework with one cluster per cell
     stays connected to its own images.
     """
+    # ---- blocks become the VERTICES of the graph ---------------------------
+    # blocks[i] = (kind, [atom indices]). Order matters only in that the index
+    # into this list IS the vertex id used everywhere downstream.
     blocks = [('node', b) for b in node_blocks] + [('linker', b) for b in linker_blocks]
+    # Reverse lookup: given an atom, which block does it belong to? Needed because
+    # bonds are stored per-ATOM but we need them per-BLOCK.
     atom_to_block: Dict[int, int] = {a: i for i, (_k, b) in enumerate(blocks) for a in b}
 
-    # block-local unwrapped Cartesian positions, so a block straddling a
-    # boundary is one contiguous piece before we measure translations
+    # ---- unwrap each block so it is spatially contiguous -------------------
+    # WHY THIS IS NECESSARY: a block can straddle a cell boundary -- half its atoms
+    # near fractional coordinate 0.98, half near 0.02. Those are adjacent in reality
+    # but numerically a whole cell apart. If we measured translations against the
+    # raw coordinates we would compute a spurious extra cell-crossing for every
+    # such block. Unwrapping shifts each atom into one self-consistent frame
+    # centred on its own block, so the block is one contiguous piece first.
     unwrapped: Dict[int, Tuple[float, float, float]] = {}
     for _kind, b in blocks:
         unwrapped.update(_unwrap_block(geom, b))
 
+    # inv: the INVERSE cell matrix. code_01 built the matrix that converts
+    # fractional -> Cartesian; here we need the opposite direction, because we are
+    # about to take a Cartesian displacement and ask "how many whole cells is that?"
     inv = _invert3(geom.cell_matrix)
 
     def to_frac(v):
+        """Cartesian displacement (angstroms) -> fractional (cell counts)."""
         return (v[0] * inv[0][0] + v[1] * inv[1][0] + v[2] * inv[2][0],
                 v[0] * inv[0][1] + v[1] * inv[1][1] + v[2] * inv[2][1],
                 v[0] * inv[0][2] + v[1] * inv[1][2] + v[2] * inv[2][2])
 
+    # ---- turn every inter-block bond into a LABELLED edge -------------------
+    # seen: deduplicates edges. The same block-to-block connection can be found
+    # from either endpoint, and we want it counted once.
     seen = set()
     edges: List[Tuple[int, int, Tuple[int, int, int]]] = []
     for bd in geom.bonds:
         bi, bj = atom_to_block[bd.lo], atom_to_block[bd.hi]
-        # where atom hi actually sits, seen from lo's unwrapped frame
+
+        # RECOVERING THE TRANSLATION -- the heart of this function.
+        # bd.vec is where atom hi sits relative to atom lo, INCLUDING any cell
+        # crossing (code_02 stored the winning minimum-image displacement).
+        # 'actual' is therefore hi's true position in lo's block frame...
         ui = unwrapped[bd.lo]
         actual = (ui[0] + bd.vec[0], ui[1] + bd.vec[1], ui[2] + bd.vec[2])
+        # ...while 'uj' is where hi sits in its OWN block's frame.
         uj = unwrapped[bd.hi]
+        # The difference between those two frames is exactly how many whole cells
+        # apart the two blocks are. Convert to fractional and round: a clean whole
+        # number, because the two frames can only differ by an integer number of cells.
         delta = (actual[0] - uj[0], actual[1] - uj[1], actual[2] - uj[2])
         fr = to_frac(delta)
         t = (int(round(fr[0])), int(round(fr[1])), int(round(fr[2])))
+
+        # A bond from a block to ITSELF within the same cell is internal chemistry
+        # (two atoms inside one cluster), not a connection between blocks. Skip it.
+        # NOTE the condition: a self-loop with t != (0,0,0) is KEPT, because that is
+        # a block bonding to its own periodic image -- which is exactly how UiO-66,
+        # with one cluster per cell, stays connected. Dropping those is what makes a
+        # naive graph report coordination 1 instead of 12.
         if bi == bj and t == (0, 0, 0):
-            continue                                  # internal bond, not an edge
-        # canonical orientation so (i,j,t) and (j,i,-t) are one edge
+            continue
+
+        # CANONICAL ORIENTATION: the same physical connection can be written
+        # (i, j, t) or (j, i, -t). Pick one deterministically so the dedup set
+        # recognises them as identical, otherwise every edge is counted twice.
         if (bj, tuple(-x for x in t)) < (bi, t):
             key = (bj, bi, tuple(-x for x in t))
         else:

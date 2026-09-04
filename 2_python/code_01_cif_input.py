@@ -62,11 +62,25 @@ import re
 from dataclasses import dataclass, field
 from typing import Callable, List, Tuple
 
-TOL = 0.01  # fractional-coordinate de-duplication tolerance
+# TOL -- how close two fractional coordinates must be before we treat them as
+# THE SAME ATOM. Needed because applying symmetry operations regenerates atoms
+# that were already present: e.g. an atom sitting exactly on a mirror plane maps
+# onto itself. 0.01 in fractional units is roughly 0.2 A in a 20 A cell -- far
+# smaller than any real bond, so it cannot merge two genuinely distinct atoms.
+TOL = 0.01
 
 
 @dataclass
 class Atom:
+    """One atom, stored the way a CIF stores it.
+
+    el          chemical symbol, e.g. 'Cu', 'O', 'C'
+    fx, fy, fz  FRACTIONAL coordinates -- each is a fraction (0 to 1) of the way
+                along the corresponding cell edge, NOT a distance. Fractional
+                coordinates are what a CIF stores, and they stay meaningful when
+                the cell is non-cubic. To get real distances in angstroms you
+                must multiply by the cell matrix (see ParsedCIF.cell_matrix).
+    """
     el: str
     fx: float
     fy: float
@@ -75,6 +89,21 @@ class Atom:
 
 @dataclass
 class ParsedCIF:
+    """Everything a CIF file actually contains -- and nothing more.
+
+    a, b, c              the three unit-cell edge LENGTHS, in angstroms
+    alpha, beta, gamma   the three angles BETWEEN those edges, in degrees
+                         (alpha is between b and c, beta between a and c,
+                         gamma between a and b -- the standard convention)
+    cell_matrix          3x3 matrix whose ROWS are the cell edge vectors in
+                         ordinary Cartesian space. Multiplying a fractional
+                         coordinate by this converts it to angstroms.
+    atoms                every atom in the cell, after symmetry expansion.
+
+    NOTE WHAT IS ABSENT: there is no bond list. A CIF does not contain one.
+    Every bond used anywhere in this project is INFERRED from distance in
+    code_02. That is the single most important fact about this data format.
+    """
     a: float; b: float; c: float
     alpha: float; beta: float; gamma: float
     cell_matrix: List[List[float]]
@@ -82,13 +111,45 @@ class ParsedCIF:
 
 
 def _cell_par_to_matrix(a, b, c, alpha_deg, beta_deg, gamma_deg):
-    """Same construction Open Babel's OBUnitCell uses internally."""
+    """Convert the six cell parameters into a 3x3 matrix of edge vectors.
+
+    WHY THIS IS NEEDED: fractional coordinates are convenient for storage but
+    useless for measuring distance, because the cell may not be a cube. This
+    matrix is what turns '0.28 of the way along edge a' into 'x = 12.3 A'.
+
+    WHY THIS PARTICULAR FORM: there are infinitely many ways to orient a cell in
+    space; we pick the standard LOWER-TRIANGULAR convention, which fixes the
+    freedom by choosing:
+        - edge a to lie along the x axis            -> a has no y or z component
+        - edge b to lie in the xy plane             -> b has no z component
+        - edge c takes whatever is left
+    Open Babel's OBUnitCell uses the same construction, so our matrix matches
+    the reference implementation exactly.
+
+    Returns rows = [a_vector, b_vector, c_vector], each in angstroms.
+    """
+    # Trigonometry works in radians; CIF stores degrees.
     alpha, beta, gamma = (math.radians(x) for x in (alpha_deg, beta_deg, gamma_deg))
+
+    # Edge a: along x by construction, so its whole length is the x component.
     ax, ay, az = a, 0.0, 0.0
+
+    # Edge b: in the xy plane, at angle gamma to a. Standard resolution of a
+    # vector into components -- length b, angle gamma from the x axis.
     bx, by, bz = b * math.cos(gamma), b * math.sin(gamma), 0.0
+
+    # Edge c: the general case. Its x component follows from the angle beta
+    # (between c and a). The y component is fixed by requiring the angle between
+    # c and b to come out as alpha -- that requirement rearranges to this
+    # expression. The z component is then whatever is left to make |c| correct.
     cx = c * math.cos(beta)
     cy = (c * (math.cos(alpha) - math.cos(beta) * math.cos(gamma))) / math.sin(gamma)
+
+    # max(..., 0.0) guards against a tiny negative from floating-point error
+    # when the cell is degenerate or the parameters are slightly inconsistent;
+    # sqrt of a negative would crash for what is physically a rounding artefact.
     cz = math.sqrt(max(c * c - cx * cx - cy * cy, 0.0))
+
     return [[ax, ay, az], [bx, by, bz], [cx, cy, cz]]
 
 
@@ -124,10 +185,22 @@ def _parse_sym_op(op_str: str) -> Callable[[float, float, float], Tuple[float, f
 
 
 def _wrap(v: float) -> float:
-    v = v % 1.0
-    if v < 0:
+    """Fold a fractional coordinate back into the range [0, 1).
+
+    WHY: applying a symmetry operation can push a coordinate outside the cell --
+    'z + 1/2' applied to z = 0.7 gives 1.2, which is the same physical position
+    as 0.2 one cell over. Because the crystal repeats, those are the same atom,
+    so we normalise every coordinate into a single canonical cell.
+
+    The final clamp handles the boundary case: 0.9999999 and 0.0 are the same
+    position to within floating-point error, and if we left one at ~1.0 the
+    de-duplication step below would treat it as a different atom and we would
+    end up with a spurious duplicate on every cell face.
+    """
+    v = v % 1.0            # Python's % already returns non-negative for positive modulus,
+    if v < 0:              # but be explicit -- this is cheap and the intent is clearer.
         v += 1.0
-    if v > 1 - 1e-6:
+    if v > 1 - 1e-6:       # treat 0.999999... as exactly 0.0
         v -= 1.0
     return v
 

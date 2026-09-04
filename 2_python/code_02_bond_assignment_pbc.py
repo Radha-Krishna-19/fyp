@@ -120,19 +120,45 @@ def compute_geometry(cif: ParsedCIF, metal_set: set | None = None) -> Geometry:
     from code_03_element_classification import METALS  # local import avoids a cycle at module load
 
     metal_set = metal_set if metal_set is not None else METALS
-    n = len(cif.atoms)
-    pos = [_frac_to_cart((a.fx, a.fy, a.fz), cif.cell_matrix) for a in cif.atoms]
-    symbols = [a.el for a in cif.atoms]
-    radii = [COVALENT_RADII.get(el, 0.75) for el in symbols]
-    is_metal = [el in metal_set for el in symbols]
 
+    # ---- per-atom lookup tables, built once so the O(N^2) loop below stays cheap ----
+    n = len(cif.atoms)
+    # pos: every atom in CARTESIAN angstroms. We convert once here rather than
+    # inside the loop, because the loop touches each atom ~N times.
+    pos = [_frac_to_cart((a.fx, a.fy, a.fz), cif.cell_matrix) for a in cif.atoms]
+    symbols = [a.el for a in cif.atoms]                       # e.g. ['Cu','O','C',...]
+    # radii: covalent radius per atom. The 0.75 fallback is a mid-range value used
+    # only if a CIF contains an element missing from the Cordero table -- better than
+    # crashing on an exotic element, and flagged by the caller if it matters.
+    radii = [COVALENT_RADII.get(el, 0.75) for el in symbols]
+    is_metal = [el in metal_set for el in symbols]            # precomputed: used per pair
+
+    # ---- the 27 periodic images ----
+    # offsets: every combination of -1, 0, +1 in the three lattice directions.
+    # 3^3 = 27 -- the home cell (0,0,0) plus its 26 neighbours.
+    # WHY 27 IS ENOUGH: a chemical bond is at most ~3 A, and every unit cell edge
+    # here is far longer than that, so a bond can never reach beyond an immediately
+    # adjacent cell. Searching further would cost more and find nothing.
     offsets = list(product((-1, 0, 1), repeat=3))
+    # Convert each integer offset into a Cartesian displacement ONCE, outside the
+    # loop. Adding a precomputed vector is much cheaper than a matrix multiply per pair.
     offset_vecs = [_frac_to_cart(o, cif.cell_matrix) for o in offsets]
 
+    # ---- the bond search: every pair, every image (minimum-image convention) ----
     bonds: List[Bond] = []
     for i in range(n):
-        for j in range(i + 1, n):
+        for j in range(i + 1, n):        # j > i: each unordered pair considered once
+            # The cutoff is pair-specific, not a single global distance. Two big
+            # atoms legitimately bond further apart than two small ones.
+            #   x1.30 for metal-containing pairs: coordination bonds are genuinely
+            #         longer, softer and more variable than covalent bonds.
+            #   x1.15 otherwise: ordinary covalent bonds, tighter tolerance.
             cutoff = (radii[i] + radii[j]) * (1.30 if (is_metal[i] or is_metal[j]) else 1.15)
+
+            # MINIMUM-IMAGE CONVENTION: atom j exists in all 27 images. The physically
+            # meaningful distance is to the NEAREST one, so try them all and keep the
+            # shortest. best holds the winning displacement vector, which records
+            # WHICH image won -- later modules need that to rebuild periodicity.
             best, best_d = None, math.inf
             for ov in offset_vecs:
                 dx = pos[j][0] + ov[0] - pos[i][0]
@@ -141,14 +167,28 @@ def compute_geometry(cif: ParsedCIF, metal_set: set | None = None) -> Geometry:
                 d = math.sqrt(dx * dx + dy * dy + dz * dz)
                 if d < best_d:
                     best_d, best = d, (dx, dy, dz)
+
+            # Lower bound 0.4 A rejects pathological cases: an atom sitting on top of
+            # itself, or duplicate entries that survived de-duplication. No real bond
+            # is anywhere near that short, so anything below it is a data error.
             if 0.4 < best_d < cutoff:
                 bonds.append(Bond(i, j, best))
 
+    # ---- adjacency list: "which atoms is atom i bonded to?" ----
+    # Built from the bond list because later modules (connected components, BFS,
+    # block extraction) all traverse by atom, and scanning the whole bond list each
+    # time would be O(bonds) per lookup instead of O(degree).
+    # Each entry is (neighbour_index, displacement_vector, bond_index).
+    # The vector is NEGATED for the reverse direction: if i->j is +x, then j->i is -x.
+    # Keeping direction is what lets later code tell which cell a bond reaches into.
     adj: List[List] = [[] for _ in range(n)]
     for bi, bd in enumerate(bonds):
         adj[bd.lo].append((bd.hi, bd.vec, bi))
         adj[bd.hi].append((bd.lo, (-bd.vec[0], -bd.vec[1], -bd.vec[2]), bi))
 
+    # ---- chemical formula, for display and sanity-checking ----
+    # Purely informational: lets a human confirm at a glance that the parse produced
+    # the expected composition (e.g. Cu-containing for HKUST-1).
     comp: Dict[str, int] = {}
     for s in symbols:
         comp[s] = comp.get(s, 0) + 1

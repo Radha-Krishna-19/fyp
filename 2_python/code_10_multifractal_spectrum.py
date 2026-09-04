@@ -173,16 +173,44 @@ def select_influential(G, top_percent: float = 0.30):
 
 # ---------------------------------------------------------------- iNMFA core
 def box_covering(G, rb, dist, rng):
-    """Greedy random box covering at radius rb."""
-    uncovered = set(G.nodes())
+    """Greedy random box covering at radius rb.
+
+    Tile the whole graph with boxes of radius rb, so every vertex ends up inside
+    exactly one box. A vertex's MEASURE is then the size of whichever box happened
+    to cover it.
+
+    WHY GREEDY AND RANDOM: finding the minimum number of boxes that covers a graph
+    is NP-hard, so the standard approach (Song, Havlin & Makse [3]) is to pick
+    centres in random order and take whatever is still uncovered within rb. That
+    makes the result STOCHASTIC -- different random orders give different coverings
+    -- which is why the caller repeats it over many trials and averages.
+
+    ARGUMENTS
+      G      the graph to cover
+      rb     box radius, in graph steps
+      dist   precomputed all-pairs shortest-path lengths. Passed in rather than
+             recomputed because this function is called once per radius per trial
+             (hundreds of times), and the distances never change.
+      rng    a seeded random.Random, so a given seed reproduces a given covering
+
+    RETURNS
+      node_box  vertex -> which box id covers it
+      box_size  box id -> how many vertices it contains
+    """
+    uncovered = set(G.nodes())        # shrinks as boxes claim vertices
     node_box, box_size = {}, {}
     order = list(G.nodes())
-    rng.shuffle(order)
-    bid = 0
+    rng.shuffle(order)                # the randomness: which vertices get to be centres
+    bid = 0                           # box id counter
     for center in order:
+        # Skip centres already swallowed by an earlier box -- otherwise boxes
+        # would overlap and the measure would not be a partition.
         if center not in uncovered:
             continue
+        # Everything still unclaimed within rb steps of this centre joins the box.
         members = [n for n in uncovered if n in dist[center] and dist[center][n] <= rb]
+        # Defensive: a vertex isolated from everything still forms a box of one,
+        # rather than producing an empty box that would divide by zero later.
         if not members:
             members = [center]
         for m in members:
@@ -190,7 +218,7 @@ def box_covering(G, rb, dist, rng):
             uncovered.discard(m)
         box_size[bid] = len(members)
         bid += 1
-        if not uncovered:
+        if not uncovered:             # everything covered -- stop early
             break
     return node_box, box_size
 
@@ -202,13 +230,29 @@ def probability_measures(G, influential_nodes, radii, n_trials=5, seed=0):
     NOTE (FIX 1): G here is the FULL block graph. It supplies the distances and
     the boxes; the measure is read off only at the influential nodes.
     """
+    # All-pairs shortest paths, computed ONCE. This is the expensive step --
+    # O(N^2) in memory -- and it is why MAX_ATOMS is capped elsewhere.
     dist = dict(nx.all_pairs_shortest_path_length(G))
     N = G.number_of_nodes()
+
+    # trials[r] is a LIST, one entry per random trial, each a dict of
+    # {influential vertex -> its measure in that trial}.
+    # Keeping the trials separate rather than averaging here is the whole point of
+    # FIX 9: compute_tau must exponentiate BEFORE averaging, so it needs the raw
+    # per-trial values. Averaging at this stage destroyed the information.
     trials = {r: [] for r in radii}
     for t in range(n_trials):
+        # Seed derived from (seed + t) so a given `seed` argument reproduces the
+        # entire set of trials exactly -- required for the reproducibility checks.
         rng = random.Random(seed + t)
         for r in radii:
             node_box, box_size = box_covering(G, r, dist, rng)
+            # p_i(r) = (size of the box covering i) / N. Dividing by N makes it a
+            # probability, so the partition function below is dimensionless.
+            # NOTE we cover the FULL graph but read the measure only at the
+            # influential vertices -- that separation is FIX 1. Feeding only the
+            # influential vertices in would give a graph with no edges at all,
+            # because metal clusters never bond directly to each other.
             trials[r].append({n: box_size[node_box[n]] / N
                                for n in influential_nodes if n in node_box})
     return trials
@@ -230,24 +274,42 @@ def compute_tau(trials, radii, r_N, q_values, tau_mode='paper'):
     estimator against Delta-alpha = 0.80 +/- 0.06 (7% scatter) with this one.
     Reproduced here in spectrum_stability().
     """
+    # x = ln(r / r_N), the horizontal axis of the scaling fit.
+    # Dividing by r_N (the network radius) makes the box radius dimensionless.
+    # NOTE x is always NEGATIVE, because every fitted radius is smaller than r_N.
+    # That sign is what makes the paper's tau(0) come out negative -- see below.
     x = np.log(np.asarray(radii, dtype=float) / r_N)
     tau = []
     for q in q_values:
-        y = []
+        y = []                                   # y[k] = <ln P_q> at radius radii[k]
         for r in radii:
+            # ---- FIX 9 IN ACTION: exponentiate FIRST, average SECOND ----------
+            # For each random trial independently: build the partition function
+            # P_q = sum_i p_i^q, then take its log. Only then average the logs
+            # across trials.
+            # Doing it the other way round (average p_i, then raise to q) smooths
+            # away the trial-to-trial fluctuation that multifractality measures,
+            # and shrinks the spectrum by more than a factor of ten.
             ln_Z_per_trial = []
             for trial in trials.get(r, []):
+                # v > 0 filter: a measure of exactly zero would blow up for
+                # negative q (0 ** -5 is infinite). Such entries only arise when a
+                # vertex was not covered, which the box_covering guard makes rare.
                 vals = np.array([v for v in trial.values() if v > 0])
                 if vals.size:
                     Z = np.sum(vals ** q)
                     if Z > 0:
                         ln_Z_per_trial.append(np.log(Z))
+            # nan if no trial produced a usable value at this radius; the fit below
+            # masks nans out rather than propagating them.
             y.append(np.mean(ln_Z_per_trial) if ln_Z_per_trial else np.nan)
         y = np.asarray(y, dtype=float)
         mask = np.isfinite(y) & np.isfinite(x)
         if mask.sum() < 2:                       # FIX 5: need >=2 points to fit
             tau.append(np.nan)
             continue
+        # ---- FIX 10: WHICH KIND OF LINE TO FIT ------------------------------
+        # This branch is the single most consequential line in the module.
         if tau_mode == 'paper':
             # FIX 10 -- the paper defines tau(q) = ln P_q(r) / ln(r/r_N), which
             # over several radii is least squares THROUGH THE ORIGIN, because
@@ -259,9 +321,23 @@ def compute_tau(trials, radii, r_N, q_values, tau_mode='paper'):
             # multifractal spectrum must be an inverted parabola peaking at
             # q = 0 with f(alpha_0) = D_0; with the free-intercept slope it
             # comes out as a monotonically falling curve instead.
+            # LEAST SQUARES THROUGH THE ORIGIN. The closed form for fitting
+            # y = t*x with no intercept is sum(x*y) / sum(x*x). This is what the
+            # paper's tau = ln P_q / ln(r/r_N) means when applied over several
+            # radii: a ratio, with no constant term.
+            #
+            # WHY IT MATTERS AT q = 0: every term becomes p_i^0 = 1, so P_0 = |I|,
+            # the COUNT of influential nodes -- identical at every radius. The data
+            # is a flat line. Fitted through the origin with x < 0, that flat line
+            # forces t < 0, so tau(0) < 0 and f(alpha_0) = -tau(0) > 0: the peak of
+            # the spectrum, exactly where it belongs.
             xv, yv = x[mask], y[mask]
             tau.append(float(np.sum(xv * yv) / np.sum(xv * xv)))
         else:
+            # FREE-INTERCEPT SLOPE -- the old, incorrect behaviour, kept only so the
+            # correction can be demonstrated side by side. Fitting y = m*x + c to a
+            # flat line gives m = 0, so tau(0) = 0 and f(alpha_0) = 0, which deletes
+            # the peak and leaves a monotonically falling curve.
             slope, _ = np.polyfit(x[mask], y[mask], 1)
             tau.append(slope)
     return np.asarray(tau)
