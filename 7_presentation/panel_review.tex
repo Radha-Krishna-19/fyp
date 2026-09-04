@@ -1,0 +1,584 @@
+\documentclass[aspectratio=169, 11pt]{beamer}
+% ============================================================================
+%  23CSE498 -- Project Phase 2, Panel Review 1
+%  Structural Descriptors for Metal-Organic Frameworks
+%  Compile:  pdflatex panel_review.tex   (twice, for the section numbering)
+%  Note: \bibliography is commented out -- references are typeset directly so
+%        the deck compiles without needing a bibtex pass. Uncomment if wanted.
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta, positioning}
+\graphicspath{{../}{./}{../4_reference/}}
+\IfFileExists{opensans.sty}{\usepackage[default,scale=0.95]{opensans}}{}
+
+% --- Branding ---
+\definecolor{amritaMaroon}{HTML}{A4123F}
+\definecolor{okGreen}{HTML}{0D6B47}
+\definecolor{warnRed}{HTML}{B02A2A}
+\definecolor{coolBlue}{HTML}{1F5FA8}
+\definecolor{softGrey}{HTML}{F4F6FA}
+
+\usetheme{Madrid}
+\usecolortheme[named=amritaMaroon]{structure}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize items}[circle]
+\setbeamerfont{block title}{size=\small}
+
+\begin{document}
+
+% ============================ TITLE ==========================================
+\begin{frame}
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[fill=amritaMaroon, text=white, font=\bfseries\footnotesize,
+              anchor=north east, rounded corners=2pt, inner sep=5pt]
+        at ($(current page.north east) + (-0.2cm,-0.2cm)$)
+        {Type 1: Research Project};
+    \end{tikzpicture}
+    \centering
+    \IfFileExists{logo.png}{\includegraphics[width=2.4cm]{logo.png}}{\vspace{1.2cm}}
+    \vspace{0.05cm}
+
+    {\large \textbf{\textcolor{amritaMaroon}{Structural Descriptors for Metal--Organic
+    Frameworks:}}}\\
+    {\normalsize \textbf{\textcolor{amritaMaroon}{Multifractal Analysis of Framework
+    Connectivity for Simulation-Free Screening}}} \\
+    \vspace{0.05cm}
+    {\footnotesize \textbf{23CSE498 -- Project Phase 2 (Panel Review 1)} \quad | \quad
+     \textbf{Team Number: [XX]}} \\
+    \vspace{0.1cm}
+
+    \begin{table}
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.05}
+        \begin{tabular}{|c|c|l|}
+            \hline
+            \textbf{S.No} & \textbf{Register Number} & \textbf{Student Name} \\
+            \hline
+            1 & CB.SC.U4CSE23134 & P. M. Radha Krishna \\
+            \hline
+            2 & CB.SC.U4CSE23122 & P. Kshitij Varma \\
+            \hline
+            3 & CB.SC.U4CSE23141 & G. Rohith Abhinav \\
+            \hline
+            4 & CB.SC.U4CSE23XXX & J. Keerthi Sree \\
+            \hline
+            5 & CB.SC.U4CSE23XXX & Isha \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \vspace{0.05cm}
+
+    {\footnotesize Guide: \textbf{[Guide Name]}, Designation, Department of CSE} \\
+    \vspace{0.05cm}
+    {\scriptsize \today}
+\end{frame}
+
+% ============================ PROBLEM CONTEXT ================================
+\section{Problem Context}
+\begin{frame}{0. Problem Context --- Why This Project Exists}
+\framesubtitle{The gap between the number of candidate materials and our ability to evaluate them}
+\begin{columns}[T]
+\column{0.54\textwidth}
+\textbf{The materials-science problem}
+\begin{itemize}\footnotesize
+  \item \textbf{Metal--organic frameworks (MOFs)} are crystalline solids built by joining
+        metal clusters (\textit{nodes}) to organic molecules (\textit{linkers}).
+  \item They are extremely porous --- internal surface areas above
+        3{,}000\,m$^2$/g --- making them candidates for gas storage, carbon capture and
+        separation.
+  \item \textbf{Hundreds of thousands} of MOFs are known or hypothesised.
+\end{itemize}
+
+\vspace{0.15cm}
+\textbf{The computational bottleneck}
+\begin{itemize}\footnotesize
+  \item Evaluating one MOF by molecular simulation (GCMC) takes \textbf{hours}.
+  \item Exhaustive screening of the design space is \textbf{not feasible}.
+\end{itemize}
+
+\column{0.46\textwidth}
+\begin{block}{\footnotesize Research Question}
+\footnotesize
+Can a \textbf{purely structural, simulation-free descriptor} --- computed from a framework's
+\textit{connectivity} in seconds --- group MOFs into meaningful families, so a new candidate
+can be triaged \textbf{without} expensive calculation?
+\end{block}
+
+\vspace{0.1cm}
+\begin{block}{\footnotesize Value Proposition}
+\footnotesize
+Not a \textit{replacement} for simulation --- a \textbf{filter} that decides
+\textbf{what to simulate}. Reducing $10^5$ candidates to $10^2$ is the contribution.
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 1: METHODOLOGY ===========================
+\section{Methodology \& Solution Design}
+\begin{frame}{1. Methodology \& Solution Design}
+\framesubtitle{Rubric: Workflow, Architecture, Algorithms/Mathematical Model \& Evaluation Metrics (5 Marks)}
+\begin{columns}[T]
+\column{0.46\textwidth}
+{\scriptsize
+\textbf{Theoretical foundation.} A MOF is a \textbf{periodic graph}. Collapse each building
+block to a vertex and each inter-block bond to an edge; the chemistry reduces to pure
+connectivity, which the properties follow.
+
+\vspace{0.12cm}
+\textbf{Core algorithms}
+\begin{itemize}\scriptsize
+  \item \textbf{Decomposition:} MOFid metal-oxo algorithm~[1] --- PBC-aware bond
+        perception, connected-component block extraction.
+  \item \textbf{Graph construction:} \textit{labelled quotient graph} --- edges carry a
+        lattice translation $t$, so the infinite crystal is represented exactly.
+  \item \textbf{Descriptor:} influential-node multifractal analysis (iNMFA)~[2].
+\end{itemize}
+
+\vspace{0.12cm}
+\textbf{Dataset.} 77 frameworks queried live from MOFX-DB~[7], with published PLD/LCD pore
+diameters. Supercells of 3{,}400--6{,}100 atoms.
+}
+
+\column{0.54\textwidth}
+\centering
+\begin{tikzpicture}[
+  node distance=0.22cm,
+  every node/.style={font=\tiny},
+  box/.style={draw=coolBlue!70, fill=softGrey, rounded corners=2pt,
+              text width=3.6cm, align=center, inner sep=2pt, minimum height=0.40cm},
+  outbox/.style={draw=okGreen!80, fill=okGreen!8, rounded corners=2pt,
+              text width=3.6cm, align=center, inner sep=2pt, minimum height=0.40cm},
+  ar/.style={-{Latex[length=1.4mm]}, draw=amritaMaroon!70, thick}]
+  \node[box] (a) {\textbf{CIF} \\ cell + fractional coords (\textit{no bonds stored})};
+  \node[box, below=of a] (b) {\textbf{Bond perception} \\ min-image over 27 cell images,
+                              covalent-radius cutoff~[10]};
+  \node[box, below=of b] (c) {\textbf{Block decomposition} \\ metal-oxo split $\to$ nodes,
+                              linkers};
+  \node[box, below=of c] (d) {\textbf{Labelled quotient graph} \\ edge $=(A,B,t)$;
+                              supercell expansion};
+  \node[box, below=of d] (e) {\textbf{iNMFA} \\ box covering $\to \mathcal{P}_q(r) \to
+                              \tau(q) \to f(\alpha)$};
+  \node[outbox, below=of e] (f) {\textbf{Descriptor} \\ $\Delta\alpha$, $\alpha_0$, $A$
+                                 $\Rightarrow$ the band};
+  \draw[ar] (a)--(b); \draw[ar] (b)--(c); \draw[ar] (c)--(d);
+  \draw[ar] (d)--(e); \draw[ar] (e)--(f);
+\end{tikzpicture}
+
+\vspace{0.05cm}
+{\tiny \textbf{Validation metric:} published \textbf{coordination numbers} --- an
+independent ground truth the graph must reproduce.}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 1b: MATH =================================
+\begin{frame}{1b. Mathematical Model}
+\framesubtitle{The descriptor, defined}
+\begin{columns}[T]
+\column{0.52\textwidth}
+{\scriptsize
+\textbf{Step 1 --- the measure.} For each influential node $i$ (top 10\% by degree) and box
+radius $r$, let $M_i(r)$ be the number of vertices within $r$ steps:
+\vspace{-0.15cm}
+\[ p_i(r) = M_i(r)/N \]
+\vspace{-0.45cm}
+
+\textbf{Step 2 --- the partition function}, reweighted by a distortion factor $q$:
+\vspace{-0.15cm}
+\[ \mathcal{P}_q(r) = \sum_{i \in I} p_i(r)^{\,q} \]
+\vspace{-0.45cm}
+
+\textbf{Step 3 --- the mass exponent.}
+\vspace{-0.15cm}
+\[ \boxed{\ \tau(q) = \frac{\ln \mathcal{P}_q(r)}{\ln (r/r_N)}\ } \]
+\vspace{-0.45cm}
+
+\textbf{Step 4 --- Legendre transform.}
+\vspace{-0.15cm}
+\[ \alpha(q) = \frac{d\tau}{dq}, \quad f(\alpha) = q\,\alpha(q) - \tau(q) \]
+}
+
+\column{0.48\textwidth}
+\begin{block}{\footnotesize Interpreting the spectrum}
+{\tiny
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Quantity} & \textbf{Physical meaning} \\
+\midrule
+$\alpha$ & local growth rate around one block \\
+$f(\alpha)$ & how much of the framework shares it \\
+$\alpha_0$ & the \textit{typical} dimension (apex) \\
+$\Delta\alpha$ & \textbf{heterogeneity} of the pore network \\
+$A$ & asymmetry --- dense-vs-open dominance \\
+\bottomrule
+\end{tabular}}
+\end{block}
+
+\vspace{0.05cm}
+\begin{block}{\footnotesize Structural constraint used as a correctness test}
+\tiny
+$f(\alpha)$ \textbf{must} be an inverted parabola peaking at $q=0$, where
+$f(\alpha_0)=D_0$. \textbf{Any implementation not producing this shape is wrong} --- we
+used it as a test, and it caught a real defect (Slide 3).
+\end{block}
+
+\vspace{0.05cm}
+{\tiny \textbf{Evaluation metrics:} coordination-number agreement with published
+crystallography; spectrum shape (\% peaking at $q=0$); seed reproducibility; partial
+correlation against pore diameter.}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 2: IMPLEMENTATION ========================
+\section{Implementation Progress}
+\begin{frame}{2. Implementation Progress ($\approx$60\%) \& Module Functionality}
+\framesubtitle{Rubric: Core Modules Implemented, Functional \& Integrated (8 Marks)}
+\vspace{-0.25cm}
+\begin{table}
+\centering
+\tiny
+\renewcommand{\arraystretch}{1.04}
+\begin{tabular}{p{3.0cm} p{7.0cm} c}
+\toprule
+\textbf{Module / Component} & \textbf{Current Implementation State} & \textbf{Status} \\
+\midrule
+Data ingestion (\texttt{code\_01--02}) & CIF parsing, symmetry expansion, PBC bond
+perception over 27 cell images & \textcolor{okGreen}{\textbf{Functional}} \\
+Decomposition (\texttt{code\_03--04}) & \texttt{is\_metal()} classification; metal-oxo,
+single-node, all-node splits & \textcolor{okGreen}{\textbf{Functional}} \\
+Topology export (\texttt{code\_05--07}) & Centroid simplification, Systre \texttt{.cgd}
+writer, MOFid/MOFkey assembly & \textcolor{okGreen}{\textbf{Functional}} \\
+Network analysis (\texttt{code\_09}) & Labelled quotient graph, degree/eigenvector/
+betweenness centrality, Laplacian & \textcolor{okGreen}{\textbf{Functional}} \\
+Spectrum (\texttt{code\_10--11}) & iNMFA (box-covering) and NMFA (box-growing);
+$\tau$, $\alpha$, $f(\alpha)$, $\Delta\alpha$, $A$ & \textcolor{okGreen}{\textbf{Functional}} \\
+77-framework study & Live MOFX-DB query, spectra for all 77, band + confound analysis &
+\textcolor{okGreen}{\textbf{Functional}} \\
+Interactive web platform & 18-section site; full pipeline runs live in-browser on any
+uploaded CIF & \textcolor{okGreen}{\textbf{Integrated}} \\
+Size-confound correction & Fit-window normalisation / size-matched comparison &
+\textcolor{warnRed}{\textbf{In Progress}} \\
+Experimental-set validation & Re-query CoRE MOF~[9] for genuine metal diversity &
+\textcolor{warnRed}{\textbf{Planned}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\vspace{-0.3cm}
+{\tiny
+\textbf{Verification.} Two independent implementations --- Python (reference) and
+JavaScript (browser) --- agree on every reported value ($\tau(0)=-2.6551$ on HKUST-1 in
+both). Automated test suites cover the decomposition, the network layer, the band analysis
+and the site structure. Code: \textbf{github.com/Radha-Krishna-19/fyp}}
+\end{frame}
+
+% ============================ SLIDE 2b: RESULTS ==============================
+\begin{frame}{2b. Results Obtained So Far}
+\framesubtitle{Every number computed from the live pipeline --- nothing transcribed}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{\footnotesize Validation --- the graph is correct}
+{\scriptsize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+& \textbf{Node c.n.} & \textbf{Published} & \textbf{Net} \\
+\midrule
+HKUST-1 & 4 & (4,\,3) & \texttt{tbo} \\
+MOF-5 & 6 & (6,\,2) & \texttt{pcu} \\
+ZIF-8 & 4 & (4,\,2) & \texttt{sod} \\
+UiO-66 & \textbf{12} & (12,\,2) & \texttt{fcu} \\
+\bottomrule
+\end{tabular}
+\vspace{0.1cm}
+
+All four match. A naive construction gives UiO-66 = \textbf{6}.}
+\end{block}
+
+\begin{block}{\footnotesize Defects make influence measurable}
+{\scriptsize
+In a perfect crystal every block is symmetry-equivalent $\Rightarrow$ only \textbf{2}
+distinct centrality values $\Rightarrow$ ``top-$k$'' is a \textbf{tie}.
+Remove one linker: $2 \to 4$ distinct values, and
+$\lambda_2: 1.44 \to 1.19$ --- the weakening, quantified.}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{block}{\footnotesize The band --- 77 frameworks}
+{\scriptsize
+\begin{tabular}{@{}ll@{}}
+\toprule
+Spectra peaking at $q=0$ & \textbf{77 / 77} \\
+$\Delta\alpha$ range & 1.016 -- 1.410 \\
+Interquartile band & \textbf{1.112 -- 1.250} \\
+Asymmetry $A$ & $-1.51$ to $-1.04$ (all negative) \\
+\bottomrule
+\end{tabular}
+\vspace{0.1cm}
+
+A tight band with a consistent asymmetry sign.}
+\end{block}
+
+\begin{alertblock}{\footnotesize What the band does \textit{not} yet mean}
+{\scriptsize
+\begin{tabular}{@{}lr@{}}
+$\Delta\alpha$ vs pore diameter, raw & $-0.497$ \\
+\quad controlling for graph size & \textbf{$+0.101$} \\
+$\Delta\alpha$ vs graph size, ctrl.\ pore & \textbf{$+0.621$} \\
+\midrule
+$R^2$: size alone / +pore & 0.533 / 0.538 \\
+\end{tabular}
+\vspace{0.08cm}
+
+Pore size adds \textbf{+0.005}.
+$\Delta\alpha$ tracks \textbf{supercell size} --- a
+computational parameter, not chemistry.}
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 3: TECHNICAL KNOWLEDGE ===================
+\section{Technical Knowledge}
+\begin{frame}{3. Technical Knowledge \& Design Decisions}
+\framesubtitle{Rubric: Understanding of Methodology, Implementation \& Design Choices (5 Marks)}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\scriptsize
+\textbf{Why a graph representation?} MOF properties follow \textit{connectivity}: gas moves
+through the pore network, and the pore network is the void left by the wiring. An
+\textbf{unweighted} graph deliberately discards element identity --- what survives is
+\textbf{pure architecture}, which transfers across chemistries.
+
+\vspace{0.1cm}
+\textbf{Key design decisions}
+\begin{itemize}\scriptsize
+  \item \textbf{Labelled quotient graph over a naive graph.} Without translation labels,
+        UiO-66's 12-connected cluster reports as 6 --- or degenerates into a star.
+  \item \textbf{Supercell expansion.} A primitive cell has diameter $\sim$2, too small for
+        a power-law fit. Expansion is \textit{exact} because edges carry translations.
+  \item \textbf{Box-growing (deterministic) validated against box-covering (stochastic).}
+  \item \textbf{Defect simulation} to break symmetry --- physically justified by~[15].
+\end{itemize}
+}
+
+\column{0.5\textwidth}
+\begin{alertblock}{\footnotesize Defect found by our own shape test}
+{\scriptsize
+The spectra were not parabolic. Cause: $\tau(q)$ was extracted with a
+\textbf{free-intercept} least-squares slope, but~[2] defines it as a \textbf{ratio}
+$\ln\mathcal{P}_q/\ln(r/r_N)$ --- a fit \textbf{through the origin}.
+
+At $q=0$: every term is $p_i^0=1$, so $\mathcal{P}_0=|I|$ is \textbf{constant in $r$}.
+A flat line has slope $0 \Rightarrow \tau(0)=0 \Rightarrow f(\alpha_0)=0$ ---
+\textbf{the peak is deleted}.
+\vspace{0.08cm}
+
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$\tau$ definition & $\tau(0)$ & $f(\alpha_0)$ & parabola \\
+\midrule
+free intercept & 0.0000 & 0.0000 & \textcolor{warnRed}{no} \\
+\textbf{paper (ratio)} & $-2.5669$ & $+2.5669$ & \textcolor{okGreen}{\textbf{yes}} \\
+\bottomrule
+\end{tabular}}
+\end{alertblock}
+
+{\tiny
+\textbf{Trade-offs.} \texttt{MIN\_CELL\_LENGTH}/\texttt{MAX\_ATOMS} trade scaling range
+against $O(N^2)$ memory --- and are the source of the size confound we identified.
+\textbf{Influential-node selection is ambiguous in a perfect crystal} (all degrees tie);
+we report the ambiguity rather than hide it.}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 3b: PLATFORM =============================
+\begin{frame}{3b. Deliverable --- Interactive Analysis Platform}
+\framesubtitle{An 18-section technical site; the full pipeline executes in-browser}
+\begin{columns}[T]
+\column{0.52\textwidth}
+{\footnotesize
+\textbf{What it does}
+\begin{itemize}\scriptsize
+  \item Runs the \textbf{complete decomposition live} on any uploaded \texttt{.cif} ---
+        no server, no installation.
+  \item Steps through all nine pipeline modules with the \textbf{real source code beside a
+        live 3D model} of the structure at that stage.
+  \item Computes the network analysis and the multifractal spectrum \textbf{in the browser},
+        cross-validated against the Python reference.
+  \item A \textbf{graph-theory primer} (Section 10) defines every term --- vertex, degree,
+        quotient graph, Laplacian, $\lambda_2$, defect --- before it is used.
+  \item Every source file is readable by clicking its name anywhere on the page.
+\end{itemize}
+}
+\column{0.48\textwidth}
+\centering
+\IfFileExists{band_analysis.png}{%
+  \includegraphics[width=\linewidth]{band_analysis.png}%
+  \\ {\scriptsize The $\Delta\alpha$ band and the $f(\alpha)$ spectra, generated by the
+  analysis notebook.}
+}{%
+  \fbox{\begin{minipage}{5.6cm}\centering\vspace{1.4cm}
+  \textbf{[band\_analysis.png]}\\ \scriptsize spectra + band + confound
+  \vspace{1.4cm}\end{minipage}}
+}
+\end{columns}
+\end{frame}
+
+% ============================ SLIDE 4: MOOC ==================================
+\section{Technical Enrichment}
+\begin{frame}{4. Technical Enrichment Activity Choices}
+\framesubtitle{Professional Online Certification Details (Individual Mandatory: 10--20 Hours)}
+\vspace{-0.1cm}
+\begin{table}
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{|c|p{2.6cm}|p{4.6cm}|p{2.0cm}|c|}
+\hline
+\textbf{S.No} & \textbf{Student Name} & \textbf{Chosen MOOC / Course Title} &
+\textbf{Platform} & \textbf{Hours} \\
+\hline
+1 & P. M. Radha Krishna & Social and Economic Networks: Models and Analysis &
+Coursera (Stanford) & 20 Hrs \\
+\hline
+2 & P. Kshitij Varma & Introduction to Complex Network Analysis &
+NPTEL & 20 Hrs \\
+\hline
+3 & G. Rohith Abhinav & Chemoinformatics / Computational Materials Science &
+NPTEL & 16 Hrs \\
+\hline
+4 & J. Keerthi Sree & Data Visualization with Python &
+Coursera (IBM) & 15 Hrs \\
+\hline
+5 & Isha & Machine Learning for Materials Informatics &
+edX / Coursera & 15 Hrs \\
+\hline
+\end{tabular}
+\end{table}
+\vspace{0.1cm}
+{\scriptsize
+\textbf{Rationale for these selections.} Each maps to a component this project actually
+uses: \textbf{network analysis} (the graph representation and centrality measures),
+\textbf{complex networks} (fractal and multifractal characterisation),
+\textbf{chemoinformatics} (CIF handling, bond perception, MOF structure),
+\textbf{data visualisation} (the interactive platform), and \textbf{materials informatics}
+(descriptor-based screening --- the project's stated goal).
+
+\vspace{0.06cm}
+\textbf{Requirement:} each student completes one approved 10--20 hour certification from a
+recognised platform relevant to the project.}
+\end{frame}
+
+% ============================ SLIDE 5: NEXT STEPS ============================
+\section{Next Steps}
+\begin{frame}{5. Remaining Work \& Timeline}
+\framesubtitle{Concrete engineering tasks, not open research questions}
+\begin{columns}[T]
+\column{0.55\textwidth}
+{\footnotesize
+\textbf{Priority 1 --- Remove the size confound}
+\begin{itemize}\scriptsize
+  \item Normalise the fit window per structure so $\Delta\alpha$ stops growing with graph
+        size; \textbf{or} compare only frameworks at matched graph size.
+  \item Re-test the pore-diameter correlation afterwards. \textit{This decides whether the
+        band carries chemical meaning.}
+\end{itemize}
+
+\textbf{Priority 2 --- A genuinely diverse dataset}
+\begin{itemize}\scriptsize
+  \item Re-query CoRE MOF 2019~[9] with per-record database verification.
+  \item Current set is 77 hMOF entries~[8], \textbf{all Zn$_4$O} --- hypothetical and
+        single-metal, so no cross-metal claim is possible.
+\end{itemize}
+
+\textbf{Priority 3 --- Validate against measured properties}
+\begin{itemize}\scriptsize
+  \item Correlate the descriptor with published adsorption data to test whether it
+        predicts anything, rather than merely describing structure.
+\end{itemize}
+}
+\column{0.45\textwidth}
+\begin{block}{\footnotesize Position of the work}
+\scriptsize
+The \textbf{machinery is complete and verified}: the decomposition, the periodic graph,
+the centrality analysis and the spectrum all work, are cross-validated across two
+implementations, and reproduce published crystallography.
+
+\vspace{0.1cm}
+What remains is establishing \textbf{whether the descriptor means anything physically} ---
+and we have identified precisely what blocks that and how to remove it.
+\end{block}
+\begin{block}{\footnotesize On reporting negative results}
+\scriptsize
+We report the size confound rather than the raw $-0.497$ correlation.
+A band built on an uncontrolled size effect would not survive scrutiny; identifying and
+quantifying it is the more defensible scientific position.
+\end{block}
+\end{columns}
+\end{frame}
+
+% ============================ REFERENCES =====================================
+\section{References}
+\begin{frame}[allowframebreaks]{References}
+{\scriptsize
+\begin{thebibliography}{99}
+\bibitem{r1} B. J. Bucior \textit{et al.}, ``Identification Schemes for Metal--Organic
+Frameworks to Enable Rapid Search and Cheminformatics Analysis,''
+\textit{Cryst. Growth Des.}, vol.~19, no.~11, pp.~6682--6697, 2019.
+\bibitem{r2} J. Xiao, B. Wang, and X. Li, ``Deciphering the Generating Rules and
+Functionalities of Complex Networks,'' \textit{Sci. Rep.}, vol.~11, art.~22964, 2021.
+\bibitem{r3} C. Song, S. Havlin, and H. A. Makse, ``Self-Similarity of Complex Networks,''
+\textit{Nature}, vol.~433, pp.~392--395, 2005.
+\bibitem{r4} O. Delgado-Friedrichs and M. O'Keeffe, ``Identification of and Symmetry
+Computation for Crystal Nets,'' \textit{Acta Cryst. A}, vol.~59, no.~4, pp.~351--360, 2003.
+\bibitem{r5} M. O'Keeffe \textit{et al.}, ``The Reticular Chemistry Structure Resource
+(RCSR),'' \textit{Acc. Chem. Res.}, vol.~41, no.~12, pp.~1782--1789, 2008.
+\bibitem{r6} M. Eddaoudi \textit{et al.}, ``Modular Chemistry: Secondary Building Units as a
+Basis for the Design of Highly Porous and Robust Frameworks,''
+\textit{Acc. Chem. Res.}, vol.~34, no.~4, pp.~319--330, 2001.
+\bibitem{r7} N. S. Bobbitt, J. Chen, and R. Q. Snurr, ``MOFX-DB: An Online Database of
+Computational Adsorption Data for Nanoporous Materials,''
+\textit{J. Chem. Eng. Data}, vol.~68, no.~2, pp.~483--498, 2023.
+\bibitem{r8} C. E. Wilmer \textit{et al.}, ``Large-Scale Screening of Hypothetical
+Metal--Organic Frameworks,'' \textit{Nature Chem.}, vol.~4, no.~2, pp.~83--89, 2012.
+\bibitem{r9} Y. G. Chung \textit{et al.}, ``Advances, Updates, and Analytics for CoRE MOF
+2019,'' \textit{J. Chem. Eng. Data}, vol.~64, no.~12, pp.~5985--5998, 2019.
+\bibitem{r10} B. Cordero \textit{et al.}, ``Covalent Radii Revisited,''
+\textit{Dalton Trans.}, pp.~2832--2838, 2008.
+\bibitem{r11} S. S.-Y. Chui \textit{et al.}, ``A Chemically Functionalizable Nanoporous
+Material,'' \textit{Science}, vol.~283, pp.~1148--1150, 1999.
+\bibitem{r12} H. Li, M. Eddaoudi, M. O'Keeffe, and O. M. Yaghi, ``Design and Synthesis of an
+Exceptionally Stable and Highly Porous Metal--Organic Framework,''
+\textit{Nature}, vol.~402, pp.~276--279, 1999.
+\bibitem{r13} K. S. Park \textit{et al.}, ``Exceptional Chemical and Thermal Stability of
+Zeolitic Imidazolate Frameworks,'' \textit{PNAS}, vol.~103, no.~27, pp.~10186--10191, 2006.
+\bibitem{r14} J. H. Cavka \textit{et al.}, ``A New Zirconium Inorganic Building Brick
+Forming MOFs with Exceptional Stability,'' \textit{JACS}, vol.~130, no.~42,
+pp.~13850--13851, 2008.
+\bibitem{r15} G. C. Shearer \textit{et al.}, ``Defect Engineering: Tuning the Porosity and
+Composition of UiO-66,'' \textit{Chem. Mater.}, vol.~28, no.~11, pp.~3749--3761, 2016.
+\bibitem{r16} M. Fiedler, ``Algebraic Connectivity of Graphs,''
+\textit{Czech. Math. J.}, vol.~23, no.~2, pp.~298--305, 1973.
+\bibitem{r17} U. Brandes, ``A Faster Algorithm for Betweenness Centrality,''
+\textit{J. Math. Sociol.}, vol.~25, no.~2, pp.~163--177, 2001.
+\bibitem{r18} A. H. Larsen \textit{et al.}, ``The Atomic Simulation Environment,''
+\textit{J. Phys. Condens. Matter}, vol.~29, no.~27, art.~273002, 2017.
+\bibitem{r19} A. A. Hagberg, D. A. Schult, and P. J. Swart, ``Exploring Network Structure,
+Dynamics, and Function using NetworkX,'' \textit{SciPy2008}, pp.~11--15, 2008.
+\end{thebibliography}}
+\end{frame}
+
+% ============================ THANK YOU ======================================
+\begin{frame}
+\centering
+{\Huge \textbf{\textcolor{amritaMaroon}{Thank You}}}\\[0.6cm]
+{\footnotesize Interactive platform, source code and full documentation:}\\
+{\small \textbf{github.com/Radha-Krishna-19/fyp}}
+\end{frame}
+
+\end{document}
