@@ -102,7 +102,7 @@ Click each tab and say one line:
 
 **Toggle to naive on UiO-66:**
 
-> "Here's UiO-66 built the straightforward way. Its zirconium cluster reports as **6-connected**. The published crystallography says **12**. And in the first version we had, the whole thing collapsed into a **star** — one hub joined to everything else."
+> "Here's UiO-66 built the straightforward way. Its zirconium cluster reports as **1-connected**. The published crystallography says **12**. Almost the entire coordination environment disappears. And in the first version we had, the whole thing collapsed into a **star** — one hub joined to everything else."
 
 **Toggle back to periodic:**
 

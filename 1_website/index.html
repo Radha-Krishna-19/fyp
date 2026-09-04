@@ -343,6 +343,79 @@ svg.dia line.cut{stroke:#d13b3b;stroke-width:2.5;stroke-dasharray:5 4;opacity:.5
 svg.dia .wrapg line{stroke:#0d6b47;stroke-dasharray:4 3;stroke-width:2}
 svg.dia circle.img{fill:#9fd9bd;stroke:#0d6b47;stroke-width:1.5}
 svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
+
+/* ============================================================
+   PRESENTATION LAYER  (enhance.js)
+   Animations use transform/opacity only -- both are GPU-composited, so they
+   never trigger layout or paint. That matters here because the page carries
+   several live WebGL canvases and any layout thrash would show as stutter.
+   ============================================================ */
+
+/* --- reading progress ------------------------------------------------ */
+.read-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;
+  background:transparent;pointer-events:none}
+.read-progress i{display:block;height:100%;width:100%;
+  background:linear-gradient(90deg,var(--accent),#8a56c9);
+  transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .08s linear}
+
+/* --- scroll reveal --------------------------------------------------- */
+.reveal{opacity:0;transform:translateY(14px);
+  transition:opacity .5s cubic-bezier(.22,.61,.36,1),
+             transform .5s cubic-bezier(.22,.61,.36,1)}
+.reveal.revealed{opacity:1;transform:none}
+
+/* --- section anchors ------------------------------------------------- */
+h2 .anchor{opacity:0;margin-left:.45em;font-size:.62em;color:var(--muted2);
+  text-decoration:none;transition:opacity .18s ease,color .18s ease;
+  vertical-align:middle}
+h2:hover .anchor{opacity:.55}
+h2 .anchor:hover{opacity:1;color:var(--accent)}
+h2 .anchor.copied{opacity:1;color:var(--good)}
+h2 .anchor.copied::after{content:" copied";font-size:.72em;color:var(--good)}
+
+/* --- back to top ----------------------------------------------------- */
+.to-top{position:fixed;right:20px;bottom:20px;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--panel);
+  color:var(--text);font-size:18px;cursor:pointer;z-index:150;
+  box-shadow:0 3px 14px rgba(20,25,45,.13);
+  opacity:0;transform:translateY(10px) scale(.9);pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease,background .18s ease}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* --- interactive polish ---------------------------------------------- */
+.sticky-nav a{transition:background .16s ease,color .16s ease}
+.panel{transition:box-shadow .22s ease}
+.panel:hover{box-shadow:0 2px 6px rgba(20,25,45,.05),0 6px 26px rgba(20,25,45,.07)}
+button.mini,.mode-btn,.struct-tab{transition:background .16s ease,border-color .16s ease,
+  color .16s ease,transform .12s ease}
+button.mini:active,.mode-btn:active,.struct-tab:active{transform:translateY(1px)}
+.codecard{transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.codecard:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(47,111,237,.12)}
+table.data-table tbody tr,table.tbl tbody tr{transition:background .14s ease}
+table.data-table tbody tr:hover,table.tbl tbody tr:hover{background:var(--accent-soft)}
+figure.fig{transition:box-shadow .22s ease}
+figure.fig:hover{box-shadow:0 3px 18px rgba(20,25,45,.08)}
+
+/* --- respect the OS accessibility setting ---------------------------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* --- print: make the page a usable handout --------------------------- */
+@media print{
+  .sticky-nav,.to-top,.read-progress,.cv-overlay{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  body{background:#fff}
+  .panel,figure.fig{break-inside:avoid;box-shadow:none;border:1px solid #ccc}
+  h2{break-after:avoid}
+  table{break-inside:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;color:#555}
+}
 </style>
 </head>
 <body>
@@ -379,7 +452,8 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
     <a href="#paper"><b>16</b> Box-Growing</a>
     <a href="#band"><b>17</b> The Band</a>
     <span class="grp">Reference</span>
-    <a href="#source"><b>18</b> Source Code</a>
+    <a href="#references"><b>18</b> References</a>
+    <a href="#source"><b>19</b> Source Code</a>
   </div>
 </nav>
 
@@ -493,7 +567,7 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
     Because the paper's iNMFA method restricts the measure to the top-connected 10%, arguing those blocks carry the framework's structure. Section 12 shows this has a catch in a perfect crystal: every node ties, so “top 10%” is ambiguous. We report that rather than hide it.</p>
 
     <p style="margin:0 0 10px;"><b>“Why a periodic graph — why not just use the unit cell?”</b><br>
-    Because a crystal has no edges. Drop the lattice translations and every bond crossing a cell face vanishes, the framework fragments, and coordination numbers come out wrong. Section 11 shows UiO-66 reporting 6-connected instead of the published 12.</p>
+    Because a crystal has no edges. Drop the lattice translations and every bond crossing a cell face vanishes, the framework fragments, and coordination numbers come out wrong. Section 11 shows UiO-66 reporting <b>1</b>-connected instead of the published <b>12</b>.</p>
 
     <p style="margin:0;"><b>“What would make this genuinely useful?”</b><br>
     Removing the size confound (Section 16), then testing the descriptor against measured properties on a set with real metal diversity. Both are concrete next steps, not open research questions.</p>
@@ -914,6 +988,12 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
     <b>Why the labels cannot be dropped.</b> Two blocks are often joined by <i>several</i> bonds running in <i>different</i> directions. Those are genuinely different connections in the material. Without labels they all look like "A–B" and collapse into one edge, so the degree — and therefore the coordination number — comes out too low.
   </div>
 
+  <figure class="fig">
+    <img src="figures/fig06_boxgrowing.png" alt="Box growing at increasing radii" style="width:100%;display:block;border-radius:6px"
+         onerror="this.parentNode.style.display='none'">
+    <figcaption>Box growing on the real 112-vertex HKUST-1 graph. Centre on a block (red), count everything within <i>r</i> steps. That count, divided by network size, is the measure the spectrum is built from.</figcaption>
+  </figure>
+
   <h3 class="sub-head">10.6 · Centrality — "which blocks matter most"</h3>
   <p>Once the graph is right, we can ask which vertices are structurally important. Three standard measures, in plain terms:</p>
   <div class="callout">
@@ -1031,12 +1111,12 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
 
   <h3 class="sub-head">Why this is not a small detail — a worked case</h3>
   <p>Take <b>UiO-66</b>. Its unit cell contains exactly <b>one</b> zirconium cluster, and the published crystallography says that cluster is <b>12-connected</b>: it holds twelve linkers.</p>
-  <p>But the cell only has room for a few of those linkers inside it. The rest of the twelve connections run <i>out</i> of the box and come back into a neighbouring copy. Under the naive construction those connections either vanish or merge together, and the cluster reports as <b>6-connected</b> instead of 12.</p>
+  <p>But the cell only has room for a few of those linkers inside it. The rest of the twelve connections run <i>out</i> of the box and come back into a neighbouring copy. Under the naive construction those connections either vanish or merge together. Measured on our own pipeline, the cluster reports as <b>1-connected</b> instead of 12 &mdash; almost the entire coordination environment disappears.</p>
 
   <figure class="fig">
     <svg viewBox="0 0 700 200" class="dia">
       <g transform="translate(30,25)">
-        <text x="130" y="0" class="cap2" fill="#b02a2a" style="font-weight:700">Naive: 6-connected (wrong)</text>
+        <text x="130" y="0" class="cap2" fill="#b02a2a" style="font-weight:700">Naive: connections lost (wrong)</text>
         <g class="gA">
           <line x1="130" y1="80" x2="60"  y2="45"/><line x1="130" y1="80" x2="130" y2="30"/>
           <line x1="130" y1="80" x2="200" y2="45"/><line x1="130" y1="80" x2="60"  y2="115"/>
@@ -1076,6 +1156,12 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
   <div class="callout warn">
     <b>It can fail even worse than a wrong number.</b> If the linkers also fold in on themselves, the whole cell degenerates into a <b>star</b> — one hub vertex joined to everything, every other vertex with degree 1. A star is not a framework. Every centrality measure computed on it is meaningless, and the failure is silent: no error, just plausible-looking numbers describing a material that does not exist.
   </div>
+
+  <figure class="fig">
+    <img src="figures/fig03_periodic_vs_naive.png" alt="Coordination numbers: naive vs correct vs published" style="width:100%;display:block;border-radius:6px"
+         onerror="this.parentNode.style.display='none'">
+    <figcaption>Measured on all four test structures. <b>UiO-66 is the extreme case: twelve connections collapse to one.</b> Generated by <span class="code-chip">code_09_network_analysis.py</span>.</figcaption>
+  </figure>
 
   <h3 class="sub-head">How we know which one is right</h3>
   <p>This is the reason the coordination number matters so much: it is <b>published, independent, and checkable</b>. The literature states what each of these clusters connects to, so the graph has a right answer to be measured against. Toggle the two constructions below and watch the numbers move.</p>
@@ -1129,6 +1215,14 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
   <!-- ================= 2 ================= -->
   <h2 class="section-title" id="influence"><span class="stitle-num">12</span>Which Blocks Are Influential?</h2>
   <p class="section-sub">Three complementary measures. <b>Degree</b> is the raw coordination number. <b>Eigenvector centrality</b> is the principal eigenvector of the adjacency matrix — a block scores highly when it is connected to other high-scoring blocks. <b>Betweenness</b> counts how many shortest paths run through a block, distinguishing bridges from merely well-connected vertices.</p>
+
+  <figure class="fig">
+    <img src="figures/fig04_degeneracy.png" alt="Degree distributions showing only two distinct values" style="width:100%;display:block;border-radius:6px"
+         onerror="this.parentNode.style.display='none'">
+    <figcaption>Degree distribution for each test structure. <b>Every one has exactly two distinct values</b> &mdash; one for nodes, one for linkers. A &ldquo;top-k most influential&rdquo; list is therefore sorting a tie.</figcaption>
+  </figure>
+
+
 
   <div class="grid2">
     <div class="panel" style="margin-top:0;">
@@ -1193,6 +1287,14 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
   </figure>
 
   <h3 class="sub-head">What we measure when we do it</h3>
+
+  <figure class="fig">
+    <img src="figures/fig05_defect.png" alt="Lambda-2 and centrality before and after removing one linker" style="width:100%;display:block;border-radius:6px"
+         onerror="this.parentNode.style.display='none'">
+    <figcaption>HKUST-1, measured at two graph sizes. Removing one linker drops &lambda;&#8322; by <b>18%</b> on the unit cell and makes the blocks distinguishable for the first time. The effect holds at both sizes.</figcaption>
+  </figure>
+
+
   <p>Two things change, and both are meaningful:</p>
   <ul class="tight">
     <li><b>Distinct centrality values go from 2 to 4</b> in HKUST-1. The blocks have stopped being interchangeable, so "most influential" becomes a question with an answer.</li>
@@ -1356,7 +1458,76 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
   </div>
 
 
-  <h2 class="section-title" id="source"><span class="stitle-num">18</span>Every Line of Source Code</h2>
+  <h2 class="section-title" id="references"><span class="stitle-num">18</span>References</h2>
+  <p class="section-sub">Every source this project actually uses &mdash; an algorithm we implement, a dataset we query, a method we follow, or a physical constant we cite. Nothing here is padding. The two that matter most are marked.</p>
+
+  <div class="panel">
+    <h3 class="sub-head">The algorithm we visualise, and the method we implement</h3>
+    <table class="data-table">
+      <thead><tr><td style="width:38px">#</td><td>Reference</td><td style="width:31%">Why it is here</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label"><b>[1]</b></td>
+          <td class="dt-note">B. J. Bucior <i>et al.</i>, &ldquo;Identification Schemes for Metal&ndash;Organic Frameworks to Enable Rapid Search and Cheminformatics Analysis,&rdquo; <i>Cryst. Growth Des.</i> <b>19</b>(11), 6682&ndash;6697 (2019).</td>
+          <td class="dt-value" style="color:#2f6fed"><b>Core.</b> Defines MOFid/MOFkey and the metal-oxo decomposition. Modules <code>code_01</code>&ndash;<code>code_07</code> are a faithful translation.</td></tr>
+      <tr><td class="dt-label"><b>[2]</b></td>
+          <td class="dt-note">J. Xiao, B. Wang, X. Li, &ldquo;Deciphering the Generating Rules and Functionalities of Complex Networks,&rdquo; <i>Sci. Rep.</i> <b>11</b>, 22964 (2021).</td>
+          <td class="dt-value" style="color:#2f6fed"><b>Core.</b> Source of NMFA/iNMFA. <b>Its &tau; definition is exactly what our correction restores</b> (Section 16).</td></tr>
+      <tr><td class="dt-label">[3]</td>
+          <td class="dt-note">C. Song, S. Havlin, H. A. Makse, &ldquo;Self-Similarity of Complex Networks,&rdquo; <i>Nature</i> <b>433</b>, 392&ndash;395 (2005).</td>
+          <td class="dt-note">Box-covering &mdash; the method family, and the contrast [2] draws against box-growing.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Topology</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[4]</td><td class="dt-note">O. Delgado-Friedrichs, M. O'Keeffe, <i>Acta Cryst. A</i> <b>59</b>(4), 351&ndash;360 (2003).</td><td class="dt-value" style="width:31%">Systre &mdash; <code>code_06</code> writes its <code>.cgd</code> input</td></tr>
+      <tr><td class="dt-label">[5]</td><td class="dt-note">M. O'Keeffe <i>et al.</i>, &ldquo;The Reticular Chemistry Structure Resource (RCSR),&rdquo; <i>Acc. Chem. Res.</i> <b>41</b>(12), 1782&ndash;1789 (2008).</td><td class="dt-value">the net symbols <code>tbo</code>, <code>pcu</code>, <code>sod</code>, <code>fcu</code></td></tr>
+      <tr><td class="dt-label">[6]</td><td class="dt-note">M. Eddaoudi <i>et al.</i>, &ldquo;Modular Chemistry: Secondary Building Units&hellip;,&rdquo; <i>Acc. Chem. Res.</i> <b>34</b>(4), 319&ndash;330 (2001).</td><td class="dt-value">the SBU concept</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Data &mdash; and why the distinction matters</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[7]</td><td class="dt-note">N. S. Bobbitt, J. Chen, R. Q. Snurr, &ldquo;MOFX-DB,&rdquo; <i>J. Chem. Eng. Data</i> <b>68</b>(2), 483&ndash;498 (2023).</td><td class="dt-value" style="width:31%">the database our notebook queries live</td></tr>
+      <tr><td class="dt-label">[8]</td><td class="dt-note">C. E. Wilmer <i>et al.</i>, &ldquo;Large-Scale Screening of Hypothetical Metal&ndash;Organic Frameworks,&rdquo; <i>Nature Chem.</i> <b>4</b>(2), 83&ndash;89 (2012).</td><td class="dt-value" style="color:#b02a2a"><b>Our 77 are hMOF entries &mdash; hypothetical, never synthesised</b></td></tr>
+      <tr><td class="dt-label">[9]</td><td class="dt-note">Y. G. Chung <i>et al.</i>, &ldquo;CoRE MOF 2019,&rdquo; <i>J. Chem. Eng. Data</i> <b>64</b>(12), 5985&ndash;5998 (2019).</td><td class="dt-value" style="color:#b02a2a"><b>The experimental set we still need</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Chemistry &mdash; constants and test structures</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[10]</td><td class="dt-note">B. Cordero <i>et al.</i>, &ldquo;Covalent Radii Revisited,&rdquo; <i>Dalton Trans.</i> 2832&ndash;2838 (2008).</td><td class="dt-value" style="width:31%">the bond-perception cutoffs in <code>code_02</code></td></tr>
+      <tr><td class="dt-label">[11]</td><td class="dt-note">S. S.-Y. Chui <i>et al.</i>, <i>Science</i> <b>283</b>, 1148&ndash;1150 (1999).</td><td class="dt-value">HKUST-1</td></tr>
+      <tr><td class="dt-label">[12]</td><td class="dt-note">H. Li, M. Eddaoudi, M. O'Keeffe, O. M. Yaghi, <i>Nature</i> <b>402</b>, 276&ndash;279 (1999).</td><td class="dt-value">MOF-5 / IRMOF-1</td></tr>
+      <tr><td class="dt-label">[13]</td><td class="dt-note">K. S. Park <i>et al.</i>, <i>PNAS</i> <b>103</b>(27), 10186&ndash;10191 (2006).</td><td class="dt-value">ZIF-8 &mdash; our chemical control</td></tr>
+      <tr><td class="dt-label">[14]</td><td class="dt-note">J. H. Cavka <i>et al.</i>, <i>JACS</i> <b>130</b>(42), 13850&ndash;13851 (2008).</td><td class="dt-value" style="color:#2f6fed"><b>UiO-66 &mdash; the 12-connected test case</b></td></tr>
+      <tr><td class="dt-label">[15]</td><td class="dt-note">G. C. Shearer <i>et al.</i>, &ldquo;Defect Engineering&hellip;UiO-66,&rdquo; <i>Chem. Mater.</i> <b>28</b>(11), 3749&ndash;3761 (2016).</td><td class="dt-value" style="color:#2f6fed"><b>Why our defect work is real chemistry</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Network science and software</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[16]</td><td class="dt-note">M. Fiedler, &ldquo;Algebraic Connectivity of Graphs,&rdquo; <i>Czech. Math. J.</i> <b>23</b>(2), 298&ndash;305 (1973).</td><td class="dt-value" style="width:31%">defines &lambda;&#8322;</td></tr>
+      <tr><td class="dt-label">[17]</td><td class="dt-note">U. Brandes, &ldquo;A Faster Algorithm for Betweenness Centrality,&rdquo; <i>J. Math. Sociol.</i> <b>25</b>(2), 163&ndash;177 (2001).</td><td class="dt-value">betweenness, in <code>code_09</code></td></tr>
+      <tr><td class="dt-label">[18]</td><td class="dt-note">A. H. Larsen <i>et al.</i>, &ldquo;The Atomic Simulation Environment,&rdquo; <i>J. Phys. Condens. Matter</i> <b>29</b>(27), 273002 (2017).</td><td class="dt-value">ASE &mdash; CIF parsing in the notebook</td></tr>
+      <tr><td class="dt-label">[19]</td><td class="dt-note">A. A. Hagberg, D. A. Schult, P. J. Swart, &ldquo;Exploring Network Structure&hellip; using NetworkX,&rdquo; <i>SciPy2008</i>, 11&ndash;15.</td><td class="dt-value">NetworkX</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>If you only read two:</b> <b>[1]</b> is the algorithm we visualise &mdash; Sections 7&ndash;9 are a faithful implementation of it. <b>[2]</b> is the method we apply &mdash; Sections 15&ndash;17 come from it, and the &tau; definition on its page 22 is the one line our correction restores.
+    <br><br>
+    <b>[8] and [9] together explain the dataset problem.</b> We requested [9] (experimental) and received [8] (hypothetical). Both are cited because the distinction changes what we are allowed to claim.
+    <br><br>
+    Full annotated list in <span class="code-chip">6_references/README.md</span>; BibTeX in <span class="code-chip">references.bib</span>.
+  </div>
+
+  <h2 class="section-title" id="source"><span class="stitle-num">19</span>Every Line of Source Code</h2>
   <p class="section-sub">Click any file to read it here — full source, line numbers, no download and no web server needed. Modules 00–07 are faithful translations of the published <code>snurr-group/mofid</code> C++; modules 08–11 are this project's own work.</p>
   <div class="toolbar">
     <span class="lbl">Show:</span>
@@ -1404,5 +1575,6 @@ svg.dia circle.gvW{fill:#e0993b;stroke:#b02a2a;stroke-width:2.5}
 <script src="band_data.js"></script>
 <script src="band_page.js"></script>
 <script src="single_page.js"></script>
+<script src="enhance.js"></script>
 </body>
 </html>

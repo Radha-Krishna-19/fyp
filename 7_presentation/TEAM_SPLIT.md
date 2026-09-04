@@ -217,7 +217,7 @@ If a laptop is available, **show it live**. Otherwise describe it.
 > chemistries."
 
 > "**Second, the labelled quotient graph.** Every edge carries a lattice translation. Without
-> it, UiO-66 reports 6-connected instead of 12, or the whole cell degenerates into a star."
+> it, UiO-66 reports **1**-connected instead of 12 — almost the whole coordination environment vanishes."
 
 > "**Third, supercell expansion.** A single unit cell has a graph diameter of about 2 — far too
 > small to fit a power law across. Expanding is exact, because the edges already carry their

@@ -99,7 +99,7 @@ be computed on it.
 
 **The graph must be periodic.** A crystal has no edges. Drop the lattice translations and
 every bond crossing a cell face disappears, the framework fragments, and coordination numbers
-come out wrong — UiO-66 reports 6-connected instead of the published 12. Built as a labelled
+come out wrong — UiO-66 reports **1**-connected instead of the published 12. Built as a labelled
 quotient graph, all four test structures match published crystallography.
 
 **Influence cannot be ranked in a perfect crystal.** The brief was to find the most

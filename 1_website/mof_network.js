@@ -13,7 +13,7 @@
 // blocks joined by several bonds running in DIFFERENT lattice directions
 // collapse into a single edge. UiO-66 is the structure that exposes it: its
 // primitive cell holds one Zr6 cluster whose 12 connections all run out to
-// periodic images, so the naive graph reports 6-connected (or degenerates into
+// periodic images, so the naive graph loses almost all of them (measured: 1) or degenerates into
 // a star), when the true answer is 12.
 //
 // The correct object is the LABELLED QUOTIENT GRAPH: an edge is identified by
