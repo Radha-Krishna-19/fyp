@@ -220,13 +220,31 @@ diversity.
 ## 6 · Where everything lives
 
 ```
-1_website/     ← START HERE. Open index.html. One page, everything, interactive.
-2_python/      One runnable module per pipeline stage + the analysis modules
-3_notebooks/   mof_band_analysis.ipynb — the 77-framework spectrum study
-4_reference/   Figures
-5_concepts/    Deep-dive documents
+1_website/       the interactive platform — open index.html
+2_python/        one runnable module per pipeline stage + the analysis modules
+3_notebooks/     mof_band_analysis.ipynb — the 77-framework study (Colab, Run All)
+4_reference/     figures
+5_concepts/      shorter deep-dive documents
+6_references/    the papers, annotated with what each one is FOR
+7_presentation/  panel-review deck (+ Overleaf zip) and the 5-person speaking split
+8_textbook/      ← START HERE to understand the project properly
 PRESENTATION_SCRIPT.md
 ```
+
+### 📘 The textbook
+
+**[`8_textbook/`](8_textbook/README.md) is a complete zero-to-hero explanation** — 12 chapters,
+~15,500 words, assuming no prior chemistry or network science. Every number in it was computed
+by our own pipeline, and all eight figures are generated from real project data.
+
+| Short on time? | Read |
+|---|---|
+| One hour before the review | [1 Background](8_textbook/01_background.md), [2 Problem](8_textbook/02_problem.md), [8 Results](8_textbook/08_results.md) |
+| Need to defend the approach | [2 Problem Statement](8_textbook/02_problem.md) |
+| Need to explain the maths | [5 Graphs](8_textbook/05_graphs.md), [6 Multifractal](8_textbook/06_multifractal.md) |
+| Asked *"how do you know it's right?"* | [9 Mistakes We Found](8_textbook/09_mistakes.md) |
+| Asked about weaknesses | [10 Limits and Next Steps](8_textbook/10_limitations.md) |
+| Lost on a term | [11 Glossary](8_textbook/11_glossary.md) |
 
 **The website is the main deliverable.** `1_website/index.html` — just double-click it. No
 server, no install. Seventeen sections, live 3D, the real algorithm running in your browser on
