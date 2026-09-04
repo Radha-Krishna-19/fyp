@@ -8,7 +8,9 @@ Everything needed for the **23CSE498 Phase 2, Panel Review 1** presentation.
 | **`panel_review.pdf`** | Pre-compiled, 13 pages. Ready to present. |
 | **`TEAM_SPLIT.md`** | **Who says what.** Per-member slides, exact script, timings, and a question-routing table. |
 | `references.bib` | BibTeX for the deck (references are also typeset inline, so no bibtex pass is needed). |
-| `band_analysis.png` | The figure used on slide 3b. |
+| `band77_figure.png` | The results figure (all 77 spectra + the band + the confound), slide 3c. |
+| **`panel_review_overleaf.zip`** | **Upload this straight to Overleaf.** Contains the .tex, the figure, the .bib and instructions. |
+| `overleaf/` | The same files unzipped, if you prefer to upload individually. |
 
 ---
 
@@ -33,8 +35,10 @@ compiles if they are missing (it leaves a placeholder box instead).
 The deck has three placeholders:
 
 1. **`Team Number: [XX]`** — on the title slide
-2. **`Guide: [Guide Name]`** — on the title slide
-3. **Two roll numbers** — `CB.SC.U4CSE23XXX` for J. Keerthi Sree and Isha
+2. **Two roll numbers** — `CB.SC.U4CSE23XXX` for J. Keerthi Sree and Isha
+
+The guide is already filled in: **Dr. T. Ramraj**, M.E, Ph.D — Assistant Professor (Sl.Gd.),
+Department of CSE, School of Computing, Coimbatore.
 
 Search the `.tex` for `XX` to find all of them.
 
@@ -71,7 +75,7 @@ map onto components the project actually uses:
 
 | Student | Suggested course | Platform | Hrs | Maps to |
 |---|---|---|---|---|
-| P. M. Radha Krishna | Social and Economic Networks: Models and Analysis | Coursera (Stanford) | 20 | The graph representation, degree, centrality |
+| P. M. Radha Krishna | **Algorithms on Graphs** — BFS, shortest paths, connected components | Coursera (UC San Diego) | 20 | **The most CSE-facing option.** These are the exact algorithms the project runs: BFS for box growing, shortest paths for the distance matrix, connected components for block extraction |
 | P. Kshitij Varma | Introduction to Complex Network Analysis | NPTEL | 20 | Fractal/multifractal network characterisation |
 | G. Rohith Abhinav | Chemoinformatics *or* Computational Materials Science | NPTEL | 16 | CIF handling, bond perception, MOF structure |
 | J. Keerthi Sree | Data Visualization with Python | Coursera (IBM) | 15 | The interactive platform and figures |

@@ -1,6 +1,7 @@
 # Panel Review — Team Split & Speaking Script
 
 **23CSE498 Project Phase 2 · Panel Review 1**
+**Guide: Dr. T. Ramraj**, M.E, Ph.D — Assistant Professor (Sl.Gd.), Dept. of CSE, School of Computing, Coimbatore
 Total: **20 minutes presentation + 10 minutes questions**
 
 Audience is mixed — **CSE faculty** (who will probe the algorithms, complexity and
@@ -281,7 +282,7 @@ If a laptop is available, **show it live**. Otherwise describe it.
 ## Preparation checklist
 
 - [ ] Compile `panel_review.tex` twice (`pdflatex`), check it's 13 pages
-- [ ] Fill in **Team Number**, **Guide Name**, and the two missing roll numbers
+- [ ] Fill in **Team Number** and the two missing roll numbers (guide is already in)
 - [ ] Save `three.min.js` into `1_website/` so the 3D works **without internet**
 - [ ] Open `index.html` once beforehand so nothing loads slowly in front of the panel
 - [ ] Each member: read your own section aloud once, timed
