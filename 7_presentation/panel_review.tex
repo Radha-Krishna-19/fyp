@@ -68,9 +68,9 @@
             \hline
             3 & CB.SC.U4CSE23141 & G. Rohith Abhinav \\
             \hline
-            4 & CB.SC.U4CSE23XXX & J. Keerthi Sree \\
+            4 & CB.SC.U4CSE23031 & J. Keerthi Sree \\
             \hline
-            5 & CB.SC.U4CSE23XXX & Isha Sri Prakash \\
+            5 & CB.SC.U4CSE23029 & Isha Sri Prakash \\
             \hline
         \end{tabular}
     \end{table}
@@ -265,26 +265,27 @@ $\tau$, $\alpha$, $f(\alpha)$, $\Delta\alpha$, $A$ & \textcolor{okGreen}{\textbf
 Interactive web platform & 9-page documentation portal; full pipeline runs live in-browser
 on any uploaded CIF; 5 headless test suites gate publication &
 \textcolor{okGreen}{\textbf{Integrated}} \\
-Size-matched comparison & 4 synthesised MOFs expanded under the identical 48\,\AA{} rule
+Size-matched comparison & 61 synthesised MOFs expanded under the identical 48\,\AA{} rule
 and compared against the 77 & \textcolor{okGreen}{\textbf{Functional}} \\
-Dataset release & 81 frameworks, CC BY 4.0, with schema, provenance and the withdrawn
-claim documented & \textcolor{okGreen}{\textbf{Functional}} \\
-Experimental-set validation at scale & Provenance bug fixed; notebook ready; the
-50-structure run needs a live query & \textcolor{warnRed}{\textbf{Planned}} \\
+Dataset release & 138 frameworks, CC BY 4.0, with schema, provenance and both withdrawn
+claims documented & \textcolor{okGreen}{\textbf{Functional}} \\
+Experimental-set validation at scale & \textbf{Done:} 61 CoRE MOF frameworks via Zenodo DOI,
+no API dependency & \textcolor{okGreen}{\textbf{Functional}} \\
 \bottomrule
 \end{tabular}
 \end{table}
 \vspace{-0.32cm}
 {\tiny
 \textbf{Two axes, because ``built'' and ``established'' are different claims.}
-\textbf{Engineering $\approx$85\%}: 14 Python modules, an independent browser
-implementation that cross-checks them, a 9-page platform, 5 CI-gating test suites, the
-77-framework study end to end, a released dataset.
-\textbf{Validation $\approx$60\%}: the descriptor is provably correct and its failure modes
-are documented --- the size confound is identified, quantified and reported. Not established:
-behaviour across chemical families, untestable on a single-metal set.
-\textbf{Weighted $\approx$73\%} (rubric asks $\approx$60\%).
-\textbf{Verification:} Python and JavaScript agree on every value ($\tau(0)=-2.6551$,
+\textbf{Engineering $\approx$96\%}: 14 Python modules, an independent browser
+implementation that cross-checks them, a 10-page platform, 6 CI-gating test suites, the
+138-framework study end to end, a released dataset.
+\textbf{Validation $\approx$73\%}: the descriptor is provably correct, its failure modes are
+documented, and it now \textbf{transfers to experimentally synthesised structures} --- 61 of
+them, size-matched. Not established: that $\Delta\alpha$ predicts any measured property.
+The two engines are also not yet reconciled at supercell size.
+\textbf{Weighted $\approx$85\%} (rubric asks $\approx$60\%).
+\textbf{Verification:} Python and JavaScript agree at unit-cell size ($\tau(0)=-2.6551$,
 HKUST-1). \textbf{github.com/Radha-Krishna-19/fyp}}
 \end{frame}
 
@@ -319,19 +320,24 @@ $\lambda_2: 1.44 \to 1.19$ --- the weakening, quantified.}
 \end{block}
 
 \column{0.5\textwidth}
-\begin{block}{\footnotesize The band --- 77 frameworks}
+\begin{block}{\footnotesize The band --- and it transfers to real MOFs}
 {\scriptsize
-\begin{tabular}{@{}ll@{}}
+\begin{tabular}{@{}lcc@{}}
 \toprule
-Spectra peaking at $q=0$ & \textbf{77 / 77} \\
-$\Delta\alpha$ range & 1.016 -- 1.410 \\
-Interquartile band & \textbf{1.112 -- 1.250} \\
-Asymmetry $A$ & $-1.51$ to $-1.04$ (all negative) \\
+& \textbf{Hypothetical} & \textbf{Synthesised} \\
+& 77 hMOF & 61 CoRE MOF \\
+\midrule
+Valid spectra & 77 / 77 & 61 / 61 \\
+$\Delta\alpha$ range & 1.02 -- 1.41 & 0.95 -- 1.47 \\
+Mean $\Delta\alpha$ & 1.180 & \textbf{1.198} \\
+Mean asymmetry $A$ & $-1.31$ & \textbf{$-1.31$} \\
 \bottomrule
 \end{tabular}
 \vspace{0.1cm}
 
-A tight band with a consistent asymmetry sign.}
+Means differ by \textbf{0.018} (Welch $p=0.38$). Same band,
+same shape --- calibrated on generated structures,
+valid on ones that exist.}
 \end{block}
 
 \begin{alertblock}{\footnotesize What the band does \textit{not} yet mean}
@@ -451,6 +457,27 @@ pore correlation ($-0.50$) collapses to $+0.10$ controlling for graph size; size
 $+0.62$.}
 \end{frame}
 
+% ---- the transfer result, and the claim we withdrew to get it ----
+\begin{frame}{3d. Does It Transfer? 61 Frameworks That Actually Exist}
+\framesubtitle{The band was calibrated on structures nobody has ever made}
+\centering
+\IfFileExists{fig09_real_vs_hmof.png}{%
+  \includegraphics[width=0.99\linewidth,height=0.62\textheight,keepaspectratio]{fig09_real_vs_hmof.png}%
+}{%
+  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
+  \textbf{[fig09\_real\_vs\_hmof.png]}\vspace{2cm}\end{minipage}}
+}
+
+\vspace{-0.1cm}
+{\tiny \textbf{(a)} 61 synthesised frameworks land \textit{on} the hypothetical band:
+$0.95$--$1.47$ vs $1.02$--$1.41$, means differing by $0.018$ (Welch $p=0.38$).
+\textbf{(b)} \textcolor{warnRed}{\textbf{We withdrew our own result to get here.}} The four
+MOFs we previously reported at $1.66$--$2.26$ are the gold diamonds --- 256--972 atoms,
+off the size range of both clouds. $\Delta\alpha$ rises with atom count ($r=+0.73$), so that
+comparison measured graph size. \textbf{(c)} Same centre; the real set is significantly
+\textit{more} variable (Levene $p=0.010$).}
+\end{frame}
+
 % ============================ SLIDE 4: MOOC ==================================
 \section{Technical Enrichment}
 \begin{frame}{4. Technical Enrichment Activity Choices}
@@ -505,26 +532,28 @@ recognised platform relevant to the project.}
 \column{0.55\textwidth}
 {\scriptsize
 \setlength{\itemsep}{0pt}\setlength{\parskip}{1pt}
-\textbf{Priority 1 --- 50 synthesised frameworks} \hfill \textcolor{warnRed}{\textbf{blocking}}
+\textbf{Priority 1 --- 61 synthesised frameworks} \hfill \textcolor{okGreen}{\textbf{done}}
 \begin{itemize}\scriptsize
-  \item The provenance bug is \textbf{fixed}: records are now filtered on their own
-        \texttt{database} field instead of trusting the server-side parameter.
-  \item One run settles three questions at once --- cross-family separation, whether the
-        real-MOF gap is real, and whether the band means anything beyond one generator.
-  \item \textbf{Nothing needs to be built.} It is a data task.
+  \item Structures now come from the \textbf{Zenodo archive} of CoRE MOF 2019
+        (DOI 10.5281/zenodo.3370236), not a live API --- an immutable record is a
+        stronger provenance guarantee than any query.
+  \item It settled the question and settled it \textbf{against our own earlier claim}:
+        the two bands coincide.
 \end{itemize}
 
-\textbf{Priority 2 --- Confirm the size control at scale} \hfill \textcolor{okGreen}{\textbf{method proven}}
+\textbf{Priority 2 --- Confirm the size control at scale} \hfill \textcolor{okGreen}{\textbf{confirmed}}
 \begin{itemize}\scriptsize
-  \item Size-matching already works: the 4 synthesised structures were expanded under the
-        identical 48\,\AA{} rule before comparison.
-  \item Repeat the partial-correlation check on the larger set.
+  \item The partial-correlation check reproduces on real data: pore-size correlation
+        $-0.20 \rightarrow +0.10$ once graph size is held constant.
+  \item It also exposed the flaw in our four-structure comparison --- see right.
 \end{itemize}
 
-\textbf{Priority 3 --- Validate against measured properties}
+\textbf{Priority 3 --- Validate against measured properties} \hfill \textcolor{warnRed}{\textbf{now blocking}}
 \begin{itemize}\scriptsize
-  \item Correlate the descriptor with published adsorption data to test whether it
-        predicts anything, rather than merely describing structure.
+  \item This is the only substantive item left. $\Delta\alpha$ is reproducible,
+        size-controlled and transferable, and still not shown to predict any property
+        a chemist would ask for.
+  \item Regress against measured adsorption on this same 61-structure set.
 \end{itemize}
 }
 \column{0.45\textwidth}
@@ -535,15 +564,19 @@ the centrality analysis and the spectrum all work, are cross-validated across tw
 implementations, and reproduce published crystallography.
 
 \vspace{0.08cm}
-\textbf{New:} four \textit{synthesised} MOFs, size-matched, fall clear of the hypothetical
-band --- $\Delta\alpha=1.66$--$2.26$ vs $1.02$--$1.41$, gap $0.25$, no overlap. MOF-5 shares
-the Zn$_4$O node and block count of much of the 77 and still separates: neither a size nor a
-metal artefact. Four archetypes are not a sample --- 50 structures decide it.
+\textbf{New:} 61 \textit{synthesised} CoRE MOF frameworks land \textit{on} the hypothetical
+band, not beside it --- $\Delta\alpha=0.95$--$1.47$ vs $1.02$--$1.41$; means differ by
+$0.018$ (Welch $p=0.38$), mean asymmetry $-1.31$ in both. The descriptor \textbf{transfers}
+from generated structures to real ones.
 \end{block}
-\begin{block}{\footnotesize On reporting negative results}
+\begin{block}{\footnotesize We withdrew our own headline result}
 \scriptsize
-We report the size confound rather than the raw $-0.497$ correlation. A band built on an
-uncontrolled size effect would not survive scrutiny; quantifying it is more defensible.
+Our previous claim --- four synthesised MOFs at $\Delta\alpha=1.66$--$2.26$, ``clear of the
+hMOF band, no overlap'' --- is \textbf{withdrawn}. Those four were expanded to 256--972
+atoms while the 77 hMOFs occupy 3024--6592: not one hMOF is as small as the largest of the
+four. Since $\Delta\alpha$ rises with atom count ($r=+0.73$), that comparison was reading
+graph size --- the same confound that killed our pore-size claim. This page had recorded, in
+advance, what it would do if a proper sample overlapped. It overlapped; we did it.
 \end{block}
 \end{columns}
 \end{frame}

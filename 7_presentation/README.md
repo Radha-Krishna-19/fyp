@@ -32,10 +32,12 @@ compiles if they are missing (it leaves a placeholder box instead).
 
 ## Before you present — fill these in
 
-The deck has three placeholders:
+The deck has one placeholder left:
 
 1. **`Team Number: [XX]`** — on the title slide
-2. **Two roll numbers** — `CB.SC.U4CSE23XXX` for J. Keerthi Sree and Isha Sri Prakash
+
+Roll numbers are all filled in (Keerthi Sree CB.SC.U4CSE23031, Isha Sri Prakash
+CB.SC.U4CSE23029).
 
 The guide is already filled in: **Dr. T. Ramraj**, M.E, Ph.D — Assistant Professor (Sl.Gd.),
 Department of CSE, School of Computing, Coimbatore.

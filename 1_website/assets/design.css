@@ -857,3 +857,17 @@ dfn.gloss.open .gloss-pop {
   .readpath li + li::before { width: 8px; }
   .readpath a { padding: 4px 8px 4px 5px; }
 }
+
+/* ---------------------------------------------------------------------------
+   RESOLVED-PREDICTION BADGE
+   Used on the results page where a prediction recorded before the real-MOF run
+   is shown next to how it actually resolved. Deliberately quiet: the badge
+   labels the outcome, it does not celebrate or apologise for it.
+   --------------------------------------------------------------------------- */
+.tagx{
+  display:inline-block; vertical-align:2px; margin-left:8px;
+  font-size:10.5px; font-weight:700; letter-spacing:.03em;
+  padding:2px 9px; border-radius:20px; white-space:nowrap;
+}
+.tagx.good{ background:var(--good-soft); color:var(--good-ink); }
+.tagx.bad { background:var(--bad-soft);  color:var(--node-ink); }

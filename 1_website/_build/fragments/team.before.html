@@ -49,11 +49,11 @@
           <tr><td class="dt-note">Metal-oxo decomposition</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Node and linker counts reproduce the published algorithm; three algorithm variants implemented</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
           <tr><td class="dt-note">Labelled quotient graph and supercell expansion</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">UiO-66 recovers coordination 12, which the non-periodic construction reports as 1</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
           <tr><td class="dt-note">Box growing and the multifractal spectrum</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">77/77 valid spectra after the &tau; correction; reproduces the published method's own worked figures</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
-          <tr><td class="dt-note">Descriptor extraction and band construction</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">&Delta;&alpha;, &alpha;&#8320;, A for 77 frameworks with per-framework stability estimates</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
-          <tr><td class="dt-note">Second implementation, cross-checked</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Python and JavaScript engines written independently from one specification; two of three defects were found by their disagreement</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
-          <tr><td class="dt-note">Platform, test suite and CI</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Nine-page portal computing every number live; five headless suites; publication gated on them passing</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
-          <tr><td class="dt-note">Batch ingestion of an external structure database</td><td class="dt-note" style="color:var(--warn)">Written, not run</td><td class="dt-note">The corrected MOFX-DB query and the real-MOF notebook exist; the 50-structure run needs live network access</td><td class="dt-value">10%</td><td class="dt-value">5%</td></tr>
-          <tr style="font-weight:640;"><td class="dt-note">Engineering subtotal</td><td class="dt-note"></td><td class="dt-note">Eight of nine complete and integrated</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--good)">85%</td></tr>
+          <tr><td class="dt-note">Descriptor extraction and band construction</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">&Delta;&alpha;, &alpha;&#8320;, A for 77 frameworks with per-framework stability estimates</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Second implementation, cross-checked</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Python and JavaScript engines written independently from one specification; two of three defects were found by their disagreement. <b>Not yet reconciled at supercell sizes</b> &mdash; the withdrawn four-structure numbers came from the JavaScript engine on graphs far smaller than any the Python run covers, and the discrepancy has not been traced.</td><td class="dt-value">10%</td><td class="dt-value">8%</td></tr>
+          <tr><td class="dt-note">Platform, test suite and CI</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Ten-page portal computing every number live; six headless suites; publication gated on them passing</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Batch ingestion of an external structure database</td><td class="dt-note" style="color:var(--good)">Run</td><td class="dt-note">61 CoRE MOF 2019 frameworks pulled from the Zenodo archive by DOI and taken end to end through the pipeline</td><td class="dt-value">5%</td><td class="dt-value">3%</td></tr>
+          <tr style="font-weight:640;"><td class="dt-note">Engineering subtotal</td><td class="dt-note"></td><td class="dt-note">All nine run and integrated; the two engines are not cross-checked at supercell size</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--good)">96%</td></tr>
         </tbody>
       </table>
 
@@ -64,35 +64,39 @@
           <tr><td class="dt-note">Is the descriptor computed correctly?</td><td class="dt-note" style="color:var(--good)">Settled</td><td class="dt-note">All 77 spectra concave with the apex at q&nbsp;=&nbsp;0; stability quantified per framework</td><td class="dt-value">25%</td><td class="dt-value">25%</td></tr>
           <tr><td class="dt-note">Is it free of trivial confounds?</td><td class="dt-note" style="color:var(--good)">Settled &mdash; negatively</td><td class="dt-note">The pore-size correlation is a graph-size artefact and was withdrawn. Knowing this <i>is</i> the result.</td><td class="dt-value">20%</td><td class="dt-value">20%</td></tr>
           <tr><td class="dt-note">Does the band generalise within its dataset?</td><td class="dt-note" style="color:var(--warn)">Partial</td><td class="dt-note">Hold-out frameworks land inside the band &mdash; but within one metal family only</td><td class="dt-value">15%</td><td class="dt-value">8%</td></tr>
-          <tr><td class="dt-note">Does it transfer to synthesised materials?</td><td class="dt-note" style="color:var(--warn)">Preliminary</td><td class="dt-note">Four real MOFs, size-matched, fall clear of the band with a gap of 0.25. Suggestive; four is not a sample.</td><td class="dt-value">20%</td><td class="dt-value">7%</td></tr>
-          <tr><td class="dt-note">Does it separate chemical families?</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Untestable on the current data &mdash; all 77 frameworks share one metal</td><td class="dt-value">20%</td><td class="dt-value">0%</td></tr>
-          <tr style="font-weight:640;"><td class="dt-note">Validation subtotal</td><td class="dt-note"></td><td class="dt-note">The descriptor is correct and honestly characterised; its scientific meaning is not yet established</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--warn)">60%</td></tr>
+          <tr><td class="dt-note">Does it transfer to synthesised materials?</td><td class="dt-note" style="color:var(--good)">Settled &mdash; positively</td><td class="dt-note">61 real CoRE MOF frameworks, size-matched, land <i>on</i> the hypothetical band: 0.95&ndash;1.47 vs 1.02&ndash;1.41, means differing by 0.018 (<i>p</i>&nbsp;=&nbsp;0.38), same asymmetry. The earlier four-structure &ldquo;gap&rdquo; was withdrawn as a size artefact.</td><td class="dt-value">20%</td><td class="dt-value">20%</td></tr>
+          <tr><td class="dt-note">Does it predict a measured property?</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Nothing here computes adsorption, selectivity or stability. This is now the only substantive gap, and it is a research question rather than a build task.</td><td class="dt-value">20%</td><td class="dt-value">0%</td></tr>
+          <tr style="font-weight:640;"><td class="dt-note">Validation subtotal</td><td class="dt-note"></td><td class="dt-note">Correct, honestly characterised, and shown to transfer to real materials; its <i>usefulness</i> is not yet established</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--warn)">73%</td></tr>
         </tbody>
       </table>
 
       <div class="keynums">
-        <div class="keynum is-good"><b>85%</b><span>engineering &mdash; the pipeline runs end to end</span></div>
-        <div class="keynum is-warn"><b>60%</b><span>scientific validation &mdash; correct, but meaning unestablished</span></div>
-        <div class="keynum"><b>&asymp;73%</b><span>overall, weighted equally</span></div>
+        <div class="keynum is-good"><b>96%</b><span>engineering &mdash; the pipeline runs end to end</span></div>
+        <div class="keynum is-warn"><b>73%</b><span>scientific validation &mdash; correct and transferable, usefulness unestablished</span></div>
+        <div class="keynum"><b>&asymp;85%</b><span>overall, weighted equally</span></div>
       </div>
 
       <div class="callout good">
         <b>The claim we will make at review, and defend.</b> The core pipeline is complete and
         integrated: a CIF goes in at one end and a validated three-number descriptor comes out at
         the other, demonstrated live in the browser and reproducible from the command line. That is
-        the ~60% the rubric asks for at this stage, and the engineering table above puts it at 85%.
+        the ~60% the rubric asks for at this stage, and the engineering table above puts it at 96%.
         <br><br>
         We report the two axes separately on purpose. A single number would let "we built a lot"
         stand in for "we established something", and those are not the same claim. The honest
-        overall figure is <b>about 73%</b>, and the gap is entirely external validation &mdash; a
-        data task, not a development task.
+        overall figure is <b>about 85%</b>, and the remaining gap is no longer a data task: it is
+        that we cannot yet show &Delta;&alpha; predicts anything a chemist would ask for.
       </div>
 
-      <div class="callout warn">
-        <b>What would move the validation figure.</b> One run: fifty CoRE MOF structures through
-        the existing pipeline. It would settle family separation, settle whether the real-MOF gap
-        is real, and give the band a meaning beyond one generator's output. Nothing needs to be
-        built for it. That is why it is the top priority rather than any new feature.
+      <div class="callout good">
+        <b>Update: that run has been done.</b> Sixty-one CoRE MOF frameworks went through the
+        existing pipeline unchanged. It settled the question it was meant to settle &mdash; and
+        settled it against us: the real-MOF gap was an artefact of comparing four small graphs
+        against seventy-seven large ones, and the two bands actually coincide. The withdrawal is
+        on the results page with the reason. External validation is therefore no longer the
+        outstanding item; <b>demonstrated usefulness is</b>. &Delta;&alpha; is now known to be
+        reproducible, size-controlled and transferable, and still not known to predict any
+        property a chemist would ask for.
       </div>
 
       <h2 class="section-title" id="reproduce" data-toc="Reproducing every number"><span class="stitle-num">0</span>Reproducing Every Number</h2>

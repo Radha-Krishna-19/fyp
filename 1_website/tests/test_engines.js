@@ -138,20 +138,45 @@ const filled = (D, id) => { const e = D.getElementById(id); return !!e && e.inne
   const demo = ['HKUST-1', 'UiO-66', 'MOF-5', 'ZIF-8'].filter(k => k in (W.BAND_DATA || {}));
   ok(demo.length === 0, `results.html: demonstration structures excluded from the band${demo.length ? ' — found ' + demo : ''}`);
   ok(W.BAND_STATS && W.BAND_STATS.parabolic === 77, 'results.html: all 77 spectra are valid');
-  ok(/realmof/.test(D.body.innerHTML), 'results.html: plan for scaling to 50+ real MOFs present');
+  ok(/realmof/.test(D.body.innerHTML), 'results.html: the real-MOF provenance section is present');
 
   // ---- the synthesised-MOF comparison -----------------------------------
+  // These assertions were rewritten when the four-structure result was
+  // withdrawn. They now guard the OPPOSITE claim from the one they used to
+  // guard, which is the point: the old test enforced "the sets do not
+  // overlap", and it would have failed loudly the moment the real data
+  // arrived. That is what a test is for.
   const R = W.REAL_BAND_DATA || {}, RS = W.REAL_BAND_STATS || {};
-  ok(Object.keys(R).length === 4, `results.html: four synthesised MOFs computed (got ${Object.keys(R).length})`);
-  ok(Object.values(R).every(v => v.synthesised && v.cn_match),
-     'results.html: every real MOF reproduces its published coordination number');
+  ok(Object.keys(R).length >= 50,
+     `results.html: the synthesised set is a sample, not an anecdote (got ${Object.keys(R).length})`);
+  ok(RS.n === Object.keys(R).length,
+     'results.html: the stated n matches the number of structures actually shipped');
   ok(filled(D, 'real-band-body'), 'results.html: synthesised-MOF comparison rendered');
-  // the two sets must be kept separate — this is the whole point of the section
+
+  // the two sets must stay separate datasets — mixing them would make the
+  // comparison circular
   const overlap = Object.keys(R).filter(k => k in W.BAND_DATA);
   ok(overlap.length === 0, 'results.html: real MOFs are not mixed into the 77-framework band');
-  const hHi = Math.max(...Object.values(W.BAND_DATA).map(v => v.width));
-  ok(RS.w_min > hHi, `results.html: the reported gap is real (hMOF max ${hHi.toFixed(2)} < real min ${RS.w_min.toFixed(2)})`);
-  ok(RS.metals.length >= 3, `results.html: the real set spans several metals (${RS.metals})`);
+
+  // the withdrawal must be stated, not silently dropped
+  const html = D.body.innerHTML;
+  ok(/[Ww]ithdrawn/.test(html), 'results.html: the withdrawn four-structure claim is disclosed');
+  ok(!/no overlap at all/.test(html), 'results.html: the retracted "no overlap" wording is gone');
+
+  // and the numbers on the page must match the data on the page
+  const hW = Object.values(W.BAND_DATA).map(v => v.width);
+  const rW = Object.values(R).map(v => v.width);
+  const hHi = Math.max(...hW), hLo = Math.min(...hW);
+  const rHi = Math.max(...rW), rLo = Math.min(...rW);
+  ok(rLo < hHi && hLo < rHi,
+     `results.html: the two ranges genuinely overlap (hMOF ${hLo.toFixed(2)}–${hHi.toFixed(2)}, real ${rLo.toFixed(2)}–${rHi.toFixed(2)})`);
+  ok(Math.abs(RS.overlap_lo - Math.max(rLo, hLo)) < 1e-3 &&
+     Math.abs(RS.overlap_hi - Math.min(rHi, hHi)) < 1e-3,
+     'results.html: the stated overlap interval matches the shipped widths');
+  ok(Math.abs(RS.w_min - rLo) < 1e-3 && Math.abs(RS.w_max - rHi) < 1e-3,
+     'results.html: the stated real-MOF range matches the shipped widths');
+  ok(RS.p_welch > 0.05,
+     `results.html: the "same band" claim is backed by the test it cites (p=${RS.p_welch})`);
 }
 
 // ---- code: the source browser -----------------------------------------
