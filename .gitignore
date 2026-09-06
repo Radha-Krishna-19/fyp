@@ -1,3 +1,32 @@
+# Dependencies — installed per machine, never committed.
+node_modules/
 __pycache__/
 *.pyc
+
+# Editor and OS noise
 .DS_Store
+Thumbs.db
+*.swp
+
+# LaTeX build products. panel_review.pdf IS committed (reviewers need it);
+# these are the intermediates that would otherwise churn on every compile.
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+
+# Notebook checkpoints and backups
+.ipynb_checkpoints/
+*.ipynb.bak
+
+# Large downloaded datasets: fetched by the notebook, not stored here.
+3_notebooks/core_mof_download/
+3_notebooks/core_mof_cifs/
+3_notebooks/real_cifs/
+3_notebooks/mof_cifs/
+3_notebooks/multi_mof_output/

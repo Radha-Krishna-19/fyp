@@ -11,12 +11,16 @@ slices verbatim, so the only things that change are the shell around them,
 the per-page section numbering, and cross-page link targets. The assertions
 at the end verify that every section survived and that no anchor dangles.
 
-Run from 1_website/:  python3 build_site.py
+Run:  python3 _build/build_site.py     (from anywhere)
 """
 import re, os, sys, json, html
 
-SRC   = 'index_source.html'      # the original single page, kept as the source of truth
-OUT   = '.'
+# Paths are resolved relative to THIS file, not the shell's working directory,
+# so the build works from anywhere.
+HERE  = os.path.dirname(os.path.abspath(__file__))
+SRC   = os.path.join(HERE, 'content_source.html')   # all 19 sections, one file
+OUT   = os.path.abspath(os.path.join(HERE, '..'))   # the served folder
+FRAG  = os.path.join(HERE, 'fragments')
 
 # ---------------------------------------------------------------------------
 # PAGE PLAN
@@ -307,7 +311,7 @@ def main():
     for p in PAGES:
         stem = p['file'].replace('.html', '')
         for slot in ('masthead', 'before', 'after'):
-            frag = os.path.join('_fragments', f'{stem}.{slot}.html')
+            frag = os.path.join(FRAG, f'{stem}.{slot}.html')
             if os.path.exists(frag):
                 extras.setdefault(p['file'], {})[slot] = open(frag, encoding='utf-8').read()
 

@@ -78,13 +78,18 @@ metal_oxo_deep_dive/
 ├── 1_website/        The documentation portal. Open index.html — no server needed.
 ├── 2_python/         Reference implementation, 12 annotated modules
 ├── 3_notebooks/      The 77-framework analysis + the real-MOF twin
-├── 4_reference/      Generated figures
+├── 4_reference/      Generated figures + the scripts that make and verify them
 ├── 5_concepts/       Five long-form background documents
 ├── 6_references/     Annotated bibliography + BibTeX
 ├── 7_presentation/   Beamer deck, PDF, Overleaf archive, speaking script, 5-way split
 ├── 8_textbook/       Twelve chapters, zero background assumed
-└── 9_dataset/        The released dataset, CC BY 4.0
+├── 9_dataset/        The released dataset, CC BY 4.0
+└── 10_enrichment/    Technical Enrichment plan and course recommendations
 ```
+
+Inside `1_website/`, `_build/` holds the build inputs (the content source, the
+page fragments and `build_site.py`); everything else in that folder is served
+as-is. Run `python 1_website/_build/build_site.py` after editing content.
 
 ## Getting started
 
@@ -137,7 +142,7 @@ npm install jsdom
 npm test
 ```
 
-Five suites, 200+ assertions. They boot the real pages headlessly and assert on
+Six suites, 300+ assertions. They boot the real pages headlessly and assert on
 **computed output**, because this site's failure mode is a silently blank panel
 rather than a visible error.
 
@@ -159,6 +164,12 @@ decomposition, used **unmodified**. Modules 5–8 are this project's work.
                   τ(q) → f(α)   (influential      (past 48 Å per
                                  nodes)            lattice direction)
 ```
+
+**Every figure is verifiable.** `python 4_reference/verify_figures.py` reads
+the PNG metadata of every image in the repository and confirms it was produced
+by matplotlib rather than downloaded, and that duplicated copies have not
+drifted. `4_reference/make_figures.py` regenerates the data figures from the
+live pipeline.
 
 **Two independent implementations.** The Python modules and the JavaScript
 engine were written from the same specification but not from each other. Where

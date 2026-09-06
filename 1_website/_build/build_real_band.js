@@ -26,14 +26,15 @@
    notebook, which now filters the returned records by database rather than
    trusting the server-side parameter.
 
-   Run:  node build_real_band.js
+   Run:  node _build/build_real_band.js
    ===================================================================== */
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
-const SITE = __dirname;
+// The engine modules and the CIFs live one level up, in the served folder.
+const SITE = path.join(__dirname, '..');
 
 // --- a DOM, because the engine modules are browser modules ------------------
 const dom = new JSDOM('<!DOCTYPE html><body></body>', { runScripts: 'outside-only' });
