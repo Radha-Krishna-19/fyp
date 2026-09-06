@@ -57,6 +57,10 @@ PAGES = [
          title='References',
          desc='Every paper, dataset and tool this project builds on.'),
 
+    dict(file='glossary.html',     nav='Glossary',      sections=[],
+         title='Glossary',
+         desc='Every term and symbol used anywhere on this site, defined from first principles and ordered so each one only depends on earlier ones.'),
+
     dict(file='team.html',         nav='Team',          sections=[],
          title='Team, Progress and Deliverables',
          desc='Who did what, how far the implementation has actually got, and where every deliverable lives.'),
@@ -78,6 +82,7 @@ SCRIPTS = {
                            'real_band_data.js', 'real_band_page.js'],
     'code.html':          ['code_sources.js', 'code_viewer.js', 'single_page.js'],
     'references.html':    [],
+    'glossary.html':      [],
     'team.html':          [],
 }
 
@@ -212,6 +217,7 @@ def shell(page, idx, body_html, masthead_html):
 <div class="container">
   <div class="with-toc">
     <main id="main">
+      <div id="notation"></div>
 {body_html}
       <nav class="page-nav" aria-label="Previous and next page">{prev_a}{next_a}</nav>
     </main>
@@ -230,6 +236,8 @@ def shell(page, idx, body_html, masthead_html):
 </footer>
 
 <script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
 <script src="assets/site.js"></script>
 {script_tags(SCRIPTS[page['file']])}
 </body>
@@ -237,12 +245,40 @@ def shell(page, idx, body_html, masthead_html):
 """
 
 
-def masthead(page, extra=''):
+def reading_path(idx):
+    """A step indicator over the seven pages that form the learning sequence.
+
+    The last three pages (source, references, glossary/team) are reference
+    material rather than steps, so they are excluded: numbering them would
+    imply a reader has to work through the glossary to finish.
+    """
+    steps = [p for p in PAGES if p['file'] not in
+             ('code.html', 'references.html', 'glossary.html', 'team.html')]
+    here = PAGES[idx]['file']
+    if here not in [p['file'] for p in steps]:
+        return ('<div class="path-note">Reference material &mdash; not part of the '
+                'reading sequence. <a href="index.html">Start at the beginning</a>.</div>')
+    out = ['<ol class="readpath" aria-label="Reading sequence">']
+    seen_here = False
+    for n, p in enumerate(steps, 1):
+        if p['file'] == here:
+            state, seen_here = 'here', True
+            aria = ' aria-current="step"'
+        else:
+            state, aria = ('done' if not seen_here else 'todo'), ''
+        out.append(f'<li class="{state}"{aria}>'
+                   f'<a href="{p["file"]}"><span class="n">{n}</span>{p["nav"]}</a></li>')
+    out.append('</ol>')
+    return ''.join(out)
+
+
+def masthead(page, idx, extra=''):
     return f"""<div class="masthead">
   <div class="container">
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>{page['title']}</h1>
     <p class="lead">{page['desc']}</p>
+{reading_path(idx)}
 {extra}  </div>
 </div>
 """
@@ -296,7 +332,7 @@ def main():
         assembled = re.sub(r'(<span class="(?:stitle-num|n)">)\d+(</span>)', bump, assembled)
 
         head_extra = extras.get(p['file'], {}).get('masthead', '')
-        out = shell(p, i, assembled, masthead(p, head_extra))
+        out = shell(p, i, assembled, masthead(p, i, head_extra))
         open(os.path.join(OUT, p['file']), 'w', encoding='utf-8').write(out)
         print(f'{p["file"]:20s} {len(out)//1024:4d} KB  {len(p["sections"])} sections')
 

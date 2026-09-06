@@ -11,7 +11,8 @@ let fails = 0;
 const ok = (c, m) => { console.log((c ? 'PASS  ' : 'FAIL  ') + m); if (!c) fails++; };
 
 const PAGES = ['index.html', 'methodology.html', 'decomposition.html', 'network.html',
-               'spectrum.html', 'results.html', 'code.html', 'references.html', 'team.html'];
+               'spectrum.html', 'results.html', 'code.html', 'references.html',
+               'glossary.html', 'team.html'];
 
 // ---- 1. static structure, every page ----------------------------------
 const docs = {};
@@ -27,6 +28,12 @@ PAGES.forEach(p => {
   ok(D.querySelectorAll(`.site-nav a[aria-current="page"]`).length === 1, `${p}: exactly one nav item marked current`);
   ok(!!D.getElementById('theme-btn'), `${p}: theme toggle present`);
   ok(!!D.getElementById('toc'), `${p}: TOC rail present`);
+  // Every page must place the reader in the sequence, or say plainly that it
+  // sits outside it. A page that does neither leaves them lost.
+  ok(!!D.querySelector('.readpath') || !!D.querySelector('.path-note'),
+     `${p}: reading position shown`);
+  const here = D.querySelectorAll('.readpath li.here');
+  ok(here.length <= 1, `${p}: at most one current step marked`);
   ok(/assets\/tokens\.css/.test(html) && /assets\/design\.css/.test(html), `${p}: design system linked`);
   ok(/data-theme/.test(html), `${p}: theme applied before paint`);
 
