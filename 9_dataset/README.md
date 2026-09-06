@@ -188,7 +188,7 @@ the full α, f(α) and τ(q) curves, which the CSV summarises.
 @dataset{mof_multifractal_2026,
   title   = {MOF Multifractal Structural Descriptors},
   author  = {Radha Krishna, P. M. and Varma, P. Kshitij and
-             Abhinav, G. Rohith and Keerthi Sree, J. and Isha},
+             Abhinav, G. Rohith and Keerthi Sree, J. and Isha Sri Prakash},
   year    = {2026},
   version = {1.0},
   note    = {23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.

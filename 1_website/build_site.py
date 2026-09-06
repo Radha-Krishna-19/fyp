@@ -33,7 +33,7 @@ PAGES = [
          title='Methodology and Architecture',
          desc='The full workflow, the system architecture, the datasets, the evaluation strategy, and the justification for each choice.'),
 
-    dict(file='decomposition.html', nav='Decomposition', sections=['walkthrough', 'pipeline-tool'],
+    dict(file='decomposition.html', nav='Decomposition', sections=['walkthrough'],
          title='The Decomposition Algorithm',
          desc='The published metal-oxo decomposition, module by module, with the real code beside a live 3D model.'),
 
@@ -86,7 +86,6 @@ LABELS = {
     'problem': 'the problem', 'question': 'the question', 'why': 'why this path',
     'parts': 'what we built', 'implementation': 'the implementation map',
     'roadmap': 'the roadmap', 'walkthrough': 'the pipeline walkthrough',
-    'pipeline-tool': 'the interactive pipeline tool', 'paper-use': 'the source paper',
     'primer': 'the graph primer', 'graph': 'building the network',
     'influence': 'influential blocks', 'defect': 'defects',
     'fingerprint': 'the Laplacian fingerprint', 'multifractal': 'the spectrum',

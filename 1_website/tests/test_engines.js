@@ -96,9 +96,12 @@ const filled = (D, id) => { const e = D.getElementById(id); return !!e && e.inne
   ok(errs.length === 0, `decomposition.html: all scripts ran clean${errs.length ? ' — ' + errs[0] : ''}`);
   ok(filled(D, 'pw-module-tabs'), 'decomposition.html: module tabs built');
   ok(filled(D, 'pw-code-area') || filled(D, 'pw-explain'), 'decomposition.html: walkthrough content rendered');
-  const fr = D.getElementById('pipeline-frame');
-  ok(!!fr && fr.getAttribute('data-src') === 'mof_pipeline_viewer.html',
-     'decomposition.html: interactive tool iframe is wired to its viewer');
+  // The embedded iframe viewer was removed: it duplicated this walkthrough
+  // while costing a second WebGL context. Assert it stays gone.
+  ok(!D.getElementById('pipeline-frame') && !/mof_pipeline_viewer/.test(D.body.innerHTML),
+     'decomposition.html: the duplicate iframe viewer is gone');
+  ok(!!D.getElementById('w-cif-file'),
+     'decomposition.html: CIF upload is still available here (what the iframe offered)');
 }
 
 // ---- network: graph, centrality, defects, Laplacian --------------------

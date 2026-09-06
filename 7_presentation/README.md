@@ -35,7 +35,7 @@ compiles if they are missing (it leaves a placeholder box instead).
 The deck has three placeholders:
 
 1. **`Team Number: [XX]`** — on the title slide
-2. **Two roll numbers** — `CB.SC.U4CSE23XXX` for J. Keerthi Sree and Isha
+2. **Two roll numbers** — `CB.SC.U4CSE23XXX` for J. Keerthi Sree and Isha Sri Prakash
 
 The guide is already filled in: **Dr. T. Ramraj**, M.E, Ph.D — Assistant Professor (Sl.Gd.),
 Department of CSE, School of Computing, Coimbatore.
@@ -79,7 +79,7 @@ map onto components the project actually uses:
 | P. Kshitij Varma | Introduction to Complex Network Analysis | NPTEL | 20 | Fractal/multifractal network characterisation |
 | G. Rohith Abhinav | Chemoinformatics *or* Computational Materials Science | NPTEL | 16 | CIF handling, bond perception, MOF structure |
 | J. Keerthi Sree | Data Visualization with Python | Coursera (IBM) | 15 | The interactive platform and figures |
-| Isha | Machine Learning for Materials Informatics | edX / Coursera | 15 | Descriptor-based screening — the project's goal |
+| Isha Sri Prakash | Machine Learning for Materials Informatics | edX / Coursera | 15 | Descriptor-based screening — the project's goal |
 
 **Alternatives if any of the above are unavailable:**
 

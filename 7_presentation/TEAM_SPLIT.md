@@ -18,8 +18,8 @@ is aimed at.
 | 1 | **P. M. Radha Krishna** (CB.SC.U4CSE23134) | Title, 0, 1 | 5 min | Problem, motivation, methodology |
 | 2 | **P. Kshitij Varma** (CB.SC.U4CSE23122) | 1b | 3 min | The mathematical model |
 | 3 | **G. Rohith Abhinav** (CB.SC.U4CSE23141) | 2, 3b | 4 min | Implementation status + the platform |
-| 4 | **J. Keerthi Sree** | 2b | 4 min | Results, validation, the band |
-| 5 | **Isha** | 3, 5 | 4 min | Design decisions, the τ defect, next steps |
+| 4 | **J. Keerthi Sree** (CB.SC.U4CSE23031) | 2b | 4 min | Results, validation, the band |
+| 5 | **Isha Sri Prakash** (CB.SC.U4CSE23029) | 3, 5 | 4 min | Design decisions, the τ defect, next steps |
 | — | All | 4, references | — | MOOCs, Q&A |
 
 > **Rule for everyone:** if you do not know an answer, say *"I don't know — that's
@@ -102,7 +102,7 @@ Do **not** read the equations aloud symbol by symbol. Explain what each step is 
 > varied the framework is** — narrow means uniform pores throughout, wide means a mix of tight
 > and open regions."
 
-**The correctness test — flag it, because Isha will use it:**
+**The correctness test — flag it, because Isha Sri Prakash will use it:**
 
 > "One thing worth noting: a multifractal spectrum **must** be an inverted parabola peaking at
 > q equals zero. That's not a preference, it's a mathematical property. We used it as a test,
@@ -204,11 +204,11 @@ If a laptop is available, **show it live**. Otherwise describe it.
 > "So delta-alpha is mostly tracking **how big the supercell is** — which is set by two
 > parameters in our own config, not by chemistry."
 
-**Hand-off:** *"Isha will cover the design decisions and where this goes."*
+**Hand-off:** *"Isha Sri Prakash will cover the design decisions and where this goes."*
 
 ---
 
-## 5 · Isha — Design Decisions & Next Steps (4 min)
+## 5 · Isha Sri Prakash — Design Decisions & Next Steps (4 min)
 
 **Slides: 3 (Technical Knowledge), 5 (Next Steps)** · *aimed at both*
 
@@ -274,14 +274,14 @@ If a laptop is available, **show it live**. Otherwise describe it.
 |---|---|---|
 | *"What does a graph have to do with a MOF?"* | Properties follow connectivity; gas moves through the pore network, which is the void the wiring leaves. Connectivity is what a graph describes. | Radha Krishna |
 | *"Why not just simulate them?"* | Hours per structure × hundreds of thousands. We're deciding what to simulate, not replacing it. | Radha Krishna |
-| *"Isn't an unweighted graph throwing away the chemistry?"* | Yes, deliberately. It's stated as a limitation. What survives is pure architecture, which transfers across chemistries. | Isha |
+| *"Isn't an unweighted graph throwing away the chemistry?"* | Yes, deliberately. It's stated as a limitation. What survives is pure architecture, which transfers across chemistries. | Isha Sri Prakash |
 | *"Does Δα predict gas uptake?"* | **No, and we never claim it.** Nothing here computes adsorption. | Keerthi Sree |
 | *"Are these real materials?"* | **No** — all 77 are hMOF entries, computer-generated, never synthesised. We requested the experimental set; the server returned these. A check now catches it. | Keerthi Sree |
 | *"Why only the top 10% of nodes?"* | That's the paper's iNMFA definition. It has a catch in a perfect crystal — all degrees tie — and we report the ambiguity. | Kshitij |
 | *"How do I know your numbers are right?"* | Two independent implementations agree on every value; coordination numbers match published crystallography; test suites cover every layer. | Rohith |
 | *"What's your computational complexity?"* | Bond perception O(N²) over 27 images; all-pairs shortest path O(N²) memory, which is why `MAX_ATOMS` is capped at 7,000. | Rohith |
-| *"Why is the band confounded — did you do something wrong?"* | No — it's the known finite-size dependence of the method. 77 structures was enough to measure it for the first time. | Isha |
-| *"What would make this publishable?"* | Remove the size confound, run on CoRE MOF for metal diversity, validate against measured properties. | Isha |
+| *"Why is the band confounded — did you do something wrong?"* | No — it's the known finite-size dependence of the method. 77 structures was enough to measure it for the first time. | Isha Sri Prakash |
+| *"What would make this publishable?"* | Remove the size confound, run on CoRE MOF for metal diversity, validate against measured properties. | Isha Sri Prakash |
 
 ---
 

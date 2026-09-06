@@ -29,7 +29,7 @@ codebase, so the one-page summary writes itself — you point at your own module
 | P. Kshitij Varma | τ(q), the Legendre transform, the maths | Applied Social Network Analysis in Python | Coursera (Michigan) | ~29 |
 | G. Rohith Abhinav | 3D viewer, decomposition engine | Introduction to Computer Graphics / WebGL | Udemy or edX | 15–20 |
 | J. Keerthi Sree | Results, validation, confound analysis | Inferential Statistics / Data Analysis with Python | Coursera or IBM | 15–20 |
-| Isha | Network construction, defects, roadmap | Materials Data Sciences and Informatics | Coursera (Georgia Tech) | 15–20 |
+| Isha Sri Prakash | Network construction, defects, roadmap | Materials Data Sciences and Informatics | Coursera (Georgia Tech) | 15–20 |
 
 ---
 
@@ -103,7 +103,7 @@ projection — than the library.
 
 ---
 
-## 4 · J. Keerthi Sree
+## 4 · J. Keerthi Sree — CB.SC.U4CSE23031
 
 **Owns:** results, validation, the band, the confound analysis, dataset
 provenance.
@@ -127,7 +127,7 @@ you put a confidence interval on the band rather than an interquartile range.
 
 ---
 
-## 5 · Isha
+## 5 · Isha Sri Prakash — CB.SC.U4CSE23029
 
 **Owns:** network construction, the defect simulation, the τ defect, design
 decisions and the roadmap.
