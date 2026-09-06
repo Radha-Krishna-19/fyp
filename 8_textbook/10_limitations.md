@@ -109,12 +109,18 @@ range rather than a result. Everything else is secondary.
 
 | Dimension | Status | Reasoning |
 |---|---|---|
-| **Engineering** | **≈ 80%** | Full pipeline in two independent implementations, cross-validated; 18-section platform; 8 test suites; 77-framework study running end to end |
-| **Scientific validation** | **≈ 35%** | The descriptor is computed correctly, but its physical meaning is unestablished — the confound is unresolved and the dataset is unsuitable for the original question |
-| **Overall** | **≈ 60%** | Weighted |
+| **Engineering** | **≈ 85%** | Full pipeline in two independent implementations, cross-validated; nine-page platform; five test suites gating CI; 77-framework study running end to end; dataset released |
+| **Scientific validation** | **≈ 60%** | The descriptor is computed correctly and its failure modes are documented — the size confound is *identified and reported*, and a size-matched comparison against synthesised structures exists. What remains unestablished is its physical meaning across chemical families, which the single-metal dataset cannot test |
+| **Overall** | **≈ 73%** | Weighted equally |
 
-That is where the "~60%" in the panel deck comes from. It is derived, not asserted — which
+That is where the figure in the panel deck comes from. It is derived, not asserted — which
 matters if someone asks.
+
+**Why validation moved from 35% to 60%.** Not because the confound was solved — it was not.
+Because identifying it, quantifying it and withdrawing the claim *is* validation work, and
+because the four size-matched synthesised structures now give the transfer question a
+preliminary answer rather than no answer. Knowing precisely how a descriptor can mislead you
+is worth more than an unexamined correlation.
 
 ---
 

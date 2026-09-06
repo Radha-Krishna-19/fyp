@@ -168,22 +168,24 @@ three defects above were caught exactly this way.
 
 ## Implementation status
 
-| Module | State | Weight | Credit |
-|---|---|---|---|
-| CIF ingestion and symmetry expansion | Complete | 10% | 10% |
-| Periodic bond perception | Complete | 10% | 10% |
-| Metal-oxo decomposition | Complete | 15% | 15% |
-| Quotient graph + supercell expansion | Complete | 15% | 15% |
-| Box growing and the multifractal spectrum | Complete | 15% | 15% |
-| Descriptor extraction and band construction | Complete | 10% | 10% |
-| Confound analysis and hold-out validation | Complete | 10% | 10% |
-| Validation on synthesised structures at scale | Not started | 10% | 0% |
-| Cross-family separation (multiple metals) | Not started | 5% | 0% |
-| **Total** | | **100%** | **85%** |
+Reported on two axes, because "we built a lot" and "we established something"
+are different claims and a single percentage hides the difference.
 
-Seven of nine modules complete and integrated. The two outstanding are both
-external validation, not core function — a data task rather than a development
-task.
+| Axis | Figure | What it covers |
+|---|---|---|
+| **Engineering** | **85%** | Eight of nine modules complete and integrated. A CIF goes in, a validated three-number descriptor comes out — live in the browser and from the command line. |
+| **Scientific validation** | **60%** | The descriptor is provably correct and honestly characterised, including one withdrawn claim. Its scientific *meaning* is not yet established. |
+| **Overall** | **≈73%** | Weighted equally. |
+
+The Panel Review 1 rubric asks for roughly 60% with major modules integrated
+and core functionality demonstrated. The engineering axis clears that.
+
+**What the remaining 27% is.** Entirely external validation: running the
+finished pipeline over ~50 experimentally synthesised structures. That would
+settle family separation, settle whether the real-MOF gap is real, and give the
+band a meaning beyond one generator's output. Nothing needs to be built for it —
+it is a data task. Full module-by-module audit on the
+[Team page](1_website/team.html).
 
 ---
 
