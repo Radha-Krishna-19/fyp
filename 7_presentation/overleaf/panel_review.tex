@@ -241,11 +241,11 @@ correlation against pore diameter.}
 \section{Implementation Progress}
 \begin{frame}{2. Implementation Progress \& Module Functionality}
 \framesubtitle{Rubric: Core Modules Implemented, Functional \& Integrated (8 Marks)}
-\vspace{-0.25cm}
+\vspace{-0.32cm}
 \begin{table}
 \centering
 \tiny
-\renewcommand{\arraystretch}{1.04}
+\renewcommand{\arraystretch}{0.99}
 \begin{tabular}{p{3.0cm} p{7.0cm} c}
 \toprule
 \textbf{Module / Component} & \textbf{Current Implementation State} & \textbf{Status} \\
@@ -262,28 +262,30 @@ Spectrum (\texttt{code\_10--11}) & iNMFA (box-covering) and NMFA (box-growing);
 $\tau$, $\alpha$, $f(\alpha)$, $\Delta\alpha$, $A$ & \textcolor{okGreen}{\textbf{Functional}} \\
 77-framework study & Live MOFX-DB query, spectra for all 77, band + confound analysis &
 \textcolor{okGreen}{\textbf{Functional}} \\
-Interactive web platform & 18-section site; full pipeline runs live in-browser on any
-uploaded CIF & \textcolor{okGreen}{\textbf{Integrated}} \\
-Size-confound correction & Fit-window normalisation / size-matched comparison &
-\textcolor{warnRed}{\textbf{In Progress}} \\
-Experimental-set validation & Re-query CoRE MOF~[9] for genuine metal diversity &
-\textcolor{warnRed}{\textbf{Planned}} \\
+Interactive web platform & 9-page documentation portal; full pipeline runs live in-browser
+on any uploaded CIF; 5 headless test suites gate publication &
+\textcolor{okGreen}{\textbf{Integrated}} \\
+Size-matched comparison & 4 synthesised MOFs expanded under the identical 48\,\AA{} rule
+and compared against the 77 & \textcolor{okGreen}{\textbf{Functional}} \\
+Dataset release & 81 frameworks, CC BY 4.0, with schema, provenance and the withdrawn
+claim documented & \textcolor{okGreen}{\textbf{Functional}} \\
+Experimental-set validation at scale & Provenance bug fixed; notebook ready; the
+50-structure run needs a live query & \textcolor{warnRed}{\textbf{Planned}} \\
 \bottomrule
 \end{tabular}
 \end{table}
 \vspace{-0.32cm}
 {\tiny
-\textbf{How the $\approx$60\% is arrived at (not asserted).}
-\textbf{Engineering $\approx$80\%}: 14 Python modules (2{,}681 lines), a cross-validated
-browser implementation (16 JS modules), an 18-section platform, 8 automated test suites, a
-77-framework study running end to end.
-\textbf{Scientific validation $\approx$35\%}: the descriptor is computed correctly, but its
-\textit{physical meaning} is not yet established --- the size confound is unresolved and the
-dataset is hypothetical and single-metal.
-\textbf{Weighted: $\approx$60\%.}
-\ \ \textbf{Verification:} Python and JavaScript agree on every reported value
-($\tau(0)=-2.6551$ on HKUST-1 in both).
-Code: \textbf{github.com/Radha-Krishna-19/fyp}}
+\textbf{Two axes, because ``built'' and ``established'' are different claims.}
+\textbf{Engineering $\approx$85\%}: 14 Python modules, an independent browser
+implementation that cross-checks them, a 9-page platform, 5 CI-gating test suites, the
+77-framework study end to end, a released dataset.
+\textbf{Validation $\approx$60\%}: the descriptor is provably correct and its failure modes
+are documented --- the size confound is identified, quantified and reported. Not established:
+behaviour across chemical families, untestable on a single-metal set.
+\textbf{Weighted $\approx$73\%} (rubric asks $\approx$60\%).
+\textbf{Verification:} Python and JavaScript agree on every value ($\tau(0)=-2.6551$,
+HKUST-1). \textbf{github.com/Radha-Krishna-19/fyp}}
 \end{frame}
 
 % ============================ SLIDE 2b: RESULTS ==============================
@@ -498,22 +500,25 @@ recognised platform relevant to the project.}
 \section{Next Steps}
 \begin{frame}{5. Remaining Work \& Timeline}
 \framesubtitle{Concrete engineering tasks, not open research questions}
+\vspace{-0.3cm}
 \begin{columns}[T]
 \column{0.55\textwidth}
-{\footnotesize
-\textbf{Priority 1 --- Remove the size confound}
+{\scriptsize
+\setlength{\itemsep}{0pt}\setlength{\parskip}{1pt}
+\textbf{Priority 1 --- 50 synthesised frameworks} \hfill \textcolor{warnRed}{\textbf{blocking}}
 \begin{itemize}\scriptsize
-  \item Normalise the fit window per structure so $\Delta\alpha$ stops growing with graph
-        size; \textbf{or} compare only frameworks at matched graph size.
-  \item Re-test the pore-diameter correlation afterwards. \textit{This decides whether the
-        band carries chemical meaning.}
+  \item The provenance bug is \textbf{fixed}: records are now filtered on their own
+        \texttt{database} field instead of trusting the server-side parameter.
+  \item One run settles three questions at once --- cross-family separation, whether the
+        real-MOF gap is real, and whether the band means anything beyond one generator.
+  \item \textbf{Nothing needs to be built.} It is a data task.
 \end{itemize}
 
-\textbf{Priority 2 --- A genuinely diverse dataset}
+\textbf{Priority 2 --- Confirm the size control at scale} \hfill \textcolor{okGreen}{\textbf{method proven}}
 \begin{itemize}\scriptsize
-  \item Re-query CoRE MOF 2019~[9] with per-record database verification.
-  \item Current set is 77 hMOF entries~[8], \textbf{all Zn$_4$O} --- hypothetical and
-        single-metal, so no cross-metal claim is possible.
+  \item Size-matching already works: the 4 synthesised structures were expanded under the
+        identical 48\,\AA{} rule before comparison.
+  \item Repeat the partial-correlation check on the larger set.
 \end{itemize}
 
 \textbf{Priority 3 --- Validate against measured properties}
@@ -529,15 +534,16 @@ The \textbf{machinery is complete and verified}: the decomposition, the periodic
 the centrality analysis and the spectrum all work, are cross-validated across two
 implementations, and reproduce published crystallography.
 
-\vspace{0.1cm}
-What remains is establishing \textbf{whether the descriptor means anything physically} ---
-and we have identified precisely what blocks that and how to remove it.
+\vspace{0.08cm}
+\textbf{New:} four \textit{synthesised} MOFs, size-matched, fall clear of the hypothetical
+band --- $\Delta\alpha=1.66$--$2.26$ vs $1.02$--$1.41$, gap $0.25$, no overlap. MOF-5 shares
+the Zn$_4$O node and block count of much of the 77 and still separates: neither a size nor a
+metal artefact. Four archetypes are not a sample --- 50 structures decide it.
 \end{block}
 \begin{block}{\footnotesize On reporting negative results}
 \scriptsize
-We report the size confound rather than the raw $-0.497$ correlation.
-A band built on an uncontrolled size effect would not survive scrutiny; identifying and
-quantifying it is the more defensible scientific position.
+We report the size confound rather than the raw $-0.497$ correlation. A band built on an
+uncontrolled size effect would not survive scrutiny; quantifying it is more defensible.
 \end{block}
 \end{columns}
 \end{frame}

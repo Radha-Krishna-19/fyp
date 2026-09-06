@@ -120,12 +120,18 @@ Do **not** read the equations aloud symbol by symbol. Explain what each step is 
 
 Don't read every row. Group them.
 
-> "Roughly 60% complete. The **entire pipeline is functional** — ingestion, decomposition,
-> topology export, the network layer, and both spectrum methods. The 77-framework study runs
-> end to end, and the interactive platform is integrated."
+> "We report it on two axes, because 'we built a lot' and 'we established something' are
+> different claims. **Engineering: about 85%** — the entire pipeline is functional, from
+> ingestion through decomposition and the periodic graph to the spectrum, cross-validated
+> across two independent implementations, with a released dataset and five test suites
+> gating publication. **Scientific validation: about 60%** — the descriptor is provably
+> correct and we have documented its failure modes, including one claim we withdrew. What
+> is not established is behaviour across chemical families, which our single-metal dataset
+> cannot test. **Weighted, about 73%.** The rubric asks for roughly 60%."
 
-> "Two things are still in progress, and they're both about **validating the result** rather
-> than building machinery: removing a confound we found, and getting a better dataset."
+> **If pressed on why not higher:** "The remaining gap is one run — fifty synthesised
+> structures through the pipeline we already have. It is a data task, not a development
+> task. We would rather say that plainly than inflate the number."
 
 **The verification line — say this, it's what separates us from a demo:**
 
