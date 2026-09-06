@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team, Progress and Deliverables &middot; MOF Structural Descriptors</title>
+<meta name="description" content="Who did what, how far the implementation has actually got, and where every deliverable lives.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html" aria-current="page">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Team, Progress and Deliverables</h1>
+    <p class="lead">Who did what, how far the implementation has actually got, and where every deliverable lives.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">1</span>The Team</h2>
+      <p class="section-sub">Five members, each owning a distinct part of the pipeline end to end rather than a horizontal slice of it. Everyone can explain the module they own down to the line level.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Member</td><td>Roll number</td><td>Owns</td><td>Modules</td></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dt-value">P. M. Radha Krishna</td><td class="dt-note">CB.SC.U4CSE23134</td>
+            <td class="dt-note">Problem framing, methodology, integration, and this documentation portal</td>
+            <td class="dt-note">Pipeline driver, site architecture, build and test tooling</td>
+          </tr>
+          <tr>
+            <td class="dt-value">P. Kshitij Varma</td><td class="dt-note">CB.SC.U4CSE23122</td>
+            <td class="dt-note">The mathematical model &mdash; partition function, &tau;(q), the Legendre transform</td>
+            <td class="dt-note"><code>code_10_multifractal_spectrum.py</code>, <code>code_11_nmfa_paper.py</code></td>
+          </tr>
+          <tr>
+            <td class="dt-value">G. Rohith Abhinav</td><td class="dt-note">CB.SC.U4CSE23141</td>
+            <td class="dt-note">Implementation status and the interactive platform</td>
+            <td class="dt-note">3D viewer, decomposition engine, walkthrough</td>
+          </tr>
+          <tr>
+            <td class="dt-value">J. Keerthi Sree</td><td class="dt-note">&mdash;</td>
+            <td class="dt-note">Results, validation, and the band; dataset provenance checks</td>
+            <td class="dt-note">Band analysis notebook, confound testing, hold-out</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Isha</td><td class="dt-note">&mdash;</td>
+            <td class="dt-note">Design decisions, the &tau; defect, and the roadmap</td>
+            <td class="dt-note">Network construction, defect simulation, next steps</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <b>Guide:</b> Dr. T. Ramraj, Assistant Professor (Sl. Gd.), Department of Computer Science
+        and Engineering, School of Computing, Amrita Vishwa Vidyapeetham, Coimbatore. M.E., Ph.D.
+      </div>
+
+      <h2 class="section-title" id="progress" data-toc="Implementation progress"><span class="stitle-num">2</span>Implementation Progress &mdash; Audited</h2>
+      <p class="section-sub">The Panel Review 1 rubric asks for roughly 60% of the proposed implementation, with major modules integrated and the core functionality demonstrated. Rather than assert a number, here is the module-by-module basis for it.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Module</td><td>State</td><td>Evidence</td><td>Weight</td><td>Credit</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-note">CIF ingestion and symmetry expansion</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Parses all four demonstration CIFs and all 77 hMOF entries; atom counts verified against the files</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Periodic bond perception</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Coordination numbers match published crystallography for all four structures</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Metal-oxo decomposition</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Node and linker counts reproduce the published algorithm; three algorithm variants implemented</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
+          <tr><td class="dt-note">Labelled quotient graph and supercell expansion</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">UiO-66 recovers coordination 12, which the non-periodic construction reports as 1</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
+          <tr><td class="dt-note">Box growing and the multifractal spectrum</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">77/77 valid spectra; matches the published method's own worked figures</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
+          <tr><td class="dt-note">Descriptor extraction and band construction</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">&Delta;&alpha;, &alpha;&#8320;, A for 77 frameworks with per-framework stability estimates</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Confound analysis and hold-out validation</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Partial correlations, incremental R&sup2;, hold-out test &mdash; and one claim withdrawn as a result</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Validation on synthesised (CoRE MOF) structures</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Procedure written and code-ready; dataset not yet ingested</td><td class="dt-value">10%</td><td class="dt-value">0%</td></tr>
+          <tr><td class="dt-note">Cross-family separation (multiple metals)</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Blocked on the above &mdash; the current dataset has one metal</td><td class="dt-value">5%</td><td class="dt-value">0%</td></tr>
+          <tr style="font-weight:640;"><td class="dt-note">Total</td><td class="dt-note"></td><td class="dt-note">Seven of nine modules complete and integrated; the two outstanding are both external validation, not core function</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--good)">85%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout good">
+        <b>The claim we will make at review, and defend.</b> The core pipeline is complete and
+        integrated: a CIF goes in at one end and a validated three-number descriptor comes out at
+        the other, demonstrated live in the browser and reproducible from the command line. What
+        remains is external validation &mdash; running the finished pipeline on experimentally
+        synthesised structures. That is a data task, not a development task. We put the figure at
+        <b>85% of the proposed implementation</b>, above the ~60% the rubric asks for at this
+        stage, and the table above is the basis for it rather than an estimate.
+      </div>
+
+      <h2 class="section-title" id="reproduce" data-toc="Reproducing every number"><span class="stitle-num">3</span>Reproducing Every Number</h2>
+      <p class="section-sub">Nothing on this site is transcribed. Two independent routes regenerate all of it from a clean clone.</p>
+
+      <div class="grid2">
+        <div class="panel">
+          <h4>In the browser &mdash; no install</h4>
+          <div class="code-block"><code>git clone https://github.com/Radha-Krishna-19/fyp.git
+cd fyp/metal_oxo_deep_dive/1_website
+# then open index.html in any browser</code></div>
+          <p style="font-size:14px;color:var(--text-2);margin:12px 0 0;">Every asset is relative and <code>three.min.js</code> is vendored into the repository, so the site works from a local file with no web server and no internet connection. The numbers are computed at page load from the CIF files beside it.</p>
+        </div>
+        <div class="panel">
+          <h4>From the command line</h4>
+          <div class="code-block"><code>cd fyp/metal_oxo_deep_dive/2_python
+python code_00_pipeline_driver.py HKUST-1.cif
+python code_10_multifractal_spectrum.py
+# the 77-framework band:
+jupyter notebook ../3_notebooks/mof_band_analysis.ipynb</code></div>
+          <p style="font-size:14px;color:var(--text-2);margin:12px 0 0;">The Python modules need only the standard library plus NumPy. The notebook writes <code>results.json</code>, which is the file <code>band_data.js</code> on this site is generated from.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-head">Test suites</h3>
+      <p>Five jsdom suites run the real pages headlessly and assert on computed output, not on markup. They are what catch a silently blank panel &mdash; a broken engine script throws no visible error, it just renders nothing.</p>
+      <div class="code-block"><code>cd fyp/metal_oxo_deep_dive/1_website/tests
+npm install jsdom
+npm test</code></div>
+
+      <h2 class="section-title" id="deliverables" data-toc="Deliverables"><span class="stitle-num">4</span>Where Every Deliverable Lives</h2>
+
+      <table class="data-table">
+        <thead><tr><td>Deliverable</td><td>Location</td><td>Contents</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-value">Documentation portal</td><td class="dt-note"><code>1_website/</code></td><td class="dt-note">This site &mdash; objectives, problem statement, methodology, team, progress, source browser</td></tr>
+          <tr><td class="dt-value">Reference implementation</td><td class="dt-note"><code>2_python/</code></td><td class="dt-note">Twelve annotated modules reproducing the published pipeline and our extensions</td></tr>
+          <tr><td class="dt-value">Analysis notebook</td><td class="dt-note"><code>3_notebooks/</code></td><td class="dt-note">The 77-framework band analysis, with <code>results.json</code> and a changelog</td></tr>
+          <tr><td class="dt-value">Dataset release</td><td class="dt-note"><code>9_dataset/</code></td><td class="dt-note">The 77-framework descriptor table with metadata, licence and provenance</td></tr>
+          <tr><td class="dt-value">Concept documents</td><td class="dt-note"><code>5_concepts/</code></td><td class="dt-note">Five long-form explanations of the background</td></tr>
+          <tr><td class="dt-value">References</td><td class="dt-note"><code>6_references/</code></td><td class="dt-note">Annotated bibliography and BibTeX</td></tr>
+          <tr><td class="dt-value">Panel review deck</td><td class="dt-note"><code>7_presentation/</code></td><td class="dt-note">Beamer source, compiled PDF, Overleaf archive, speaking script and five-way split</td></tr>
+          <tr><td class="dt-value">Textbook</td><td class="dt-note"><code>8_textbook/</code></td><td class="dt-note">Twelve chapters taking a reader from zero background to the full method</td></tr>
+        </tbody>
+      </table>
+
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="references.html"><div class="dir">&larr; Previous</div><div class="ttl">References</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

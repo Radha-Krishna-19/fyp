@@ -1,0 +1,75 @@
+{
+  "name": "mof-multifractal-descriptors",
+  "title": "MOF Multifractal Structural Descriptors",
+  "version": "1.0.0",
+  "created": "2026-09-06",
+  "licenses": [{ "name": "CC-BY-4.0", "path": "https://creativecommons.org/licenses/by/4.0/" }],
+  "description": "Graph-theoretic structural descriptors for metal-organic frameworks, computed from crystal structure alone with no molecular simulation. The multifractal singularity spectrum of each framework's periodic quotient graph, reduced to spectrum width, endpoints and asymmetry.",
+  "keywords": ["metal-organic framework", "MOF", "multifractal analysis",
+               "graph theory", "materials informatics", "structural descriptor",
+               "crystallography", "network science"],
+  "contributors": [
+    { "title": "P. M. Radha Krishna", "role": "author" },
+    { "title": "P. Kshitij Varma",    "role": "author" },
+    { "title": "G. Rohith Abhinav",   "role": "author" },
+    { "title": "J. Keerthi Sree",     "role": "author" },
+    { "title": "Isha",                "role": "author" },
+    { "title": "Dr. T. Ramraj",       "role": "supervisor",
+      "organization": "Amrita Vishwa Vidyapeetham, Coimbatore" }
+  ],
+  "homepage": "https://github.com/Radha-Krishna-19/fyp",
+  "resources": [
+    {
+      "name": "descriptors-hypothetical",
+      "path": "mof_multifractal_descriptors_v1.csv",
+      "format": "csv", "mediatype": "text/csv", "encoding": "utf-8",
+      "rowCount": 77,
+      "description": "hMOF frameworks. HYPOTHETICAL: computationally generated, never synthesised. All Zn4O, so single-metal.",
+      "schema": {
+        "primaryKey": "framework_id",
+        "fields": [
+          { "name": "framework_id",      "type": "string",  "description": "Identifier in the source database" },
+          { "name": "n_blocks",          "type": "integer", "description": "Building blocks in the analysed supercell" },
+          { "name": "n_nodes",           "type": "integer", "description": "Inorganic blocks (metal clusters)" },
+          { "name": "n_linkers",         "type": "integer", "description": "Organic blocks" },
+          { "name": "n_atoms_supercell", "type": "integer", "description": "Atoms after supercell expansion" },
+          { "name": "graph_diameter",    "type": "integer", "description": "Longest shortest path, in hops" },
+          { "name": "n_influential",     "type": "integer", "description": "Top-decile-degree blocks; the spectrum is read here" },
+          { "name": "delta_alpha",       "type": "number",  "description": "PRIMARY DESCRIPTOR. Spectrum width. Scales with graph size - control for n_blocks before correlating with anything." },
+          { "name": "delta_alpha_sd",    "type": "number",  "description": "Standard deviation over repeated trials" },
+          { "name": "alpha_min",         "type": "number",  "description": "Lower endpoint of the singularity spectrum" },
+          { "name": "alpha_max",         "type": "number",  "description": "Upper endpoint" },
+          { "name": "asymmetry_A",       "type": "number",  "description": "Spectrum skew. Negative for all 77." },
+          { "name": "asymmetry_sd",      "type": "number",  "description": "Standard deviation over trials" },
+          { "name": "lcd_angstrom",      "type": "number",  "unit": "angstrom", "description": "Largest cavity diameter. FROM THE SOURCE DATABASE, not computed here." },
+          { "name": "pld_angstrom",      "type": "number",  "unit": "angstrom", "description": "Pore-limiting diameter. From the source database." },
+          { "name": "mofid",             "type": "string",  "description": "MOFid: linker SMILES + metal node + topology" },
+          { "name": "source_url",        "type": "string",  "format": "uri" },
+          { "name": "provenance",        "type": "string",  "description": "Hypothetical or synthesised" }
+        ]
+      }
+    },
+    {
+      "name": "descriptors-synthesised",
+      "path": "mof_multifractal_descriptors_real_v1.csv",
+      "format": "csv", "mediatype": "text/csv", "encoding": "utf-8",
+      "rowCount": 4,
+      "description": "Experimentally synthesised MOFs, identical pipeline and identical supercell rule. Coordination numbers verified against published crystallography before the spectra were computed. Do NOT pool with the hypothetical file."
+    }
+  ],
+  "methodology": {
+    "bond_perception": "Covalent-radius cutoff (x1.30 metal, x1.15 otherwise) with a minimum-image search over 27 periodic images. CIF files contain no bonds; every bond is inferred.",
+    "decomposition": "Published metal-oxo algorithm (snurr-group/mofid), used unmodified.",
+    "graph": "Labelled quotient graph: one vertex per block, edges carry the lattice translation crossed.",
+    "supercell_rule": "Expanded until every lattice direction exceeds 48 angstrom.",
+    "tau_definition": "tau(q) = ln(partition function) / ln(r / r_N), fitted THROUGH THE ORIGIN. A free-intercept fit gives spectra with no apex for every framework.",
+    "q_range": "-10 to +10 in 41 steps",
+    "influential_selection": "Top decile by degree"
+  },
+  "known_issues": [
+    "delta_alpha correlates with graph size. The apparent correlation with pore diameter (r = -0.497) collapses to r = +0.101 once graph size is controlled for. Do not report a correlation without that control.",
+    "The 77-framework file is single-metal (all Zn4O). No cross-family claim is supportable from it.",
+    "Hypothetical structures have never been synthesised. Do not describe them as experimental.",
+    "The graph is unweighted and untyped: bond order and element identity are discarded by design."
+  ]
+}

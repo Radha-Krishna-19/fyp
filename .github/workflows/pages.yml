@@ -1,0 +1,77 @@
+# Publishes 1_website/ to GitHub Pages on every push to main.
+#
+# WHY A WORKFLOW RATHER THAN "DEPLOY FROM BRANCH"
+# Pages' branch mode can only serve the repository root or /docs. The site
+# lives in 1_website/, so branch mode would either need the site moved (which
+# breaks every path in the project layout) or a redirect stub at the root
+# (which makes the published URL ugly and the redirect visible). This uploads
+# 1_website/ AS the site root, so the published URL is clean and nothing in
+# the repository has to move.
+name: Publish project site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # lets you republish from the Actions tab by hand
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two publishes race. If a second push lands mid-deploy the queued
+# run is replaced rather than both writing to the same target.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      # The site computes its numbers in the browser at load time, so a broken
+      # engine script renders a blank panel and throws no visible error. These
+      # suites boot the real pages headlessly and assert on computed output.
+      # Publishing a silently-empty site is the failure this prevents.
+      - name: Run the site test suites
+        working-directory: metal_oxo_deep_dive/1_website/tests
+        run: |
+          npm install --no-audit --no-fund jsdom
+          node test_pages.js
+          node test_engines.js
+          node test_network_page.js
+          node test_decompose.js
+          node test_render_robustness.js
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+
+      - name: Check the site is self-contained
+        working-directory: metal_oxo_deep_dive/1_website
+        run: |
+          # three.js is vendored so a clone works offline. If this file went
+          # missing the 3D views would silently fall back to a CDN, and the
+          # "works with no network" claim in the README would be false.
+          test -s three.min.js || { echo "three.min.js is missing"; exit 1; }
+          # No absolute paths: everything must resolve relative to the page,
+          # or the site breaks under the /<repo>/ prefix Pages serves from.
+          ! grep -rn 'src="/\|href="/' --include='*.html' . || {
+            echo "absolute path found — it will 404 under the Pages sub-path"; exit 1; }
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: metal_oxo_deep_dive/1_website
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

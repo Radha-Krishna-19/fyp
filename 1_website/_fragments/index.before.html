@@ -1,0 +1,30 @@
+      <h2 class="section-title" id="summary" data-toc="In one paragraph"><span class="stitle-num">0</span>In One Paragraph</h2>
+      <p class="section-sub">
+        A metal&ndash;organic framework is a crystal built from metal clusters joined by organic
+        struts. Hundreds of thousands of candidate structures exist; deciding whether one is
+        worth making requires a molecular simulation that takes hours per structure. We ask a
+        narrower, answerable question: <b>can a descriptor computed from the framework's
+        connectivity alone &mdash; in seconds, with no simulation &mdash; carry enough
+        structural information to group frameworks usefully?</b> We build the framework's
+        periodic graph from its crystal structure, compute the multifractal spectrum of that
+        graph, and reduce each framework to three numbers. Across 77 frameworks those numbers
+        form a narrow band. We then test that band honestly, and report where it fails.
+      </p>
+
+      <div class="keynums">
+        <div class="keynum"><b>77</b><span>frameworks analysed end to end</span></div>
+        <div class="keynum is-good"><b>77 / 77</b><span>spectra mathematically valid after the &tau; correction</span></div>
+        <div class="keynum"><b>1.11 &ndash; 1.25</b><span>the &Delta;&alpha; band (interquartile range)</span></div>
+        <div class="keynum is-warn"><b>&minus;0.50 &rarr; +0.10</b><span>the pore-size correlation, once graph size is controlled for</span></div>
+      </div>
+
+      <div class="callout warn">
+        <b>The result we withdrew.</b> &Delta;&alpha; correlates with pore diameter at
+        <i>r</i>&nbsp;=&nbsp;&minus;0.497, which looked like a finding. Controlling for the number
+        of blocks in the graph collapses it to <i>r</i>&nbsp;=&nbsp;+0.101, while graph size itself
+        survives at +0.621, and adding pore size to a size-only model improves R&sup2; by 0.005.
+        The descriptor was largely measuring how big the graph was. We removed that claim from
+        the project rather than presenting it. The reasoning is set out in full in
+        <a href="results.html#band">Results</a>.
+      </div>
+

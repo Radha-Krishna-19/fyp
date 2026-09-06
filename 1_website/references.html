@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References &middot; MOF Structural Descriptors</title>
+<meta name="description" content="Every paper, dataset and tool this project builds on.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html" aria-current="page">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>References</h1>
+    <p class="lead">Every paper, dataset and tool this project builds on.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="section-title" id="references"><span class="stitle-num">1</span>References</h2>
+  <p class="section-sub">Every source this project actually uses &mdash; an algorithm we implement, a dataset we query, a method we follow, or a physical constant we cite. Nothing here is padding. The two that matter most are marked.</p>
+
+  <div class="panel">
+    <h3 class="sub-head">The algorithm we visualise, and the method we implement</h3>
+    <table class="data-table">
+      <thead><tr><td style="width:38px">#</td><td>Reference</td><td style="width:31%">Why it is here</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label"><b>[1]</b></td>
+          <td class="dt-note">B. J. Bucior <i>et al.</i>, &ldquo;Identification Schemes for Metal&ndash;Organic Frameworks to Enable Rapid Search and Cheminformatics Analysis,&rdquo; <i>Cryst. Growth Des.</i> <b>19</b>(11), 6682&ndash;6697 (2019).</td>
+          <td class="dt-value" style="color:var(--brand)"><b>Core.</b> Defines MOFid/MOFkey and the metal-oxo decomposition. Modules <code>code_01</code>&ndash;<code>code_07</code> are a faithful translation.</td></tr>
+      <tr><td class="dt-label"><b>[2]</b></td>
+          <td class="dt-note">J. Xiao, B. Wang, X. Li, &ldquo;Deciphering the Generating Rules and Functionalities of Complex Networks,&rdquo; <i>Sci. Rep.</i> <b>11</b>, 22964 (2021).</td>
+          <td class="dt-value" style="color:var(--brand)"><b>Core.</b> Source of NMFA/iNMFA. <b>Its &tau; definition is exactly what our correction restores</b> (Section 16).</td></tr>
+      <tr><td class="dt-label">[3]</td>
+          <td class="dt-note">C. Song, S. Havlin, H. A. Makse, &ldquo;Self-Similarity of Complex Networks,&rdquo; <i>Nature</i> <b>433</b>, 392&ndash;395 (2005).</td>
+          <td class="dt-note">Box-covering &mdash; the method family, and the contrast [2] draws against box-growing.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Topology</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[4]</td><td class="dt-note">O. Delgado-Friedrichs, M. O'Keeffe, <i>Acta Cryst. A</i> <b>59</b>(4), 351&ndash;360 (2003).</td><td class="dt-value" style="width:31%">Systre &mdash; <code>code_06</code> writes its <code>.cgd</code> input</td></tr>
+      <tr><td class="dt-label">[5]</td><td class="dt-note">M. O'Keeffe <i>et al.</i>, &ldquo;The Reticular Chemistry Structure Resource (RCSR),&rdquo; <i>Acc. Chem. Res.</i> <b>41</b>(12), 1782&ndash;1789 (2008).</td><td class="dt-value">the net symbols <code>tbo</code>, <code>pcu</code>, <code>sod</code>, <code>fcu</code></td></tr>
+      <tr><td class="dt-label">[6]</td><td class="dt-note">M. Eddaoudi <i>et al.</i>, &ldquo;Modular Chemistry: Secondary Building Units&hellip;,&rdquo; <i>Acc. Chem. Res.</i> <b>34</b>(4), 319&ndash;330 (2001).</td><td class="dt-value">the SBU concept</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Data &mdash; and why the distinction matters</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[7]</td><td class="dt-note">N. S. Bobbitt, J. Chen, R. Q. Snurr, &ldquo;MOFX-DB,&rdquo; <i>J. Chem. Eng. Data</i> <b>68</b>(2), 483&ndash;498 (2023).</td><td class="dt-value" style="width:31%">the database our notebook queries live</td></tr>
+      <tr><td class="dt-label">[8]</td><td class="dt-note">C. E. Wilmer <i>et al.</i>, &ldquo;Large-Scale Screening of Hypothetical Metal&ndash;Organic Frameworks,&rdquo; <i>Nature Chem.</i> <b>4</b>(2), 83&ndash;89 (2012).</td><td class="dt-value" style="color:var(--node-ink)"><b>Our 77 are hMOF entries &mdash; hypothetical, never synthesised</b></td></tr>
+      <tr><td class="dt-label">[9]</td><td class="dt-note">Y. G. Chung <i>et al.</i>, &ldquo;CoRE MOF 2019,&rdquo; <i>J. Chem. Eng. Data</i> <b>64</b>(12), 5985&ndash;5998 (2019).</td><td class="dt-value" style="color:var(--node-ink)"><b>The experimental set we still need</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Chemistry &mdash; constants and test structures</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[10]</td><td class="dt-note">B. Cordero <i>et al.</i>, &ldquo;Covalent Radii Revisited,&rdquo; <i>Dalton Trans.</i> 2832&ndash;2838 (2008).</td><td class="dt-value" style="width:31%">the bond-perception cutoffs in <code>code_02</code></td></tr>
+      <tr><td class="dt-label">[11]</td><td class="dt-note">S. S.-Y. Chui <i>et al.</i>, <i>Science</i> <b>283</b>, 1148&ndash;1150 (1999).</td><td class="dt-value">HKUST-1</td></tr>
+      <tr><td class="dt-label">[12]</td><td class="dt-note">H. Li, M. Eddaoudi, M. O'Keeffe, O. M. Yaghi, <i>Nature</i> <b>402</b>, 276&ndash;279 (1999).</td><td class="dt-value">MOF-5 / IRMOF-1</td></tr>
+      <tr><td class="dt-label">[13]</td><td class="dt-note">K. S. Park <i>et al.</i>, <i>PNAS</i> <b>103</b>(27), 10186&ndash;10191 (2006).</td><td class="dt-value">ZIF-8 &mdash; our chemical control</td></tr>
+      <tr><td class="dt-label">[14]</td><td class="dt-note">J. H. Cavka <i>et al.</i>, <i>JACS</i> <b>130</b>(42), 13850&ndash;13851 (2008).</td><td class="dt-value" style="color:var(--brand)"><b>UiO-66 &mdash; the 12-connected test case</b></td></tr>
+      <tr><td class="dt-label">[15]</td><td class="dt-note">G. C. Shearer <i>et al.</i>, &ldquo;Defect Engineering&hellip;UiO-66,&rdquo; <i>Chem. Mater.</i> <b>28</b>(11), 3749&ndash;3761 (2016).</td><td class="dt-value" style="color:var(--brand)"><b>Why our defect work is real chemistry</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Network science and software</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[16]</td><td class="dt-note">M. Fiedler, &ldquo;Algebraic Connectivity of Graphs,&rdquo; <i>Czech. Math. J.</i> <b>23</b>(2), 298&ndash;305 (1973).</td><td class="dt-value" style="width:31%">defines &lambda;&#8322;</td></tr>
+      <tr><td class="dt-label">[17]</td><td class="dt-note">U. Brandes, &ldquo;A Faster Algorithm for Betweenness Centrality,&rdquo; <i>J. Math. Sociol.</i> <b>25</b>(2), 163&ndash;177 (2001).</td><td class="dt-value">betweenness, in <code>code_09</code></td></tr>
+      <tr><td class="dt-label">[18]</td><td class="dt-note">A. H. Larsen <i>et al.</i>, &ldquo;The Atomic Simulation Environment,&rdquo; <i>J. Phys. Condens. Matter</i> <b>29</b>(27), 273002 (2017).</td><td class="dt-value">ASE &mdash; CIF parsing in the notebook</td></tr>
+      <tr><td class="dt-label">[19]</td><td class="dt-note">A. A. Hagberg, D. A. Schult, P. J. Swart, &ldquo;Exploring Network Structure&hellip; using NetworkX,&rdquo; <i>SciPy2008</i>, 11&ndash;15.</td><td class="dt-value">NetworkX</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>If you only read two:</b> <b>[1]</b> is the algorithm we visualise &mdash; Sections 7&ndash;9 are a faithful implementation of it. <b>[2]</b> is the method we apply &mdash; Sections 15&ndash;17 come from it, and the &tau; definition on its page 22 is the one line our correction restores.
+    <br><br>
+    <b>[8] and [9] together explain the dataset problem.</b> We requested [9] (experimental) and received [8] (hypothetical). Both are cited because the distinction changes what we are allowed to claim.
+    <br><br>
+    Full annotated list in <span class="code-chip">6_references/README.md</span>; BibTeX in <span class="code-chip">references.bib</span>.
+  </div>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="code.html"><div class="dir">&larr; Previous</div><div class="ttl">Every Line of Source Code</div></a><a class="next" href="team.html"><div class="dir">Next &rarr;</div><div class="ttl">Team, Progress and Deliverables</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

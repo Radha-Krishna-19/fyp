@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview &middot; MOF Structural Descriptors</title>
+<meta name="description" content="What a metal-organic framework is, the question this project asks, and the honest answer so far.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Overview</h1>
+    <p class="lead">What a metal-organic framework is, the question this project asks, and the honest answer so far.</p>
+    <div class="meta-strip">
+      <div><div class="k">Course</div><div class="v">23CSE498 &middot; Phase II</div></div>
+      <div><div class="k">Institution</div><div class="v">Amrita Vishwa Vidyapeetham, Coimbatore</div></div>
+      <div><div class="k">Guide</div><div class="v">Dr. T. Ramraj<br><span style="font-weight:450;color:var(--text-3);font-size:12.5px;">Assistant Professor (Sl. Gd.), CSE</span></div></div>
+      <div><div class="k">Category</div><div class="v">Research-based project</div></div>
+      <div><div class="k">Repository</div><div class="v"><a href="https://github.com/Radha-Krishna-19/fyp">github.com/Radha-Krishna-19/fyp</a></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+      <h2 class="section-title" id="summary" data-toc="In one paragraph"><span class="stitle-num">1</span>In One Paragraph</h2>
+      <p class="section-sub">
+        A metal&ndash;organic framework is a crystal built from metal clusters joined by organic
+        struts. Hundreds of thousands of candidate structures exist; deciding whether one is
+        worth making requires a molecular simulation that takes hours per structure. We ask a
+        narrower, answerable question: <b>can a descriptor computed from the framework's
+        connectivity alone &mdash; in seconds, with no simulation &mdash; carry enough
+        structural information to group frameworks usefully?</b> We build the framework's
+        periodic graph from its crystal structure, compute the multifractal spectrum of that
+        graph, and reduce each framework to three numbers. Across 77 frameworks those numbers
+        form a narrow band. We then test that band honestly, and report where it fails.
+      </p>
+
+      <div class="keynums">
+        <div class="keynum"><b>77</b><span>frameworks analysed end to end</span></div>
+        <div class="keynum is-good"><b>77 / 77</b><span>spectra mathematically valid after the &tau; correction</span></div>
+        <div class="keynum"><b>1.11 &ndash; 1.25</b><span>the &Delta;&alpha; band (interquartile range)</span></div>
+        <div class="keynum is-warn"><b>&minus;0.50 &rarr; +0.10</b><span>the pore-size correlation, once graph size is controlled for</span></div>
+      </div>
+
+      <div class="callout warn">
+        <b>The result we withdrew.</b> &Delta;&alpha; correlates with pore diameter at
+        <i>r</i>&nbsp;=&nbsp;&minus;0.497, which looked like a finding. Controlling for the number
+        of blocks in the graph collapses it to <i>r</i>&nbsp;=&nbsp;+0.101, while graph size itself
+        survives at +0.621, and adding pore size to a size-only model improves R&sup2; by 0.005.
+        The descriptor was largely measuring how big the graph was. We removed that claim from
+        the project rather than presenting it. The reasoning is set out in full in
+        <a href="results.html#band">Results</a>.
+      </div>
+
+
+<h2 class="st" id="problem"><span class="n">2</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
+  <p class="sd">Metal–organic frameworks are designed the way buildings are: you choose components — an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b> — and they assemble into a periodic framework. Everything useful about a MOF (surface area, pore size, thermal and chemical stability, catalytic behaviour) follows from which components were used and how they connect.</p>
+  <p class="sd">So when a MOF exists only as a crystal structure file, the foundational question is: <b>what building blocks is it made of?</b> That is what a decomposition algorithm answers, and every downstream use — database search, similarity matching, machine-learning featurisation, inverse design — inherits whatever answer it gives. If the reported node is not the species that actually exists in the crystal, everything built on top of it is reasoning about a material that does not exist.</p>
+
+  <div class="callout">
+    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file contains atomic positions and the unit cell — and <b>no bonds at all</b>. The format has no field for them. Every bond used by every step of the pipeline is <i>inferred</i> from interatomic distances, never read. That single fact is the origin of several of the limitations we found.
+  </div>
+
+  <!-- ============ 1 ============ -->
+
+<h2 class="st" id="question"><span class="n">3</span>The Question We Were Asked — and the Honest Answer</h2>
+  <p class="sd">The brief was to <b>find and highlight the influential nodes, the ones with highest degree</b>. We implemented it, and the result is more interesting than a simple yes.</p>
+
+  <h3 class="sub">1a · Ranking blocks by degree does not work — and here is why</h3>
+  <p class="sd">In a perfect crystal, every symmetry-equivalent block is <i>genuinely identical</i>. Every Cu paddlewheel in HKUST-1 has exactly the same environment as every other. So a "top-k by degree" list is not discovering anything: it is sorting tied values, and whichever ones come out on top depend only on the order the blocks happened to be numbered in.</p>
+
+  <div class="panel"><div id="tie-evidence"></div></div>
+
+  <div class="callout bad">
+    <b>Read the "distinct degree values" column.</b> Every structure has exactly <b>two</b> — one value for nodes, one for linkers. There is no third tier, no gradient, nothing to rank. A "top 12 most influential" list drawn from these numbers is reporting sort order, not chemistry.
+  </div>
+
+  <h3 class="sub">1b · But the degree itself is the single most valuable number in the analysis</h3>
+  <p class="sd">The ranking fails. The <b>measurement</b> succeeds completely — and it is not a consolation prize. A block's degree in the periodic graph <i>is</i> its <b>coordination number</b>: how many connections that building unit makes to the rest of the framework. In reticular chemistry this is the number that determines which net a given pair of building blocks can form at all. A 4-connected node with a 3-connected linker gives <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor the entire field is organised around.</p>
+
+  <div class="panel"><div id="degree-value"></div></div>
+
+  <div class="callout good">
+    <b>So: did we achieve something? Yes — but the deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once. It <b>validates the decomposition</b> (every value matches published crystallography). It <b>identifies the net</b> (the node/linker connectivity pair determines the topology). And it <b>separates MOF families</b>, which is what the spectrum work builds on. The one thing it cannot do is rank identical objects against each other — and knowing that is itself a result worth reporting.
+  </div>
+
+  <div class="callout warn">
+    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different lattice directions</i> collapse into one edge unless the lattice translation is carried on the edge. UiO-66 exposes it hardest: its primitive cell holds a single Zr₆ cluster whose twelve connections all run out to periodic images and back, so a naive build reports <b>6</b> instead of <b>12</b> — or degenerates into a star, one hub joined to everything. We build the <b>labelled quotient graph</b> instead, which is also exactly what Systre consumes.
+  </div>
+
+  <h3 class="sub">1c · Where influence <i>does</i> become a real quantity</h3>
+  <p class="sd">Symmetry is what flattens centrality. Break the symmetry and it immediately becomes informative — so we simulate a <b>missing-linker defect</b>, which is not a contrived test but a real and heavily studied feature of MOF chemistry, UiO-66 especially.</p>
+
+  <div class="panel"><div id="defect-summary"></div></div>
+
+  <div class="callout">
+    Removing one linker splits the blocks into several genuinely different classes, and <b>λ₂ drops</b> — a measure of how much easier the framework has become to cut apart, i.e. how much the defect weakened it. This is the direction where "influential nodes" turns into a real research question: <i>which</i> block, when removed, costs the framework the most.
+  </div>
+
+  <!-- ============ 2 ============ -->
+
+      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">4</span>Where to Start</h2>
+      <p class="section-sub">This site is a documentation portal, not a poster. Each page stands on its own and is written to be read from zero background.</p>
+
+      <div class="grid2">
+        <div class="panel">
+          <h4><a href="methodology.html">Methodology and architecture</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">The complete workflow, the module architecture, the datasets and their provenance, the evaluation strategy, and a justification for every design choice. Start here if you are assessing the work.</p>
+        </div>
+        <div class="panel">
+          <h4><a href="decomposition.html">The decomposition algorithm</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">The published metal-oxo algorithm, shown module by module with the real source beside a live 3D model of the crystal it is operating on. Four demonstration structures, uploadable CIFs.</p>
+        </div>
+        <div class="panel">
+          <h4><a href="network.html">From crystal to network</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">Every graph-theory term defined from first principles, then the periodic quotient graph, coordination numbers, centrality, defect simulation and the Laplacian spectrum.</p>
+        </div>
+        <div class="panel">
+          <h4><a href="spectrum.html">The multifractal spectrum</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">The published method we build on, the mathematics of &tau;(q) and f(&alpha;), and the definition error that silently destroyed every spectrum until we found it.</p>
+        </div>
+        <div class="panel">
+          <h4><a href="results.html">Results &mdash; the band</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">The 77-framework band, the confound analysis that killed the pore-size claim, the hold-out test, and a plain statement of what this does and does not establish.</p>
+        </div>
+        <div class="panel">
+          <h4><a href="team.html">Team, progress and deliverables</a></h4>
+          <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">Who did what, an audited implementation-progress figure, how to reproduce every number from a clean clone, and where each deliverable lives.</p>
+        </div>
+      </div>
+
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="next" href="methodology.html"><div class="dir">Next &rarr;</div><div class="ttl">Methodology and Architecture</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="mof_decompose.js"></script>
+<script src="mof_network.js"></script>
+<script src="overview_page.js"></script>
+</body>
+</html>

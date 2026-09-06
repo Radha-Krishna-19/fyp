@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every Line of Source Code &middot; MOF Structural Descriptors</title>
+<meta name="description" content="All 28 source files, readable in the browser with no download and no web server.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html" aria-current="page">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Every Line of Source Code</h1>
+    <p class="lead">All 28 source files, readable in the browser with no download and no web server.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="section-title" id="source"><span class="stitle-num">1</span>Every Line of Source Code</h2>
+  <p class="section-sub">Click any file to read it here — full source, line numbers, no download and no web server needed. Modules 00–07 are faithful translations of the published <code>snurr-group/mofid</code> C++; modules 08–11 are this project's own work.</p>
+  <div class="toolbar">
+    <span class="lbl">Show:</span>
+    <button id="cs-all" class="mode-btn active">All files</button>
+    <button id="cs-py" class="mode-btn">Python (the algorithm)</button>
+    <button id="cs-ours" class="mode-btn">Our contributions only</button>
+    <button id="cs-js" class="mode-btn">JavaScript (the site engine)</button>
+  </div>
+  <div id="code-grid" class="codegrid"></div>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="results.html"><div class="dir">&larr; Previous</div><div class="ttl">Results: The Band</div></a><a class="next" href="references.html"><div class="dir">Next &rarr;</div><div class="ttl">References</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="code_sources.js"></script>
+<script src="code_viewer.js"></script>
+<script src="single_page.js"></script>
+</body>
+</html>

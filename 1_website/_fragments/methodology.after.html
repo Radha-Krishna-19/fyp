@@ -1,0 +1,142 @@
+      <h2 class="section-title" id="architecture" data-toc="System architecture"><span class="stitle-num">0</span>System Architecture</h2>
+      <p class="section-sub">Eight modules, each with one responsibility and a defined interface to the next. Every module is independently runnable and independently testable, which is what let us find the three defects listed further down &mdash; a monolithic script would have hidden all of them.</p>
+
+      <figure class="fig">
+        <svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System architecture: eight modules from CIF input to descriptor output">
+          <style>
+            .ab { fill: var(--surface-1); stroke: var(--border-strong); stroke-width: 1.2; rx: 8; }
+            .ab-ours { fill: var(--brand-soft); stroke: var(--brand); stroke-width: 1.4; }
+            .at { font: 600 12.5px ui-sans-serif, system-ui; fill: var(--text); }
+            .as { font: 11px ui-sans-serif, system-ui; fill: var(--text-3); }
+            .al { font: 600 10px ui-sans-serif, system-ui; fill: var(--text-3); letter-spacing: .06em; }
+            .aa { stroke: var(--border-strong); stroke-width: 1.4; fill: none; marker-end: url(#ah); }
+            .grp { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 4; rx: 10; }
+          </style>
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--border-strong)"/>
+            </marker>
+          </defs>
+
+          <rect class="grp" x="14" y="52" width="446" height="184"/>
+          <text class="al" x="26" y="44">PUBLISHED PIPELINE — TRANSLATED, UNMODIFIED</text>
+          <rect class="grp" x="14" y="266" width="946" height="182"/>
+          <text class="al" x="26" y="258">OUR CONTRIBUTION</text>
+
+          <rect class="ab" x="34" y="74" width="180" height="60"/>
+          <text class="at" x="48" y="100">1 · CIF input</text>
+          <text class="as" x="48" y="118">cell, symmetry, atoms</text>
+
+          <rect class="ab" x="258" y="74" width="180" height="60"/>
+          <text class="at" x="272" y="100">2 · Bond perception</text>
+          <text class="as" x="272" y="118">27 images, covalent radii</text>
+
+          <rect class="ab" x="34" y="158" width="180" height="60"/>
+          <text class="at" x="48" y="184">3 · Classification</text>
+          <text class="as" x="48" y="202">metal vs organic</text>
+
+          <rect class="ab" x="258" y="158" width="180" height="60"/>
+          <text class="at" x="272" y="184">4 · Metal-oxo split</text>
+          <text class="as" x="272" y="202">nodes and linkers</text>
+
+          <rect class="ab-ours" x="34" y="288" width="200" height="64"/>
+          <text class="at" x="48" y="314">5 · Quotient graph</text>
+          <text class="as" x="48" y="332">edge = (A, B, translation)</text>
+
+          <rect class="ab-ours" x="272" y="288" width="200" height="64"/>
+          <text class="at" x="286" y="314">6 · Supercell expansion</text>
+          <text class="as" x="286" y="332">enough radii to fit over</text>
+
+          <rect class="ab-ours" x="510" y="288" width="200" height="64"/>
+          <text class="at" x="524" y="314">7 · Box growing</text>
+          <text class="as" x="524" y="332">M(r), influential nodes</text>
+
+          <rect class="ab-ours" x="748" y="288" width="200" height="64"/>
+          <text class="at" x="762" y="314">8 · Spectrum</text>
+          <text class="as" x="762" y="332">&tau;(q) &rarr; &alpha;, f(&alpha;)</text>
+
+          <rect class="ab" x="510" y="376" width="438" height="56"/>
+          <text class="at" x="524" y="400">Descriptor per framework: &Delta;&alpha;, &alpha;&#8320;, A</text>
+          <text class="as" x="524" y="418">plus validation: partial correlation against graph size and pore diameter</text>
+
+          <rect class="ab" x="510" y="74" width="200" height="60"/>
+          <text class="at" x="524" y="100">Validation harness</text>
+          <text class="as" x="524" y="118">5 suites, 120+ assertions</text>
+
+          <rect class="ab" x="748" y="74" width="200" height="60"/>
+          <text class="at" x="762" y="100">Presentation layer</text>
+          <text class="as" x="762" y="118">this site, computed live</text>
+
+          <rect class="ab" x="510" y="158" width="438" height="60"/>
+          <text class="at" x="524" y="184">Reference implementations</text>
+          <text class="as" x="524" y="202">Python modules (batch, reproducible) &middot; JavaScript engine (in-browser, zero install)</text>
+
+          <path class="aa" d="M214 104 H252"/>
+          <path class="aa" d="M348 134 V152"/>
+          <path class="aa" d="M258 188 H220"/>
+          <path class="aa" d="M124 218 V282"/>
+          <path class="aa" d="M234 320 H266"/>
+          <path class="aa" d="M472 320 H504"/>
+          <path class="aa" d="M710 320 H742"/>
+          <path class="aa" d="M848 352 V370"/>
+        </svg>
+        <figcaption>Modules 1&ndash;4 are a faithful translation of the published <code>snurr-group/mofid</code> decomposition and are used unmodified. Modules 5&ndash;8 are this project's work. The two reference implementations compute the same quantities by independent routes, which is how disagreements between them surface as defects rather than as silent wrong answers.</figcaption>
+      </figure>
+
+      <h3 class="sub-head">Why two independent implementations</h3>
+      <p>The Python modules and the JavaScript engine were written from the same specification but not from each other. Where they disagree, one of them is wrong &mdash; and that disagreement is loud, whereas a single implementation is silently self-consistent even when it is wrong. Two of the three defects we found were caught exactly this way. The cost is roughly a third more code; the benefit is that the numbers on this site are cross-checked rather than asserted.</p>
+
+      <h2 class="section-title" id="datasets" data-toc="Datasets"><span class="stitle-num">0</span>Datasets and Their Provenance</h2>
+      <p class="section-sub">Stating exactly what the data is, including the parts that limit the conclusions.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Dataset</td><td>Size</td><td>Origin</td><td>Used for</td><td>Known limitation</td></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dt-value">hMOF subset</td>
+            <td class="dt-value">77 frameworks</td>
+            <td class="dt-note">Wilmer <i>et al.</i> hypothetical MOF database, via the MOFDiff release</td>
+            <td class="dt-note">The band; all quantitative results</td>
+            <td class="dt-note"><b>Hypothetical, not synthesised.</b> Every one is a Zn&#8324;O framework, so the set carries no metal diversity at all.</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Demonstration set</td>
+            <td class="dt-value">4 structures</td>
+            <td class="dt-note">HKUST-1, UiO-66, MOF-5, ZIF-8 &mdash; experimentally synthesised, from published CIFs</td>
+            <td class="dt-note">Showing the decomposition and the network construction; validating coordination numbers against crystallography</td>
+            <td class="dt-note">Unit cells of 112&ndash;288 atoms: correct for demonstrating the algorithm, far too small for a reliable power-law fit. <b>Deliberately excluded from the band.</b></td>
+          </tr>
+          <tr>
+            <td class="dt-value">CoRE MOF</td>
+            <td class="dt-value">not yet ingested</td>
+            <td class="dt-note">Computation-ready experimental MOF database</td>
+            <td class="dt-note">Planned: testing whether the band holds for real synthesised materials</td>
+            <td class="dt-note">The pipeline accepts it unchanged &mdash; see the validation plan in <a href="results.html#realmof">Results</a>. This is the single largest gap in the work.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <b>The honest position on the dataset.</b> The 77 frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, the band we report is a band <i>within</i> one chemical family, and cannot yet be claimed to separate families. Every conclusion on this site is written to respect that limit.
+      </div>
+
+      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">0</span>Evaluation Strategy</h2>
+      <p class="section-sub">What would count as the method working, and what would count as it failing. Fixed in advance, so a negative result is a result rather than a reason to change the test.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Level</td><td>What is tested</td><td>Metric</td><td>Pass condition</td><td>Status</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-value">Correctness</td><td class="dt-note">Bond perception and decomposition reproduce known chemistry</td><td class="dt-note">Coordination number vs published crystallography</td><td class="dt-note">Exact match on all four demonstration structures</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; including UiO-66 at 12, which the non-periodic construction gets wrong</td></tr>
+          <tr><td class="dt-value">Mathematical validity</td><td class="dt-note">Each spectrum is a well-formed singularity spectrum</td><td class="dt-note">f(&alpha;) concave, apex at q&nbsp;=&nbsp;0</td><td class="dt-note">All frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; 77/77 after the &tau; correction; it was 0/77 before</td></tr>
+          <tr><td class="dt-value">Stability</td><td class="dt-note">The descriptor is reproducible, not an artefact of one run</td><td class="dt-note">Standard deviation of &Delta;&alpha; over repeated trials</td><td class="dt-note">SD small against the spread between frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; per-framework SD is roughly an order of magnitude below the band width</td></tr>
+          <tr><td class="dt-value">Discrimination</td><td class="dt-note">The descriptor separates frameworks that differ structurally</td><td class="dt-note">Band width against within-framework noise</td><td class="dt-note">Band narrow and populated</td><td class="dt-note" style="color:var(--good)"><b>Met</b> for &Delta;&alpha;; the f(&alpha;) envelope alone does <i>not</i> discriminate, and we say so</td></tr>
+          <tr><td class="dt-value">Confound control</td><td class="dt-note">The descriptor measures structure, not something trivial</td><td class="dt-note">Partial correlation against graph size; incremental R&sup2;</td><td class="dt-note">Correlation with a property survives controlling for size</td><td class="dt-note" style="color:var(--bad)"><b>Failed</b> for pore size &mdash; the claim was withdrawn. This is the most important line in the table.</td></tr>
+          <tr><td class="dt-value">Generalisation</td><td class="dt-note">The band holds on frameworks not used to define it</td><td class="dt-note">Hold-out membership rate</td><td class="dt-note">Held-out frameworks land inside the band</td><td class="dt-note" style="color:var(--warn)"><b>Partial</b> &mdash; hold-out passes, but within one metal family only</td></tr>
+          <tr><td class="dt-value">External validity</td><td class="dt-note">The band holds for materials that physically exist</td><td class="dt-note">Band membership for CoRE MOF structures</td><td class="dt-note">Comparable band position and width</td><td class="dt-note" style="color:var(--text-3)"><b>Not yet run</b> &mdash; the open task, planned in full</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <b>Why "confound control" is on this list at all.</b> A structural descriptor that correlates with a physical property is only interesting if it is not simply restating the size of the object. Most descriptors that look promising fail exactly here, and the failure is invisible unless you go looking for it. Putting the test in the evaluation plan before running it is what made the negative result reportable instead of embarrassing.
+      </div>
+

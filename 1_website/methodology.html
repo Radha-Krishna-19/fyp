@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology and Architecture &middot; MOF Structural Descriptors</title>
+<meta name="description" content="The full workflow, the system architecture, the datasets, the evaluation strategy, and the justification for each choice.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html" aria-current="page">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Methodology and Architecture</h1>
+    <p class="lead">The full workflow, the system architecture, the datasets, the evaluation strategy, and the justification for each choice.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="st" id="why"><span class="n">1</span>Why This Path — and What a Graph Has To Do With a MOF</h2>
+  <p class="sd">The commonest question about this project is why a chemistry problem is being attacked with network theory. This section answers that, and the questions that usually follow it.</p>
+
+  <h3 class="sub-head">The chain of reasoning</h3>
+  <div class="callout">
+    <ol style="margin:4px 0 0 18px;line-height:1.75;">
+      <li><b>A MOF is not a molecule — it is a repeating framework.</b> What distinguishes one MOF from another is not only <i>which atoms</i> it contains but <b>how they are wired together</b>.</li>
+      <li><b>Wiring is exactly what a graph describes.</b> Collapse each building block to a point and each bond between blocks to a line, and the chemistry reduces to a network of pure connectivity.</li>
+      <li><b>The useful properties follow the wiring.</b> Gas moves through the pore network, and the pore network <i>is</i> the empty space left by that wiring. A description of the wiring is therefore a description of what the material can do.</li>
+      <li><b>Networks can be measured.</b> Once it is a graph, decades of network science become available — coordination number, centrality, the Laplacian, fractal measures.</li>
+      <li><b>A spectrum compresses a whole framework into a few numbers.</b> That is the point: you can compare two MOFs, or ten thousand, without simulating any of them.</li>
+    </ol>
+  </div>
+
+  <h3 class="sub-head">The pipeline, stage by stage</h3>
+  <p class="sd">Scroll through the six stages &mdash; the diagram on the right follows along.</p>
+
+  <div class="scrolly" id="scrolly">
+    <div class="scrolly-track">
+      <div class="scrolly-step">
+        <div class="tag">Stage 1</div>
+        <h4>A CIF file, which contains no bonds</h4>
+        <p>Crystallography gives you a unit cell and a list of atom positions &mdash; and nothing else. There is no line anywhere saying which atoms are bonded. <b>Every bond in this project was inferred by our own code.</b></p>
+      </div>
+      <div class="scrolly-step">
+        <div class="tag">Stage 2</div>
+        <h4>Inferring bonds, periodically</h4>
+        <p>Two atoms are bonded if they are closer than the sum of their covalent radii. But a crystal repeats forever, so the search runs over <b>27 periodic images</b> and keeps the nearest &mdash; otherwise every bond crossing a cell wall is lost.</p>
+      </div>
+      <div class="scrolly-step">
+        <div class="tag">Stage 3</div>
+        <h4>Cutting the crystal into blocks</h4>
+        <p>The published metal-oxo rule: sever every bond touching a metal, and whatever stays connected is a building block. Blocks with a metal are <b>nodes</b>; the rest are <b>linkers</b>. We use this algorithm unmodified.</p>
+      </div>
+      <div class="scrolly-step">
+        <div class="tag">Stage 4</div>
+        <h4>Blocks become a graph</h4>
+        <p>Each block collapses to a single vertex, each inter-block bond to an edge. Every edge carries the lattice translation it crosses &mdash; drop those labels and <b>UiO-66's twelve connections collapse to one</b>.</p>
+      </div>
+      <div class="scrolly-step">
+        <div class="tag">Stage 5</div>
+        <h4>Measuring how the network grows</h4>
+        <p>Centre a ball on a block and count what falls inside as the radius grows. Repeat for every influential block, sweep a distortion exponent <i>q</i>, and a Legendre transform turns the result into the spectrum <i>f</i>(&alpha;).</p>
+      </div>
+      <div class="scrolly-step">
+        <div class="tag">Stage 6</div>
+        <h4>One framework, three numbers</h4>
+        <p>&Delta;&alpha; is how varied the pore network is, &alpha;<sub>0</sub> its typical dimension, <i>A</i> its asymmetry. That compression is what lets you compare ten thousand frameworks without simulating any of them.</p>
+      </div>
+    </div>
+
+    <div class="scrolly-viz">
+      <div class="pipe-stage"><div class="num">1</div><div><div class="lbl">CIF file</div><div class="sub">cell + positions, no bonds</div></div></div>
+      <div class="pipe-stage"><div class="num">2</div><div><div class="lbl">Bond perception</div><div class="sub">27 images, covalent radii</div></div></div>
+      <div class="pipe-stage"><div class="num">3</div><div><div class="lbl">Decomposition</div><div class="sub">nodes and linkers</div></div></div>
+      <div class="pipe-stage"><div class="num">4</div><div><div class="lbl">Quotient graph</div><div class="sub">edge = (A, B, t)</div></div></div>
+      <div class="pipe-stage"><div class="num">5</div><div><div class="lbl">Spectrum</div><div class="sub">&tau;(q) &rarr; f(&alpha;)</div></div></div>
+      <div class="pipe-stage"><div class="num">6</div><div><div class="lbl">Descriptor</div><div class="sub">&Delta;&alpha;, &alpha;&#8320;, A</div></div></div>
+    </div>
+  </div>
+
+  <h3 class="sub-head">Why bother, when simulation already exists?</h3>
+  <p class="sd">Because simulation does not scale to the size of the problem. A GCMC gas-uptake calculation takes hours per structure, and there are <b>hundreds of thousands</b> of known and hypothetical MOFs. Screening them all directly is not feasible.</p>
+  <p class="sd">A graph descriptor takes <b>seconds</b>. If a cheap structural number can narrow 100,000 candidates to a few hundred worth simulating properly, that is the whole value — <b>not replacing simulation, but deciding what to simulate.</b></p>
+
+  <h3 class="sub-head">What is the multifractal spectrum actually measuring?</h3>
+  <p class="sd">Start with a simpler question: <b>how much network is near a given block?</b> Grow a ball of radius <i>r</i> around it and count what falls inside. Do that for every influential block and you have a set of growth curves.</p>
+  <p class="sd">If a framework were perfectly uniform, every block would grow at the same rate and a single number — a fractal dimension — would describe the whole thing. Real frameworks are not uniform: some regions are tightly tied together, others open into large voids. So instead of one number you need <b>a distribution of growth rates</b>, and that distribution is the spectrum <i>f</i>(α).</p>
+  <div class="callout">
+    <table class="data-table" style="background:transparent;">
+      <thead><tr><td>Quantity</td><td>What it means in plain terms</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label">α</td><td class="dt-note">how fast the network grows around one particular block — a <i>local</i> dimension</td></tr>
+      <tr><td class="dt-label">f(α)</td><td class="dt-note">how much of the framework shares that growth rate</td></tr>
+      <tr><td class="dt-label">α₀ (the apex)</td><td class="dt-note">the <i>typical</i> growth rate — the framework's dominant dimension</td></tr>
+      <tr><td class="dt-label">Δα (the width)</td><td class="dt-note"><b>how varied the framework is.</b> Narrow = uniform throughout. Wide = a mix of tight regions and open ones</td></tr>
+      <tr><td class="dt-label">A (asymmetry)</td><td class="dt-note">which side dominates — mostly dense with a few voids, or mostly open with a few dense knots</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sd">So a spectrum is a <b>fingerprint of pore-network heterogeneity</b> expressed as a curve, and Δα is that fingerprint reduced to one number — which is what makes a <i>band</i> possible at all.</p>
+
+  <h3 class="sub-head">What we set out to achieve</h3>
+  <div class="callout">
+    <b>The goal:</b> establish whether a purely structural, simulation-free descriptor can group MOFs into meaningful families — so a new framework can be placed against a known band and triaged without any expensive calculation.
+  </div>
+  <p class="sd">The honest answer we reached is in Section 17, and it is <b>partly yes and partly no</b>. The spectra are now computed correctly and all 77 frameworks land in a tight, well-defined band. But we can also demonstrate that the width is currently dominated by a computational parameter rather than by chemistry, so the band cannot yet be read as a chemical statement. Establishing exactly what it would take to fix that <i>is</i> the result.</p>
+
+  <h3 class="sub-head">Questions we expect — and the answers</h3>
+  <div class="callout">
+    <p style="margin:0 0 10px;"><b>“Isn't this throwing away the chemistry?”</b><br>
+    Deliberately, yes. The graph is unweighted — it does not know which element an atom is. That is a real limitation and we say so. It is also the point: whatever survives that stripping is <b>pure architecture</b>, and it transfers across chemistries in a way an element-specific descriptor cannot.</p>
+
+    <p style="margin:0 0 10px;"><b>“Does Δα predict gas uptake?”</b><br>
+    <b>No, and we never claim it.</b> Nothing here computes adsorption. Uptake comes from GCMC or experiment. Δα describes pore-network architecture only.</p>
+
+    <p style="margin:0 0 10px;"><b>“Why only the influential nodes, not all of them?”</b><br>
+    Because the paper's iNMFA method restricts the measure to the top-connected 10%, arguing those blocks carry the framework's structure. Section 12 shows this has a catch in a perfect crystal: every node ties, so “top 10%” is ambiguous. We report that rather than hide it.</p>
+
+    <p style="margin:0 0 10px;"><b>“Why a periodic graph — why not just use the unit cell?”</b><br>
+    Because a crystal has no edges. Drop the lattice translations and every bond crossing a cell face vanishes, the framework fragments, and coordination numbers come out wrong. Section 11 shows UiO-66 reporting <b>1</b>-connected instead of the published <b>12</b>.</p>
+
+    <p style="margin:0;"><b>“What would make this genuinely useful?”</b><br>
+    Removing the size confound (Section 16), then testing the descriptor against measured properties on a set with real metal diversity. Both are concrete next steps, not open research questions.</p>
+  </div>
+
+<h2 class="st" id="parts"><span class="n">2</span>Everything We Built, and What Each Part Achieved</h2>
+  <p class="sd">Four components. For each: what it does, why it exists, what it achieved, and where to see it.</p>
+
+  <div class="part">
+    <div><div class="badge" style="background:var(--brand);">A</div></div>
+    <div>
+      <h4>The published pipeline, module by module</h4>
+      <div class="qa">
+        <div><b>What:</b> all seven stages of the MOFid pipeline — CIF input, bond assignment, element classification, the three splitting algorithms (metal-oxo, single-node, all-node), centroid simplification, Systre export, identifier assembly — each with the algorithm in plain terms, the real source code, an argument-by-argument reference, live computed numbers, and a synchronised 3D model. 18 steps.</div>
+        <div><b>Why:</b> you cannot credibly criticise an algorithm you have not first shown you understand. This establishes the baseline precisely, in the field's own terms.</div>
+        <div><b>Achieved:</b> a faithful, runnable Python translation of the published C++, verified against known crystal chemistry on four structures. It doubles as the teaching artefact for the whole project.</div>
+      </div>
+      <div class="where">→ <a href="decomposition.html#walkthrough">the pipeline walkthrough</a> · <code>code_00</code>–<code>code_07b</code></div>
+    </div>
+  </div>
+
+  <div class="part">
+    <div><div class="badge" style="background:var(--node);">B</div></div>
+    <div>
+      <h4>A visualisation of how the published decomposition works</h4>
+      <div class="qa">
+        <div><b>What:</b> the published metal-oxo algorithm, stepped through module by module, with the real code beside a live 3D model of the structure at that stage.</div>
+        <div><b>Why:</b> the decomposition is the step every downstream analysis depends on, and it is normally invisible — a black box that turns a CIF into a list of blocks. Making each stage visible is what lets anyone check that the blocks the network analysis runs on are the right ones.</div>
+        <div><b>Achieved:</b> any <code>.cif</code> can be uploaded and the whole pipeline runs on it live in the browser. The node and linker assignments can be inspected directly, which is the sanity check the later sections rest on.</div>
+      </div>
+      <div class="where">→ <a href="decomposition.html#walkthrough">the pipeline walkthrough</a> and <a href="decomposition.html#pipeline-tool">the interactive pipeline tool</a> · <code>code_04a_metal_oxo_algorithm.py</code></div>
+    </div>
+  </div>
+
+  <div class="part">
+    <div><div class="badge" style="background:var(--accent2);">D</div></div>
+    <div>
+      <h4>Building-block network analysis</h4>
+      <div class="qa">
+        <div><b>What:</b> treat the decomposed framework as a graph. Build it periodically, measure coordination numbers, compute centrality three ways, take the Laplacian eigenvalue spectrum, and simulate defects.</div>
+        <div><b>Why:</b> this is the extension asked for — influential nodes and a spectrum that could characterise a family of materials.</div>
+        <div><b>Achieved:</b> correct coordination numbers for all four structures (including UiO-66 at 12, which the naive construction gets wrong); the finding that centrality is degenerate in a perfect crystal; a working defect simulation that makes influence measurable; and Laplacian spectra that cleanly separate the four structures.</div>
+      </div>
+      <div class="where">→ <a href="network.html#graph">building the network</a> · <code>code_09_network_analysis.py</code></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Headline results, computed live</h3>
+  <div class="panel"><div id="results-summary"></div></div>
+
+  <!-- ============ 3 ============ -->
+
+<h2 class="st" id="implementation"><span class="n">3</span>Implementation Map</h2>
+  <p class="sd">Every file and what it is responsible for. The Python is the reference implementation and runs standalone; the JavaScript is a port of the same logic so the site can compute everything live in a browser. The two were cross-checked and agree on every value.</p>
+
+  <div class="panel" style="padding:0;overflow:hidden;">
+    <table class="filemap">
+      <tr class="grp"><td colspan="2">Reference implementation — Python, runnable</td></tr>
+      <tr><td class="f">code_00_pipeline_driver.py</td><td>Runs the whole chain end to end for one CIF</td></tr>
+      <tr><td class="f">code_01_cif_input.py</td><td>Module 1 — parse cell, symmetry, atoms. No bonds exist yet</td></tr>
+      <tr><td class="f">code_02_bond_assignment_pbc.py</td><td>Module 2 — infer bonds; 27-image minimum-image search + covalent-radius cutoff</td></tr>
+      <tr><td class="f">code_03_element_classification.py</td><td>Module 3 — <code>is_metal()</code>, the 23-element nonmetal table</td></tr>
+      <tr><td class="f">code_04a_metal_oxo_algorithm.py</td><td>Module 4a — the metal-oxo algorithm, the project's main subject</td></tr>
+      <tr><td class="f">code_04b_single_node_algorithm.py</td><td>Module 4b — single-node algorithm</td></tr>
+      <tr><td class="f">code_04c_all_node_algorithm.py</td><td>Module 4c — all-node algorithm</td></tr>
+      <tr><td class="f">code_05_centroid_simplification.py</td><td>Module 5 — collapse each block to a point (PBC-aware)</td></tr>
+      <tr><td class="f">code_06_systre_topology_export.py</td><td>Module 6 — writes a real <code>.cgd</code> file for Systre</td></tr>
+      <tr><td class="f">code_07a / 07b</td><td>Module 7 — MOFid and MOFkey assembly</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_09_network_analysis.py</td><td><b>Our contribution</b> — periodic graph, centrality, Laplacian spectrum</td></tr>
+
+      <tr class="grp"><td colspan="2">Browser engine — JavaScript</td></tr>
+      <tr><td class="f">mof_decompose.js</td><td>CIF parsing, PBC bonding, and the three published decomposition algorithms</td></tr>
+      <tr><td class="f">mof_render.js</td><td>Three.js 3D renderer — on-demand rendering, context-loss recovery</td></tr>
+      <tr><td class="f">mof_network.js</td><td>Quotient graph, Jacobi eigensolver, centrality, defect simulation</td></tr>
+      <tr><td class="f">pipeline_walkthrough.js</td><td>Section 1 of the main site</td></tr>
+      <tr><td class="f">network_page.js / overview_page.js</td><td>The network-analysis and overview sections of this page</td></tr>
+      <tr><td class="f">mof_stages.js / mof_controls.js</td><td>The standalone interactive pipeline tool</td></tr>
+
+      <tr class="grp"><td colspan="2">Pages and data</td></tr>
+      <tr><td class="f">index.html</td><td>The entire site — every section, one page</td></tr>
+      <tr><td class="f">mof_pipeline_viewer.html</td><td>Standalone 7-stage interactive tool</td></tr>
+      <tr><td class="f">*.cif</td><td>HKUST-1, UiO-66, MOF-5, ZIF-8 — the test structures</td></tr>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>Verify any claim on any page:</b><br>
+    <code>python3 code_00_pipeline_driver.py HKUST-1.cif</code> — the full pipeline<br>
+    <code>python3 code_10_multifractal_spectrum.py</code> — the spectrum and the band<br>
+    <code>python3 code_09_network_analysis.py</code> — coordination numbers, centralities, spectra
+  </div>
+
+  <!-- ============ 4 ============ -->
+
+<h2 class="st" id="roadmap"><span class="n">4</span>Roadmap</h2>
+  <p class="sd">Where the project stands and what the next steps are, including the ones that are blocked and why.</p>
+
+  <div class="road">
+    <div class="item done">
+      <h4>Understand and reproduce the published algorithm <span class="tag done">done</span></h4>
+      <p>All seven modules translated to runnable Python and validated against published crystallography on four structures. Python and JavaScript implementations cross-checked and in agreement.</p>
+    </div>
+    <div class="item done">
+      <h4>Identify the limitations that remain in it <span class="tag done">done</span></h4>
+      <p>Four documented, each with measured evidence rather than assertion: incomplete nodes, oxygen-only bridge chemistry, inferred-bond sensitivity, and silent conventions for rods and solvent.</p>
+    </div>
+    <div class="item done">
+      <h4>Propose and implement fixes <span class="tag done">done</span></h4>
+      <p>Node completion and donor-agnostic bridging change the decomposition; confidence and convention reporting make the hidden choices visible. Each switchable independently so its effect can be measured on its own.</p>
+    </div>
+    <div class="item done">
+      <h4>Build the periodic block graph correctly <span class="tag done">done</span></h4>
+      <p>Labelled quotient graph with lattice translations on the edges. Produces literature-correct coordination numbers where the naive construction fails — UiO-66 at 12 rather than 6.</p>
+    </div>
+    <div class="item now">
+      <h4>Influential nodes and the spectrum <span class="tag now">current</span></h4>
+      <p>Centrality implemented three ways; the degeneracy result established and reported honestly. Laplacian spectra computed and shown to separate the four structures. Defect simulation working — this is the route by which influence becomes a measurable quantity rather than a tie-break.</p>
+    </div>
+    <div class="item next">
+      <h4>Scale to a real dataset <span class="tag next">next — and blocked</span></h4>
+      <p><b>This is the gate on the main claim.</b> The goal of the form "all Zr-based MOFs occupy this region of spectral space" cannot be tested with <b>one</b> zirconium structure, however clean the separation looks on four. It needs a few hundred structures grouped by metal, from CoRE MOF or QMOF. Both analysis modules are written per-CIF, so batching them over a folder requires no change to the algorithms — only a loop, and the disk space.</p>
+    </div>
+    <div class="item next">
+      <h4>Systematic defect study <span class="tag next">next</span></h4>
+      <p>Remove each linker in turn and rank blocks by the damage caused — measured as the drop in λ₂. That produces a genuine influence ranking, grounded in a physical consequence rather than in a tie-break, and connects directly to the well-studied defect chemistry of UiO-66.</p>
+    </div>
+    <div class="item next">
+      <h4>Close the loop with topology <span class="tag next">later</span></h4>
+      <p>Run the exported <code>.cgd</code> files through Systre and check whether the Laplacian spectrum agrees with the RCSR topology assignment. If two structures share a spectrum, they should share a net — a falsifiable test of whether the fingerprint means what we claim.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <b>What we can and cannot claim today.</b> We can claim: the published algorithm reports chemically incomplete nodes in a specific, measurable way; our fix recovers the correct SBU on three of four test structures and correctly leaves the fourth alone; the periodic graph gives coordination numbers matching published crystallography; centrality is degenerate in defect-free crystals; and the Laplacian spectrum separates our four structures. We cannot yet claim anything about Zr-based MOFs <i>as a family</i> — that requires the dataset above, and saying so is more defensible than overreaching.
+  </div>
+
+  <!-- ================= SECTION 1: FULL PIPELINE WALKTHROUGH ================= -->
+
+      <h2 class="section-title" id="architecture" data-toc="System architecture"><span class="stitle-num">5</span>System Architecture</h2>
+      <p class="section-sub">Eight modules, each with one responsibility and a defined interface to the next. Every module is independently runnable and independently testable, which is what let us find the three defects listed further down &mdash; a monolithic script would have hidden all of them.</p>
+
+      <figure class="fig">
+        <svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System architecture: eight modules from CIF input to descriptor output">
+          <style>
+            .ab { fill: var(--surface-1); stroke: var(--border-strong); stroke-width: 1.2; rx: 8; }
+            .ab-ours { fill: var(--brand-soft); stroke: var(--brand); stroke-width: 1.4; }
+            .at { font: 600 12.5px ui-sans-serif, system-ui; fill: var(--text); }
+            .as { font: 11px ui-sans-serif, system-ui; fill: var(--text-3); }
+            .al { font: 600 10px ui-sans-serif, system-ui; fill: var(--text-3); letter-spacing: .06em; }
+            .aa { stroke: var(--border-strong); stroke-width: 1.4; fill: none; marker-end: url(#ah); }
+            .grp { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 4; rx: 10; }
+          </style>
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--border-strong)"/>
+            </marker>
+          </defs>
+
+          <rect class="grp" x="14" y="52" width="446" height="184"/>
+          <text class="al" x="26" y="44">PUBLISHED PIPELINE — TRANSLATED, UNMODIFIED</text>
+          <rect class="grp" x="14" y="266" width="946" height="182"/>
+          <text class="al" x="26" y="258">OUR CONTRIBUTION</text>
+
+          <rect class="ab" x="34" y="74" width="180" height="60"/>
+          <text class="at" x="48" y="100">1 · CIF input</text>
+          <text class="as" x="48" y="118">cell, symmetry, atoms</text>
+
+          <rect class="ab" x="258" y="74" width="180" height="60"/>
+          <text class="at" x="272" y="100">2 · Bond perception</text>
+          <text class="as" x="272" y="118">27 images, covalent radii</text>
+
+          <rect class="ab" x="34" y="158" width="180" height="60"/>
+          <text class="at" x="48" y="184">3 · Classification</text>
+          <text class="as" x="48" y="202">metal vs organic</text>
+
+          <rect class="ab" x="258" y="158" width="180" height="60"/>
+          <text class="at" x="272" y="184">4 · Metal-oxo split</text>
+          <text class="as" x="272" y="202">nodes and linkers</text>
+
+          <rect class="ab-ours" x="34" y="288" width="200" height="64"/>
+          <text class="at" x="48" y="314">5 · Quotient graph</text>
+          <text class="as" x="48" y="332">edge = (A, B, translation)</text>
+
+          <rect class="ab-ours" x="272" y="288" width="200" height="64"/>
+          <text class="at" x="286" y="314">6 · Supercell expansion</text>
+          <text class="as" x="286" y="332">enough radii to fit over</text>
+
+          <rect class="ab-ours" x="510" y="288" width="200" height="64"/>
+          <text class="at" x="524" y="314">7 · Box growing</text>
+          <text class="as" x="524" y="332">M(r), influential nodes</text>
+
+          <rect class="ab-ours" x="748" y="288" width="200" height="64"/>
+          <text class="at" x="762" y="314">8 · Spectrum</text>
+          <text class="as" x="762" y="332">&tau;(q) &rarr; &alpha;, f(&alpha;)</text>
+
+          <rect class="ab" x="510" y="376" width="438" height="56"/>
+          <text class="at" x="524" y="400">Descriptor per framework: &Delta;&alpha;, &alpha;&#8320;, A</text>
+          <text class="as" x="524" y="418">plus validation: partial correlation against graph size and pore diameter</text>
+
+          <rect class="ab" x="510" y="74" width="200" height="60"/>
+          <text class="at" x="524" y="100">Validation harness</text>
+          <text class="as" x="524" y="118">5 suites, 120+ assertions</text>
+
+          <rect class="ab" x="748" y="74" width="200" height="60"/>
+          <text class="at" x="762" y="100">Presentation layer</text>
+          <text class="as" x="762" y="118">this site, computed live</text>
+
+          <rect class="ab" x="510" y="158" width="438" height="60"/>
+          <text class="at" x="524" y="184">Reference implementations</text>
+          <text class="as" x="524" y="202">Python modules (batch, reproducible) &middot; JavaScript engine (in-browser, zero install)</text>
+
+          <path class="aa" d="M214 104 H252"/>
+          <path class="aa" d="M348 134 V152"/>
+          <path class="aa" d="M258 188 H220"/>
+          <path class="aa" d="M124 218 V282"/>
+          <path class="aa" d="M234 320 H266"/>
+          <path class="aa" d="M472 320 H504"/>
+          <path class="aa" d="M710 320 H742"/>
+          <path class="aa" d="M848 352 V370"/>
+        </svg>
+        <figcaption>Modules 1&ndash;4 are a faithful translation of the published <code>snurr-group/mofid</code> decomposition and are used unmodified. Modules 5&ndash;8 are this project's work. The two reference implementations compute the same quantities by independent routes, which is how disagreements between them surface as defects rather than as silent wrong answers.</figcaption>
+      </figure>
+
+      <h3 class="sub-head">Why two independent implementations</h3>
+      <p>The Python modules and the JavaScript engine were written from the same specification but not from each other. Where they disagree, one of them is wrong &mdash; and that disagreement is loud, whereas a single implementation is silently self-consistent even when it is wrong. Two of the three defects we found were caught exactly this way. The cost is roughly a third more code; the benefit is that the numbers on this site are cross-checked rather than asserted.</p>
+
+      <h2 class="section-title" id="datasets" data-toc="Datasets"><span class="stitle-num">6</span>Datasets and Their Provenance</h2>
+      <p class="section-sub">Stating exactly what the data is, including the parts that limit the conclusions.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Dataset</td><td>Size</td><td>Origin</td><td>Used for</td><td>Known limitation</td></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dt-value">hMOF subset</td>
+            <td class="dt-value">77 frameworks</td>
+            <td class="dt-note">Wilmer <i>et al.</i> hypothetical MOF database, via the MOFDiff release</td>
+            <td class="dt-note">The band; all quantitative results</td>
+            <td class="dt-note"><b>Hypothetical, not synthesised.</b> Every one is a Zn&#8324;O framework, so the set carries no metal diversity at all.</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Demonstration set</td>
+            <td class="dt-value">4 structures</td>
+            <td class="dt-note">HKUST-1, UiO-66, MOF-5, ZIF-8 &mdash; experimentally synthesised, from published CIFs</td>
+            <td class="dt-note">Showing the decomposition and the network construction; validating coordination numbers against crystallography</td>
+            <td class="dt-note">Unit cells of 112&ndash;288 atoms: correct for demonstrating the algorithm, far too small for a reliable power-law fit. <b>Deliberately excluded from the band.</b></td>
+          </tr>
+          <tr>
+            <td class="dt-value">CoRE MOF</td>
+            <td class="dt-value">not yet ingested</td>
+            <td class="dt-note">Computation-ready experimental MOF database</td>
+            <td class="dt-note">Planned: testing whether the band holds for real synthesised materials</td>
+            <td class="dt-note">The pipeline accepts it unchanged &mdash; see the validation plan in <a href="results.html#realmof">Results</a>. This is the single largest gap in the work.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <b>The honest position on the dataset.</b> The 77 frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, the band we report is a band <i>within</i> one chemical family, and cannot yet be claimed to separate families. Every conclusion on this site is written to respect that limit.
+      </div>
+
+      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">7</span>Evaluation Strategy</h2>
+      <p class="section-sub">What would count as the method working, and what would count as it failing. Fixed in advance, so a negative result is a result rather than a reason to change the test.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Level</td><td>What is tested</td><td>Metric</td><td>Pass condition</td><td>Status</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-value">Correctness</td><td class="dt-note">Bond perception and decomposition reproduce known chemistry</td><td class="dt-note">Coordination number vs published crystallography</td><td class="dt-note">Exact match on all four demonstration structures</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; including UiO-66 at 12, which the non-periodic construction gets wrong</td></tr>
+          <tr><td class="dt-value">Mathematical validity</td><td class="dt-note">Each spectrum is a well-formed singularity spectrum</td><td class="dt-note">f(&alpha;) concave, apex at q&nbsp;=&nbsp;0</td><td class="dt-note">All frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; 77/77 after the &tau; correction; it was 0/77 before</td></tr>
+          <tr><td class="dt-value">Stability</td><td class="dt-note">The descriptor is reproducible, not an artefact of one run</td><td class="dt-note">Standard deviation of &Delta;&alpha; over repeated trials</td><td class="dt-note">SD small against the spread between frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; per-framework SD is roughly an order of magnitude below the band width</td></tr>
+          <tr><td class="dt-value">Discrimination</td><td class="dt-note">The descriptor separates frameworks that differ structurally</td><td class="dt-note">Band width against within-framework noise</td><td class="dt-note">Band narrow and populated</td><td class="dt-note" style="color:var(--good)"><b>Met</b> for &Delta;&alpha;; the f(&alpha;) envelope alone does <i>not</i> discriminate, and we say so</td></tr>
+          <tr><td class="dt-value">Confound control</td><td class="dt-note">The descriptor measures structure, not something trivial</td><td class="dt-note">Partial correlation against graph size; incremental R&sup2;</td><td class="dt-note">Correlation with a property survives controlling for size</td><td class="dt-note" style="color:var(--bad)"><b>Failed</b> for pore size &mdash; the claim was withdrawn. This is the most important line in the table.</td></tr>
+          <tr><td class="dt-value">Generalisation</td><td class="dt-note">The band holds on frameworks not used to define it</td><td class="dt-note">Hold-out membership rate</td><td class="dt-note">Held-out frameworks land inside the band</td><td class="dt-note" style="color:var(--warn)"><b>Partial</b> &mdash; hold-out passes, but within one metal family only</td></tr>
+          <tr><td class="dt-value">External validity</td><td class="dt-note">The band holds for materials that physically exist</td><td class="dt-note">Band membership for CoRE MOF structures</td><td class="dt-note">Comparable band position and width</td><td class="dt-note" style="color:var(--text-3)"><b>Not yet run</b> &mdash; the open task, planned in full</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <b>Why "confound control" is on this list at all.</b> A structural descriptor that correlates with a physical property is only interesting if it is not simply restating the size of the object. Most descriptors that look promising fail exactly here, and the failure is invisible unless you go looking for it. Putting the test in the evaluation plan before running it is what made the negative result reportable instead of embarrassing.
+      </div>
+
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="index.html"><div class="dir">&larr; Previous</div><div class="ttl">Overview</div></a><a class="next" href="decomposition.html"><div class="dir">Next &rarr;</div><div class="ttl">The Decomposition Algorithm</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="mof_decompose.js"></script>
+<script src="mof_network.js"></script>
+<script src="overview_page.js"></script>
+</body>
+</html>

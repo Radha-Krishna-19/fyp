@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Decomposition Algorithm &middot; MOF Structural Descriptors</title>
+<meta name="description" content="The published metal-oxo decomposition, module by module, with the real code beside a live 3D model.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html" aria-current="page">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>The Decomposition Algorithm</h1>
+    <p class="lead">The published metal-oxo decomposition, module by module, with the real code beside a live 3D model.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="section-title" id="walkthrough"><span class="stitle-num">1</span>The Full Pipeline — Code + 3D, Module by Module</h2>
+  <p class="section-sub">Start at Module 1 and work forward — each module shows its real source (verbatim excerpts, real line numbers) beside a live 3D model of HKUST-1 that updates to match. Use the module tabs to jump around, or Previous/Next to move through all 16 steps in order.</p>
+  <div class="callout">
+    <b>What you are looking at.</b> The metal-oxo algorithm exactly as published by the Snurr group (Northwestern) in <code>snurr-group/mofid</code> — the reference implementation the field currently uses. Nothing here is modified: this is a <b>visualisation</b> of the published pipeline, stepped through one module at a time so the node and linker assignments the later network analysis depends on can be inspected directly.
+  </div>
+
+  <div class="callout">
+    <b>Honesty note:</b> the real MOFid pipeline is C++, which cannot execute inside a browser. Every code panel below shows this folder's own Python translation of the real algorithm (<code>code_XX.py</code> — every one of them is a real, runnable file you can execute yourself: <code>python3 code_04a_metal_oxo_algorithm.py HKUST-1.cif</code>) rather than raw C++. The 3D model itself is driven by a separate, JS port of the same logic (<code>mof_decompose.js</code>) so it can run live in your browser. Both were checked against each other and against known crystal chemistry (e.g. HKUST-1's <code>[Cu][Cu]</code> paddlewheel nodes) before being used here.
+  </div>
+
+  <div class="cif-row">
+    <span>Structure being walked through:</span>
+    <input type="file" id="w-cif-file" accept=".cif">
+    <button id="w-cif-reset">Reset to HKUST-1</button>
+    <span id="w-cif-status" class="cif-status"></span>
+  </div>
+
+
+  <div class="two-col">
+    <div class="panel" id="w-panel"><!-- built by pipeline_walkthrough.js --></div>
+    <div>
+      <div class="canvas-wrap" id="w-canvas-wrap">
+        <canvas id="w-canvas"></canvas>
+        <div class="labels-layer" id="w-labels"></div>
+        <div class="hover-tip" id="w-hovertip"></div>
+      </div>
+      <div class="canvas-hint">Drag to rotate · scroll to zoom · hover an atom/block for details</div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 2: DRAWBACKS + FIX ================= -->
+
+<h2 class="section-title" id="pipeline-tool"><span class="stitle-num">2</span>The Complete Pipeline, Interactive</h2>
+  <p class="section-sub">All seven stages of the published pipeline on one screen, for any structure you upload.</p>
+  <iframe id="pipeline-frame" class="pipeline-frame" data-src="mof_pipeline_viewer.html" title="Full 7-stage MOF decomposition pipeline, 3D" loading="lazy"></iframe>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="methodology.html"><div class="dir">&larr; Previous</div><div class="ttl">Methodology and Architecture</div></a><a class="next" href="network.html"><div class="dir">Next &rarr;</div><div class="ttl">From Crystal to Network</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="three.min.js"></script>
+<script>if(!window.THREE){document.write('<script src="https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/three.js\/r128\/three.min.js"><\/script>');}</script>
+<script src="mof_decompose.js"></script>
+<script src="mof_render.js"></script>
+<script src="mof_stages.js"></script>
+<script src="mof_controls.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="pipeline_walkthrough.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
