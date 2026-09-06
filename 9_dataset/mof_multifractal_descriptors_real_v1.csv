@@ -1,0 +1,5 @@
+framework_id,n_blocks,n_nodes,n_linkers,n_atoms_supercell,graph_diameter,n_influential,delta_alpha,delta_alpha_sd,alpha_min,alpha_max,asymmetry_A,asymmetry_sd,lcd_angstrom,pld_angstrom,mofid,source_url,provenance
+HKUST-1,378,,,,,,1.6602,,1.7039,3.3641,-1.525,,,,,"Chui et al., Science 283, 1148 (1999). Synthesised; commercially available.",experimentally synthesised (published CIF)
+UiO-66,448,,,,,,2.2593,,1.7859,4.0452,-0.752,,,,,"Cavka et al., JACS 130, 13850 (2008). Synthesised; the archetypal stable MOF.",experimentally synthesised (published CIF)
+MOF-5,256,,,,,,1.7005,,1.4092,3.1097,-1.165,,,,,"Li et al., Nature 402, 276 (1999). Synthesised; the same Zn4O node as all 77 hMOFs.",experimentally synthesised (published CIF)
+ZIF-8,972,,,,,,1.8042,,2.059,3.8631,-1.543,,,,,"Park et al., PNAS 103, 10186 (2006). Synthesised; zeolitic imidazolate.",experimentally synthesised (published CIF)

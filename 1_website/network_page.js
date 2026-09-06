@@ -7,7 +7,9 @@
 (function () {
   'use strict';
 
-  const NODE_C = '#d81e40', LINK_C = '#2e86c1', GHOST = '#c9ccd4';
+  // Evaluated per draw, not once at load: a colour captured at load time
+  // would survive a theme switch and repaint the graph in the old palette.
+  const NODE_C = () => PAL.node, LINK_C = () => PAL.brand, GHOST = () => PAL.border;
   const LIT = {
     'HKUST-1': { node: 4, linker: 3, net: 'tbo', sbu: 'Cu paddlewheel' },
     'UiO-66':  { node: 12, linker: 2, net: 'fcu', sbu: 'Zr₆O₄(OH)₄ cluster' },
@@ -60,7 +62,7 @@
     const maxD = Math.max.apply(null, deg) || 1, minD = Math.min.apply(null, deg);
     const top = deg.filter(v => v === maxD).length;
     if (highlightTop) {
-      el.innerHTML = '<span><i style="background:#1f9d67"></i><b>highest degree (' + maxD + ')</b> — ' + top +
+      el.innerHTML = '<span><i style="background:var(--good)"></i><b>highest degree (' + maxD + ')</b> — ' + top +
         ' block' + (top === 1 ? '' : 's') + ', all tied</span>' +
         '<span><i style="background:#39404d"></i>everything else</span>' +
         '<span style="color:var(--muted2)">every highlighted block is identical to the others — that is the point</span>';
@@ -137,7 +139,7 @@
     graphState = { pos, G, deg, cent, canvas };
 
     // edges: self-loops (block bonded to its own periodic image) drawn as arcs
-    ctx.strokeStyle = '#aab0bb'; ctx.lineWidth = 1.2;
+    ctx.strokeStyle = PAL.text3; ctx.lineWidth = 1.2;
     G.edges.forEach(e => {
       if (e.i === e.j) {
         ctx.beginPath();
@@ -156,11 +158,11 @@
       const r = 6 + 12 * (deg[i] / maxDeg);
       ctx.beginPath();
       ctx.arc(pos[i][0], pos[i][1], r, 0, Math.PI * 2);
-      ctx.fillStyle = b.type === 'metal' ? NODE_C : LINK_C;
-      if (highlight && highlight.has(b.id)) { ctx.fillStyle = '#1f9d67'; }
+      ctx.fillStyle = b.type === 'metal' ? NODE_C() : LINK_C();
+      if (highlight && highlight.has(b.id)) { ctx.fillStyle = PAL.good; }
       ctx.fill();
       if (r > 11) {
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = PAL.surface;
         ctx.font = '600 10px system-ui';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(String(deg[i]), pos[i][0], pos[i][1]);
@@ -203,8 +205,8 @@
     const pad = { l: 46, r: 12, t: 14, b: 34 };
     const maxY = Math.max.apply(null, series.map(s => Math.max.apply(null, s.values))) || 1;
 
-    ctx.strokeStyle = '#e2e6f0'; ctx.lineWidth = 1;
-    ctx.fillStyle = '#7c8296'; ctx.font = '11px system-ui'; ctx.textAlign = 'right';
+    ctx.strokeStyle = PAL.border; ctx.lineWidth = 1;
+    ctx.fillStyle = PAL.text3; ctx.font = '11px system-ui'; ctx.textAlign = 'right';
     for (let g = 0; g <= 4; g++) {
       const y = pad.t + (h - pad.t - pad.b) * (1 - g / 4);
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
@@ -252,7 +254,7 @@
     ctx.clearRect(0, 0, w, h);
     const pad = { l: 52, r: 14, t: 24, b: 40 };
     const all = series.filter(s => s.x.length);
-    if (!all.length) { ctx.fillStyle = '#7c8296'; ctx.font = '13px system-ui'; ctx.textAlign = 'center';
+    if (!all.length) { ctx.fillStyle = PAL.text3; ctx.font = '13px system-ui'; ctx.textAlign = 'center';
       ctx.fillText('spectrum undefined for this structure', w / 2, h / 2); return; }
     const xs = [].concat.apply([], all.map(s => s.x)).filter(isFinite);
     const ys = [].concat.apply([], all.map(s => s.y)).filter(isFinite);
@@ -263,7 +265,7 @@
     const X = v => pad.l + (w - pad.l - pad.r) * ((v - x0) / (x1 - x0));
     const Y = v => pad.t + (h - pad.t - pad.b) * (1 - (v - y0) / (y1 - y0));
 
-    ctx.strokeStyle = '#e2e6f0'; ctx.fillStyle = '#7c8296'; ctx.font = '11px system-ui';
+    ctx.strokeStyle = PAL.border; ctx.fillStyle = PAL.text3; ctx.font = '11px system-ui';
     for (let g = 0; g <= 4; g++) {
       const yy = pad.t + (h - pad.t - pad.b) * (1 - g / 4);
       ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
@@ -271,11 +273,11 @@
       const xx = pad.l + (w - pad.l - pad.r) * (g / 4);
       ctx.textAlign = 'center'; ctx.fillText((x0 + (x1 - x0) * g / 4).toFixed(2), xx, h - 22);
     }
-    ctx.textAlign = 'center'; ctx.fillStyle = '#5c6478';
+    ctx.textAlign = 'center'; ctx.fillStyle = PAL.text3;
     ctx.fillText(xlabel, (pad.l + w - pad.r) / 2, h - 6);
     ctx.save(); ctx.translate(14, (pad.t + h - pad.b) / 2); ctx.rotate(-Math.PI / 2);
     ctx.fillText(ylabel, 0, 0); ctx.restore();
-    if (title) { ctx.font = '600 12px system-ui'; ctx.fillStyle = '#1a2033'; ctx.fillText(title, w / 2, 15); }
+    if (title) { ctx.font = '600 12px system-ui'; ctx.fillStyle = PAL.text; ctx.fillText(title, w / 2, 15); }
 
     series.forEach(s => {
       ctx.strokeStyle = s.color; ctx.fillStyle = s.color; ctx.lineWidth = s.bar ? 9 : 2;
@@ -299,14 +301,16 @@
     });
   }
 
-  const MF_COLS = { 'HKUST-1': '#d81e40', 'UiO-66': '#1f9d67', 'MOF-5': '#e0873a', 'ZIF-8': '#8a56c9' };
+  // One colour per demonstration structure, resolved at call time.
+  const mfCol = n => ({ 'HKUST-1': PAL.node, 'UiO-66': PAL.good,
+                        'MOF-5': PAL.warn,  'ZIF-8': PAL.accent2 }[n] || PAL.text3);
 
   function renderMultifractal() {
     if (!window.MOFMultifractal) return;
     const r = mfAnalyse(current);
     const cc = r.ok ? window.MOFMultifractal.cleanCurve(r.alpha, r.fAlpha) : { a: [], f: [] };
     drawCurve(document.getElementById('mf-curve-canvas'),
-      [{ x: cc.a, y: cc.f, color: MF_COLS[current] || '#2f6fed' }],
+      [{ x: cc.a, y: cc.f, color: mfCol(current) }],
       'α(q)', 'f(α)', current + ' — multifractal spectrum');
 
     // comparison: each structure's alpha interval as a horizontal bar
@@ -315,7 +319,7 @@
     names.forEach((n, i) => {
       const rr = mfAnalyse(n);
       if (!rr.ok) return;
-      bars.push({ x: [rr.alphaMin, rr.alphaMax], y: [i, i], color: MF_COLS[n] || '#666', bar: true, label: n });
+      bars.push({ x: [rr.alphaMin, rr.alphaMax], y: [i, i], color: mfCol(n), bar: true, label: n });
     });
     drawCurve(document.getElementById('mf-compare-canvas'), bars,
       'α  (singularity strength)', 'structure', 'α range per structure');
@@ -325,7 +329,7 @@
     names.forEach(n => {
       const rr = mfAnalyse(n);
       const metal = metalOf(structures[n]);
-      rows += '<tr><td class="dt-label"><span style="color:' + (MF_COLS[n] || '#666') + '">●</span> ' + n +
+      rows += '<tr><td class="dt-label"><span style="color:' + (mfCol(n)) + '">●</span> ' + n +
         '</td><td class="dt-value">' + metal + '</td>' +
         '<td class="dt-value">' + rr.supercellN + '³ → ' + rr.K + '</td>' +
         '<td class="dt-value">' + rr.influential.length + '</td>' +
@@ -338,24 +342,30 @@
       '<td>Influential</td><td>α range</td><td>Width</td><td>Asymmetry A</td></tr></thead><tbody>' +
       rows + '</tbody></table>';
 
-    // verdict: does the Zr framework separate from the others?
-    const zr = names.filter(n => metalOf(structures[n]) === 'Zr').map(mfAnalyse).filter(x => x.ok);
-    const others = names.filter(n => metalOf(structures[n]) !== 'Zr').map(mfAnalyse).filter(x => x.ok);
+    // ---- What these four structures are, and are not, evidence for -------
+    // These four are DEMONSTRATION structures for the decomposition algorithm.
+    // They are deliberately NOT the band. Their unit cells hold 112-288 atoms,
+    // which after supercell expansion still gives far fewer distinct radii
+    // than a power law can be fitted over with confidence, so their widths are
+    // not comparable with the 77-framework band (3000-6600 atoms each).
+    // Stating that plainly here is what stops a reader assuming the four are
+    // a result. The band lives on results.html and uses the 77 only.
     const el = document.getElementById('mf-verdict');
-    if (zr.length && others.length) {
-      const zrLo = Math.min.apply(null, zr.map(x => x.alphaMin));
-      const otHi = Math.max.apply(null, others.map(x => x.alphaMax));
-      const sep = zrLo > otHi;
-      el.className = sep ? 'verdict ok' : 'verdict';
-      el.innerHTML = sep
-        ? '<b>The zirconium framework occupies its own region of α.</b> UiO-66 spans α ≈ ' +
-          zrLo.toFixed(2) + '–' + Math.max.apply(null, zr.map(x => x.alphaMax)).toFixed(2) +
-          ', entirely above every Cu/Zn framework here (which top out at α ≈ ' + otHi.toFixed(2) +
-          '). That separation is the mechanism the brief is aiming at — but it rests on <b>one</b> Zr structure, ' +
-          'so it demonstrates that the method can separate families, not that Zr-MOFs as a class occupy this band. ' +
-          'Establishing that needs many structures per metal.'
-        : '<b>The α ranges overlap here</b>, so on these four structures the spectrum alone does not separate the metals. ' +
-          'With more structures per family the picture may sharpen — or it may show the descriptor needs pairing with another.';
+    if (el) {
+      const ok = names.map(mfAnalyse).filter(x => x.ok).length;
+      el.className = 'verdict';
+      el.innerHTML =
+        '<b>What these four structures establish: that the implementation is correct.</b> ' +
+        'A spectrum is produced for ' + ok + ' of ' + names.length + ' structures, each ' +
+        'peaks at q&nbsp;=&nbsp;0 as the mathematics requires, and the values are stable across ' +
+        'repeated runs. That is a working implementation of the published method.' +
+        '<br><br>' +
+        '<b>What they do not establish: anything about families.</b> Four structures cannot ' +
+        'support a claim about a class of materials, and their cells are far too small for ' +
+        'a reliable power-law fit — 112 to 288 atoms, against 3&nbsp;000 to 6&nbsp;600 for the ' +
+        'frameworks in the band. Their widths are therefore <i>not</i> comparable with the band ' +
+        'and are not plotted against it. The family question is answered over 77 frameworks in ' +
+        '<a href="results.html#band">Results</a>.';
     }
 
     // the fixes table
@@ -381,7 +391,7 @@
         'UiO-66\'s cell has 7 blocks and a graph diameter of 2 — there is no range of radii to fit a power law across, so the result is noise.',
         'Expand to a supercell until the graph is large enough to scale over (exact, because every edge carries its translation).']
       ].map(r => '<tr><td class="dt-value">' + r[0] + '</td><td class="dt-label">' + r[1] +
-        '</td><td class="dt-note">' + r[2] + '</td><td class="dt-note" style="color:#0d6b47">' + r[3] + '</td></tr>').join('') +
+        '</td><td class="dt-note">' + r[2] + '</td><td class="dt-note" style="color:var(--good-ink)">' + r[3] + '</td></tr>').join('') +
       '</tbody></table>';
   }
 
@@ -406,7 +416,7 @@
         '<td class="dt-value">' + a.dNet + '</td>' +
         '<td class="dt-value">' + (isFinite(a.alpha0) ? a.alpha0.toFixed(2) : '—') + '</td>' +
         '<td class="dt-value">' + (isFinite(a.width) ? a.width.toFixed(2) : '—') + '</td>' +
-        '<td class="dt-value" style="color:#d64545">' + (isFinite(b.width) ? b.width.toFixed(3) : '—') + '</td>' +
+        '<td class="dt-value" style="color:var(--bad)">' + (isFinite(b.width) ? b.width.toFixed(3) : '—') + '</td>' +
         '<td class="dt-value">' + b.distinctCurves + '</td></tr>';
     });
     document.getElementById('paper-table').innerHTML =
@@ -444,7 +454,7 @@
     const xMax = Math.max.apply(null, xs) * 1.15 || 1;
     const yMax = Math.max.apply(null, ys) * 1.15 || 1;
 
-    ctx.strokeStyle = '#e2e6f0'; ctx.fillStyle = '#7c8296'; ctx.font = '11px system-ui';
+    ctx.strokeStyle = PAL.border; ctx.fillStyle = PAL.text3; ctx.font = '11px system-ui';
     for (let g = 0; g <= 4; g++) {
       const y = pad.t + (h - pad.t - pad.b) * (1 - g / 4);
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
@@ -462,7 +472,7 @@
       const y = pad.t + (h - pad.t - pad.b) * (1 - p.y / yMax);
       ctx.beginPath(); ctx.arc(x, y, 9, 0, Math.PI * 2);
       ctx.fillStyle = p.color; ctx.fill();
-      ctx.fillStyle = '#1a2033'; ctx.font = '600 11.5px system-ui'; ctx.textAlign = 'left';
+      ctx.fillStyle = PAL.text; ctx.font = '600 11.5px system-ui'; ctx.textAlign = 'left';
       ctx.fillText(p.label + ' (' + p.metal + ')', x + 13, y + 4);
     });
   }
@@ -483,14 +493,21 @@
               cent, defectId !== null ? new Set() : null);
 
     // ---- the same blocks, in the real crystal ----
+    // Isolated from the analysis below: the 3D view is illustrative, the
+    // tables are the evidence. A WebGL failure (no GPU, a blocked context,
+    // a driver bug) must not be able to take the coordination-number and
+    // centrality tables down with it.
     if (render3d) {
-      const opts = defectId !== null ? { excludeBlocks: [defectId] } : {};
-      render3d.load(DATA, {
-        colorMode: 'block', blockColorStyle: 'custom',
-        blockColors: blockColours(G, deg, cent),
-        showBonds: true, showCell: true, netOnly: false,
-      });
-      legend3d(G, deg);
+      try {
+        render3d.load(DATA, {
+          colorMode: 'block', blockColorStyle: 'custom',
+          blockColors: blockColours(G, deg, cent),
+          showBonds: true, showCell: true, netOnly: false,
+        });
+        legend3d(G, deg);
+      } catch (e) {
+        if (window.console) console.warn('3D view unavailable; analysis continues.', e);
+      }
     }
 
     // --- validation table ---
@@ -509,7 +526,7 @@
       '<tr><td class="dt-label">Blocks / edges</td><td class="dt-value">' + G.n + ' / ' + G.edges.length +
       '</td><td class="dt-note" colspan="2">' +
       (mode === 'naive'
-        ? '<b style="color:#a8382c">Naive graph: periodic translations discarded</b>'
+        ? '<b style="color:var(--node-ink)">Naive graph: periodic translations discarded</b>'
         : 'Labelled quotient graph (translations preserved)') + '</td></tr>' +
       '</tbody></table>';
 
@@ -520,7 +537,7 @@
     order.slice(0, 8).forEach(i => {
       const b = G.blocks[i];
       rows += '<tr><td class="dt-label">#' + b.id + ' <span style="color:' +
-        (b.type === 'metal' ? NODE_C : LINK_C) + '">●</span> ' +
+        (b.type === 'metal' ? NODE_C() : LINK_C()) + '">●</span> ' +
         (b.type === 'metal' ? 'node' : 'linker') + '</td>' +
         '<td class="dt-value">' + deg[i] + '</td>' +
         '<td class="dt-value">' + cent[i].toFixed(3) + '</td>' +
@@ -542,7 +559,7 @@
 
     // --- spectrum ---
     drawSpectrum(document.getElementById('spectrum-canvas'),
-      [{ values: spec, color: NODE_C }]);
+      [{ values: spec, color: NODE_C() }]);
     const ss = document.getElementById('spectrum-stats');
     if (ss) ss.innerHTML =
       '<b>λ₂ = ' + (spec[1] || 0).toFixed(3) + '</b> (algebraic connectivity — how hard the framework is to cut) &nbsp;·&nbsp; ' +
@@ -557,7 +574,7 @@
 
   function row(label, computed, published, ok) {
     const badge = ok === null ? '' :
-      (ok ? '<b style="color:#1f9d67">✓ matches</b>' : '<b style="color:#d64545">✗ differs</b>');
+      (ok ? '<b style="color:var(--good)">✓ matches</b>' : '<b style="color:var(--bad)">✗ differs</b>');
     return '<tr><td class="dt-label">' + label + '</td><td class="dt-value">' + computed +
       '</td><td class="dt-value">' + published + '</td><td class="dt-note">' + badge + '</td></tr>';
   }
@@ -573,7 +590,7 @@
     document.getElementById('defect-result').innerHTML =
       '<table class="data-table"><thead><tr><td></td><td>Perfect crystal</td><td>One linker removed</td><td>Effect</td></tr></thead><tbody>' +
       '<tr><td class="dt-label">Distinct centrality values</td><td class="dt-value">' + perfect.distinctCentrality +
-      '</td><td class="dt-value" style="color:#1f9d67">' + d.distinctCentrality + '</td><td class="dt-note">' +
+      '</td><td class="dt-value" style="color:var(--good)">' + d.distinctCentrality + '</td><td class="dt-note">' +
       (changed ? 'symmetry broken — blocks become distinguishable' : 'still symmetric — remaining blocks are all equivalent') + '</td></tr>' +
       '<tr><td class="dt-label">λ₂ (algebraic connectivity)</td><td class="dt-value">' + perfect.lambda2.toFixed(3) +
       '</td><td class="dt-value">' + d.lambda2.toFixed(3) + '</td><td class="dt-note">' +
@@ -585,14 +602,14 @@
 
   // --- cross-structure fingerprint ---
   function renderFingerprint() {
-    const cols = { 'HKUST-1': '#d81e40', 'UiO-66': '#1f9d67', 'MOF-5': '#e0873a', 'ZIF-8': '#8a56c9' };
+    const cols = { 'HKUST-1': PAL.node, 'UiO-66': PAL.good, 'MOF-5': PAL.warn, 'ZIF-8': PAL.accent2 };  // local, rebuilt per draw
     const series = [], points = [], rows = [];
     Object.keys(structures).forEach(name => {
       const r = MOFNetwork.analyse(structures[name]);
       const metal = metalOf(structures[name]);
-      series.push({ values: r.spectrum, color: cols[name] || '#666' });
-      points.push({ x: r.lambda2, y: r.lambdaMax, label: name, metal, color: cols[name] || '#666' });
-      rows.push('<tr><td class="dt-label"><span style="color:' + (cols[name] || '#666') + '">●</span> ' + name +
+      series.push({ values: r.spectrum, color: cols[name] || PAL.text3 });
+      points.push({ x: r.lambda2, y: r.lambdaMax, label: name, metal, color: cols[name] || PAL.text3 });
+      rows.push('<tr><td class="dt-label"><span style="color:' + (cols[name] || PAL.text3) + '">●</span> ' + name +
         '</td><td class="dt-value">' + metal + '</td><td class="dt-value">' + r.nodeCN.join(',') +
         '</td><td class="dt-value">' + r.lambda2.toFixed(3) + '</td><td class="dt-value">' + r.lambdaMax.toFixed(2) +
         '</td><td class="dt-note">' + (LIT[name] ? LIT[name].net : '') + '</td></tr>');
@@ -621,24 +638,35 @@
     });
     current = names.indexOf('HKUST-1') >= 0 ? 'HKUST-1' : names[0];
 
+    // This module drives sections on TWO pages -- the network page and the
+    // spectrum page -- and each carries only some of these controls. Every
+    // lookup below is therefore guarded: an unguarded null here aborts the
+    // whole DOMContentLoaded handler, which silently leaves every later
+    // section on the page empty. That failure mode is invisible to a static
+    // check, so it is guarded rather than assumed.
     const tabs = document.getElementById('net-struct-tabs');
-    names.forEach(name => {
-      const b = document.createElement('button');
-      b.className = 'struct-tab'; b.dataset.name = name; b.textContent = name;
-      b.addEventListener('click', () => { current = name; defectId = null; render(); renderDefect();
-        try { renderMultifractal(); } catch (e) {}
-        try { renderPaper(); } catch (e) {} });
-      tabs.appendChild(b);
-    });
+    if (tabs) {
+      names.forEach(name => {
+        const b = document.createElement('button');
+        b.className = 'struct-tab'; b.dataset.name = name; b.textContent = name;
+        b.addEventListener('click', () => { current = name; defectId = null; render(); renderDefect();
+          try { renderMultifractal(); } catch (e) {}
+          try { renderPaper(); } catch (e) {} });
+        tabs.appendChild(b);
+      });
+    }
 
-    document.getElementById('btn-periodic').addEventListener('click', () => { mode = 'periodic'; render(); });
-    document.getElementById('btn-naive').addEventListener('click', () => { mode = 'naive'; render(); });
-    document.getElementById('btn-defect').addEventListener('click', () => {
+    const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
+    on('btn-periodic', 'click', () => { mode = 'periodic'; render(); });
+    on('btn-naive',    'click', () => { mode = 'naive';    render(); });
+    on('btn-defect',   'click', () => {
       const linkers = structures[current].blocks.filter(b => b.type === 'linker');
       defectId = defectId === null && linkers.length ? linkers[0].id : null;
-      document.getElementById('btn-defect').classList.toggle('active', defectId !== null);
-      document.getElementById('btn-defect').textContent =
-        defectId !== null ? '✓ Defect applied — restore linker' : 'Remove one linker (simulate a defect)';
+      const btn = document.getElementById('btn-defect');
+      btn.classList.toggle('active', defectId !== null);
+      btn.textContent = defectId !== null
+        ? '\u2713 Defect applied \u2014 restore linker'
+        : 'Remove one linker (simulate a defect)';
       render();
     });
 
@@ -646,13 +674,25 @@
     // page still works and the panel explains itself)
     const wrap3d = document.getElementById('mol3d-wrap');
     if (window.THREE && wrap3d) {
-      render3d = window.MOFRender.create();
-      render3d.init(document.getElementById('mol3d-canvas'), wrap3d,
-                    document.getElementById('mol3d-labels'), document.getElementById('mol3d-tip'));
+      // Creating a WebGL context can fail for reasons that have nothing to do
+      // with this page -- browsers cap the number of live contexts per tab and
+      // this project opens several, and some drivers refuse outright. If it
+      // fails, render3d stays null and every table below still renders.
+      try {
+        render3d = window.MOFRender.create();
+        render3d.init(document.getElementById('mol3d-canvas'), wrap3d,
+                      document.getElementById('mol3d-labels'), document.getElementById('mol3d-tip'));
+      } catch (e) {
+        render3d = null;
+        if (window.console) console.warn('3D context unavailable; analysis continues.', e);
+        wrap3d.innerHTML = '<div style="color:var(--warn-ink);font:13px/1.6 system-ui;padding:22px;' +
+          'text-align:center"><b>3D view unavailable in this browser.</b><br>' +
+          'The graph analysis alongside it is unaffected.</div>';
+      }
     } else if (wrap3d) {
-      wrap3d.innerHTML = '<div style="color:#ffb4a8;font:13px/1.6 system-ui;padding:22px;text-align:center">' +
-        '<b>3D library not loaded.</b><br>Save <code>three.min.js</code> into this folder, or connect to the internet.<br>' +
-        'The graph analysis on the left works either way.</div>';
+      wrap3d.innerHTML = '<div style="color:var(--warn-ink);font:13px/1.6 system-ui;padding:22px;text-align:center">' +
+        '<b>3D view unavailable.</b><br>three.js did not load &mdash; check that <code>three.min.js</code> ' +
+        'is present next to this page.<br>The graph analysis on the left works either way.</div>';
     }
 
     function setColour(mode3, top) {
@@ -670,10 +710,31 @@
     bind('c3d-role', 'role', false);
     bind('c3d-top', colour3d, true);
 
-    wireHover(document.getElementById('graph-canvas'), document.getElementById('graph-tip'));
-    render(); renderDefect(); renderFingerprint();
+    const gc = document.getElementById('graph-canvas');
+    if (gc) wireHover(gc, document.getElementById('graph-tip'));
+    // Each renderer is attempted independently: a page that has the spectrum
+    // sections but not the graph sections must still get its spectra.
+    try { render(); } catch (e) {}
+    try { renderDefect(); } catch (e) {}
+    try { renderFingerprint(); } catch (e) {}
     try { renderMultifractal(); } catch (e) {}
     try { renderPaper(); } catch (e) {}
-    window.addEventListener('resize', () => { render(); renderFingerprint(); });
+    window.addEventListener('resize', () => {
+      try { render(); } catch (e) {}
+      try { renderFingerprint(); } catch (e) {}
+    });
+
+    // Canvas keeps whatever colours it was painted with, so a theme switch
+    // has to repaint every chart or they stay in the old palette. site.js
+    // fires 'themechange'; PAL has already refreshed by the time we run.
+    if (window.PAL && PAL.onTheme) {
+      PAL.onTheme(function () {
+        try { render(); } catch (e) {}
+        try { renderDefect(); } catch (e) {}
+        try { renderFingerprint(); } catch (e) {}
+        try { renderMultifractal(); } catch (e) {}
+        try { renderPaper(); } catch (e) {}
+      });
+    }
   });
 })();

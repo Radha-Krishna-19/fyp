@@ -1,294 +1,225 @@
-# MOF Framework Analysis — Final Year Project
+# Structural Descriptors for Metal–Organic Frameworks
 
-Visualising how a metal–organic framework is decomposed into building blocks, then
-analysing the resulting framework as a network to see whether MOFs can be grouped by
-structure alone.
+**Can a descriptor computed from connectivity alone — in seconds, with no
+molecular simulation — carry enough structural information to group metal–organic
+frameworks usefully?**
 
-> **Read this page first.** It explains what the project is, why we chose this approach,
-> and what we found. Everything else is detail.
+23CSE498 Final Year Project · Phase II · Research-based
+Amrita Vishwa Vidyapeetham, School of Computing, Coimbatore
 
----
-
-## 1 · The one-paragraph version
-
-Metal–organic frameworks (MOFs) are sponge-like crystals built by joining metal clusters to
-organic molecules. There are hundreds of thousands of them, and simulating each one to find
-out what it can do takes hours per structure. **We ask whether a cheap, purely structural
-descriptor — computed from the framework's connectivity in seconds — can group MOFs into
-useful families instead.** We built a visualisation of how the decomposition works, then
-computed multifractal spectra for 77 frameworks and tested what those spectra actually mean.
-
----
-
-## 2 · Why this path — and what a graph has to do with a MOF
-
-This is the question everyone asks first, so here is the chain of reasoning.
-
-1. **A MOF is not a molecule — it is a repeating framework.** What distinguishes one MOF
-   from another is not only *which atoms* it contains but **how they are wired together**.
-2. **Wiring is exactly what a graph describes.** Collapse each building block to a point and
-   each bond between blocks to a line, and the chemistry reduces to pure connectivity.
-3. **The useful properties follow the wiring.** Gas moves through the pore network, and the
-   pore network *is* the empty space left by that wiring. Describing the wiring describes
-   what the material can do.
-4. **Networks can be measured.** Once it is a graph, network science applies — coordination
-   number, centrality, the Laplacian, fractal measures.
-5. **A spectrum compresses a whole framework into a few numbers**, so you can compare two
-   MOFs, or ten thousand, without simulating any of them.
-
-### Why bother, when simulation exists?
-
-Because simulation does not scale. A GCMC gas-uptake calculation takes **hours** per
-structure; there are **hundreds of thousands** of MOFs. A graph descriptor takes **seconds**.
-
-If a cheap structural number can narrow 100,000 candidates to a few hundred worth simulating
-properly, that is the whole value: **not replacing simulation, but deciding what to simulate.**
-
-### What the multifractal spectrum actually measures
-
-Start simple: **how much network is near a given block?** Grow a ball of radius `r` around it
-and count what falls inside. Do that for every influential block and you have a set of growth
-curves.
-
-A perfectly uniform framework would have one growth rate — a single fractal dimension. Real
-frameworks are not uniform: some regions are tightly tied, others open into voids. So you
-need a **distribution** of growth rates, and that distribution is the spectrum `f(α)`.
-
-| Quantity | What it means |
-|---|---|
-| `α` | how fast the network grows around one block — a *local* dimension |
-| `f(α)` | how much of the framework shares that growth rate |
-| `α₀` (the apex) | the *typical* growth rate — the framework's dominant dimension |
-| **`Δα`** (the width) | **how varied the framework is.** Narrow = uniform. Wide = a mix of tight and open regions |
-| `A` (asymmetry) | which side dominates — mostly dense with voids, or mostly open with dense knots |
-
-A spectrum is a **fingerprint of pore-network heterogeneity**. `Δα` is that fingerprint as a
-single number, which is what makes a *band* possible.
-
-### The goal
-
-> Establish whether a purely structural, simulation-free descriptor can group MOFs into
-> meaningful families — so a new framework can be placed against a known band and triaged
-> without expensive calculation.
-
----
-
-## 3 · What we built
-
-### Part 1 — A visualisation of the decomposition
-
-Before any network analysis, you have to turn a crystal structure into building blocks. The
-field does this with the **MOFid** pipeline (Snurr group, Northwestern). We translated all of
-it from C++ into readable Python, one module per stage, and built an interactive walkthrough
-that shows the real code beside a live 3D model at each stage.
-
-**Nothing in the algorithm is modified.** This is a visualisation of the published pipeline —
-its purpose is to make the node/linker assignments inspectable, because everything downstream
-depends on them being right.
-
-Upload any `.cif` and the whole pipeline runs on it live in the browser.
-
-**Where:** `2_python/code_01` … `code_07`, Sections 7–8 of the website
-
----
-
-### Part 2 — The framework as a network
-
-Once decomposed, the framework *is* a graph. Two things had to be right before anything could
-be computed on it.
-
-**The graph must be periodic.** A crystal has no edges. Drop the lattice translations and
-every bond crossing a cell face disappears, the framework fragments, and coordination numbers
-come out wrong — UiO-66 reports **1**-connected instead of the published 12. Built as a labelled
-quotient graph, all four test structures match published crystallography.
-
-**Influence cannot be ranked in a perfect crystal.** The brief was to find the most
-influential nodes. But a perfect crystal has only **two** distinct connection counts — one for
-all nodes, one for all linkers — because every metal cluster is symmetry-equivalent to every
-other. A "top 10" list is the first 10 entries of a tie.
-
-That is a real finding, and it points at its own fix: **break the symmetry.** Remove a single
-linker (a well-documented real MOF defect) and influence becomes measurable — HKUST-1 goes
-from 2 to 4 distinct centrality values, and λ₂ falls 1.44 → 1.19.
-
-**Where:** `2_python/code_09_network_analysis.py`, Sections 10–12
-
----
-
-### Part 3 — The spectrum and the band
-
-We implemented the method from **Xiao et al., Scientific Reports 11, 22964 (2021)** and
-applied it to **77 frameworks** from MOFX-DB with published pore diameters.
-
-> **Know what this dataset is.** All 77 are named `hMOF-###` — from the **hypothetical MOF**
-> database: computer-generated candidates, **not** materials anyone has synthesised. The
-> notebook requested CoRE MOF 2019 but the server returned hMOF records; a check now catches
-> this. And **every one has a Zn₄O node**, so the set cannot support claims about different
-> metals. What it *is* good for: one node type with many linkers — a clean varied-linker family.
-
-#### The spectrum is now computed correctly
-
-A multifractal spectrum must be an **inverted parabola** peaking at `q = 0`, where
-`f(α₀) = D₀`. Ours sloped downhill.
-
-The paper defines `τ(q) = ln 𝒫_q(r) / ln(r/r_N)` — a fit **through the origin**. Our code used
-a **free-intercept slope**. At `q = 0` every term is `pr_i⁰ = 1`, so `𝒫₀ = |I|` is identical
-at every radius; a flat line has slope zero, forcing `τ(0) = 0` and `f(α₀) = 0` — deleting the
-peak.
-
-**Fixed. All 77 frameworks now peak at q = 0.**
-
-| | before | after |
-|---|---|---|
-| τ(0) | 0.0000 | −2.5669 |
-| f(α₀) | 0.0000 | +2.5669 |
-| spectra peaking at q = 0 | 0 / 77 | **77 / 77** |
-
-#### The band
+**Guide:** Dr. T. Ramraj, Assistant Professor (Sl. Gd.), Department of Computer
+Science and Engineering · M.E., Ph.D.
 
 | | |
 |---|---|
-| Δα range | 1.016 – 1.410 |
-| Interquartile band | **1.112 – 1.250** |
-| Asymmetry A | −1.51 to −1.04 (**all 77 negative**) |
-
-All 77 land in a tight band with a consistent asymmetry sign — a genuinely well-defined
-family signature for this node type.
-
-#### But the band is not yet a chemical statement
-
-| Test | r |
-|---|---|
-| Δα vs pore diameter (LCD), raw | −0.497 |
-| Δα vs LCD, **controlling for graph size** | **+0.101** — vanishes |
-| Δα vs graph size, **controlling for LCD** | **+0.621** — survives |
-
-Linear model: graph size alone R² = 0.533; adding pore diameter → 0.538. **Pore size buys
-+0.005.**
-
-So Δα is mostly tracking **how many atoms are in the supercell** — set by `MIN_CELL_LENGTH`
-and the `MAX_ATOMS` cap, which are computational parameters, not chemistry.
-
-**Where:** `3_notebooks/mof_band_analysis.ipynb`, `2_python/code_10`, `code_11`, Section 16
+| **Project site** | [`1_website/index.html`](1_website/index.html) — open it directly, no server needed |
+| **Dataset** | [`9_dataset/`](9_dataset/) — 81 frameworks, CC BY 4.0 |
+| **Panel deck** | [`7_presentation/panel_review.pdf`](7_presentation/panel_review.pdf) |
+| **Textbook** | [`8_textbook/`](8_textbook/) — 12 chapters, zero background assumed |
 
 ---
 
-## 4 · The headline results
+## The problem in one paragraph
 
-| # | Finding | Evidence |
+A metal–organic framework is a crystal built from metal clusters ("nodes")
+joined by organic struts ("linkers"). Change the parts and you change the pore
+network, and with it everything useful — surface area, gas capacity, stability,
+catalytic behaviour. Hundreds of thousands of candidate structures exist on
+paper. Deciding whether one is worth making means running a molecular simulation
+that takes **hours per structure**. At that rate the candidate space cannot be
+searched, only sampled.
+
+So we ask a narrower question that can actually be answered: build the
+framework's **periodic graph** from its crystal structure, compute the
+**multifractal spectrum** of that graph, and reduce each framework to three
+numbers. Does that compression retain anything real?
+
+## What we found
+
+**A band exists.** Across 77 frameworks, the spectrum width Δα falls in
+**1.11 – 1.25** (interquartile range). All 77 spectra are mathematically valid.
+
+**One claim was withdrawn.** Δα correlates with pore diameter at *r* = −0.497,
+which looked like a result. Controlling for the number of blocks in the graph
+collapses it to **+0.101**, while graph size survives at +0.621, and adding pore
+size to a size-only model improves R² by **0.005**. The descriptor was largely
+measuring how big the graph was. We removed the claim from the project rather
+than reporting it.
+
+**Synthesised frameworks sit outside the band.** Size-matched under the same
+supercell rule, four real MOFs span Δα = 1.66 – 2.26 — clear of the hypothetical
+range with a gap of 0.25, and not explained by graph size or by metal. Four
+archetypal structures are not a sample; the run that would settle it is
+[`3_notebooks/real_mof_band.ipynb`](3_notebooks/real_mof_band.ipynb).
+
+## Three defects we found and fixed
+
+These are the substance of the work, and each was a silent wrong answer rather
+than a crash.
+
+| # | Defect | Consequence | Fix |
+|---|---|---|---|
+| 1 | τ(q) fitted with a free intercept instead of through the origin | **Every one of the 77 spectra had no apex.** Mathematically invalid, but each individual curve looked plausible | Fit τ = ln 𝒫_q / ln(r/r_N) through the origin. 0/77 → **77/77** valid |
+| 2 | Spectrum computed on the induced subgraph of influential nodes only | In a MOF the high-degree blocks are metal clusters, and metal clusters never bond to each other — they connect *through* linkers. That subgraph has **zero edges**, so no distances exist | Box-cover the full block graph; read the measure only *at* the influential nodes |
+| 3 | Averaging in the wrong order — mean of ln Z instead of ln of mean Z | Jensen's inequality makes this biased, not noisy. HKUST-1: 0.021 → **0.327** | Exponentiate per trial, then average |
+
+A fourth is a data-provenance defect: the analysis requested CoRE MOF 2019 and
+received hMOF records, because on that endpoint `database=` is advisory and
+loses to the `gases[]` filter. Every quantitative result in the project was
+computed on hypothetical structures as a result. A provenance check caught it;
+the query now filters each returned record on its own `database` field.
+
+---
+
+## Repository layout
+
+```
+metal_oxo_deep_dive/
+├── 1_website/        The documentation portal. Open index.html — no server needed.
+├── 2_python/         Reference implementation, 12 annotated modules
+├── 3_notebooks/      The 77-framework analysis + the real-MOF twin
+├── 4_reference/      Generated figures
+├── 5_concepts/       Five long-form background documents
+├── 6_references/     Annotated bibliography + BibTeX
+├── 7_presentation/   Beamer deck, PDF, Overleaf archive, speaking script, 5-way split
+├── 8_textbook/       Twelve chapters, zero background assumed
+└── 9_dataset/        The released dataset, CC BY 4.0
+```
+
+## Getting started
+
+### Read the site — no installation
+
+```bash
+git clone https://github.com/Radha-Krishna-19/fyp.git
+cd fyp/metal_oxo_deep_dive/1_website
+# open index.html in any browser
+```
+
+Every asset is relative and `three.min.js` is vendored into the repository, so
+this works from a `file://` URL with **no web server and no internet
+connection**. Every number is computed in your browser at page load from the CIF
+files in the folder; none is hardcoded.
+
+### Run the pipeline
+
+Requires Python 3.9+ and NumPy. Nothing else.
+
+```bash
+cd metal_oxo_deep_dive/2_python
+pip install numpy
+
+# decompose one framework end to end
+python code_00_pipeline_driver.py HKUST-1.cif
+
+# its multifractal spectrum
+python code_10_multifractal_spectrum.py
+
+# against the published method
+python code_11_nmfa_paper.py
+```
+
+### Reproduce the 77-framework band
+
+```bash
+jupyter notebook 3_notebooks/mof_band_analysis.ipynb
+```
+
+Also runs unchanged in Google Colab; it installs its own dependencies. Writes
+`results.json`, which `1_website/band_data.js` is generated from. Roughly 20
+minutes.
+
+### Run the tests
+
+```bash
+cd metal_oxo_deep_dive/1_website/tests
+npm install jsdom
+npm test
+```
+
+Five suites, 200+ assertions. They boot the real pages headlessly and assert on
+**computed output**, because this site's failure mode is a silently blank panel
+rather than a visible error.
+
+---
+
+## Architecture
+
+Eight modules, each independently runnable and independently testable. Modules
+1–4 are a faithful translation of the published `snurr-group/mofid` metal-oxo
+decomposition, used **unmodified**. Modules 5–8 are this project's work.
+
+```
+  CIF ──▶ bond perception ──▶ metal-oxo split ──▶ quotient graph
+          (27 images,          (nodes and         (edges carry the
+           covalent radii)      linkers)           lattice translation)
+                                                          │
+                                                          ▼
+   Δα, α₀, A  ◀── spectrum ◀── box growing ◀── supercell expansion
+                  τ(q) → f(α)   (influential      (past 48 Å per
+                                 nodes)            lattice direction)
+```
+
+**Two independent implementations.** The Python modules and the JavaScript
+engine were written from the same specification but not from each other. Where
+they disagree, one is wrong — and that disagreement is loud, whereas a single
+implementation is silently self-consistent even when it is wrong. Two of the
+three defects above were caught exactly this way.
+
+## Implementation status
+
+| Module | State | Weight | Credit |
+|---|---|---|---|
+| CIF ingestion and symmetry expansion | Complete | 10% | 10% |
+| Periodic bond perception | Complete | 10% | 10% |
+| Metal-oxo decomposition | Complete | 15% | 15% |
+| Quotient graph + supercell expansion | Complete | 15% | 15% |
+| Box growing and the multifractal spectrum | Complete | 15% | 15% |
+| Descriptor extraction and band construction | Complete | 10% | 10% |
+| Confound analysis and hold-out validation | Complete | 10% | 10% |
+| Validation on synthesised structures at scale | Not started | 10% | 0% |
+| Cross-family separation (multiple metals) | Not started | 5% | 0% |
+| **Total** | | **100%** | **85%** |
+
+Seven of nine modules complete and integrated. The two outstanding are both
+external validation, not core function — a data task rather than a development
+task.
+
+---
+
+## What this project does *not* claim
+
+Stated plainly, because a reviewer will ask.
+
+- **Δα does not predict gas uptake.** Nothing here computes adsorption.
+- **The main dataset is not experimental.** All 77 are hypothetical, generated
+  structures. Any sentence calling them experimental is false.
+- **No cross-family claim.** All 77 share one metal (Zn₄O), so the band is a band
+  *within* one family.
+- **The graph is unweighted and untyped.** Bond order and element identity are
+  discarded by design. What survives is pure architecture.
+- **This does not replace simulation.** It is a pre-filter for deciding *what* to
+  simulate.
+
+## Team
+
+| Member | Roll number | Owns |
 |---|---|---|
-| 1 | The block network must be built **periodically** | UiO-66 reports 12-connected (correct) vs 6 (naive); all four structures match published crystallography |
-| 2 | Influence cannot be ranked inside a perfect crystal | Only 2 distinct degree values — a top-k list is sorting ties |
-| 3 | Defects make influence measurable | Remove 1 linker: 2 → 4 distinct centralities, λ₂ 1.44 → 1.19 |
-| 4 | The spectrum is now computed to the paper's definition | 77/77 proper inverted parabolas; τ(0) = −2.57, f(α₀) = +2.57 |
-| 5 | 77 frameworks share a tight Δα band | 1.11 – 1.25 interquartile, asymmetry negative in all 77 |
-| 6 | **That band is confounded by graph size** | Pore correlation −0.50 → +0.10 controlling for size; size survives at +0.62; pore adds R² +0.005 |
-| 7 | Three estimator bugs found and fixed | Edgeless subgraph; log-space averaging order; τ fitted with a free intercept |
+| P. M. Radha Krishna | CB.SC.U4CSE23134 | Problem framing, methodology, integration, documentation portal |
+| P. Kshitij Varma | CB.SC.U4CSE23122 | The mathematical model — partition function, τ(q), Legendre transform |
+| G. Rohith Abhinav | CB.SC.U4CSE23141 | Implementation status, 3D viewer, decomposition engine |
+| J. Keerthi Sree | — | Results, validation, the band, dataset provenance |
+| Isha | — | Design decisions, the τ defect, network construction, roadmap |
 
-**Not established:** that the band carries chemical meaning. It is currently a descriptive
-range whose main driver is supercell size. **What would fix it:** compare only frameworks at
-comparable graph size, or normalise the fit window so Δα stops growing with the graph — then
-re-test. Both are concrete next steps, not open research questions.
+## Built on
 
----
+- Xiao *et al.*, *Scientific Reports* **11**, 22964 (2021) — the multifractal method
+- Bucior *et al.*, *CrystEngComm* **21**, 3777 (2019) — MOFid decomposition
+- Wilmer *et al.*, *Nature Chemistry* **4**, 83 (2012) — the hMOF structures
 
-## 5 · Anticipated questions
+Full annotated bibliography in [`6_references/`](6_references/).
 
-**"Isn't this throwing away the chemistry?"**
-Deliberately. The graph is unweighted — it does not know which element an atom is. That is a
-real limitation and we say so. It is also the point: whatever survives is **pure
-architecture**, which transfers across chemistries in a way an element-specific descriptor
-cannot.
+## Licence
 
-**"Does Δα predict gas uptake?"**
-**No, and we never claim it.** Nothing here computes adsorption. Δα describes pore-network
-architecture only.
-
-**"Why only the influential nodes?"**
-The paper's iNMFA restricts the measure to the top-connected 10%. Section 11 shows the catch:
-in a perfect crystal every node ties, so "top 10%" is ambiguous. We report it.
-
-**"Why a periodic graph?"**
-Because a crystal has no edges — see Part 2.
-
-**"What would make this genuinely useful?"**
-Remove the size confound, then test against measured properties on a set with real metal
-diversity.
-
----
-
-## 6 · Where everything lives
-
-```
-1_website/       the interactive platform — open index.html
-2_python/        one runnable module per pipeline stage + the analysis modules
-3_notebooks/     mof_band_analysis.ipynb — the 77-framework study (Colab, Run All)
-4_reference/     figures
-5_concepts/      shorter deep-dive documents
-6_references/    the papers, annotated with what each one is FOR
-7_presentation/  panel-review deck (+ Overleaf zip) and the 5-person speaking split
-8_textbook/      ← START HERE to understand the project properly
-PRESENTATION_SCRIPT.md
-```
-
-### 📘 The textbook
-
-**[`8_textbook/`](8_textbook/README.md) is a complete zero-to-hero explanation** — 12 chapters,
-~15,500 words, assuming no prior chemistry or network science. Every number in it was computed
-by our own pipeline, and all eight figures are generated from real project data.
-
-| Short on time? | Read |
-|---|---|
-| One hour before the review | [1 Background](8_textbook/01_background.md), [2 Problem](8_textbook/02_problem.md), [8 Results](8_textbook/08_results.md) |
-| Need to defend the approach | [2 Problem Statement](8_textbook/02_problem.md) |
-| Need to explain the maths | [5 Graphs](8_textbook/05_graphs.md), [6 Multifractal](8_textbook/06_multifractal.md) |
-| Asked *"how do you know it's right?"* | [9 Mistakes We Found](8_textbook/09_mistakes.md) |
-| Asked about weaknesses | [10 Limits and Next Steps](8_textbook/10_limitations.md) |
-| Lost on a term | [11 Glossary](8_textbook/11_glossary.md) |
-
-**The website is the main deliverable.** `1_website/index.html` — just double-click it. No
-server, no install. Seventeen sections, live 3D, the real algorithm running in your browser on
-any structure you upload, and every source file readable by clicking its name.
-
-> **Before presenting:** save
-> <https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js> into `1_website/` as
-> exactly `three.min.js`, or the 3D panels will be blank without internet.
-
-### Module map
-
-| File | Stage |
-|---|---|
-| `code_01_cif_input.py` | Read the CIF — no bonds exist yet |
-| `code_02_bond_assignment_pbc.py` | Infer bonds, periodic minimum-image search |
-| `code_03_element_classification.py` | `is_metal()` |
-| `code_04a/b/c` | metal-oxo · single-node · all-node decomposition |
-| `code_05_centroid_simplification.py` | Collapse each block to a point |
-| `code_06_systre_topology_export.py` | Write a real `.cgd` for Systre |
-| `code_07a/07b` | MOFid / MOFkey assembly |
-| **`code_09_network_analysis.py`** | **periodic graph, centrality, Laplacian spectrum** |
-| **`code_10_multifractal_spectrum.py`** | **iNMFA, reference band, candidate test** |
-| **`code_11_nmfa_paper.py`** | **NMFA exactly as published — box-growing** |
-
-Modules 01–07 are faithful translations of published work, used unmodified. **09–11 are ours.**
-
----
-
-## 7 · Honest limitations
-
-- **Systre is not reimplemented.** We write a genuine `.cgd`, but the topology tool is external.
-- **InChIKeys are placeholders** in `code_07b`. Nothing downstream uses them.
-- **The dataset is hypothetical and single-metal** (see Part 3).
-- **Δα is finite-size dependent** and is not a stability or uptake predictor.
-- **Nothing here is an adsorption calculation.**
-- **The influential-node tie** means iNMFA widths carry an implementation sensitivity on a
-  defect-free crystal.
-
----
-
-## 8 · Sources
-
-- Decomposition: [`snurr-group/mofid`](https://github.com/snurr-group/mofid) (Northwestern)
-- Multifractal method: Xiao et al., *"Deciphering the generating rules and functionalities of
-  complex networks"*, **Scientific Reports 11, 22964 (2021)** —
-  <https://www.nature.com/articles/s41598-021-02203-4>
-- Structures: [MOFX-DB](https://mof.tech.northwestern.edu) (Northwestern)
+Dataset: CC BY 4.0 ([`9_dataset/LICENSE`](9_dataset/LICENSE)).
+`three.min.js` is vendored under the MIT licence of the three.js project.

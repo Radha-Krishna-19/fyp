@@ -4,6 +4,16 @@
 // tables are the receipts for them.
 
 (function () {
+  // The four summaries this module produces are split across the overview and
+  // methodology pages. An unguarded innerHTML on an id that is not on THIS
+  // page throws, and that exception kills every summary after it -- a failure
+  // that leaves the page looking merely empty rather than broken. Each write
+  // is therefore guarded.
+  function setHTML(id, html) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  }
+
   'use strict';
 
   const LIT = {
@@ -47,16 +57,16 @@
         '<td class="dt-value">' + G.n + '</td>' +
         '<td class="dt-value">' + distinct + '</td>' +
         '<td class="dt-value">' + max + '</td>' +
-        '<td class="dt-value" style="color:#d64545">' + ties + ' of ' + G.n + '</td>' +
+        '<td class="dt-value" style="color:var(--bad)">' + ties + ' of ' + G.n + '</td>' +
         '<td class="dt-note">' + (ties > 1
           ? 'a “top-' + ties + '” list could be ordered ' + ties + '! ways — all equally valid'
           : 'only one block at this degree, but still only ' + distinct + ' distinct values overall') +
         '</td></tr>';
     });
-    document.getElementById('tie-evidence').innerHTML =
+    setHTML('tie-evidence',
       '<table class="data-table"><thead><tr><td>Structure</td><td>Blocks</td>' +
       '<td>Distinct degree values</td><td>Max degree</td><td>Blocks tied at max</td>' +
-      '<td>Consequence</td></tr></thead><tbody>' + rows + '</tbody></table>';
+      '<td>Consequence</td></tr></thead><tbody>' + rows + '</tbody></table>');
 
     // ---------- 2. what the degree DOES buy you ----------
     let rows2 = '';
@@ -68,16 +78,16 @@
       const ok = nodeDeg.length === 1 && nodeDeg[0] === lit.node;
       rows2 += '<tr><td class="dt-label">' + name + '</td>' +
         '<td class="dt-value">' + (lit.sbu || '') + '</td>' +
-        '<td class="dt-value" style="color:#1f9d67">' + nodeDeg.join(',') + '</td>' +
+        '<td class="dt-value" style="color:var(--good)">' + nodeDeg.join(',') + '</td>' +
         '<td class="dt-value">' + lit.node + '</td>' +
         '<td class="dt-value">' + lit.net + '</td>' +
-        '<td class="dt-note">' + (ok ? '<b style="color:#1f9d67">✓ matches</b>' : '<b style="color:#d64545">✗</b>') +
+        '<td class="dt-note">' + (ok ? '<b style="color:var(--good)">✓ matches</b>' : '<b style="color:var(--bad)">✗</b>') +
         ' · naive graph would say ' + naiveNode.join(',') + '</td></tr>';
     });
-    document.getElementById('degree-value').innerHTML =
+    setHTML('degree-value',
       '<table class="data-table"><thead><tr><td>Structure</td><td>Inorganic SBU</td>' +
       '<td>Coordination number we compute</td><td>Published</td><td>Net</td><td>Check</td>' +
-      '</tr></thead><tbody>' + rows2 + '</tbody></table>';
+      '</tr></thead><tbody>' + rows2 + '</tbody></table>');
 
     // ---------- 3. headline results across the whole project ----------
     let rows3 = '';
@@ -90,14 +100,14 @@
         '<td class="dt-value">' + p.atoms.length + '</td>' +
         '<td class="dt-value">' + published.bonds.length + '</td>' +
         '<td class="dt-value">' + (nb ? fmt(nb.composition) : '—') + '</td>' +
-        '<td class="dt-value" style="color:#1f9d67">' + (na ? fmt(na.composition) : '—') + '</td>' +
+        '<td class="dt-value" style="color:var(--good)">' + (na ? fmt(na.composition) : '—') + '</td>' +
         '<td class="dt-value">' + (gained > 0 ? '+' + gained : '0') + '</td>' +
         '<td class="dt-value">' + an.lambda2.toFixed(2) + '</td></tr>';
     });
-    document.getElementById('results-summary').innerHTML =
+    setHTML('results-summary',
       '<table class="data-table"><thead><tr><td>Structure</td><td>Atoms</td><td>Bonds inferred</td>' +
       '<td>Node — published rule</td><td>Node — with our fixes</td><td>Atoms recovered</td><td>λ₂</td>' +
-      '</tr></thead><tbody>' + rows3 + '</tbody></table>';
+      '</tr></thead><tbody>' + rows3 + '</tbody></table>');
 
     // ---------- 4. defect: where influence becomes real ----------
     let rows4 = '';
@@ -109,15 +119,15 @@
       const broke = d.distinctCentrality > an.distinctCentrality;
       rows4 += '<tr><td class="dt-label">' + name + '</td>' +
         '<td class="dt-value">' + an.distinctCentrality + '</td>' +
-        '<td class="dt-value" style="color:' + (broke ? '#1f9d67' : '#7c8296') + '">' + d.distinctCentrality + '</td>' +
+        '<td class="dt-value" style="color:' + (broke ? PAL.good : PAL.text3) + '">' + d.distinctCentrality + '</td>' +
         '<td class="dt-value">' + an.lambda2.toFixed(3) + ' → ' + d.lambda2.toFixed(3) + '</td>' +
         '<td class="dt-note">' + (broke
           ? 'symmetry broken — blocks now distinguishable, ranking becomes meaningful'
           : 'remaining blocks still all equivalent — no ranking possible even now') + '</td></tr>';
     });
-    document.getElementById('defect-summary').innerHTML =
+    setHTML('defect-summary',
       '<table class="data-table"><thead><tr><td>Structure</td><td>Distinct centralities (perfect)</td>' +
       '<td>After removing 1 linker</td><td>λ₂ change</td><td>Meaning</td></tr></thead><tbody>' +
-      rows4 + '</tbody></table>';
+      rows4 + '</tbody></table>');
   });
 })();

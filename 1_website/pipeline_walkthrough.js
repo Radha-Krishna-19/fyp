@@ -135,7 +135,7 @@
   const MODULES = [
     // ============================= MODULE 1 =============================
     {
-      id: 'm1', num: '1', label: 'CIF Input', tint: '#6b7ee8',
+      id: 'm1', num: '1', label: 'CIF Input', tint: PAL.brand,
       summary: 'Read the .cif file: unit cell, symmetry, and every atom\'s fractional position. No bonds exist yet -- a CIF never stores connectivity.',
       steps: [{
         label: 'Read cell + expand symmetry',
@@ -190,7 +190,7 @@
     },
     // ============================= MODULE 2 =============================
     {
-      id: 'm2', num: '2', label: 'Bond Assignment', tint: '#3d9bd8',
+      id: 'm2', num: '2', label: 'Bond Assignment', tint: PAL.brand,
       summary: 'Infer every bond computationally: a periodic-boundary-aware covalent-radius cutoff test between every pair of atoms.',
       steps: [
         {
@@ -266,7 +266,7 @@
     },
     // ============================= MODULE 3 =============================
     {
-      id: 'm3', num: '3', label: 'Element Classification', tint: '#2fae7a',
+      id: 'm3', num: '3', label: 'Element Classification', tint: PAL.good,
       summary: 'Label every atom METAL or NONMETAL via a hardcoded IUPAC/InChI lookup table -- a strict binary split, no metalloid middle ground.',
       steps: [{
         label: 'is_metal(): the real classifier',
@@ -323,7 +323,7 @@ def delete_bonds(geom, only_metals=True):
     },
     // ============================= MODULE 4a =============================
     {
-      id: 'm4a', num: '4a', label: 'Metal-Oxo Split', tint: '#e0574a', highlight: true,
+      id: 'm4a', num: '4a', label: 'Metal-Oxo Split', tint: PAL.node, highlight: true,
       summary: 'This project\'s main subject. Cut every metal bond, see what fragments fall out, classify each one node or linker by one rule: is it pure O/H?',
       steps: [
         {
@@ -596,7 +596,7 @@ Module 4a (metal-oxo) result for UiO-66.cif:
     },
     // ============================= MODULE 4b =============================
     {
-      id: 'm4b', num: '4b', label: 'Single-Node Split', tint: '#c76a2e',
+      id: 'm4b', num: '4b', label: 'Single-Node Split', tint: PAL.warn,
       summary: 'Walk outward from each metal atom-by-atom instead of by whole fragment -- so a full coordinated carboxylate folds into the node.',
       steps: [{
         label: 'The oxygen-by-oxygen walk',
@@ -640,7 +640,7 @@ for nn in candidates:                        # every O bonded to a node atom
     },
     // ============================= MODULE 4c =============================
     {
-      id: 'm4c', num: '4c', label: 'All-Node Split', tint: '#b5471e',
+      id: 'm4c', num: '4c', label: 'All-Node Split', tint: PAL.node,
       summary: 'Start from single-node, then further split any linker with an internal branch point into its own separate vertices.',
       steps: [{
         label: 'Tree-decomposing the linkers',
@@ -691,7 +691,7 @@ for nn in candidates:                        # every O bonded to a node atom
     },
     // ============================= MODULE 5 =============================
     {
-      id: 'm5', num: '5', label: 'Centroid Simplification', tint: '#8a56c9',
+      id: 'm5', num: '5', label: 'Centroid Simplification', tint: PAL.accent2,
       summary: 'Every "collapse this fragment to one point" call in Modules 4a/4b/4c bottoms out here: replace a cluster of atoms with a single pseudoatom at their centroid.',
       steps: [{
         label: 'collapse_fragment()',
@@ -740,7 +740,7 @@ for nn in candidates:                        # every O bonded to a node atom
     },
     // ============================= MODULE 6 =============================
     {
-      id: 'm6', num: '6', label: 'Systre Topology', tint: '#2e9e9e',
+      id: 'm6', num: '6', label: 'Systre Topology', tint: PAL.good,
       summary: 'Export the simplified net to a plain-text .cgd file and hand it to Systre (an external Java tool) for canonical topology identification.',
       steps: [{
         label: 'write_systre()',
@@ -796,7 +796,7 @@ for nn in candidates:                        # every O bonded to a node atom
     },
     // ============================= MODULE 7 =============================
     {
-      id: 'm7', num: '7', label: 'MOFid / MOFkey', tint: '#3c8f5c',
+      id: 'm7', num: '7', label: 'MOFid / MOFkey', tint: PAL.good,
       summary: 'Assemble the final identifier strings from every earlier module\'s output: SMILES fragments, catenation count, and the resolved topology code.',
       steps: [{
         label: 'get_mofkey() + analyze_mof()',
@@ -965,13 +965,13 @@ for nn in candidates:                        # every O bonded to a node atom
       const mode = snap.opts.colorMode;
       let items;
       if (mode === 'element') {
-        items = [['#94e0e0', 'metal'], ['#909090', 'carbon'], ['#e6362b', 'oxygen'], ['#dedede', 'hydrogen']];
+        items = [[PAL.good, 'metal'], [PAL.text3, 'carbon'], [PAL.node, 'oxygen'], [PAL.border, 'hydrogen']];
       } else if (mode === 'metalNonmetal') {
-        items = [['#c0392b', 'METAL'], ['#2e86c1', 'NONMETAL']];
+        items = [[PAL.node, 'METAL'], [PAL.brand, 'NONMETAL']];
       } else if (snap.opts.blockColorStyle === 'palette') {
         items = [['linear-gradient(90deg,#8e44ad,#d97b1e,#27ae60)', 'one colour per separate fragment']];
       } else {
-        items = [['#c0392b', 'node block'], ['#2e86c1', 'linker block']];
+        items = [[PAL.node, 'node block'], [PAL.brand, 'linker block']];
       }
       els.legend.innerHTML = '<span class="legend-lead">Colours here:</span>' + items.map(([c, t]) =>
         '<span class="legend-item"><i style="background:' + c + '"></i>' + t + '</span>').join('');

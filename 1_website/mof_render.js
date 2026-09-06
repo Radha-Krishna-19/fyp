@@ -163,7 +163,7 @@
       el.style.whiteSpace = 'nowrap';
       el.style.textShadow = '0 0 3px #fff, 0 0 3px #fff, 0 0 5px #fff, 0 1px 1px rgba(0,0,0,0.4)';
       el.style.userSelect = 'none';
-      el.style.color = '#141414';
+      el.style.color = PAL.text;
       labelsLayer.appendChild(el);
       return el;
     }

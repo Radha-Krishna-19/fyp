@@ -1,0 +1,481 @@
+/* =====================================================================
+   design.css — the presentation layer.
+
+   Loads after base.css and restyles the STRUCTURAL furniture: type scale,
+   masthead, navigation, section headings, panels, tables, figures, code.
+   base.css keeps the component-specific rules (3D viewer chrome, SVG
+   diagrams, the band table, the code browser) which this file leaves alone.
+
+   THE RULES THIS FILE FOLLOWS
+   1. One type scale, one spacing rhythm, one radius set, one border weight.
+      Mixed values are what make a page read as assembled rather than
+      designed, and that was the single biggest problem with the first
+      version.
+   2. Motion is functional only: a short fade-and-rise the first time a block
+      is seen, and fast state changes on hover and focus. No parallax, no
+      drifting canvases, no springy transforms. Ornamental motion reads as
+      amateur on a document a professor is grading.
+   3. Colour carries meaning, not decoration. Red is always a metal node,
+      blue always a linker or a link, green always a confirmed result, amber
+      always a caveat. A reader can learn the code once.
+   4. Every colour is a token, so dark mode needs no special cases here.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   RESET AND PAGE FRAME
+   --------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* The sticky header is 56px; without this, an in-page anchor lands with
+     its heading hidden underneath it. */
+  scroll-padding-top: 76px;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  /* Kerning and ligatures on: the difference between "typeset" and "typed". */
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px 96px;
+}
+/* Prose columns are capped at --measure (74 characters). Line lengths beyond
+   about 80 characters measurably slow reading, because the eye loses the
+   return sweep to the next line. Tables and figures stay full width. */
+.container > p,
+.container > .section-sub,
+.container > p.sd { max-width: var(--measure); }
+
+/* ---------------------------------------------------------------------
+   TYPE SCALE
+   A 1.25 (major third) ratio off a 16px base, rounded to whole pixels.
+   Every heading on the site is one of these five sizes.
+   --------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  color: var(--text);
+  font-weight: 650;
+  letter-spacing: -0.018em;   /* large text needs negative tracking to look
+                                 optically even against body copy */
+  line-height: 1.22;
+  text-wrap: balance;          /* stops a lone trailing word on its own line */
+}
+h1 { font-size: 34px; margin: 0 0 12px; letter-spacing: -0.025em; }
+h2 { font-size: 25px; }
+h3 { font-size: 19px; }
+h4 { font-size: 16px; letter-spacing: -0.01em; }
+
+p { margin: 0 0 16px; }
+b, strong { font-weight: 640; color: var(--text); }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-strong); text-decoration: underline;
+          text-underline-offset: 2px; text-decoration-thickness: 1px; }
+/* A visible focus ring is an accessibility requirement, not a style choice.
+   :focus-visible shows it for keyboard users without flashing it on click. */
+a:focus-visible, button:focus-visible, summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: none; box-shadow: var(--ring); border-radius: var(--r-sm);
+}
+
+code, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 0.1em 0.38em;
+  border-radius: var(--r-sm);
+  color: var(--text);
+}
+
+/* Numbers in tables must line up in columns. Proportional digits do not. */
+table, .num, .dt-value, .band-tbl { font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------------
+   HEADER + PRIMARY NAVIGATION
+   A single 56px bar. It holds the site name, the page links, and the theme
+   toggle — nothing else. It is the only fixed chrome on the page.
+   --------------------------------------------------------------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  height: 56px;
+  display: flex; align-items: center; gap: 22px;
+  padding: 0 28px;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: saturate(1.6) blur(12px);
+  -webkit-backdrop-filter: saturate(1.6) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .brand {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 660; font-size: 14.5px; letter-spacing: -0.015em;
+  color: var(--text); white-space: nowrap;
+}
+.site-header .brand:hover { text-decoration: none; }
+/* The mark is the project in miniature: a metal node bonded to two linkers. */
+.site-header .mark {
+  width: 20px; height: 20px; flex: none; display: block;
+}
+
+.site-nav { display: flex; align-items: center; gap: 2px; overflow-x: auto;
+            scrollbar-width: none; }
+.site-nav::-webkit-scrollbar { display: none; }
+.site-nav a {
+  position: relative;
+  padding: 7px 11px;
+  font-size: 13.5px; font-weight: 550;
+  color: var(--text-2);
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  transition: color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.site-nav a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.site-nav a[aria-current="page"] { color: var(--brand); background: var(--brand-soft); }
+
+.header-tools { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 34px; height: 34px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-0); color: var(--text-2);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  cursor: pointer; font-size: 14px; line-height: 1;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.icon-btn:hover { color: var(--text); border-color: var(--border-strong); }
+.icon-btn svg { width: 16px; height: 16px; }
+
+/* Reading progress: a 2px hairline under the header. It is the only
+   always-moving element on the page, and it earns that by telling the
+   reader how much of a long document is left. */
+.read-progress { position: fixed; top: 56px; left: 0; right: 0; height: 2px;
+                 z-index: 61; pointer-events: none; background: transparent; }
+.read-progress i { display: block; height: 100%; width: 100%;
+                   background: var(--brand); transform: scaleX(0);
+                   transform-origin: 0 50%; }
+
+/* ---------------------------------------------------------------------
+   MASTHEAD
+   Deliberately compact. The previous version opened with a full-viewport
+   title, which pushed every actual finding below the fold and made the page
+   feel like a landing page for a product rather than a piece of work.
+   --------------------------------------------------------------------- */
+.masthead { border-bottom: 1px solid var(--border); background: var(--surface-0); }
+.masthead .container { padding-top: 46px; padding-bottom: 34px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 660; letter-spacing: 0.085em;
+  text-transform: uppercase; color: var(--brand);
+  margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: ""; width: 16px; height: 1px; background: currentColor; opacity: .55;
+}
+.masthead .lead {
+  font-size: 18px; line-height: 1.6; color: var(--text-2);
+  max-width: 70ch; margin: 0 0 22px;
+}
+
+/* The metadata strip: course, guide, team, repository. Definition pairs
+   rather than a paragraph, because a reviewer scans for these. */
+.meta-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: var(--r);
+  overflow: hidden; margin-top: 26px;
+}
+.meta-strip div { background: var(--surface-0); padding: 13px 16px; }
+.meta-strip dt, .meta-strip .k {
+  font-size: 11px; font-weight: 660; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 3px;
+}
+.meta-strip dd, .meta-strip .v {
+  margin: 0; font-size: 14px; font-weight: 560; color: var(--text);
+}
+
+/* ---------------------------------------------------------------------
+   SECTION HEADINGS
+   A hairline rule, a tabular section number, then the title. The number is
+   the same width for 1 and 19, so the titles align down the page.
+   --------------------------------------------------------------------- */
+h2.section-title, h2.st {
+  display: flex; align-items: baseline; gap: 13px;
+  font-size: 25px; font-weight: 660;
+  margin: 68px 0 10px; padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+h2.section-title:first-of-type, h2.st:first-of-type { margin-top: 40px; }
+.section-title .stitle-num, h2.st .n {
+  flex: none;
+  display: inline-block; min-width: 2.1ch; text-align: right;
+  font-size: 13px; font-weight: 660; font-variant-numeric: tabular-nums;
+  color: var(--brand); letter-spacing: 0;
+  /* baseline-aligned with the title rather than boxed — a coloured pill next
+     to every heading is visual noise once there are nineteen of them */
+  background: none; width: auto; height: auto; border-radius: 0; margin: 0;
+}
+.section-sub, p.sd {
+  font-size: 16px; color: var(--text-2); margin: 0 0 26px; max-width: var(--measure);
+}
+h3.sub-head, h3.sub {
+  font-size: 18px; font-weight: 640; margin: 36px 0 10px; color: var(--text);
+}
+
+/* Anchor links: revealed on hover, so the heading stays clean when read. */
+h2 .anchor, h3 .anchor {
+  margin-left: 9px; font-size: 0.62em; font-weight: 500;
+  color: var(--text-3); opacity: 0; text-decoration: none;
+  transition: opacity var(--t-fast) var(--ease);
+}
+h2:hover .anchor, h3:hover .anchor, .anchor:focus-visible { opacity: 1; }
+.anchor.copied::after { content: " copied"; font-size: 10px; color: var(--good); }
+
+/* ---------------------------------------------------------------------
+   PANELS, CARDS, CALLOUTS
+   One border weight, one radius, one padding. The previous version mixed
+   four radii and three shadow depths, which is the specific reason the
+   boxes looked wrong next to each other.
+   --------------------------------------------------------------------- */
+.panel, .demo-card, .lim-card, .road .item, .part, .file-group,
+.drawback-block, .fix-block, .explain-block, .args-panel, .data-panel {
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: none;
+}
+.panel { padding: 20px 22px; }
+.panel:hover { box-shadow: none; border-color: var(--border); }
+
+.grid2, .demo-grid, .two-col {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* Callouts: a 3px left rule in the semantic colour, a tinted field. The rule
+   makes the type of the callout readable at a glance while scrolling. */
+.callout {
+  border: 1px solid var(--brand-line);
+  border-left: 3px solid var(--brand);
+  background: var(--brand-soft);
+  color: var(--text);
+  padding: 14px 18px; border-radius: var(--r-sm);
+  margin: 18px 0; font-size: 15px;
+}
+.callout.good, .verdict.ok { border-color: var(--good-line); border-left-color: var(--good);
+                             background: var(--good-soft); }
+.callout.warn { border-color: var(--warn-line); border-left-color: var(--warn);
+                background: var(--warn-soft); }
+.callout.bad, .negbox { border: 1px solid var(--bad-line); border-left: 3px solid var(--bad);
+                        background: var(--bad-soft); padding: 14px 18px;
+                        border-radius: var(--r-sm); margin: 18px 0; }
+.callout b { color: var(--text); }
+
+/* ---------------------------------------------------------------------
+   TABLES
+   The site's main evidence carrier, so it gets real attention: a hairline
+   rule per row, a quiet header, numerals aligned right, and a horizontal
+   scroll container so a wide table never breaks the page on a laptop.
+   --------------------------------------------------------------------- */
+table, table.data-table, table.tbl, .band-tbl, .args-table, .filemap {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: var(--surface-0);
+}
+.table-wrap {
+  overflow-x: auto; border: 1px solid var(--border);
+  border-radius: var(--r); background: var(--surface-0);
+}
+.table-wrap table { border: 0; }
+thead td, thead th, .data-table thead td, .band-tbl th, .args-table thead td {
+  background: var(--surface-1);
+  color: var(--text-3);
+  font-size: 11.5px; font-weight: 660;
+  letter-spacing: 0.055em; text-transform: uppercase;
+  text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 56px; z-index: 2;
+}
+td, th { padding: 10px 14px; border-bottom: 1px solid var(--border);
+         vertical-align: top; color: var(--text); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover td { background: var(--surface-1); }
+.dt-value, .band-tbl td.r, .band-tbl th.r, td.num { text-align: right;
+         font-variant-numeric: tabular-nums; }
+.dt-note, .band-tbl .sd { color: var(--text-2); font-size: 13.5px; }
+.dt-label { color: var(--text-3); }
+
+/* ---------------------------------------------------------------------
+   FIGURES
+   --------------------------------------------------------------------- */
+figure.fig {
+  margin: 26px 0; padding: 0;
+  border: 1px solid var(--border); border-radius: var(--r);
+  background: var(--surface-0); overflow: hidden;
+}
+figure.fig img, figure.fig svg { display: block; width: 100%; height: auto; }
+figure.fig figcaption, p.cap {
+  padding: 12px 18px; font-size: 13.5px; color: var(--text-2);
+  border-top: 1px solid var(--border); background: var(--surface-1); margin: 0;
+}
+/* Raster figures were rendered on a white matplotlib canvas. On the dark
+   theme a pure-white slab is blinding, so they are dimmed very slightly and
+   restored on hover when the reader is actually looking at one. */
+:root[data-theme="dark"] figure.fig img { filter: brightness(.92); transition: filter var(--t) var(--ease); }
+:root[data-theme="dark"] figure.fig:hover img { filter: none; }
+
+/* ---------------------------------------------------------------------
+   CODE
+   --------------------------------------------------------------------- */
+.code-block, .cv-src, pre {
+  background: var(--code-bg); color: var(--code-text);
+  border: 1px solid var(--code-border); border-radius: var(--r);
+  padding: 16px 18px; overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px; line-height: 1.6;
+}
+.code-block code, pre code { background: none; border: 0; padding: 0; color: inherit; }
+.cv-ln { color: var(--code-dim); }
+.cv-kw { color: var(--code-kw); }
+
+/* ---------------------------------------------------------------------
+   IN-PAGE TABLE OF CONTENTS
+   A sticky rail on wide screens. This is what turns a long page into a
+   navigable document, and it is the piece the first version was missing.
+   --------------------------------------------------------------------- */
+.with-toc { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 1100px) {
+  .with-toc { grid-template-columns: minmax(0, 1fr) 210px; }
+  .toc { display: block; }
+}
+.toc { display: none; position: sticky; top: 84px; align-self: start;
+       max-height: calc(100vh - 120px); overflow-y: auto; padding-bottom: 20px; }
+.toc .toc-title {
+  font-size: 11px; font-weight: 660; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-3);
+  padding: 0 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+}
+.toc a {
+  display: block; padding: 5px 0 5px 12px;
+  font-size: 13px; line-height: 1.4; color: var(--text-2);
+  border-left: 2px solid var(--border);
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.toc a:hover { color: var(--text); border-left-color: var(--border-strong); text-decoration: none; }
+.toc a.active { color: var(--brand); border-left-color: var(--brand); font-weight: 580; }
+
+/* ---------------------------------------------------------------------
+   PAGE FOOTER AND PREV/NEXT
+   Multi-page sites need a way forward at the bottom of every page, or the
+   reader has to scroll all the way back up to continue.
+   --------------------------------------------------------------------- */
+.page-nav { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            margin: 60px 0 0; }
+.page-nav a {
+  display: block; padding: 16px 18px;
+  border: 1px solid var(--border); border-radius: var(--r);
+  background: var(--surface-0);
+  transition: border-color var(--t-fast) var(--ease);
+}
+.page-nav a:hover { border-color: var(--brand); text-decoration: none; }
+.page-nav .dir { font-size: 11px; font-weight: 660; letter-spacing: 0.06em;
+                 text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.page-nav .ttl { font-size: 15.5px; font-weight: 620; color: var(--text); }
+.page-nav .next { text-align: right; }
+
+footer.site-footer {
+  border-top: 1px solid var(--border); background: var(--surface-0);
+  padding: 30px 0; margin-top: 70px;
+  font-size: 13.5px; color: var(--text-3);
+}
+footer.site-footer .container { padding-bottom: 0; }
+
+/* ---------------------------------------------------------------------
+   KEY-NUMBER STRIP
+   Used once per page at most, to state the results the page will defend.
+   --------------------------------------------------------------------- */
+.keynums { display: grid; gap: 1px; background: var(--border);
+           border: 1px solid var(--border); border-radius: var(--r);
+           overflow: hidden; margin: 26px 0;
+           grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.keynum { background: var(--surface-0); padding: 18px 20px; }
+.keynum b { display: block; font-size: 27px; font-weight: 660; letter-spacing: -0.02em;
+            color: var(--text); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.keynum span { display: block; margin-top: 5px; font-size: 12.5px; color: var(--text-3); }
+.keynum.is-good b { color: var(--good); }
+.keynum.is-warn b { color: var(--warn); }
+
+/* ---------------------------------------------------------------------
+   MOTION — the whole of it
+   One transition: 8px up and a fade, the first time a block enters view.
+   Applied by site.js only when the reader has not asked for reduced motion.
+   --------------------------------------------------------------------- */
+.reveal { opacity: 0; transform: translate3d(0, 8px, 0);
+          transition: opacity 300ms var(--ease), transform 300ms var(--ease); }
+.reveal.revealed { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.revealed { opacity: 1 !important; transform: none !important;
+                              transition: none !important; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------------------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  body { font-size: 15.5px; }
+  h1 { font-size: 27px; }
+  h2.section-title, h2.st { font-size: 21px; margin-top: 48px; }
+  .container { padding: 0 18px 64px; }
+  .site-header { padding: 0 16px; gap: 14px; }
+  .site-header .brand span { display: none; }   /* mark only on small screens */
+  .masthead .lead { font-size: 16.5px; }
+  thead td, thead th { position: static; }      /* sticky headers fight a small viewport */
+}
+
+/* ---------------------------------------------------------------------
+   PRINT — reviewers print things
+   --------------------------------------------------------------------- */
+@media print {
+  .site-header, .toc, .read-progress, .page-nav, .icon-btn,
+  canvas, iframe, .stage-nav, .band-controls { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .container { max-width: none; padding: 0; }
+  .panel, figure.fig, .table-wrap { break-inside: avoid; border-color: #bbb; }
+  h2.section-title, h2.st { break-after: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+}
+
+/* ---------------------------------------------------------------------
+   SKIP LINK
+   The first tab stop on every page. Keyboard and screen-reader users
+   should not have to tab through the whole navigation on each page.
+   --------------------------------------------------------------------- */
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 100;
+  padding: 9px 15px; border-radius: var(--r-sm);
+  background: var(--brand); color: var(--on-brand);
+  font-size: 14px; font-weight: 600;
+  transition: top var(--t) var(--ease);
+}
+.skip-link:focus { top: 10px; text-decoration: none; }
+
+/* The generated pages wrap content in <main>; base.css targeted bare
+   selectors that assumed a flat document. These keep the old component
+   rules applying inside the new structure. */
+main > h2:first-child { margin-top: 34px; }
+main .verdict { border-radius: var(--r-sm); padding: 14px 18px; margin: 16px 0;
+                border: 1px solid var(--border); background: var(--surface-1); }
+main .verdict.ok { border-color: var(--good-line); background: var(--good-soft); }

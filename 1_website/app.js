@@ -67,60 +67,13 @@
       wStatus.className = 'cif-status';
     });
 
-    // ---------- Sections 2 & 3: limitations + before/after ----------
-    // Both are built lazily (each 3D panel costs a WebGL context).
-    const allStructures = {};
-    Object.keys(window.DEFAULT_CIFS).forEach(function (name) {
-      const p = parseDefault(window.DEFAULT_CIFS[name]);
-      allStructures[name] = { atoms: p.atoms, cellMatrix: p.cellMatrix };
-    });
-    MetalOxoDrawbacks.setStructures(allStructures);
-
-    let sectionsReady = false;
-    function initLimitationsAndDemo() {
-      if (sectionsReady) return;
-      sectionsReady = true;
-      try {
-      MetalOxoDrawbacks.buildSection2(document.getElementById('limitations'));
-      MetalOxoDrawbacks.buildSection3({
-        before: {
-          canvas: document.getElementById('s3-before-canvas'),
-          container: document.getElementById('s3-before-wrap'),
-          labels: document.getElementById('s3-before-labels'),
-          hoverTip: document.getElementById('s3-before-hovertip'),
-        },
-        after: {
-          canvas: document.getElementById('s3-after-canvas'),
-          container: document.getElementById('s3-after-wrap'),
-          labels: document.getElementById('s3-after-labels'),
-          hoverTip: document.getElementById('s3-after-hovertip'),
-        },
-      }, {
-        tabs: document.getElementById('struct-tabs'),
-        beforeName: document.getElementById('s3-before-name'),
-        afterName: document.getElementById('s3-after-name'),
-        beforeStats: document.getElementById('s3-before-stats'),
-        afterStats: document.getElementById('s3-after-stats'),
-        verdict: document.getElementById('s3-verdict'),
-        summary: document.getElementById('s3-summary'),
-      });
-      } catch (err) {
-        // One broken section must never take down the rest of the page.
-        const box = document.getElementById('limitations');
-        if (box) box.innerHTML = '<div class="verdict">Could not build this section: ' +
-          (err && err.message ? err.message : err) + '</div>';
-      }
-    }
-
-    const limAnchor = document.getElementById('drawbacks');
-    if (typeof IntersectionObserver !== 'undefined' && limAnchor) {
-      const io = new IntersectionObserver(function (entries) {
-        if (entries.some(function (e) { return e.isIntersecting; })) { initLimitationsAndDemo(); io.disconnect(); }
-      }, { rootMargin: '400px' });
-      io.observe(limAnchor);
-    } else {
-      initLimitationsAndDemo();
-    }
+    // ---------- Sections 2 & 3 (removed) ----------
+    // These built the "limitations and proposed fixes" demonstration, driven
+    // by metal_oxo_drawbacks.js. That strand of work was withdrawn from the
+    // project: we visualise the published metal-oxo decomposition as
+    // published and do not modify it, so a before/after comparison would be
+    // showing a change we no longer make. The module and its markup were
+    // deleted; this block goes with them.
 
     // ---------- Section 3b: lazy-load the embedded pipeline tool ----------
     // The iframe spins up its own WebGL context, so its src is only set once

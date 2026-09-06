@@ -1,0 +1,203 @@
+/* =====================================================================
+   tokens.css — the single source of truth for every colour on this site.
+   =====================================================================
+
+   WHY THIS FILE EXISTS
+   The first version of this site had 103 distinct colours written directly
+   into rules (`color:#5c6478`, `background:#fdeceb`, ...). That is fine for
+   one theme and fatal for two: a dark mode bolted on top can only override
+   the handful of rules someone remembered to override, so most of the page
+   stays light-on-light and becomes unreadable. Every colour is now a token.
+   Dark mode redefines the tokens, so it is correct everywhere by
+   construction rather than by vigilance.
+
+   NAMING
+   Tokens are named for their ROLE, never their appearance. `--good` rather
+   than `--green`, `--surface-2` rather than `--light-grey`. A role survives
+   a redesign; an appearance does not.
+
+   THE FOUR FAMILIES
+     surface / border / text   the neutral chrome everything sits on
+     brand                     structural blue — links, focus, the "us" colour
+     semantic                  node (red), linker (blue), good, warn, bad
+     code                      the editor surface, dark in BOTH themes
+                               (a light code block next to dark ones reads as
+                               a bug; keeping it dark is the convention)
+
+   CONTRAST
+   Body text against its surface clears WCAG AA (4.5:1) in both themes;
+   large text and muted metadata clear AA-large (3:1). The dark-mode brand
+   and semantic hues are deliberately lighter than their light-mode
+   counterparts — a colour that is legible on white is not legible on near
+   black, so they are separate values rather than one shared value.
+   ===================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---- neutral chrome ------------------------------------------------ */
+  --page:          #fbfcfd;   /* the page itself */
+  --surface-0:     #ffffff;   /* cards, panels — sits above the page */
+  --surface-1:     #f7f9fc;   /* subtly raised fill: table headers, chips */
+  --surface-2:     #eef2f7;   /* pressed / selected fill */
+  --border:        #e3e8ef;   /* the default hairline */
+  --border-strong: #cbd5e1;   /* dividers that need to read as deliberate */
+
+  --text:          #0f172a;   /* body copy */
+  --text-2:        #475569;   /* secondary prose, table notes */
+  --text-3:        #64748b;   /* metadata, captions, axis labels */
+
+  /* ---- brand --------------------------------------------------------- */
+  --brand:         #1d4ed8;
+  --brand-strong:  #1e40af;   /* hover / visited / heavier weight */
+  --brand-ink:     #1e3a8a;   /* brand-coloured TEXT on a soft background */
+  --brand-soft:    #eef4ff;   /* tinted background */
+  --brand-line:    #c7d9fe;   /* border to pair with --brand-soft */
+  --on-brand:      #ffffff;   /* text on a solid brand fill */
+
+  /* ---- semantic: the chemistry ---------------------------------------- */
+  /* node = metal cluster (red), linker = organic strut (blue).
+     These two are used identically in the 3D viewer, the SVG diagrams and
+     the prose, so they must be tokens shared by CSS and JS alike. */
+  --node:          #b91c1c;
+  --node-ink:      #7f1d1d;
+  --node-soft:     #fef2f2;
+  --node-line:     #fecaca;
+
+  --linker:        #1d4ed8;
+  --linker-soft:   #eef4ff;
+
+  --good:          #047857;
+  --good-ink:      #065f46;
+  --good-soft:     #ecfdf5;
+  --good-line:     #a7f3d0;
+
+  --warn:          #b45309;
+  --warn-ink:      #92400e;
+  --warn-soft:     #fffbeb;
+  --warn-line:     #fde68a;
+
+  --bad:           #b91c1c;
+  --bad-ink:       #991b1b;
+  --bad-soft:      #fef2f2;
+  --bad-line:      #fecaca;
+
+  --accent2:       #6d28d9;   /* the fourth series colour: purple */
+  --accent2-ink:   #5b21b6;
+  --accent2-soft:  #f5f3ff;
+  --accent2-line:  #ddd6fe;
+
+  /* ---- code surface (dark in both themes) ------------------------------ */
+  --code-bg:       #0f1623;
+  --code-bg-2:     #161f2e;   /* gutter / header strip */
+  --code-border:   #26314480;
+  --code-text:     #d6e0f0;
+  --code-dim:      #7c8aa5;   /* line numbers, comments */
+  --code-kw:       #7cc4ff;   /* keywords */
+  --code-str:      #9ae08a;   /* strings */
+  --code-fn:       #c9a2f5;   /* function names */
+  --code-num:      #f0b27a;   /* numbers */
+
+  /* ---- elevation ------------------------------------------------------- */
+  --shadow-1: 0 1px 2px rgb(15 23 42 / 0.04);
+  --shadow-2: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.05);
+  --shadow-3: 0 8px 28px rgb(15 23 42 / 0.10);
+  --ring:     0 0 0 3px rgb(29 78 216 / 0.18);   /* keyboard focus */
+
+  /* ---- geometry -------------------------------------------------------- */
+  --r-sm: 6px;
+  --r:    10px;
+  --r-lg: 14px;
+  --measure: 74ch;            /* the readable line length for body prose */
+
+  /* ---- motion ---------------------------------------------------------- */
+  /* One easing curve for the whole site. Multiple curves read as multiple
+     designers. 160ms is below the ~200ms threshold where a UI starts to
+     feel like it is animating AT you rather than responding to you. */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --t-fast: 120ms;
+  --t:      180ms;
+}
+
+/* =====================================================================
+   DARK
+   Set on <html> by the inline script in each page's <head>, before first
+   paint, so there is no flash of the wrong theme.
+   ===================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page:          #0b0f16;
+  --surface-0:     #121823;
+  --surface-1:     #182131;
+  --surface-2:     #1f2a3b;
+  --border:        #26303f;
+  --border-strong: #3a4657;
+
+  --text:          #e8edf5;
+  --text-2:        #a7b4c6;
+  --text-3:        #7f8da2;
+
+  --brand:         #7aa5ff;
+  --brand-strong:  #a3c0ff;
+  --brand-ink:     #b8cfff;
+  --brand-soft:    #16233c;
+  --brand-line:    #2b4270;
+  --on-brand:      #0b1220;
+
+  --node:          #f87171;
+  --node-ink:      #fca5a5;
+  --node-soft:     #2a1618;
+  --node-line:     #5b2626;
+
+  --linker:        #7aa5ff;
+  --linker-soft:   #16233c;
+
+  --good:          #34d399;
+  --good-ink:      #6ee7b7;
+  --good-soft:     #0d2620;
+  --good-line:     #1d5443;
+
+  --warn:          #fbbf24;
+  --warn-ink:      #fcd34d;
+  --warn-soft:     #2a2110;
+  --warn-line:     #5c4715;
+
+  --bad:           #f87171;
+  --bad-ink:       #fca5a5;
+  --bad-soft:      #2a1618;
+  --bad-line:      #5b2626;
+
+  --accent2:       #a78bfa;
+  --accent2-ink:   #c4b5fd;
+  --accent2-soft:  #1e1830;
+  --accent2-line:  #402f6b;
+
+  /* The code surface barely moves — it was already dark. Nudged so it still
+     separates from the (now dark) page behind it. */
+  --code-bg:       #070c14;
+  --code-bg-2:     #0e1621;
+  --code-border:   #1e2735;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 14px rgb(0 0 0 / 0.35);
+  --shadow-3: 0 10px 34px rgb(0 0 0 / 0.5);
+  --ring:     0 0 0 3px rgb(122 165 255 / 0.30);
+}
+
+/* Canvas and SVG are painted from JS, which cannot read a CSS variable
+   directly. Each page exposes the current values through these helper
+   classes; the drawing code reads them with getComputedStyle(). That keeps
+   one palette for CSS, SVG and WebGL instead of three that drift apart. */
+.tok-node   { color: var(--node); }
+.tok-linker { color: var(--linker); }
+.tok-text   { color: var(--text); }
+.tok-text3  { color: var(--text-3); }
+.tok-border { color: var(--border); }
+.tok-grid   { color: var(--border-strong); }
+.tok-surface{ color: var(--surface-0); }
+.tok-good   { color: var(--good); }
+.tok-warn   { color: var(--warn); }
+.tok-bad    { color: var(--bad); }
+.tok-accent2{ color: var(--accent2); }
+.tok-brand  { color: var(--brand); }

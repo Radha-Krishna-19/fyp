@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results: The Band &middot; MOF Structural Descriptors</title>
+<meta name="description" content="The multifractal band across 77 frameworks, the size confound that killed the pore-size claim, and what survives.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html" aria-current="page">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Results: The Band</h1>
+    <p class="lead">The multifractal band across 77 frameworks, the size confound that killed the pore-size claim, and what survives.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+      <div class="callout">
+        <b>What is and is not in this band.</b> The band on this page is computed from the
+        <b>77 hMOF frameworks only</b>. HKUST-1, UiO-66, MOF-5 and ZIF-8 appear elsewhere on
+        this site as demonstration structures for the decomposition algorithm and the network
+        construction &mdash; they are <b>not</b> part of the band and are not plotted against it.
+        Their unit cells hold 112&ndash;288 atoms against 3&nbsp;000&ndash;6&nbsp;600 for the
+        frameworks here, which leaves too few distinct radii for a power-law fit to mean
+        anything. Mixing the two would produce a chart that looks like a result and is not one.
+      </div>
+
+
+<h2 class="section-title" id="band"><span class="stitle-num">1</span>The Band &mdash; 77 Frameworks</h2>
+    <div class="callout warn">
+    <b>Know what this dataset is.</b> All 77 structures are named <code>hMOF-###</code> &mdash; they come from the <b>hypothetical MOF</b> database: <b>computer-generated candidate structures that have never been synthesised</b>. The notebook requested <code>CoREMOF 2019</code>, which is experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.
+    <ul style="margin:8px 0 0 18px;">
+      <li>Nothing here may be described as <b>&ldquo;experimental&rdquo;</b> or <b>&ldquo;real&rdquo;</b> &mdash; it is a computational screening library.</li>
+      <li><b>Every one of the 77 has a Zn&#8324;O node</b>, so the set is effectively single-metal. It cannot support any claim about behaviour across different metals, including the zirconium question.</li>
+      <li><b>What it is genuinely good for:</b> one node type with many different linkers &mdash; a clean same-node, varied-linker family.</li>
+    </ul>
+  </div>
+
+<p class="section-sub">A <b>band</b> is the range of spectrum width &Delta;&alpha; that a group of frameworks shares, so a new framework can be tested for membership. Scaling this to <b>77</b> frameworks exposed an error in how we were computing the spectrum, which is now fixed &mdash; and revealed that the band cannot yet be read as a chemical statement. Both are set out here.</p>
+
+  <h3 class="sub-head">The fix &mdash; the spectrum now has the right shape</h3>
+  <p>A multifractal spectrum <i>f</i>(&alpha;) must be an <b>inverted parabola</b> whose peak sits at <i>q</i>&nbsp;=&nbsp;0, where <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;<i>D</i><sub>0</sub>, the fractal dimension. Ours sloped downhill instead &mdash; a mathematics problem, not a materials result. <b>With the corrected &tau;, all 77 frameworks now peak at <i>q</i>&nbsp;=&nbsp;0.</b></p>
+  <p>The paper defines the mass exponent as a <b>ratio</b>:</p>
+  <div class="eqn">&tau;(q) = ln&nbsp;<i>&Pscr;</i><sub>q</sub>(r) &frasl; ln(r&frasl;r<sub>N</sub>)</div>
+  <p>Over several radii that is a straight-line fit <b>through the origin</b> &mdash; the relation <i>&Pscr;</i><sub>q</sub>&nbsp;~&nbsp;(r/r<sub>N</sub>)<sup>&tau;</sup> carries no prefactor. Our code used <code>np.polyfit(x, y, 1)</code> and took the <b>slope</b>, which is a fit with a <b>free intercept</b>. At <i>q</i>&nbsp;=&nbsp;0 that difference is fatal:</p>
+  <ul class="tight">
+    <li>at <i>q</i>&nbsp;=&nbsp;0 every term is <code>pr_i^0 = 1</code>, so <i>&Pscr;</i><sub>0</sub>&nbsp;=&nbsp;|I|, the <i>count</i> of influential nodes;</li>
+    <li>that count is <b>identical at every radius</b>, so the free-intercept fit sees a flat line;</li>
+    <li>a flat line has slope zero, so &tau;(0)&nbsp;=&nbsp;0, so <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;0&middot;&alpha;&nbsp;&minus;&nbsp;0&nbsp;=&nbsp;<b>0</b>.</li>
+  </ul>
+  <p>The peak is pinned to zero and the parabola disappears. Measured across the dataset: <b>&tau;(0)&nbsp;=&nbsp;0 and <i>f</i>(0)&nbsp;=&nbsp;0 in all 77 frameworks, and not one of them peaked at <i>q</i>&nbsp;=&nbsp;0</b>. With the paper's definition ln(r/r<sub>N</sub>)&nbsp;&lt;&nbsp;0, so &tau;(0)&nbsp;=&nbsp;ln|I|&nbsp;/&nbsp;negative&nbsp;&lt;&nbsp;0 and <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;&minus;&tau;(0)&nbsp;&gt;&nbsp;0 &mdash; the peak returns.</p>
+  <div class="callout warn">
+    <b>Verified on a network built from scratch</b>, identical measure and identical data, only the &tau; definition swapped:
+    <table class="data-table" style="margin-top:10px;background:transparent;">
+      <thead><tr><td>&tau; definition</td><td>&tau;(0)</td><td><i>f</i>(0)</td><td>peak at</td><td>inverted parabola?</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label">free-intercept slope (ours)</td><td class="dt-value">0.0000</td><td class="dt-value">0.0000</td><td class="dt-note">q = &minus;4</td><td class="dt-value" style="color:var(--node)">no</td></tr>
+      <tr><td class="dt-label">paper: ln&nbsp;<i>&Pscr;</i><sub>q</sub>&frasl;ln(r&frasl;r<sub>N</sub>)</td><td class="dt-value">&minus;3.5028</td><td class="dt-value">+3.5028</td><td class="dt-note">q = 0</td><td class="dt-value" style="color:var(--good)">yes</td></tr>
+      </tbody>
+    </table>
+    Fixed in the notebook as <code>inmfa(..., tau_mode="paper")</code>, now the default. <code>tau_mode="slope"</code> reproduces the old behaviour so the correction can be demonstrated rather than asserted.
+  </div>
+
+  <h3 class="sub-head">What the band does &mdash; and does not &mdash; mean</h3>
+  <p>All 77 spectra land in a tight band. The question is whether that band is telling us about chemistry. With published pore diameters available, it can be tested directly &mdash; and the answer is no, not yet.</p>
+
+  <div class="panel"><div id="band-body"></div></div>
+
+  <h3 class="sub-head">The figure the notebook produces</h3>
+  <p>Generated by Step 11 of <span class="code-chip">mof_band_analysis.ipynb</span> when you run it &mdash; the &tau; correction, the spectra, the band, and the size confound shown three ways.</p>
+  <figure style="margin:14px 0;">
+    <img src="band_analysis.png" alt="Band analysis figure from the notebook"
+         style="width:100%;border:1px solid var(--border);border-radius:6px;display:block"
+         onerror="this.parentNode.innerHTML='&lt;div class=&quot;negbox&quot;&gt;band_analysis.png not found &mdash; run Step 11 of the notebook and copy the PNG into 1_website/.&lt;/div&gt;'">
+    <figcaption style="font-size:12px;color:var(--text-2);margin-top:7px;">
+      Left: the &Delta;&alpha; band with the gap measured against the noise floor.
+      Right: the f(&alpha;) curves and their envelope.
+    </figcaption>
+  </figure>
+
+  <h3 class="sub-head">What this leaves standing</h3>
+  <ul class="tight">
+    <li><b>The method is implemented correctly now.</b> &tau;(q) matches the paper, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time.</li>
+    <li><b>The band exists as a descriptive range</b> &mdash; the interquartile &Delta;&alpha; across 77 frameworks. What it does <i>not</i> yet have is a demonstrated physical meaning.</li>
+    <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted; it does not know which element an atom is.</li>
+    <li><b>What would make the pore claim testable:</b> compare only frameworks of comparable graph size, or normalise the fit window per structure so &Delta;&alpha; stops growing with the graph &mdash; then re-test the correlation.</li>
+  </ul>
+  <p>Finding and reporting a confound in your own headline claim is a stronger position than presenting a correlation that does not survive the first check.</p>
+
+  <p class="section-sub">Source: <span class="code-chip">mof_band_analysis.ipynb</span> &middot; data <span class="code-chip">band_data.js</span> &middot; plotting <span class="code-chip">band_page.js</span></p>
+
+<h2 class="section-title" id="reproduce-band"><span class="stitle-num">2</span>Reproduce Any Number on This Page</h2>
+  <p class="section-sub">Everything here is computed live in your browser by <code>mof_network.js</code>. The Python counterpart produces identical results and can be run directly:</p>
+  <div class="panel" style="background:var(--code-bg);color:var(--code-text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;">
+    $ python3 code_09_network_analysis.py<br>
+    <span style="color:var(--code-kw)">→ coordination numbers, centralities and Laplacian spectra for all four structures</span>
+  </div>
+
+      <h2 class="section-title" id="realband" data-toc="Real synthesised MOFs"><span class="stitle-num">3</span>The Same Analysis on Real, Synthesised MOFs</h2>
+      <p class="section-sub">The band above is built from hypothetical frameworks. This section runs the identical pipeline on MOFs that have actually been made in a laboratory, expanded under the identical supercell rule so the two sets are comparable rather than differing by size.</p>
+
+      <div class="callout">
+        <b>What changed, and why it is a fair comparison.</b> These four structures appear elsewhere on
+        this site as small unit cells, used to demonstrate the decomposition. Here they are expanded
+        under the <i>same</i> rule the 77 frameworks were expanded under &mdash; every lattice direction
+        grown past 48&nbsp;&Aring; &mdash; which brings their block counts into the range the hMOFs
+        occupy. Without that step the comparison would be measuring graph size, which is exactly the
+        confound that removed the pore-size claim earlier on this page.
+      </div>
+
+      <div id="real-band-body"></div>
+
+      <h3 class="sub-head">How to read this</h3>
+      <p>Two readings are consistent with the gap, and the four structures here cannot separate them.</p>
+      <div class="grid2">
+        <div class="panel">
+          <h4>Reading 1 &mdash; the descriptor is working</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            hMOF structures are assembled combinatorially from a small library of building blocks into
+            regular topologies, so their pore networks are unusually uniform. Real frameworks have more
+            varied local environments, which is precisely what a wider singularity spectrum reports.
+            On this reading &Delta;&alpha; is measuring something chemically real, and the gap is the
+            descriptor doing its job.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Reading 2 &mdash; four is not enough</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            Four structures chosen because they are famous are not a random sample of synthesised MOFs.
+            All four are archetypes, picked for high symmetry and clean topology. It is possible that a
+            broader sample of real frameworks would overlap the hMOF band after all, and that these four
+            are simply unusual.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <b>What this does establish, stated carefully.</b> A band fitted on hypothetical frameworks would
+        reject all four of these real materials. Whichever reading is right, that is a warning worth
+        recording: a screening rule calibrated on generated structures cannot be assumed to transfer to
+        materials that exist. Distinguishing the two readings needs a proper sample, which is the next
+        section.
+      </div>
+
+      <h2 class="section-title" id="realmof" data-toc="Scaling to 50+ real MOFs"><span class="stitle-num">4</span>Scaling the Comparison to Fifty Real Frameworks</h2>
+      <p class="section-sub">Four synthesised structures show a clean gap. Four is not a sample. This is the concrete plan for turning that observation into a result, and the bug fix that unblocked it.</p>
+
+      <h3 class="sub-head">The bug that caused this in the first place</h3>
+      <p>The analysis notebook was always written to pull <b>CoRE MOF 2019</b> &mdash; experimentally derived, solvent-removed crystal structures. It asked the MOFX-DB API for exactly that. What came back was hMOF records, and that is why every quantitative result in this project has been computed on hypothetical frameworks.</p>
+      <p>The cause: on that endpoint the <code>database=</code> parameter is advisory, and when it is combined with a <code>gases[]</code> filter the gas filter wins. The request was correct; the response simply did not honour it. A provenance check further down the notebook caught the discrepancy and printed a warning &mdash; which is the only reason we know, rather than having published "experimental" results computed on generated structures.</p>
+
+      <div class="callout good">
+        <b>Fixed.</b> The fetch now filters every returned record on its own <code>database</code> field
+        and discards anything that is not CoRE MOF, rather than trusting the server-side parameter.
+        The limit was raised so that enough survive the filter, and the run prints how many records were
+        streamed, how many were kept, and what was discarded. Asking politely is not a provenance
+        guarantee; checking each record is.
+      </div>
+
+      <h3 class="sub-head">What we predict, recorded before the run</h3>
+      <div class="grid2">
+        <div class="panel">
+          <h4>If reading 1 holds</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            Fifty CoRE MOF structures of matched graph size cluster around
+            &Delta;&alpha;&nbsp;&asymp;&nbsp;1.7&ndash;2.3, above the hMOF band, and split by metal or by
+            underlying net. That would make the gap a real property of synthesised frameworks and the
+            descriptor genuinely informative.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>If reading 2 holds</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            They scatter broadly and overlap the hMOF band, showing that our four archetypes were
+            unrepresentative. We would report that, withdraw the gap the way we withdrew the pore-size
+            claim, and say so on this page.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="sub-head">The procedure, which runs unchanged</h3>
+      <p>Every module from bond perception onward is written per-CIF and is indifferent to where the CIF came from. No code change is required &mdash; only data.</p>
+
+      <div class="panel" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><td>Step</td><td>Action</td><td>Where it runs</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-value">1</td><td class="dt-note">Run the corrected query. It streams MOFX-DB, keeps only records whose own <code>database</code> field is CoRE MOF 2019, and stops once 50+ have survived the filter.</td><td class="dt-note"><code>mof_band_analysis.ipynb</code>, step 2</td></tr>
+            <tr><td class="dt-value">2</td><td class="dt-note">Confirm provenance and metal diversity from the returned records, not from the request. The notebook already prints both and warns if the set is effectively single-metal.</td><td class="dt-note">step 2, verification block</td></tr>
+            <tr><td class="dt-value">3</td><td class="dt-note">Expand each structure past the same 48&nbsp;&Aring; minimum cell length, so graph size cannot re-enter as a confound.</td><td class="dt-note"><code>make_supercell()</code></td></tr>
+            <tr><td class="dt-value">4</td><td class="dt-note">Run the identical pipeline &mdash; bond perception, decomposition, quotient graph, box growing, spectrum &mdash; and repeat the partial-correlation check against graph size.</td><td class="dt-note"><code>code_10</code>, <code>code_11</code></td></tr>
+            <tr><td class="dt-value">5</td><td class="dt-note">Regenerate this page's data with <code>node build_real_band.js</code> so the chart above redraws from the larger set.</td><td class="dt-note"><code>build_real_band.js</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <b>Status.</b> The four synthesised structures above are computed and on this page now. The
+        fifty-structure run needs a live MOFX-DB query, which has to be executed from the notebook with
+        network access &mdash; a step deliberately left to a human rather than baked into a build script,
+        because it depends on an external service whose behaviour we have already been bitten by once.
+      </div>
+
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="spectrum.html"><div class="dir">&larr; Previous</div><div class="ttl">The Multifractal Spectrum</div></a><a class="next" href="code.html"><div class="dir">Next &rarr;</div><div class="ttl">Every Line of Source Code</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="band_data.js"></script>
+<script src="band_page.js"></script>
+<script src="real_band_data.js"></script>
+<script src="real_band_page.js"></script>
+</body>
+</html>

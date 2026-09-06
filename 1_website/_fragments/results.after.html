@@ -1,0 +1,105 @@
+      <h2 class="section-title" id="realband" data-toc="Real synthesised MOFs"><span class="stitle-num">0</span>The Same Analysis on Real, Synthesised MOFs</h2>
+      <p class="section-sub">The band above is built from hypothetical frameworks. This section runs the identical pipeline on MOFs that have actually been made in a laboratory, expanded under the identical supercell rule so the two sets are comparable rather than differing by size.</p>
+
+      <div class="callout">
+        <b>What changed, and why it is a fair comparison.</b> These four structures appear elsewhere on
+        this site as small unit cells, used to demonstrate the decomposition. Here they are expanded
+        under the <i>same</i> rule the 77 frameworks were expanded under &mdash; every lattice direction
+        grown past 48&nbsp;&Aring; &mdash; which brings their block counts into the range the hMOFs
+        occupy. Without that step the comparison would be measuring graph size, which is exactly the
+        confound that removed the pore-size claim earlier on this page.
+      </div>
+
+      <div id="real-band-body"></div>
+
+      <h3 class="sub-head">How to read this</h3>
+      <p>Two readings are consistent with the gap, and the four structures here cannot separate them.</p>
+      <div class="grid2">
+        <div class="panel">
+          <h4>Reading 1 &mdash; the descriptor is working</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            hMOF structures are assembled combinatorially from a small library of building blocks into
+            regular topologies, so their pore networks are unusually uniform. Real frameworks have more
+            varied local environments, which is precisely what a wider singularity spectrum reports.
+            On this reading &Delta;&alpha; is measuring something chemically real, and the gap is the
+            descriptor doing its job.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Reading 2 &mdash; four is not enough</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            Four structures chosen because they are famous are not a random sample of synthesised MOFs.
+            All four are archetypes, picked for high symmetry and clean topology. It is possible that a
+            broader sample of real frameworks would overlap the hMOF band after all, and that these four
+            are simply unusual.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <b>What this does establish, stated carefully.</b> A band fitted on hypothetical frameworks would
+        reject all four of these real materials. Whichever reading is right, that is a warning worth
+        recording: a screening rule calibrated on generated structures cannot be assumed to transfer to
+        materials that exist. Distinguishing the two readings needs a proper sample, which is the next
+        section.
+      </div>
+
+      <h2 class="section-title" id="realmof" data-toc="Scaling to 50+ real MOFs"><span class="stitle-num">0</span>Scaling the Comparison to Fifty Real Frameworks</h2>
+      <p class="section-sub">Four synthesised structures show a clean gap. Four is not a sample. This is the concrete plan for turning that observation into a result, and the bug fix that unblocked it.</p>
+
+      <h3 class="sub-head">The bug that caused this in the first place</h3>
+      <p>The analysis notebook was always written to pull <b>CoRE MOF 2019</b> &mdash; experimentally derived, solvent-removed crystal structures. It asked the MOFX-DB API for exactly that. What came back was hMOF records, and that is why every quantitative result in this project has been computed on hypothetical frameworks.</p>
+      <p>The cause: on that endpoint the <code>database=</code> parameter is advisory, and when it is combined with a <code>gases[]</code> filter the gas filter wins. The request was correct; the response simply did not honour it. A provenance check further down the notebook caught the discrepancy and printed a warning &mdash; which is the only reason we know, rather than having published "experimental" results computed on generated structures.</p>
+
+      <div class="callout good">
+        <b>Fixed.</b> The fetch now filters every returned record on its own <code>database</code> field
+        and discards anything that is not CoRE MOF, rather than trusting the server-side parameter.
+        The limit was raised so that enough survive the filter, and the run prints how many records were
+        streamed, how many were kept, and what was discarded. Asking politely is not a provenance
+        guarantee; checking each record is.
+      </div>
+
+      <h3 class="sub-head">What we predict, recorded before the run</h3>
+      <div class="grid2">
+        <div class="panel">
+          <h4>If reading 1 holds</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            Fifty CoRE MOF structures of matched graph size cluster around
+            &Delta;&alpha;&nbsp;&asymp;&nbsp;1.7&ndash;2.3, above the hMOF band, and split by metal or by
+            underlying net. That would make the gap a real property of synthesised frameworks and the
+            descriptor genuinely informative.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>If reading 2 holds</h4>
+          <p style="font-size:14.5px;color:var(--text-2);margin:8px 0 0;">
+            They scatter broadly and overlap the hMOF band, showing that our four archetypes were
+            unrepresentative. We would report that, withdraw the gap the way we withdrew the pore-size
+            claim, and say so on this page.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="sub-head">The procedure, which runs unchanged</h3>
+      <p>Every module from bond perception onward is written per-CIF and is indifferent to where the CIF came from. No code change is required &mdash; only data.</p>
+
+      <div class="panel" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><td>Step</td><td>Action</td><td>Where it runs</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-value">1</td><td class="dt-note">Run the corrected query. It streams MOFX-DB, keeps only records whose own <code>database</code> field is CoRE MOF 2019, and stops once 50+ have survived the filter.</td><td class="dt-note"><code>mof_band_analysis.ipynb</code>, step 2</td></tr>
+            <tr><td class="dt-value">2</td><td class="dt-note">Confirm provenance and metal diversity from the returned records, not from the request. The notebook already prints both and warns if the set is effectively single-metal.</td><td class="dt-note">step 2, verification block</td></tr>
+            <tr><td class="dt-value">3</td><td class="dt-note">Expand each structure past the same 48&nbsp;&Aring; minimum cell length, so graph size cannot re-enter as a confound.</td><td class="dt-note"><code>make_supercell()</code></td></tr>
+            <tr><td class="dt-value">4</td><td class="dt-note">Run the identical pipeline &mdash; bond perception, decomposition, quotient graph, box growing, spectrum &mdash; and repeat the partial-correlation check against graph size.</td><td class="dt-note"><code>code_10</code>, <code>code_11</code></td></tr>
+            <tr><td class="dt-value">5</td><td class="dt-note">Regenerate this page's data with <code>node build_real_band.js</code> so the chart above redraws from the larger set.</td><td class="dt-note"><code>build_real_band.js</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <b>Status.</b> The four synthesised structures above are computed and on this page now. The
+        fifty-structure run needs a live MOFX-DB query, which has to be executed from the notebook with
+        network access &mdash; a step deliberately left to a human rather than baked into a build script,
+        because it depends on an external service whose behaviour we have already been bitten by once.
+      </div>
+

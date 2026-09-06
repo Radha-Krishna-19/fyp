@@ -289,37 +289,12 @@
     });
   }
 
-  function buildBand(results, nGrid) {
-    const curves = results.filter(r => r && r.ok).map(r => cleanCurve(r.alpha, r.fAlpha)).filter(c => c.a.length >= 2);
-    if (curves.length < 2) return null;
-    const lo = Math.min.apply(null, curves.map(c => c.a[0]));
-    const hi = Math.max.apply(null, curves.map(c => c.a[c.a.length - 1]));
-    nGrid = nGrid || 160;
-    const grid = []; for (let i = 0; i < nGrid; i++) grid.push(lo + ((hi - lo) * i) / (nGrid - 1));
-    const stack = curves.map(c => interp(grid, c.a, c.f));
-    const lower = [], upper = [];
-    grid.forEach((_x, i) => {
-      const vals = stack.map(s => s[i]).filter(isFinite);
-      lower.push(vals.length ? Math.min.apply(null, vals) : NaN);
-      upper.push(vals.length ? Math.max.apply(null, vals) : NaN);
-    });
-    return { grid, lower, upper, nMembers: curves.length };
-  }
-
-  function scoreCandidate(band, result) {
-    if (!band || !result || !result.ok) return { pct: null, n: 0, reason: 'unusable spectrum' };
-    const c = cleanCurve(result.alpha, result.fAlpha);
-    if (c.a.length < 2) return { pct: null, n: 0, reason: 'unusable spectrum' };
-    const fi = interp(band.grid, c.a, c.f);
-    let inside = 0, tot = 0;
-    for (let i = 0; i < band.grid.length; i++) {
-      if (!isFinite(fi[i]) || !isFinite(band.lower[i]) || !isFinite(band.upper[i])) continue;
-      tot++;
-      if (fi[i] >= band.lower[i] && fi[i] <= band.upper[i]) inside++;
-    }
-    if (!tot) return { pct: null, n: 0, reason: 'no overlap with the band', curve: fi };
-    return { pct: (100 * inside) / tot, n: tot, reason: '', curve: fi };
-  }
+  // NOTE: buildBand() and scoreCandidate() used to live here. They built a
+  // reference band from the four demonstration structures and scored a fifth
+  // against it. That is not a result -- four structures cannot define a band,
+  // and their unit cells are far too small for a trustworthy power-law fit --
+  // so the band is computed over the 77-framework dataset in the analysis
+  // notebook instead, and this API was deleted rather than left to be called.
 
   // =================================================================
   // NMFA / iNMFA — BOX-GROWING, exactly as published
@@ -405,6 +380,6 @@
              influential: sel.chosen, selection: sel.info };
   }
 
-  root.MOFMultifractal = { analyse, supercell, selectInfluential, buildBand, scoreCandidate,
+  root.MOFMultifractal = { analyse, supercell, selectInfluential,
                            cleanCurve, interp, nmfaPaper, analysePaper, growthCurves };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -79,14 +79,14 @@
     const X = a => padL + ((a - amin) / (amax - amin || 1)) * pw;
     const Y = f => padT + ph - ((f - fmin) / (fmax - fmin || 1)) * ph;
 
-    g.strokeStyle = 'rgba(0,0,0,0.06)'; g.lineWidth = 1;
+    g.strokeStyle = PAL.alpha(PAL.text, .06); g.lineWidth = 1;
     for (let k = 0; k <= 4; k++) {
       const y = padT + (ph * k) / 4;
       g.beginPath(); g.moveTo(padL, y); g.lineTo(padL + pw, y); g.stroke();
     }
-    g.strokeStyle = '#777'; g.lineWidth = 1.1;
+    g.strokeStyle = PAL.text3; g.lineWidth = 1.1;
     g.beginPath(); g.moveTo(padL, padT); g.lineTo(padL, padT + ph); g.lineTo(padL + pw, padT + ph); g.stroke();
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'center';
+    g.fillStyle = PAL.text3; g.font = '11px system-ui,sans-serif'; g.textAlign = 'center';
     g.fillText('α  (local scaling exponent)', padL + pw / 2, H - 10);
     for (let k = 0; k <= 4; k++) {
       const a = amin + ((amax - amin) * k) / 4;
@@ -119,10 +119,10 @@
       const a0 = d.alpha[i0], f0 = d.f_alpha[i0];
       if (isFinite(a0) && isFinite(f0)) {
         g.beginPath(); g.arc(X(a0), Y(f0), 2.6, 0, Math.PI * 2);
-        g.fillStyle = '#111'; g.fill();
+        g.fillStyle = PAL.text; g.fill();
       }
     });
-    g.textAlign = 'left'; g.font = '10.5px system-ui,sans-serif'; g.fillStyle = '#444';
+    g.textAlign = 'left'; g.font = '10.5px system-ui,sans-serif'; g.fillStyle = PAL.text;
     g.fillText('● = q = 0', padL + 10, padT + 14);
     g.fillText(tauIsFixed() ? '   (at the apex — τ is correct)'
                             : '   (NOT at the apex — data predates the τ fix)',
@@ -148,25 +148,25 @@
     const Y = w => padT + ph - (w / wmax) * ph;
 
     // band region
-    g.fillStyle = 'rgba(138,86,201,0.16)';
+    g.fillStyle = PAL.alpha(PAL.accent2, .16);
     g.fillRect(padL, Y(S.band_hi), pw, Y(S.band_lo) - Y(S.band_hi));
-    g.strokeStyle = 'rgba(138,86,201,0.6)'; g.setLineDash([5, 4]); g.lineWidth = 1.2;
+    g.strokeStyle = PAL.alpha(PAL.accent2, .6); g.setLineDash([5, 4]); g.lineWidth = 1.2;
     g.strokeRect(padL, Y(S.band_hi), pw, Y(S.band_lo) - Y(S.band_hi));
     g.setLineDash([]);
-    g.fillStyle = '#6b3fa8'; g.font = '600 11px system-ui,sans-serif'; g.textAlign = 'left';
+    g.fillStyle = PAL.accent2; g.font = '600 11px system-ui,sans-serif'; g.textAlign = 'left';
     g.fillText('band (interquartile) ' + fmt(S.band_lo, 2) + ' – ' + fmt(S.band_hi, 2),
                padL + 8, Y(S.band_hi) - 6);
 
     // axes
-    g.strokeStyle = '#777'; g.lineWidth = 1.1;
+    g.strokeStyle = PAL.text3; g.lineWidth = 1.1;
     g.beginPath(); g.moveTo(padL, padT); g.lineTo(padL, padT + ph); g.lineTo(padL + pw, padT + ph); g.stroke();
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
+    g.fillStyle = PAL.text3; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
     for (let k = 0; k <= 4; k++) {
       const v = (wmax * k) / 4;
       g.fillText(v.toFixed(2), padL - 6, Y(v) + 4);
-      g.strokeStyle = 'rgba(0,0,0,0.06)'; g.beginPath(); g.moveTo(padL, Y(v)); g.lineTo(padL + pw, Y(v)); g.stroke();
+      g.strokeStyle = PAL.alpha(PAL.text, .06); g.beginPath(); g.moveTo(padL, Y(v)); g.lineTo(padL + pw, Y(v)); g.stroke();
     }
-    g.textAlign = 'center'; g.fillStyle = '#555';
+    g.textAlign = 'center'; g.fillStyle = PAL.text3;
     g.fillText('77 frameworks, sorted by Δα', padL + pw / 2, H - 10);
     g.save(); g.translate(14, padT + ph / 2); g.rotate(-Math.PI / 2);
     g.fillText('Δα', 0, 0); g.restore();
@@ -180,7 +180,7 @@
       g.fillStyle = 'rgb(' + Math.round(40 + 200 * t) + ',' + Math.round(90 + 60 * (1 - t)) + ',' + Math.round(190 - 120 * t) + ')';
       g.fill();
     });
-    g.textAlign = 'right'; g.font = '10px system-ui,sans-serif'; g.fillStyle = '#666';
+    g.textAlign = 'right'; g.font = '10px system-ui,sans-serif'; g.fillStyle = PAL.text3;
     g.fillText('dot colour = supercell size (blue small → red large)', padL + pw, padT + 12);
   }
 
@@ -195,20 +195,20 @@
     g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
 
     const bars = [
-      { l: 'pore size (LCD)\nraw', v: S.r_lcd, c: '#2f7fd1' },
-      { l: 'pore size (LCD)\ncontrolling for size', v: S.p_lcd_given_size, c: '#a9cbeb' },
-      { l: 'graph size\nraw', v: S.r_size, c: '#d13b3b' },
-      { l: 'graph size\ncontrolling for LCD', v: S.p_size_given_lcd, c: '#eda8a8' },
+      { l: 'pore size (LCD)\nraw', v: S.r_lcd, c: PAL.brand },
+      { l: 'pore size (LCD)\ncontrolling for size', v: S.p_lcd_given_size, c: PAL.brand },
+      { l: 'graph size\nraw', v: S.r_size, c: PAL.node },
+      { l: 'graph size\ncontrolling for LCD', v: S.p_size_given_lcd, c: PAL.node },
     ];
     const padL = 54, padB = 52, padT = 18;
     const pw = W - padL - 16, ph = H - padB - padT;
     const zero = padT + ph / 2, scale = ph / 2 / 0.6;
-    g.strokeStyle = '#777'; g.lineWidth = 1.1;
+    g.strokeStyle = PAL.text3; g.lineWidth = 1.1;
     g.beginPath(); g.moveTo(padL, zero); g.lineTo(padL + pw, zero); g.stroke();
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
+    g.fillStyle = PAL.text3; g.font = '11px system-ui,sans-serif'; g.textAlign = 'right';
     [-0.5, -0.25, 0, 0.25, 0.5].forEach(v => {
       g.fillText(v.toFixed(2), padL - 6, zero - v * scale + 4);
-      g.strokeStyle = 'rgba(0,0,0,0.06)';
+      g.strokeStyle = PAL.alpha(PAL.text, .06);
       g.beginPath(); g.moveTo(padL, zero - v * scale); g.lineTo(padL + pw, zero - v * scale); g.stroke();
     });
     const bw = pw / bars.length * 0.56;
@@ -217,12 +217,12 @@
       const h = b.v * scale;
       g.fillStyle = b.c;
       g.fillRect(cx - bw / 2, h >= 0 ? zero - h : zero, bw, Math.abs(h));
-      g.fillStyle = '#222'; g.font = '700 11px system-ui,sans-serif'; g.textAlign = 'center';
+      g.fillStyle = PAL.text; g.font = '700 11px system-ui,sans-serif'; g.textAlign = 'center';
       g.fillText((b.v >= 0 ? '+' : '') + b.v.toFixed(2), cx, h >= 0 ? zero - h - 6 : zero - h + 14);
-      g.fillStyle = '#444'; g.font = '10px system-ui,sans-serif';
+      g.fillStyle = PAL.text; g.font = '10px system-ui,sans-serif';
       b.l.split('\n').forEach((ln, k) => g.fillText(ln, cx, padT + ph + 16 + k * 12));
     });
-    g.fillStyle = '#555'; g.font = '11px system-ui,sans-serif'; g.textAlign = 'left';
+    g.fillStyle = PAL.text3; g.font = '11px system-ui,sans-serif'; g.textAlign = 'left';
     g.save(); g.translate(14, padT + ph / 2); g.rotate(-Math.PI / 2);
     g.textAlign = 'center'; g.fillText('correlation with Δα', 0, 0); g.restore();
   }
@@ -320,6 +320,10 @@
   function boot() {
     if (!document.getElementById('band-body') || !window.BAND_DATA) return;
     try { render(); } catch (e) { console.error('band section failed', e); }
+    // Repaint the three canvases when the theme changes (see palette.js).
+    if (window.PAL && PAL.onTheme) PAL.onTheme(function () {
+      try { render(); } catch (e) {}
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Multifractal Spectrum &middot; MOF Structural Descriptors</title>
+<meta name="description" content="The published method we build on, the mathematics of the spectrum, and the box-growing implementation.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html" aria-current="page">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>The Multifractal Spectrum</h1>
+    <p class="lead">The published method we build on, the mathematics of the spectrum, and the box-growing implementation.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="section-title" id="paper-use"><span class="stitle-num">1</span>The Paper We Built On — and Exactly What We Used From It</h2>
+  <p class="section-sub">The network half of this project follows a published method. This section states plainly what the paper provides, which parts we used, which part we initially got wrong, and what we added.</p>
+
+  <div class="panel">
+    <div style="font-size:13px;color:var(--muted2);margin-bottom:4px;">SOURCE</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:4px;">Deciphering the generating rules and functionalities of complex networks</div>
+    <div style="font-size:13.5px;color:var(--muted);">Xiao et al., <i>Scientific Reports</i> <b>11</b>, 22964 (2021) · <a href="https://www.nature.com/articles/s41598-021-02203-4" style="color:var(--accent-dark);font-weight:600;">nature.com/articles/s41598-021-02203-4</a></div>
+  </div>
+
+  <h3 style="font-size:16.5px;margin:24px 0 8px;">What the paper gives us</h3>
+  <div class="panel" style="padding:0;overflow:hidden;">
+  <table class="data-table"><thead><tr><td>Quantity</td><td>Definition</td><td>What it means physically</td></tr></thead><tbody>
+    <tr><td class="dt-value">box-growing</td><td class="dt-note">centre a box on node <i>i</i>, grow radius <i>r</i>, count nodes inside → <code>M<sub>i</sub>(r)</code></td><td class="dt-note">how the network expands as seen from one node. <b>Deterministic</b> — no randomness at all.</td></tr>
+    <tr><td class="dt-value">NFD</td><td class="dt-note">slope of ln <code>M<sub>i</sub>(r)</code> vs ln <i>r</i></td><td class="dt-note">the node-based fractal dimension: the spatial dimension the network fills, seen from node <i>i</i></td></tr>
+    <tr><td class="dt-value">u<sub>i</sub>(r)</td><td class="dt-note"><code>M<sub>i</sub>(r) / M</code>, M = total nodes</td><td class="dt-note">a probability measure — node <i>i</i>'s share of the network at scale <i>r</i></td></tr>
+    <tr><td class="dt-value">U<sub>q</sub>(r)</td><td class="dt-note"><code>Σ<sub>i∈I</sub> u<sub>i</sub>(r)<sup>q</sup></code></td><td class="dt-note">the partition function. <i>q</i>&gt;0 amplifies frequent structures, <i>q</i>&lt;0 amplifies rare ones</td></tr>
+    <tr><td class="dt-value">τ(q)</td><td class="dt-note">from <code>U<sub>q</sub>(r) ~ (r/d)<sup>τ(q)</sup></code></td><td class="dt-note">the mass exponent. Linear in <i>q</i> ⇒ monofractal; curved ⇒ multifractal</td></tr>
+    <tr><td class="dt-value">α, f(α)</td><td class="dt-note"><code>α = dτ/dq</code>, <code>f(α) = qα − τ</code></td><td class="dt-note">the spectrum. Width <i>w</i> = structural <b>heterogeneity</b>; α₀ = structural <b>complexity</b></td></tr>
+    <tr><td class="dt-value">D(q)</td><td class="dt-note"><code>τ(q)/q</code></td><td class="dt-note">generalized dimension — the fractal dimension at each distortion scale</td></tr>
+    <tr><td class="dt-value">A</td><td class="dt-note"><code>ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code></td><td class="dt-note">asymmetry. <i>A</i>&gt;0 "clump" (frequent dominate); <i>A</i>&lt;0 "thorn" (rare dominate)</td></tr>
+    <tr><td class="dt-value">iNMFA</td><td class="dt-note">restrict <i>I</i> to the top ~10% influential nodes</td><td class="dt-note">the variant our brief asks for — the spectrum of the influential nodes only</td></tr>
+  </tbody></table>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="panel" style="border-left:4px solid var(--good);">
+      <h4 style="margin:0 0 8px;font-size:15px;color:var(--good-ink);">Used directly, unchanged</h4>
+      <div class="explain-block" style="margin:0;">
+        Every equation above: the box-growing measure, the partition function, the mass exponent, the Legendre transform, the generalized dimension, and the asymmetry metric. <b><span data-code="code_11_nmfa_paper.py" style="cursor:pointer;color:var(--accent-dark);text-decoration:underline;">code_11_nmfa_paper.py</span></b> implements them as written, and each function carries the paper's own formula in its docstring.
+      </div>
+    </div>
+    <div class="panel" style="border-left:4px solid var(--bad);">
+      <h4 style="margin:0 0 8px;font-size:15px;color:var(--node-ink);">What we initially got wrong</h4>
+      <div class="explain-block" style="margin:0;">
+        We used <b>box-covering</b> — randomly tiling the network — where the paper specifies <b>box-growing</b>. It explicitly contrasts the two. Box-covering is stochastic, which is why an earlier version needed 40 repeat trials to stabilise. The published measure is deterministic: three runs give α₀ = 1.630821 every time.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px;">
+    <b>What we added that the paper does not cover.</b> The paper analyses social, biological and synthetic networks, where nodes are all different. A crystal is not like that. We contribute: (i) a chemically correct, periodic route from a <code>.cif</code> to the block network — the object the method needs as input; (ii) <b>supercell expansion</b>, because a primitive cell of 7 blocks has no range of radii to fit a power law over; and (iii) the finding that <b>iNMFA is degenerate on a defect-free crystal</b>, since the influential blocks are symmetry-equivalent and share one growth curve. That is a genuine boundary condition on the method, not a failure of it.
+  </div>
+
+  <!-- ================= 1 ================= -->
+  <!-- ================= PRIMER : chemistry -> network ================= -->
+
+<h2 class="section-title" id="multifractal"><span class="stitle-num">2</span>The Multifractal Spectrum — the Family Fingerprint</h2>
+  <p class="section-sub">This is the analysis the brief actually asked for: highlight the influential nodes, compute a <b>spectrum</b>, and test whether frameworks of one family fall inside a common band. The spectrum here is not the Laplacian eigenvalues of Section 4 — it is the <b>multifractal singularity spectrum f(α)</b>, obtained by covering the network with boxes of increasing radius and measuring how the box sizes seen by the influential nodes scale.</p>
+
+  <div class="callout">
+    <b>How it is computed.</b> Cover the block graph with boxes of radius <i>r</i>; each influential node inherits the size of the box covering it, giving a probability measure <i>p<sub>i</sub>(r)</i>. The partition function <i>Z(q,r) = Σ p<sub>i</sub><sup>q</sup></i> scales as <i>r<sup>τ(q)</sup></i>; a log–log fit gives τ(q), and a Legendre transform gives <b>α(q) = dτ/dq</b> and <b>f(α) = qα − τ</b>. A simple fractal would give a single point; a <i>multi</i>fractal gives a curve, and the width of that curve says how unevenly connectivity is distributed across the framework.
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="chart-box" style="height:320px;"><canvas id="mf-curve-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">f(α) for the structure selected in Section 1</div>
+    </div>
+    <div>
+      <div class="chart-box" style="height:320px;"><canvas id="mf-compare-canvas"></canvas></div>
+      <div style="font-size:12.5px;color:var(--muted2);text-align:center;margin-top:6px;">α range occupied by each structure — the family separation</div>
+    </div>
+  </div>
+
+  <div class="panel"><div id="mf-table"></div></div>
+  <div id="mf-verdict" class="verdict ok"></div>
+
+  <h3 style="font-size:16px;margin:30px 0 8px;">What had to be corrected to get a spectrum at all</h3>
+  <p class="section-sub">The method is sound; the first implementation returned an undefined spectrum for half the test structures. Each fix below is a specific, checkable defect.</p>
+  <div class="panel"><div id="mf-fixes"></div></div>
+
+  <div class="callout warn">
+    <b>Does this satisfy the brief?</b> The <b>method</b> does: influential nodes are identified, a spectrum is computed, a reference band is built, and a candidate is scored against it — and unrelated frameworks land outside the band while family members land inside. What is <b>not</b> yet established is the <i>family</i> claim. There is exactly one zirconium structure here, so "all Zr-MOFs occupy this band" remains a demonstration of mechanism rather than a result. It needs a few hundred MOFs grouped by metal, from CoRE MOF or QMOF — which is what the original notebook was set up to download, and the analysis code runs per-CIF so it batches unchanged.
+  </div>
+
+  <!-- ================= 6 ================= -->
+
+<h2 class="section-title" id="paper"><span class="stitle-num">3</span>Against the Published Method — Box-Growing</h2>
+  <p class="section-sub">The method comes from <b>Xiao et al., "Deciphering the generating rules and functionalities of complex networks", <i>Scientific Reports</i> <b>11</b>, 22964 (2021)</b>. Reading it closely revealed that our implementation — and the original notebook — used the wrong underlying measure.</p>
+
+  <div class="callout warn">
+    <b>Box-covering is not box-growing.</b> The paper proposes <b>box-growing</b> and explicitly contrasts it with the box-counting family. The difference decides everything downstream:
+    <table class="data-table" style="margin-top:10px;background:transparent;">
+      <thead><tr><td></td><td>What the measure is</td><td>Random?</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label">box-<b>covering</b> (what we had)</td><td class="dt-note">tile the whole network with randomly-seeded boxes; a node's measure is the size of whichever box happens to cover it</td><td class="dt-value" style="color:var(--node)">yes — needs many trials</td></tr>
+      <tr><td class="dt-label">box-<b>growing</b> (the paper)</td><td class="dt-note">centre a box on node <i>i</i> and grow its radius; the measure is <code>M<sub>i</sub>(r)</code>, the number of nodes within distance <i>r</i></td><td class="dt-value" style="color:var(--good)">no — fully deterministic</td></tr>
+      </tbody>
+    </table>
+    Because the published measure is deterministic, the reproducibility problem that forced 40 box-covering trials <b>does not exist</b> in the correct method. Repeated runs are bit-identical.
+  </div>
+
+  <div class="panel"><div id="paper-table"></div></div>
+  <div id="paper-verdict" class="verdict"></div>
+
+  <div class="callout">
+    <b>The published quantities, now computed.</b> <code>u<sub>i</sub>(r) = M<sub>i</sub>(r)/M</code> · <code>U<sub>q</sub>(r) = Σ u<sub>i</sub><sup>q</sup></code> · <code>U<sub>q</sub> ~ (r/d)<sup>τ(q)</sup></code> · <code>α = dτ/dq</code> · <code>f(α) = qα − τ</code> · generalized dimension <code>D(q) = τ(q)/q</code> · asymmetry <code>A = ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code> with α₀ at the maximum of <i>f</i>. Per the paper: width <i>w</i> is structural <b>heterogeneity</b>, α₀ is structural <b>complexity</b>, <i>A</i>&gt;0 means frequent structures dominate ("clump"), <i>A</i>&lt;0 means rare ones do ("thorn").
+  </div>
+
+  <!-- ================= 15b : the band ================= -->
+    <!-- ================= 15b : the band ================= -->
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="network.html"><div class="dir">&larr; Previous</div><div class="ttl">From Crystal to Network</div></a><a class="next" href="results.html"><div class="dir">Next &rarr;</div><div class="ttl">Results: The Band</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/site.js"></script>
+<script src="mof_decompose.js"></script>
+<script src="mof_network.js"></script>
+<script src="mof_multifractal.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="network_page.js"></script>
+</body>
+</html>
