@@ -132,7 +132,12 @@
      =================================================================== */
   function reveal() {
     if (REDUCED || !('IntersectionObserver' in window)) return;
+    // Headings are included so their rule can draw itself, and .keynums so the
+    // strip can wipe in cell by cell. Individual .keynum children are NOT
+    // observed: staggering them is the parent's job in CSS, and observing
+    // twenty small elements costs more than observing four containers.
     var targets = document.querySelectorAll(
+      'main h2.section-title, main h2.st, ' +
       'main .panel, main figure.fig, main .callout, main .negbox, ' +
       'main .table-wrap, main .keynums, main .part, main .lim-card, main .demo-card'
     );
@@ -140,7 +145,12 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e, i) {
         if (!e.isIntersecting) return;
-        e.target.style.transitionDelay = Math.min(i, 3) * 60 + 'ms';
+        // Stagger within the batch, capped at four steps. A row of six cards
+        // arriving one-by-one over 600ms reads as slow; three or four steps
+        // reads as a group settling.
+        if (!e.target.classList.contains('keynums')) {
+          e.target.style.transitionDelay = Math.min(i, 3) * 70 + 'ms';
+        }
         e.target.classList.add('revealed');
         io.unobserve(e.target);          // fire once, then stop watching
       });

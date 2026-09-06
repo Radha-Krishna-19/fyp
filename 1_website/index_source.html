@@ -56,7 +56,6 @@
     <a href="#roadmap"><b>6</b> Roadmap</a>
     <span class="grp">The Algorithm</span>
     <a href="#walkthrough"><b>7</b> Pipeline Walkthrough</a>
-    <a href="#pipeline-tool"><b>8</b> Interactive Tool</a>
     <a href="#paper-use"><b>9</b> The Paper</a>
     <span class="grp">Network Analysis</span>
     <a href="#primer"><b>10</b> Graph Primer</a>
@@ -255,7 +254,7 @@
         <div><b>Why:</b> the decomposition is the step every downstream analysis depends on, and it is normally invisible — a black box that turns a CIF into a list of blocks. Making each stage visible is what lets anyone check that the blocks the network analysis runs on are the right ones.</div>
         <div><b>Achieved:</b> any <code>.cif</code> can be uploaded and the whole pipeline runs on it live in the browser. The node and linker assignments can be inspected directly, which is the sanity check the later sections rest on.</div>
       </div>
-      <div class="where">→ <a href="#walkthrough">Section 7</a> and <a href="#pipeline-tool">Section 8</a> · <code>code_04a_metal_oxo_algorithm.py</code></div>
+      <div class="where">→ <a href="#walkthrough">the pipeline walkthrough</a> · <code>code_04a_metal_oxo_algorithm.py</code></div>
     </div>
   </div>
 
@@ -391,10 +390,6 @@
   </div>
 
   <!-- ================= SECTION 2: DRAWBACKS + FIX ================= -->
-  <h2 class="section-title" id="pipeline-tool"><span class="stitle-num">8</span>The Complete Pipeline, Interactive</h2>
-  <p class="section-sub">All seven stages of the published pipeline on one screen, for any structure you upload.</p>
-  <iframe id="pipeline-frame" class="pipeline-frame" data-src="mof_pipeline_viewer.html" title="Full 7-stage MOF decomposition pipeline, 3D" loading="lazy"></iframe>
-
   <h2 class="section-title" id="paper-use"><span class="stitle-num">9</span>The Paper We Built On — and Exactly What We Used From It</h2>
   <p class="section-sub">The network half of this project follows a published method. This section states plainly what the paper provides, which parts we used, which part we initially got wrong, and what we added.</p>
 

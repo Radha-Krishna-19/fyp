@@ -210,8 +210,8 @@ Stated plainly, because a reviewer will ask.
 | P. M. Radha Krishna | CB.SC.U4CSE23134 | Problem framing, methodology, integration, documentation portal |
 | P. Kshitij Varma | CB.SC.U4CSE23122 | The mathematical model — partition function, τ(q), Legendre transform |
 | G. Rohith Abhinav | CB.SC.U4CSE23141 | Implementation status, 3D viewer, decomposition engine |
-| J. Keerthi Sree | — | Results, validation, the band, dataset provenance |
-| Isha | — | Design decisions, the τ defect, network construction, roadmap |
+| J. Keerthi Sree | CB.SC.U4CSE23031 | Results, validation, the band, dataset provenance |
+| Isha Sri Prakash | CB.SC.U4CSE23029 | Design decisions, the τ defect, network construction, roadmap |
 
 ## Built on
 

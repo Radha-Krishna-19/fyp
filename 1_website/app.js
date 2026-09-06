@@ -75,26 +75,11 @@
     // showing a change we no longer make. The module and its markup were
     // deleted; this block goes with them.
 
-    // ---------- Section 3b: lazy-load the embedded pipeline tool ----------
-    // The iframe spins up its own WebGL context, so its src is only set once
-    // the user scrolls to it. Without this the panel stays blank forever.
-    const frame = document.getElementById('pipeline-frame');
-    if (frame && frame.dataset.src) {
-      const loadFrame = function () { if (!frame.getAttribute('src')) frame.setAttribute('src', frame.dataset.src); };
-      if (typeof IntersectionObserver !== 'undefined') {
-        const io2 = new IntersectionObserver(function (entries) {
-          if (entries.some(function (e) { return e.isIntersecting; })) { loadFrame(); io2.disconnect(); }
-        }, { rootMargin: '600px' });
-        io2.observe(frame);
-      } else {
-        loadFrame();
-      }
-      // also load immediately if the user jumps straight there via the nav
-      const navLink = document.querySelector('.top-nav a[href="#pipeline-tool"], .top-nav a[href="#pipeline"]');
-      if (navLink) navLink.addEventListener('click', loadFrame);
-      // safety net: if it somehow hasn't loaded after 3s on screen, load it
-      setTimeout(loadFrame, 3000);
-    }
+    // The embedded pipeline iframe was removed. It duplicated the walkthrough
+    // directly above it -- same CIF upload, same 3D view, same stages -- while
+    // costing a second WebGL context on a page that already has one. Browsers
+    // cap live contexts per tab, so the duplicate was actively harmful.
+
 
     // ---------- section nav smooth scroll ----------
     document.querySelectorAll('.top-nav a').forEach(a => {
