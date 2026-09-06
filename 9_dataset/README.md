@@ -25,7 +25,8 @@ including where it fails.
 | File | Rows | What |
 |---|---|---|
 | `mof_multifractal_descriptors_v1.csv` | 77 | hMOF frameworks — **hypothetical**, computer-generated, never synthesised |
-| `mof_multifractal_descriptors_real_v1.csv` | 4 | **Experimentally synthesised** MOFs, same schema, same pipeline |
+| `mof_multifractal_descriptors_real_v2.csv` | 61 | **Experimentally synthesised** MOFs from CoRE MOF 2019, same schema, same pipeline |
+| `mof_multifractal_descriptors_real_v1.csv` | 4 | *Superseded.* The four structures behind a withdrawn claim; kept so the withdrawal is auditable |
 
 The two are kept in separate files on purpose. They are not interchangeable and
 should never be pooled without saying so — see *Provenance* below.
@@ -110,10 +111,11 @@ received hMOF records, because on that endpoint the `database=` parameter is
 advisory and loses to the `gases[]` filter. A provenance check caught it. The
 query now filters each returned record on its own `database` field.
 
-**The 4-framework file contains real materials** — HKUST-1, UiO-66, MOF-5 and
-ZIF-8, all long synthesised, from published CIFs, with coordination numbers
-verified against the crystallographic literature before their spectra were
-computed.
+**The 61-framework file contains real materials** — CSD refcodes from CoRE MOF
+2019, retrieved from the Zenodo archive at DOI `10.5281/zenodo.3370236` rather
+than from a live API, sampled with a cap per metal composition so no single
+metal dominates. An archived record is the same bytes for every reader,
+permanently, which is a stronger provenance guarantee than a query.
 
 ---
 
@@ -133,16 +135,30 @@ survives at +0.621. Adding pore size to a size-only model improves R² by 0.005.
 > `n_blocks` and `n_atoms_supercell` before reporting a correlation with
 > anything. This is the most useful thing in this README.
 
-**Synthesised frameworks sit outside the hypothetical band.** Size-matched under
-the same supercell rule, the four real MOFs span Δα = 1.66 – 2.26, clear of the
-hypothetical range with a gap of 0.25. Not a size artefact: MOF-5 has the same
-Zn₄O node as all 77 and the same 256 blocks as 48 of them, and still lands at
-1.70. Across the 77, Δα correlates with block count at only *r* = +0.11.
+**Synthesised frameworks sit on the same band.** The 61 real frameworks span
+Δα = 0.95 – 1.47 against the hypothetical set's 1.02 – 1.41. Means differ by
+0.018 (Welch *p* = 0.38, Mann–Whitney *p* = 0.39), and mean asymmetry is −1.31
+in both sets: the same width and the same spectrum shape. A descriptor
+calibrated on generated structures transfers to structures that exist.
 
-Four archetypal structures are not a sample, and two readings remain open —
-either the descriptor is detecting that generated frameworks are unusually
-regular, or four famous MOFs are unrepresentative. Deciding needs ~50 real
-structures; `../3_notebooks/real_mof_band.ipynb` is set up to do it.
+One difference is statistically real: the synthesised set is **more variable**
+(sd 0.132 vs 0.095, Levene *p* = 0.010). Frameworks people actually made are
+more structurally varied than frameworks one algorithm generated.
+
+**The pore-size confound reproduces on real data.** Across the 61, Δα correlates
+with LCD at *r* = −0.198; hold graph size constant and it falls to +0.097, while
+size holds at +0.488. The same correlation fails the same way, for the same
+reason, on structures that exist.
+
+> **Withdrawn: the second version of this section.** It previously reported that
+> four synthesised MOFs sat *clear* of the hypothetical band at Δα = 1.66 – 2.26,
+> "not a size artefact". It was a size artefact. Those four were expanded to
+> 256–972 atoms while the 77 hMOFs occupy 3024–6592 — not one hMOF is as small as
+> the largest of the four — and Δα correlates with **atom** count at *r* = +0.73.
+> The *r* = +0.11 quoted in defence of that claim was against **block** count, a
+> different quantity, and the wrong one to rule out a size confound with. The
+> four rows remain in `..._real_v1.csv` so the error can be inspected rather than
+> taken on trust.
 
 ---
 
@@ -216,6 +232,12 @@ Structures come from MOFX-DB / the hMOF database under their own terms; the
 descriptors computed here are ours.
 
 ## Changelog
+
+**v2.0 — 2026-09-07.** 77 hypothetical + **61 synthesised** frameworks
+(`..._real_v2.csv`). The synthesised set now comes from the CoRE MOF 2019 Zenodo
+archive rather than a live API. The four-structure "band separation" claim is
+**withdrawn** — it was a graph-size artefact; see *Known results*. The
+four-row v1 file is retained for audit.
 
 **v1.0 — 2026-09-06.** First release. 77 hypothetical + 4 synthesised
 frameworks. τ fitted through the origin (all 77 spectra valid). Pore-size

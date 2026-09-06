@@ -125,13 +125,13 @@ Don't read every row. Group them.
 > ingestion through decomposition and the periodic graph to the spectrum, cross-validated
 > across two independent implementations, with a released dataset and five test suites
 > gating publication. **Scientific validation: about 60%** — the descriptor is provably
-> correct and we have documented its failure modes, including one claim we withdrew. What
-> is not established is behaviour across chemical families, which our single-metal dataset
-> cannot test. **Weighted, about 73%.** The rubric asks for roughly 60%."
+> correct, we have documented its failure modes, and it now transfers to 61 experimentally
+> synthesised frameworks. What is not established is whether Δα predicts any measured
+> property. **Weighted, about 82%.** The rubric asks for roughly 60%."
 
-> **If pressed on why not higher:** "The remaining gap is one run — fifty synthesised
-> structures through the pipeline we already have. It is a data task, not a development
-> task. We would rather say that plainly than inflate the number."
+> **If pressed on why not higher:** "Because we can describe structures reliably and still
+> cannot predict a property anyone would pay for. That is the honest remaining gap, and it
+> is a research question, not a development task."
 
 **The verification line — say this, it's what separates us from a demo:**
 
@@ -276,7 +276,8 @@ If a laptop is available, **show it live**. Otherwise describe it.
 | *"Why not just simulate them?"* | Hours per structure × hundreds of thousands. We're deciding what to simulate, not replacing it. | Radha Krishna |
 | *"Isn't an unweighted graph throwing away the chemistry?"* | Yes, deliberately. It's stated as a limitation. What survives is pure architecture, which transfers across chemistries. | Isha Sri Prakash |
 | *"Does Δα predict gas uptake?"* | **No, and we never claim it.** Nothing here computes adsorption. | Keerthi Sree |
-| *"Are these real materials?"* | **No** — all 77 are hMOF entries, computer-generated, never synthesised. We requested the experimental set; the server returned these. A check now catches it. | Keerthi Sree |
+| *"Are these real materials?"* | **Both now.** The band was built on 77 hMOF entries — computer-generated, never synthesised — because the server returned those when we asked for the experimental set; a check now catches that. We have since run **61 real CoRE MOF frameworks** through the same pipeline, and they land on the same band. | Keerthi Sree |
+| *"Didn't you claim real MOFs were different?"* | **Yes, and we withdrew it.** Four synthesised structures looked clear of the band at Δα = 1.66–2.26. They were 256–972 atoms against the hMOFs' 3024–6592, and Δα rises with atom count at r = +0.73 — we were measuring graph size. With 61 size-matched structures the gap disappears. The withdrawal is on the Results page. | Keerthi Sree |
 | *"Why only the top 10% of nodes?"* | That's the paper's iNMFA definition. It has a catch in a perfect crystal — all degrees tie — and we report the ambiguity. | Kshitij |
 | *"How do I know your numbers are right?"* | Two independent implementations agree on every value; coordination numbers match published crystallography; test suites cover every layer. | Rohith |
 | *"What's your computational complexity?"* | Bond perception O(N²) over 27 images; all-pairs shortest path O(N²) memory, which is why `MAX_ATOMS` is capped at 7,000. | Rohith |

@@ -7,15 +7,27 @@
         connectivity alone &mdash; in seconds, with no simulation &mdash; carry enough
         structural information to group frameworks usefully?</b> We build the framework's
         periodic graph from its crystal structure, compute the multifractal spectrum of that
-        graph, and reduce each framework to three numbers. Across 77 frameworks those numbers
-        form a narrow band. We then test that band honestly, and report where it fails.
+        graph, and reduce each framework to three numbers. Across 138 frameworks &mdash; 77
+        hypothetical and 61 that have actually been synthesised &mdash; those numbers form a
+        narrow band, and the two sets land on the same band. We then test that band honestly,
+        and report where it fails.
       </p>
 
       <div class="keynums">
-        <div class="keynum"><b>77</b><span>frameworks analysed end to end</span></div>
-        <div class="keynum is-good"><b>77 / 77</b><span>spectra mathematically valid after the &tau; correction</span></div>
-        <div class="keynum"><b>1.11 &ndash; 1.25</b><span>the &Delta;&alpha; band (interquartile range)</span></div>
+        <div class="keynum"><b>138</b><span>frameworks analysed end to end &mdash; 77 hypothetical, 61 synthesised</span></div>
+        <div class="keynum is-good"><b>138 / 138</b><span>spectra mathematically valid after the &tau; correction</span></div>
+        <div class="keynum"><b>1.11 &ndash; 1.25</b><span>the &Delta;&alpha; band (interquartile range, hypothetical set)</span></div>
         <div class="keynum is-warn"><b>&minus;0.50 &rarr; +0.10</b><span>the pore-size correlation, once graph size is controlled for</span></div>
+      </div>
+
+      <div class="callout good">
+        <b>The descriptor transfers to real materials.</b> The band was calibrated entirely on
+        computer-generated frameworks. Sixty-one experimentally synthesised MOFs from CoRE MOF 2019,
+        run through the identical pipeline, land at &Delta;&alpha; = 0.95&ndash;1.47 against the
+        hypothetical set's 1.02&ndash;1.41 &mdash; the same centre (means differ by 0.018,
+        <i>p</i>&nbsp;=&nbsp;0.38) and the same spectrum shape. This replaced an earlier claim, made
+        from four structures, that the two sets did <i>not</i> overlap; that claim is withdrawn on the
+        <a href="results.html#realband">Results</a> page along with the reason it was wrong.
       </div>
 
       <div class="callout warn">

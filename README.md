@@ -46,11 +46,21 @@ size to a size-only model improves R² by **0.005**. The descriptor was largely
 measuring how big the graph was. We removed the claim from the project rather
 than reporting it.
 
-**Synthesised frameworks sit outside the band.** Size-matched under the same
-supercell rule, four real MOFs span Δα = 1.66 – 2.26 — clear of the hypothetical
-range with a gap of 0.25, and not explained by graph size or by metal. Four
-archetypal structures are not a sample; the run that would settle it is
-[`3_notebooks/real_mof_band.ipynb`](3_notebooks/real_mof_band.ipynb).
+**The descriptor transfers to real materials.** 61 experimentally synthesised
+frameworks from CoRE MOF 2019, size-matched under the same supercell rule, span
+Δα = 0.95 – 1.47 against the hypothetical set's 1.02 – 1.41. The means differ by
+0.018 (Welch *p* = 0.38) and mean asymmetry is −1.31 in both: the same band and
+the same spectrum shape. A band calibrated entirely on computer-generated
+structures is valid on structures that exist.
+
+**A claim we withdrew to get there.** This README previously reported that four
+synthesised MOFs sat *clear* of the hypothetical band at Δα = 1.66 – 2.26. That
+is withdrawn. Those four were expanded to 256–972 atoms while the 77 hMOFs
+occupy 3024–6592 — no hMOF is as small as the largest of the four — and Δα rises
+with atom count at r = +0.73. The comparison was reading graph size, the same
+confound that killed the pore-size claim above. The reasoning is on the
+[Results page](https://radha-krishna-19.github.io/fyp/results.html#realband)
+and in [`4_reference/make_real_band_figures.py`](4_reference/make_real_band_figures.py).
 
 ## Three defects we found and fixed
 
@@ -184,9 +194,9 @@ are different claims and a single percentage hides the difference.
 
 | Axis | Figure | What it covers |
 |---|---|---|
-| **Engineering** | **85%** | Eight of nine modules complete and integrated. A CIF goes in, a validated three-number descriptor comes out — live in the browser and from the command line. |
-| **Scientific validation** | **60%** | The descriptor is provably correct and honestly characterised, including one withdrawn claim. Its scientific *meaning* is not yet established. |
-| **Overall** | **≈73%** | Weighted equally. |
+| **Engineering** | **88%** | Eight of nine modules complete and integrated. A CIF goes in, a validated three-number descriptor comes out — live in the browser and from the command line. |
+| **Scientific validation** | **75%** | The descriptor is provably correct, honestly characterised (two withdrawn claims), and now shown to transfer to 61 experimentally synthesised frameworks. Its scientific *usefulness* — whether it predicts a measured property — is still not established. |
+| **Overall** | **≈82%** | Weighted equally. |
 
 The Panel Review 1 rubric asks for roughly 60% with major modules integrated
 and core functionality demonstrated. The engineering axis clears that.

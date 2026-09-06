@@ -39,6 +39,9 @@ hard to prove after the fact unless you can point at something concrete.
 | `network_analysis_figure.png` | **Data** | ✅ `make_figures.py` | The four demonstration CIFs, Laplacian spectra |
 | `fig08_band77.png` | **Data** | ✅ `mof_band_analysis.ipynb`, Step 11 | `3_notebooks/results.json` — all 77 frameworks |
 | `band77_figure.png` | **Data** | ✅ same as fig08 | The copy used by the LaTeX deck |
+| `fig09_real_vs_hmof.png` | **Data** | ✅ `make_real_band_figures.py` | `real_results.json` + `results.json` — both bands on one axis |
+| `real_band61_analysis.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 11 | `3_notebooks/real_results.json` — the 6-panel real-MOF analysis |
+| `real_spectra61.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 9 | `3_notebooks/real_results.json` — all 61 spectra + ranking |
 | `fig01_mof_concept.png` | Schematic | ⚠️ script not preserved | None — a drawn diagram: node + linker → framework |
 | `fig02_pipeline.png` | Schematic | ⚠️ script not preserved | None — the pipeline stages, drawn |
 | `fig05_defect.png` | **Data** | ⚠️ script not preserved | `1_website/HKUST-1.cif`, λ₂ before and after removing a linker |
@@ -81,13 +84,14 @@ The same figure appears in more than one folder:
 |---|---|---|
 | `fig01`–`fig08` | `1_website/figures/`, `8_textbook/figures/` | The site must work from a `file://` clone with no build step, and the textbook must render on GitHub. Neither can reach across folders reliably, so each carries its own copy. |
 | `band77_figure.png` | `4_reference/`, `7_presentation/`, `7_presentation/overleaf/` | LaTeX resolves `\includegraphics` relative to the `.tex` file, and the Overleaf zip has to be self-contained when uploaded. |
+| `fig09_real_vs_hmof.png` | `4_reference/`, `1_website/figures/`, `8_textbook/figures/`, `7_presentation/`, `7_presentation/overleaf/` | Same reasons: the site needs a local copy, and LaTeX needs one beside the `.tex`. |
 
 ### One figure was deleted
 
 `band_analysis.png` was removed in September 2026. It showed a Δα band of
 **0.835–0.941** built from eight named MOFs — HKUST-1, ZIF-8 and six MOF-74
 variants. That band predates the 77-framework analysis and contradicts it: the
-current hypothetical band is 1.02–1.41 and the synthesised one is 1.66–2.26.
+current hypothetical band is 1.02–1.41 and the synthesised one is 0.95–1.47.
 
 It was also the thing this project explicitly stopped doing — defining a band
 from a handful of demonstration structures. Leaving a superseded figure on the
@@ -138,3 +142,23 @@ It checks three things and exits non-zero on any failure:
    downloaded or retouched image.
 3. **Duplicated figures are byte-identical** — so a stale copy in one folder
    cannot silently disagree with the live one in another.
+
+
+---
+
+## A figure that was drawn but could not be trusted
+
+The analysis notebook emits `real_vs_hypothetical.png`. When the 61-structure run
+was executed on its own, the 77-framework `results.json` was not in the session,
+so the figure came out titled **"Spectrum width: synthesised vs hypothetical"**
+with only the synthesised row drawn.
+
+Nothing about it was corrupt. It was worse than that: the title asserted a
+comparison the picture did not contain, and a reader skimming the deck would
+have taken the single row as the comparison. It is not shipped.
+`make_real_band_figures.py` redraws it from both files, and fails loudly if
+either is missing.
+
+This is the same class of error as the deleted `band_analysis.png` above — a
+figure whose caption outran its data — and it is the reason every figure in this
+folder has to name the file it was computed from.

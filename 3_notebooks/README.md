@@ -9,7 +9,7 @@ meaningless.
 | Notebook | Structures | Output | Status |
 |---|---|---|---|
 | `mof_band_analysis.ipynb` | 77 hMOF frameworks — hypothetical, computer-generated | `results.json` | Run; produced the band |
-| `real_mof_band.ipynb` | CoRE MOF 2019 — experimentally synthesised | `real_results.json` | **Ready to run** |
+| `real_mof_band.ipynb` | CoRE MOF 2019 — experimentally synthesised | `real_results.json` | **Run — 61 frameworks** |
 
 ---
 
@@ -86,21 +86,51 @@ A separation that only exists between size-mismatched sets is not a finding.
 
 ## Current state of the comparison
 
-Four synthesised structures have already been put through the pipeline —
-HKUST-1, UiO-66, MOF-5 and ZIF-8, expanded under the same 48 Å rule. See
-`../1_website/build_real_band.js`.
+61 synthesised frameworks from CoRE MOF 2019 have been through the pipeline,
+expanded under the same 48 Å rule. Spectra in `real_results.json`.
 
-| Set | n | Δα |
-|---|---|---|
-| Hypothetical (hMOF) | 77 | 1.02 – 1.41 |
-| Synthesised | 4 | 1.66 – 2.26 |
+| Set | n | Δα | mean | mean asymmetry |
+|---|---|---|---|---|
+| Hypothetical (hMOF) | 77 | 1.02 – 1.41 | 1.180 ± 0.095 | −1.31 |
+| Synthesised (CoRE MOF) | 61 | 0.95 – 1.47 | 1.198 ± 0.132 | −1.31 |
 
-No overlap, and a gap of 0.25. It is not a size artefact: MOF-5 has the same
-Zn₄O node as all 77 and the same 256 blocks as 48 of them, and still lands at
-1.70. Across the 77, Δα correlates with block count at only r = +0.11.
+The ranges overlap over 1.02–1.41, covering 82% of the synthesised set and 100%
+of the hypothetical one. Means differ by 0.018 (Welch *p* = 0.38, Mann–Whitney
+*p* = 0.39, Cohen's *d* = 0.16). One difference is real: the synthesised set is
+significantly more variable (Levene *p* = 0.010) — frameworks people actually
+made are more structurally varied than frameworks one algorithm generated.
 
-Four archetypal structures are not a sample, which is what `real_mof_band.ipynb`
-is for. Both readings are set out on the Results page of the project site.
+**Withdrawn.** An earlier version of this table reported 4 synthesised
+structures at Δα = 1.66 – 2.26 with "no overlap, and a gap of 0.25". Those four
+were 256–972 atoms against the hMOFs' 3024–6592, and Δα correlates with **atom**
+count at r = +0.73 (the r = +0.11 previously quoted is against **block** count —
+a different quantity, and the wrong one to check a size confound with). The gap
+was a size artefact.
+
+Both readings, and which one the data chose, are set out on the Results page of
+the project site.
+
+---
+
+## A portability note on these JSON files
+
+`results.json` and `real_results.json` contain bare `NaN` tokens. Python's
+`json.dump` writes them and `json.load` reads them back, so the notebooks never
+notice — but **`NaN` is not valid JSON**, and any other reader (JavaScript,
+`jq`, most strict parsers) will reject the file outright.
+
+The NaN sits in the `r2` array at q = 0. There, τ is fitted through the origin
+against a flat line, so R² is genuinely undefined rather than merely missing.
+Anything consuming these files from outside Python should substitute `null`:
+
+```js
+JSON.parse(fs.readFileSync(p, 'utf8').replace(/\bNaN\b/g, 'null'))
+```
+
+`1_website/tests/test_real_band_numbers.js` does exactly this. The files are
+left as-is rather than rewritten, because they are the notebooks' own output
+and regenerating them to change a serialisation detail would break the claim
+that nothing between the run and the site is hand-edited.
 
 ---
 
