@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Multifractal Spectrum &middot; MOF Structural Descriptors</title>
-<meta name="description" content="The published method we build on, the mathematics of the spectrum, and the box-growing implementation.">
+<meta name="description" content="What the parabola on every chart here actually means, the published method we build on, the mathematics, and all 61 real spectra as computed.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
 <script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
@@ -39,17 +39,17 @@
   <div class="container">
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>The Multifractal Spectrum</h1>
-    <p class="lead">The published method we build on, the mathematics of the spectrum, and the box-growing implementation.</p>
-<ol class="readpath" aria-label="Reading sequence"><li class="done"><a href="index.html"><span class="n">1</span>Overview</a></li><li class="done"><a href="methodology.html"><span class="n">2</span>Methodology</a></li><li class="done"><a href="decomposition.html"><span class="n">3</span>Decomposition</a></li><li class="done"><a href="network.html"><span class="n">4</span>Network</a></li><li class="here" aria-current="step"><a href="spectrum.html"><span class="n">5</span>Spectrum</a></li><li class="todo"><a href="results.html"><span class="n">6</span>Results</a></li></ol>
+    <p class="lead">What the parabola on every chart here actually means, the published method we build on, the mathematics, and all 61 real spectra as computed.</p>
+<div class="place"><b>Step 5 of 6</b> &middot; next: <a href="results.html">Results</a></div>
   </div>
 </div>
 
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
 <h2 class="section-title" id="paper-use"><span class="stitle-num">1</span>The Paper We Built On — and Exactly What We Used From It</h2>
   <p class="section-sub">The network half of this project follows a published method. This section states plainly what the paper provides, which parts we used, which part we initially got wrong, and what we added.</p>
+<dl class="bridge"><dt>You know</dt><dd>That graph-derived numbers can separate structures.</dd><dt>This section</dt><dd class="now">States precisely which parts of the published method this project uses, which it changed, and why.</dd><dt>Which lets us</dt><dd>Separate our contribution from the source paper&rsquo;s, which a reviewer will ask about.</dd></dl>
 
   <div class="panel">
     <div style="font-size:13px;color:var(--muted2);margin-bottom:4px;">SOURCE</div>
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div class="callout" style="margin-top:16px;">
+  <div class="callout" data-kind="Note" style="margin-top:16px;">
     <b>What we added that the paper does not cover.</b> The paper analyses social, biological and synthetic networks, where nodes are all different. A crystal is not like that. We contribute: (i) a chemically correct, periodic route from a <code>.cif</code> to the block network — the object the method needs as input; (ii) <b>supercell expansion</b>, because a primitive cell of 7 blocks has no range of radii to fit a power law over; and (iii) the finding that <b>iNMFA is degenerate on a defect-free crystal</b>, since the influential blocks are symmetry-equivalent and share one growth curve. That is a genuine boundary condition on the method, not a failure of it.
   </div>
 
@@ -96,8 +96,9 @@
 
 <h2 class="section-title" id="multifractal"><span class="stitle-num">2</span>The Multifractal Spectrum — the Family Fingerprint</h2>
   <p class="section-sub">This is the analysis the brief actually asked for: highlight the influential nodes, compute a <b>spectrum</b>, and test whether frameworks of one family fall inside a common band. The spectrum here is not the Laplacian eigenvalues of Section 4 — it is the <b>multifractal singularity spectrum f(α)</b>, obtained by covering the network with boxes of increasing radius and measuring how the box sizes seen by the influential nodes scale.</p>
+<dl class="bridge"><dt>You know</dt><dd>The graph, and the published method it feeds.</dd><dt>This section</dt><dd class="now">Derives the <b>multifractal spectrum</b>: covering the graph with boxes, counting what falls inside, and turning the counts into a curve.</dd><dt>Which lets us</dt><dd>Reduce an entire framework to three numbers &mdash; the point of the whole pipeline.</dd></dl>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>How it is computed.</b> Cover the block graph with boxes of radius <i>r</i>; each influential node inherits the size of the box covering it, giving a probability measure <i>p<sub>i</sub>(r)</i>. The partition function <i>Z(q,r) = Σ p<sub>i</sub><sup>q</sup></i> scales as <i>r<sup>τ(q)</sup></i>; a log–log fit gives τ(q), and a Legendre transform gives <b>α(q) = dτ/dq</b> and <b>f(α) = qα − τ</b>. A simple fractal would give a single point; a <i>multi</i>fractal gives a curve, and the width of that curve says how unevenly connectivity is distributed across the framework.
   </div>
 
@@ -119,7 +120,7 @@
   <p class="section-sub">The method is sound; the first implementation returned an undefined spectrum for half the test structures. Each fix below is a specific, checkable defect.</p>
   <div class="panel"><div id="mf-fixes"></div></div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Does this satisfy the brief?</b> The <b>method</b> does: influential nodes are identified, a spectrum is computed, a reference band is built, and a candidate is scored against it — and unrelated frameworks land outside the band while family members land inside. What is <b>not</b> yet established is the <i>family</i> claim. There is exactly one zirconium structure here, so "all Zr-MOFs occupy this band" remains a demonstration of mechanism rather than a result. It needs a few hundred MOFs grouped by metal, from CoRE MOF or QMOF — which is what the original notebook was set up to download, and the analysis code runs per-CIF so it batches unchanged.
   </div>
 
@@ -127,8 +128,9 @@
 
 <h2 class="section-title" id="paper"><span class="stitle-num">3</span>Against the Published Method — Box-Growing</h2>
   <p class="section-sub">The method comes from <b>Xiao et al., "Deciphering the generating rules and functionalities of complex networks", <i>Scientific Reports</i> <b>11</b>, 22964 (2021)</b>. Reading it closely revealed that our implementation — and the original notebook — used the wrong underlying measure.</p>
+<dl class="bridge"><dt>You know</dt><dd>The spectrum as we compute it.</dd><dt>This section</dt><dd class="now">Implements the published method&rsquo;s own alternative &mdash; box-growing &mdash; and compares the two on the same structures.</dd><dt>Which lets us</dt><dd>Show the result is a property of the framework, not of one algorithm choice.</dd></dl>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Box-covering is not box-growing.</b> The paper proposes <b>box-growing</b> and explicitly contrasts it with the box-counting family. The difference decides everything downstream:
     <table class="data-table" style="margin-top:10px;background:transparent;">
       <thead><tr><td></td><td>What the measure is</td><td>Random?</td></tr></thead>
@@ -143,12 +145,98 @@
   <div class="panel"><div id="paper-table"></div></div>
   <div id="paper-verdict" class="verdict"></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The published quantities, now computed.</b> <code>u<sub>i</sub>(r) = M<sub>i</sub>(r)/M</code> · <code>U<sub>q</sub>(r) = Σ u<sub>i</sub><sup>q</sup></code> · <code>U<sub>q</sub> ~ (r/d)<sup>τ(q)</sup></code> · <code>α = dτ/dq</code> · <code>f(α) = qα − τ</code> · generalized dimension <code>D(q) = τ(q)/q</code> · asymmetry <code>A = ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code> with α₀ at the maximum of <i>f</i>. Per the paper: width <i>w</i> is structural <b>heterogeneity</b>, α₀ is structural <b>complexity</b>, <i>A</i>&gt;0 means frequent structures dominate ("clump"), <i>A</i>&lt;0 means rare ones do ("thorn").
   </div>
 
   <!-- ================= 15b : the band ================= -->
     <!-- ================= 15b : the band ================= -->
+
+      <h2 class="section-title" id="why-parabola" data-toc="Why a parabola?"><span class="stitle-num">4</span>Why a Parabola? What the Chart Actually Says</h2>
+      <p class="section-sub">Every spectrum chart on this site is an inverted parabola, and almost nobody meets one of these having been told what it means. This section builds it from an idea anyone already has, then says what its width is for. No formula appears until the idea it encodes has already been described in words.</p>
+<dl class="bridge"><dt>You know</dt><dd>That the pipeline outputs a curve for each framework.</dd><dt>This section</dt><dd class="now">Explains what that curve <b>is</b>, in ordinary language, and what its width means physically.</dd><dt>Which lets us</dt><dd>Read every chart on this site, instead of taking the captions on trust.</dd></dl>
+
+      <h3 class="sub-head">Start with one number, and watch it fail</h3>
+      <p>Stand on a block of the framework and walk outwards along bonds. After one step you can reach some number of blocks; after two steps, more; after three, more again. How fast that count grows is a measure of how the structure fills space &mdash; a <b>dimension</b>. On a line the count grows like <i>r</i>; on a flat sheet like <i>r</i>&sup2;; in a solid block like <i>r</i>&sup3;.</p>
+
+      <p>For a simple, uniform object one such number is the whole story. Frameworks are not uniform. Stand on a metal cluster in a dense region and the count explodes; stand on a linker beside a large cavity and it crawls. <b>One exponent cannot describe the object, because different parts of the object genuinely grow at different rates.</b></p>
+
+      <div class="callout" data-kind="Note">
+        <b>This is the entire idea behind the word &ldquo;multifractal&rdquo;.</b> A <i>fractal</i>
+        has one scaling exponent. A <i>multifractal</i> needs a whole distribution of them, because
+        it is a mixture of regions that scale differently. A MOF is such a mixture: pore walls,
+        cavity mouths, dense cluster cores and open channels all sit in the same crystal.
+      </div>
+
+      <h3 class="sub-head">So report the distribution instead</h3>
+      <p>If one exponent will not do, describe them all. Write &alpha; for a local growth rate &mdash; the <b>local scaling exponent</b> &mdash; and then ask, for each possible value of &alpha;, <i>how much of the framework grows at that rate</i>. Call that quantity <b>f(&alpha;)</b>. Plotting f(&alpha;) against &alpha; is the multifractal spectrum, and it is the parabola.</p>
+
+      <div class="grid2">
+        <div class="panel">
+          <h4>Why it has a peak</h4>
+          <p class="sd">Most of the framework scales at some typical rate, and progressively less of
+          it scales at rates far from that. &ldquo;Most&rdquo; is the apex. The exponent there,
+          <b>&alpha;&#8320;</b>, is the framework's typical local dimension, and the height of the
+          apex is how much of the structure behaves typically.</p>
+        </div>
+        <div class="panel">
+          <h4>Why it falls away on both sides</h4>
+          <p class="sd">To the left sit the densest neighbourhoods, to the right the sparsest. Both
+          are rare &mdash; a framework is not mostly its extremes &mdash; so f(&alpha;) drops away
+          from the apex in both directions. A spectrum that did <i>not</i> fall away would be
+          telling you the calculation had gone wrong, which is exactly how we caught one bug.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-head">The one number we keep: &Delta;&alpha;, the width</h3>
+      <p>The parabola is a curve, and a curve is hard to compare across 138 frameworks. So we take its <b>width</b> &mdash; the distance from the leftmost to the rightmost exponent the framework exhibits &mdash; and call it <b>&Delta;&alpha;</b>.</p>
+
+      <div class="callout good" data-kind="The point">
+        <b>&Delta;&alpha; is a heterogeneity score.</b> A <b>narrow</b> parabola means every part of
+        the framework scales at nearly the same rate: the structure is uniform, one environment
+        repeated. A <b>wide</b> parabola means the framework contains genuinely different local
+        environments &mdash; tight regions and open ones in the same crystal. That is a real,
+        physical statement about architecture, computed from connectivity alone, in seconds, with
+        no simulation anywhere in the calculation.
+      </div>
+
+      <h3 class="sub-head">And why this could matter for the goal</h3>
+      <p>Gas adsorption is not governed by average porosity alone. It depends on whether a framework offers a <i>variety</i> of binding environments &mdash; tight corners that hold a molecule strongly, wide channels that let it move. Two frameworks with identical surface areas can behave differently if one is uniform and the other is varied. &Delta;&alpha; is a candidate for measuring exactly that variety.</p>
+
+      <div class="callout warn" data-kind="Caveat">
+        <b>That last paragraph is a motivation, not a result.</b> Nothing in this project computes
+        adsorption, and nothing here demonstrates that &Delta;&alpha; predicts uptake, selectivity
+        or stability. It says why the quantity is worth measuring, and the
+        <a href="results.html">Results</a> page is careful to distinguish that hope from what was
+        actually established. Presenting the motivation as a finding is the single most common way
+        work like this becomes untrustworthy.
+      </div>
+
+      <h2 class="section-title" id="spectra61" data-toc="All 61 spectra"><span class="stitle-num">5</span>Sixty-One Real Frameworks, Every Spectrum Drawn</h2>
+      <p class="section-sub">This is the raw output of the pipeline on experimentally synthesised MOFs &mdash; not a summary, not a schematic: one curve per framework, exactly as computed.</p>
+<dl class="bridge"><dt>You know</dt><dd>What a spectrum means and why it is a parabola.</dd><dt>This section</dt><dd class="now">Shows all 61 real spectra as computed, unsummarised, with every framework named.</dd><dt>Which lets us</dt><dd>Check the summary statistics against the raw output they came from.</dd></dl>
+
+      <figure class="fig wide">
+        <img src="figures/fig11_real_spectra61.png" alt="Left: sixty-one inverted-parabola spectra plotted over each other, coloured from dark to yellow by spectrum width, with error bars. Right: a horizontal bar chart naming all sixty-one frameworks ranked by spectrum width from 1.47 at the top to 0.95 at the bottom.">
+        <figcaption>
+          <b>Left &mdash; every spectrum, overlaid.</b> Each curve is one synthesised framework,
+          computed exactly as described above. Colour runs by width: dark purple for the narrowest,
+          yellow for the widest. Read three things from it. <b>(1)</b> Every curve is an inverted
+          parabola with its apex up &mdash; that is the shape the mathematics requires, and getting
+          it on all 61 is the first check that the calculation is right.
+          <b>(2)</b> The curves overlap heavily. These are 61 unrelated materials from different
+          laboratories and different metals, and they occupy a common region rather than scattering
+          &mdash; which is what the word <i>band</i> means. <b>(3)</b> The vertical bars are
+          uncertainties from repeated random box coverings; they are small, so the ordering between
+          frameworks is real and not noise.
+          <br><br>
+          <b>Right &mdash; the same 61, ranked and named.</b> Every framework is labelled with its
+          CSD refcode, so any curve on the left can be traced to a specific published crystal
+          structure. The spread from top to bottom is 0.95 to 1.47 &mdash; the width of the band.
+          <br>
+          Generated by <code>3_notebooks/real_mof_band.ipynb</code>, step 9.
+        </figcaption>
+      </figure>
 
       <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="network.html"><div class="dir">&larr; Previous</div><div class="ttl">From Crystal to Network</div></a><a class="next" href="results.html"><div class="dir">Next &rarr;</div><div class="ttl">Results: The Band</div></a></nav>
     </main>

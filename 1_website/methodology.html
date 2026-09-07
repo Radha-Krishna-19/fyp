@@ -40,19 +40,19 @@
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>Methodology and Architecture</h1>
     <p class="lead">The full workflow, the system architecture, the datasets, the evaluation strategy, and the justification for each choice.</p>
-<ol class="readpath" aria-label="Reading sequence"><li class="done"><a href="index.html"><span class="n">1</span>Overview</a></li><li class="here" aria-current="step"><a href="methodology.html"><span class="n">2</span>Methodology</a></li><li class="todo"><a href="decomposition.html"><span class="n">3</span>Decomposition</a></li><li class="todo"><a href="network.html"><span class="n">4</span>Network</a></li><li class="todo"><a href="spectrum.html"><span class="n">5</span>Spectrum</a></li><li class="todo"><a href="results.html"><span class="n">6</span>Results</a></li></ol>
+<div class="place"><b>Step 2 of 6</b> &middot; next: <a href="decomposition.html">Decomposition</a></div>
   </div>
 </div>
 
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
 <h2 class="st" id="why"><span class="n">1</span>Why This Path — and What a Graph Has To Do With a MOF</h2>
+<dl class="bridge"><dt>You know</dt><dd>The question: can connectivity alone carry useful structural information?</dd><dt>This section</dt><dd class="now">Argues why a <b>graph</b> is the right abstraction for a framework, and what is deliberately thrown away by using one.</dd><dt>Which lets us</dt><dd>Justify every later step, all of which operate on a graph rather than on chemistry.</dd></dl>
   <p class="sd">The commonest question about this project is why a chemistry problem is being attacked with network theory. This section answers that, and the questions that usually follow it.</p>
 
   <h3 class="sub-head">The chain of reasoning</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <ol style="margin:4px 0 0 18px;line-height:1.75;">
       <li><b>A MOF is not a molecule — it is a repeating framework.</b> What distinguishes one MOF from another is not only <i>which atoms</i> it contains but <b>how they are wired together</b>.</li>
       <li><b>Wiring is exactly what a graph describes.</b> Collapse each building block to a point and each bond between blocks to a line, and the chemistry reduces to a network of pure connectivity.</li>
@@ -116,7 +116,7 @@
   <h3 class="sub-head">What is the multifractal spectrum actually measuring?</h3>
   <p class="sd">Start with a simpler question: <b>how much network is near a given block?</b> Grow a ball of radius <i>r</i> around it and count what falls inside. Do that for every influential block and you have a set of growth curves.</p>
   <p class="sd">If a framework were perfectly uniform, every block would grow at the same rate and a single number — a fractal dimension — would describe the whole thing. Real frameworks are not uniform: some regions are tightly tied together, others open into large voids. So instead of one number you need <b>a distribution of growth rates</b>, and that distribution is the spectrum <i>f</i>(α).</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Quantity</td><td>What it means in plain terms</td></tr></thead>
       <tbody>
@@ -131,13 +131,13 @@
   <p class="sd">So a spectrum is a <b>fingerprint of pore-network heterogeneity</b> expressed as a curve, and Δα is that fingerprint reduced to one number — which is what makes a <i>band</i> possible at all.</p>
 
   <h3 class="sub-head">What we set out to achieve</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The goal:</b> establish whether a purely structural, simulation-free descriptor can group MOFs into meaningful families — so a new framework can be placed against a known band and triaged without any expensive calculation.
   </div>
   <p class="sd">The honest answer we reached is in Section 17, and it is <b>partly yes and partly no</b>. The spectra are now computed correctly and all 77 frameworks land in a tight, well-defined band. But we can also demonstrate that the width is currently dominated by a computational parameter rather than by chemistry, so the band cannot yet be read as a chemical statement. Establishing exactly what it would take to fix that <i>is</i> the result.</p>
 
   <h3 class="sub-head">Questions we expect — and the answers</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <p style="margin:0 0 10px;"><b>“Isn't this throwing away the chemistry?”</b><br>
     Deliberately, yes. The graph is unweighted — it does not know which element an atom is. That is a real limitation and we say so. It is also the point: whatever survives that stripping is <b>pure architecture</b>, and it transfers across chemistries in a way an element-specific descriptor cannot.</p>
 
@@ -155,6 +155,7 @@
   </div>
 
 <h2 class="st" id="parts"><span class="n">2</span>Everything We Built, and What Each Part Achieved</h2>
+<dl class="bridge"><dt>You know</dt><dd>Why the pipeline is built on graphs.</dd><dt>This section</dt><dd class="now">Lists what was actually built, module by module, and what each part achieved or failed to achieve.</dd><dt>Which lets us</dt><dd>See where any number on this site comes from before meeting the number.</dd></dl>
   <p class="sd">Four components. For each: what it does, why it exists, what it achieved, and where to see it.</p>
 
   <div class="part">
@@ -202,6 +203,7 @@
   <!-- ============ 3 ============ -->
 
 <h2 class="st" id="implementation"><span class="n">3</span>Implementation Map</h2>
+<dl class="bridge"><dt>You know</dt><dd>What each module does.</dd><dt>This section</dt><dd class="now">Maps every module to the file that implements it, so a claim can be traced to code.</dd><dt>Which lets us</dt><dd>Check any statement here against the source rather than trusting it.</dd></dl>
   <p class="sd">Every file and what it is responsible for. The Python is the reference implementation and runs standalone; the JavaScript is a port of the same logic so the site can compute everything live in a browser. The two were cross-checked and agree on every value.</p>
 
   <div class="panel" style="padding:0;overflow:hidden;">
@@ -234,7 +236,7 @@
     </table>
   </div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Verify any claim on any page:</b><br>
     <code>python3 code_00_pipeline_driver.py HKUST-1.cif</code> — the full pipeline<br>
     <code>python3 code_10_multifractal_spectrum.py</code> — the spectrum and the band<br>
@@ -244,6 +246,7 @@
   <!-- ============ 4 ============ -->
 
 <h2 class="st" id="roadmap"><span class="n">4</span>Roadmap</h2>
+<dl class="bridge"><dt>You know</dt><dd>What exists today.</dd><dt>This section</dt><dd class="now">Sets out what remains, honestly separated into what is built and what is established.</dd><dt>Which lets us</dt><dd>Read the results knowing what was still open when they were produced.</dd></dl>
   <p class="sd">Where the project stands and what the next steps are, including the ones that are blocked and why.</p>
 
   <div class="road">
@@ -281,7 +284,7 @@
     </div>
   </div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>What we can and cannot claim today.</b> We can claim: the published algorithm reports chemically incomplete nodes in a specific, measurable way; our fix recovers the correct SBU on three of four test structures and correctly leaves the fourth alone; the periodic graph gives coordination numbers matching published crystallography; centrality is degenerate in defect-free crystals; and the Laplacian spectrum separates our four structures. We cannot yet claim anything about Zr-based MOFs <i>as a family</i> — that requires the dataset above, and saying so is more defensible than overreaching.
   </div>
 
@@ -405,7 +408,7 @@
         </tbody>
       </table>
 
-      <div class="callout warn">
+      <div class="callout warn" data-kind="Caveat">
         <b>The honest position on the dataset.</b> The 77 frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, the band we report is a band <i>within</i> one chemical family, and cannot yet be claimed to separate families. Every conclusion on this site is written to respect that limit.
       </div>
 
@@ -425,7 +428,7 @@
         </tbody>
       </table>
 
-      <div class="callout">
+      <div class="callout" data-kind="Note">
         <b>Why "confound control" is on this list at all.</b> A structural descriptor that correlates with a physical property is only interesting if it is not simply restating the size of the object. Most descriptors that look promising fail exactly here, and the failure is invisible unless you go looking for it. Putting the test in the evaluation plan before running it is what made the negative result reportable instead of embarrassing.
       </div>
 

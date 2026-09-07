@@ -108,7 +108,8 @@
   --r-sm: 6px;
   --r:    10px;
   --r-lg: 14px;
-  --measure: 74ch;            /* the readable line length for body prose */
+  --measure: 82ch;            /* readable line length for body prose; raised from 74ch
+                                 so paragraphs fill more of a widened column */
 
   /* ---- motion ---------------------------------------------------------- */
   /* One easing curve for the whole site. Multiple curves read as multiple

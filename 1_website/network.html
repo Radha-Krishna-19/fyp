@@ -40,18 +40,18 @@
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>From Crystal to Network</h1>
     <p class="lead">Every graph-theory term defined from scratch, the periodic quotient graph, centrality, defects, and the Laplacian spectrum.</p>
-<ol class="readpath" aria-label="Reading sequence"><li class="done"><a href="index.html"><span class="n">1</span>Overview</a></li><li class="done"><a href="methodology.html"><span class="n">2</span>Methodology</a></li><li class="done"><a href="decomposition.html"><span class="n">3</span>Decomposition</a></li><li class="here" aria-current="step"><a href="network.html"><span class="n">4</span>Network</a></li><li class="todo"><a href="spectrum.html"><span class="n">5</span>Spectrum</a></li><li class="todo"><a href="results.html"><span class="n">6</span>Results</a></li></ol>
+<div class="place"><b>Step 4 of 6</b> &middot; next: <a href="spectrum.html">Spectrum</a></div>
   </div>
 </div>
 
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
 <h2 class="section-title" id="primer"><span class="stitle-num">1</span>From Crystal to Network — Every Term Explained</h2>
   <p class="section-sub">Everything after this point is network science. If you have not met these ideas before, this section builds them from nothing, in order, with a picture for each. <b>No term is used later that is not defined here.</b></p>
+<dl class="bridge"><dt>You know</dt><dd>That the crystal has been cut into blocks.</dd><dt>This section</dt><dd class="now">Defines every graph-theory term used from here on &mdash; vertex, edge, degree, adjacency &mdash; from scratch, assuming none of it.</dd><dt>Which lets us</dt><dd>Read the rest of this page without a mathematics background.</dd></dl>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Why this section exists.</b> The previous sections dealt with chemistry: atoms, bonds, nodes, linkers. Everything that follows deals with <i>graphs</i>: vertices, degrees, centrality, spectra. That is a genuine change of language, and skipping the translation is what makes the second half feel like a jump. This section is the translation.
   </div>
 
@@ -90,7 +90,7 @@
 
   <h3 class="sub-head">10.2 · Turning a MOF into a graph</h3>
   <p>The decomposition in the previous sections split the crystal into <b>building blocks</b> — metal nodes and organic linkers. That is exactly what we need, because now:</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>each building block becomes one vertex</b> &nbsp;·&nbsp; <b>each bond between two blocks becomes one edge</b>
   </div>
   <p>The atoms disappear. A copper paddlewheel made of 14 atoms becomes a single dot. A benzene linker becomes a single dot. What is left is the framework's <b>wiring diagram</b>.</p>
@@ -139,7 +139,7 @@
   <h3 class="sub-head">10.3 · Degree — and why it is the coordination number</h3>
   <p>The <b>degree</b> of a vertex is simply <b>how many edges touch it</b>. Count the lines meeting a dot; that is its degree.</p>
   <p>Because every edge is a bond between blocks, the degree of a node vertex is <b>how many linkers that metal cluster connects to</b> — which chemists already have a name for: the <b>coordination number</b>. The two words describe the same count.</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>degree (graph theory) = coordination number (chemistry)</b><br>
     This is the bridge. It is why a published crystallographic fact can be used to check a graph: if the literature says UiO-66's zirconium cluster is 12-connected, then that vertex must have degree 12. If it does not, the graph is wrong.
   </div>
@@ -231,7 +231,7 @@
     <li><code>t = (0, −1, 1)</code> — B is one box back along the second axis and one forward along the third</li>
   </ul>
   <p>A graph built this way is called a <b>labelled quotient graph</b>. The name sounds forbidding; the idea is just "a finite graph plus a note on each edge saying which copy of the cell it reaches". It is finite, so a computer can hold it, but it describes the infinite crystal exactly.</p>
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Why the labels cannot be dropped.</b> Two blocks are often joined by <i>several</i> bonds running in <i>different</i> directions. Those are genuinely different connections in the material. Without labels they all look like "A–B" and collapse into one edge, so the degree — and therefore the coordination number — comes out too low.
   </div>
 
@@ -243,7 +243,7 @@
 
   <h3 class="sub-head">10.6 · Centrality — "which blocks matter most"</h3>
   <p>Once the graph is right, we can ask which vertices are structurally important. Three standard measures, in plain terms:</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Measure</td><td>The question it answers</td><td>In a MOF</td></tr></thead>
       <tbody>
@@ -260,14 +260,14 @@
     <li>The smallest is always <b>0</b>. How many zeros there are tells you <b>how many disconnected pieces</b> the graph has. Two zeros means the framework has fallen apart — a useful automatic alarm.</li>
     <li>The <b>second-smallest, λ₂</b>, is called the <b>algebraic connectivity</b>. It measures <b>how hard the network is to cut in two</b>. Higher = more robustly tied together. Lower = there is a weak place.</li>
   </ul>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>λ₂ in one sentence:</b> a single number for how well-knit the framework is. When we remove a linker later and λ₂ drops, that drop <i>is</i> the weakening, quantified.
   </div>
 
   <h3 class="sub-head">10.8 · What a "defect" means here</h3>
   <p>This word appears throughout the later sections, so it is worth being exact.</p>
   <p>A <b>defect</b> is a place where the real crystal departs from the perfect repeating pattern. The kind used here is a <b>missing-linker defect</b>: a strut that <i>should</i> be present at some position simply is not there, leaving a gap.</p>
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>This is not a hypothetical.</b> Missing-linker defects are real, well-documented MOF chemistry — UiO-66 in particular is famous for tolerating a large number of them, and they are deliberately engineered because they change pore size and catalytic behaviour. Simulating one is simulating something that genuinely occurs.
   </div>
   <p>In the graph, introducing a defect is simply <b>deleting one linker vertex</b> and the edges attached to it.</p>
@@ -306,7 +306,7 @@
   </figure>
 
   <h3 class="sub-head">10.9 · Vocabulary, all in one place</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Term</td><td>Meaning</td></tr></thead>
       <tbody>
@@ -330,6 +330,7 @@
 
 <h2 class="section-title" id="graph"><span class="stitle-num">2</span>Building the Network — and the Mistake That Ruins It</h2>
   <p class="section-sub">This is the first real step of the analysis: turn the building blocks into a graph. It sounds mechanical, and it is — but there is one way to do it wrong that silently corrupts every number computed afterwards. This section shows both constructions side by side so you can watch the difference.</p>
+<dl class="bridge"><dt>You know</dt><dd>The blocks, and the vocabulary of graphs.</dd><dt>This section</dt><dd class="now">Joins the blocks into a <b>periodic quotient graph</b>, and shows the mistake that ruins it: forgetting the crystal repeats forever.</dd><dt>Which lets us</dt><dd>Have a graph that is actually correct &mdash; UiO-66 at coordination 12, not 1.</dd></dl>
 
   <h3 class="sub-head">What we are doing</h3>
   <p>From Section 10: <b>each building block becomes a vertex, each bond between blocks becomes an edge.</b> Do that, and the framework becomes a network we can measure.</p>
@@ -337,7 +338,7 @@
   <h3 class="sub-head">The trap</h3>
   <p>A crystal is infinite, but a CIF file only stores <b>one small repeating box</b>. Blocks near the wall of that box are bonded to blocks in the <i>next box over</i> — genuine bonds in the real material. There are two ways to handle them:</p>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td></td><td>What it does</td><td>Result</td></tr></thead>
       <tbody>
@@ -399,7 +400,7 @@
     <figcaption>The same zirconium cluster. Half its chemistry is invisible if the translations are thrown away.</figcaption>
   </figure>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>It can fail even worse than a wrong number.</b> If the linkers also fold in on themselves, the whole cell degenerates into a <b>star</b> — one hub vertex joined to everything, every other vertex with degree 1. A star is not a framework. Every centrality measure computed on it is meaningless, and the failure is silent: no error, just plausible-looking numbers describing a material that does not exist.
   </div>
 
@@ -462,6 +463,7 @@
 
 <h2 class="section-title" id="influence"><span class="stitle-num">3</span>Which Blocks Are Influential?</h2>
   <p class="section-sub">Three complementary measures. <b>Degree</b> is the raw coordination number. <b>Eigenvector centrality</b> is the principal eigenvector of the adjacency matrix — a block scores highly when it is connected to other high-scoring blocks. <b>Betweenness</b> counts how many shortest paths run through a block, distinguishing bridges from merely well-connected vertices.</p>
+<dl class="bridge"><dt>You know</dt><dd>A correct periodic graph.</dd><dt>This section</dt><dd class="now">Asks which blocks matter most to the structure, and finds that in a perfect crystal the question has no answer, because every cluster is an exact copy of every other.</dd><dt>Which lets us</dt><dd>Understand why the next section deliberately damages the crystal.</dd></dl>
 
   <figure class="fig">
     <img src="figures/fig04_degeneracy.png" alt="Degree distributions showing only two distinct values" style="width:100%;display:block;border-radius:6px"
@@ -483,7 +485,7 @@
   </div>
   <div id="degeneracy" class="verdict"></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The result that matters here.</b> In a defect-free crystal every symmetry-equivalent block is genuinely identical, so centrality collapses to just two values — one for nodes, one for linkers. No ranking among the copies can exist, and a "top-k most influential blocks" list computed on a perfect unit cell is really just reporting whichever tied values the sort happened to put first. Influence only becomes a real quantity once that symmetry is broken, which is what the next section does.
   </div>
 
@@ -491,11 +493,12 @@
 
 <h2 class="section-title" id="defect"><span class="stitle-num">4</span>Defects — Why We Deliberately Break the Crystal</h2>
   <p class="section-sub">Section 11 ended on a problem: in a perfect crystal, no block is more influential than any other, so the question the brief asked cannot be answered as posed. This section is the way out — and it turns out to be better chemistry, not a workaround.</p>
+<dl class="bridge"><dt>You know</dt><dd>That perfect symmetry makes influence unrankable.</dd><dt>This section</dt><dd class="now">Removes a single linker on purpose, breaking the symmetry, and measures what changes.</dd><dt>Which lets us</dt><dd>Turn influence into something measurable, and quantify how much a framework weakens.</dd></dl>
 
   <h3 class="sub-head">What a defect actually is</h3>
   <p>A <b>defect</b> is any place where a real crystal departs from its ideal repeating pattern. The kind used here is the simplest and most important: a <b>missing linker</b>. A strut that <i>should</i> occupy some position in the framework simply is not there, leaving a gap where two metal clusters have one fewer connection between them.</p>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>This is not a made-up scenario.</b> Missing-linker defects are real, common, and heavily studied. <b>UiO-66 is famous for tolerating large numbers of them</b> — and chemists deliberately engineer them, because removing linkers widens the pores and exposes metal sites, which changes how the material adsorbs gas and catalyses reactions. A defective MOF is often the <i>useful</i> one.
   </div>
 
@@ -548,14 +551,14 @@
     <li><b>Distinct centrality values go from 2 to 4</b> in HKUST-1. The blocks have stopped being interchangeable, so "most influential" becomes a question with an answer.</li>
     <li><b>λ₂ falls from 1.44 to 1.19.</b> Recall from Section 10.7 that λ₂ measures how hard the network is to cut in two. A 17% drop is the framework becoming measurably easier to break — <b>that number is the weakening, quantified</b>, from removing a single strut.</li>
   </ul>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The wider point.</b> This turns a dead end into a method. "Which block matters most?" has no answer in a perfect crystal — but "how much does the framework suffer when <i>this particular</i> block is removed?" always does. And since real MOFs are defective anyway, it is also the more physically honest question.
   </div>
 
   <div class="panel">
     <div id="defect-result"></div>
   </div>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     Use the <b>Remove one linker</b> button in Section 1 to apply the defect to the live graph and watch the centrality table above it change. Where a structure shows <i>no</i> change, that is also informative: it means the remaining blocks are still all equivalent by symmetry.
   </div>
 
@@ -563,6 +566,7 @@
 
 <h2 class="section-title" id="fingerprint"><span class="stitle-num">5</span>The Spectrum as a Family Fingerprint</h2>
   <p class="section-sub">The eigenvalues of the graph Laplacian <code>L = D − A</code> are invariant to how the vertices happen to be numbered, so two structures built from the same blocks in the same topology give the same spectrum regardless of atom ordering in the CIF. That is what makes the spectrum usable as a fingerprint. <b>λ₂</b> (algebraic connectivity) measures how hard the net is to cut; <b>λ<sub>max</sub></b> scales with the highest coordination number.</p>
+<dl class="bridge"><dt>You know</dt><dd>How to build and measure the graph.</dd><dt>This section</dt><dd class="now">Uses the <b>Laplacian spectrum</b> &mdash; a list of numbers derived from the graph &mdash; to tell the four demonstration structures apart.</dd><dt>Which lets us</dt><dd>See that graph-derived numbers really do distinguish frameworks, before trusting a harder one.</dd></dl>
 
   <div class="grid2">
     <div>
@@ -577,7 +581,7 @@
 
   <div class="panel"><div id="fingerprint-table"></div></div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>What this does and does not establish.</b> The four structures separate cleanly in spectral space, and λ₂ tracks node connectivity as it should — so the method works. But there is exactly <b>one</b> zirconium structure here. A claim of the form "all Zr-based MOFs occupy this region" cannot be supported from a single example, no matter how clean the separation looks. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per-CIF so it can be run in batch over such a folder without modification.
   </div>
 

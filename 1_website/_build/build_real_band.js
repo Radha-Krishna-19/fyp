@@ -1,4 +1,12 @@
 /* =====================================================================
+   SUPERSEDED — this script no longer produces anything the site ships.
+   real_band_data.js is now written by build_real_band_data.py from the
+   61-framework run. This file is kept, and NOT deleted, because it is the
+   only record of how the withdrawn four-structure numbers were produced;
+   deleting it would leave the retraction on the Results page unauditable.
+   Do not run it expecting to update the site.
+   =====================================================================
+
    build_real_band.js — computes the multifractal descriptor for the
    experimentally synthesised MOFs in this repository, and writes
    real_band_data.js for the Results page.

@@ -38,6 +38,8 @@ EXPECTED_DUPLICATES = ("fig01_mof_concept.png", "fig02_pipeline.png",
                        "fig03_periodic_vs_naive.png", "fig04_degeneracy.png",
                        "fig05_defect.png", "fig06_boxgrowing.png",
                        "fig07_tau_fix.png", "fig08_band77.png",
+                       "fig09_real_vs_hmof.png", "fig10_real_band61.png",
+                       "fig11_real_spectra61.png",
                        "band77_figure.png", "band_analysis.png")
 
 

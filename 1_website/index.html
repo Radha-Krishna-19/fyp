@@ -40,7 +40,7 @@
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>Overview</h1>
     <p class="lead">What a metal-organic framework is, the question this project asks, and the honest answer so far.</p>
-<ol class="readpath" aria-label="Reading sequence"><li class="here" aria-current="step"><a href="index.html"><span class="n">1</span>Overview</a></li><li class="todo"><a href="methodology.html"><span class="n">2</span>Methodology</a></li><li class="todo"><a href="decomposition.html"><span class="n">3</span>Decomposition</a></li><li class="todo"><a href="network.html"><span class="n">4</span>Network</a></li><li class="todo"><a href="spectrum.html"><span class="n">5</span>Spectrum</a></li><li class="todo"><a href="results.html"><span class="n">6</span>Results</a></li></ol>
+<div class="place"><b>Step 1 of 6</b> &middot; next: <a href="methodology.html">Methodology</a></div>
     <div class="meta-strip">
       <div><div class="k">Course</div><div class="v">23CSE498 &middot; Phase II</div></div>
       <div><div class="k">Institution</div><div class="v">Amrita Vishwa Vidyapeetham, Coimbatore</div></div>
@@ -54,7 +54,6 @@
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
       <h2 class="section-title" id="summary" data-toc="In one paragraph"><span class="stitle-num">1</span>In One Paragraph</h2>
       <p class="section-sub">
         A metal&ndash;organic framework is a crystal built from metal clusters joined by organic
@@ -77,7 +76,7 @@
         <div class="keynum is-warn"><b>&minus;0.50 &rarr; +0.10</b><span>the pore-size correlation, once graph size is controlled for</span></div>
       </div>
 
-      <div class="callout good">
+      <div class="callout good" data-kind="The result">
         <b>The descriptor transfers to real materials.</b> The band was calibrated entirely on
         computer-generated frameworks. Sixty-one experimentally synthesised MOFs from CoRE MOF 2019,
         run through the identical pipeline, land at &Delta;&alpha; = 0.95&ndash;1.47 against the
@@ -87,7 +86,7 @@
         <a href="results.html#realband">Results</a> page along with the reason it was wrong.
       </div>
 
-      <div class="callout warn">
+      <div class="callout warn" data-kind="Caveat">
         <b>The result we withdrew.</b> &Delta;&alpha; correlates with pore diameter at
         <i>r</i>&nbsp;=&nbsp;&minus;0.497, which looked like a finding. Controlling for the number
         of blocks in the graph collapses it to <i>r</i>&nbsp;=&nbsp;+0.101, while graph size itself
@@ -98,17 +97,104 @@
       </div>
 
 
-<h2 class="st" id="problem"><span class="n">2</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
+      <h2 class="section-title" id="ladder" data-toc="How to read this site"><span class="stitle-num">2</span>How to Read This Site, If You Know Nothing About Any of It</h2>
+      <p class="section-sub">You learn a language by letters, then words, then grammar, then sentences, then whole letters home. This project is built the same way, and the site is ordered to match. Each rung below assumes only the rungs above it. Nothing later is comprehensible without the earlier ones, and nothing earlier needs the later ones.</p>
+
+      <ol class="ladder">
+        <li>
+          <div class="rung">Letters</div>
+          <h3><a href="index.html#problem">What a MOF is, and why anyone cares</a></h3>
+          <p>A metal&ndash;organic framework is a crystal built by joining metal clusters
+          (<b>nodes</b>) to organic molecules (<b>linkers</b>), leaving a regular lattice of holes.
+          The holes are the point: the internal surface area of a gram of MOF can exceed a football
+          pitch, which is why they are candidates for storing hydrogen, capturing CO&#8322;, and
+          separating gas mixtures.</p>
+          <p class="gain"><b>After this you can say:</b> what the material is, and why a hole is
+          worth engineering.</p>
+        </li>
+
+        <li>
+          <div class="rung">Words</div>
+          <h3><a href="decomposition.html#walkthrough">Cutting a crystal into blocks</a></h3>
+          <p>A crystal file lists atoms and a box, and no bonds at all. To reason about the
+          framework you must first decide which atoms are bonded, then group them into whole
+          building blocks &mdash; this metal cluster, that linker. This is the published
+          <b>metal-oxo decomposition</b>, and it is the step that turns a bag of atoms into
+          nameable parts.</p>
+          <p class="gain"><b>After this you can say:</b> what a node is, what a linker is, and how a
+          program finds them without being told.</p>
+        </li>
+
+        <li>
+          <div class="rung">Grammar</div>
+          <h3><a href="network.html#graph">Turning blocks into a graph &mdash; and getting periodicity right</a></h3>
+          <p>Collapse every block to a single point and every bond between blocks to a line, and the
+          chemistry becomes a <b>graph</b>. The subtlety is that a crystal repeats forever: a bond
+          may leave the box on one side and re-enter on the other. Record which bonds wrap around
+          and you get the right answer; ignore it and UiO-66, a framework whose metal cluster
+          demonstrably touches twelve linkers, comes out touching <b>one</b>.</p>
+          <p class="gain"><b>After this you can say:</b> why the same crystal can give two completely
+          different graphs, and which one is correct.</p>
+        </li>
+
+        <li>
+          <div class="rung">Sentences</div>
+          <h3><a href="network.html#influence">Measuring the graph</a></h3>
+          <p>With a correct graph you can ask which blocks hold the structure together &mdash;
+          <b>centrality</b>. In a perfect crystal the answer is embarrassing: every metal cluster is
+          an exact copy of every other, so nothing can be ranked above anything else. Break one
+          linker and the symmetry dies, and the measurement starts working. That failure is a real
+          result and it is reported as one.</p>
+          <p class="gain"><b>After this you can say:</b> what centrality measures, and why perfect
+          symmetry defeats it.</p>
+        </li>
+
+        <li>
+          <div class="rung">Paragraphs</div>
+          <h3><a href="spectrum.html#multifractal">The multifractal spectrum &mdash; the parabola</a></h3>
+          <p>Cover the graph with boxes of growing radius and count what falls in each. If the
+          framework were uniform, one number would describe the growth. It is not uniform, so a
+          <i>range</i> of numbers is needed, and plotting how much of the structure follows each
+          growth rate traces an inverted parabola. Its <b>width, &Delta;&alpha;</b>, is a single
+          number saying how varied the framework's local environments are.</p>
+          <p class="gain"><b>After this you can say:</b> what the parabola on every chart here is,
+          and what its width means physically.</p>
+        </li>
+
+        <li>
+          <div class="rung">Letters home</div>
+          <h3><a href="results.html#band">The band, the confound, and the goal</a></h3>
+          <p>Compute that width for 138 frameworks and the values cluster into a narrow
+          <b>band</b>. Then comes the hard part, which is most of the work: checking that the band
+          is not an accident of something trivial. One apparent finding died this way, and so did
+          one of our own headline claims.</p>
+          <p class="gain"><b>After this you can say:</b> what the project established, what it
+          withdrew, and what remains unproven.</p>
+        </li>
+      </ol>
+
+      <div class="callout" data-kind="Note">
+        <b>If you read nothing else, read the goal.</b> Deciding whether one MOF is worth making
+        takes hours of molecular simulation. There are hundreds of thousands of candidates, so
+        simulating them all is arithmetic nobody can afford. The aim here is <b>not</b> to replace
+        that simulation. It is to compute something in seconds, from the crystal structure alone,
+        that is informative enough to decide <i>which few hundred are worth the hours</i>.
+        Every step above exists to make that one number trustworthy.
+      </div>
+
+<h2 class="st" id="problem"><span class="n">3</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
+<dl class="bridge"><dt>You know</dt><dd>Nothing yet &mdash; this is the beginning.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what the holes in it are for, and why there are far too many candidates to test.</dd><dt>Which lets us</dt><dd>State a question narrow enough to actually answer, which is the next section.</dd></dl>
   <p class="sd">Metal–organic frameworks are designed the way buildings are: you choose components — an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b> — and they assemble into a periodic framework. Everything useful about a MOF (surface area, pore size, thermal and chemical stability, catalytic behaviour) follows from which components were used and how they connect.</p>
   <p class="sd">So when a MOF exists only as a crystal structure file, the foundational question is: <b>what building blocks is it made of?</b> That is what a decomposition algorithm answers, and every downstream use — database search, similarity matching, machine-learning featurisation, inverse design — inherits whatever answer it gives. If the reported node is not the species that actually exists in the crystal, everything built on top of it is reasoning about a material that does not exist.</p>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>A complication that shapes the whole project.</b> A <code>.cif</code> file contains atomic positions and the unit cell — and <b>no bonds at all</b>. The format has no field for them. Every bond used by every step of the pipeline is <i>inferred</i> from interatomic distances, never read. That single fact is the origin of several of the limitations we found.
   </div>
 
   <!-- ============ 1 ============ -->
 
-<h2 class="st" id="question"><span class="n">3</span>The Question We Were Asked — and the Honest Answer</h2>
+<h2 class="st" id="question"><span class="n">4</span>The Question We Were Asked — and the Honest Answer</h2>
+<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is unmanageably large.</dd><dt>This section</dt><dd class="now">Fixes the exact question this project answers &mdash; and, just as important, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was written down in advance.</dd></dl>
   <p class="sd">The brief was to <b>find and highlight the influential nodes, the ones with highest degree</b>. We implemented it, and the result is more interesting than a simple yes.</p>
 
   <h3 class="sub">1a · Ranking blocks by degree does not work — and here is why</h3>
@@ -116,7 +202,7 @@
 
   <div class="panel"><div id="tie-evidence"></div></div>
 
-  <div class="callout bad">
+  <div class="callout bad" data-kind="Withdrawn">
     <b>Read the "distinct degree values" column.</b> Every structure has exactly <b>two</b> — one value for nodes, one for linkers. There is no third tier, no gradient, nothing to rank. A "top 12 most influential" list drawn from these numbers is reporting sort order, not chemistry.
   </div>
 
@@ -125,11 +211,11 @@
 
   <div class="panel"><div id="degree-value"></div></div>
 
-  <div class="callout good">
+  <div class="callout good" data-kind="The result">
     <b>So: did we achieve something? Yes — but the deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once. It <b>validates the decomposition</b> (every value matches published crystallography). It <b>identifies the net</b> (the node/linker connectivity pair determines the topology). And it <b>separates MOF families</b>, which is what the spectrum work builds on. The one thing it cannot do is rank identical objects against each other — and knowing that is itself a result worth reporting.
   </div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different lattice directions</i> collapse into one edge unless the lattice translation is carried on the edge. UiO-66 exposes it hardest: its primitive cell holds a single Zr₆ cluster whose twelve connections all run out to periodic images and back, so a naive build reports <b>6</b> instead of <b>12</b> — or degenerates into a star, one hub joined to everything. We build the <b>labelled quotient graph</b> instead, which is also exactly what Systre consumes.
   </div>
 
@@ -138,13 +224,13 @@
 
   <div class="panel"><div id="defect-summary"></div></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     Removing one linker splits the blocks into several genuinely different classes, and <b>λ₂ drops</b> — a measure of how much easier the framework has become to cut apart, i.e. how much the defect weakened it. This is the direction where "influential nodes" turns into a real research question: <i>which</i> block, when removed, costs the framework the most.
   </div>
 
   <!-- ============ 2 ============ -->
 
-      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">4</span>Where to Start</h2>
+      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">5</span>Where to Start</h2>
       <p class="section-sub">This site is a documentation portal, not a poster. Each page stands on its own and is written to be read from zero background.</p>
 
       <div class="grid2">

@@ -47,7 +47,7 @@ PAGES = [
 
     dict(file='spectrum.html',     nav='Spectrum',      sections=['paper-use', 'multifractal', 'paper'],
          title='The Multifractal Spectrum',
-         desc='The published method we build on, the mathematics of the spectrum, and the box-growing implementation.'),
+         desc='What the parabola on every chart here actually means, the published method we build on, the mathematics, and all 61 real spectra as computed.'),
 
     dict(file='results.html',      nav='Results',       sections=['band', 'reproduce-band'],
          title='Results: The Band',
@@ -221,7 +221,6 @@ def shell(page, idx, body_html, masthead_html):
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
 {body_html}
       <nav class="page-nav" aria-label="Previous and next page">{prev_a}{next_a}</nav>
     </main>
@@ -249,31 +248,28 @@ def shell(page, idx, body_html, masthead_html):
 """
 
 
-def reading_path(idx):
-    """A step indicator over the seven pages that form the learning sequence.
+def step_of(idx):
+    """Where this page sits in the seven-page sequence, as one short line.
 
-    The last three pages (source, references, glossary/team) are reference
-    material rather than steps, so they are excluded: numbering them would
-    imply a reader has to work through the glossary to finish.
+    This replaces a numbered step-strip that listed all seven pages on every
+    page. That strip repeated the navigation bar immediately above it: the same
+    seven titles in the same order, twice, costing a band of vertical space on
+    every page to tell the reader something the nav already told them. What the
+    nav genuinely does NOT say is how far through the sequence this page is, so
+    that — and only that — is what survives here.
     """
     steps = [p for p in PAGES if p['file'] not in
              ('code.html', 'references.html', 'glossary.html', 'team.html')]
     here = PAGES[idx]['file']
-    if here not in [p['file'] for p in steps]:
-        return ('<div class="path-note">Reference material &mdash; not part of the '
-                'reading sequence. <a href="index.html">Start at the beginning</a>.</div>')
-    out = ['<ol class="readpath" aria-label="Reading sequence">']
-    seen_here = False
-    for n, p in enumerate(steps, 1):
-        if p['file'] == here:
-            state, seen_here = 'here', True
-            aria = ' aria-current="step"'
-        else:
-            state, aria = ('done' if not seen_here else 'todo'), ''
-        out.append(f'<li class="{state}"{aria}>'
-                   f'<a href="{p["file"]}"><span class="n">{n}</span>{p["nav"]}</a></li>')
-    out.append('</ol>')
-    return ''.join(out)
+    names = [p['file'] for p in steps]
+    if here not in names:
+        return ('<div class="place ref">Reference material &mdash; outside the reading '
+                'sequence. <a href="index.html">Start at the beginning</a>.</div>')
+    n = names.index(here) + 1
+    nxt = steps[n] if n < len(steps) else None
+    tail = (f' &middot; next: <a href="{nxt["file"]}">{nxt["nav"]}</a>' if nxt
+            else ' &middot; last step')
+    return (f'<div class="place"><b>Step {n} of {len(steps)}</b>{tail}</div>')
 
 
 def masthead(page, idx, extra=''):
@@ -282,7 +278,7 @@ def masthead(page, idx, extra=''):
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>{page['title']}</h1>
     <p class="lead">{page['desc']}</p>
-{reading_path(idx)}
+{step_of(idx)}
 {extra}  </div>
 </div>
 """
