@@ -80,15 +80,17 @@
 
   <!-- ============ 0 ============ -->
   <h2 class="st" id="problem"><span class="n">1</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
+<dl class="bridge"><dt>You know</dt><dd>Nothing yet &mdash; this is the beginning.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what the holes in it are for, and why there are far too many candidates to test.</dd><dt>Which lets us</dt><dd>State a question narrow enough to actually answer, which is the next section.</dd></dl>
   <p class="sd">Metal–organic frameworks are designed the way buildings are: you choose components — an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b> — and they assemble into a periodic framework. Everything useful about a MOF (surface area, pore size, thermal and chemical stability, catalytic behaviour) follows from which components were used and how they connect.</p>
   <p class="sd">So when a MOF exists only as a crystal structure file, the foundational question is: <b>what building blocks is it made of?</b> That is what a decomposition algorithm answers, and every downstream use — database search, similarity matching, machine-learning featurisation, inverse design — inherits whatever answer it gives. If the reported node is not the species that actually exists in the crystal, everything built on top of it is reasoning about a material that does not exist.</p>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>A complication that shapes the whole project.</b> A <code>.cif</code> file contains atomic positions and the unit cell — and <b>no bonds at all</b>. The format has no field for them. Every bond used by every step of the pipeline is <i>inferred</i> from interatomic distances, never read. That single fact is the origin of several of the limitations we found.
   </div>
 
   <!-- ============ 1 ============ -->
   <h2 class="st" id="question"><span class="n">2</span>The Question We Were Asked — and the Honest Answer</h2>
+<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is unmanageably large.</dd><dt>This section</dt><dd class="now">Fixes the exact question this project answers &mdash; and, just as important, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was written down in advance.</dd></dl>
   <p class="sd">The brief was to <b>find and highlight the influential nodes, the ones with highest degree</b>. We implemented it, and the result is more interesting than a simple yes.</p>
 
   <h3 class="sub">1a · Ranking blocks by degree does not work — and here is why</h3>
@@ -96,7 +98,7 @@
 
   <div class="panel"><div id="tie-evidence"></div></div>
 
-  <div class="callout bad">
+  <div class="callout bad" data-kind="Withdrawn">
     <b>Read the "distinct degree values" column.</b> Every structure has exactly <b>two</b> — one value for nodes, one for linkers. There is no third tier, no gradient, nothing to rank. A "top 12 most influential" list drawn from these numbers is reporting sort order, not chemistry.
   </div>
 
@@ -105,11 +107,11 @@
 
   <div class="panel"><div id="degree-value"></div></div>
 
-  <div class="callout good">
+  <div class="callout good" data-kind="The result">
     <b>So: did we achieve something? Yes — but the deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once. It <b>validates the decomposition</b> (every value matches published crystallography). It <b>identifies the net</b> (the node/linker connectivity pair determines the topology). And it <b>separates MOF families</b>, which is what the spectrum work builds on. The one thing it cannot do is rank identical objects against each other — and knowing that is itself a result worth reporting.
   </div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different lattice directions</i> collapse into one edge unless the lattice translation is carried on the edge. UiO-66 exposes it hardest: its primitive cell holds a single Zr₆ cluster whose twelve connections all run out to periodic images and back, so a naive build reports <b>6</b> instead of <b>12</b> — or degenerates into a star, one hub joined to everything. We build the <b>labelled quotient graph</b> instead, which is also exactly what Systre consumes.
   </div>
 
@@ -118,16 +120,17 @@
 
   <div class="panel"><div id="defect-summary"></div></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     Removing one linker splits the blocks into several genuinely different classes, and <b>λ₂ drops</b> — a measure of how much easier the framework has become to cut apart, i.e. how much the defect weakened it. This is the direction where "influential nodes" turns into a real research question: <i>which</i> block, when removed, costs the framework the most.
   </div>
 
   <!-- ============ 2 ============ -->
   <h2 class="st" id="why"><span class="n">3</span>Why This Path — and What a Graph Has To Do With a MOF</h2>
+<dl class="bridge"><dt>You know</dt><dd>The question: can connectivity alone carry useful structural information?</dd><dt>This section</dt><dd class="now">Argues why a <b>graph</b> is the right abstraction for a framework, and what is deliberately thrown away by using one.</dd><dt>Which lets us</dt><dd>Justify every later step, all of which operate on a graph rather than on chemistry.</dd></dl>
   <p class="sd">The commonest question about this project is why a chemistry problem is being attacked with network theory. This section answers that, and the questions that usually follow it.</p>
 
   <h3 class="sub-head">The chain of reasoning</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <ol style="margin:4px 0 0 18px;line-height:1.75;">
       <li><b>A MOF is not a molecule — it is a repeating framework.</b> What distinguishes one MOF from another is not only <i>which atoms</i> it contains but <b>how they are wired together</b>.</li>
       <li><b>Wiring is exactly what a graph describes.</b> Collapse each building block to a point and each bond between blocks to a line, and the chemistry reduces to a network of pure connectivity.</li>
@@ -191,7 +194,7 @@
   <h3 class="sub-head">What is the multifractal spectrum actually measuring?</h3>
   <p class="sd">Start with a simpler question: <b>how much network is near a given block?</b> Grow a ball of radius <i>r</i> around it and count what falls inside. Do that for every influential block and you have a set of growth curves.</p>
   <p class="sd">If a framework were perfectly uniform, every block would grow at the same rate and a single number — a fractal dimension — would describe the whole thing. Real frameworks are not uniform: some regions are tightly tied together, others open into large voids. So instead of one number you need <b>a distribution of growth rates</b>, and that distribution is the spectrum <i>f</i>(α).</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Quantity</td><td>What it means in plain terms</td></tr></thead>
       <tbody>
@@ -206,13 +209,13 @@
   <p class="sd">So a spectrum is a <b>fingerprint of pore-network heterogeneity</b> expressed as a curve, and Δα is that fingerprint reduced to one number — which is what makes a <i>band</i> possible at all.</p>
 
   <h3 class="sub-head">What we set out to achieve</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The goal:</b> establish whether a purely structural, simulation-free descriptor can group MOFs into meaningful families — so a new framework can be placed against a known band and triaged without any expensive calculation.
   </div>
   <p class="sd">The honest answer we reached is in Section 17, and it is <b>partly yes and partly no</b>. The spectra are now computed correctly and all 77 frameworks land in a tight, well-defined band. But we can also demonstrate that the width is currently dominated by a computational parameter rather than by chemistry, so the band cannot yet be read as a chemical statement. Establishing exactly what it would take to fix that <i>is</i> the result.</p>
 
   <h3 class="sub-head">Questions we expect — and the answers</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <p style="margin:0 0 10px;"><b>“Isn't this throwing away the chemistry?”</b><br>
     Deliberately, yes. The graph is unweighted — it does not know which element an atom is. That is a real limitation and we say so. It is also the point: whatever survives that stripping is <b>pure architecture</b>, and it transfers across chemistries in a way an element-specific descriptor cannot.</p>
 
@@ -230,6 +233,7 @@
   </div>
 
   <h2 class="st" id="parts"><span class="n">4</span>Everything We Built, and What Each Part Achieved</h2>
+<dl class="bridge"><dt>You know</dt><dd>Why the pipeline is built on graphs.</dd><dt>This section</dt><dd class="now">Lists what was actually built, module by module, and what each part achieved or failed to achieve.</dd><dt>Which lets us</dt><dd>See where any number on this site comes from before meeting the number.</dd></dl>
   <p class="sd">Four components. For each: what it does, why it exists, what it achieved, and where to see it.</p>
 
   <div class="part">
@@ -276,6 +280,7 @@
 
   <!-- ============ 3 ============ -->
   <h2 class="st" id="implementation"><span class="n">5</span>Implementation Map</h2>
+<dl class="bridge"><dt>You know</dt><dd>What each module does.</dd><dt>This section</dt><dd class="now">Maps every module to the file that implements it, so a claim can be traced to code.</dd><dt>Which lets us</dt><dd>Check any statement here against the source rather than trusting it.</dd></dl>
   <p class="sd">Every file and what it is responsible for. The Python is the reference implementation and runs standalone; the JavaScript is a port of the same logic so the site can compute everything live in a browser. The two were cross-checked and agree on every value.</p>
 
   <div class="panel" style="padding:0;overflow:hidden;">
@@ -308,7 +313,7 @@
     </table>
   </div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Verify any claim on any page:</b><br>
     <code>python3 code_00_pipeline_driver.py HKUST-1.cif</code> — the full pipeline<br>
     <code>python3 code_10_multifractal_spectrum.py</code> — the spectrum and the band<br>
@@ -317,6 +322,7 @@
 
   <!-- ============ 4 ============ -->
   <h2 class="st" id="roadmap"><span class="n">6</span>Roadmap</h2>
+<dl class="bridge"><dt>You know</dt><dd>What exists today.</dd><dt>This section</dt><dd class="now">Sets out what remains, honestly separated into what is built and what is established.</dd><dt>Which lets us</dt><dd>Read the results knowing what was still open when they were produced.</dd></dl>
   <p class="sd">Where the project stands and what the next steps are, including the ones that are blocked and why.</p>
 
   <div class="road">
@@ -354,18 +360,19 @@
     </div>
   </div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>What we can and cannot claim today.</b> We can claim: the published algorithm reports chemically incomplete nodes in a specific, measurable way; our fix recovers the correct SBU on three of four test structures and correctly leaves the fourth alone; the periodic graph gives coordination numbers matching published crystallography; centrality is degenerate in defect-free crystals; and the Laplacian spectrum separates our four structures. We cannot yet claim anything about Zr-based MOFs <i>as a family</i> — that requires the dataset above, and saying so is more defensible than overreaching.
   </div>
 
   <!-- ================= SECTION 1: FULL PIPELINE WALKTHROUGH ================= -->
   <h2 class="section-title" id="walkthrough"><span class="stitle-num">7</span>The Full Pipeline — Code + 3D, Module by Module</h2>
   <p class="section-sub">Start at Module 1 and work forward — each module shows its real source (verbatim excerpts, real line numbers) beside a live 3D model of HKUST-1 that updates to match. Use the module tabs to jump around, or Previous/Next to move through all 16 steps in order.</p>
-  <div class="callout">
+<dl class="bridge"><dt>You know</dt><dd>That a framework should be treated as a graph of building blocks.</dd><dt>This section</dt><dd class="now">Performs the first real step: reading a crystal file, deciding which atoms are bonded, and cutting the structure into <b>nodes</b> and <b>linkers</b>. Runs live on any CIF you upload.</dd><dt>Which lets us</dt><dd>Build a graph at all &mdash; without blocks there are no vertices.</dd></dl>
+  <div class="callout" data-kind="Note">
     <b>What you are looking at.</b> The metal-oxo algorithm exactly as published by the Snurr group (Northwestern) in <code>snurr-group/mofid</code> — the reference implementation the field currently uses. Nothing here is modified: this is a <b>visualisation</b> of the published pipeline, stepped through one module at a time so the node and linker assignments the later network analysis depends on can be inspected directly.
   </div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Honesty note:</b> the real MOFid pipeline is C++, which cannot execute inside a browser. Every code panel below shows this folder's own Python translation of the real algorithm (<code>code_XX.py</code> — every one of them is a real, runnable file you can execute yourself: <code>python3 code_04a_metal_oxo_algorithm.py HKUST-1.cif</code>) rather than raw C++. The 3D model itself is driven by a separate, JS port of the same logic (<code>mof_decompose.js</code>) so it can run live in your browser. Both were checked against each other and against known crystal chemistry (e.g. HKUST-1's <code>[Cu][Cu]</code> paddlewheel nodes) before being used here.
   </div>
 
@@ -392,6 +399,7 @@
   <!-- ================= SECTION 2: DRAWBACKS + FIX ================= -->
   <h2 class="section-title" id="paper-use"><span class="stitle-num">9</span>The Paper We Built On — and Exactly What We Used From It</h2>
   <p class="section-sub">The network half of this project follows a published method. This section states plainly what the paper provides, which parts we used, which part we initially got wrong, and what we added.</p>
+<dl class="bridge"><dt>You know</dt><dd>That graph-derived numbers can separate structures.</dd><dt>This section</dt><dd class="now">States precisely which parts of the published method this project uses, which it changed, and why.</dd><dt>Which lets us</dt><dd>Separate our contribution from the source paper&rsquo;s, which a reviewer will ask about.</dd></dl>
 
   <div class="panel">
     <div style="font-size:13px;color:var(--muted2);margin-bottom:4px;">SOURCE</div>
@@ -429,7 +437,7 @@
     </div>
   </div>
 
-  <div class="callout" style="margin-top:16px;">
+  <div class="callout" data-kind="Note" style="margin-top:16px;">
     <b>What we added that the paper does not cover.</b> The paper analyses social, biological and synthetic networks, where nodes are all different. A crystal is not like that. We contribute: (i) a chemically correct, periodic route from a <code>.cif</code> to the block network — the object the method needs as input; (ii) <b>supercell expansion</b>, because a primitive cell of 7 blocks has no range of radii to fit a power law over; and (iii) the finding that <b>iNMFA is degenerate on a defect-free crystal</b>, since the influential blocks are symmetry-equivalent and share one growth curve. That is a genuine boundary condition on the method, not a failure of it.
   </div>
 
@@ -437,8 +445,9 @@
   <!-- ================= PRIMER : chemistry -> network ================= -->
   <h2 class="section-title" id="primer"><span class="stitle-num">10</span>From Crystal to Network — Every Term Explained</h2>
   <p class="section-sub">Everything after this point is network science. If you have not met these ideas before, this section builds them from nothing, in order, with a picture for each. <b>No term is used later that is not defined here.</b></p>
+<dl class="bridge"><dt>You know</dt><dd>That the crystal has been cut into blocks.</dd><dt>This section</dt><dd class="now">Defines every graph-theory term used from here on &mdash; vertex, edge, degree, adjacency &mdash; from scratch, assuming none of it.</dd><dt>Which lets us</dt><dd>Read the rest of this page without a mathematics background.</dd></dl>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Why this section exists.</b> The previous sections dealt with chemistry: atoms, bonds, nodes, linkers. Everything that follows deals with <i>graphs</i>: vertices, degrees, centrality, spectra. That is a genuine change of language, and skipping the translation is what makes the second half feel like a jump. This section is the translation.
   </div>
 
@@ -477,7 +486,7 @@
 
   <h3 class="sub-head">10.2 · Turning a MOF into a graph</h3>
   <p>The decomposition in the previous sections split the crystal into <b>building blocks</b> — metal nodes and organic linkers. That is exactly what we need, because now:</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>each building block becomes one vertex</b> &nbsp;·&nbsp; <b>each bond between two blocks becomes one edge</b>
   </div>
   <p>The atoms disappear. A copper paddlewheel made of 14 atoms becomes a single dot. A benzene linker becomes a single dot. What is left is the framework's <b>wiring diagram</b>.</p>
@@ -526,7 +535,7 @@
   <h3 class="sub-head">10.3 · Degree — and why it is the coordination number</h3>
   <p>The <b>degree</b> of a vertex is simply <b>how many edges touch it</b>. Count the lines meeting a dot; that is its degree.</p>
   <p>Because every edge is a bond between blocks, the degree of a node vertex is <b>how many linkers that metal cluster connects to</b> — which chemists already have a name for: the <b>coordination number</b>. The two words describe the same count.</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>degree (graph theory) = coordination number (chemistry)</b><br>
     This is the bridge. It is why a published crystallographic fact can be used to check a graph: if the literature says UiO-66's zirconium cluster is 12-connected, then that vertex must have degree 12. If it does not, the graph is wrong.
   </div>
@@ -618,7 +627,7 @@
     <li><code>t = (0, −1, 1)</code> — B is one box back along the second axis and one forward along the third</li>
   </ul>
   <p>A graph built this way is called a <b>labelled quotient graph</b>. The name sounds forbidding; the idea is just "a finite graph plus a note on each edge saying which copy of the cell it reaches". It is finite, so a computer can hold it, but it describes the infinite crystal exactly.</p>
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Why the labels cannot be dropped.</b> Two blocks are often joined by <i>several</i> bonds running in <i>different</i> directions. Those are genuinely different connections in the material. Without labels they all look like "A–B" and collapse into one edge, so the degree — and therefore the coordination number — comes out too low.
   </div>
 
@@ -630,7 +639,7 @@
 
   <h3 class="sub-head">10.6 · Centrality — "which blocks matter most"</h3>
   <p>Once the graph is right, we can ask which vertices are structurally important. Three standard measures, in plain terms:</p>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Measure</td><td>The question it answers</td><td>In a MOF</td></tr></thead>
       <tbody>
@@ -647,14 +656,14 @@
     <li>The smallest is always <b>0</b>. How many zeros there are tells you <b>how many disconnected pieces</b> the graph has. Two zeros means the framework has fallen apart — a useful automatic alarm.</li>
     <li>The <b>second-smallest, λ₂</b>, is called the <b>algebraic connectivity</b>. It measures <b>how hard the network is to cut in two</b>. Higher = more robustly tied together. Lower = there is a weak place.</li>
   </ul>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>λ₂ in one sentence:</b> a single number for how well-knit the framework is. When we remove a linker later and λ₂ drops, that drop <i>is</i> the weakening, quantified.
   </div>
 
   <h3 class="sub-head">10.8 · What a "defect" means here</h3>
   <p>This word appears throughout the later sections, so it is worth being exact.</p>
   <p>A <b>defect</b> is a place where the real crystal departs from the perfect repeating pattern. The kind used here is a <b>missing-linker defect</b>: a strut that <i>should</i> be present at some position simply is not there, leaving a gap.</p>
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>This is not a hypothetical.</b> Missing-linker defects are real, well-documented MOF chemistry — UiO-66 in particular is famous for tolerating a large number of them, and they are deliberately engineered because they change pore size and catalytic behaviour. Simulating one is simulating something that genuinely occurs.
   </div>
   <p>In the graph, introducing a defect is simply <b>deleting one linker vertex</b> and the edges attached to it.</p>
@@ -693,7 +702,7 @@
   </figure>
 
   <h3 class="sub-head">10.9 · Vocabulary, all in one place</h3>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td>Term</td><td>Meaning</td></tr></thead>
       <tbody>
@@ -718,6 +727,7 @@
 
   <h2 class="section-title" id="graph"><span class="stitle-num">11</span>Building the Network — and the Mistake That Ruins It</h2>
   <p class="section-sub">This is the first real step of the analysis: turn the building blocks into a graph. It sounds mechanical, and it is — but there is one way to do it wrong that silently corrupts every number computed afterwards. This section shows both constructions side by side so you can watch the difference.</p>
+<dl class="bridge"><dt>You know</dt><dd>The blocks, and the vocabulary of graphs.</dd><dt>This section</dt><dd class="now">Joins the blocks into a <b>periodic quotient graph</b>, and shows the mistake that ruins it: forgetting the crystal repeats forever.</dd><dt>Which lets us</dt><dd>Have a graph that is actually correct &mdash; UiO-66 at coordination 12, not 1.</dd></dl>
 
   <h3 class="sub-head">What we are doing</h3>
   <p>From Section 10: <b>each building block becomes a vertex, each bond between blocks becomes an edge.</b> Do that, and the framework becomes a network we can measure.</p>
@@ -725,7 +735,7 @@
   <h3 class="sub-head">The trap</h3>
   <p>A crystal is infinite, but a CIF file only stores <b>one small repeating box</b>. Blocks near the wall of that box are bonded to blocks in the <i>next box over</i> — genuine bonds in the real material. There are two ways to handle them:</p>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <table class="data-table" style="background:transparent;">
       <thead><tr><td></td><td>What it does</td><td>Result</td></tr></thead>
       <tbody>
@@ -787,7 +797,7 @@
     <figcaption>The same zirconium cluster. Half its chemistry is invisible if the translations are thrown away.</figcaption>
   </figure>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>It can fail even worse than a wrong number.</b> If the linkers also fold in on themselves, the whole cell degenerates into a <b>star</b> — one hub vertex joined to everything, every other vertex with degree 1. A star is not a framework. Every centrality measure computed on it is meaningless, and the failure is silent: no error, just plausible-looking numbers describing a material that does not exist.
   </div>
 
@@ -849,6 +859,7 @@
   <!-- ================= 2 ================= -->
   <h2 class="section-title" id="influence"><span class="stitle-num">12</span>Which Blocks Are Influential?</h2>
   <p class="section-sub">Three complementary measures. <b>Degree</b> is the raw coordination number. <b>Eigenvector centrality</b> is the principal eigenvector of the adjacency matrix — a block scores highly when it is connected to other high-scoring blocks. <b>Betweenness</b> counts how many shortest paths run through a block, distinguishing bridges from merely well-connected vertices.</p>
+<dl class="bridge"><dt>You know</dt><dd>A correct periodic graph.</dd><dt>This section</dt><dd class="now">Asks which blocks matter most to the structure, and finds that in a perfect crystal the question has no answer, because every cluster is an exact copy of every other.</dd><dt>Which lets us</dt><dd>Understand why the next section deliberately damages the crystal.</dd></dl>
 
   <figure class="fig">
     <img src="figures/fig04_degeneracy.png" alt="Degree distributions showing only two distinct values" style="width:100%;display:block;border-radius:6px"
@@ -870,18 +881,19 @@
   </div>
   <div id="degeneracy" class="verdict"></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The result that matters here.</b> In a defect-free crystal every symmetry-equivalent block is genuinely identical, so centrality collapses to just two values — one for nodes, one for linkers. No ranking among the copies can exist, and a "top-k most influential blocks" list computed on a perfect unit cell is really just reporting whichever tied values the sort happened to put first. Influence only becomes a real quantity once that symmetry is broken, which is what the next section does.
   </div>
 
   <!-- ================= 3 ================= -->
   <h2 class="section-title" id="defect"><span class="stitle-num">13</span>Defects — Why We Deliberately Break the Crystal</h2>
   <p class="section-sub">Section 11 ended on a problem: in a perfect crystal, no block is more influential than any other, so the question the brief asked cannot be answered as posed. This section is the way out — and it turns out to be better chemistry, not a workaround.</p>
+<dl class="bridge"><dt>You know</dt><dd>That perfect symmetry makes influence unrankable.</dd><dt>This section</dt><dd class="now">Removes a single linker on purpose, breaking the symmetry, and measures what changes.</dd><dt>Which lets us</dt><dd>Turn influence into something measurable, and quantify how much a framework weakens.</dd></dl>
 
   <h3 class="sub-head">What a defect actually is</h3>
   <p>A <b>defect</b> is any place where a real crystal departs from its ideal repeating pattern. The kind used here is the simplest and most important: a <b>missing linker</b>. A strut that <i>should</i> occupy some position in the framework simply is not there, leaving a gap where two metal clusters have one fewer connection between them.</p>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>This is not a made-up scenario.</b> Missing-linker defects are real, common, and heavily studied. <b>UiO-66 is famous for tolerating large numbers of them</b> — and chemists deliberately engineer them, because removing linkers widens the pores and exposes metal sites, which changes how the material adsorbs gas and catalyses reactions. A defective MOF is often the <i>useful</i> one.
   </div>
 
@@ -934,20 +946,21 @@
     <li><b>Distinct centrality values go from 2 to 4</b> in HKUST-1. The blocks have stopped being interchangeable, so "most influential" becomes a question with an answer.</li>
     <li><b>λ₂ falls from 1.44 to 1.19.</b> Recall from Section 10.7 that λ₂ measures how hard the network is to cut in two. A 17% drop is the framework becoming measurably easier to break — <b>that number is the weakening, quantified</b>, from removing a single strut.</li>
   </ul>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The wider point.</b> This turns a dead end into a method. "Which block matters most?" has no answer in a perfect crystal — but "how much does the framework suffer when <i>this particular</i> block is removed?" always does. And since real MOFs are defective anyway, it is also the more physically honest question.
   </div>
 
   <div class="panel">
     <div id="defect-result"></div>
   </div>
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     Use the <b>Remove one linker</b> button in Section 1 to apply the defect to the live graph and watch the centrality table above it change. Where a structure shows <i>no</i> change, that is also informative: it means the remaining blocks are still all equivalent by symmetry.
   </div>
 
   <!-- ================= 4 ================= -->
   <h2 class="section-title" id="fingerprint"><span class="stitle-num">14</span>The Spectrum as a Family Fingerprint</h2>
   <p class="section-sub">The eigenvalues of the graph Laplacian <code>L = D − A</code> are invariant to how the vertices happen to be numbered, so two structures built from the same blocks in the same topology give the same spectrum regardless of atom ordering in the CIF. That is what makes the spectrum usable as a fingerprint. <b>λ₂</b> (algebraic connectivity) measures how hard the net is to cut; <b>λ<sub>max</sub></b> scales with the highest coordination number.</p>
+<dl class="bridge"><dt>You know</dt><dd>How to build and measure the graph.</dd><dt>This section</dt><dd class="now">Uses the <b>Laplacian spectrum</b> &mdash; a list of numbers derived from the graph &mdash; to tell the four demonstration structures apart.</dd><dt>Which lets us</dt><dd>See that graph-derived numbers really do distinguish frameworks, before trusting a harder one.</dd></dl>
 
   <div class="grid2">
     <div>
@@ -962,15 +975,16 @@
 
   <div class="panel"><div id="fingerprint-table"></div></div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>What this does and does not establish.</b> The four structures separate cleanly in spectral space, and λ₂ tracks node connectivity as it should — so the method works. But there is exactly <b>one</b> zirconium structure here. A claim of the form "all Zr-based MOFs occupy this region" cannot be supported from a single example, no matter how clean the separation looks. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per-CIF so it can be run in batch over such a folder without modification.
   </div>
 
   <!-- ================= 5 ================= -->
   <h2 class="section-title" id="multifractal"><span class="stitle-num">15</span>The Multifractal Spectrum — the Family Fingerprint</h2>
   <p class="section-sub">This is the analysis the brief actually asked for: highlight the influential nodes, compute a <b>spectrum</b>, and test whether frameworks of one family fall inside a common band. The spectrum here is not the Laplacian eigenvalues of Section 4 — it is the <b>multifractal singularity spectrum f(α)</b>, obtained by covering the network with boxes of increasing radius and measuring how the box sizes seen by the influential nodes scale.</p>
+<dl class="bridge"><dt>You know</dt><dd>The graph, and the published method it feeds.</dd><dt>This section</dt><dd class="now">Derives the <b>multifractal spectrum</b>: covering the graph with boxes, counting what falls inside, and turning the counts into a curve.</dd><dt>Which lets us</dt><dd>Reduce an entire framework to three numbers &mdash; the point of the whole pipeline.</dd></dl>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>How it is computed.</b> Cover the block graph with boxes of radius <i>r</i>; each influential node inherits the size of the box covering it, giving a probability measure <i>p<sub>i</sub>(r)</i>. The partition function <i>Z(q,r) = Σ p<sub>i</sub><sup>q</sup></i> scales as <i>r<sup>τ(q)</sup></i>; a log–log fit gives τ(q), and a Legendre transform gives <b>α(q) = dτ/dq</b> and <b>f(α) = qα − τ</b>. A simple fractal would give a single point; a <i>multi</i>fractal gives a curve, and the width of that curve says how unevenly connectivity is distributed across the framework.
   </div>
 
@@ -992,15 +1006,16 @@
   <p class="section-sub">The method is sound; the first implementation returned an undefined spectrum for half the test structures. Each fix below is a specific, checkable defect.</p>
   <div class="panel"><div id="mf-fixes"></div></div>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Does this satisfy the brief?</b> The <b>method</b> does: influential nodes are identified, a spectrum is computed, a reference band is built, and a candidate is scored against it — and unrelated frameworks land outside the band while family members land inside. What is <b>not</b> yet established is the <i>family</i> claim. There is exactly one zirconium structure here, so "all Zr-MOFs occupy this band" remains a demonstration of mechanism rather than a result. It needs a few hundred MOFs grouped by metal, from CoRE MOF or QMOF — which is what the original notebook was set up to download, and the analysis code runs per-CIF so it batches unchanged.
   </div>
 
   <!-- ================= 6 ================= -->
   <h2 class="section-title" id="paper"><span class="stitle-num">16</span>Against the Published Method — Box-Growing</h2>
   <p class="section-sub">The method comes from <b>Xiao et al., "Deciphering the generating rules and functionalities of complex networks", <i>Scientific Reports</i> <b>11</b>, 22964 (2021)</b>. Reading it closely revealed that our implementation — and the original notebook — used the wrong underlying measure.</p>
+<dl class="bridge"><dt>You know</dt><dd>The spectrum as we compute it.</dd><dt>This section</dt><dd class="now">Implements the published method&rsquo;s own alternative &mdash; box-growing &mdash; and compares the two on the same structures.</dd><dt>Which lets us</dt><dd>Show the result is a property of the framework, not of one algorithm choice.</dd></dl>
 
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Box-covering is not box-growing.</b> The paper proposes <b>box-growing</b> and explicitly contrasts it with the box-counting family. The difference decides everything downstream:
     <table class="data-table" style="margin-top:10px;background:transparent;">
       <thead><tr><td></td><td>What the measure is</td><td>Random?</td></tr></thead>
@@ -1015,14 +1030,15 @@
   <div class="panel"><div id="paper-table"></div></div>
   <div id="paper-verdict" class="verdict"></div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>The published quantities, now computed.</b> <code>u<sub>i</sub>(r) = M<sub>i</sub>(r)/M</code> · <code>U<sub>q</sub>(r) = Σ u<sub>i</sub><sup>q</sup></code> · <code>U<sub>q</sub> ~ (r/d)<sup>τ(q)</sup></code> · <code>α = dτ/dq</code> · <code>f(α) = qα − τ</code> · generalized dimension <code>D(q) = τ(q)/q</code> · asymmetry <code>A = ln[(α₀−α<sub>min</sub>)/(α<sub>max</sub>−α₀)]</code> with α₀ at the maximum of <i>f</i>. Per the paper: width <i>w</i> is structural <b>heterogeneity</b>, α₀ is structural <b>complexity</b>, <i>A</i>&gt;0 means frequent structures dominate ("clump"), <i>A</i>&lt;0 means rare ones do ("thorn").
   </div>
 
   <!-- ================= 15b : the band ================= -->
     <!-- ================= 15b : the band ================= -->
   <h2 class="section-title" id="band"><span class="stitle-num">17</span>The Band &mdash; 77 Frameworks</h2>
-    <div class="callout warn">
+<dl class="bridge"><dt>You know</dt><dd>How one framework becomes three numbers.</dd><dt>This section</dt><dd class="now">Runs that calculation over 77 frameworks and looks for structure in the answers &mdash; then spends most of its length trying to prove the structure is an artefact.</dd><dt>Which lets us</dt><dd>Say what the descriptor establishes, and what it cost us to find out.</dd></dl>
+    <div class="callout warn" data-kind="Caveat">
     <b>Know what this dataset is.</b> All 77 structures are named <code>hMOF-###</code> &mdash; they come from the <b>hypothetical MOF</b> database: <b>computer-generated candidate structures that have never been synthesised</b>. The notebook requested <code>CoREMOF 2019</code>, which is experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.
     <ul style="margin:8px 0 0 18px;">
       <li>Nothing here may be described as <b>&ldquo;experimental&rdquo;</b> or <b>&ldquo;real&rdquo;</b> &mdash; it is a computational screening library.</li>
@@ -1044,7 +1060,7 @@
     <li>a flat line has slope zero, so &tau;(0)&nbsp;=&nbsp;0, so <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;0&middot;&alpha;&nbsp;&minus;&nbsp;0&nbsp;=&nbsp;<b>0</b>.</li>
   </ul>
   <p>The peak is pinned to zero and the parabola disappears. Measured across the dataset: <b>&tau;(0)&nbsp;=&nbsp;0 and <i>f</i>(0)&nbsp;=&nbsp;0 in all 77 frameworks, and not one of them peaked at <i>q</i>&nbsp;=&nbsp;0</b>. With the paper's definition ln(r/r<sub>N</sub>)&nbsp;&lt;&nbsp;0, so &tau;(0)&nbsp;=&nbsp;ln|I|&nbsp;/&nbsp;negative&nbsp;&lt;&nbsp;0 and <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;&minus;&tau;(0)&nbsp;&gt;&nbsp;0 &mdash; the peak returns.</p>
-  <div class="callout warn">
+  <div class="callout warn" data-kind="Caveat">
     <b>Verified on a network built from scratch</b>, identical measure and identical data, only the &tau; definition swapped:
     <table class="data-table" style="margin-top:10px;background:transparent;">
       <thead><tr><td>&tau; definition</td><td>&tau;(0)</td><td><i>f</i>(0)</td><td>peak at</td><td>inverted parabola?</td></tr></thead>
@@ -1061,18 +1077,42 @@
 
   <div class="panel"><div id="band-body"></div></div>
 
-  <h3 class="sub-head">The figure the notebook produces</h3>
-  <p>Generated by Step 11 of <span class="code-chip">mof_band_analysis.ipynb</span> when you run it. Five panels: every spectrum, the band, and the size confound shown three ways.</p>
-  <figure class="fig">
+  <h3 class="sub-head">The figure the notebook produces, read panel by panel</h3>
+  <p>This is the project&rsquo;s principal result on hypothetical frameworks, and every later comparison is made against it. It is worth a minute of attention, because four of its five panels exist to attack the finding in the first one.</p>
+  <figure class="fig wide">
     <img src="figures/fig08_band77.png" alt="Five-panel figure: all 77 multifractal spectra, the band across 77 frameworks sorted by width, the apparent pore-size correlation, the same data against graph size, and the four correlations side by side">
     <figcaption>
-      <b>(a)</b> All 77 spectra, each a proper inverted parabola with q&nbsp;=&nbsp;0 at the apex &mdash; 77/77 after the &tau; correction, 0/77 before it.
-      <b>(b)</b> The band: 77 frameworks sorted by &Delta;&alpha;, interquartile range 1.11&ndash;1.25, with per-framework error bars.
-      <b>(c)</b> &Delta;&alpha; against largest cavity diameter &mdash; <i>r</i>&nbsp;=&nbsp;&minus;0.497, which looks like a finding.
-      <b>(d)</b> The same &Delta;&alpha; against graph size &mdash; <i>r</i>&nbsp;=&nbsp;+0.730. This is what panel (c) was actually showing.
-      <b>(e)</b> All four correlations together: controlling for size collapses the pore relationship to +0.10, while size survives at +0.62.
+      <b>(a) All 77 spectra.</b> Every framework is an inverted parabola, and each black dot marks
+      q&nbsp;=&nbsp;0 sitting exactly at the apex &mdash; on all 77. That is not decoration: it is
+      the condition a valid spectrum must satisfy, and an earlier version of this pipeline failed it
+      on every single framework. 77/77 is how we know the &tau; definition was finally right;
+      before the correction it was 0/77.
+      <br><br>
+      <b>(b) The band.</b> The same 77 widths, sorted, each with its own uncertainty bar. The shaded
+      strip is where the middle half fall: <b>&Delta;&alpha; = 1.11&ndash;1.25</b>. Colour is atom
+      count &mdash; and it runs dark to light almost in step with the sorted order, which is the
+      clue panel (d) follows up.
+      <br><br>
+      <b>(c) The finding that looked exciting.</b> Width against pore diameter, sloping down at
+      <i>r</i>&nbsp;=&nbsp;&minus;0.497. Read alone this says narrow-pored frameworks are more
+      heterogeneous &mdash; a publishable-sounding claim.
+      <br><br>
+      <b>(d) The finding that was actually there.</b> The same widths against atom count, at
+      <i>r</i>&nbsp;=&nbsp;<b>+0.730</b> &mdash; a stronger relationship than (c). Bigger graph,
+      wider spectrum. That is a property of the <i>calculation</i>, not of the chemistry.
+      <br><br>
+      <b>(e) Which of the two survives.</b> Hold graph size constant and the pore correlation
+      collapses from &minus;0.50 to <b>+0.10</b>. Hold pore size constant and the size correlation
+      barely moves, +0.73 to +0.62. The pore-size claim was graph size wearing a disguise.
     </figcaption>
   </figure>
+
+  <div class="callout" data-kind="Why this matters">
+    <b>Panels (c) to (e) are the reason to trust panel (b).</b> Any pipeline can produce a narrow
+    band &mdash; quantities that depend on graph size will cluster whenever the graphs are of
+    similar size. What makes a band worth anything is the work done trying to destroy it. One claim
+    did not survive that, and saying so is what separates a result from a picture.
+  </div>
 
   <h3 class="sub-head">What this leaves standing</h3>
   <ul class="tight">
@@ -1087,6 +1127,7 @@
 
 <h2 class="section-title" id="reproduce-band"><span class="stitle-num">0</span>Reproduce Any Number on This Page</h2>
   <p class="section-sub">Everything here is computed live in your browser by <code>mof_network.js</code>. The Python counterpart produces identical results and can be run directly:</p>
+<dl class="bridge"><dt>You know</dt><dd>The band, and the checks it survived.</dd><dt>This section</dt><dd class="now">Gives the exact commands that regenerate every number above from a clean copy of the repository.</dd><dt>Which lets us</dt><dd>Verify the results rather than believe them.</dd></dl>
   <div class="panel" style="background:var(--code-bg);color:var(--code-text);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;">
     $ python3 code_09_network_analysis.py<br>
     <span style="color:var(--code-kw)">→ coordination numbers, centralities and Laplacian spectra for all four structures</span>
@@ -1154,7 +1195,7 @@
     </table>
   </div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>If you only read two:</b> <b>[1]</b> is the algorithm we visualise &mdash; Sections 7&ndash;9 are a faithful implementation of it. <b>[2]</b> is the method we apply &mdash; Sections 15&ndash;17 come from it, and the &tau; definition on its page 22 is the one line our correction restores.
     <br><br>
     <b>[8] and [9] together explain the dataset problem.</b> We requested [9] (experimental) and received [8] (hypothetical). Both are cited because the distinction changes what we are allowed to claim.

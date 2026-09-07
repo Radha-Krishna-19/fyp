@@ -1,0 +1,85 @@
+      <h2 class="section-title" id="why-parabola" data-toc="Why a parabola?"><span class="stitle-num">0</span>Why a Parabola? What the Chart Actually Says</h2>
+      <p class="section-sub">Every spectrum chart on this site is an inverted parabola, and almost nobody meets one of these having been told what it means. This section builds it from an idea anyone already has, then says what its width is for. No formula appears until the idea it encodes has already been described in words.</p>
+<dl class="bridge"><dt>You know</dt><dd>That the pipeline outputs a curve for each framework.</dd><dt>This section</dt><dd class="now">Explains what that curve <b>is</b>, in ordinary language, and what its width means physically.</dd><dt>Which lets us</dt><dd>Read every chart on this site, instead of taking the captions on trust.</dd></dl>
+
+      <h3 class="sub-head">Start with one number, and watch it fail</h3>
+      <p>Stand on a block of the framework and walk outwards along bonds. After one step you can reach some number of blocks; after two steps, more; after three, more again. How fast that count grows is a measure of how the structure fills space &mdash; a <b>dimension</b>. On a line the count grows like <i>r</i>; on a flat sheet like <i>r</i>&sup2;; in a solid block like <i>r</i>&sup3;.</p>
+
+      <p>For a simple, uniform object one such number is the whole story. Frameworks are not uniform. Stand on a metal cluster in a dense region and the count explodes; stand on a linker beside a large cavity and it crawls. <b>One exponent cannot describe the object, because different parts of the object genuinely grow at different rates.</b></p>
+
+      <div class="callout" data-kind="Note">
+        <b>This is the entire idea behind the word &ldquo;multifractal&rdquo;.</b> A <i>fractal</i>
+        has one scaling exponent. A <i>multifractal</i> needs a whole distribution of them, because
+        it is a mixture of regions that scale differently. A MOF is such a mixture: pore walls,
+        cavity mouths, dense cluster cores and open channels all sit in the same crystal.
+      </div>
+
+      <h3 class="sub-head">So report the distribution instead</h3>
+      <p>If one exponent will not do, describe them all. Write &alpha; for a local growth rate &mdash; the <b>local scaling exponent</b> &mdash; and then ask, for each possible value of &alpha;, <i>how much of the framework grows at that rate</i>. Call that quantity <b>f(&alpha;)</b>. Plotting f(&alpha;) against &alpha; is the multifractal spectrum, and it is the parabola.</p>
+
+      <div class="grid2">
+        <div class="panel">
+          <h4>Why it has a peak</h4>
+          <p class="sd">Most of the framework scales at some typical rate, and progressively less of
+          it scales at rates far from that. &ldquo;Most&rdquo; is the apex. The exponent there,
+          <b>&alpha;&#8320;</b>, is the framework's typical local dimension, and the height of the
+          apex is how much of the structure behaves typically.</p>
+        </div>
+        <div class="panel">
+          <h4>Why it falls away on both sides</h4>
+          <p class="sd">To the left sit the densest neighbourhoods, to the right the sparsest. Both
+          are rare &mdash; a framework is not mostly its extremes &mdash; so f(&alpha;) drops away
+          from the apex in both directions. A spectrum that did <i>not</i> fall away would be
+          telling you the calculation had gone wrong, which is exactly how we caught one bug.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-head">The one number we keep: &Delta;&alpha;, the width</h3>
+      <p>The parabola is a curve, and a curve is hard to compare across 138 frameworks. So we take its <b>width</b> &mdash; the distance from the leftmost to the rightmost exponent the framework exhibits &mdash; and call it <b>&Delta;&alpha;</b>.</p>
+
+      <div class="callout good" data-kind="The point">
+        <b>&Delta;&alpha; is a heterogeneity score.</b> A <b>narrow</b> parabola means every part of
+        the framework scales at nearly the same rate: the structure is uniform, one environment
+        repeated. A <b>wide</b> parabola means the framework contains genuinely different local
+        environments &mdash; tight regions and open ones in the same crystal. That is a real,
+        physical statement about architecture, computed from connectivity alone, in seconds, with
+        no simulation anywhere in the calculation.
+      </div>
+
+      <h3 class="sub-head">And why this could matter for the goal</h3>
+      <p>Gas adsorption is not governed by average porosity alone. It depends on whether a framework offers a <i>variety</i> of binding environments &mdash; tight corners that hold a molecule strongly, wide channels that let it move. Two frameworks with identical surface areas can behave differently if one is uniform and the other is varied. &Delta;&alpha; is a candidate for measuring exactly that variety.</p>
+
+      <div class="callout warn" data-kind="Caveat">
+        <b>That last paragraph is a motivation, not a result.</b> Nothing in this project computes
+        adsorption, and nothing here demonstrates that &Delta;&alpha; predicts uptake, selectivity
+        or stability. It says why the quantity is worth measuring, and the
+        <a href="results.html">Results</a> page is careful to distinguish that hope from what was
+        actually established. Presenting the motivation as a finding is the single most common way
+        work like this becomes untrustworthy.
+      </div>
+
+      <h2 class="section-title" id="spectra61" data-toc="All 61 spectra"><span class="stitle-num">0</span>Sixty-One Real Frameworks, Every Spectrum Drawn</h2>
+      <p class="section-sub">This is the raw output of the pipeline on experimentally synthesised MOFs &mdash; not a summary, not a schematic: one curve per framework, exactly as computed.</p>
+<dl class="bridge"><dt>You know</dt><dd>What a spectrum means and why it is a parabola.</dd><dt>This section</dt><dd class="now">Shows all 61 real spectra as computed, unsummarised, with every framework named.</dd><dt>Which lets us</dt><dd>Check the summary statistics against the raw output they came from.</dd></dl>
+
+      <figure class="fig wide">
+        <img src="figures/fig11_real_spectra61.png" alt="Left: sixty-one inverted-parabola spectra plotted over each other, coloured from dark to yellow by spectrum width, with error bars. Right: a horizontal bar chart naming all sixty-one frameworks ranked by spectrum width from 1.47 at the top to 0.95 at the bottom.">
+        <figcaption>
+          <b>Left &mdash; every spectrum, overlaid.</b> Each curve is one synthesised framework,
+          computed exactly as described above. Colour runs by width: dark purple for the narrowest,
+          yellow for the widest. Read three things from it. <b>(1)</b> Every curve is an inverted
+          parabola with its apex up &mdash; that is the shape the mathematics requires, and getting
+          it on all 61 is the first check that the calculation is right.
+          <b>(2)</b> The curves overlap heavily. These are 61 unrelated materials from different
+          laboratories and different metals, and they occupy a common region rather than scattering
+          &mdash; which is what the word <i>band</i> means. <b>(3)</b> The vertical bars are
+          uncertainties from repeated random box coverings; they are small, so the ordering between
+          frameworks is real and not noise.
+          <br><br>
+          <b>Right &mdash; the same 61, ranked and named.</b> Every framework is labelled with its
+          CSD refcode, so any curve on the left can be traced to a specific published crystal
+          structure. The spread from top to bottom is 0.95 to 1.47 &mdash; the width of the band.
+          <br>
+          Generated by <code>3_notebooks/real_mof_band.ipynb</code>, step 9.
+        </figcaption>
+      </figure>

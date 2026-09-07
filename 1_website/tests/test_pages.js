@@ -30,10 +30,12 @@ PAGES.forEach(p => {
   ok(!!D.getElementById('toc'), `${p}: TOC rail present`);
   // Every page must place the reader in the sequence, or say plainly that it
   // sits outside it. A page that does neither leaves them lost.
-  ok(!!D.querySelector('.readpath') || !!D.querySelector('.path-note'),
-     `${p}: reading position shown`);
-  const here = D.querySelectorAll('.readpath li.here');
-  ok(here.length <= 1, `${p}: at most one current step marked`);
+  ok(!!D.querySelector('.place'), `${p}: reading position shown`);
+  // The seven-item step strip that used to live here duplicated the nav bar on
+  // every page. It was replaced by a single line, so assert the strip is GONE:
+  // if anyone reintroduces it, this fails rather than silently passing.
+  ok(!D.querySelector('.readpath'), `${p}: the duplicated step strip is not back`);
+  ok(!D.querySelector('#notation'), `${p}: the per-page term panel is not back`);
   ok(/assets\/tokens\.css/.test(html) && /assets\/design\.css/.test(html), `${p}: design system linked`);
   ok(/data-theme/.test(html), `${p}: theme applied before paint`);
 

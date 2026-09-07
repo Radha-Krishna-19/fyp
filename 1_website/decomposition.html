@@ -40,21 +40,21 @@
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>The Decomposition Algorithm</h1>
     <p class="lead">The published metal-oxo decomposition, module by module, with the real code beside a live 3D model.</p>
-<ol class="readpath" aria-label="Reading sequence"><li class="done"><a href="index.html"><span class="n">1</span>Overview</a></li><li class="done"><a href="methodology.html"><span class="n">2</span>Methodology</a></li><li class="here" aria-current="step"><a href="decomposition.html"><span class="n">3</span>Decomposition</a></li><li class="todo"><a href="network.html"><span class="n">4</span>Network</a></li><li class="todo"><a href="spectrum.html"><span class="n">5</span>Spectrum</a></li><li class="todo"><a href="results.html"><span class="n">6</span>Results</a></li></ol>
+<div class="place"><b>Step 3 of 6</b> &middot; next: <a href="network.html">Network</a></div>
   </div>
 </div>
 
 <div class="container">
   <div class="with-toc">
     <main id="main">
-      <div id="notation"></div>
 <h2 class="section-title" id="walkthrough"><span class="stitle-num">1</span>The Full Pipeline — Code + 3D, Module by Module</h2>
   <p class="section-sub">Start at Module 1 and work forward — each module shows its real source (verbatim excerpts, real line numbers) beside a live 3D model of HKUST-1 that updates to match. Use the module tabs to jump around, or Previous/Next to move through all 16 steps in order.</p>
-  <div class="callout">
+<dl class="bridge"><dt>You know</dt><dd>That a framework should be treated as a graph of building blocks.</dd><dt>This section</dt><dd class="now">Performs the first real step: reading a crystal file, deciding which atoms are bonded, and cutting the structure into <b>nodes</b> and <b>linkers</b>. Runs live on any CIF you upload.</dd><dt>Which lets us</dt><dd>Build a graph at all &mdash; without blocks there are no vertices.</dd></dl>
+  <div class="callout" data-kind="Note">
     <b>What you are looking at.</b> The metal-oxo algorithm exactly as published by the Snurr group (Northwestern) in <code>snurr-group/mofid</code> — the reference implementation the field currently uses. Nothing here is modified: this is a <b>visualisation</b> of the published pipeline, stepped through one module at a time so the node and linker assignments the later network analysis depends on can be inspected directly.
   </div>
 
-  <div class="callout">
+  <div class="callout" data-kind="Note">
     <b>Honesty note:</b> the real MOFid pipeline is C++, which cannot execute inside a browser. Every code panel below shows this folder's own Python translation of the real algorithm (<code>code_XX.py</code> — every one of them is a real, runnable file you can execute yourself: <code>python3 code_04a_metal_oxo_algorithm.py HKUST-1.cif</code>) rather than raw C++. The 3D model itself is driven by a separate, JS port of the same logic (<code>mof_decompose.js</code>) so it can run live in your browser. Both were checked against each other and against known crystal chemistry (e.g. HKUST-1's <code>[Cu][Cu]</code> paddlewheel nodes) before being used here.
   </div>
 

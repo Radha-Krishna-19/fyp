@@ -80,10 +80,16 @@ ok(marks.every(m => m.querySelector('.gloss-pop b') && m.querySelector('.gloss-s
    'every marked term carries its definition');
 ok(marks.every(m => m.textContent.trim().length > 0), 'no marked term lost its text');
 
-// the notation panel lists what the page uses
-const notation = D.getElementById('notation');
-ok(!!notation && /notation-grid/.test(notation.innerHTML), 'network.html: notation panel built');
-ok(notation.querySelectorAll('dt').length >= 8, 'notation panel lists the page terms');
+// The "Terms and symbols on this page" panel was removed: it dumped a wall of
+// definitions above the first heading, before the reader had met any of the
+// ideas. Assert it stays gone, and that what replaced it works — every marked
+// term must carry the slug that sends a click to its glossary entry.
+ok(!D.getElementById('notation'), 'network.html: the per-page term panel is gone');
+const marked = D.querySelectorAll('dfn.gloss');
+ok(marked.length >= 8, `network.html: terms are still marked in the prose (${marked.length})`);
+let missingSlug = 0;
+marked.forEach(function (d) { if (!d.getAttribute('data-term')) missingSlug++; });
+ok(missingSlug === 0, 'every marked term carries its glossary slug for click-through');
 
 // ---- 3. the full A-Z ------------------------------------------------------
 const GD = annotated('glossary.html');

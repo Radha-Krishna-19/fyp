@@ -83,7 +83,9 @@
     d.className = 'gloss';
     d.setAttribute('tabindex', '0');
     d.setAttribute('role', 'button');
-    d.setAttribute('aria-label', 'Definition of ' + entry.term);
+    d.setAttribute('aria-label', 'Definition of ' + entry.term +
+                   ' — click for the full entry');
+    d.setAttribute('data-term', slug(entry.term));
     d.textContent = matchedText;
 
     var pop = document.createElement('span');
@@ -182,29 +184,17 @@
      The notation panel: the symbols and terms THIS page uses, in reading
      order, so a reader can check one without leaving the page.
      ------------------------------------------------------------------- */
-  function notation(used) {
-    var host = document.getElementById('notation');
-    if (!host || !used.length) { if (host) host.remove(); return; }
+  /* -------------------------------------------------------------------
+     There used to be a "Terms and symbols on this page" panel here, printed
+     above every page's first heading. It was removed: it front-loaded a wall
+     of definitions before the reader had met any of the ideas, which is the
+     opposite of how the site is meant to read, and it duplicated the tooltip
+     that is already attached to each term where it actually appears.
 
-    var order = ['Chemistry', 'Graph theory', 'Fractals', 'Statistics'];
-    var groups = {};
-    used.forEach(function (e) { (groups[e.group] = groups[e.group] || []).push(e); });
-
-    var html = '<div class="notation-head">Terms and symbols on this page' +
-               '<span>hover any underlined term in the text for its definition</span></div>' +
-               '<div class="notation-grid">';
-    order.forEach(function (g) {
-      if (!groups[g]) return;
-      html += '<div class="notation-col"><h4>' + g + '</h4><dl>';
-      groups[g].forEach(function (e) {
-        html += '<dt>' + escapeHtml(e.term) + '</dt><dd>' + escapeHtml(e.short) + '</dd>';
-      });
-      html += '</dl></div>';
-    });
-    html += '</div>';
-    host.innerHTML = html;
-    host.classList.add('notation');
-  }
+     What replaced it is the pair of behaviours below — hover to see the
+     definition in place, click to go to the full entry — so a definition is
+     never more than one gesture away, and never in the way.
+     ------------------------------------------------------------------- */
 
   /* -------------------------------------------------------------------
      The full A-Z, rendered on glossary.html only.
@@ -246,24 +236,54 @@
     host.querySelectorAll('.stitle-num').forEach(function (s) { s.textContent = ++n; });
   }
 
+  /* -------------------------------------------------------------------
+     Arriving at glossary.html#some-term: scroll it into view and flash it,
+     briefly. Landing on a long A-Z with no indication of which of forty-odd
+     entries you were sent to is the failure this prevents. The class is
+     removed afterwards so the highlight cannot persist and be mistaken for
+     a permanent state.
+     ------------------------------------------------------------------- */
+  function flashTarget() {
+    var id = (window.location.hash || '').slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el || !el.classList.contains('gloss-entry')) return;
+    try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    catch (e) { el.scrollIntoView(); }
+    el.classList.remove('flash');
+    void el.offsetWidth;                 // restart the animation on re-click
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 2200);
+  }
+
   function boot() {
     try {
-      var used = annotate();
-      notation(used);
+      annotate();
       fullGlossary();
 
       document.querySelectorAll('dfn.gloss').forEach(function (d) {
         d.addEventListener('mouseenter', function () { keepInView(d); });
         d.addEventListener('focus', function () { keepInView(d); });
-        // Tap-to-open on touch, where there is no hover.
         d.addEventListener('click', function (ev) {
           if (ev.target.closest('.gloss-more')) return;   // let the link work
-          ev.preventDefault();
-          var open = d.classList.contains('open');
-          document.querySelectorAll('dfn.gloss.open').forEach(function (o) {
-            o.classList.remove('open');
-          });
-          if (!open) { d.classList.add('open'); keepInView(d); }
+
+          // On a touch screen there is no hover, so the first tap must be
+          // allowed to reveal the definition — jumping straight to the
+          // glossary would make the tooltip unreachable on a phone. The
+          // second tap navigates. On a pointer device the definition is
+          // already visible from hover, so one click navigates immediately.
+          var canHover = window.matchMedia &&
+                         window.matchMedia('(hover: hover)').matches;
+          if (!canHover && !d.classList.contains('open')) {
+            ev.preventDefault();
+            document.querySelectorAll('dfn.gloss.open').forEach(function (o) {
+              o.classList.remove('open');
+            });
+            d.classList.add('open');
+            keepInView(d);
+            return;
+          }
+          window.location.href = 'glossary.html#' + d.getAttribute('data-term');
         });
       });
       document.addEventListener('click', function (ev) {
@@ -273,6 +293,9 @@
           });
         }
       });
+      flashTarget();
+      window.addEventListener('hashchange', flashTarget);
+
       document.addEventListener('keydown', function (ev) {
         if (ev.key === 'Escape') {
           document.querySelectorAll('dfn.gloss.open').forEach(function (o) {

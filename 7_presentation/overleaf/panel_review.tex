@@ -144,8 +144,9 @@ connectivity, which the properties follow.
 \end{itemize}
 
 \vspace{0.12cm}
-\textbf{Dataset.} 77 frameworks queried live from MOFX-DB~[7], with published PLD/LCD pore
-diameters. Supercells of 3{,}400--6{,}100 atoms.
+\textbf{Dataset.} \textbf{138 frameworks}: 77 hypothetical (hMOF, via MOFX-DB~[7]) and 61
+experimentally synthesised (CoRE MOF 2019, via its Zenodo DOI), both with published PLD/LCD
+pore diameters. Supercells of 1{,}160--7{,}000 atoms.
 }
 
 \column{0.54\textwidth}
@@ -476,6 +477,29 @@ MOFs we previously reported at $1.66$--$2.26$ are the gold diamonds --- 256--972
 off the size range of both clouds. $\Delta\alpha$ rises with atom count ($r=+0.73$), so that
 comparison measured graph size. \textbf{(c)} Same centre; the real set is significantly
 \textit{more} variable (Levene $p=0.010$).}
+\end{frame}
+
+% ---- the confound analysis, reproduced on real materials ----
+\begin{frame}{3e. The Same Confound Analysis, Redone on Real Materials}
+\framesubtitle{If a result is real it should survive being asked twice, of different material}
+\centering
+\IfFileExists{fig10_real_band61.png}{%
+  \includegraphics[width=0.99\linewidth,height=0.62\textheight,keepaspectratio]{fig10_real_band61.png}%
+}{%
+  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
+  \textbf{[fig10\_real\_band61.png]}\vspace{2cm}\end{minipage}}
+}
+
+\vspace{-0.1cm}
+{\tiny \textbf{(a)} why the $\tau$ definition matters: free-intercept (red) is not a spectrum;
+through-origin (blue) is, with $q=0$ at the apex. \quad
+\textbf{(b--c)} 61 real spectra and their band, $1.10$--$1.29$ --- against $1.11$--$1.25$ for
+the 77 hypothetical. \quad
+\textbf{(d--f)} \textcolor{okGreen}{\textbf{the pore-size confound reproduces exactly.}}
+Raw $\Delta\alpha$--LCD correlation $-0.20$; hold graph size constant and it collapses to
+$+0.10$, while size survives at $+0.49$. The claim we withdrew on hypothetical structures fails
+the same way, for the same reason, on structures that exist --- which is the strongest evidence
+we have that the confound analysis was right rather than a quirk of one dataset.}
 \end{frame}
 
 % ============================ SLIDE 4: MOOC ==================================

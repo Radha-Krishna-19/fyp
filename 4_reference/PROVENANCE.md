@@ -40,8 +40,8 @@ hard to prove after the fact unless you can point at something concrete.
 | `fig08_band77.png` | **Data** | ✅ `mof_band_analysis.ipynb`, Step 11 | `3_notebooks/results.json` — all 77 frameworks |
 | `band77_figure.png` | **Data** | ✅ same as fig08 | The copy used by the LaTeX deck |
 | `fig09_real_vs_hmof.png` | **Data** | ✅ `make_real_band_figures.py` | `real_results.json` + `results.json` — both bands on one axis |
-| `real_band61_analysis.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 11 | `3_notebooks/real_results.json` — the 6-panel real-MOF analysis |
-| `real_spectra61.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 9 | `3_notebooks/real_results.json` — all 61 spectra + ranking |
+| `fig10_real_band61.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 11 | `3_notebooks/real_results.json` — the 6-panel real-MOF analysis |
+| `fig11_real_spectra61.png` | **Data** | ✅ `real_mof_band.ipynb`, Step 9 | `3_notebooks/real_results.json` — all 61 spectra + ranking |
 | `fig01_mof_concept.png` | Schematic | ⚠️ script not preserved | None — a drawn diagram: node + linker → framework |
 | `fig02_pipeline.png` | Schematic | ⚠️ script not preserved | None — the pipeline stages, drawn |
 | `fig05_defect.png` | **Data** | ⚠️ script not preserved | `1_website/HKUST-1.cif`, λ₂ before and after removing a linker |
