@@ -105,31 +105,82 @@
   }
 
   /* -------------------------------------------------------------------
-     Mark the first occurrence of each term in the page's main content.
+     Mark EVERY occurrence of every term in the page's main content.
+
+     This used to mark only the first occurrence per page, on the theory that
+     one definition is enough and repeating it is noise. That was wrong for the
+     way people actually read: nobody reads a technical page top to bottom, and
+     a reader who lands mid-page on the word they do not know found it plain
+     while some earlier paragraph they never saw carried the link. Every
+     occurrence is now marked, so the definition is reachable from wherever the
+     reader happens to be.
+
+     Nesting is impossible by construction: collectTextNodes() skips DFN, and
+     the text inside a freshly created dfn is never added back to the queue, so
+     a term inside an already-marked term cannot be marked again.
      ------------------------------------------------------------------- */
   function annotate() {
     var main = document.querySelector('main');
     if (!main) return [];
 
-    var done = {};          // term key -> already marked on this page
-    var used = [];          // entries actually found, for the notation panel
+    var seen = {};          // term key -> already recorded in `used`
+    var used = [];          // distinct entries found on this page
     var nodes = collectTextNodes(main);
 
+    // Every (entry, form) pair, longest form first — GLOBALLY, across entries,
+    // not entry by entry.
+    //
+    // Ordering by entry was a bug that only bit once every occurrence began to
+    // be marked. "metal-organic framework" is a longer TERM than "CoRE MOF", so
+    // it was processed first — and it carries "MOF" as an alias. That alias
+    // matched the MOF inside "CoRE MOF", leaving the reader hovering the wrong
+    // definition and making "CoRE MOF" unmatchable ever after, because its text
+    // was by then split across an existing dfn. Sorting the FORMS by length
+    // fixes it: "CoRE MOF" (8) is claimed before "MOF" (3) can take part of it.
+    // The same ordering protects "labelled quotient graph" from "graph" and
+    // "graph Laplacian" from both.
+    var PAIRS = [];
     ENTRIES.forEach(function (entry) {
-      var forms = [entry.term].concat(entry.aka || []);
-      // Word-boundary match, case-insensitive. \b fails on symbols such as
-      // "Δα", so those fall back to a plain indexOf on the exact form.
-      for (var f = 0; f < forms.length; f++) {
-        if (done[entry.term]) break;
-        var form = forms[f];
-        var isWordy = /^[a-z0-9 ()'’.-]+$/i.test(form);
-        var re = isWordy
-          ? new RegExp('\\b(' + form.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', 'i')
-          : null;
+      [entry.term].concat(entry.aka || []).forEach(function (form) {
+        // A form that is one or two plain Latin letters is a mathematical
+        // symbol — A, q, N, D, r — and scanning English prose for those is
+        // worse than useless. Both "adjacency matrix" and "asymmetry" list
+        // "A" as an alias, and a case-insensitive \bA\b duly underlined the
+        // indefinite article in "A metal-organic framework is a crystal".
+        //
+        // The restriction is deliberately narrow: only PLAIN LATIN forms are
+        // skipped. Greek and composite symbols — α, Δα, τ(q), f(α), R² — carry
+        // no risk of colliding with an English word, and they are the symbols a
+        // reader most needs a tooltip for, so they are still matched. The Latin
+        // ones are defined where they are introduced, in the derivation's
+        // "where" tables, so nothing is lost.
+        if (/^[A-Za-z]{1,2}$/.test(form)) return;
+        PAIRS.push({ entry: entry, form: form });
+      });
+    });
+    PAIRS.sort(function (a, b) { return b.form.length - a.form.length; });
 
-        for (var i = 0; i < nodes.length; i++) {
-          var node = nodes[i];
-          if (!node.parentNode) continue;         // already replaced
+    PAIRS.forEach(function (pair) {
+      var entry = pair.entry, form = pair.form;
+
+      // Word-boundary match. \b fails on symbols such as "Δα", so those fall
+      // back to a plain indexOf on the exact form.
+      var isWordy = /^[a-z0-9 ()'’.-]+$/i.test(form);
+      // Case matters once a form contains a capital: "MOF" is a term, "Mof"
+      // is not, and neither is the "A" that starts a sentence.
+      var flags = /[A-Z]/.test(form) ? '' : 'i';
+      var re = isWordy
+        ? new RegExp('\\b(' + form.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', flags)
+        : null;
+
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+
+        // Keep splitting this text node until it holds no further match, so
+        // a paragraph mentioning the term three times gets three links
+        // rather than one. `re` has no /g flag and the text is re-sliced
+        // each pass, so there is no lastIndex to reset.
+        while (node && node.parentNode) {
           var text = node.nodeValue, idx = -1, matched = form;
 
           if (re) {
@@ -138,7 +189,8 @@
           } else {
             idx = text.indexOf(form);
           }
-          if (idx < 0) continue;
+          if (idx < 0 || !matched.length) break;   // length guard: a zero-width
+                                                   // match would never advance
 
           var before = document.createTextNode(text.slice(0, idx));
           var after = document.createTextNode(text.slice(idx + matched.length));
@@ -149,11 +201,12 @@
           parent.insertBefore(after, node);
           parent.removeChild(node);
 
-          // The tail is still scannable for other terms.
+          // The tail is still scannable — both for further hits of this term
+          // and, on later passes, for other terms.
           nodes[i] = after;
-          done[entry.term] = true;
-          used.push(entry);
-          break;
+          node = after;
+
+          if (!seen[entry.term]) { seen[entry.term] = true; used.push(entry); }
         }
       }
     });

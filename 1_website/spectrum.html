@@ -212,7 +212,236 @@
         work like this becomes untrustworthy.
       </div>
 
-      <h2 class="section-title" id="spectra61" data-toc="All 61 spectra"><span class="stitle-num">5</span>Sixty-One Real Frameworks, Every Spectrum Drawn</h2>
+      <h2 class="section-title" id="maths" data-toc="The mathematics, in full"><span class="stitle-num">5</span>The Mathematics, Derived in Full</h2>
+      <p class="section-sub">Every formula the pipeline uses, in the order it is used, with each symbol defined the moment it first appears and nothing assumed from a previous course. Where a step could reasonably be done another way, the alternative is given and the choice justified &mdash; because one of those choices was made wrongly here for months, and the difference is the difference between a spectrum and a meaningless curve.</p>
+
+      <h3 class="sub-head">Step 0 &mdash; the object we are measuring</h3>
+      <p>Everything below operates on one object: the coarse-grained periodic graph built on the previous pages. Nothing about chemistry survives into this section. What survives is a set of vertices and the edges between them.</p>
+
+      <div class="where">
+        <p class="lead">Notation for the graph</p>
+        <dl>
+          <dt><i>G</i> = (<i>V</i>, <i>E</i>)</dt>
+          <dd>The coarse-grained graph. One vertex per building block, one edge per bond between two blocks.</dd>
+          <dt><i>N</i> = |<i>V</i>|</dt>
+          <dd>The number of vertices &mdash; blocks in the supercell. Between 1&#8239;160 and 7&#8239;000 for the frameworks on this site.</dd>
+          <dt><i>d</i>(<i>u</i>,&#8239;<i>v</i>)</dt>
+          <dd>The <b>shortest-path distance</b>: the fewest edges you must traverse to get from vertex <i>u</i> to vertex <i>v</i>. This is the only notion of distance used from here on &mdash; not the distance in ångströms. Two blocks on opposite sides of a pore may be close in space and far apart in the graph, and it is the graph distance that describes how the framework is connected.</dd>
+          <dt><i>D</i></dt>
+          <dd>The <b>diameter</b>: the largest shortest-path distance between any two vertices, max<sub><i>u</i>,<i>v</i></sub> <i>d</i>(<i>u</i>,&#8239;<i>v</i>). It sets the scale against which all box radii are measured.</dd>
+        </dl>
+      </div>
+
+      <h3 class="sub-head">Step 1 &mdash; which vertices carry the measure</h3>
+      <p>The published method does not treat every vertex equally. It works with the <b>influential</b> vertices: the fraction of the graph that is most central. Two quantities decide which those are.</p>
+
+      <div class="eq"><span class="ex">deg(<i>v</i>) = number of edges meeting <i>v</i></span><span class="tag">(1)</span></div>
+
+      <div class="eq"><span class="ex">C(<i>v</i>) = (<i>N</i> &minus; 1) &frasl; &Sigma;<sub><i>u</i>&#8239;&ne;&#8239;<i>v</i></sub> <i>d</i>(<i>v</i>,&#8239;<i>u</i>)</span><span class="tag">(2)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt>deg(<i>v</i>)</dt>
+          <dd><b>Degree</b> &mdash; how many neighbours a block has. For a metal node this is its coordination number; UiO-66's zirconium cluster has degree 12.</dd>
+          <dt><i>C</i>(<i>v</i>)</dt>
+          <dd><b>Closeness centrality</b> &mdash; the reciprocal of the mean distance from <i>v</i> to everything else. Large when a vertex sits near the middle of the graph, small when it sits at the edge. The <i>N</i>&nbsp;&minus;&nbsp;1 in the numerator makes it comparable between graphs of different size.</dd>
+          <dt><i>I</i></dt>
+          <dd>The <b>influential set</b>: the top <i>&phi;N</i> vertices ranked by degree first and closeness as a tie-break, with <i>&phi;</i>&nbsp;=&nbsp;0.1. So |<i>I</i>| is the top 10% of vertices.</dd>
+        </dl>
+      </div>
+
+      <div class="callout warn" data-kind="Where this breaks">
+        <b>In a perfect crystal this ranking is a tie.</b> Every metal cluster in a defect-free
+        framework is an exact copy of every other, related by a symmetry of the lattice, so every
+        node has identical degree <i>and</i> identical closeness. &ldquo;The top 10%&rdquo; is then
+        an arbitrary choice among equals. This is not a flaw we introduced &mdash; it is inherent in
+        applying a centrality-based method to a crystal, and it is why the
+        <a href="network.html#defect">defect section</a> exists: breaking one linker makes the
+        ranking meaningful. Reported rather than hidden, because a reviewer will ask.
+      </div>
+
+      <h3 class="sub-head">Step 2 &mdash; covering the graph with boxes</h3>
+      <p>A <b>box of radius <i>r</i></b> centred on a vertex <i>c</i> is the set of vertices within <i>r</i> steps of it. To cover the graph we repeatedly pick an uncovered vertex at random, take every still-uncovered vertex within <i>r</i> steps, and call that a box &mdash; until nothing is left uncovered.</p>
+
+      <div class="eq"><span class="ex">B(<i>c</i>,&#8239;<i>r</i>) = { <i>v</i> &isin; <i>V</i> : <i>d</i>(<i>c</i>,&#8239;<i>v</i>) &le; <i>r</i>, <i>v</i> not yet covered }</span><span class="tag">(3)</span></div>
+
+      <p>This is a <b>greedy random covering</b>: the boxes are disjoint by construction, and every vertex ends up in exactly one. Because the centres are chosen at random, two runs give different coverings, which matters in Step 6.</p>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt><i>r</i></dt>
+          <dd>The <b>box radius</b>, in graph steps. Runs from 1 up to <i>r</i><sub>max</sub>.</dd>
+          <dt><i>r</i><sub>max</sub></dt>
+          <dd>The largest radius used, set to <i>wD</i> with the window fraction <i>w</i>&nbsp;=&nbsp;0.35. Beyond roughly a third of the diameter a single box swallows the whole graph and there is nothing left to measure.</dd>
+          <dt><i>n<sub>b</sub></i>(<i>r</i>)</dt>
+          <dd>The <b>size of the box</b> that a given vertex ended up in &mdash; how many vertices it contains.</dd>
+        </dl>
+      </div>
+
+      <h3 class="sub-head">Step 3 &mdash; turning box sizes into a probability measure</h3>
+      <p>Each influential vertex inherits the size of the box that covers it. Normalising those sizes across the influential set turns them into probabilities &mdash; a measure spread over the framework, which is the object multifractal analysis actually operates on.</p>
+
+      <div class="eq"><span class="ex"><i>p<sub>i</sub></i>(<i>r</i>) = <i>n<sub>b</sub></i><sub>(<i>i</i>)</sub>(<i>r</i>) &frasl; &Sigma;<sub><i>j</i>&#8239;&isin;&#8239;<i>I</i></sub> <i>n<sub>b</sub></i><sub>(<i>j</i>)</sub>(<i>r</i>)</span><span class="tag">(4)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt><i>p<sub>i</sub></i>(<i>r</i>)</dt>
+          <dd>The share of the total covered mass sitting in influential vertex <i>i</i>'s box. By construction <i>p<sub>i</sub></i>&nbsp;&gt;&nbsp;0 and &Sigma;<i>p<sub>i</sub></i>&nbsp;=&nbsp;1.</dd>
+        </dl>
+      </div>
+
+      <p><b>What this quantity means physically.</b> A large <i>p<sub>i</sub></i> says vertex <i>i</i> sits in a densely connected neighbourhood &mdash; many blocks reachable within <i>r</i> steps. A small one says it sits somewhere sparse, next to a cavity. The distribution of the <i>p<sub>i</sub></i> across the framework <i>is</i> the structural heterogeneity we are trying to quantify.</p>
+
+      <h3 class="sub-head">Step 4 &mdash; the partition function, and what <i>q</i> is for</h3>
+      <p>Now the central trick. Raise every probability to a power <i>q</i> and add them up.</p>
+
+      <div class="eq"><span class="ex">P<sub><i>q</i></sub>(<i>r</i>) = &Sigma;<sub><i>i</i>&#8239;&isin;&#8239;<i>I</i></sub> [ <i>p<sub>i</sub></i>(<i>r</i>) ]<sup><i>q</i></sup></span><span class="tag">(5)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt><i>q</i></dt>
+          <dd>The <b>moment order</b>, a knob we sweep from &minus;10 to +10 in steps of 0.5 (41 values).</dd>
+          <dt>P<sub><i>q</i></sub>(<i>r</i>)</dt>
+          <dd>The <b>partition function</b> &mdash; the name is borrowed from statistical mechanics, where the same construction appears.</dd>
+        </dl>
+      </div>
+
+      <div class="callout" data-kind="The key idea">
+        <b><i>q</i> is a magnifying glass with adjustable focus.</b> For <b>large positive
+        <i>q</i></b>, the biggest <i>p<sub>i</sub></i> dominates the sum &mdash; raising 0.9 and 0.1
+        to the tenth power gives 0.35 and 0.0000000001, so the sum is effectively a report on the
+        <b>densest</b> regions alone. For <b>large negative <i>q</i></b> the small probabilities
+        blow up instead and the sum reports on the <b>sparsest</b> regions. At <b><i>q</i> = 0</b>
+        every term is <i>p<sub>i</sub></i><sup>0</sup> = 1, so P<sub>0</sub> is simply |<i>I</i>|,
+        the count of influential vertices &mdash; the measure is ignored entirely and only the
+        geometry is counted. Sweeping <i>q</i> therefore interrogates every density regime of the
+        same framework in turn, using one formula.
+      </div>
+
+      <h3 class="sub-head">Step 5 &mdash; the mass exponent &tau;(<i>q</i>), and the mistake that cost us months</h3>
+      <p>If the framework is scale-invariant, the partition function follows a power law in the box radius:</p>
+
+      <div class="eq"><span class="ex">P<sub><i>q</i></sub>(<i>r</i>) &sim; ( <i>r</i> &frasl; <i>r<sub>N</sub></i> )<sup>&tau;(<i>q</i>)</sup></span><span class="tag">(6)</span></div>
+
+      <p>Take logarithms of both sides and the power law becomes a straight line:</p>
+
+      <div class="eq"><span class="ex">ln P<sub><i>q</i></sub>(<i>r</i>) = &tau;(<i>q</i>) &middot; ln( <i>r</i> &frasl; <i>r<sub>N</sub></i> )</span><span class="tag">(7)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt><i>r<sub>N</sub></i></dt>
+          <dd>The normalising radius, taken as the graph diameter <i>D</i>. Since <i>r</i>&nbsp;&le;&nbsp;<i>r</i><sub>max</sub>&nbsp;&lt;&nbsp;<i>D</i>, the ratio <i>r</i>/<i>r<sub>N</sub></i> is always less than 1, so <b>ln(<i>r</i>/<i>r<sub>N</sub></i>) is always negative</b>. Remember this &mdash; it decides the sign of everything downstream.</dd>
+          <dt>&tau;(<i>q</i>)</dt>
+          <dd>The <b>mass exponent</b>. One number per value of <i>q</i>: the rate at which that density regime's contribution grows as the boxes grow.</dd>
+        </dl>
+      </div>
+
+      <p>Equation (7) has <b>no intercept</b>. That is not an oversight, it is the content of equation (6): a pure power law with no prefactor passes through the origin in log&ndash;log coordinates. So &tau;(<i>q</i>) must be fitted as a least-squares line <i>through the origin</i>:</p>
+
+      <div class="eq"><span class="ex">&tau;(<i>q</i>) = &Sigma;<sub><i>r</i></sub> <i>x<sub>r</sub></i> <i>y<sub>r</sub></i> &frasl; &Sigma;<sub><i>r</i></sub> <i>x<sub>r</sub></i><sup>2</sup>, &nbsp;&nbsp; <i>x<sub>r</sub></i> = ln(<i>r</i>/<i>r<sub>N</sub></i>), &nbsp; <i>y<sub>r</sub></i> = ln P<sub><i>q</i></sub>(<i>r</i>)</span><span class="tag">(8)</span></div>
+
+      <div class="callout bad" data-kind="The defect">
+        <b>Fitting a free intercept instead invalidates every spectrum.</b> The obvious thing to do
+        with a log&ndash;log plot is to call a regression routine and take the slope, which silently
+        fits <i>y</i>&nbsp;=&nbsp;<i>mx</i>&nbsp;+&nbsp;<i>c</i>. Watch what that does at
+        <i>q</i>&nbsp;=&nbsp;0. There, every <i>p<sub>i</sub></i><sup>0</sup>&nbsp;=&nbsp;1, so
+        P<sub>0</sub>(<i>r</i>)&nbsp;=&nbsp;|<i>I</i>| <i>at every radius</i> &mdash; a perfectly
+        flat line. A free-intercept fit through a flat line has <b>slope zero</b>, giving
+        &tau;(0)&nbsp;=&nbsp;0, and then <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;0&nbsp;&minus;&nbsp;0&nbsp;=&nbsp;0.
+        The apex of the spectrum is pinned to the floor and the curve comes out as a falling line
+        rather than an inverted parabola.
+        <br><br>
+        Through the origin, the same flat line gives
+        &tau;(0)&nbsp;=&nbsp;ln|<i>I</i>|&nbsp;/&nbsp;ln(<i>r</i>/<i>r<sub>N</sub></i>)&nbsp;&mdash;&nbsp;a
+        positive number divided by a <i>negative</i> one, so &tau;(0)&nbsp;&lt;&nbsp;0, and
+        <i>f</i>(&alpha;<sub>0</sub>)&nbsp;=&nbsp;&minus;&tau;(0)&nbsp;&gt;&nbsp;0. The peak
+        reappears. <b>This one line of arithmetic is the difference between 0 of 77 valid spectra
+        and 77 of 77</b>, and it is panel (a) of the real-MOF figure.
+      </div>
+
+      <h3 class="sub-head">Step 6 &mdash; the Legendre transform to &alpha; and <i>f</i>(&alpha;)</h3>
+      <p>&tau;(<i>q</i>) is correct but unreadable: it is indexed by the artificial knob <i>q</i> rather than by anything physical. The <b>Legendre transform</b> re-expresses the same information in terms of the scaling exponent itself.</p>
+
+      <div class="eq"><span class="ex">&alpha;(<i>q</i>) = d&tau; &frasl; d<i>q</i></span><span class="tag">(9)</span></div>
+      <div class="eq"><span class="ex"><i>f</i>(&alpha;) = <i>q</i>&#8239;&alpha;(<i>q</i>) &minus; &tau;(<i>q</i>)</span><span class="tag">(10)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt>&alpha;(<i>q</i>)</dt>
+          <dd>The <b>singularity strength</b>, or local scaling exponent: the growth rate exhibited by the regions that the moment order <i>q</i> selects. Computed numerically as the gradient of &tau; along the <i>q</i> grid.</dd>
+          <dt><i>f</i>(&alpha;)</dt>
+          <dd>The <b>singularity spectrum</b>: the fractal dimension of the subset of the framework whose local scaling exponent is &alpha;. Loosely, <i>how much of the structure</i> grows at that rate.</dd>
+        </dl>
+      </div>
+
+      <p><b>Why a transform, and why this one.</b> &tau;(<i>q</i>) is convex, and a convex function can be described either by its value at each <i>q</i> or by the family of tangent lines that touch it. The Legendre transform swaps one description for the other: &alpha; is the slope of the tangent, and <i>f</i> is minus its intercept. Nothing is lost and nothing is added &mdash; the same content, re-indexed by a quantity with a physical meaning. It is the same transform that converts energy to entropy in thermodynamics, which is not a coincidence: equation (5) is a partition function.</p>
+
+      <h3 class="sub-head">Step 7 &mdash; the three numbers we keep</h3>
+      <p>The curve <i>f</i>(&alpha;) is the full answer, and it is too big to compare across 138 frameworks. Three summary numbers are extracted.</p>
+
+      <div class="eq"><span class="ex">&Delta;&alpha; = &alpha;<sub>max</sub> &minus; &alpha;<sub>min</sub></span><span class="tag">(11)</span></div>
+      <div class="eq"><span class="ex">&alpha;<sub>0</sub> = &alpha;(<i>q</i> = 0) = argmax<sub>&alpha;</sub> <i>f</i>(&alpha;)</span><span class="tag">(12)</span></div>
+      <div class="eq"><span class="ex"><i>A</i> = [ (&alpha;<sub>max</sub> &minus; &alpha;<sub>0</sub>) &minus; (&alpha;<sub>0</sub> &minus; &alpha;<sub>min</sub>) ] &frasl; &Delta;&alpha;</span><span class="tag">(13)</span></div>
+
+      <div class="where">
+        <p class="lead">The descriptor</p>
+        <dl>
+          <dt>&Delta;&alpha;</dt>
+          <dd><b>Spectrum width.</b> How varied the local environments are. Narrow = one environment repeated; wide = tight and open regions coexisting in one crystal. This is the number the band is built from.</dd>
+          <dt>&alpha;<sub>0</sub></dt>
+          <dd><b>The dominant exponent.</b> The scaling behaviour of the <i>typical</i> part of the framework &mdash; where the spectrum peaks.</dd>
+          <dt><i>A</i></dt>
+          <dd><b>Asymmetry.</b> Positive means the right branch is longer, so the framework's character is set by its sparse regions; negative means the dense regions dominate. Every framework measured here, hypothetical and synthesised alike, comes out at roughly &minus;1.31 &mdash; strongly left-leaning.</dd>
+        </dl>
+      </div>
+
+      <div class="worked">
+        <span class="wl">Worked example &mdash; ABAVIJ, a real CoRE MOF framework</span>
+        <i>N</i> = 6&#8239;480 blocks, diameter <i>D</i> = 38, so <i>r</i><sub>max</sub> =
+        &lfloor;0.35&nbsp;&times;&nbsp;38&rfloor; = 13 radii to fit on. The influential set is
+        |<i>I</i>| = 648 vertices (10%). Sweeping <i>q</i> over 41 values and fitting equation (8)
+        at each gives &tau;(&minus;10) = &minus;35.43 rising to &tau;(+10) &gt; 0. The Legendre
+        transform gives &alpha; running from 2.14 to 3.48, so
+        <b>&Delta;&alpha; = 1.335 &plusmn; 0.028</b> and <b><i>A</i> = &minus;1.18</b>. Those two
+        numbers are one row of the band, and one dot in panel (c) of the real-MOF figure.
+      </div>
+
+      <h3 class="sub-head">Step 8 &mdash; the uncertainty, which is not optional</h3>
+      <p>The covering in Step 2 is random, so &Delta;&alpha; is a random variable. Reporting a single value from a single covering would be reporting noise. The whole calculation is therefore repeated over independent coverings and both the mean and the scatter are kept.</p>
+
+      <div class="eq"><span class="ex">&Delta;&alpha;&#772; = (1/<i>B</i>) &Sigma;<sub><i>b</i>=1</sub><sup><i>B</i></sup> &Delta;&alpha;<sub><i>b</i></sub>, &nbsp;&nbsp; s = &radic;[ (1/(<i>B</i>&minus;1)) &Sigma;<sub><i>b</i></sub> (&Delta;&alpha;<sub><i>b</i></sub> &minus; &Delta;&alpha;&#772;)<sup>2</sup> ]</span><span class="tag">(14)</span></div>
+
+      <div class="where">
+        <p class="lead">New symbols</p>
+        <dl>
+          <dt><i>B</i></dt>
+          <dd>The number of independent batches of coverings, <i>B</i>&nbsp;=&nbsp;6, each averaging 6 random trials.</dd>
+          <dt>s</dt>
+          <dd>The standard deviation across batches &mdash; the error bar on every point in the band charts. Typically 0.016, which is about 1.3% of &Delta;&alpha;.</dd>
+        </dl>
+      </div>
+
+      <div class="callout" data-kind="Order matters">
+        <b>Average the logarithm, not the probability.</b> There are two places to put the averaging:
+        average the <i>p<sub>i</sub></i> across trials and then take one logarithm, or take
+        ln&#8239;P<sub><i>q</i></sub> per trial and average those. They are not the same, because the
+        logarithm is not linear &mdash; averaging first systematically flattens the very variation
+        the method exists to measure. This project computes ln&#8239;P<sub><i>q</i></sub> per
+        realisation and averages afterwards; the
+        <a href="results.html">validation step</a> runs it both ways on the same graph and reports
+        the difference, so the choice is demonstrated rather than asserted.
+      </div>
+
+      <h3 class="sub-head">A note on R&sup2;, since the numbers look alarming</h3>
+      <p>The fit quality reported per framework includes strongly negative R&sup2; at negative <i>q</i> &mdash; a median around &minus;13. That is not a broken fit. The conventional R&sup2; formula compares a model against the <i>mean</i> of the data, and a through-origin fit is not trying to beat the mean; it is constrained to pass through a fixed point. Negative values are therefore expected and carry no information about fit quality here. The check that <i>does</i> matter is the shape test &mdash; whether <i>f</i>(&alpha;) is concave with its apex at <i>q</i>&nbsp;=&nbsp;0 &mdash; and that is passed by 138 of 138 frameworks. The same signature appears in both datasets, which is what confirms it is a property of the estimator rather than of the data.</p>
+
+      <h2 class="section-title" id="spectra61" data-toc="All 61 spectra"><span class="stitle-num">6</span>Sixty-One Real Frameworks, Every Spectrum Drawn</h2>
       <p class="section-sub">This is the raw output of the pipeline on experimentally synthesised MOFs &mdash; not a summary, not a schematic: one curve per framework, exactly as computed.</p>
 <dl class="bridge"><dt>You know</dt><dd>What a spectrum means and why it is a parabola.</dd><dt>This section</dt><dd class="now">Shows all 61 real spectra as computed, unsummarised, with every framework named.</dd><dt>Which lets us</dt><dd>Check the summary statistics against the raw output they came from.</dd></dl>
 

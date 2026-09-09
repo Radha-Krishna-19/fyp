@@ -180,6 +180,134 @@
       }
     }
 
+    /* -----------------------------------------------------------------
+       BLOCK INSPECTOR
+
+       Draws what is inside one coarse-grained vertex: the block's atoms and
+       the bonds among them, projected onto the plane that shows the block
+       most face-on, plus the stubs of the bonds that leave it.
+
+       Why project rather than show a second 3D scene: a second WebGL context
+       inside a tooltip is expensive, and browsers cap contexts per tab — the
+       same reason the standalone pipeline viewer was removed from this site.
+       A 2D projection costs nothing and answers the question being asked,
+       which is "what is in there and how is it wired", not "what does it look
+       like from every angle".
+
+       The projection plane is chosen by principal axes: project onto the two
+       directions in which the block is most spread out, so a flat linker is
+       seen face-on rather than edge-on, where it would collapse to a line.
+       ----------------------------------------------------------------- */
+    function blockLocalGeometry(block) {
+      if (!currentData || !block || !block.atoms) return null;
+      const idx = block.atoms;
+      const inBlock = new Set(idx);
+      const pts = idx.map(i => currentData.atoms[i]).filter(Boolean);
+      if (pts.length === 0) return null;
+
+      // internal bonds, and the stubs of bonds that leave the block
+      const internal = [], leaving = [];
+      (currentData.bonds || []).forEach(bd => {
+        const ina = inBlock.has(bd.a), inb = inBlock.has(bd.b);
+        if (ina && inb) internal.push([bd.a, bd.b]);
+        else if (ina || inb) leaving.push(ina ? bd.a : bd.b);
+      });
+      return { idx, pts, internal, leaving };
+    }
+
+    function principalPlane(pts) {
+      // Centre, then take the two directions of greatest spread. Full PCA is
+      // unnecessary here: a power iteration on the 3x3 covariance is exact
+      // enough for choosing a viewing plane and is a few lines.
+      const n = pts.length;
+      const c = [0, 0, 0];
+      pts.forEach(p => { c[0] += p.pos[0]; c[1] += p.pos[1]; c[2] += p.pos[2]; });
+      c[0] /= n; c[1] /= n; c[2] /= n;
+      const C = [[0,0,0],[0,0,0],[0,0,0]];
+      pts.forEach(p => {
+        const d = [p.pos[0]-c[0], p.pos[1]-c[1], p.pos[2]-c[2]];
+        for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) C[i][j] += d[i]*d[j];
+      });
+      function mul(M, v) {
+        return [M[0][0]*v[0]+M[0][1]*v[1]+M[0][2]*v[2],
+                M[1][0]*v[0]+M[1][1]*v[1]+M[1][2]*v[2],
+                M[2][0]*v[0]+M[2][1]*v[1]+M[2][2]*v[2]];
+      }
+      function norm(v) {
+        const L = Math.hypot(v[0], v[1], v[2]) || 1;
+        return [v[0]/L, v[1]/L, v[2]/L];
+      }
+      let u = norm([1, 0.3, 0.1]);
+      for (let k = 0; k < 24; k++) u = norm(mul(C, u));
+      // deflate, then repeat for the second axis
+      const D = C.map((row, i) => row.map((val, j) => {
+        let lam = 0;
+        for (let a = 0; a < 3; a++) for (let b = 0; b < 3; b++) lam += u[a]*C[a][b]*u[b];
+        return val - lam*u[i]*u[j];
+      }));
+      let v = norm([0.2, 1, 0.4]);
+      for (let k = 0; k < 24; k++) v = norm(mul(D, v));
+      // orthogonalise v against u
+      const dot = u[0]*v[0] + u[1]*v[1] + u[2]*v[2];
+      v = norm([v[0]-dot*u[0], v[1]-dot*u[1], v[2]-dot*u[2]]);
+      return { c, u, v };
+    }
+
+    function renderBlockInspector(host, block, caption) {
+      const G = blockLocalGeometry(block);
+      if (!G) { host.textContent = caption; return; }
+      const { c, u, v } = principalPlane(G.pts);
+
+      const W = 208, H = 150, PAD = 16;
+      const proj = {};
+      let minx = Infinity, maxx = -Infinity, miny = Infinity, maxy = -Infinity;
+      G.pts.forEach(p => {
+        const d = [p.pos[0]-c[0], p.pos[1]-c[1], p.pos[2]-c[2]];
+        const x = d[0]*u[0] + d[1]*u[1] + d[2]*u[2];
+        const y = d[0]*v[0] + d[1]*v[1] + d[2]*v[2];
+        proj[p.id] = [x, y];
+        minx = Math.min(minx, x); maxx = Math.max(maxx, x);
+        miny = Math.min(miny, y); maxy = Math.max(maxy, y);
+      });
+      const spanx = Math.max(maxx - minx, 0.8), spany = Math.max(maxy - miny, 0.8);
+      const k = Math.min((W - 2*PAD) / spanx, (H - 2*PAD) / spany);
+      const X = x => PAD + (x - minx) * k + ((W - 2*PAD) - spanx*k) / 2;
+      const Y = y => H - PAD - (y - miny) * k - ((H - 2*PAD) - spany*k) / 2;
+
+      const esc = t => String(t).replace(/[&<>]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
+      let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" aria-hidden="true">';
+      // bonds first, so atoms sit on top
+      G.internal.forEach(([a, b]) => {
+        const pa = proj[currentData.atoms[a].id], pb = proj[currentData.atoms[b].id];
+        if (!pa || !pb) return;
+        svg += '<line x1="' + X(pa[0]).toFixed(1) + '" y1="' + Y(pa[1]).toFixed(1) +
+               '" x2="' + X(pb[0]).toFixed(1) + '" y2="' + Y(pb[1]).toFixed(1) +
+               '" stroke="#8a8f98" stroke-width="1.6" stroke-linecap="round"/>';
+      });
+      G.pts.forEach(p => {
+        const q = proj[p.id];
+        const col = '#' + ('000000' + elementColor(p.el).toString(16)).slice(-6);
+        const isMetal = METALS.has(p.el);
+        svg += '<circle cx="' + X(q[0]).toFixed(1) + '" cy="' + Y(q[1]).toFixed(1) +
+               '" r="' + (isMetal ? 6.2 : 4.2) + '" fill="' + col +
+               '" stroke="rgba(0,0,0,.35)" stroke-width="0.8"/>';
+        if (isMetal || G.pts.length <= 14) {
+          svg += '<text x="' + X(q[0]).toFixed(1) + '" y="' + (Y(q[1]) - 8).toFixed(1) +
+                 '" font-size="7.5" text-anchor="middle" fill="currentColor" opacity="0.75">' +
+                 esc(p.el) + '</text>';
+        }
+      });
+      svg += '</svg>';
+
+      host.innerHTML =
+        '<div class="bi-title">' + esc(caption) + '</div>' +
+        '<div class="bi-svg">' + svg + '</div>' +
+        '<div class="bi-foot">' + G.pts.length + ' atoms &middot; ' +
+        G.internal.length + ' internal bonds &middot; ' +
+        G.leaving.length + ' bonds leaving to other blocks' +
+        '<span>projected onto the block&rsquo;s two widest directions</span></div>';
+    }
+
     function init(canvasEl, containerEl, labelsLayerEl, hoverTipEl) {
       canvas = canvasEl; container = containerEl; labelsLayer = labelsLayerEl; hoverTip = hoverTipEl;
 
@@ -260,10 +388,18 @@
           if (hits.length === 0) { hoverTip.style.display = 'none'; return; }
           const obj = hits[0].object;
           let text = '';
+          let inspect = null;
           if (obj.userData.block) {
             const b = obj.userData.block;
             const comp = Object.entries(b.composition).map(([el, n]) => el + n).join(' ');
             text = (b.type === 'metal' ? 'Node/metal block #' : 'Linker block #') + b.id + ' — ' + b.n_atoms + ' atoms (' + comp + ') — ' + b.n_connections + ' connections';
+            // Once the structure has been coarse-grained, a block is drawn as a
+            // single sphere and the atoms inside it are no longer on screen at
+            // all. That is the point of coarse-graining, and it is also the
+            // moment a reader loses track of what a vertex represents. So when
+            // the atoms are hidden, the tooltip draws them: the block's own
+            // atoms and the bonds between them, projected flat.
+            if (!atomGroup.visible) inspect = b;
           } else if (obj.userData.bondInfo) {
             const bi = obj.userData.bondInfo;
             text = 'Bond ' + bi.label + (bi.interblock ? ' — cut by this stage’s algorithm' : ' — intra-block') + ' — ' + bi.length.toFixed(2) + ' Å';
@@ -271,7 +407,8 @@
             const a = obj.userData.atom;
             text = a.el + a.id + (obj.userData.classLabel ? ' — ' + obj.userData.classLabel : '');
           }
-          hoverTip.textContent = text;
+          if (inspect) { renderBlockInspector(hoverTip, inspect, text); }
+          else { hoverTip.textContent = text; }
           hoverTip.style.display = 'block';
           hoverTip.style.left = (e.clientX - rect.left + 14) + 'px';
           hoverTip.style.top = (e.clientY - rect.top + 14) + 'px';

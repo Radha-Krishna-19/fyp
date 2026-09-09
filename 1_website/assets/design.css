@@ -749,12 +749,23 @@ button:active, .struct-tab:active, .mode-btn:active { transform: translateY(1px)
 dfn.gloss {
   font-style: inherit;
   position: relative;
-  border-bottom: 1px dashed var(--brand);
   cursor: help;
-  /* The dashed underline is the only signal, and it must not shout. Colouring
-     the word itself would make forty terms compete with the actual links. */
+  /* Every occurrence of every term is marked, not just the first, so a reader
+     who lands mid-page can still reach the definition. That multiplies the
+     number of underlines on a page several times over, so the resting state
+     had to get quieter: a full-strength brand dash under every third word
+     turns a paragraph into a zebra and costs more in readability than the
+     extra links gain. Muted at rest, brand on hover — the signal is still
+     there when the eye looks for it, and recedes when it is not wanted.
+     Colouring the word itself is deliberately avoided: it would make forty
+     terms compete with the actual links. */
+  border-bottom: 1px dashed var(--border-strong);
+  transition: border-color var(--t-fast) var(--ease);
 }
-dfn.gloss:hover { border-bottom-style: solid; }
+dfn.gloss:hover {
+  border-bottom-style: solid;
+  border-bottom-color: var(--brand);
+}
 dfn.gloss:focus-visible { outline: none; box-shadow: var(--ring); border-radius: 3px; }
 
 .gloss-pop {
@@ -900,9 +911,9 @@ dfn.gloss.open .gloss-pop {
 }
 
 /* =====================================================================
-   THE LADDER — the reading sequence on the overview page
+   THE LADDER — the pipeline stages on the overview page
    ===================================================================== */
-.ladder { list-style: none; margin: 26px 0 34px; padding: 0; counter-reset: rung; }
+.ladder { list-style: none; margin: 26px 0 34px; padding: 0; counter-reset: stage; }
 .ladder > li {
   position: relative;
   padding: 0 0 26px 84px;
@@ -911,17 +922,12 @@ dfn.gloss.open .gloss-pop {
 }
 .ladder > li:last-child { border-left-color: transparent; padding-bottom: 4px; }
 .ladder > li::before {
-  counter-increment: rung; content: counter(rung);
+  counter-increment: stage; content: counter(stage);
   position: absolute; left: -11px; top: 0;
   width: 21px; height: 21px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: var(--surface-0); border: 1px solid var(--border-strong);
   font-size: 11px; font-weight: 700; color: var(--text-3);
-}
-.ladder .rung {
-  position: absolute; left: 26px; top: 2px;
-  font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--brand);
 }
 .ladder h3 { margin: 0 0 8px; font-size: 17px; }
 .ladder h3 a { color: var(--text); }
@@ -932,7 +938,6 @@ dfn.gloss.open .gloss-pop {
 
 @media (max-width: 720px) {
   .ladder > li { padding-left: 20px; }
-  .ladder .rung { position: static; display: block; margin-bottom: 4px; }
 }
 
 /* A figure that should use the whole column, not the prose measure. */
@@ -972,3 +977,107 @@ figure.fig.wide img { width: 100%; }
 main .table-wrap,
 main figure.fig,
 main .chart-box { width: 100%; }
+
+/* =====================================================================
+   BLOCK INSPECTOR
+
+   Coarse-graining replaces a cluster of atoms with one sphere. That is the
+   whole point of the step, and it is also the moment a reader stops being
+   able to see what a vertex stands for. Hovering a coarse-grained vertex
+   now draws its contents: the block's own atoms, the bonds between them,
+   and a count of the bonds leaving it.
+
+   The tooltip widens only when it has a diagram in it, so ordinary atom and
+   bond tooltips stay small.
+   ===================================================================== */
+.hover-tip:has(.bi-svg) {
+  max-width: 244px;
+  padding: 9px 10px 8px;
+  background: var(--surface-0);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+}
+.bi-title {
+  font-size: 11.5px; font-weight: 620; line-height: 1.35;
+  color: var(--text); margin-bottom: 7px;
+}
+.bi-svg {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  display: block; overflow: hidden;
+  color: var(--text-2);
+}
+.bi-svg svg { display: block; width: 100%; height: auto; }
+.bi-foot {
+  margin-top: 6px; font-size: 10.5px; line-height: 1.45; color: var(--text-2);
+}
+.bi-foot span {
+  display: block; margin-top: 2px; color: var(--text-3); font-style: italic;
+}
+
+/* =====================================================================
+   MATHEMATICS
+
+   The derivation pages need equations that are readable rather than
+   decorative: a numbered display line, and a "where" list that names every
+   symbol the moment it first appears. The rule the site follows is that no
+   symbol may be used before it has a row in one of these lists.
+   ===================================================================== */
+.eq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center; gap: 18px;
+  margin: 22px 0;
+  padding: 16px 20px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--brand);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-x: auto;
+}
+.eq .ex {
+  font-family: "Latin Modern Math", Georgia, "Times New Roman", serif;
+  font-size: 19px; line-height: 1.75; color: var(--text);
+  white-space: nowrap;
+}
+.eq .tag { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.eq sub, .eq sup { font-size: 0.68em; }
+.eq i, .ex i { font-style: italic; }
+
+/* the symbol table that must follow any new notation */
+.where {
+  margin: 0 0 26px; padding: 0 0 0 22px;
+  border-left: 1px solid var(--border);
+  max-width: var(--measure);
+}
+.where dl { display: grid; grid-template-columns: max-content minmax(0, 1fr);
+            gap: 7px 16px; margin: 0; }
+.where dt {
+  font-family: "Latin Modern Math", Georgia, serif; font-size: 15px;
+  color: var(--text); white-space: nowrap; padding-top: 1px;
+}
+.where dd { margin: 0; font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
+.where .lead {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-3); margin: 0 0 9px;
+}
+@media (max-width: 640px) {
+  .where dl { grid-template-columns: 1fr; gap: 2px; }
+  .where dt { padding-top: 9px; }
+  .eq { grid-template-columns: 1fr; }
+  .eq .ex { font-size: 16px; white-space: normal; }
+}
+
+/* a worked numeric example sitting under a derivation */
+.worked {
+  margin: 20px 0 26px; padding: 15px 18px;
+  border: 1px dashed var(--border-strong); border-radius: var(--r-sm);
+  font-size: 14.5px; color: var(--text-2); max-width: var(--measure);
+}
+.worked b { color: var(--text); }
+.worked .wl {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-3); display: block; margin-bottom: 7px;
+}

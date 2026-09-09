@@ -66,14 +66,35 @@ const D = annotated('network.html');
 const marks = [...D.querySelectorAll('dfn.gloss')];
 ok(marks.length >= 8, `network.html: ${marks.length} terms marked in the prose`);
 
-// each term marked at most ONCE per page
+// EVERY occurrence must be marked, not just the first. This assertion is the
+// inverse of the one it replaces: the page used to mark a term once and leave
+// every later mention plain, which meant a reader landing mid-page found the
+// unfamiliar word unlinked while the link sat in a paragraph they never read.
 const terms = marks.map(m => m.getAttribute('aria-label'));
-ok(new Set(terms).size === terms.length, 'each term is marked only once per page');
+const repeated = terms.filter((t, i) => terms.indexOf(t) !== i);
+ok(repeated.length > 0,
+   `terms repeat where the prose repeats them (${repeated.length} repeat marks)`);
+
+// ...but a term must never be marked INSIDE another marked term, which is the
+// failure mode that unbounded matching invites.
+ok(D.querySelectorAll('dfn.gloss dfn.gloss').length === 0,
+   'no definition is nested inside another definition');
 
 // never inside a heading, code block, link or table header
 ['h1','h2','h3','h4','code','pre','a','th'].forEach(sel =>
   ok(D.querySelectorAll(`${sel} dfn.gloss`).length === 0,
      `no definition marked inside <${sel}>`));
+
+// the single-letter Latin symbols must NOT be auto-marked: "A" is both an alias
+// for the adjacency matrix and for asymmetry, and matching it underlined the
+// indefinite article in "A metal-organic framework is a crystal".
+const shortMarks = marks.filter(m => /^[A-Za-z]{1,2}$/.test(m.textContent.trim()));
+ok(shortMarks.length === 0,
+   `no one- or two-letter Latin symbol is auto-marked (found ${shortMarks.map(m => m.textContent.trim()).join(', ') || 'none'})`);
+
+// and the article itself must never be a definition, however it got there
+const articles = marks.filter(m => /^(a|an|the|A|An|The)$/.test(m.textContent.trim()));
+ok(articles.length === 0, 'no English article is marked as a glossary term');
 
 // every mark carries a usable popover
 ok(marks.every(m => m.querySelector('.gloss-pop b') && m.querySelector('.gloss-short')),
