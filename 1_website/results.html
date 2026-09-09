@@ -278,7 +278,122 @@
         warned three months ago, and it is the more useful answer.
       </div>
 
-      <h2 class="section-title" id="realmof" data-toc="How the 61 were obtained"><span class="stitle-num">4</span>How Those Sixty-One Frameworks Were Obtained</h2>
+      <h2 class="section-title" id="bands" data-toc="Both bands, and their uses"><span class="stitle-num">4</span>Both Bands, Stated Exactly &mdash; and What a Band Is Actually For</h2>
+      <p class="section-sub">The word &ldquo;band&rdquo; has been used loosely on this page. Here it is pinned down: three different definitions, the numbers for each dataset under each, and an honest account of what such a band can and cannot be used for.</p>
+<dl class="bridge"><dt>You know</dt><dd>That both sets of frameworks produce spectrum widths in the same region.</dd><dt>This section</dt><dd class="now">States each band precisely under three definitions, and sets out the four things a band could be used for &mdash; marking which are supported.</dd><dt>Which lets us</dt><dd>Say what this project delivers to someone who wants to use it, rather than only what it measured.</dd></dl>
+
+      <h3 class="sub-head">First: &ldquo;band&rdquo; is three different claims</h3>
+      <p>A range can be quoted as the full extent of the data, as the middle half, or as a central interval that discards the tails. They are not interchangeable, and quoting one while implying another is a standard way to overstate a result. All three are given below so the reader can pick.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr>
+            <td>Dataset</td><td>n</td>
+            <td>Full range<br><span style="font-weight:400;color:var(--text-3)">min &ndash; max</span></td>
+            <td>Interquartile band<br><span style="font-weight:400;color:var(--text-3)">the middle half</span></td>
+            <td>Mean &plusmn; sd</td><td>Median</td><td>Mean asymmetry <i>A</i></td>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td class="dt-label"><b>Hypothetical</b><div style="font-size:12px;color:var(--text-3);margin-top:2px">hMOF &mdash; computer-generated</div></td>
+              <td class="dt-value">77</td>
+              <td class="dt-value">1.016 &ndash; 1.410</td>
+              <td class="dt-value"><b>1.11 &ndash; 1.25</b></td>
+              <td class="dt-value">1.180 &plusmn; 0.095</td>
+              <td class="dt-value">1.197</td>
+              <td class="dt-value">&minus;1.31</td>
+            </tr>
+            <tr>
+              <td class="dt-label"><b>Synthesised</b><div style="font-size:12px;color:var(--text-3);margin-top:2px">CoRE MOF 2019 &mdash; real materials</div></td>
+              <td class="dt-value">61</td>
+              <td class="dt-value">0.951 &ndash; 1.475</td>
+              <td class="dt-value"><b>1.10 &ndash; 1.29</b></td>
+              <td class="dt-value">1.198 &plusmn; 0.132</td>
+              <td class="dt-value">1.214</td>
+              <td class="dt-value">&minus;1.31</td>
+            </tr>
+            <tr style="font-weight:640">
+              <td class="dt-label">Combined</td>
+              <td class="dt-value">138</td>
+              <td class="dt-value">0.951 &ndash; 1.475</td>
+              <td class="dt-value"><b>1.10 &ndash; 1.26</b></td>
+              <td class="dt-value">1.188 &plusmn; 0.113</td>
+              <td class="dt-value">1.203</td>
+              <td class="dt-value">&minus;1.31</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" data-kind="Read this row by row">
+        <b>The two bands agree on their centre and disagree on their spread.</b> Medians 1.197
+        against 1.214; means differing by 0.018, which a Welch test cannot distinguish from zero
+        (<i>p</i>&nbsp;=&nbsp;0.38). But the synthesised standard deviation is 0.132 against 0.095,
+        and a Levene test <i>can</i> distinguish those (<i>p</i>&nbsp;=&nbsp;0.010). Real
+        frameworks are more varied than generated ones &mdash; which is the expected direction, and
+        worth stating because the usual worry runs the other way, that a hand-curated set will be
+        artificially narrow.
+      </div>
+
+      <h3 class="sub-head">What a band is for &mdash; four uses, two of them supported</h3>
+
+      <div class="grid2">
+        <div class="panel">
+          <h4>1. A null range <span class="tagx good">supported</span></h4>
+          <p class="sd">You cannot call a framework &ldquo;unusually heterogeneous&rdquo; without
+          knowing what usual is. The band supplies that reference. Before this work there was no
+          published range for &Delta;&alpha; over MOFs at all, so any claim about a single
+          structure had nothing to be measured against. This is the least glamorous use and the
+          one the data actually supports.</p>
+        </div>
+        <div class="panel">
+          <h4>2. Pipeline quality control <span class="tagx good">supported</span></h4>
+          <p class="sd">A framework landing far outside the band is a flag: either it is genuinely
+          unusual, or &mdash; far more often &mdash; the CIF was misparsed, the structure is
+          interpenetrated, or the supercell came out disconnected. That is exactly how the 39
+          rejected structures in this run were caught. A descriptor with a known range is a
+          cheap correctness check on everything upstream of it.</p>
+        </div>
+        <div class="panel">
+          <h4>3. Transfer from cheap data to real materials <span class="tagx good">supported, and new</span></h4>
+          <p class="sd">There are hundreds of thousands of hypothetical frameworks and only
+          thousands of synthesised ones. If a rule calibrated on the cheap, plentiful set were
+          invalid on real materials, the plentiful set would be useless for calibration. The two
+          bands coinciding says it is not: <b>you may calibrate on hMOFs and apply to real MOFs</b>,
+          at least for this descriptor. That is the one genuinely new, useful thing on this page.</p>
+        </div>
+        <div class="panel">
+          <h4>4. Screening candidates <span class="tagx bad">not supported</span></h4>
+          <p class="sd">The aspiration is to triage candidates before spending hours of simulation
+          on them. That requires &Delta;&alpha; to correlate with a property someone wants, and
+          <b>nothing here demonstrates that</b>. Worse, the band is wide relative to its centre:
+          the combined interquartile band spans 1.10&ndash;1.26 while individual frameworks run
+          0.95&ndash;1.48, so &ldquo;inside the band&rdquo; is a weak statement about any single
+          structure. As a filter on its own it would discard little and mean less.</p>
+        </div>
+      </div>
+
+      <div class="callout warn" data-kind="The honest limit">
+        <b>How discriminating is the band, really?</b> If the combined interquartile band
+        (1.10&ndash;1.26) were used as a pass/fail screen it would admit 58% of the hypothetical
+        frameworks and 38% of the synthesised ones. That is not a sharp instrument, and it should
+        not be sold as one. Its value today is as a <i>reference range</i> and a
+        <i>correctness check</i>, not as a decision rule. Turning it into a decision rule requires
+        the regression against measured adsorption that has not been done.
+      </div>
+
+      <div class="callout" data-kind="How to use it on your own structure">
+        <b>Concretely, for one framework.</b> Upload a CIF on the
+        <a href="decomposition.html#walkthrough">decomposition page</a> and the pipeline runs in the
+        browser. If the resulting &Delta;&alpha; lands between roughly 1.10 and 1.26 the framework
+        is structurally ordinary by this measure. Between 0.95 and 1.48 it is within everything the
+        138 frameworks span. <b>Outside 0.95&ndash;1.48, check the parse before believing the
+        number</b> &mdash; in this project every such case so far has been a broken input rather
+        than an exotic material. Quote it with its uncertainty, which is about &plusmn;0.016 from
+        the random box covering, and never to more than two decimal places.
+      </div>
+
+      <h2 class="section-title" id="realmof" data-toc="How the 61 were obtained"><span class="stitle-num">5</span>How Those Sixty-One Frameworks Were Obtained</h2>
       <p class="section-sub">The route to real structures had to be rebuilt twice: once because the database returned the wrong records, and once because the service stopped returning records at all.</p>
 <dl class="bridge"><dt>You know</dt><dd>That the two bands coincide.</dd><dt>This section</dt><dd class="now">Explains where those 61 real structures came from, and the two separate failures that made getting them hard.</dd><dt>Which lets us</dt><dd>Judge the provenance of the data, which is the part most easily faked and least often shown.</dd></dl>
 
