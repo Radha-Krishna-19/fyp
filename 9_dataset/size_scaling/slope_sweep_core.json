@@ -1,0 +1,298 @@
+{
+  "label": "CoRE MOF",
+  "n_input": 20,
+  "n_usable": 15,
+  "records": [
+    {
+      "name": "ABIYIV_clean",
+      "ok": true,
+      "K_blocks": 36,
+      "diameters": [
+        14.0,
+        20.0,
+        26.0
+      ],
+      "widths": [
+        1.3170506710736198,
+        1.6315672664287248,
+        1.8411426891060785
+      ],
+      "slope": 0.8486646254201896,
+      "intercept": -0.9191057531032021,
+      "n_points": 3
+    },
+    {
+      "name": "ABULOB_clean",
+      "ok": false,
+      "reason": "only 0 usable sizes under the 5000-node cap"
+    },
+    {
+      "name": "ACAJIZ_clean",
+      "ok": true,
+      "K_blocks": 16,
+      "diameters": [
+        8.0,
+        12.0,
+        16.0
+      ],
+      "widths": [
+        1.5499921059362585,
+        1.8008336919213654,
+        1.9692008242718089
+      ],
+      "slope": 0.6057001114343287,
+      "intercept": 0.2920143719700304,
+      "n_points": 3
+    },
+    {
+      "name": "ACALIB_clean",
+      "ok": false,
+      "reason": "only 1 usable sizes under the 5000-node cap"
+    },
+    {
+      "name": "ACIBIY_clean",
+      "ok": true,
+      "K_blocks": 86,
+      "diameters": [
+        10.0,
+        14.0
+      ],
+      "widths": [
+        2.1981320799482305,
+        2.472687821695839
+      ],
+      "slope": 0.8159833468123345,
+      "intercept": 0.3192609894467574,
+      "n_points": 2
+    },
+    {
+      "name": "ACODAZ_clean",
+      "ok": true,
+      "K_blocks": 48,
+      "diameters": [
+        12.0,
+        18.0,
+        24.0
+      ],
+      "widths": [
+        1.7565392512928462,
+        2.0579189395294613,
+        2.29846145404348
+      ],
+      "slope": 0.7792992575686425,
+      "intercept": -0.18422860599019164,
+      "n_points": 3
+    },
+    {
+      "name": "ACODUT_clean",
+      "ok": false,
+      "reason": "only 0 usable sizes under the 5000-node cap"
+    },
+    {
+      "name": "ADABUE_clean",
+      "ok": true,
+      "K_blocks": 10,
+      "diameters": [
+        8.0,
+        11.0,
+        14.0
+      ],
+      "widths": [
+        1.1765527274260172,
+        1.5960704932030083,
+        1.775858655317876
+      ],
+      "slope": 1.083754805802362,
+      "intercept": -1.0546481592327264,
+      "n_points": 3
+    },
+    {
+      "name": "ADATAC_clean",
+      "ok": true,
+      "K_blocks": 20,
+      "diameters": [
+        8.0,
+        12.0,
+        16.0
+      ],
+      "widths": [
+        1.6393813496181586,
+        2.0473003140818484,
+        2.3125816852488015
+      ],
+      "slope": 0.9735087905140125,
+      "intercept": -0.38110307733076726,
+      "n_points": 3
+    },
+    {
+      "name": "ADAXEK_clean",
+      "ok": false,
+      "reason": "only 1 usable sizes under the 5000-node cap"
+    },
+    {
+      "name": "ADAXIO_clean",
+      "ok": true,
+      "K_blocks": 20,
+      "diameters": [
+        8.0,
+        10.0,
+        13.0
+      ],
+      "widths": [
+        1.6328476792527695,
+        1.929484849279163,
+        2.1955158751681196
+      ],
+      "slope": 1.154717814615043,
+      "intercept": -0.7546495107072431,
+      "n_points": 3
+    },
+    {
+      "name": "ADOBIF_clean",
+      "ok": false,
+      "reason": "only 0 usable sizes under the 5000-node cap"
+    },
+    {
+      "name": "ADUWIH_clean",
+      "ok": true,
+      "K_blocks": 16,
+      "diameters": [
+        9.0,
+        12.0
+      ],
+      "widths": [
+        2.029155520502247,
+        2.131184161784528
+      ],
+      "slope": 0.35465762747305923,
+      "intercept": 1.2498930648786875,
+      "n_points": 2
+    },
+    {
+      "name": "acs.chemmater.6b02817_cm6b02817_si_004_clean",
+      "ok": true,
+      "K_blocks": 20,
+      "diameters": [
+        8.0,
+        10.0,
+        12.0
+      ],
+      "widths": [
+        1.502911822916662,
+        1.8861709426784046,
+        2.0967862061015765
+      ],
+      "slope": 1.4739836803256885,
+      "intercept": -1.5452928744951508,
+      "n_points": 3
+    },
+    {
+      "name": "acs.inorgchem.6b00894_ic6b00894_si_002_clean",
+      "ok": true,
+      "K_blocks": 32,
+      "diameters": [
+        14.0,
+        10.0,
+        26.0
+      ],
+      "widths": [
+        1.1966606750605067,
+        1.7939385493251194,
+        1.887339725162903
+      ],
+      "slope": 0.22408842708514598,
+      "intercept": 1.0134907811173282,
+      "n_points": 3
+    },
+    {
+      "name": "acs.inorgchem.6b01211_ic6b01211_si_002_clean",
+      "ok": true,
+      "K_blocks": 18,
+      "diameters": [
+        10.0,
+        14.0
+      ],
+      "widths": [
+        1.8670292831305773,
+        2.1854321323100514
+      ],
+      "slope": 0.9462975381767396,
+      "intercept": -0.31190132181214897,
+      "n_points": 2
+    },
+    {
+      "name": "acs.inorgchem.6b02514_ic6b02514_si_002_clean",
+      "ok": true,
+      "K_blocks": 20,
+      "diameters": [
+        10.0,
+        14.0,
+        18.0
+      ],
+      "widths": [
+        1.4067606300913553,
+        1.6665594808583357,
+        1.8737040214371845
+      ],
+      "slope": 0.7931861274374492,
+      "intercept": -0.421740288494481,
+      "n_points": 3
+    },
+    {
+      "name": "acs.jchemed.6b00258_ed6b00258_si_005_clean",
+      "ok": true,
+      "K_blocks": 20,
+      "diameters": [
+        10.0,
+        15.0,
+        20.0
+      ],
+      "widths": [
+        1.352180928907078,
+        1.7550072526688787,
+        1.948697248973648
+      ],
+      "slope": 0.8693140526803751,
+      "intercept": -0.6347208023110489,
+      "n_points": 3
+    },
+    {
+      "name": "acs.jpcc.6b04690_jp6b04690_si_005_clean",
+      "ok": true,
+      "K_blocks": 30,
+      "diameters": [
+        12.0,
+        12.0,
+        16.0
+      ],
+      "widths": [
+        1.126410235019975,
+        1.3119991241401294,
+        1.4152383294392692
+      ],
+      "slope": 0.6814246302820078,
+      "intercept": -0.4740719155370395,
+      "n_points": 3
+    },
+    {
+      "name": "acs.jpcc.6b08594_UiO66_Ce2Zr4_opt_clean",
+      "ok": true,
+      "K_blocks": 14,
+      "diameters": [
+        8.0,
+        10.0
+      ],
+      "widths": [
+        1.989503961344404,
+        2.315646981964104
+      ],
+      "slope": 1.461583893860571,
+      "intercept": -1.049774304199438,
+      "n_points": 2
+    }
+  ],
+  "slope_mean": 0.87107764863253,
+  "slope_sd": 0.3330401567420187,
+  "slope_min": 0.22408842708514598,
+  "slope_max": 1.4739836803256885
+}

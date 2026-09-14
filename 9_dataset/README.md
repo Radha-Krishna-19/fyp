@@ -158,6 +158,16 @@ permanently, which is a stronger provenance guarantee than a query.
 > box-covering trial noise on an already non-converged descriptor. See
 > `size_scaling/size_strata_figure.png` and `2_python/code_14_size_strata.py`.
 >
+> **A proposal, not a result: does the Δα(D) divergence slope itself vary
+> between frameworks?** A capped check (20 structures per dataset, size-spread
+> sample, supercell capped at 5000 nodes, `2_python/code_15_dataset_sweeps.py`)
+> found the fitted slope's spread across 15 CoRE MOF structures (sd 0.333,
+> range 0.224–1.474) about 2.5× that across 19 hMOF structures (sd 0.134,
+> range 0.407–0.818) — consistent with the slope carrying real structural
+> signal, but equally consistent with sampling noise at this small, one-seed
+> sample size. Not established either way; see
+> `size_scaling/slope_sweep_figure.png`.
+>
 > Practically: **every `delta_alpha` value in both CSV files below is a
 > function of the atomic graph it was measured on, not of the framework it is
 > attributed to, for two independent reasons.** The band widths, the
