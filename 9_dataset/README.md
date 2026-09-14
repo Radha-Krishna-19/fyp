@@ -140,8 +140,23 @@ permanently, which is a stronger provenance guarantee than a query.
 > at every q range tested (|q| ≤ 10 down to |q| ≤ 2), with no plateau. The
 > mechanism: at the extremes of q the partition function is dominated by a
 > single box, the smallest possible box is one vertex, and that term grows
-> with graph size without bound. See `PROJECT_NOTES.md` and
-> `2_python/code_12_converged_band.py` for the sweep and its numbers.
+> with graph size without bound. Fitted slopes of Δα against ln(diameter),
+> full q range: HKUST-1 (tbo) 0.782, MOF-5 (pcu) 0.732, ZIF-8 (sod) 0.886,
+> UiO-66 (fcu) 0.692 — all R² ≥ 0.998, so the divergence is not net-specific,
+> though the rate is. See `size_scaling/convergence_figure.png` in this
+> folder, `PROJECT_NOTES.md`, and `2_python/code_12_converged_band.py` /
+> `2_python/_run_size_scaling.py` for the sweep and its full numbers.
+>
+> **The sub-bands (Narrow/Medium/Wide) a teammate's separate coarse-grained
+> run cut the hMOF set into are size strata, not chemistry.** Of 14 distinct
+> coarse-grained graph signatures across 76 structures, 13 are entirely one
+> class — class is a deterministic function of graph size wherever the graph
+> actually differs. The 14th signature (256 nodes, 384 edges, diameter 12 —
+> the 4×4×4 pcu tiling) accounts for 48 of the 76 structures (63%) and spans
+> **all three classes** (36 Medium, 6 Wide, 6 Narrow), because coarse-graining
+> cannot see the linker-chemistry difference between them; the split there is
+> box-covering trial noise on an already non-converged descriptor. See
+> `size_scaling/size_strata_figure.png` and `2_python/code_14_size_strata.py`.
 >
 > Practically: **every `delta_alpha` value in both CSV files below is a
 > function of the atomic graph it was measured on, not of the framework it is
