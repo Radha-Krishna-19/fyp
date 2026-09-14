@@ -208,8 +208,8 @@ window.GLOSSARY = [
 
 { term: 'Δα', aka: ['delta alpha', 'Delta-alpha', 'spectrum width', 'width'],
   group: 'Fractals', needs: ['α', 'f(α)'],
-  short: 'The width of the spectrum, α_max − α_min. The single headline descriptor of this project.',
-  long: 'How varied the framework’s connectivity is. Small Δα means every part of the pore network grows at much the same rate; large Δα means the structure mixes dense and sparse regions. Across the 77 hypothetical frameworks Δα falls in 1.11–1.25. **It rises with graph size**, which is why any correlation with Δα must be checked against graph size before it can be believed — a lesson this project learned the hard way.' },
+  short: 'The width of the spectrum, α_max − α_min. Intended as the headline descriptor of this project; withdrawn, see below.',
+  long: 'Intended to measure how varied the framework’s connectivity is: small Δα means every part of the pore network grows at much the same rate, large Δα means the structure mixes dense and sparse regions. Across the 77 hypothetical frameworks Δα as originally computed fell in 1.11–1.25 — but that number is withdrawn: it does not converge as the supercell grows, at any tested range of the distortion exponent q, and it was in fact computed on the atomic graph rather than the coarse-grained graph this project otherwise uses. See the Results page and PROJECT_NOTES.md.' },
 
 { term: 'α₀', aka: ['alpha_0', 'alpha zero'],
   group: 'Fractals', needs: ['α', 'f(α)'],
@@ -219,7 +219,7 @@ window.GLOSSARY = [
 { term: 'asymmetry', aka: ['A', 'spectrum asymmetry'],
   group: 'Fractals', needs: ['α', 'α₀'],
   short: 'Whether the spectrum leans left or right: A = ln[(α₀ − α_min) / (α_max − α₀)].',
-  long: 'A > 0 means common structural motifs dominate the spectrum; A < 0 means rare ones do. All 77 frameworks here have A between −1.51 and −1.04, so their spectra are consistently dominated by rare, sparse regions.' },
+  long: 'A > 0 means common structural motifs dominate the spectrum; A < 0 means rare ones do. All 77 frameworks here have A between −1.51 and −1.04 as originally computed — but, like Δα itself, this was measured on the withdrawn atomic-graph spectra (see Δα), so read the sign as a property of that computation, not yet as a settled property of the frameworks.' },
 
 /* ------------------------------------------------------------- statistics */
 { term: 'confound', aka: ['confounding', 'confounded'],

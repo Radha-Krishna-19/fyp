@@ -98,7 +98,7 @@
      {
       "name": "delta_alpha",
       "type": "number",
-      "description": "PRIMARY DESCRIPTOR. Spectrum width. Scales with graph size - control for n_blocks before correlating with anything."
+      "description": "WITHDRAWN AS A STRUCTURAL FINDING (2026-09-14/15, see README.md and PROJECT_NOTES.md in the repository): does not converge with supercell diameter at any tested range of the distortion exponent q, and was computed on the atomic supercell graph rather than the coarse-grained graph this dataset's schema otherwise describes. Controlling for n_blocks does not fix this - it only addressed a separate, now-subsumed confound. Retained for audit."
      },
      {
       "name": "delta_alpha_sd",
