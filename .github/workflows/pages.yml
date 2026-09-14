@@ -1,25 +1,30 @@
-# Publishes 1_website/ to GitHub Pages on every push to main.
+# Runs the site's test suites on every push. Publishing to GitHub Pages is
+# NOT wired to push — Pages isn't enabled on this repo right now, and a
+# "deploy" job that fails for that reason on every push is a false red X
+# that has nothing to do with whether the code is good. Deploy is kept, but
+# only as a manual action (Actions tab -> Run workflow), for whenever Pages
+# does get turned on.
 #
-# WHY A WORKFLOW RATHER THAN "DEPLOY FROM BRANCH"
+# WHY A WORKFLOW RATHER THAN "DEPLOY FROM BRANCH", if that day comes
 # Pages' branch mode can only serve the repository root or /docs. The site
 # lives in 1_website/, so branch mode would either need the site moved (which
 # breaks every path in the project layout) or a redirect stub at the root
 # (which makes the published URL ugly and the redirect visible). This uploads
 # 1_website/ AS the site root, so the published URL is clean and nothing in
 # the repository has to move.
-name: Publish project site
+name: Site checks
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:        # lets you republish from the Actions tab by hand
+  workflow_dispatch:        # also lets you deploy on demand, see the `deploy` job
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Never let two publishes race. If a second push lands mid-deploy the queued
+# Never let two deploys race. If a second run lands mid-deploy the queued
 # run is replaced rather than both writing to the same target.
 concurrency:
   group: pages
@@ -47,7 +52,11 @@ jobs:
           node test_decompose.js
           node test_render_robustness.js
 
+  # Deploy to GitHub Pages -- MANUAL ONLY (Actions tab -> "Site checks" ->
+  # Run workflow). Does not run on push, so it cannot fail a normal push
+  # just because Pages hasn't been switched on in Settings yet.
   deploy:
+    if: github.event_name == 'workflow_dispatch'
     needs: test
     runs-on: ubuntu-latest
     environment:
