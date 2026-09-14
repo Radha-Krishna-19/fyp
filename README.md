@@ -36,29 +36,37 @@ numbers. Does that compression retain anything real?
 
 ## What we found
 
-**A band exists.** Across 77 frameworks, the spectrum width Δα falls in
-**1.11 – 1.25** (interquartile range). All 77 spectra are mathematically valid.
+**Both published bands are withdrawn as structural findings.** The 77-framework
+hMOF band and the 61-framework CoRE MOF band (`9_dataset/`) were both computed
+by running the multifractal analysis on the **atomic** supercell bond graph,
+not on the coarse-grained building-block graph the site and dataset
+documentation describe. A finite-size sweep on four demonstration structures
+(HKUST-1, MOF-5, ZIF-8, UiO-66 — tbo, pcu, sod and fcu nets) shows the spectrum
+width Δα growing with supercell diameter at every range of the distortion
+exponent *q* tested, with no plateau. The mechanism: at the extremes of
+*q* ∈ [−10, 10] the partition function is dominated by a single box, and the
+smallest possible box is one vertex — so the tail of the spectrum inherits a
+term that grows with graph size forever. On top of that, an atomic MOF graph
+spans two length scales — molecular, inside one linker or cluster, and
+framework, above one linker length — and fitting one power law across that
+crossover is not a valid scaling measurement to begin with. Both bands are kept
+in `9_dataset/` for audit, with this reasoning, rather than deleted or
+recomputed at a cap that does not exist. See `PROJECT_NOTES.md` and the Results page
+for the full account, including the earlier pore-size and four-structure
+withdrawals this project already carried.
 
-**One claim was withdrawn.** Δα correlates with pore diameter at *r* = −0.497,
-which looked like a result. Controlling for the number of blocks in the graph
-collapses it to **+0.101**, while graph size survives at +0.621, and adding pore
-size to a size-only model improves R² by **0.005**. The descriptor was largely
-measuring how big the graph was. We removed the claim from the project rather
-than reporting it.
+**One claim, now superseded by the above.** Δα correlated with pore diameter at
+*r* = −0.497 in the 77-framework set, which looked like a result. Controlling
+for the number of blocks in the graph collapsed it to **+0.101**, while graph
+size survived at +0.621. That confound analysis is still correct as far as it
+goes, but it is now understood as one symptom of the larger problem: Δα was
+never a converged, size-independent quantity in the first place.
 
-**The descriptor transfers to real materials.** 61 experimentally synthesised
-frameworks from CoRE MOF 2019, size-matched under the same supercell rule, span
-Δα = 0.95 – 1.47 against the hypothetical set's 1.02 – 1.41. The means differ by
-0.018 (Welch *p* = 0.38) and mean asymmetry is −1.31 in both: the same band and
-the same spectrum shape. A band calibrated entirely on computer-generated
-structures is valid on structures that exist.
-
-**A claim we withdrew to get there.** This README previously reported that four
+**A claim we withdrew earlier.** This README previously reported that four
 synthesised MOFs sat *clear* of the hypothetical band at Δα = 1.66 – 2.26. That
-is withdrawn. Those four were expanded to 256–972 atoms while the 77 hMOFs
-occupy 3024–6592 — no hMOF is as small as the largest of the four — and Δα rises
-with atom count at r = +0.73. The comparison was reading graph size, the same
-confound that killed the pore-size claim above. The reasoning is on the
+was withdrawn before the finding above: those four were expanded to 256–972
+atoms while the 77 hMOFs occupy 3024–6592 atoms, and Δα rises with atom count at
+r = +0.73. The comparison was reading graph size. The reasoning is on the
 [Results page](https://radha-krishna-19.github.io/fyp/results.html#realband)
 and in [`4_reference/make_real_band_figures.py`](4_reference/make_real_band_figures.py).
 
@@ -83,8 +91,12 @@ the query now filters each returned record on its own `database` field.
 
 ## Repository layout
 
+This is the repository root — there is no `metal_oxo_deep_dive/` prefix inside
+it; that name belongs only to the local folder containing `.git` on the
+maintainer's machine.
+
 ```
-metal_oxo_deep_dive/
+fyp/
 ├── 1_website/        The documentation portal. Open index.html — no server needed.
 ├── 2_python/         Reference implementation, 12 annotated modules
 ├── 3_notebooks/      The 77-framework analysis + the real-MOF twin
@@ -107,7 +119,7 @@ as-is. Run `python 1_website/_build/build_site.py` after editing content.
 
 ```bash
 git clone https://github.com/Radha-Krishna-19/fyp.git
-cd fyp/metal_oxo_deep_dive/1_website
+cd fyp/1_website
 # open index.html in any browser
 ```
 
@@ -118,11 +130,11 @@ files in the folder; none is hardcoded.
 
 ### Run the pipeline
 
-Requires Python 3.9+ and NumPy. Nothing else.
+Requires Python 3.9+, NumPy and NetworkX.
 
 ```bash
-cd metal_oxo_deep_dive/2_python
-pip install numpy
+cd fyp/2_python
+pip install numpy networkx
 
 # decompose one framework end to end
 python code_00_pipeline_driver.py HKUST-1.cif
@@ -147,12 +159,12 @@ minutes.
 ### Run the tests
 
 ```bash
-cd metal_oxo_deep_dive/1_website/tests
+cd fyp/1_website/tests
 npm install jsdom
 npm test
 ```
 
-Six suites, 300+ assertions. They boot the real pages headlessly and assert on
+Nine suites. They boot the real pages headlessly and assert on
 **computed output**, because this site's failure mode is a silently blank panel
 rather than a visible error.
 
@@ -187,26 +199,40 @@ they disagree, one is wrong — and that disagreement is loud, whereas a single
 implementation is silently self-consistent even when it is wrong. Two of the
 three defects above were caught exactly this way.
 
+## The project goal, stated plainly
+
+Decide whether a descriptor computed from a MOF's connectivity alone — no
+molecular simulation, seconds per structure — carries enough structural
+information to be a useful pre-filter: to say which of a large candidate set
+is worth the hours of simulation the field currently spends on all of them
+indiscriminately. That is a yes/no question about a specific descriptor
+(Δα, the multifractal spectrum width), not a general claim that graphs are
+useful for MOFs.
+
 ## Implementation status
 
-Reported on two axes, because "we built a lot" and "we established something"
-are different claims and a single percentage hides the difference.
+Reported on two axes, because "we built a lot" and "we established something
+true" are different claims and a single percentage hides the difference.
 
 | Axis | Figure | What it covers |
 |---|---|---|
-| **Engineering** | **88%** | Eight of nine modules complete and integrated. A CIF goes in, a validated three-number descriptor comes out — live in the browser and from the command line. |
-| **Scientific validation** | **75%** | The descriptor is provably correct, honestly characterised (two withdrawn claims), and now shown to transfer to 61 experimentally synthesised frameworks. Its scientific *usefulness* — whether it predicts a measured property — is still not established. |
-| **Overall** | **≈82%** | Weighted equally. |
+| **Engineering** | **~85%** | The decomposition, the periodic quotient graph, the supercell expansion and the multifractal spectrum all run correctly, end to end, live in the browser and from the command line, and agree between the two independent implementations. What is missing is a size-independent version of the spectrum computation (see below) and a topologically diverse comparison set. |
+| **Scientific validation** | **~35%** | The pipeline up to and including the raw spectrum is provably correct. But the project's own finite-size sweep (2026-09-14/15) shows the headline descriptor, Δα, does not converge with supercell size at any tested range of the distortion exponent — so the descriptor as defined **has not been shown to be a property of the framework at all**, on either published dataset. Answering the project's stated goal requires either a size-independent redefinition of Δα or a different descriptor; neither exists yet. |
+| **Overall** | **~55%** | Not an average of the two rows above: the scientific-validation failure is a gating one. A correctly engineered pipeline computing a descriptor that has not been shown to converge is a real result — it rules out the naive approach — but it is not the answer the project set out to find. |
 
-The Panel Review 1 rubric asks for roughly 60% with major modules integrated
-and core functionality demonstrated. The engineering axis clears that.
+**This figure is lower than an earlier version of this README reported**, and
+that is the honest consequence of the 2026-09-14/15 finite-size finding, not a
+new setback: the convergence problem was always there, in every number this
+project had published, and was simply not tested for until now. See
+`PROJECT_NOTES.md` and the Results page for the finding and what would resolve it.
 
-**What the remaining 27% is.** Entirely external validation: running the
-finished pipeline over ~50 experimentally synthesised structures. That would
-settle family separation, settle whether the real-MOF gap is real, and give the
-band a meaning beyond one generator's output. Nothing needs to be built for it —
-it is a data task. Full module-by-module audit on the
-[Team page](1_website/team.html).
+**What remains.** (1) Either a size-independent Δα — a fixed, a-priori q range,
+a different partition-function normalisation, or reporting the Δα(D) growth
+slope itself as the descriptor — or a documented decision to retire Δα and
+report the slope, or another descriptor, as the headline instead. (2) A
+topologically diverse comparison set spanning pcu, tbo, sod, fcu and rht nets;
+the current 77-framework hMOF sample is dominated by one net (pcu) at one
+graph size. Full module-by-module audit on the [Team page](1_website/team.html).
 
 ---
 
@@ -214,15 +240,17 @@ it is a data task. Full module-by-module audit on the
 
 Stated plainly, because a reviewer will ask.
 
+- **Δα, as currently defined, has not been shown to converge with graph size.**
+  Neither published band should be read as a structural or chemical finding.
 - **Δα does not predict gas uptake.** Nothing here computes adsorption.
-- **The main dataset is not experimental.** All 77 are hypothetical, generated
+- **The hMOF dataset is not experimental.** All 77 are hypothetical, generated
   structures. Any sentence calling them experimental is false.
-- **No cross-family claim.** All 77 share one metal (Zn₄O), so the band is a band
-  *within* one family.
+- **No cross-family claim from the hMOF set.** All 77 share one metal (Zn₄O),
+  so any band computed on it is a band *within* one family.
 - **The graph is unweighted and untyped.** Bond order and element identity are
   discarded by design. What survives is pure architecture.
-- **This does not replace simulation.** It is a pre-filter for deciding *what* to
-  simulate.
+- **This does not replace simulation.** It is intended as a pre-filter for
+  deciding *what* to simulate — an intended use, not yet a demonstrated one.
 
 ## Team
 

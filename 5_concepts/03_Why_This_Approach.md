@@ -110,7 +110,7 @@ The field does this with the **MOFid** pipeline (Snurr group, Northwestern), whi
 - **A correct periodic block graph.** All four test structures reproduce published coordination numbers, including UiO-66 at 12 where a naive construction gives 6.
 - **A real finding about influence:** in a defect-free crystal, influence cannot be ranked, because every node is symmetry-equivalent and "top-k by degree" is a tie. Introducing a defect makes it measurable — λ₂ falls 1.44 → 1.19 for a single missing linker in HKUST-1.
 - **A correctly computed multifractal spectrum.** All 77 frameworks give proper inverted parabolas peaking at `q = 0`.
-- **A tight, well-defined band** across 77 frameworks: Δα interquartile 1.11 – 1.25, with the asymmetry negative in every single one.
+- **A tight, well-defined band** across 77 frameworks: Δα interquartile 1.11 – 1.25, with the asymmetry negative in every single one — **withdrawn, 2026-09-14/15: this band does not converge with supercell size at any tested q range, and was computed on the atomic graph rather than the coarse-grained one this project describes. See `PROJECT_NOTES.md`.**
 
 ### 5.2 · Not achieved — and why that is the result
 

@@ -347,7 +347,13 @@ The band work was scaled from 8 frameworks to **77**, drawn from MOFX-DB, analys
 ### 8.1 · What a band is
 
 
-A band is the range of spectrum width Δα that a group of frameworks shares, so a new framework can be tested for membership. Across the 77 the interquartile band is **Δα = 1.11 – 1.25**, with the asymmetry `A` negative in every single framework — a consistent family signature.
+A band is the range of spectrum width Δα that a group of frameworks shares, so a new framework can be tested for membership. Across the 77 the interquartile band is **Δα = 1.11 – 1.25**, with the asymmetry `A` negative in every single framework — a consistent family signature *in the numbers as originally computed*.
+
+> **Withdrawn, 2026-09-14/15.** This band does not converge with supercell diameter at any
+> tested range of q, and it was computed on the atomic supercell graph rather than the
+> coarse-grained graph described in this chapter — a graph that spans two length scales a
+> single power-law fit cannot legitimately span. See `PROJECT_NOTES.md` for the finite-size sweep and
+> the corrected account of which graph was actually used.
 
 
 ### 8.2 · Does the band mean pore architecture? No.

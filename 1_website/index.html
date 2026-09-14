@@ -80,33 +80,35 @@
         <div class="keynum is-warn"><b>&minus;0.50 &rarr; +0.10</b><span>the pore-size correlation, once graph size is controlled for</span></div>
       </div>
 
-      <div class="callout bad" data-kind="Withdrawn, 2026-09-14">
-        <b>The band does not converge, at any tested range of q, and should not be read as a structural result.</b>
+      <div class="callout bad" data-kind="Withdrawn, 2026-09-14, corrected 2026-09-15">
+        <b>The band does not converge, at any tested range of q, and should not be read as a structural result &mdash; for two separate reasons.</b>
         &Delta;&alpha; is measured over an exponent <i>q</i> &isin; [&minus;10, 10]; at the extremes
         of that range the measurement is dominated by a single box, so &Delta;&alpha; inherits a
         term that grows with supercell size and never settles. We tested whether narrowing the
         <i>q</i> range removes this dependence, on four frameworks spanning four different nets
-        (pcu, sod, fcu), and it does not: at every cap tried (|q| &le; 10, 8, 5, 4, 3, 2) &Delta;&alpha;
+        (pcu, tbo, sod, fcu), and it does not: at every cap tried (|q| &le; 10, 8, 5, 4, 3, 2) &Delta;&alpha;
         continued to drift as the supercell grew, by more than the 5% tolerance we set for
-        calling it settled. Both bands below were computed at one fixed supercell size
-        (diameter 8&ndash;12) and are therefore a readout of that choice, not of the frameworks.
-        The numbers are kept, and the method that produced them documented in full, on the
+        calling it settled. Separately, both bands below were in fact computed on the
+        <b>atomic</b> supercell graph rather than the coarse-grained graph this site describes
+        &mdash; a graph that spans a molecular and a framework length scale, across which a single
+        power-law fit is not valid regardless of size. The numbers are kept, and the method that
+        produced them documented in full, on the
         <a href="results.html#band">Results</a> page and in
         <a href="https://github.com/Radha-Krishna-19/fyp">the dataset README</a>, exactly as the
         two withdrawn claims below were kept rather than deleted.
       </div>
 
-      <div class="callout good" data-kind="What still held up">
-        <b>Where the two sets were compared, they agreed.</b> The band, unconverged as it is, was
-        calibrated on computer-generated frameworks and applied unchanged to 61 experimentally
-        synthesised MOFs from CoRE MOF 2019. The two sets landed at the same centre
-        (&Delta;&alpha; = 0.95&ndash;1.47 for the synthesised set against 1.02&ndash;1.41 for the
-        hypothetical one; means differ by 0.018, <i>p</i>&nbsp;=&nbsp;0.38) and the same spectrum
-        shape. That agreement does not make the band converged, but it does mean whatever
-        &Delta;&alpha; is measuring is applied the same way to both sets. This replaced an earlier
-        claim, made from four structures, that the two sets did <i>not</i> overlap; that claim was
-        withdrawn on the <a href="results.html#realband">Results</a> page along with the reason it
-        was wrong.
+      <div class="callout warn" data-kind="What this agreement is, and is not, worth">
+        <b>The two sets landed in the same place &mdash; which is a weaker fact than it sounds.</b>
+        The band, unconverged and computed on the wrong graph, was calibrated on computer-generated
+        frameworks and applied unchanged to 61 experimentally synthesised MOFs from CoRE MOF 2019.
+        The two sets landed at the same centre (&Delta;&alpha; = 0.95&ndash;1.47 for the synthesised
+        set against 1.02&ndash;1.41 for the hypothetical one; means differ by 0.018,
+        <i>p</i>&nbsp;=&nbsp;0.38) and the same spectrum shape. That does not show the descriptor
+        transfers between datasets: it shows the same computational artefact was produced twice,
+        on graphs of overlapping size, computed the same way. This replaced an earlier claim, made
+        from four structures, that the two sets did <i>not</i> overlap; that claim was withdrawn on
+        the <a href="results.html#realband">Results</a> page along with the reason it was wrong.
       </div>
 
       <div class="callout warn" data-kind="A separate, earlier caveat">

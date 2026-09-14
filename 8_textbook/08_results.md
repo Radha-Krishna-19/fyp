@@ -88,7 +88,17 @@ what a multifractal spectrum must look like.
 
 ---
 
-## 8.5 · Result 5 — the band exists
+> **Withdrawn, 2026-09-14/15 — read before the rest of this chapter.** The band described in
+> §8.5 has since been shown not to converge with supercell size, at any tested range of the
+> distortion exponent q, and it was in fact computed on the atomic supercell graph rather than
+> the coarse-grained graph this project's method describes — a graph that spans two length
+> scales a single power-law fit cannot legitimately span. Both are independent reasons the
+> numbers below are not a structural finding. §8.6 already identified the graph-size confound;
+> it is now understood as one symptom of this larger problem rather than a separate defect. See
+> `PROJECT_NOTES.md` and the Results page of the site for the full account. The numbers below are kept
+> so the withdrawal is auditable, as with every other withdrawal in this project.
+
+## 8.5 · Result 5 — the band exists (withdrawn — see above)
 
 Across the 77 frameworks:
 
@@ -162,8 +172,8 @@ of scales. With 77 structures of varying size we could finally *measure* it.
 | 2 | Influence cannot be ranked in a perfect crystal | Only 2 distinct degree values in every structure | **High** — a symmetry argument, not a measurement artefact |
 | 3 | Defects make influence measurable | λ₂ 1.438 → 1.186; centralities 2 → 4 | **High** — reproduced at two graph sizes |
 | 4 | The spectra are computed to the paper's definition | 77/77 peak at q = 0; τ(0) = −2.5669 | **High** — Python and JS agree |
-| 5 | 77 frameworks share a tight Δα band | IQR 1.112–1.250, A negative in all 77 | **High** as description |
-| 6 | **That band is confounded by graph size** | Pore r: −0.497 → +0.101 controlling for size; size survives at +0.621; pore adds R² +0.005 | **High** — and it is why finding 5 cannot yet be interpreted |
+| 5 | 77 frameworks share a tight Δα band | IQR 1.112–1.250, A negative in all 77 | **Withdrawn** — computed on the wrong graph, and does not converge with size on the right one (see box above) |
+| 6 | That band is confounded by graph size | Pore r: −0.497 → +0.101 controlling for size; size survives at +0.621; pore adds R² +0.005 | **High**, but now understood as a symptom of finding 5's failure, not an independent result |
 
 ---
 

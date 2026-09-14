@@ -121,28 +121,35 @@ permanently, which is a stronger provenance guarantee than a query.
 
 ## Known results, including two negative ones
 
-> **Withdrawn (2026-09-14): both bands below are diameter artefacts, not
-> structural findings.** Δα was measured at a fixed supercell rule (diameter
-> 8–12) and never tested for convergence until now. A finite-size sweep on
-> four demonstration frameworks (HKUST-1, MOF5, ZIF-8, UiO-66 — pcu, pcu, sod
-> and fcu nets) shows Δα growing with supercell diameter as
-> Δα ≈ 0.78·ln(D) − 0.28 with no plateau, and — the question this dataset's
-> release did not yet ask — **narrowing the q range over which Δα is measured
-> does not fix it**. Every cap tested (|q| ≤ 10, 8, 5, 4, 3, 2) still drifts
-> by 0.10–0.19 between the two largest supercells checked, against a 0.05
-> convergence tolerance, on every one of the four nets. There is no q window
-> at which Δα stops being a readout of the supercell rule and starts being a
-> property of the framework. This is a negative result about the published
-> method (Xiao *et al.* 2021) as applied here, not an unresolved question.
+> **Withdrawn (2026-09-14, corrected 2026-09-15): both bands below are
+> diameter artefacts, not structural findings.** Both were computed by running
+> the multifractal analysis on the **atomic** supercell bond graph — not on
+> the coarse-grained building-block graph this README describes above.
+> Coarse-graining only supplied the `n_nodes`/`n_linkers` counts; the
+> `graph_diameter` and `n_influential` columns describe the atomic graph
+> (diameters 35–64 for the hMOF set, 34–104 for the CoRE MOF set — not 8–12,
+> which was this project's own earlier misreading of the evidence, since
+> corrected in `PROJECT_NOTES.md`). An atomic MOF graph spans two length scales —
+> molecular, inside one linker or metal cluster, and framework, above one
+> linker length — and fitting a single power law across that crossover is not
+> a valid scaling measurement regardless of graph size.
 >
-> Practically: **every `delta_alpha` value in both CSV files below was
-> computed at diameter 8–12, and is a function of that choice, not of the
-> framework it is attributed to.** The band widths, the pore-size confound
-> analysis, and the real-vs-hypothetical comparison quoted below are kept for
-> audit — exactly as the four-structure claim was kept in `..._real_v1.csv`
-> after its own withdrawal — but none of them should be read as a structural
-> or chemical finding. Reproducing this check:
-> `python 2_python/code_12_converged_band.py`.
+> Independently of that, a finite-size sweep on four demonstration frameworks
+> run on the *correctly* coarse-grained quotient graph (HKUST-1, MOF-5, ZIF-8,
+> UiO-66 — tbo, pcu, sod and fcu nets) shows Δα growing with supercell diameter
+> at every q range tested (|q| ≤ 10 down to |q| ≤ 2), with no plateau. The
+> mechanism: at the extremes of q the partition function is dominated by a
+> single box, the smallest possible box is one vertex, and that term grows
+> with graph size without bound. See `PROJECT_NOTES.md` and
+> `2_python/code_12_converged_band.py` for the sweep and its numbers.
+>
+> Practically: **every `delta_alpha` value in both CSV files below is a
+> function of the atomic graph it was measured on, not of the framework it is
+> attributed to, for two independent reasons.** The band widths, the
+> pore-size confound analysis, and the real-vs-hypothetical comparison quoted
+> below are kept for audit — exactly as the four-structure claim was kept in
+> `..._real_v1.csv` after its own withdrawal — but none of them should be read
+> as a structural or chemical finding.
 
 **The band (superseded — see withdrawal above).** Across the 77 hypothetical frameworks, Δα falls in
 **1.11 – 1.25** (interquartile range; full range 1.02 – 1.41). Asymmetry A is
@@ -206,7 +213,7 @@ reason, on structures that exist.
 
 ```bash
 git clone https://github.com/Radha-Krishna-19/fyp.git
-cd fyp/metal_oxo_deep_dive
+cd fyp
 
 # one framework, from the command line
 python 2_python/code_00_pipeline_driver.py 2_python/HKUST-1.cif
@@ -256,7 +263,14 @@ descriptors computed here are ours.
 
 ## Changelog
 
-**Unreleased — 2026-09-14.** Finite-size convergence testing
+**Unreleased — 2026-09-15.** Corrected the 2026-09-14 entry below: both bands
+were computed on the **atomic** supercell graph, not the coarse-grained graph
+described in this README (diameters 35–64 and 34–104, not 8–12). This sharpens
+rather than reverses the withdrawal — an atomic graph spans a molecular and a
+framework length scale, and fitting one power law across that crossover is
+invalid independently of the finite-size problem below. See `PROJECT_NOTES.md`.
+
+**2026-09-14.** Finite-size convergence testing
 (`2_python/code_12_converged_band.py`) shows Δα does not converge with
 supercell diameter at any q range from ±10 down to ±2, on any of four
 demonstration nets. **Both bands below are withdrawn as structural findings**

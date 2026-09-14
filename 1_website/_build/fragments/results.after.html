@@ -11,6 +11,20 @@
         distribution rather than an anecdote.
       </div>
 
+      <div class="callout bad" data-kind="Withdrawn, 2026-09-15">
+        <b>Everything below this point compares two bands that are both withdrawn.</b> As set out
+        above, Δα does not converge with supercell size on the coarse-grained quotient graph, and
+        both this 61-framework band and the 77-framework hMOF band were in fact computed on the
+        <b>atomic</b> supercell graph, not the coarse-grained graph this site describes &mdash;
+        which additionally spans two length scales (molecular and framework) that a single
+        power-law fit cannot legitimately span. The comparison below is kept, with this notice,
+        because the question it asks &mdash; does a band calibrated on one dataset transfer to
+        another &mdash; is a reasonable one to have asked, and the negative answer about
+        convergence does not depend on which dataset the non-converged number came from. Read
+        every number below as &ldquo;two non-converged quantities agree with each other&rdquo;,
+        not as a chemical or structural finding.
+      </div>
+
       <div id="real-band-body"></div>
 
       <figure class="fig">
@@ -104,18 +118,28 @@
         </div>
       </div>
 
-      <div class="callout good" data-kind="The result">
-        <b>What the corrected result is worth.</b> The finding is no longer &ldquo;synthesised MOFs are
-        different&rdquo;. It is stronger and duller: <b>the descriptor transfers</b>. A quantity calibrated
-        entirely on generated structures lands in the same place, with the same spectrum shape, on
-        sixty-one frameworks that people actually made. A screening rule fitted on hMOFs is not
-        automatically disqualified for real materials &mdash; which is the opposite of what this page
-        warned three months ago, and it is the more useful answer.
+      <div class="callout warn" data-kind="Superseded, 2026-09-15">
+        <b>What this used to say, and why it is weaker than it looks now.</b> This section previously
+        read &ldquo;the descriptor transfers&rdquo; &mdash; a quantity calibrated on generated
+        structures landing in the same place on structures people actually made. That agreement is
+        still a true observation, but both quantities being compared are the same non-converged,
+        size-dependent number computed on the wrong graph (see the withdrawal notice above). Two
+        artefacts of the same computational choice agreeing with each other is not evidence that a
+        screening rule transfers between hMOF and real materials; it only shows the artefact is not
+        specific to one dataset.
       </div>
 
       <h2 class="section-title" id="bands" data-toc="Both bands, and their uses"><span class="stitle-num">0</span>Both Bands, Stated Exactly &mdash; and What a Band Is Actually For</h2>
       <p class="section-sub">The word &ldquo;band&rdquo; has been used loosely on this page. Here it is pinned down: three different definitions, the numbers for each dataset under each, and an honest account of what such a band can and cannot be used for.</p>
-<dl class="bridge"><dt>You know</dt><dd>That both sets of frameworks produce spectrum widths in the same region.</dd><dt>This section</dt><dd class="now">States each band precisely under three definitions, and sets out the four things a band could be used for &mdash; marking which are supported.</dd><dt>Which lets us</dt><dd>Say what this project delivers to someone who wants to use it, rather than only what it measured.</dd></dl>
+<dl class="bridge"><dt>You know</dt><dd>That both sets of frameworks produce spectrum widths in the same region &mdash; and that both are withdrawn as structural findings.</dd><dt>This section</dt><dd class="now">States each band precisely under three definitions, for the record, and sets out what a band of this kind could be used for if a converged version existed.</dd><dt>Which lets us</dt><dd>Say what this project would deliver if the descriptor were fixed, without pretending the numbers below are usable today.</dd></dl>
+
+      <div class="callout bad" data-kind="Withdrawn">
+        <b>The table and the four uses below describe both bands as they were computed &mdash;
+        which is to say, as artefacts.</b> Kept for the record and to make concrete what
+        &ldquo;a band&rdquo; would look like if Δα converged. None of the four uses below is
+        actually available today; the fourth was already marked unsupported before this
+        withdrawal, and the withdrawal removes the other three as well.
+      </div>
 
       <h3 class="sub-head">First: &ldquo;band&rdquo; is three different claims</h3>
       <p>A range can be quoted as the full extent of the data, as the middle half, or as a central interval that discards the tails. They are not interchangeable, and quoting one while implying another is a standard way to overstate a result. All three are given below so the reader can pick.</p>
@@ -170,62 +194,58 @@
         artificially narrow.
       </div>
 
-      <h3 class="sub-head">What a band is for &mdash; four uses, two of them supported</h3>
+      <h3 class="sub-head">What a band is for &mdash; four uses, none of them currently supported</h3>
 
       <div class="grid2">
         <div class="panel">
-          <h4>1. A null range <span class="tagx good">supported</span></h4>
+          <h4>1. A null range <span class="tagx bad">not supported</span></h4>
           <p class="sd">You cannot call a framework &ldquo;unusually heterogeneous&rdquo; without
-          knowing what usual is. The band supplies that reference. Before this work there was no
-          published range for &Delta;&alpha; over MOFs at all, so any claim about a single
-          structure had nothing to be measured against. This is the least glamorous use and the
-          one the data actually supports.</p>
+          knowing what usual is, and a band would supply that reference &mdash; <b>if it were a
+          property of the frameworks rather than of the graph it happened to be measured on.</b>
+          Since Δα drifts with supercell diameter without bound, there is no fixed &ldquo;usual&rdquo;
+          to compare a new structure against; the answer would depend on how large a graph the new
+          structure's pipeline run happened to build.</p>
         </div>
         <div class="panel">
-          <h4>2. Pipeline quality control <span class="tagx good">supported</span></h4>
-          <p class="sd">A framework landing far outside the band is a flag: either it is genuinely
-          unusual, or &mdash; far more often &mdash; the CIF was misparsed, the structure is
-          interpenetrated, or the supercell came out disconnected. That is exactly how the 39
-          rejected structures in this run were caught. A descriptor with a known range is a
-          cheap correctness check on everything upstream of it.</p>
+          <h4>2. Pipeline quality control <span class="tagx warn">partially usable</span></h4>
+          <p class="sd">A framework whose spectrum fails to compute at all, or whose linearity R²
+          collapses, still flags a broken CIF or a disconnected supercell &mdash; that check does
+          not depend on Δα being converged. But using a specific Δα range as the flag (as the 39
+          rejected structures in this run were) is not defensible until the range is defined at a
+          fixed, stated graph size.</p>
         </div>
         <div class="panel">
-          <h4>3. Transfer from cheap data to real materials <span class="tagx good">supported, and new</span></h4>
-          <p class="sd">There are hundreds of thousands of hypothetical frameworks and only
-          thousands of synthesised ones. If a rule calibrated on the cheap, plentiful set were
-          invalid on real materials, the plentiful set would be useless for calibration. The two
-          bands coinciding says it is not: <b>you may calibrate on hMOFs and apply to real MOFs</b>,
-          at least for this descriptor. That is the one genuinely new, useful thing on this page.</p>
+          <h4>3. Transfer from cheap data to real materials <span class="tagx bad">not supported</span></h4>
+          <p class="sd">The two bands coinciding was read as evidence that a rule calibrated on
+          hMOFs applies to real MOFs. It is now understood as two copies of the same
+          size-dependent artefact agreeing with each other &mdash; unsurprising, since both were
+          computed the same way on graphs of overlapping size. This does not establish transfer.</p>
         </div>
         <div class="panel">
           <h4>4. Screening candidates <span class="tagx bad">not supported</span></h4>
           <p class="sd">The aspiration is to triage candidates before spending hours of simulation
           on them. That requires &Delta;&alpha; to correlate with a property someone wants, and
-          <b>nothing here demonstrates that</b>. Worse, the band is wide relative to its centre:
-          the combined interquartile band spans 1.10&ndash;1.26 while individual frameworks run
-          0.95&ndash;1.48, so &ldquo;inside the band&rdquo; is a weak statement about any single
-          structure. As a filter on its own it would discard little and mean less.</p>
+          <b>nothing here demonstrates that</b> &mdash; and it requires Δα to be a fixed number for
+          a given framework in the first place, which the convergence finding above shows it is
+          not. This use was already unsupported before the withdrawal; the withdrawal removes any
+          route to supporting it without a redefinition of the descriptor.</p>
         </div>
       </div>
 
-      <div class="callout warn" data-kind="The honest limit">
-        <b>How discriminating is the band, really?</b> If the combined interquartile band
-        (1.10&ndash;1.26) were used as a pass/fail screen it would admit 58% of the hypothetical
-        frameworks and 38% of the synthesised ones. That is not a sharp instrument, and it should
-        not be sold as one. Its value today is as a <i>reference range</i> and a
-        <i>correctness check</i>, not as a decision rule. Turning it into a decision rule requires
-        the regression against measured adsorption that has not been done.
+      <div class="callout bad" data-kind="The honest limit">
+        <b>How discriminating is the band, really?</b> The question is moot: a band expressed as a
+        fixed numeric range (such as the combined interquartile band 1.10&ndash;1.26 quoted in the
+        table above) is not well-defined once Δα is shown to depend on supercell diameter without
+        bound. Any pass/fail threshold quoted from this table describes the sample that was
+        measured, at the graph sizes it happened to be measured at, not a property a new structure
+        can be checked against.
       </div>
 
-      <div class="callout" data-kind="How to use it on your own structure">
-        <b>Concretely, for one framework.</b> Upload a CIF on the
-        <a href="decomposition.html#walkthrough">decomposition page</a> and the pipeline runs in the
-        browser. If the resulting &Delta;&alpha; lands between roughly 1.10 and 1.26 the framework
-        is structurally ordinary by this measure. Between 0.95 and 1.48 it is within everything the
-        138 frameworks span. <b>Outside 0.95&ndash;1.48, check the parse before believing the
-        number</b> &mdash; in this project every such case so far has been a broken input rather
-        than an exotic material. Quote it with its uncertainty, which is about &plusmn;0.016 from
-        the random box covering, and never to more than two decimal places.
+      <div class="callout bad" data-kind="Withdrawn — do not use this on a new structure">
+        <b>This page previously gave a rule of thumb for reading a new framework's Δα against the
+        band above.</b> That rule is withdrawn along with the band it was based on. Until a
+        size-independent descriptor is defined and its own reference range is measured, there is no
+        number this project can responsibly hand you to compare a new CIF's Δα against.
       </div>
 
       <h2 class="section-title" id="realmof" data-toc="How the 61 were obtained"><span class="stitle-num">0</span>How Those Sixty-One Frameworks Were Obtained</h2>

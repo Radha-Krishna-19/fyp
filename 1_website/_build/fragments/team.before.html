@@ -106,24 +106,24 @@
         <div class="panel">
           <h4>In the browser &mdash; no install</h4>
           <div class="code-block"><code>git clone https://github.com/Radha-Krishna-19/fyp.git
-cd fyp/metal_oxo_deep_dive/1_website
+cd fyp/1_website
 # then open index.html in any browser</code></div>
           <p style="font-size:14px;color:var(--text-2);margin:12px 0 0;">Every asset is relative and <code>three.min.js</code> is vendored into the repository, so the site works from a local file with no web server and no internet connection. The numbers are computed at page load from the CIF files beside it.</p>
         </div>
         <div class="panel">
           <h4>From the command line</h4>
-          <div class="code-block"><code>cd fyp/metal_oxo_deep_dive/2_python
+          <div class="code-block"><code>cd fyp/2_python
 python code_00_pipeline_driver.py HKUST-1.cif
 python code_10_multifractal_spectrum.py
 # the 77-framework band:
 jupyter notebook ../3_notebooks/mof_band_analysis.ipynb</code></div>
-          <p style="font-size:14px;color:var(--text-2);margin:12px 0 0;">The Python modules need only the standard library plus NumPy. The notebook writes <code>results.json</code>, which is the file <code>band_data.js</code> on this site is generated from.</p>
+          <p style="font-size:14px;color:var(--text-2);margin:12px 0 0;">The Python modules need the standard library, NumPy and NetworkX. The notebook writes <code>results.json</code>, which is the file <code>band_data.js</code> on this site is generated from.</p>
         </div>
       </div>
 
       <h3 class="sub-head">Test suites</h3>
-      <p>Five jsdom suites run the real pages headlessly and assert on computed output, not on markup. They are what catch a silently blank panel &mdash; a broken engine script throws no visible error, it just renders nothing.</p>
-      <div class="code-block"><code>cd fyp/metal_oxo_deep_dive/1_website/tests
+      <p>Nine jsdom suites run the real pages headlessly and assert on computed output, not on markup. They are what catch a silently blank panel &mdash; a broken engine script throws no visible error, it just renders nothing.</p>
+      <div class="code-block"><code>cd fyp/1_website/tests
 npm install jsdom
 npm test</code></div>
 

@@ -1039,34 +1039,39 @@
   <h2 class="section-title" id="band"><span class="stitle-num">17</span>The Band &mdash; 77 Frameworks</h2>
 <dl class="bridge"><dt>You know</dt><dd>How one framework becomes three numbers.</dd><dt>This section</dt><dd class="now">Runs that calculation over 77 frameworks and looks for structure in the answers &mdash; then spends most of its length trying to prove the structure is an artefact, including one check that succeeded.</dd><dt>Which lets us</dt><dd>Say what the descriptor establishes, and what it cost us to find out.</dd></dl>
 
-    <div class="callout bad" data-kind="Withdrawn, 2026-09-14">
-      <b>The band below has not converged, and should not be read as a structural result.</b>
-      Every &Delta;&alpha; on this page was computed at one fixed supercell size (graph diameter
-      8&ndash;12). A later finite-size test
+    <div class="callout bad" data-kind="Withdrawn, 2026-09-14, corrected 2026-09-15">
+      <b>The band below has not converged, and should not be read as a structural result &mdash;
+      for two independent reasons.</b>
+      <br><br>
+      <b>Reason 1: the wrong graph was measured.</b> This site describes the spectrum as computed
+      on the coarse-grained building-block graph. The 77-framework band on this page and the
+      61-framework real-MOF band referenced later were in fact both computed by running the
+      analysis on the <b>atomic</b> supercell bond graph &mdash; coarse-graining only supplied the
+      node/linker counts. An atomic MOF graph has two length scales: molecular, inside one linker
+      or metal cluster, and framework, above one linker length. Fitting a single power law across
+      that crossover, as both notebooks did, is not a valid scaling measurement regardless of how
+      large the graph is.
+      <br><br>
+      <b>Reason 2: on the graph the site actually describes, the descriptor still does not
+      converge.</b> A finite-size test on the coarse-grained quotient graph
       (<code>2_python/code_12_converged_band.py</code>, <code>q_range_convergence()</code>) grew
-      the supercell of four demonstration frameworks &mdash; HKUST-1, MOF-5, ZIF-8 and UiO-66,
-      covering the pcu, sod and fcu nets &mdash; out to graph diameters of 24&ndash;36, and found
-      &Delta;&alpha; still increasing at every one of those sizes:
-      <div class="eqn">&Delta;&alpha; &approx; 0.78&middot;ln(<i>D</i>) &minus; 0.28</div>
-      This fits every point measured to within 0.01: a clean logarithmic divergence with no
-      plateau, while the linearity of the underlying power-law fit stayed sound (R&sup2; between
-      0.78 and 0.92 throughout). The obvious fix &mdash; measuring &Delta;&alpha; over a narrower
-      range of the exponent <i>q</i>, since the extremes of <i>q</i>&nbsp;&isin;&nbsp;[&minus;10,
-      10] are where a single box dominates the sum and injects a size-dependent term &mdash; was
-      tested at six caps (|q|&nbsp;&le;&nbsp;10, 8, 5, 4, 3, 2) on all four frameworks. None
-      converged: the drift between the two largest supercells tested stayed above the 5%
-      tolerance we set for calling a value settled, on every net, at every cap. Full table:
-      <a href="https://github.com/Radha-Krishna-19/fyp">see the repository</a> for
+      the supercell of four demonstration frameworks &mdash; HKUST-1 (tbo), MOF-5 (pcu), ZIF-8
+      (sod) and UiO-66 (fcu) &mdash; and found &Delta;&alpha; increasing at every graph diameter
+      tested, at every cap on the distortion exponent <i>q</i> from |q|&nbsp;&le;&nbsp;10 down to
+      |q|&nbsp;&le;&nbsp;2, with no plateau. The mechanism: at extreme <i>q</i> the partition
+      function is dominated by a single box, the smallest possible box is one vertex, and that
+      term grows with graph size without bound. Numbers and method:
+      <a href="https://github.com/Radha-Krishna-19/fyp">see the repository</a>,
       <code>PROJECT_NOTES.md</code> and <code>2_python/code_12_converged_band.py</code>.
       <br><br>
-      <b>Consequently:</b> the 77-framework band on this page and the 61-framework real-MOF band
-      referenced later were both measured at diameter 8&ndash;12 and are a readout of that
-      supercell rule, not of the frameworks. This also explains the +0.62 correlation with graph
-      size discussed below &mdash; it was not a confound contaminating the descriptor, it
-      <i>was</i> the descriptor. Nothing here has been recomputed at a "converged" cap, because
-      the test above found none. The numbers below are kept, in full, so this conclusion is
-      auditable rather than asserted &mdash; the same policy applied to the pore-size and
-      four-structure withdrawals elsewhere on this page.
+      <b>Consequently:</b> every &Delta;&alpha; value published by this project is a function of
+      the graph it was measured on, not of the framework it is attributed to, for both of the
+      reasons above. This also explains the +0.62 correlation with graph size discussed below
+      &mdash; it was not a confound contaminating the descriptor, it <i>was</i> the descriptor.
+      Nothing here has been recomputed at a "converged" cap or a "correct" graph, because neither
+      produces a value that has been shown to settle. The numbers below are kept, in full, so this
+      conclusion is auditable rather than asserted &mdash; the same policy applied to the
+      pore-size and four-structure withdrawals elsewhere on this page.
     </div>
 
     <div class="callout warn" data-kind="Caveat">
@@ -1147,10 +1152,10 @@
 
   <h3 class="sub-head">What this leaves standing</h3>
   <ul class="tight">
-    <li><b>The method is implemented correctly.</b> &tau;(q) matches the paper's definition, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time.</li>
-    <li><b>The band, as reported here, has not converged.</b> A later finite-size test (see the withdrawal notice above) shows &Delta;&alpha; still increasing with supercell diameter at every range of <i>q</i> tested. The interquartile range across 77 frameworks is a real computed quantity, but it describes the supercell rule used, not a settled property of the frameworks.</li>
+    <li><b>The mathematics of the spectrum is implemented correctly.</b> &tau;(q) matches the paper's definition, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time &mdash; this is a real fix and stands independently of which graph the spectrum is taken on.</li>
+    <li><b>The band, as reported here, was computed on the wrong graph and has not converged even on the right one.</b> The 77-framework interquartile range is a real computed quantity, but it describes the atomic supercell graph the pipeline happened to build, at the size it happened to reach, not a settled property of the frameworks. See the corrected withdrawal notice above for both reasons.</li>
     <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted; it does not encode which element an atom is.</li>
-    <li><b>What would make the descriptor usable:</b> either a size-independent definition of &Delta;&alpha; &mdash; not found by narrowing the <i>q</i> range, so some other normalisation would be needed &mdash; or reporting the &Delta;&alpha;(<i>D</i>) growth curve itself as the descriptor, rather than a single number. Neither has been implemented; both are open work.</li>
+    <li><b>What would make the descriptor usable:</b> first, running the analysis on the coarse-grained quotient graph as the site describes, rather than the atomic graph the published numbers actually used; then either a size-independent definition of &Delta;&alpha; on that graph &mdash; not found by narrowing the <i>q</i> range, so some other normalisation would be needed &mdash; or reporting the &Delta;&alpha;(<i>D</i>) growth curve itself as the descriptor, rather than a single number. None of this has been implemented; all of it is open work.</li>
   </ul>
   <p>Finding and reporting a confound, and later a non-convergence, in one's own headline claim is a stronger position than presenting a number that has not been checked this way.</p>
 

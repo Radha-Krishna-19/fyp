@@ -16,24 +16,36 @@ is hidden.
 
 ## 10.2 · The four things we cannot claim
 
-### 1 · The band does not (yet) have chemical meaning
+### 1 · The band does not have chemical meaning — and this is now a stronger claim than "not yet"
 
-**What we found:** 77 frameworks share a tight Δα band, 1.112 – 1.250.
+**Updated 2026-09-14/15.** This section originally proposed two options for fixing the
+graph-size confound below and called neither open research. Both have since been tried, in
+effect, and neither fixed the problem — so the honest status moved from "not yet interpretable"
+to "not converged, at any q range tried, on any of four nets."
 
-**Why we cannot interpret it:** Δα is confounded by graph size. Controlling for size, the
-pore-diameter correlation collapses from −0.497 to +0.101, while size survives at +0.621. Pore
-size adds **+0.005** to R² over size alone.
+**What we found originally:** 77 frameworks share a tight Δα band, 1.112 – 1.250 — computed, it
+was later discovered, on the atomic supercell graph rather than the coarse-grained graph this
+project's method describes.
 
-**What would fix it — two concrete options, neither open research:**
+**Why we cannot interpret it — the original finding:** Δα is confounded by graph size.
+Controlling for size, the pore-diameter correlation collapses from −0.497 to +0.101, while size
+survives at +0.621. Pore size adds **+0.005** to R² over size alone.
 
-- **Option A — match graph sizes.** Compare only frameworks whose supercells have comparable
-  atom counts, so the confound is held roughly fixed, and re-test the pore correlation.
-- **Option B — normalise the fit window.** The window currently spans `ln(1/diameter)` to
-  `ln(0.34)`, so a larger graph samples a wider range of scales. Rescale it per structure so
-  Δα stops growing with the graph, then re-test.
+**What was tried:**
 
-Option A is easier and can be done immediately with existing data. Option B is more principled
-and would make the descriptor size-independent by construction.
+- **Option B, effectively — narrowing the fit window in q.** `code_12_converged_band.py`'s
+  `q_range_convergence()` tested six caps on |q| (10, 8, 5, 4, 3, 2) on the *correctly*
+  coarse-grained quotient graph of four demonstration nets (pcu, tbo, sod, fcu). Every cap still
+  drifted with supercell diameter above a 5% tolerance. Narrowing the window reduces the
+  absolute drift but never removes it.
+- **Option A — matching graph sizes** was not run separately, because the finite-size sweep
+  above already shows Δα moving continuously with diameter rather than settling into distinct
+  size classes that could be matched against.
+
+**Current status:** no q range and no graph-size matching removes the size dependence. Fixing
+this needs either a genuinely different normalisation of the partition function, or reporting
+the Δα(D) growth curve itself — its slope, not a single width — as the descriptor. See
+`PROJECT_NOTES.md` for the numbers.
 
 ---
 

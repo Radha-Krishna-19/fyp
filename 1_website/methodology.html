@@ -399,20 +399,60 @@
             <td class="dt-note">Unit cells of 112&ndash;288 atoms: correct for demonstrating the algorithm, far too small for a reliable power-law fit. <b>Deliberately excluded from the band.</b></td>
           </tr>
           <tr>
-            <td class="dt-value">CoRE MOF</td>
-            <td class="dt-value">not yet ingested</td>
-            <td class="dt-note">Computation-ready experimental MOF database</td>
-            <td class="dt-note">Planned: testing whether the band holds for real synthesised materials</td>
-            <td class="dt-note">The pipeline accepts it unchanged &mdash; see the validation plan in <a href="results.html#realmof">Results</a>. This is the single largest gap in the work.</td>
+            <td class="dt-value">CoRE MOF 2019</td>
+            <td class="dt-value">61 frameworks</td>
+            <td class="dt-note">Zenodo archive of experimentally synthesised, computation-ready MOFs, DOI 10.5281/zenodo.3370236</td>
+            <td class="dt-note">Checking whether the (unconverged) band holds for real synthesised materials &mdash; see the withdrawal below</td>
+            <td class="dt-note">Ingested and run through the identical pipeline. Its band is withdrawn for the same reasons as the hMOF band: see <a href="results.html#band">Results</a>.</td>
           </tr>
         </tbody>
       </table>
 
       <div class="callout warn" data-kind="Caveat">
-        <b>The honest position on the dataset.</b> The 77 frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, the band we report is a band <i>within</i> one chemical family, and cannot yet be claimed to separate families. Every conclusion on this site is written to respect that limit.
+        <b>The honest position on the dataset.</b> The 77 hMOF frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, any band computed on that set is a band <i>within</i> one chemical family, and cannot separate families. The 61 CoRE MOF frameworks exist, but the descriptor computed on either set is withdrawn as a structural finding &mdash; see <a href="results.html#band">Results</a>.
       </div>
 
-      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">7</span>Evaluation Strategy</h2>
+      <h2 class="section-title" id="graph-choice" data-toc="Which graph, and why"><span class="stitle-num">7</span>Which Graph the Spectrum Is Taken On, and Why</h2>
+      <p class="section-sub">A reviewer question this site did not answer until now: the pipeline could take the multifractal spectrum of the unit-cell graph, the atomic supercell, the coarse-grained unit cell, or the coarse-grained supercell. It matters which, and the project's published numbers used the wrong one.</p>
+
+      <table class="data-table">
+        <thead><tr><td>Candidate graph</td><td>What it looks like</td><td>Why it is or is not used</td></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dt-value">Coarse-grained unit cell</td>
+            <td class="dt-note">One vertex per building block, no replication</td>
+            <td class="dt-note"><b>Too small.</b> A unit cell has a handful of blocks (7&ndash;14 for the demonstration structures) and a graph diameter around 2. There is no range of radii to fit a power law over &mdash; a scaling measurement needs at least a decade of scale, and a diameter-2 graph has two points.</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Atomic unit cell / atomic supercell</td>
+            <td class="dt-note">One vertex per atom, replicated to reach a target cell length</td>
+            <td class="dt-note"><b>Not information loss to avoid &mdash; a scale to avoid conflating.</b> An atomic graph has structure at two length scales: below roughly one linker length, distances measure molecular geometry (which atom bonds to which within one cluster or one linker); above it, distances measure how clusters and linkers connect to each other. A single power-law fit across both regimes describes neither correctly. This is what both published bands in this project actually used, and it is one of the two reasons they are withdrawn.</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Coarse-grained supercell <span style="color:var(--good);font-weight:600">&larr; what this site describes, and what should be used</span></td>
+            <td class="dt-note">One vertex per building block, quotient graph replicated n&times;n&times;n using the lattice translation on every edge</td>
+            <td class="dt-note">Removes the atomic length scale by construction &mdash; there is only one kind of vertex-to-vertex step, block to block &mdash; and reaches whatever diameter is needed for a scaling fit by replication, which is cheap because no atoms are ever materialised (<code>code_12_converged_band.py</code> reaches diameter 35 on a 12-block cell). This is the graph the site's methods sections describe. Neither published CSV band was actually computed on it; the finite-size sweep in <code>PROJECT_NOTES.md</code> was.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn" data-kind="Coarse-graining is not information loss">
+        <b>Coarse-graining discards atoms; it does not discard information the spectrum needs.</b> The multifractal spectrum is a statement about how connectivity scales at the scale of building blocks &mdash; that is the scale reticular chemistry itself is organised around (a node's coordination number, a linker's connectivity, which net a given pair forms). Measuring at the atomic scale does not add information the block-scale question needs; it adds a second, unrelated scaling regime that a single fit cannot separate from the one that matters. Coarse-graining is the choice of <i>which</i> scale to measure at, made deliberately, not a loss incurred by simplifying the input.
+      </div>
+
+      <div class="callout bad" data-kind="What actually happened in this project">
+        <b>Both published bands were computed on the atomic graph, not the coarse-grained one.</b>
+        Verified from the saved run outputs: the number of vertices analysed (<code>N</code> in
+        <code>results.json</code> / <code>real_results.json</code>) matches the atom count of the
+        supercell, not the block count, and the analysed graph diameters (35&ndash;64 for the
+        77-framework set, 34&ndash;104 for the 61-framework set) are far larger than a
+        coarse-grained quotient graph of the same structures would give. This means the published
+        Δα values are contaminated by the molecular/framework crossover described above, on top of
+        the finite-size non-convergence documented on the <a href="results.html#band">Results</a>
+        page. See <code>PROJECT_NOTES.md</code> for the evidence table.
+      </div>
+
+      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">8</span>Evaluation Strategy</h2>
       <p class="section-sub">What would count as the method working, and what would count as it failing. Fixed in advance, so a negative result is a result rather than a reason to change the test.</p>
 
       <table class="data-table">
@@ -420,11 +460,12 @@
         <tbody>
           <tr><td class="dt-value">Correctness</td><td class="dt-note">Bond perception and decomposition reproduce known chemistry</td><td class="dt-note">Coordination number vs published crystallography</td><td class="dt-note">Exact match on all four demonstration structures</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; including UiO-66 at 12, which the non-periodic construction gets wrong</td></tr>
           <tr><td class="dt-value">Mathematical validity</td><td class="dt-note">Each spectrum is a well-formed singularity spectrum</td><td class="dt-note">f(&alpha;) concave, apex at q&nbsp;=&nbsp;0</td><td class="dt-note">All frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; 77/77 after the &tau; correction; it was 0/77 before</td></tr>
-          <tr><td class="dt-value">Stability</td><td class="dt-note">The descriptor is reproducible, not an artefact of one run</td><td class="dt-note">Standard deviation of &Delta;&alpha; over repeated trials</td><td class="dt-note">SD small against the spread between frameworks</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; per-framework SD is roughly an order of magnitude below the band width</td></tr>
-          <tr><td class="dt-value">Discrimination</td><td class="dt-note">The descriptor separates frameworks that differ structurally</td><td class="dt-note">Band width against within-framework noise</td><td class="dt-note">Band narrow and populated</td><td class="dt-note" style="color:var(--good)"><b>Met</b> for &Delta;&alpha;; the f(&alpha;) envelope alone does <i>not</i> discriminate, and we say so</td></tr>
-          <tr><td class="dt-value">Confound control</td><td class="dt-note">The descriptor measures structure, not something trivial</td><td class="dt-note">Partial correlation against graph size; incremental R&sup2;</td><td class="dt-note">Correlation with a property survives controlling for size</td><td class="dt-note" style="color:var(--bad)"><b>Failed</b> for pore size &mdash; the claim was withdrawn. This is the most important line in the table.</td></tr>
-          <tr><td class="dt-value">Generalisation</td><td class="dt-note">The band holds on frameworks not used to define it</td><td class="dt-note">Hold-out membership rate</td><td class="dt-note">Held-out frameworks land inside the band</td><td class="dt-note" style="color:var(--warn)"><b>Partial</b> &mdash; hold-out passes, but within one metal family only</td></tr>
-          <tr><td class="dt-value">External validity</td><td class="dt-note">The band holds for materials that physically exist</td><td class="dt-note">Band membership for CoRE MOF structures</td><td class="dt-note">Comparable band position and width</td><td class="dt-note" style="color:var(--text-3)"><b>Not yet run</b> &mdash; the open task, planned in full</td></tr>
+          <tr><td class="dt-value">Stability (within one graph size)</td><td class="dt-note">The descriptor is reproducible at a fixed supercell, not an artefact of one random seed</td><td class="dt-note">Standard deviation of &Delta;&alpha; over repeated box-covering trials, size held fixed</td><td class="dt-note">SD small against the spread between frameworks at that size</td><td class="dt-note" style="color:var(--good)"><b>Met</b> &mdash; per-framework SD is roughly an order of magnitude below the between-framework spread, at a fixed size</td></tr>
+          <tr><td class="dt-value">Finite-size convergence</td><td class="dt-note">The descriptor settles to a fixed value as the supercell grows, rather than tracking graph size forever</td><td class="dt-note">Drift in &Delta;&alpha; between the two largest supercells tested, at every q range</td><td class="dt-note">Drift below 5% at some q range</td><td class="dt-note" style="color:var(--bad)"><b>Failed</b>, on all four demonstration nets, at every q range from |q|&le;10 to |q|&le;2. This is added to the plan after the fact because it was not tested until 2026-09-14 &mdash; it should have been in the plan from the start, and its absence is itself a lesson.</td></tr>
+          <tr><td class="dt-value">Discrimination</td><td class="dt-note">The descriptor separates frameworks that differ structurally</td><td class="dt-note">Band width against within-framework noise</td><td class="dt-note">Band narrow and populated</td><td class="dt-note" style="color:var(--warn)"><b>Moot</b> &mdash; a band computed from a quantity that has not converged does not have a stable width to evaluate this against</td></tr>
+          <tr><td class="dt-value">Confound control</td><td class="dt-note">The descriptor measures structure, not something trivial</td><td class="dt-note">Partial correlation against graph size; incremental R&sup2;</td><td class="dt-note">Correlation with a property survives controlling for size</td><td class="dt-note" style="color:var(--bad)"><b>Failed</b> for pore size, and this failure is now understood as one symptom of finite-size non-convergence rather than an independent confound.</td></tr>
+          <tr><td class="dt-value">Generalisation</td><td class="dt-note">The band holds on frameworks not used to define it</td><td class="dt-note">Hold-out membership rate</td><td class="dt-note">Held-out frameworks land inside the band</td><td class="dt-note" style="color:var(--text-3)"><b>Not evaluable</b> &mdash; there is no converged band to hold out against</td></tr>
+          <tr><td class="dt-value">External validity</td><td class="dt-note">The band holds for materials that physically exist</td><td class="dt-note">Band membership for CoRE MOF structures</td><td class="dt-note">Comparable band position and width</td><td class="dt-note" style="color:var(--warn)"><b>Run, but uninformative</b> &mdash; the 61-framework CoRE MOF band lands in the same place as the 77-framework hMOF band, but both are the same unconverged artefact, so the agreement does not establish transfer. See <a href="results.html#realband">Results</a>.</td></tr>
         </tbody>
       </table>
 

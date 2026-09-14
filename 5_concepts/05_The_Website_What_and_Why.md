@@ -29,7 +29,7 @@ This project could have been submitted as a report and a folder of code. It was 
 
 
 ```
-metal_oxo_deep_dive/1_website/index.html
+fyp/1_website/index.html   (repository root, then 1_website/)
 
    double-click it. That is the whole procedure.
 ```

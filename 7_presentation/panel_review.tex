@@ -605,6 +605,35 @@ advance, what it would do if a proper sample overlapped. It overlapped; we did i
 \end{columns}
 \end{frame}
 
+% ---- NEW: the convergence withdrawal, dated after the frames above were written ----
+\begin{frame}{3e. Both Bands Above Are Withdrawn}
+\framesubtitle{A finite-size test run after these slides were written, 2026-09-14/15}
+\begin{block}{\footnotesize The band does not converge with supercell size}
+\scriptsize
+$\Delta\alpha$ was measured over $q\in[-10,10]$; at extreme $q$ a single box (as small as one
+vertex) dominates the sum, so $\Delta\alpha$ inherits a term that grows with graph size without
+bound. Tested on four demonstration nets (pcu, tbo, sod, fcu) at six caps on $|q|$
+(10, 8, 5, 4, 3, 2): \textbf{none converged} --- the drift between the two largest supercells
+tested stayed above our 5\% tolerance at every cap, on every net.
+\end{block}
+\begin{block}{\footnotesize Both published bands were also measured on the wrong graph}
+\scriptsize
+Both the 77-framework and 61-framework bands in slides 3c--3d were computed on the
+\textbf{atomic} supercell graph, not the coarse-grained building-block graph this project's
+method describes. An atomic graph spans a molecular length scale and a framework length scale;
+fitting one power law across that crossover is invalid independently of the finite-size problem
+above.
+\end{block}
+\begin{block}{\footnotesize What this means for slides 3c and 3d}
+\scriptsize
+Neither is a structural or chemical finding. Both are kept, with this notice, for audit ---
+the same treatment given to the pore-size and four-structure withdrawals already on this deck.
+The +0.62 correlation with graph size in 3c was not a confound contaminating the descriptor:
+it \textbf{was} the descriptor. See \texttt{PROJECT_NOTES.md} and the project Results page for the
+full account, and \S 8 (Outstanding Work) for what would fix it.
+\end{block}
+\end{frame}
+
 % ============================ REFERENCES =====================================
 \section{References}
 \begin{frame}{References (1 of 2)}
