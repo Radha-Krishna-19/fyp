@@ -94,6 +94,44 @@
         any apparent difference in the resulting Δα is measurement noise.
       </div>
 
+      <h2 class="section-title" id="topo-diversity" data-toc="A topologically diverse set, capped">A Topologically Diverse Comparison Set, and Why It Is Only Four Nets Wide</h2>
+      <p class="section-sub">The degenerate hMOF sample above raises an obvious question: what would a genuinely diverse sample look like? This assembles one from what is available locally, spanning pcu, tbo, sod and fcu — and reports honestly why rht is missing.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><td>Structure</td><td>Net candidate</td><td>Source</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-label">HKUST-1</td><td class="dt-value">tbo</td><td class="dt-note">demonstration set — published net</td></tr>
+            <tr><td class="dt-label">MOF-5</td><td class="dt-value">pcu</td><td class="dt-note">demonstration set — published net</td></tr>
+            <tr><td class="dt-label">ZIF-8</td><td class="dt-value">sod</td><td class="dt-note">demonstration set — published net</td></tr>
+            <tr><td class="dt-label">UiO-66</td><td class="dt-value">fcu</td><td class="dt-note">demonstration set — published net</td></tr>
+            <tr><td class="dt-label">hMOF-0, hMOF-101</td><td class="dt-value">pcu</td><td class="dt-note">hMOF pool — connectivity-signature candidate</td></tr>
+            <tr><td class="dt-label"><i>(rht)</i></td><td class="dt-value">not found</td><td class="dt-note">no structure in the locally available sample matched an rht-net signature</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn" data-kind="How net candidates were assigned, and the honest limit of the method">
+        This project's proper route to an RCSR net symbol is <code>code_06</code> (writes a
+        <code>.cgd</code> file) fed to Systre, Java software not installed in this environment.
+        Absent that, structures here are classified by <b>coordination signature</b> &mdash; the
+        (node degree, linker degree) pair &mdash; which only resolves the four simple,
+        single-node-type nets already discussed on this site. It cannot recognise rht, which
+        typically combines two node connectivities in one framework, and it correctly refuses to
+        guess rather than mislabel: <b>of 20 CoRE MOF structures classified this way, 8 had a
+        multi-connectivity signature this heuristic cannot resolve at all</b> &mdash; real
+        chemical diversity the method cannot see, not necessarily rht, and not claimed to be.
+      </div>
+
+      <div class="callout" data-kind="What this adds to the degeneracy finding">
+        Of the 34 additional hMOF CIFs and 20 CoRE MOF CIFs fetched for other analyses this
+        session, the classifiable ones matched pcu 34 times and fcu once &mdash; no new net.
+        <b>This is not a new finding, but it extends the existing one:</b> the topological
+        degeneracy already reported for the published 77-framework CSV is not an artefact of
+        which 48 structures happened to land in that file. A larger, independently drawn sample
+        from the same source is degenerate the same way.
+      </div>
+
       <h2 class="section-title" id="slope-proposal" data-toc="A candidate descriptor: the slope">Does the Divergence Slope Itself Vary Between Frameworks? A Proposal, Not a Result</h2>
       <p class="section-sub">The Methodology page lists reporting the &Delta;&alpha;(<i>D</i>) growth slope as one of two ways forward once the width itself is known not to converge. This section takes a first, capped look at whether that slope actually differs between frameworks &mdash; which it would have to, to be worth proposing.</p>
 
