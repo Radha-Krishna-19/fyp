@@ -119,9 +119,32 @@ permanently, which is a stronger provenance guarantee than a query.
 
 ---
 
-## Known results, including a negative one
+## Known results, including two negative ones
 
-**The band.** Across the 77 hypothetical frameworks, Δα falls in
+> **Withdrawn (2026-09-14): both bands below are diameter artefacts, not
+> structural findings.** Δα was measured at a fixed supercell rule (diameter
+> 8–12) and never tested for convergence until now. A finite-size sweep on
+> four demonstration frameworks (HKUST-1, MOF5, ZIF-8, UiO-66 — pcu, pcu, sod
+> and fcu nets) shows Δα growing with supercell diameter as
+> Δα ≈ 0.78·ln(D) − 0.28 with no plateau, and — the question this dataset's
+> release did not yet ask — **narrowing the q range over which Δα is measured
+> does not fix it**. Every cap tested (|q| ≤ 10, 8, 5, 4, 3, 2) still drifts
+> by 0.10–0.19 between the two largest supercells checked, against a 0.05
+> convergence tolerance, on every one of the four nets. There is no q window
+> at which Δα stops being a readout of the supercell rule and starts being a
+> property of the framework. This is a negative result about the published
+> method (Xiao *et al.* 2021) as applied here, not an unresolved question.
+>
+> Practically: **every `delta_alpha` value in both CSV files below was
+> computed at diameter 8–12, and is a function of that choice, not of the
+> framework it is attributed to.** The band widths, the pore-size confound
+> analysis, and the real-vs-hypothetical comparison quoted below are kept for
+> audit — exactly as the four-structure claim was kept in `..._real_v1.csv`
+> after its own withdrawal — but none of them should be read as a structural
+> or chemical finding. Reproducing this check:
+> `python 2_python/code_12_converged_band.py`.
+
+**The band (superseded — see withdrawal above).** Across the 77 hypothetical frameworks, Δα falls in
 **1.11 – 1.25** (interquartile range; full range 1.02 – 1.41). Asymmetry A is
 negative for all 77, between −1.51 and −1.04.
 
@@ -232,6 +255,13 @@ Structures come from MOFX-DB / the hMOF database under their own terms; the
 descriptors computed here are ours.
 
 ## Changelog
+
+**Unreleased — 2026-09-14.** Finite-size convergence testing
+(`2_python/code_12_converged_band.py`) shows Δα does not converge with
+supercell diameter at any q range from ±10 down to ±2, on any of four
+demonstration nets. **Both bands below are withdrawn as structural findings**
+and kept only for audit; see the notice at the top of *Known results*. No
+band was recomputed, because there is no converged q cap to recompute at.
 
 **v2.0 — 2026-09-07.** 77 hypothetical + **61 synthesised** frameworks
 (`..._real_v2.csv`). The synthesised set now comes from the CoRE MOF 2019 Zenodo

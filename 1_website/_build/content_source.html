@@ -79,49 +79,49 @@
 <div class="container">
 
   <!-- ============ 0 ============ -->
-  <h2 class="st" id="problem"><span class="n">1</span>The Problem — What Is a MOF and Why Does This Matter?</h2>
-<dl class="bridge"><dt>You know</dt><dd>Nothing yet &mdash; this is the beginning.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what the holes in it are for, and why there are far too many candidates to test.</dd><dt>Which lets us</dt><dd>State a question narrow enough to actually answer, which is the next section.</dd></dl>
-  <p class="sd">Metal–organic frameworks are designed the way buildings are: you choose components — an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b> — and they assemble into a periodic framework. Everything useful about a MOF (surface area, pore size, thermal and chemical stability, catalytic behaviour) follows from which components were used and how they connect.</p>
-  <p class="sd">So when a MOF exists only as a crystal structure file, the foundational question is: <b>what building blocks is it made of?</b> That is what a decomposition algorithm answers, and every downstream use — database search, similarity matching, machine-learning featurisation, inverse design — inherits whatever answer it gives. If the reported node is not the species that actually exists in the crystal, everything built on top of it is reasoning about a material that does not exist.</p>
+  <h2 class="st" id="problem"><span class="n">1</span>The Problem: What Is a MOF, and Why Does It Matter?</h2>
+<dl class="bridge"><dt>You know</dt><dd>Nothing yet &mdash; this is the beginning.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what its pores are for, and why there are too many candidate structures to test individually.</dd><dt>Which lets us</dt><dd>State a question narrow enough to be answerable, which is the next section.</dd></dl>
+  <p class="sd">A metal&ndash;organic framework is assembled from a small number of component types, in the way a building is assembled from components: an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b>, which combine into a periodic framework. The properties that make a MOF useful &mdash; surface area, pore size, thermal and chemical stability, catalytic behaviour &mdash; follow from which components were used and how they are connected.</p>
+  <p class="sd">When a MOF exists only as a crystal structure file, the first question is therefore: <b>what building blocks is it made of?</b> A decomposition algorithm answers that question, and every later use of the result &mdash; database search, similarity matching, machine-learning featurisation, inverse design &mdash; inherits whatever answer it gives. If the reported node is not the species actually present in the crystal, everything built on that answer is reasoning about a material that does not exist.</p>
 
   <div class="callout" data-kind="Note">
-    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file contains atomic positions and the unit cell — and <b>no bonds at all</b>. The format has no field for them. Every bond used by every step of the pipeline is <i>inferred</i> from interatomic distances, never read. That single fact is the origin of several of the limitations we found.
+    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file records atomic positions and the unit cell, and contains <b>no bonds at all</b>; the format has no field for them. Every bond used at any step of this pipeline is therefore <i>inferred</i> from interatomic distances rather than read from the file. That one fact is the origin of several of the limitations described later.
   </div>
 
   <!-- ============ 1 ============ -->
-  <h2 class="st" id="question"><span class="n">2</span>The Question We Were Asked — and the Honest Answer</h2>
-<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is unmanageably large.</dd><dt>This section</dt><dd class="now">Fixes the exact question this project answers &mdash; and, just as important, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was written down in advance.</dd></dl>
-  <p class="sd">The brief was to <b>find and highlight the influential nodes, the ones with highest degree</b>. We implemented it, and the result is more interesting than a simple yes.</p>
+  <h2 class="st" id="question"><span class="n">2</span>The Question We Were Asked, and What We Found</h2>
+<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is too large to test exhaustively.</dd><dt>This section</dt><dd class="now">States the exact question this project answers &mdash; and, as importantly, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was fixed in advance.</dd></dl>
+  <p class="sd">The brief was to <b>find and highlight the influential nodes: those with the highest degree</b>. We implemented this, and the result is more informative than a plain yes or no.</p>
 
-  <h3 class="sub">1a · Ranking blocks by degree does not work — and here is why</h3>
-  <p class="sd">In a perfect crystal, every symmetry-equivalent block is <i>genuinely identical</i>. Every Cu paddlewheel in HKUST-1 has exactly the same environment as every other. So a "top-k by degree" list is not discovering anything: it is sorting tied values, and whichever ones come out on top depend only on the order the blocks happened to be numbered in.</p>
+  <h3 class="sub">1a &middot; Ranking blocks by degree does not work, and the reason is structural</h3>
+  <p class="sd">In a perfect crystal, every symmetry-equivalent block is genuinely identical: every copper paddlewheel in HKUST-1 has exactly the same environment as every other. A "top-<i>k</i> by degree" list therefore discovers nothing; it sorts tied values, and which ones appear first depends only on the arbitrary order in which the blocks were numbered.</p>
 
   <div class="panel"><div id="tie-evidence"></div></div>
 
   <div class="callout bad" data-kind="Withdrawn">
-    <b>Read the "distinct degree values" column.</b> Every structure has exactly <b>two</b> — one value for nodes, one for linkers. There is no third tier, no gradient, nothing to rank. A "top 12 most influential" list drawn from these numbers is reporting sort order, not chemistry.
+    <b>See the "distinct degree values" column.</b> Every structure has exactly <b>two</b> distinct values: one for nodes, one for linkers. There is no third tier and no gradient to rank within. A "top 12 most influential" list drawn from these numbers reports sort order, not chemistry.
   </div>
 
-  <h3 class="sub">1b · But the degree itself is the single most valuable number in the analysis</h3>
-  <p class="sd">The ranking fails. The <b>measurement</b> succeeds completely — and it is not a consolation prize. A block's degree in the periodic graph <i>is</i> its <b>coordination number</b>: how many connections that building unit makes to the rest of the framework. In reticular chemistry this is the number that determines which net a given pair of building blocks can form at all. A 4-connected node with a 3-connected linker gives <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor the entire field is organised around.</p>
+  <h3 class="sub">1b &middot; The degree itself, however, is the most useful number in the analysis</h3>
+  <p class="sd">The ranking does not work; the underlying <b>measurement</b> does, and it is not a lesser finding. A block's degree in the periodic graph is its <b>coordination number</b>: the number of connections that building unit makes to the rest of the framework. In reticular chemistry, this number determines which net a given pair of building blocks can form at all &mdash; a 4-connected node with a 3-connected linker gives the net <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor around which the field is organised.</p>
 
   <div class="panel"><div id="degree-value"></div></div>
 
   <div class="callout good" data-kind="The result">
-    <b>So: did we achieve something? Yes — but the deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once. It <b>validates the decomposition</b> (every value matches published crystallography). It <b>identifies the net</b> (the node/linker connectivity pair determines the topology). And it <b>separates MOF families</b>, which is what the spectrum work builds on. The one thing it cannot do is rank identical objects against each other — and knowing that is itself a result worth reporting.
+    <b>The deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once: it <b>validates the decomposition</b>, since every value matches published crystallography; it <b>identifies the net</b>, because the node/linker connectivity pair determines the topology; and it <b>separates MOF families</b>, which the spectrum analysis later builds on. What it cannot do is rank identical objects against one another, and establishing that this is not possible is itself a reportable result.
   </div>
 
   <div class="callout warn" data-kind="Caveat">
-    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different lattice directions</i> collapse into one edge unless the lattice translation is carried on the edge. UiO-66 exposes it hardest: its primitive cell holds a single Zr₆ cluster whose twelve connections all run out to periodic images and back, so a naive build reports <b>6</b> instead of <b>12</b> — or degenerates into a star, one hub joined to everything. We build the <b>labelled quotient graph</b> instead, which is also exactly what Systre consumes.
+    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different</i> lattice directions collapse into a single edge unless the lattice translation is recorded on that edge. UiO-66 exposes this most clearly: its primitive cell holds one Zr&#8326; cluster whose twelve connections all run out to periodic images and back, so a naive construction reports <b>6</b> connections instead of <b>12</b>, or degenerates into a star with one hub joined to everything. We instead build the <b>labelled quotient graph</b>, which is also exactly what Systre consumes.
   </div>
 
-  <h3 class="sub">1c · Where influence <i>does</i> become a real quantity</h3>
-  <p class="sd">Symmetry is what flattens centrality. Break the symmetry and it immediately becomes informative — so we simulate a <b>missing-linker defect</b>, which is not a contrived test but a real and heavily studied feature of MOF chemistry, UiO-66 especially.</p>
+  <h3 class="sub">1c &middot; Where influence does become a measurable quantity</h3>
+  <p class="sd">Symmetry is what flattens centrality; breaking it makes centrality informative. We therefore simulate a <b>missing-linker defect</b>, which is not an artificial test but a real and well-studied feature of MOF chemistry, particularly in UiO-66.</p>
 
   <div class="panel"><div id="defect-summary"></div></div>
 
   <div class="callout" data-kind="Note">
-    Removing one linker splits the blocks into several genuinely different classes, and <b>λ₂ drops</b> — a measure of how much easier the framework has become to cut apart, i.e. how much the defect weakened it. This is the direction where "influential nodes" turns into a real research question: <i>which</i> block, when removed, costs the framework the most.
+    Removing one linker splits the blocks into several genuinely different classes, and <b>&lambda;&#8322; drops</b> &mdash; a measure of how much more easily the framework can now be cut apart, i.e. how much the defect weakened it. This is the point at which "influential nodes" becomes a real research question: <i>which</i> block, if removed, costs the framework the most.
   </div>
 
   <!-- ============ 2 ============ -->
@@ -1037,7 +1037,38 @@
   <!-- ================= 15b : the band ================= -->
     <!-- ================= 15b : the band ================= -->
   <h2 class="section-title" id="band"><span class="stitle-num">17</span>The Band &mdash; 77 Frameworks</h2>
-<dl class="bridge"><dt>You know</dt><dd>How one framework becomes three numbers.</dd><dt>This section</dt><dd class="now">Runs that calculation over 77 frameworks and looks for structure in the answers &mdash; then spends most of its length trying to prove the structure is an artefact.</dd><dt>Which lets us</dt><dd>Say what the descriptor establishes, and what it cost us to find out.</dd></dl>
+<dl class="bridge"><dt>You know</dt><dd>How one framework becomes three numbers.</dd><dt>This section</dt><dd class="now">Runs that calculation over 77 frameworks and looks for structure in the answers &mdash; then spends most of its length trying to prove the structure is an artefact, including one check that succeeded.</dd><dt>Which lets us</dt><dd>Say what the descriptor establishes, and what it cost us to find out.</dd></dl>
+
+    <div class="callout bad" data-kind="Withdrawn, 2026-09-14">
+      <b>The band below has not converged, and should not be read as a structural result.</b>
+      Every &Delta;&alpha; on this page was computed at one fixed supercell size (graph diameter
+      8&ndash;12). A later finite-size test
+      (<code>2_python/code_12_converged_band.py</code>, <code>q_range_convergence()</code>) grew
+      the supercell of four demonstration frameworks &mdash; HKUST-1, MOF-5, ZIF-8 and UiO-66,
+      covering the pcu, sod and fcu nets &mdash; out to graph diameters of 24&ndash;36, and found
+      &Delta;&alpha; still increasing at every one of those sizes:
+      <div class="eqn">&Delta;&alpha; &approx; 0.78&middot;ln(<i>D</i>) &minus; 0.28</div>
+      This fits every point measured to within 0.01: a clean logarithmic divergence with no
+      plateau, while the linearity of the underlying power-law fit stayed sound (R&sup2; between
+      0.78 and 0.92 throughout). The obvious fix &mdash; measuring &Delta;&alpha; over a narrower
+      range of the exponent <i>q</i>, since the extremes of <i>q</i>&nbsp;&isin;&nbsp;[&minus;10,
+      10] are where a single box dominates the sum and injects a size-dependent term &mdash; was
+      tested at six caps (|q|&nbsp;&le;&nbsp;10, 8, 5, 4, 3, 2) on all four frameworks. None
+      converged: the drift between the two largest supercells tested stayed above the 5%
+      tolerance we set for calling a value settled, on every net, at every cap. Full table:
+      <a href="https://github.com/Radha-Krishna-19/fyp">see the repository</a> for
+      <code>PROJECT_NOTES.md</code> and <code>2_python/code_12_converged_band.py</code>.
+      <br><br>
+      <b>Consequently:</b> the 77-framework band on this page and the 61-framework real-MOF band
+      referenced later were both measured at diameter 8&ndash;12 and are a readout of that
+      supercell rule, not of the frameworks. This also explains the +0.62 correlation with graph
+      size discussed below &mdash; it was not a confound contaminating the descriptor, it
+      <i>was</i> the descriptor. Nothing here has been recomputed at a "converged" cap, because
+      the test above found none. The numbers below are kept, in full, so this conclusion is
+      auditable rather than asserted &mdash; the same policy applied to the pore-size and
+      four-structure withdrawals elsewhere on this page.
+    </div>
+
     <div class="callout warn" data-kind="Caveat">
     <b>Know what this dataset is.</b> All 77 structures are named <code>hMOF-###</code> &mdash; they come from the <b>hypothetical MOF</b> database: <b>computer-generated candidate structures that have never been synthesised</b>. The notebook requested <code>CoREMOF 2019</code>, which is experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.
     <ul style="margin:8px 0 0 18px;">
@@ -1116,12 +1147,12 @@
 
   <h3 class="sub-head">What this leaves standing</h3>
   <ul class="tight">
-    <li><b>The method is implemented correctly now.</b> &tau;(q) matches the paper, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time.</li>
-    <li><b>The band exists as a descriptive range</b> &mdash; the interquartile &Delta;&alpha; across 77 frameworks. What it does <i>not</i> yet have is a demonstrated physical meaning.</li>
-    <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted; it does not know which element an atom is.</li>
-    <li><b>What would make the pore claim testable:</b> compare only frameworks of comparable graph size, or normalise the fit window per structure so &Delta;&alpha; stops growing with the graph &mdash; then re-test the correlation.</li>
+    <li><b>The method is implemented correctly.</b> &tau;(q) matches the paper's definition, the spectrum is a proper inverted parabola, and &alpha;<sub>0</sub>, the asymmetry <i>A</i> and <i>D</i>(q) are meaningful quantities for the first time.</li>
+    <li><b>The band, as reported here, has not converged.</b> A later finite-size test (see the withdrawal notice above) shows &Delta;&alpha; still increasing with supercell diameter at every range of <i>q</i> tested. The interquartile range across 77 frameworks is a real computed quantity, but it describes the supercell rule used, not a settled property of the frameworks.</li>
+    <li><b>&Delta;&alpha; is not a stability or gas-uptake predictor.</b> The graph is unweighted; it does not encode which element an atom is.</li>
+    <li><b>What would make the descriptor usable:</b> either a size-independent definition of &Delta;&alpha; &mdash; not found by narrowing the <i>q</i> range, so some other normalisation would be needed &mdash; or reporting the &Delta;&alpha;(<i>D</i>) growth curve itself as the descriptor, rather than a single number. Neither has been implemented; both are open work.</li>
   </ul>
-  <p>Finding and reporting a confound in your own headline claim is a stronger position than presenting a correlation that does not survive the first check.</p>
+  <p>Finding and reporting a confound, and later a non-convergence, in one's own headline claim is a stronger position than presenting a number that has not been checked this way.</p>
 
   <p class="section-sub">Source: <span class="code-chip">mof_band_analysis.ipynb</span> &middot; data <span class="code-chip">band_data.js</span> &middot; plotting <span class="code-chip">band_page.js</span></p>
 
