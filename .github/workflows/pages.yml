@@ -38,7 +38,7 @@ jobs:
       # suites boot the real pages headlessly and assert on computed output.
       # Publishing a silently-empty site is the failure this prevents.
       - name: Run the site test suites
-        working-directory: metal_oxo_deep_dive/1_website/tests
+        working-directory: 1_website/tests
         run: |
           npm install --no-audit --no-fund jsdom
           node test_pages.js
@@ -58,7 +58,7 @@ jobs:
       - uses: actions/configure-pages@v5
 
       - name: Check the site is self-contained
-        working-directory: metal_oxo_deep_dive/1_website
+        working-directory: 1_website
         run: |
           # three.js is vendored so a clone works offline. If this file went
           # missing the 3D views would silently fall back to a CDN, and the
@@ -71,7 +71,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: metal_oxo_deep_dive/1_website
+          path: 1_website
 
       - id: deployment
         uses: actions/deploy-pages@v4
