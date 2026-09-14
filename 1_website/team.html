@@ -97,55 +97,48 @@
           <tr><td class="dt-note">Periodic bond perception</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Coordination numbers match published crystallography for all four structures</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
           <tr><td class="dt-note">Metal-oxo decomposition</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Node and linker counts reproduce the published algorithm; three algorithm variants implemented</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
           <tr><td class="dt-note">Labelled quotient graph and supercell expansion</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">UiO-66 recovers coordination 12, which the non-periodic construction reports as 1</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
-          <tr><td class="dt-note">Box growing and the multifractal spectrum</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">77/77 valid spectra after the &tau; correction; reproduces the published method's own worked figures</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
-          <tr><td class="dt-note">Descriptor extraction and band construction</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">&Delta;&alpha;, &alpha;&#8320;, A for 77 frameworks with per-framework stability estimates</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
+          <tr><td class="dt-note">Box growing and the multifractal spectrum</td><td class="dt-note" style="color:var(--good)">Complete, but wired to the wrong graph in the published runs</td><td class="dt-note">77/77 valid spectra after the &tau; correction, reproducing the published method's own worked figures &mdash; but both notebooks passed the analysis the <b>atomic</b> supercell graph, not the coarse-grained quotient graph the module and this site describe. The correct wiring exists (<code>code_12_converged_band.py</code>) but was not the one used to produce the published CSVs.</td><td class="dt-value">15%</td><td class="dt-value">12%</td></tr>
+          <tr><td class="dt-note">Descriptor extraction and band construction</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">&Delta;&alpha;, &alpha;&#8320;, A for 77 frameworks with per-framework stability estimates &mdash; extraction runs correctly; whether the resulting numbers mean anything is a separate, and now negative, question (see the validation table below)</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
           <tr><td class="dt-note">Second implementation, cross-checked</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Python and JavaScript engines written independently from one specification; two of three defects were found by their disagreement. <b>Not yet reconciled at supercell sizes</b> &mdash; the withdrawn four-structure numbers came from the JavaScript engine on graphs far smaller than any the Python run covers, and the discrepancy has not been traced.</td><td class="dt-value">10%</td><td class="dt-value">8%</td></tr>
           <tr><td class="dt-note">Platform, test suite and CI</td><td class="dt-note" style="color:var(--good)">Complete</td><td class="dt-note">Ten-page portal computing every number live; six headless suites; publication gated on them passing</td><td class="dt-value">10%</td><td class="dt-value">10%</td></tr>
           <tr><td class="dt-note">Batch ingestion of an external structure database</td><td class="dt-note" style="color:var(--good)">Run</td><td class="dt-note">61 CoRE MOF 2019 frameworks pulled from the Zenodo archive by DOI and taken end to end through the pipeline</td><td class="dt-value">5%</td><td class="dt-value">3%</td></tr>
-          <tr style="font-weight:640;"><td class="dt-note">Engineering subtotal</td><td class="dt-note"></td><td class="dt-note">All nine run and integrated; the two engines are not cross-checked at supercell size</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--good)">96%</td></tr>
+          <tr style="font-weight:640;"><td class="dt-note">Engineering subtotal</td><td class="dt-note"></td><td class="dt-note">All nine run and integrated; the two engines are not cross-checked at supercell size; the coarse-grained supercell path exists but was not the one wired into the published bands</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--good)">~88%</td></tr>
         </tbody>
       </table>
 
       <h3 class="sub-head">Scientific validation &mdash; what is established</h3>
+      <p class="section-sub">Rewritten 2026-09-14/15 after the finite-size convergence test. The table below is the honest re-derivation, not the original plan; three rows that previously read "Settled" now read "Not evaluable" because the quantity they depend on &mdash; a converged Δα &mdash; does not exist.</p>
       <table class="data-table">
         <thead><tr><td>Question</td><td>State</td><td>Evidence</td><td>Weight</td><td>Credit</td></tr></thead>
         <tbody>
-          <tr><td class="dt-note">Is the descriptor computed correctly?</td><td class="dt-note" style="color:var(--good)">Settled</td><td class="dt-note">All 77 spectra concave with the apex at q&nbsp;=&nbsp;0; stability quantified per framework</td><td class="dt-value">25%</td><td class="dt-value">25%</td></tr>
-          <tr><td class="dt-note">Is it free of trivial confounds?</td><td class="dt-note" style="color:var(--good)">Settled &mdash; negatively</td><td class="dt-note">The pore-size correlation is a graph-size artefact and was withdrawn. Knowing this <i>is</i> the result.</td><td class="dt-value">20%</td><td class="dt-value">20%</td></tr>
-          <tr><td class="dt-note">Does the band generalise within its dataset?</td><td class="dt-note" style="color:var(--warn)">Partial</td><td class="dt-note">Hold-out frameworks land inside the band &mdash; but within one metal family only</td><td class="dt-value">15%</td><td class="dt-value">8%</td></tr>
-          <tr><td class="dt-note">Does it transfer to synthesised materials?</td><td class="dt-note" style="color:var(--good)">Settled &mdash; positively</td><td class="dt-note">61 real CoRE MOF frameworks, size-matched, land <i>on</i> the hypothetical band: 0.95&ndash;1.47 vs 1.02&ndash;1.41, means differing by 0.018 (<i>p</i>&nbsp;=&nbsp;0.38), same asymmetry. The earlier four-structure &ldquo;gap&rdquo; was withdrawn as a size artefact.</td><td class="dt-value">20%</td><td class="dt-value">20%</td></tr>
-          <tr><td class="dt-note">Does it predict a measured property?</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Nothing here computes adsorption, selectivity or stability. This is now the only substantive gap, and it is a research question rather than a build task.</td><td class="dt-value">20%</td><td class="dt-value">0%</td></tr>
-          <tr style="font-weight:640;"><td class="dt-note">Validation subtotal</td><td class="dt-note"></td><td class="dt-note">Correct, honestly characterised, and shown to transfer to real materials; its <i>usefulness</i> is not yet established</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--warn)">73%</td></tr>
+          <tr><td class="dt-note">Is the spectrum mathematics computed correctly?</td><td class="dt-note" style="color:var(--good)">Settled</td><td class="dt-note">All 77 spectra concave with the apex at q&nbsp;=&nbsp;0; stability quantified per framework. This holds independently of which graph the spectrum is taken on.</td><td class="dt-value">20%</td><td class="dt-value">20%</td></tr>
+          <tr><td class="dt-note">Does Δα converge with supercell size, on the graph the method describes?</td><td class="dt-note" style="color:var(--bad)">Failed</td><td class="dt-note">Grows as &asymp;0.78&middot;ln(<i>D</i>) with no plateau, at every q range from |q|&le;10 to |q|&le;2, on all four demonstration nets (pcu, tbo, sod, fcu). Both published bands were additionally computed on the atomic graph, not this one.</td><td class="dt-value">25%</td><td class="dt-value">0%</td></tr>
+          <tr><td class="dt-note">Is the (non-converged) descriptor free of trivial confounds?</td><td class="dt-note" style="color:var(--good)">Settled &mdash; negatively</td><td class="dt-note">The pore-size correlation is a graph-size artefact and was withdrawn. Now understood as one symptom of the row above rather than an independent finding, but it was real, correctly diagnosed validation work.</td><td class="dt-value">15%</td><td class="dt-value">15%</td></tr>
+          <tr><td class="dt-note">Does the band generalise within its dataset?</td><td class="dt-note" style="color:var(--text-3)">Not evaluable</td><td class="dt-note">There is no converged band for a held-out framework to be tested against.</td><td class="dt-value">10%</td><td class="dt-value">0%</td></tr>
+          <tr><td class="dt-note">Does it transfer to synthesised materials?</td><td class="dt-note" style="color:var(--text-3)">Not evaluable</td><td class="dt-note">61 real CoRE MOF frameworks land on the hypothetical set's band, but both are the same non-converged artefact computed the same way &mdash; agreement between two artefacts is not evidence of transfer.</td><td class="dt-value">10%</td><td class="dt-value">0%</td></tr>
+          <tr><td class="dt-note">Does it predict a measured property?</td><td class="dt-note" style="color:var(--bad)">Not started</td><td class="dt-note">Nothing here computes adsorption, selectivity or stability, and this cannot be meaningfully attempted before the descriptor itself is fixed.</td><td class="dt-value">20%</td><td class="dt-value">0%</td></tr>
+          <tr style="font-weight:640;"><td class="dt-note">Validation subtotal</td><td class="dt-note"></td><td class="dt-note">The spectrum mathematics is correct and the confound analysis was sound; the descriptor itself has not been shown to be a property of the framework</td><td class="dt-value">100%</td><td class="dt-value" style="color:var(--bad)">35%</td></tr>
         </tbody>
       </table>
 
       <div class="keynums">
-        <div class="keynum is-good"><b>96%</b><span>engineering &mdash; the pipeline runs end to end</span></div>
-        <div class="keynum is-warn"><b>73%</b><span>scientific validation &mdash; correct and transferable, usefulness unestablished</span></div>
-        <div class="keynum"><b>&asymp;85%</b><span>overall, weighted equally</span></div>
+        <div class="keynum is-good"><b>~88%</b><span>engineering &mdash; the pipeline runs end to end</span></div>
+        <div class="keynum is-warn"><b>35%</b><span>scientific validation &mdash; the headline descriptor does not converge</span></div>
+        <div class="keynum is-warn"><b>&asymp;55%</b><span>overall &mdash; validation failure treated as gating, not averaged</span></div>
       </div>
 
-      <div class="callout good" data-kind="The result">
-        <b>The claim we will make at review, and defend.</b> The core pipeline is complete and
-        integrated: a CIF goes in at one end and a validated three-number descriptor comes out at
-        the other, demonstrated live in the browser and reproducible from the command line. That is
-        the ~60% the rubric asks for at this stage, and the engineering table above puts it at 96%.
-        <br><br>
-        We report the two axes separately on purpose. A single number would let "we built a lot"
-        stand in for "we established something", and those are not the same claim. The honest
-        overall figure is <b>about 85%</b>, and the remaining gap is no longer a data task: it is
-        that we cannot yet show &Delta;&alpha; predicts anything a chemist would ask for.
-      </div>
-
-      <div class="callout good" data-kind="The result">
-        <b>Update: that run has been done.</b> Sixty-one CoRE MOF frameworks went through the
-        existing pipeline unchanged. It settled the question it was meant to settle &mdash; and
-        settled it against us: the real-MOF gap was an artefact of comparing four small graphs
-        against seventy-seven large ones, and the two bands actually coincide. The withdrawal is
-        on the results page with the reason. External validation is therefore no longer the
-        outstanding item; <b>demonstrated usefulness is</b>. &Delta;&alpha; is now known to be
-        reproducible, size-controlled and transferable, and still not known to predict any
-        property a chemist would ask for.
+      <div class="callout bad" data-kind="Why the overall figure fell from an earlier ~85%">
+        <b>This is not new bad news; it is old bad news finally measured.</b> The convergence
+        problem was present in every number this project published from the start &mdash; it was
+        simply not tested until 2026-09-14/15. An earlier version of this page reported ~85%
+        overall by weighting engineering and validation equally. That average hides a gating
+        failure: a correctly engineered pipeline computing a descriptor that has not been shown
+        to be a property of the framework is not 85% of the way to answering the project's
+        question. It rules out the naive approach, which is a real result, but it is not the
+        answer. <b>What remains</b> is either a size-independent redefinition of Δα (a fixed
+        a-priori q range, a different partition-function normalisation, or reporting the
+        Δα(D) growth slope itself as the descriptor) or a documented decision to retire Δα and
+        report something else as the headline. Neither has been done.
       </div>
 
       <h2 class="section-title" id="reproduce" data-toc="Reproducing every number"><span class="stitle-num">3</span>Reproducing Every Number</h2>
