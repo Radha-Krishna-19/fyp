@@ -1,0 +1,94 @@
+{
+  "HKUST-1": {
+    "name": "HKUST-1",
+    "n_atoms_unit_cell": 156,
+    "supercell_n": 4,
+    "atoms_analysed": 9984,
+    "linker_atom_diameter_r0": 6,
+    "fit": {
+      "ok": true,
+      "split_r": 6,
+      "n_points": 64,
+      "slope_single_fit": 2.328507768209981,
+      "r2_single_fit": 0.9769468737935343,
+      "ss_res_single_fit": 6.596801649711946,
+      "slope_molecular_regime": 1.4051771202798273,
+      "r2_molecular_regime": 0.9926764625930791,
+      "slope_framework_regime": 2.5592093182435414,
+      "r2_framework_regime": 0.974520093637613,
+      "ss_res_two_segment": 3.441702031135978,
+      "residual_improvement": 0.47827716916632435,
+      "slope_difference": 1.154032197963714,
+      "verdict": "two regimes detected: slopes differ and the two-segment fit reduces the residual materially"
+    }
+  },
+  "MOF5": {
+    "name": "MOF5",
+    "n_atoms_unit_cell": 424,
+    "supercell_n": 4,
+    "atoms_analysed": 27136,
+    "linker_atom_diameter_r0": 7,
+    "fit": {
+      "ok": true,
+      "split_r": 7,
+      "n_points": 110,
+      "slope_single_fit": 2.3015472481516013,
+      "r2_single_fit": 0.9783105843527165,
+      "ss_res_single_fit": 11.127325437745354,
+      "slope_molecular_regime": 1.391824543329268,
+      "r2_molecular_regime": 0.9918118209325719,
+      "slope_framework_regime": 2.4127883252683864,
+      "r2_framework_regime": 0.9699330623201428,
+      "ss_res_two_segment": 8.120877203121431,
+      "residual_improvement": 0.2701860614614231,
+      "slope_difference": 1.0209637819391184,
+      "verdict": "two regimes detected: slopes differ and the two-segment fit reduces the residual materially"
+    }
+  },
+  "ZIF-8": {
+    "name": "ZIF-8",
+    "n_atoms_unit_cell": 276,
+    "supercell_n": 4,
+    "atoms_analysed": 17664,
+    "linker_atom_diameter_r0": 5,
+    "fit": {
+      "ok": true,
+      "split_r": 5,
+      "n_points": 52,
+      "slope_single_fit": 2.617550650936394,
+      "r2_single_fit": 0.9836862042934766,
+      "ss_res_single_fit": 4.608400297029325,
+      "slope_molecular_regime": 1.3878210128534707,
+      "r2_molecular_regime": 0.9692914801995218,
+      "slope_framework_regime": 2.8957967409820675,
+      "r2_framework_regime": 0.9954171783303343,
+      "ss_res_two_segment": 0.7049326063085961,
+      "residual_improvement": 0.8470331219353903,
+      "slope_difference": 1.5079757281285968,
+      "verdict": "two regimes detected: slopes differ and the two-segment fit reduces the residual materially"
+    }
+  },
+  "UiO-66": {
+    "name": "UiO-66",
+    "n_atoms_unit_cell": 114,
+    "supercell_n": 4,
+    "atoms_analysed": 7296,
+    "linker_atom_diameter_r0": 5,
+    "fit": {
+      "ok": true,
+      "split_r": 5,
+      "n_points": 30,
+      "slope_single_fit": 2.4075092317776443,
+      "r2_single_fit": 0.9840138616610125,
+      "ss_res_single_fit": 1.9749657292455103,
+      "slope_molecular_regime": 1.8507072632915618,
+      "r2_molecular_regime": 0.9981163425738206,
+      "slope_framework_regime": 2.6595060282565934,
+      "r2_framework_regime": 0.971097743049376,
+      "ss_res_two_segment": 1.1246107994323806,
+      "residual_improvement": 0.43056692945147357,
+      "slope_difference": 0.8087987649650317,
+      "verdict": "two regimes detected: slopes differ and the two-segment fit reduces the residual materially"
+    }
+  }
+}
