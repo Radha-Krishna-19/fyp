@@ -23,7 +23,7 @@ If you only have an hour before the review, read **Chapters 1, 2 and 8**.
 | [5](05_graphs.md) | **Graph Theory** — every term, from scratch | Vertices, degree, centrality, Laplacian, λ₂ | 20 min |
 | [6](06_multifractal.md) | **The Multifractal Spectrum** | The maths, explained without assuming any | 25 min |
 | [7](07_implementation.md) | **What We Built** | The code, the platform, the tests | 15 min |
-| [8](08_results.md) | **Results** — what we found | Every number, with its caveat | 20 min |
+| [8](08_results.md) | **Results** — what we found | Every number, with its caveat | 25 min |
 | [9](09_mistakes.md) | **Mistakes We Found** | Three real bugs, and how we caught them | 15 min |
 | [10](10_limitations.md) | **Limits and Next Steps** | What we cannot claim, and why | 10 min |
 | [11](11_glossary.md) | **Glossary** | Every term in one place | reference |
