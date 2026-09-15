@@ -42,9 +42,9 @@ jobs:
     name: JavaScript test suites (all 9)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: '22' }
 
       # The site computes its numbers in the browser at load time, so a broken
       # engine script renders a blank panel and throws no visible error. These
@@ -67,8 +67,8 @@ jobs:
     name: Python reference pipeline smoke test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: { python-version: '3.11' }
       - name: Install dependencies
         run: pip install numpy networkx
@@ -80,8 +80,8 @@ jobs:
     name: Built HTML matches the source (no hand-edits)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: { python-version: '3.11' }
       - name: Rebuild the site from content_source and fragments
         run: python 1_website/_build/build_site.py
@@ -106,8 +106,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
 
       - name: Check the site is self-contained
         working-directory: 1_website
@@ -121,9 +121,9 @@ jobs:
           ! grep -rn 'src="/\|href="/' --include='*.html' . || {
             echo "absolute path found — it will 404 under the Pages sub-path"; exit 1; }
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: 1_website
 
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
