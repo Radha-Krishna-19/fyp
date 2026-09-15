@@ -416,53 +416,76 @@
       <h3 class="sub-head">The nine-way comparison, per class, both datasets</h3>
       <p>For each class, in each dataset: chemistry where it is available, graph features, degree statistics, edges, higher-order structure, assortativity, heterogeneity, and component count. Structural properties at the level of bond lengths and bond angles are not listed, because coarse-graining removes them from the graph by design &mdash; they cannot be read off a block-level vertex, whichever class it lands in.</p>
 
-      <p class="section-sub" style="margin-top:-4px;"><i>The first column stays put while you scroll the table sideways; a heavier vertical line marks where the CoRE MOF columns start.</i></p>
+      <p class="section-sub" style="margin-top:-4px;"><i>One table per dataset, same nine
+      categories and row order in both, so a row in one lines up with the same row in the
+      other without needing to scroll a single table sideways.</i></p>
+
+      <h4 class="micro-head">hMOF (72 usable)</h4>
       <div class="table-wrap">
-        <table class="data-table compare">
-          <thead><tr><td>Category</td><td colspan="3">hMOF (72 usable)</td><td colspan="3" class="group-start">CoRE MOF (55 usable)</td></tr>
-          <tr><td></td><td>Narrow (n=33)</td><td>Medium (n=30)</td><td>Wide (n=9)</td>
-              <td class="group-start">Narrow (n=14)</td><td>Medium (n=27)</td><td>Wide (n=14)</td></tr></thead>
+        <table class="data-table">
+          <thead><tr><td>Category</td><td>Narrow (n=33)</td><td>Medium (n=30)</td><td>Wide (n=9)</td></tr></thead>
           <tbody>
-            <tr><td class="dt-label">1. Chemistry</td>
-              <td class="dt-note" colspan="3"></td><td class="dt-note group-start" colspan="3"></td></tr>
+            <tr><td class="dt-label">1. Chemistry</td><td class="dt-note"></td><td class="dt-note"></td><td class="dt-note"></td></tr>
             <tr><td class="dt-label sub-label">metal</td>
-              <td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td>
-              <td class="dt-note group-start" colspan="3">not available &mdash; MOFX-DB did not supply a MOFid for this set</td></tr>
+              <td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td></tr>
             <tr><td class="dt-label sub-label">net (from MOFid)</td>
-              <td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (5/6 identified)</td>
-              <td class="dt-note group-start" colspan="3">not available, same reason</td></tr>
+              <td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (5/6 identified)</td></tr>
             <tr><td class="dt-label sub-label">void fraction, LCD</td>
-              <td class="dt-value">0.716, 9.42&nbsp;&Aring;</td><td class="dt-value">0.723, 9.50&nbsp;&Aring;</td><td class="dt-value">0.218, 3.81&nbsp;&Aring;</td>
-              <td class="dt-value group-start">0.735, 14.88&nbsp;&Aring;</td><td class="dt-value">0.608, 9.45&nbsp;&Aring;</td><td class="dt-value">0.544, 6.70&nbsp;&Aring;</td></tr>
-            <tr><td class="dt-label">2. Features</td>
-              <td class="dt-note" colspan="3"></td><td class="dt-note group-start" colspan="3"></td></tr>
+              <td class="dt-value">0.716, 9.42&nbsp;&Aring;</td><td class="dt-value">0.723, 9.50&nbsp;&Aring;</td><td class="dt-value">0.218, 3.81&nbsp;&Aring;</td></tr>
+            <tr><td class="dt-label">2. Features</td><td class="dt-note"></td><td class="dt-note"></td><td class="dt-note"></td></tr>
             <tr><td class="dt-label sub-label">unit-cell blocks</td>
-              <td class="dt-value">4.0</td><td class="dt-value">4.0</td><td class="dt-value">9.2</td>
-              <td class="dt-value group-start">33.6</td><td class="dt-value">23.3</td><td class="dt-value">53.1</td></tr>
+              <td class="dt-value">4.0</td><td class="dt-value">4.0</td><td class="dt-value">9.2</td></tr>
             <tr><td class="dt-label sub-label">CG nodes, diameter</td>
-              <td class="dt-value">254, 11.9</td><td class="dt-value">256, 12.0</td><td class="dt-value">590, 10.2</td>
-              <td class="dt-value group-start">410, 12.0</td><td class="dt-value">1175, 14.9</td><td class="dt-value">2786, 19.1</td></tr>
+              <td class="dt-value">254, 11.9</td><td class="dt-value">256, 12.0</td><td class="dt-value">590, 10.2</td></tr>
             <tr><td class="dt-label">3. Structural (bond, angle)</td>
-              <td class="dt-note" colspan="3">not observable &mdash; coarse-graining removes it, by design</td>
-              <td class="dt-note group-start" colspan="3">not observable &mdash; coarse-graining removes it, by design</td></tr>
+              <td class="dt-note" colspan="3">not observable &mdash; coarse-graining removes it, by design</td></tr>
             <tr><td class="dt-label">4. Degree, mean (min&ndash;max)</td>
-              <td class="dt-value">3.01 (2&ndash;6)</td><td class="dt-value">3.00 (2&ndash;6)</td><td class="dt-value">4.07 (3&ndash;6)</td>
-              <td class="dt-value group-start">3.38 (3&ndash;5)</td><td class="dt-value">3.72 (3&ndash;5)</td><td class="dt-value">3.91 (3&ndash;9)</td></tr>
+              <td class="dt-value">3.01 (2&ndash;6)</td><td class="dt-value">3.00 (2&ndash;6)</td><td class="dt-value">4.07 (3&ndash;6)</td></tr>
             <tr><td class="dt-label">5. Edges (unweighted)</td>
-              <td class="dt-value">382</td><td class="dt-value">384</td><td class="dt-value">1124</td>
-              <td class="dt-value group-start">709</td><td class="dt-value">1994</td><td class="dt-value">4902</td></tr>
+              <td class="dt-value">382</td><td class="dt-value">384</td><td class="dt-value">1124</td></tr>
             <tr><td class="dt-label">6. Clustering (higher-order)</td>
-              <td class="dt-value">0.0000</td><td class="dt-value">0.0000</td><td class="dt-value">0.0000</td>
-              <td class="dt-value group-start">0.0201</td><td class="dt-value">0.0078</td><td class="dt-value">0.0028</td></tr>
+              <td class="dt-value">0.0000</td><td class="dt-value">0.0000</td><td class="dt-value">0.0000</td></tr>
             <tr><td class="dt-label">7. Assortativity</td>
-              <td class="dt-value">&minus;0.998</td><td class="dt-value">&minus;1.000</td><td class="dt-value">&minus;0.921</td>
-              <td class="dt-value group-start">&minus;0.822</td><td class="dt-value">&minus;0.877</td><td class="dt-value">&minus;0.740</td></tr>
+              <td class="dt-value">&minus;0.998</td><td class="dt-value">&minus;1.000</td><td class="dt-value">&minus;0.921</td></tr>
             <tr><td class="dt-label">8. Heterogeneity (CV, entropy)</td>
-              <td class="dt-value">0.571, 0.817</td><td class="dt-value">0.577, 0.811</td><td class="dt-value">0.418, 0.703</td>
-              <td class="dt-value group-start">0.292, 0.925</td><td class="dt-value">0.295, 0.681</td><td class="dt-value">0.427, 0.852</td></tr>
+              <td class="dt-value">0.571, 0.817</td><td class="dt-value">0.577, 0.811</td><td class="dt-value">0.418, 0.703</td></tr>
             <tr><td class="dt-label">9. Components (mean, all&nbsp;=&nbsp;1?)</td>
-              <td class="dt-value">1.00, yes</td><td class="dt-value">1.00, yes</td><td class="dt-value">1.67, no</td>
-              <td class="dt-value group-start">1.57, no</td><td class="dt-value">1.07, no</td><td class="dt-value">1.14, no</td></tr>
+              <td class="dt-value">1.00, yes</td><td class="dt-value">1.00, yes</td><td class="dt-value">1.67, no</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="micro-head">CoRE MOF (55 usable)</h4>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><td>Category</td><td>Narrow (n=14)</td><td>Medium (n=27)</td><td>Wide (n=14)</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-label">1. Chemistry</td><td class="dt-note"></td><td class="dt-note"></td><td class="dt-note"></td></tr>
+            <tr><td class="dt-label sub-label">metal</td>
+              <td class="dt-note" colspan="3">not available &mdash; MOFX-DB did not supply a MOFid for this set</td></tr>
+            <tr><td class="dt-label sub-label">net (from MOFid)</td>
+              <td class="dt-note" colspan="3">not available, same reason</td></tr>
+            <tr><td class="dt-label sub-label">void fraction, LCD</td>
+              <td class="dt-value">0.735, 14.88&nbsp;&Aring;</td><td class="dt-value">0.608, 9.45&nbsp;&Aring;</td><td class="dt-value">0.544, 6.70&nbsp;&Aring;</td></tr>
+            <tr><td class="dt-label">2. Features</td><td class="dt-note"></td><td class="dt-note"></td><td class="dt-note"></td></tr>
+            <tr><td class="dt-label sub-label">unit-cell blocks</td>
+              <td class="dt-value">33.6</td><td class="dt-value">23.3</td><td class="dt-value">53.1</td></tr>
+            <tr><td class="dt-label sub-label">CG nodes, diameter</td>
+              <td class="dt-value">410, 12.0</td><td class="dt-value">1175, 14.9</td><td class="dt-value">2786, 19.1</td></tr>
+            <tr><td class="dt-label">3. Structural (bond, angle)</td>
+              <td class="dt-note" colspan="3">not observable &mdash; coarse-graining removes it, by design</td></tr>
+            <tr><td class="dt-label">4. Degree, mean (min&ndash;max)</td>
+              <td class="dt-value">3.38 (3&ndash;5)</td><td class="dt-value">3.72 (3&ndash;5)</td><td class="dt-value">3.91 (3&ndash;9)</td></tr>
+            <tr><td class="dt-label">5. Edges (unweighted)</td>
+              <td class="dt-value">709</td><td class="dt-value">1994</td><td class="dt-value">4902</td></tr>
+            <tr><td class="dt-label">6. Clustering (higher-order)</td>
+              <td class="dt-value">0.0201</td><td class="dt-value">0.0078</td><td class="dt-value">0.0028</td></tr>
+            <tr><td class="dt-label">7. Assortativity</td>
+              <td class="dt-value">&minus;0.822</td><td class="dt-value">&minus;0.877</td><td class="dt-value">&minus;0.740</td></tr>
+            <tr><td class="dt-label">8. Heterogeneity (CV, entropy)</td>
+              <td class="dt-value">0.292, 0.925</td><td class="dt-value">0.295, 0.681</td><td class="dt-value">0.427, 0.852</td></tr>
+            <tr><td class="dt-label">9. Components (mean, all&nbsp;=&nbsp;1?)</td>
+              <td class="dt-value">1.57, no</td><td class="dt-value">1.07, no</td><td class="dt-value">1.14, no</td></tr>
           </tbody>
         </table>
       </div>
