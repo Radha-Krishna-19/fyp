@@ -8,8 +8,30 @@ meaningless.
 
 | Notebook | Structures | Output | Status |
 |---|---|---|---|
-| `mof_band_analysis.ipynb` | 77 hMOF frameworks — hypothetical, computer-generated | `results.json` | Run; produced the band |
-| `real_mof_band.ipynb` | CoRE MOF 2019 — experimentally synthesised | `real_results.json` | **Run — 61 frameworks** |
+| `mof_band_analysis.ipynb` | 77 hMOF frameworks — hypothetical, computer-generated | `results.json` | Run; produced the (withdrawn) band |
+| `real_mof_band.ipynb` | CoRE MOF 2019 — experimentally synthesised | `real_results.json` | Run — 61 frameworks; produced the (withdrawn) band |
+
+---
+
+## Both notebooks now carry a correction at the end (2026-09-16)
+
+The bands both notebooks originally produced are withdrawn — see the notice
+in the first cell of each notebook and `CLAUDE.md`. Two reasons: neither
+converges with supercell size, and both were computed on the **atomic**
+supercell graph rather than the coarse-grained graph this project's method
+actually specifies.
+
+The last few cells of each notebook (titled "Step 13 (corrected)") fix the
+second problem and were run for real, not just written: they use this
+project's own `2_python/code_12_converged_band.py` to coarse-grain the unit
+cell *before* replicating it into a supercell (the correct order — proven,
+not just argued, identical to the reverse order but far cheaper; see
+`2_python/_prove_ordering_equivalence.py`), on the four demonstration
+structures live, then load and plot the complete-dataset result from
+`2_python/code_17_full_correct_band.py`. The answer does not change: Δα
+still correlates with coarse-grained graph size at r ≈ +0.70 on both
+datasets, independently. Using the right graph fixes the graph; it does not
+fix the descriptor.
 
 ---
 
