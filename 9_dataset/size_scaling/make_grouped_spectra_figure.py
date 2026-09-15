@@ -1,16 +1,16 @@
-"""Grouped multifractal spectra: every structure's f(alpha) vs alpha curve,
-on the CORRECT coarse-grained supercell graph, coloured by class
-(Narrow/Medium/Wide terciles of Delta-alpha), for both full datasets.
-matplotlib only.
+"""Grouped multifractal spectra shown as actual BANDS, not coloured lines.
 
-This is the grouped version of the standard "all spectra overlaid" figure
-this project already uses (site fig10, panel b): same idea, but coloured by
-class instead of left as one colour, and computed on the graph the method
-actually calls for instead of the withdrawn atomic graph.
+For each class (Narrow/Medium/Wide) each structure's f(alpha) vs alpha curve
+is interpolated onto a common alpha grid, then the class is drawn as a
+shaded envelope (mean +/- one standard deviation across its members) with a
+solid mean line through the middle -- a band, the way this project uses the
+word everywhere else (a range Delta-alpha occupies), applied to the whole
+spectrum shape instead of to the single width number. Individual member
+curves are drawn underneath, very faint, so the band is not asserted without
+showing what it is a band OF.
 
-Reads full_band_hmof_cg.json, full_band_core_cg.json (per-structure spectra,
-now including the full alpha(q)/f_alpha(q) curves) and
-subband_explain_hmof.json, subband_explain_core.json (class thresholds).
+matplotlib only. Reads full_band_hmof_cg.json, full_band_core_cg.json (curves)
+and subband_explain_hmof.json, subband_explain_core.json (class thresholds).
 Writes grouped_spectra_figure.png.
 """
 import json
@@ -47,6 +47,25 @@ def clean_curve(alpha, f_alpha):
     return au, np.array([f[inv == k].mean() for k in range(len(au))])
 
 
+def band_for_class(rows, grid):
+    """Interpolate every member's curve onto `grid`, return (mean, std,
+    n_covering) at each grid point. NaN where fewer than 2 members reach
+    that alpha, so the shaded region never implies data that is not there."""
+    stack = []
+    for r in rows:
+        a, f = clean_curve(r['alpha'], r['f_alpha'])
+        if len(a) < 3:
+            continue
+        stack.append(np.interp(grid, a, f, left=np.nan, right=np.nan))
+    stack = np.asarray(stack)
+    n_covering = np.sum(np.isfinite(stack), axis=0)
+    mean = np.nanmean(stack, axis=0)
+    std = np.nanstd(stack, axis=0)
+    mean[n_covering < 2] = np.nan
+    std[n_covering < 2] = np.nan
+    return mean, std, n_covering
+
+
 def main():
     hmof = load('full_band_hmof_cg.json')
     core = load('full_band_core_cg.json')
@@ -56,20 +75,40 @@ def main():
     hg = classify([r for r in hmof['records'] if r.get('ok')], hmof_x['q25'], hmof_x['q75'])
     cg = classify([r for r in core['records'] if r.get('ok')], core_x['q25'], core_x['q75'])
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5.8))
+    fig, axes = plt.subplots(1, 2, figsize=(13, 6.2))
 
     for ax, recs, label, n_total in ((axes[0], hg, 'hMOF', 77), (axes[1], cg, 'CoRE MOF', 61)):
+        all_alpha = np.concatenate([
+            clean_curve(r['alpha'], r['f_alpha'])[0] for r in recs
+            if len(clean_curve(r['alpha'], r['f_alpha'])[0]) >= 3])
+        lo, hi = np.percentile(all_alpha, [1, 99])
+        grid = np.linspace(lo, hi, 160)
+
+        # faint individual members first, so the band is visibly a summary
+        # of real curves and not a synthetic shape
         for r in recs:
             a, f = clean_curve(r['alpha'], r['f_alpha'])
             if len(a) < 3:
                 continue
-            ax.plot(a, f, color=COLORS[r['class']], alpha=0.55, lw=1.1)
+            ax.plot(a, f, color=COLORS[r['class']], alpha=0.12, lw=0.8, zorder=1)
+
+        # the band itself: shaded mean +/- 1 sd, one per class, drawn last
+        # so it sits on top of the faint member curves
         for cls in ('Narrow', 'Medium', 'Wide'):
-            ax.plot([], [], color=COLORS[cls], lw=2.5, label=cls)
+            rows = [r for r in recs if r['class'] == cls]
+            if not rows:
+                continue
+            mean, std, n_cov = band_for_class(rows, grid)
+            ax.fill_between(grid, mean - std, mean + std, color=COLORS[cls],
+                             alpha=0.30, zorder=2, linewidth=0)
+            ax.plot(grid, mean, color=COLORS[cls], lw=2.6, zorder=3,
+                     label=f'{cls} (n={len(rows)})')
+
         ax.set_xlabel(r'$\alpha$')
         ax.set_ylabel(r'$f(\alpha)$')
-        ax.set_title(f'{label}: {len(recs)}/{n_total} spectra,\ncoloured by class, coarse-grained supercell graph')
-        ax.legend(fontsize=9, title='class (terciles)')
+        ax.set_title(f'{label}: {len(recs)}/{n_total} spectra as three bands\n'
+                     f'(shaded = mean $\\pm$ 1 sd within class; faint lines = individual members)')
+        ax.legend(fontsize=9, title='class (terciles of $\\Delta\\alpha$)', loc='lower left')
         ax.grid(alpha=0.25)
 
     fig.tight_layout()
@@ -77,7 +116,6 @@ def main():
     fig.savefig(out, dpi=150)
     print(f'written {out}')
 
-    # console summary: alpha_0 (apex) and asymmetry per class, both datasets
     for label, recs in (('hMOF', hg), ('CoRE MOF', cg)):
         print(f'\n{label}:')
         for cls in ('Narrow', 'Medium', 'Wide'):
