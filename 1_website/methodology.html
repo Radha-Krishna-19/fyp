@@ -221,6 +221,20 @@
       <tr><td class="f">code_07a / 07b</td><td>Module 7 — MOFid and MOFkey assembly</td></tr>
       <tr><td class="f" style="color:var(--accent2)">code_09_network_analysis.py</td><td><b>Our contribution</b> — periodic graph, centrality, Laplacian spectrum</td></tr>
 
+      <tr class="grp"><td colspan="2">Multifractal spectrum and its validation — Python, this project's own work</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_10_multifractal_spectrum.py</td><td>iNMFA spectrum, box-covering, reference band, candidate test</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_11_nmfa_paper.py</td><td>The published method exactly as written — deterministic box-growing, no box-covering</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_12_converged_band.py</td><td>Coarse-grain the unit cell, replicate combinatorially; the finite-size and q-range convergence sweep behind <a href="results.html#band">the withdrawal</a></td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_13_scaling_regimes.py</td><td>Tests directly whether the atomic graph has two scaling regimes (molecular vs framework)</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_14_size_strata.py</td><td>Rebuilds the correct coarse-grained graph independently; network statistics per size class</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_15_dataset_sweeps.py</td><td>Capped &Delta;&alpha;(D) slope sweep on both datasets — does the divergence slope vary by framework?</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_16_topological_diversity.py</td><td>Classifies structures by coordination signature; assembles a topologically diverse comparison set</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_17_full_correct_band.py</td><td><b>The full, correct band</b> — all 77 hMOF + all 61 CoRE MOF, on the coarse-grained supercell graph</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">code_18_subband_explain.py</td><td>Sorts each dataset into Narrow/Medium/Wide; reports 9 comparison categories per class</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">_prove_ordering_equivalence.py</td><td>Empirical proof that coarse-grain-first and atomic-first give an identical graph</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">_ci_smoke_test.py</td><td>The same coordination-number checks that run in CI on every push</td></tr>
+      <tr><td class="f" style="color:var(--accent2)">_run_size_scaling.py</td><td>Driver for the finite-size + q-range sweep behind the convergence figure</td></tr>
+
       <tr class="grp"><td colspan="2">Browser engine — JavaScript</td></tr>
       <tr><td class="f">mof_decompose.js</td><td>CIF parsing, PBC bonding, and the three published decomposition algorithms</td></tr>
       <tr><td class="f">mof_render.js</td><td>Three.js 3D renderer — on-demand rendering, context-loss recovery</td></tr>

@@ -38,7 +38,11 @@
 
   // ---------------- source-code browser ----------------
   const OURS = ['code_09_network_analysis.py', 'code_10_multifractal_spectrum.py',
-                'code_11_nmfa_paper.py', 'band_page.js'];
+                'code_11_nmfa_paper.py', 'code_12_converged_band.py',
+                'code_13_scaling_regimes.py', 'code_14_size_strata.py',
+                'code_15_dataset_sweeps.py', 'code_16_topological_diversity.py',
+                'code_17_full_correct_band.py', 'code_18_subband_explain.py',
+                'band_page.js'];
 
   function initCodeGrid() {
     const grid = document.getElementById('code-grid');
