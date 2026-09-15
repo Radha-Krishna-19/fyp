@@ -120,6 +120,26 @@ window.GLOSSARY = [
   short: 'A square table where entry (i, j) is 1 if vertices i and j are connected and 0 otherwise.',
   long: 'The standard way to hand a graph to linear algebra. For an undirected graph it is symmetric. Everything spectral — eigenvalues, centrality, the Laplacian — starts here.' },
 
+{ term: 'connected component', aka: ['component', 'components'],
+  group: 'Graph theory', needs: ['graph', 'vertex', 'edge'],
+  short: 'A maximal set of vertices each reachable from every other by following edges. A graph that is all one piece has exactly one.',
+  long: 'If a graph has more than one component, at least two parts of it are not joined by any path at all — a genuine break, not just a long way round. This project checks the component count of every coarse-grained supercell graph rather than assuming it is 1: a replicated quotient graph should always come out as one piece, so a count above 1 signals a bug in the replication, not a property of the framework.' },
+
+{ term: 'clustering coefficient', aka: ['average clustering', 'transitivity'],
+  group: 'Graph theory', needs: ['graph', 'vertex', 'edge', 'degree'],
+  short: 'The fraction of a vertex’s neighbours that are also neighbours of each other, averaged over all vertices — how often "a friend of a friend is a friend".',
+  long: 'A triangle exists whenever two neighbours of a vertex are themselves connected. The clustering coefficient counts, for each vertex, how many of the possible triangles through it actually exist, then averages that fraction across the graph. Coarse-grained MOF quotient graphs tend to have low clustering, because building blocks mostly link in an open, tree-like or ring-like way rather than in tight triangles — a high value would be the unusual case worth explaining.' },
+
+{ term: 'assortativity', aka: ['degree assortativity', 'degree-degree correlation'],
+  group: 'Graph theory', needs: ['graph', 'edge', 'degree'],
+  short: 'The correlation between the degrees of the two endpoints of an edge, across every edge in the graph. Positive: high-degree vertices connect to other high-degree vertices. Negative: they connect to low-degree ones.',
+  long: 'Ranges from −1 to +1, the same scale as an ordinary correlation coefficient, because that is what it is — computed on the pairs of degrees at either end of every edge. A network where hubs mostly attach to non-hubs (a star, or a bipartite-like network of few high-degree nodes and many low-degree linkers) is strongly negative. Most of the coarse-grained MOF graphs in this project are exactly that shape: one high-degree metal-cluster kind wired to many low-degree linkers, so assortativity near −1 is the expected signature of the architecture, not an anomaly.' },
+
+{ term: 'heterogeneity', aka: ['degree heterogeneity', 'coefficient of variation', 'CV', 'degree entropy'],
+  group: 'Graph theory', needs: ['degree'],
+  short: 'How spread out the degree values in a graph are. Two common measures: the coefficient of variation (standard deviation divided by the mean) and the normalised Shannon entropy of the degree distribution (0 = every vertex has the same degree, 1 = as spread out as the number of distinct degree values allows).',
+  long: 'A perfectly regular graph — every vertex the same degree — has zero heterogeneity by both measures. A graph mixing a few very high-degree hubs with many low-degree vertices scores high on both. This project uses heterogeneity to test whether a claimed structural class (such as a teammate’s Narrow/Medium/Wide split) reflects a real difference in how connectivity is distributed, or whether two graphs with identical heterogeneity — meaning they are the same graph — were nonetheless given different labels.' },
+
 { term: 'labelled quotient graph', aka: ['quotient graph'],
   group: 'Graph theory', needs: ['graph', 'periodic boundary conditions', 'edge'],
   short: 'The graph of one unit cell, where each edge records which neighbouring cell it reaches into.',
@@ -170,6 +190,11 @@ window.GLOSSARY = [
   group: 'Fractals', needs: ['graph', 'fractal'],
   short: 'Centre a ball on one vertex, grow its radius one hop at a time, and count how many vertices fall inside.',
   long: 'Written M_i(r) — the number of vertices within r hops of vertex i. How fast M grows with r is how fast the network expands as seen from that vertex. Deterministic: no randomness, so the same graph always gives the same curve. This is the published method’s alternative to box *covering*, which tries to tile the whole graph with boxes and needs random restarts.' },
+
+{ term: 'box-covering', aka: ['box covering', 'box-covering trial'],
+  group: 'Fractals', needs: ['graph', 'fractal', 'box growing'],
+  short: 'Tile the whole graph with non-overlapping boxes of a fixed radius, so every vertex belongs to exactly one box, then read off each box’s size.',
+  long: 'Centres are visited in a random order; each claims every still-unclaimed vertex within the chosen radius, so the boxes partition the graph. Because minimum box-covering is NP-hard, the greedy version used throughout this project is run many times with different random centre orders — a "box-covering trial" — and the results averaged. This is the method actually used everywhere in this project except the paper-comparison module, in place of box *growing*, which the source paper itself specifies but which needs a deterministic distance matrix that is more expensive to build at the graph sizes used here.' },
 
 { term: 'influential nodes', aka: ['influential blocks', 'influential'],
   group: 'Fractals', needs: ['degree', 'box growing'],

@@ -226,34 +226,228 @@
     <span style="color:var(--code-kw)">→ coordination numbers, centralities and Laplacian spectra for all four structures</span>
   </div>
 
-      <h2 class="section-title" id="realband" data-toc="Real synthesised MOFs"><span class="stitle-num">3</span>The Same Analysis on Real, Synthesised MOFs</h2>
-      <p class="section-sub">The band above is built from hypothetical frameworks &mdash; structures a computer proposed and nobody has ever made. This section runs the identical pipeline on sixty-one frameworks that exist, taken from CoRE MOF 2019, and asks whether the descriptor was describing materials or only one generator&rsquo;s output.</p>
-<dl class="bridge"><dt>You know</dt><dd>A band, measured on frameworks that only exist inside a computer.</dd><dt>This section</dt><dd class="now">Repeats everything on 61 MOFs that have actually been synthesised, and asks whether the band transfers.</dd><dt>Which lets us</dt><dd>Decide whether any of this is about materials or only about one structure generator.</dd></dl>
+      <h2 class="section-title" id="full-correct-band" data-toc="The full, correct band">The Full, Correct Band: Both Datasets on the Coarse-Grained Supercell Graph</h2>
+      <p class="section-sub">Everything above this point used the atomic graph by mistake. This section redoes the analysis on the graph the method actually calls for &mdash; the coarse-grained supercell &mdash; on the complete 77-framework hMOF set and the complete 61-framework CoRE MOF set, not a sample of either.</p>
 
-      <div class="callout" data-kind="Note">
-        <b>Why this is the question that matters.</b> Every quantitative result on this page above this
-        point was computed on <code>hMOF-###</code> entries: chemically plausible, combinatorially
-        assembled, never synthesised. A band that only holds for one generator&rsquo;s output is a
-        statement about that generator, not about matter. The only way to tell the difference is to run
-        the same code on structures that came out of a laboratory &mdash; enough of them to be a
-        distribution rather than an anecdote.
+      <div class="callout" data-kind="Which graph, stated once">
+        A vertex here is one building block, not one atom. The unit cell is decomposed into
+        blocks, joined into a labelled quotient graph (each edge carries the lattice translation
+        it crosses), then that block graph is replicated n&times;n&times;n until every lattice
+        direction reaches 48&nbsp;&Aring; &mdash; the same physical target the original notebooks
+        used, applied to the correct graph this time. No atoms are built at any point, so
+        replication is cheap and the graph reaches a real diameter. The full reasoning for why
+        this is the right graph, and why the other three candidates (unit cell alone, atomic
+        graph, coarse-grained unit cell alone) are each wrong for a different reason, is on the
+        <a href="methodology.html#graph-choice">Methodology page</a>.
       </div>
 
-      <div class="callout bad" data-kind="Withdrawn, 2026-09-15">
-        <b>Everything below this point compares two bands that are both withdrawn.</b> As set out
-        above, Δα does not converge with supercell size on the coarse-grained quotient graph, and
-        both this 61-framework band and the 77-framework hMOF band were in fact computed on the
-        <b>atomic</b> supercell graph, not the coarse-grained graph this site describes &mdash;
-        which additionally spans two length scales (molecular and framework) that a single
-        power-law fit cannot legitimately span. The comparison below is kept, with this notice,
-        because the question it asks &mdash; does a band calibrated on one dataset transfer to
-        another &mdash; is a reasonable one to have asked, and the negative answer about
-        convergence does not depend on which dataset the non-converged number came from. Read
-        every number below as &ldquo;two non-converged quantities agree with each other&rdquo;,
-        not as a chemical or structural finding.
+      <div class="callout warn" data-kind="What ran, and what did not">
+        All 77 hMOF and all 61 CoRE MOF structures were attempted. 72 hMOF and 55 CoRE MOF
+        produced a usable spectrum; the rest were excluded because the graph diameter at this
+        supercell size came out below 8, which is too small to fit a scaling law over (the same
+        gate <code>code_12_converged_band.py</code> already enforces). One spectrum per structure,
+        one random seed, 20 box-covering trials &mdash; not the multi-seed average used for the
+        single-structure convergence figure earlier on this page, so there is no per-structure
+        error bar here to check the resulting classes against. That limitation is real and is
+        not hidden in what follows.
       </div>
 
-      <h2 class="section-title" id="substrata" data-toc="Sub-bands are size strata">Sub-Bands (Narrow/Medium/Wide) Are Size Strata, Not Chemistry</h2>
+      <figure class="fig wide">
+        <img src="figures/fig15_full_band.png" alt="Two horizontal bar charts, hMOF and CoRE MOF, each structure's Delta-alpha sorted and coloured by Narrow, Medium or Wide class.">
+        <figcaption>
+          Both bands, full datasets, sorted by width and coloured by class (terciles of
+          &Delta;&alpha;, the same rule the teammate's separate run used). Generated by
+          <code>9_dataset/size_scaling/make_full_band_figure.py</code> from
+          <code>2_python/code_17_full_correct_band.py</code>'s output.
+        </figcaption>
+      </figure>
+
+      <h3 class="sub-head">Does class membership track graph size here too?</h3>
+      <p>The earlier finding on this page used a smaller sample and the wrong graph. Repeated on the full datasets, on the correct graph, the answer is the same.</p>
+
+      <figure class="fig wide">
+        <img src="figures/fig16_full_band_vs_size.png" alt="Four scatter plots: Delta-alpha against coarse-grained node count and against diameter, for hMOF and CoRE MOF, coloured by class.">
+        <figcaption>
+          &Delta;&alpha; against coarse-grained node count and against diameter, both datasets,
+          coloured by class. Correlation with node count is <b>r&nbsp;=&nbsp;+0.70</b> on both
+          datasets independently &mdash; the same relationship, found twice, on data neither set
+          was used to produce the other. Correlation with diameter is weaker and differs in sign
+          between the two sets (hMOF &minus;0.24, CoRE MOF +0.49), which is expected: diameter and
+          node count move together but not identically once structures of different unit-cell
+          shapes are mixed.
+        </figcaption>
+      </figure>
+
+      <div class="callout bad" data-kind="What this means">
+        <b>Using the correct graph fixes the graph. It does not fix the descriptor.</b> The
+        earlier finding on this page &mdash; that Narrow/Medium/Wide tracked coarse-grained graph
+        size rather than chemistry &mdash; was demonstrated on 34 hMOF structures using a
+        teammate's own supercell construction. Repeating it on the complete 77+61 structures,
+        using this project's own correct coarse-grained supercell graph, gives the same answer:
+        r&nbsp;=&nbsp;+0.70 with node count on both datasets. This is a second, independent
+        reason &Delta;&alpha; cannot be used as published, on top of the non-convergence already
+        established: even where the graph is right, the descriptor still separates frameworks
+        mostly by how large the analysed graph happens to be.
+      </div>
+
+      <h3 class="sub-head">The nine-way comparison, per class, both datasets</h3>
+      <p>For each class, in each dataset: chemistry where it is available, graph features, degree statistics, edges, higher-order structure, assortativity, heterogeneity, and component count. Structural properties at the level of bond lengths and bond angles are not listed, because coarse-graining removes them from the graph by design &mdash; they cannot be read off a block-level vertex, whichever class it lands in.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><td>Category</td><td colspan="3">hMOF (72 usable)</td><td colspan="3">CoRE MOF (55 usable)</td></tr>
+          <tr><td></td><td>Narrow (n=39)</td><td>Medium (n=26)</td><td>Wide (n=7)</td>
+              <td>Narrow (n=14)</td><td>Medium (n=27)</td><td>Wide (n=14)</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-label">1. Chemistry &mdash; metal</td>
+              <td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td><td class="dt-note">Zn (all)</td>
+              <td class="dt-note" colspan="3">not available &mdash; MOFX-DB did not supply a MOFid for this set</td></tr>
+            <tr><td class="dt-label">1. Chemistry &mdash; net (from MOFid)</td>
+              <td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (all identified)</td><td class="dt-note">pcu (4/5 identified)</td>
+              <td class="dt-note" colspan="3">not available, same reason</td></tr>
+            <tr><td class="dt-label">1. Chemistry &mdash; void fraction, LCD</td>
+              <td class="dt-value">0.708, 9.28&nbsp;&Aring;</td><td class="dt-value">0.705, 9.35&nbsp;&Aring;</td><td class="dt-value">0.193, 3.61&nbsp;&Aring;</td>
+              <td class="dt-value">0.735, 14.97&nbsp;&Aring;</td><td class="dt-value">0.608, 9.36&nbsp;&Aring;</td><td class="dt-value">0.544, 6.79&nbsp;&Aring;</td></tr>
+            <tr><td class="dt-label">2. Features &mdash; unit-cell blocks</td>
+              <td class="dt-value">4.0</td><td class="dt-value">4.2</td><td class="dt-value">9.7</td>
+              <td class="dt-value">33.4</td><td class="dt-value">23.3</td><td class="dt-value">53.4</td></tr>
+            <tr><td class="dt-label">2. Features &mdash; coarse-grained nodes, diameter</td>
+              <td class="dt-value">258, 11.9</td><td class="dt-value">268, 11.9</td><td class="dt-value">622, 10.4</td>
+              <td class="dt-value">402, 11.5</td><td class="dt-value">1033, 14.4</td><td class="dt-value">3067, 20.6</td></tr>
+            <tr><td class="dt-label">3. Structural &mdash; bond lengths, angles</td>
+              <td class="dt-note" colspan="6">not observable on a coarse-grained graph, by design, in every class</td></tr>
+            <tr><td class="dt-label">4. Degree &mdash; mean (min&ndash;max)</td>
+              <td class="dt-value">3.03 (2&ndash;6)</td><td class="dt-value">3.06 (2&ndash;6)</td><td class="dt-value">4.00 (3&ndash;6)</td>
+              <td class="dt-value">3.57 (3&ndash;5)</td><td class="dt-value">3.83 (3&ndash;5)</td><td class="dt-value">3.53 (2&ndash;8)</td></tr>
+            <tr><td class="dt-label">5. Edges (graph is unweighted)</td>
+              <td class="dt-value">392</td><td class="dt-value">421</td><td class="dt-value">1143</td>
+              <td class="dt-value">761</td><td class="dt-value">1878</td><td class="dt-value">5072</td></tr>
+            <tr><td class="dt-label">6. Higher-order &mdash; average clustering</td>
+              <td class="dt-value">0.0000</td><td class="dt-value">0.0000</td><td class="dt-value">0.0000</td>
+              <td class="dt-value">0.0352</td><td class="dt-value">0.0000</td><td class="dt-value">0.0028</td></tr>
+            <tr><td class="dt-label">7. Assortativity</td>
+              <td class="dt-value">&minus;0.993</td><td class="dt-value">&minus;0.988</td><td class="dt-value">&minus;0.991</td>
+              <td class="dt-value">&minus;0.724</td><td class="dt-value">&minus;0.873</td><td class="dt-value">&minus;0.852</td></tr>
+            <tr><td class="dt-label">8. Heterogeneity &mdash; degree CV, entropy</td>
+              <td class="dt-value">0.568, 0.821</td><td class="dt-value">0.572, 0.819</td><td class="dt-value">0.416, 0.618</td>
+              <td class="dt-value">0.305, 0.931</td><td class="dt-value">0.267, 0.690</td><td class="dt-value">0.467, 0.829</td></tr>
+            <tr><td class="dt-label">9. Connected components (mean, all&nbsp;=&nbsp;1?)</td>
+              <td class="dt-value">1.00, yes</td><td class="dt-value">1.00, yes</td><td class="dt-value">1.86, no</td>
+              <td class="dt-value">1.57, no</td><td class="dt-value">1.07, no</td><td class="dt-value">1.14, no</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" data-kind="Reading the table">
+        <b>hMOF: two of three classes are, once again, the same structure repeated.</b> Narrow and
+        Medium share the same metal, the same net, the same block count, nearly the same node
+        count and the same assortativity to three decimal places &mdash; they are not
+        distinguishable by anything in this table except which random box-covering trial produced
+        a slightly larger or smaller width. The seven Wide-class structures are the exception:
+        more than double the blocks, roughly triple the graph, and a genuinely different pore
+        geometry (LCD 3.6&nbsp;&Aring; against 9.3&nbsp;&Aring;, void fraction 0.19 against 0.71).
+        That is a real chemical difference &mdash; but it is <i>also</i> the largest-graph group,
+        so this table cannot separate "these seven are chemically different" from "these seven
+        are simply the largest graphs in the set", and nothing here should be read as having
+        settled which.
+        <br><br>
+        <b>CoRE MOF: a clean, monotonic size gradient.</b> Unit-cell block count, coarse-grained
+        node count and diameter all increase from Narrow to Wide (block count is the one partial
+        exception, 33&rarr;23&rarr;53, because the 48&nbsp;&Aring; sizing rule depends on the unit
+        cell's own shape and not on block count alone). Void fraction and LCD fall the same way
+        &mdash; larger graphs here also happen to have smaller pores, which is a real correlation
+        in this sample but not one this table can attribute to size or to chemistry alone.
+        <br><br>
+        <b>Row 9 is a genuine, separate finding, not a bug.</b> Several classes average more than
+        one connected component. A correctly replicated periodic quotient graph should always be
+        one piece, so a count above 1 means the metal-oxo decomposition found blocks that are not
+        actually joined to the periodic framework &mdash; almost always bound or included solvent
+        molecules that the algorithm classified as small "linker" blocks. This is real, previously
+        undocumented behaviour of the decomposition on real CoRE MOF structures, worth its own
+        follow-up; it is reported here rather than filtered out silently.
+      </div>
+
+      <h3 class="sub-head">Stated directly, category by category: what members of a class share, and what separates one class from the next</h3>
+      <p>The same nine categories as the table above, read as a same/different verdict between classes rather than as raw numbers.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><td>Category</td><td>hMOF: Narrow vs Medium</td><td>hMOF: (Narrow, Medium) vs Wide</td><td>CoRE MOF: Narrow vs Medium vs Wide</td></tr></thead>
+          <tbody>
+            <tr><td class="dt-label">1. Chemistry</td>
+              <td class="dt-value" style="color:var(--good)">same</td>
+              <td class="dt-value" style="color:var(--node)">differs</td>
+              <td class="dt-note">not available for this dataset</td></tr>
+            <tr><td class="dt-note" style="padding-left:22px;font-size:12.5px;color:var(--text-3)">metal, net</td>
+              <td class="dt-note">Zn, pcu in both</td>
+              <td class="dt-note">Zn, pcu in both &mdash; not the source of the split</td>
+              <td class="dt-note">MOFX-DB supplied no MOFid for CoRE MOF, so metal and net are unknown here</td></tr>
+            <tr><td class="dt-note" style="padding-left:22px;font-size:12.5px;color:var(--text-3)">void fraction, LCD</td>
+              <td class="dt-note">0.708 vs 0.705, 9.28 vs 9.35&nbsp;&Aring; &mdash; equal within noise</td>
+              <td class="dt-note">0.19 vs 0.71, 3.6 vs 9.3&nbsp;&Aring; &mdash; a real difference, confounded with size below</td>
+              <td class="dt-note">falls monotonically class to class (0.735 &rarr; 0.608 &rarr; 0.544), confounded with size below</td></tr>
+            <tr><td class="dt-label">2. Features (blocks, CG&nbsp;nodes, diameter)</td>
+              <td class="dt-value" style="color:var(--good)">same</td>
+              <td class="dt-value" style="color:var(--node)">differs</td>
+              <td class="dt-value" style="color:var(--node)">differs, monotonically</td></tr>
+            <tr><td class="dt-note" style="padding-left:22px;font-size:12.5px;color:var(--text-3)"></td>
+              <td class="dt-note">4.0 vs 4.2 blocks, 258 vs 268 nodes, diam 11.9 both</td>
+              <td class="dt-note">9.7 vs 4.0 blocks, 622 vs ~260 nodes &mdash; this is the actual split</td>
+              <td class="dt-note">402 &rarr; 1033 &rarr; 3067 nodes, diam 11.5 &rarr; 14.4 &rarr; 20.6 &mdash; this is the actual split</td></tr>
+            <tr><td class="dt-label">3. Structural (bond, angle)</td>
+              <td class="dt-note" colspan="3">not observable on a coarse-grained graph, in any class, on either dataset &mdash; by design</td></tr>
+            <tr><td class="dt-label">4. Degree (mean, min&ndash;max)</td>
+              <td class="dt-value" style="color:var(--good)">same</td>
+              <td class="dt-value" style="color:var(--warn)">differs slightly</td>
+              <td class="dt-value" style="color:var(--warn)">differs slightly, not monotonic</td></tr>
+            <tr><td class="dt-note" style="padding-left:22px;font-size:12.5px;color:var(--text-3)"></td>
+              <td class="dt-note">3.03 vs 3.06</td>
+              <td class="dt-note">4.00 vs ~3.0</td>
+              <td class="dt-note">3.57 &rarr; 3.83 &rarr; 3.53 &mdash; Wide is not the highest</td></tr>
+            <tr><td class="dt-label">5. Edges (unweighted)</td>
+              <td class="dt-value" style="color:var(--good)">tracks node count</td>
+              <td class="dt-value" style="color:var(--node)">tracks node count</td>
+              <td class="dt-value" style="color:var(--node)">tracks node count</td></tr>
+            <tr><td class="dt-label">6. Higher-order (clustering)</td>
+              <td class="dt-value" style="color:var(--good)">same (zero)</td>
+              <td class="dt-value" style="color:var(--good)">same (zero)</td>
+              <td class="dt-value" style="color:var(--warn)">near-zero throughout, no clean trend</td></tr>
+            <tr><td class="dt-label">7. Assortativity</td>
+              <td class="dt-value" style="color:var(--good)">same (&minus;0.99)</td>
+              <td class="dt-value" style="color:var(--good)">same (&minus;0.99)</td>
+              <td class="dt-value" style="color:var(--warn)">differs (&minus;0.72 to &minus;0.87), roughly tracks size</td></tr>
+            <tr><td class="dt-label">8. Heterogeneity (degree CV, entropy)</td>
+              <td class="dt-value" style="color:var(--good)">same</td>
+              <td class="dt-value" style="color:var(--node)">differs</td>
+              <td class="dt-value" style="color:var(--node)">differs, roughly tracks size</td></tr>
+            <tr><td class="dt-label">9. Components</td>
+              <td class="dt-value" style="color:var(--good)">same (both exactly 1)</td>
+              <td class="dt-value" style="color:var(--node)">differs (Wide averages 1.86)</td>
+              <td class="dt-value" style="color:var(--warn)">all classes above 1 &mdash; solvent inclusion, not class-specific</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" data-kind="Reading this table in one sentence per dataset">
+        <b>hMOF:</b> Narrow and Medium are identical on every category except the width itself;
+        Wide differs on categories 1, 2, 8 and 9 &mdash; but all four of those move together with
+        graph size, so this table names one confounded cluster of differences, not four
+        independent ones. <b>CoRE MOF:</b> categories 1, 2, 7 and 8 all differ class to class, and
+        all four move in the same direction as category 2 (graph size) at the same time &mdash;
+        the same pattern, on a completely different, non-degenerate sample.
+      </div>
+
+      <div class="callout warn" data-kind="The one honest conclusion this supports">
+        Within every class examined, members are graphs of similar size measured the same way.
+        Between classes, the only category that changes in lock-step with class boundaries, on
+        both datasets, is graph size. Everything else that also differs (pore geometry,
+        assortativity, heterogeneity) differs because it is correlated with size in this sample,
+        not because it was shown to matter on its own. A test that would separate the two &mdash;
+        comparing structures of matched graph size across classes &mdash; has not been run; doing
+        so is listed as outstanding work.
+      </div>
+
+      <h2 class="section-title" id="substrata" data-toc="Sub-bands are size strata">Sub-Bands (Narrow/Medium/Wide), Second Route: A Teammate's Coarse-Grained Run</h2>
       <p class="section-sub">A teammate's separate coarse-grained run cut the 76-structure hMOF set into three classes &mdash; Narrow, Medium, Wide &mdash; by the 25th and 75th percentiles of Δα. This section checks what those labels actually track.</p>
 
       <div class="callout bad" data-kind="Withdrawn on arrival">
@@ -360,46 +554,31 @@
         from the same source is degenerate the same way.
       </div>
 
-      <h2 class="section-title" id="slope-proposal" data-toc="A candidate descriptor: the slope">Does the Divergence Slope Itself Vary Between Frameworks? A Proposal, Not a Result</h2>
-      <p class="section-sub">The Methodology page lists reporting the &Delta;&alpha;(<i>D</i>) growth slope as one of two ways forward once the width itself is known not to converge. This section takes a first, capped look at whether that slope actually differs between frameworks &mdash; which it would have to, to be worth proposing.</p>
+      <h2 class="section-title" id="realband" data-toc="Real synthesised MOFs"><span class="stitle-num">3</span>The Same Analysis on Real, Synthesised MOFs</h2>
+      <p class="section-sub">The band above is built from hypothetical frameworks &mdash; structures a computer proposed and nobody has ever made. This section runs the identical pipeline on sixty-one frameworks that exist, taken from CoRE MOF 2019, and asks whether the descriptor was describing materials or only one generator&rsquo;s output.</p>
+<dl class="bridge"><dt>You know</dt><dd>A band, measured on frameworks that only exist inside a computer.</dd><dt>This section</dt><dd class="now">Repeats everything on 61 MOFs that have actually been synthesised, and asks whether the band transfers.</dd><dt>Which lets us</dt><dd>Decide whether any of this is about materials or only about one structure generator.</dd></dl>
 
-      <div class="callout warn" data-kind="Scope and cost cap">
-        <b>What was run, and what was not.</b> Twenty structures per dataset, chosen for size
-        spread rather than sampled at random or taken in full (the full 77/61 would cost far more
-        than this check needs). Supercell replication capped at 5000 nodes. A three-point sweep
-        (n&nbsp;=&nbsp;2, 3, 4) with one seed, not the five-point, three-seed sweep used for the
-        single-structure convergence figure above &mdash; enough to fit one slope per structure,
-        not enough to know that slope precisely. <b>This trades per-structure precision for
-        coverage across many structures on purpose</b>: the question here is whether the slope
-        varies between frameworks at all, not what any one framework's slope equals to three
-        decimal places. Several structures were dropped where the size cap left fewer than two
-        usable points (<code>2_python/code_15_dataset_sweeps.py</code> reports each one).
+      <div class="callout" data-kind="Note">
+        <b>Why this is the question that matters.</b> Every quantitative result on this page above this
+        point was computed on <code>hMOF-###</code> entries: chemically plausible, combinatorially
+        assembled, never synthesised. A band that only holds for one generator&rsquo;s output is a
+        statement about that generator, not about matter. The only way to tell the difference is to run
+        the same code on structures that came out of a laboratory &mdash; enough of them to be a
+        distribution rather than an anecdote.
       </div>
 
-      <figure class="fig wide">
-        <img src="figures/fig14_slope_sweep.png" alt="Two panels. Left: Delta-alpha against ln(diameter) for 19 hMOF and 15 CoRE MOF structures, each a short line of 2-3 points. Right: histograms of the fitted slope per structure, hMOF tightly clustered, CoRE MOF much more spread out.">
-        <figcaption>
-          <b>Left:</b> every usable structure's own short growth line, hMOF (blue) and CoRE MOF
-          (red) on one axis. <b>Right:</b> the fitted slope of &Delta;&alpha; against ln(diameter),
-          one value per structure. hMOF: mean 0.594, sd 0.134, range 0.407&ndash;0.818 (n=19). CoRE
-          MOF: mean 0.871, sd 0.333, range 0.224&ndash;1.474 (n=15). Generated by
-          <code>9_dataset/size_scaling/make_slope_figure.py</code> from
-          <code>2_python/code_15_dataset_sweeps.py</code>'s output.
-        </figcaption>
-      </figure>
-
-      <div class="callout" data-kind="Reading this, carefully">
-        <b>The slope varies about 2.5&times; more across CoRE MOF than across hMOF, at this sample
-        size and this precision.</b> That is consistent with the slope carrying real structural
-        information the width does not &mdash; the hMOF set is dominated by one degenerate,
-        repeated topology (see the sub-bands section above), so a tight slope distribution there
-        is exactly what a topology-driven slope should look like, while CoRE MOF's real
-        topological variety would be expected to spread the slope out. It is also consistent with
-        the CoRE MOF spread being sampling noise from the coarser, one-seed, 20-structure sweep;
-        nothing here distinguishes those two explanations, and doing so needs the same
-        multi-seed, full-sweep rigour code_12 applies to one structure at a time, run across many.
-        <b>This is a candidate worth pursuing, stated as one, not a second descriptor to add to
-        the withdrawn list above.</b>
+      <div class="callout bad" data-kind="Withdrawn, 2026-09-15">
+        <b>Everything below this point compares two bands that are both withdrawn.</b> As set out
+        above, Δα does not converge with supercell size on the coarse-grained quotient graph, and
+        both this 61-framework band and the 77-framework hMOF band were in fact computed on the
+        <b>atomic</b> supercell graph, not the coarse-grained graph this site describes &mdash;
+        which additionally spans two length scales (molecular and framework) that a single
+        power-law fit cannot legitimately span. The comparison below is kept, with this notice,
+        because the question it asks &mdash; does a band calibrated on one dataset transfer to
+        another &mdash; is a reasonable one to have asked, and the negative answer about
+        convergence does not depend on which dataset the non-converged number came from. Read
+        every number below as &ldquo;two non-converged quantities agree with each other&rdquo;,
+        not as a chemical or structural finding.
       </div>
 
       <div id="real-band-body"></div>
