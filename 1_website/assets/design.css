@@ -260,6 +260,14 @@ h2.section-title:first-of-type, h2.st:first-of-type { margin-top: 40px; }
 h3.sub-head, h3.sub {
   font-size: 18px; font-weight: 640; margin: 36px 0 10px; color: var(--text);
 }
+/* A label for one of several same-shaped tables stacked in a row (e.g. one
+   per dataset) -- smaller than h3.sub-head, which introduces a whole
+   subsection, not a single table within one. */
+h4.micro-head {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  margin: 22px 0 8px; color: var(--text-2);
+}
+h4.micro-head:first-of-type { margin-top: 14px; }
 
 /* Anchor links: revealed on hover, so the heading stays clean when read. */
 h2 .anchor, h3 .anchor {
@@ -419,27 +427,11 @@ tbody tr:last-child td { border-bottom: 0; }
    wraps mid-identifier. */
 tbody td:first-child { font-weight: 570; color: var(--text); }
 
-/* Wide side-by-side comparison tables (several data columns per row, several
-   dataset groups): the label column is pinned so it never scrolls out of
-   view, group headers get a visible divider instead of relying on the reader
-   to re-count columns back to the header row, and labels stay short enough
-   (see the markup) that a row does not wrap to four lines while its
-   neighbouring data cells stay on one -- that mismatch is what made this
-   table hard to scan before. */
-.data-table.compare td, .data-table.compare th { white-space: nowrap; }
-.data-table.compare .dt-note { white-space: normal; min-width: 200px; }
-.data-table.compare tbody td:first-child,
-.data-table.compare thead td:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background: var(--surface-0);
-  box-shadow: 2px 0 0 0 var(--border-strong);
-}
-.data-table.compare thead td:first-child { background: var(--surface-1); z-index: 3; }
-.data-table.compare tbody tr:hover td:first-child { background: var(--surface-1); }
-.data-table.compare .group-start { border-left: 3px solid var(--text-3); }
-.data-table.compare .sub-label { padding-left: 26px; color: var(--text-2); font-weight: 450; }
+/* A category header row (e.g. "1. Chemistry") followed by its indented
+   sub-rows ("metal", "net", ...), instead of repeating the category name on
+   every row -- keeps each label short enough that it never wraps onto
+   several lines while the data cells beside it stay on one. */
+td.dt-label.sub-label { padding-left: 26px; color: var(--text-2); font-weight: 450; }
 
 /* Numerics right-align so digits line up in a column; text stays left. */
 .dt-value, td.num, .band-tbl td.r, .band-tbl th.r { text-align: right; }
