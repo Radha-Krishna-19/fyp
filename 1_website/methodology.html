@@ -440,6 +440,39 @@
         <b>Coarse-graining discards atoms; it does not discard information the spectrum needs.</b> The multifractal spectrum is a statement about how connectivity scales at the scale of building blocks &mdash; that is the scale reticular chemistry itself is organised around (a node's coordination number, a linker's connectivity, which net a given pair forms). Measuring at the atomic scale does not add information the block-scale question needs; it adds a second, unrelated scaling regime that a single fit cannot separate from the one that matters. Coarse-graining is the choice of <i>which</i> scale to measure at, made deliberately, not a loss incurred by simplifying the input.
       </div>
 
+      <div class="callout warn" data-kind="A question the table above does not fully answer: which order?">
+        <b>&ldquo;Coarse-grain the supercell&rdquo; is ambiguous, and the two readings give
+        different, non-equivalent graphs.</b> One reading &mdash; build the atomic supercell
+        first, then coarse-grain it &mdash; is what a teammate's separate analysis run did. The
+        other &mdash; coarse-grain the unit cell first, then replicate that small block graph into
+        a supercell &mdash; is what this project's own code (<code>code_12</code>,
+        <code>code_17</code>) does, and it is the right order, for a reason that has nothing to do
+        with correctness of the final graph and everything to do with cost:
+        <ul style="margin:10px 0 0 18px;">
+          <li><b>Atomic supercell, coarse-grained after:</b> every atom in the supercell has to be
+          built and held in memory before a single block can be identified, even though the
+          coarse-grained graph immediately throws almost all of that detail away. The size of
+          graph reachable is capped by how many <i>atoms</i> fit in memory, which for a real MOF
+          unit cell (hundreds of atoms) limits the coarse-grained diameter to roughly 8&ndash;12
+          before the atom count becomes unmanageable. This is why the teammate's run, and both
+          withdrawn CSV bands, plateaued at exactly that range.</li>
+          <li><b>Coarse-grained unit cell, replicated after:</b> the unit cell is decomposed into
+          blocks once &mdash; a handful of vertices &mdash; and <i>that</i> small graph is tiled
+          n&times;n&times;n using the lattice translation already stored on each edge. No atom is
+          ever built at replication time, so the size of graph reachable is capped only by how
+          many <i>blocks</i> fit in memory, which is orders of magnitude cheaper. <code>code_12</code>
+          reaches diameter 35 on a 12-block unit cell for a few hundred megabytes; the atomic
+          route never gets past diameter 12 on the same structure before memory becomes the
+          limit.</li>
+        </ul>
+        Both routes produce a graph with the atomic length scale removed &mdash; coarse-graining
+        happens either way &mdash; so this is not a correctness difference between the two orders,
+        only a cost one. But because a multifractal spectrum needs a real range of radii to fit a
+        power law over, and the atomic-first route cannot reach one affordably, the practical
+        effect is the same as if it were a correctness difference: one order gives a graph large
+        enough to measure a scaling exponent on, the other does not.
+      </div>
+
       <div class="callout bad" data-kind="What actually happened in this project">
         <b>Both published bands were computed on the atomic graph, not the coarse-grained one.</b>
         Verified from the saved run outputs: the number of vertices analysed (<code>N</code> in
