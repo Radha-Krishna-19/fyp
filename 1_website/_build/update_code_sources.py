@@ -39,7 +39,7 @@ NEW_FILES = {
     'code_13_scaling_regimes.py': ('OURS',
         'Tests directly whether the atomic graph has two scaling regimes (molecular vs framework)'),
     'code_14_size_strata.py': ('OURS',
-        "Rebuilds the correct coarse-grained graph independently of a teammate's run; network stats per class"),
+        "Rebuilds the correct coarse-grained graph independently; network stats per class"),
     'code_15_dataset_sweeps.py': ('OURS',
         'Capped Delta-alpha(D) slope sweep on both datasets -- does the divergence slope vary by framework?'),
     'code_16_topological_diversity.py': ('OURS',

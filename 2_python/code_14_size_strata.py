@@ -2,7 +2,7 @@
 MODULE 14 -- ARE THE Narrow/Medium/Wide CLASSES CHEMISTRY, OR SIZE?
 
 WHY THIS MODULE EXISTS
-A teammate's coarse-grained run (`~/Downloads/mof_cg_spectrum.ipynb`, recorded
+An independent coarse-grained run (`~/Downloads/mof_cg_spectrum.ipynb`, recorded
 in CLAUDE.md) cut 76 hMOF frameworks into three classes by the 25th/75th
 percentile of Delta-alpha: Narrow <= 1.1901 < Medium <= 1.2218 < Wide. Two
 things about those classes were already flagged as suspect: the classes are
@@ -13,9 +13,9 @@ landed in different classes.
 This module asks the next question directly: if not chemistry, what DOES
 predict which class a structure falls into? It rebuilds the CORRECT
 coarse-grained quotient graph (this project's own code_09/code_12, not the
-teammate's atomic-then-coarse-grain route) for every hMOF CIF this project has
+atomic-then-coarse-grain route that run used) for every hMOF CIF this project has
 on disk, computes standard graph statistics on it, and reports those
-statistics grouped by the teammate's own published class labels.
+statistics grouped by that run's own published class labels.
 
 DATA AVAILABILITY
 Only 34 of the 76 hMOF CIFs are available locally (MOFX-DB was not re-queried
@@ -76,7 +76,7 @@ def structure_stats(cif_path, min_cell_length=MIN_CELL_LENGTH, max_n=8):
     atomic supercell -- reach min_cell_length in every lattice direction --
     but applied to the coarse-grained quotient graph (block count K, not atom
     count). This reproduces the same size VARIATION across structures that
-    drove the teammate's atomic-then-coarsen run, on the correct graph."""
+    drove that atomic-then-coarsen run, on the correct graph."""
     blocks, edges, geom = quotient_graph_from_cif(cif_path)
     K = len(blocks)
 

@@ -545,15 +545,16 @@ classes against, stated as a limitation, not hidden.
 \end{block}
 \begin{block}{\footnotesize The result does not change}
 \scriptsize
-Sorted into Narrow/Medium/Wide by $\Delta\alpha$ (same rule as before), class correlates with
-coarse-grained node count at $\mathbf{r=+0.70}$ on \textbf{both} datasets, independently.
-\textbf{Using the right graph fixes the graph. It does not fix the descriptor.}
+Sorted into Narrow/Medium/Wide by $\Delta\alpha$ (same rule as before; fitting parameters
+chosen for a well-covered radius window --- see slide 3i), class correlates with
+coarse-grained node count at $\mathbf{r=+0.69}$ (hMOF) and $\mathbf{r=+0.72}$ (CoRE MOF),
+independently. \textbf{Using the right graph fixes the graph. It does not fix the descriptor.}
 \end{block}
 \column{0.5\textwidth}
 \begin{block}{\footnotesize Nine-category check, per class}
 \scriptsize
 Chemistry, graph features, degree, edges, clustering, assortativity, heterogeneity, components
---- checked per class, both datasets. hMOF: Narrow and Medium (65/72) are the \textbf{same
+--- checked per class, both datasets. hMOF: Narrow and Medium (63/72) are the \textbf{same
 graph} in every category except width --- same metal, same net, same block count, same
 assortativity to 3 decimals. CoRE MOF: classes differ on chemistry and graph size at once,
 always in the same direction, so this cannot separate which one is doing the separating.
@@ -566,6 +567,62 @@ guest/solvent fragments as small ``linker'' blocks on a real fraction of structu
 its own follow-up.
 \end{alertblock}
 \end{columns}
+\end{frame}
+
+% ---- 3h: the ordering question, settled empirically -------------------------
+\begin{frame}{3h. Coarse-Grain-First is Proven, Not Argued}
+\framesubtitle{Which build order is correct was checked by direct test, not assumed}
+\begin{block}{\footnotesize The question}
+\scriptsize
+Two orders are possible: (1) coarse-grain the unit cell into blocks first, then replicate that
+small block graph using the lattice translation on each edge; or (2) build the full atomic
+supercell first, then coarse-grain it. These could in principle give different graphs, so the
+claim that they do not needed a test, not just an argument.
+\end{block}
+\begin{block}{\footnotesize The test}
+\scriptsize
+\texttt{2\_python/\_prove\_ordering\_equivalence.py} builds the identical target supercell both
+ways, for five real structures (HKUST-1 $n{=}2$, MOF-5 $n{=}2$, ZIF-8 $n{=}2$, UiO-66 $n{=}2$
+and $n{=}3$), and checks the two results with \texttt{networkx.is\_isomorphic()} --- the
+rigorous test of ``same graph'', not just matching counts.
+\end{block}
+\begin{alertblock}{\footnotesize The result}
+\scriptsize
+All five: identical node count, identical edge count, identical degree sequence, and
+\textbf{isomorphic $=$ True}. The atomic-first route cost \textbf{47.7$\times$ to
+675.0$\times$ more time} for that identical result. \textbf{The order is a cost choice, not a
+correctness one} --- coarse-grain first because it is combinatorial (no atoms are ever built),
+not because it gives a different answer.
+\end{alertblock}
+\end{frame}
+
+% ---- 3i: two fitting choices, and why -----------------------------------------
+\begin{frame}{3i. Two Fitting Choices, and Why}
+\framesubtitle{A separate, independent question from 3h --- which graph is unaffected by this}
+\begin{block}{\footnotesize Two knobs, once the graph is fixed}
+\scriptsize
+Given the correct graph (3h), the spectrum fit still needs two choices: the \textbf{influential
+fraction} --- how many of the highest-degree vertices to measure at --- and the \textbf{radius
+window} --- how far out to fit. The \textbf{diameter} here is a graph quantity, the longest
+shortest path in hops, not a physical distance.
+\end{block}
+\begin{block}{\footnotesize The choices, and the reason for each}
+\scriptsize
+\textbf{Top 20\% by degree.} Too narrow a cut leaves too few vertices to average a box-covering
+measurement over reliably; too wide a cut pulls in ordinary low-degree vertices whose local
+growth looks like everyone else's, diluting the signal. 20\% sits inside the structural core
+without diluting into the bulk. \textbf{Radii out to half the diameter, not the full diameter.}
+Near the full diameter, box-covering can fit only one or two giant boxes, so a single random
+covering decides the point almost by itself; half the diameter keeps every fitted point in the
+range where several boxes still exist to average over.
+\end{block}
+\begin{alertblock}{\footnotesize Tested directly: does the narrower window converge?}
+\scriptsize
+\texttt{2\_python/\_test\_window\_frac.py}, four demonstration nets: the half-diameter window
+\textbf{slows} the divergence of $\Delta\alpha$ with supercell size (slope vs $\ln(D)$ drops
+from 0.73--0.91 to 0.63--0.79) but the drift at the largest step tested is essentially
+unchanged (0.077--0.100 vs 0.089--0.110). \textbf{Neither window converges.}
+\end{alertblock}
 \end{frame}
 
 % ============================ SLIDE 4: MOOC ==================================
@@ -625,10 +682,11 @@ recognised platform relevant to the project.}
 \textbf{Which graph the spectrum uses} \hfill \textcolor{okGreen}{\textbf{answered}}
 \begin{itemize}\scriptsize
   \item Coarse-grained supercell: decompose the unit cell into blocks, \textit{then}
-        replicate that small block graph --- not the reverse. Full reasoning and the cost
-        argument for the ordering are now on the Methodology page.
+        replicate that small block graph --- not the reverse, proven identical either way
+        but far cheaper this way (3h).
   \item Both published bands used the atomic graph. Re-running on the correct graph,
-        on the complete data, does not rescue them (3g).
+        on the complete data, does not rescue them (3g), with fitting parameters
+        chosen for a well-covered radius window (3i).
 \end{itemize}
 
 \textbf{Priority 1 --- Fix or retire $\Delta\alpha$} \hfill \textcolor{warnRed}{\textbf{now blocking}}

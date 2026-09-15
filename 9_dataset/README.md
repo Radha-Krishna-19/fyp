@@ -147,7 +147,7 @@ permanently, which is a stronger provenance guarantee than a query.
 > folder, `CLAUDE.md`, and `2_python/code_12_converged_band.py` /
 > `2_python/_run_size_scaling.py` for the sweep and its full numbers.
 >
-> **The sub-bands (Narrow/Medium/Wide) a teammate's separate coarse-grained
+> **The sub-bands (Narrow/Medium/Wide) an independent coarse-grained
 > run cut the hMOF set into are size strata, not chemistry.** Of 14 distinct
 > coarse-grained graph signatures across 76 structures, 13 are entirely one
 > class — class is a deterministic function of graph size wherever the graph
@@ -173,9 +173,16 @@ permanently, which is a stronger provenance guarantee than a query.
 > correct coarse-grained supercell graph
 > (`2_python/code_17_full_correct_band.py`, `9_dataset/size_scaling/full_band_hmof_cg.json`,
 > `full_band_core_cg.json`). 72/77 hMOF and 55/61 CoRE MOF produced a usable
-> spectrum. Class (Narrow/Medium/Wide terciles) still correlates with
-> coarse-grained node count at r = +0.70 on both datasets, independently —
-> using the right graph fixes the graph, not the descriptor. A nine-category
+> spectrum. Spectrum-fitting parameters (top 20% of vertices by degree as
+> "influential", radii capped at half the diameter) keep every fitted point
+> inside the structural core and away from the largest radii, where
+> box-covering has only one or two boxes left to average over; tested
+> directly (`2_python/_test_window_frac.py`), this keeps the divergence with
+> supercell size gentler at every step tested, though it does not stop the
+> divergence outright. Class
+> (Narrow/Medium/Wide terciles) still correlates with coarse-grained node
+> count at r = +0.69 (hMOF) and r = +0.72 (CoRE MOF), independently — using
+> the right graph fixes the graph, not the descriptor. A nine-category
 > comparison per class (chemistry, features, degree, edges, higher-order
 > structure, assortativity, heterogeneity, components —
 > `2_python/code_18_subband_explain.py`) is on the project's Results page.

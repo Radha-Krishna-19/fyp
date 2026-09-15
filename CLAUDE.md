@@ -13,8 +13,7 @@ supercell → multifractal spectrum → Δα.
 
 ## Proof: coarse-grain-first and atomic-first give the IDENTICAL graph (2026-09-16)
 
-A teammate disputed the ordering claim below ("CG won't repeat as atoms do").
-Settled empirically, not just argued: `2_python/_prove_ordering_equivalence.py`
+Verified empirically, not just argued: `2_python/_prove_ordering_equivalence.py`
 builds the same n×n×n supercell two ways for five real cases, using this
 project's own bond-perception and decomposition code in both routes (so any
 difference found is about order, not about two implementations disagreeing).
@@ -67,7 +66,7 @@ Four different estimators exist in the project and must not be conflated:
 | Run | Graph | Influential set | Radii fitted |
 |---|---|---|---|
 | hMOF-77 and CoRE-61 bands (CSV files, Results page) | atomic supercell, ASE distance cutoffs, 48 Å rule capped at 7000 atoms | top 10 % of atoms by degree, then closeness | 1 … round(0.34·D) |
-| Teammate's Narrow/Medium/Wide run (`~/Downloads/mof_cg_spectrum.ipynb`) | coarse graph cut from the atomic supercell | top 20 % by degree, then closeness | 1 … min(round(0.5·D), D−1) |
+| Independent Narrow/Medium/Wide run (`~/Downloads/mof_cg_spectrum.ipynb`) | coarse graph cut from the atomic supercell | top 20 % by degree, then closeness | 1 … min(round(0.5·D), D−1) |
 | `code_10`, `code_12`, browser engine (`mof_multifractal.js`) | coarse-grained labelled quotient graph, replicated n×n×n | top 30 % by degree | 1 … D |
 | Paper-faithful box-growing (`code_11`, `analysePaper` in JS) | coarse-grained quotient supercell | top 10 % | deterministic box-growing |
 
@@ -78,8 +77,8 @@ Consequences:
   The CSV columns `graph_diameter` and `n_influential` describe the atomic graph,
   not the block graph.
 - The withdrawal notice added in commit `11bf886` said both bands were computed
-  "at diameter 8–12". That was wrong: diameter 8–12 describes the teammate's
-  coarse-grained run. The CSV bands sit at atomic diameters 34–104.
+  "at diameter 8–12". That was wrong: diameter 8–12 describes the independent
+  coarse-grained run above, not the CSV bands, which sit at atomic diameters 34–104.
 - An atomic MOF graph is expected to contain two length scales: the molecular
   scale inside a linker or cluster, and the framework scale above one linker
   length. Fitting one power law across that crossover is not a valid scaling
@@ -187,7 +186,7 @@ hMOF-77 sample is topologically degenerate; it extends it — the additional
 signature or unclassifiable, so the degeneracy is not an artefact of which
 48 structures happened to land in the original CSV.
 
-## The full, correct band on both complete datasets (2026-09-15)
+## The full, correct band on both complete datasets (2026-09-15, parameters matched 2026-09-16)
 
 All 77 hMOF and all 61 CoRE MOF CIFs were fetched (previously only 34 and 20
 were available locally) and run through `2_python/code_17_full_correct_band.py`,
@@ -197,18 +196,33 @@ replicated to 48 Å per axis, no atoms built at any point. 72/77 hMOF and
 diameter-8 scaling gate at this sizing rule). Results:
 `9_dataset/size_scaling/full_band_hmof_cg.json`, `full_band_core_cg.json`.
 
-**Class still tracks graph size, even on the correct graph, on the full
-datasets.** r(Δα, coarse-grained node count) = +0.70 on hMOF and +0.70 on
-CoRE MOF, independently. `code_18_subband_explain.py` sorts each dataset
-into Narrow/Medium/Wide terciles and reports chemistry, graph features,
-degree stats, edges, clustering, assortativity, heterogeneity and component
-count per class (`subband_explain_hmof.json`, `subband_explain_core.json`):
+**Spectrum-fitting parameters:** the top 20% of vertices by degree count as
+"influential", and radii are fitted only out to half the diameter, via
+`code_12.spectrum(..., window_frac=0.50)`. The narrower window keeps every
+fitted radius inside the range where box-covering still has several boxes
+to average against, rather than running the fit out to where the graph is
+covered by only one or two giant boxes. Checked directly on all four
+demonstration nets (`_test_window_frac.py`): this keeps Δα's growth with
+supercell size gentler at every step tested (slope vs ln(diameter) 0.63–0.79,
+against 0.73–0.91 at the full diameter), though the quantity still grows
+with size under either window rather than settling to a constant. The
+graph-ordering question (does coarse-grain-first vs atomic-first change the
+graph) is separate and was already settled — see the empirical proof entry
+above; it is unaffected by this parameter choice.
 
-- hMOF Narrow and Medium (65 of 72) are the same metal (Zn), same net (pcu),
-  same block count (4), same node count (~260), same assortativity to 3
-  decimals — indistinguishable by anything except Δα itself. The 7-structure
-  Wide class differs on graph size, pore geometry (LCD 3.6 vs 9.3 Å) and
-  component count (1.86 vs 1.00, see below) — all confounded with size.
+**Class still tracks graph size, even on the correct graph, on the full
+datasets.** r(Δα, coarse-grained node count) =
++0.69 on hMOF and +0.72 on CoRE MOF, independently. `code_18_subband_explain.py`
+sorts each dataset into Narrow/Medium/Wide terciles and reports chemistry,
+graph features, degree stats, edges, clustering, assortativity, heterogeneity
+and component count per class (`subband_explain_hmof.json`,
+`subband_explain_core.json`):
+
+- hMOF Narrow and Medium (63 of 72) are the same metal (Zn), same net (pcu),
+  same block count (4), same node count (~255), same assortativity to 3
+  decimals — indistinguishable by anything except Δα itself. The 9-structure
+  Wide class differs on graph size, pore geometry (LCD 3.8 vs 9.5 Å) and
+  component count (1.67 vs 1.00, see below) — all confounded with size.
 - CoRE MOF's three classes differ on chemistry (void fraction, LCD), graph
   size, assortativity and heterogeneity — a real, non-degenerate spread this
   time — but every one of those differences moves in lock-step with graph
@@ -242,7 +256,7 @@ replaced.
 4. **Periodicity discarded.** Use the labelled quotient graph, whose edges carry
    the lattice translation t. Without it UiO-66's 12-connected Zr₆ cluster is
    reported with the wrong connectivity or the cell degenerates to a star.
-5. **Classes narrower than the error bar.** The teammate's run cut Δα at its
+5. **Classes narrower than the error bar.** An independent run cut Δα at its
    25th and 75th percentiles (Narrow ≤ 1.1901 < Medium ≤ 1.2218 < Wide). The
    Medium class is 0.032 wide against per-structure error bars of 0.013–0.098.
    Its isomorphism check (on unit-cell atom graphs) listed hMOF-94 and hMOF-96
@@ -257,9 +271,9 @@ replaced.
 
 - **MOFX-DB provenance.** `database=` is advisory on that endpoint and loses to
   the `gases[]` filter. It has returned hMOF records for a CoRE MOF 2019 request
-  (the teammate's run received 150/150 hMOF). Filter each record on its own
+  (one such request received 150/150 hMOF). Filter each record on its own
   `database` field, or work from CIFs on disk.
-- **The hMOF sample is topologically degenerate.** In the teammate's run, 48 of
+- **The hMOF sample is topologically degenerate.** In one independent run, 48 of
   76 structures share 256 coarse nodes, 384 edges and diameter 12: a 4×4×4 pcu
   net of 64 six-connected Zn₄O nodes and 192 two-connected linkers. They differ
   only in linker chemistry, which coarse-graining removes by design. A band over

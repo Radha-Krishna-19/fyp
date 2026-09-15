@@ -98,7 +98,7 @@ what a multifractal spectrum must look like.
 > `CLAUDE.md` and the Results page of the site for the full account. The evidence for both
 > reasons is figured directly: `figures/fig13_convergence.png` (Δα vs ln(diameter), all four
 > demonstration nets, and the q-cap drift that never falls under the 5% tolerance) and
-> `figures/fig12_size_strata.png` (a teammate's Narrow/Medium/Wide classes shown to be size
+> `figures/fig12_size_strata.png` (an independent run's Narrow/Medium/Wide classes shown to be size
 > strata, not chemistry — 48 of 76 hMOF structures share one exact coarse-grained graph and
 > still split across all three classes). A capped check of whether the *slope* of Δα(D) varies
 > between frameworks, rather than Δα itself, is in `figures/fig14_slope_sweep.png` — presented

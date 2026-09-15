@@ -158,7 +158,7 @@
   // fluctuation multifractality measures. Correct order: form Z per trial, log
   // it, then average the logs before fitting tau(q).
   //
-  // Found independently on a separate dataset by a teammate's notebook
+  // Found independently on a separate dataset by another notebook
   // (mof_multi_block_spectrum.ipynb). Measured on our own HKUST-1 quotient
   // graph, same seeds and same coverings: wrong 0.021 +/- 0.004, correct
   // 0.327 +/- 0.032. Python mirror: code_10_multifractal_spectrum.py FIX 9.

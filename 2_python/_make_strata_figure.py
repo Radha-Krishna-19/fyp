@@ -1,11 +1,11 @@
 """One-off figure for the size-strata analysis (task E). matplotlib only.
-Reads _work/teammate_cg_run.csv (all 76 structures) and
-9_dataset/size_scaling/size_strata.json (34-structure network-statistics
-subset), draws two panels:
-  (a) Delta-alpha vs coarse-grained node count, coloured by the teammate's
-      own Narrow/Medium/Wide class -- shows the 48-structure degenerate
-      group (256 nodes) spanning all three classes, while every other,
-      genuinely distinct graph size is a single class.
+Reads _work/teammate_cg_run.csv (an independent 76-structure coarse-grained
+run) and 9_dataset/size_scaling/size_strata.json (34-structure
+network-statistics subset), draws two panels:
+  (a) Delta-alpha vs coarse-grained node count, coloured by the
+      Narrow/Medium/Wide class that run assigned -- shows the 48-structure
+      degenerate group (256 nodes) spanning all three classes, while every
+      other, genuinely distinct graph size is a single class.
   (b) degree heterogeneity (entropy) vs Delta-alpha for the 34-structure
       subset with real network statistics, coloured the same way.
 Run from 2_python/. Writes 9_dataset/size_scaling/size_strata_figure.png.
@@ -58,10 +58,10 @@ def main():
         fontsize=8.5, color='#333',
         arrowprops=dict(arrowstyle='->', color='#333', lw=1))
 
-    ax1.set_xlabel('coarse-grained node count (teammate\'s atomic-then-coarsen supercell)')
+    ax1.set_xlabel('coarse-grained node count (atomic-then-coarsen supercell)')
     ax1.set_ylabel(r'$\Delta\alpha$')
     ax1.set_title('(a) All 76 hMOF structures: class tracks size,\nexcept where size cannot distinguish them at all')
-    ax1.legend(fontsize=9, title='class (teammate\'s quartile cut)')
+    ax1.legend(fontsize=9, title='class (quartile cut)')
     ax1.grid(alpha=0.25)
 
     # ---- Panel (b): degree entropy vs Delta-alpha, 34-structure subset ----
@@ -74,7 +74,7 @@ def main():
         ax2.scatter(xs_j, ys, s=30, color=COLORS[cls], alpha=0.8, label=cls, edgecolors='none')
 
     ax2.set_xlabel('normalised degree-distribution entropy of the correctly\nrebuilt coarse-grained graph (0 = one degree value)')
-    ax2.set_ylabel(r'$\Delta\alpha$ (teammate\'s run)')
+    ax2.set_ylabel(r'$\Delta\alpha$')
     ax2.set_title('(b) 34-structure subset with real network statistics:\nmost share one topology, entropy = 0.811 exactly')
     ax2.legend(fontsize=9, title='class')
     ax2.grid(alpha=0.25)
