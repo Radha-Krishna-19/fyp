@@ -1,9 +1,14 @@
-# Runs the site's test suites on every push. Publishing to GitHub Pages is
-# NOT wired to push — Pages isn't enabled on this repo right now, and a
-# "deploy" job that fails for that reason on every push is a false red X
-# that has nothing to do with whether the code is good. Deploy is kept, but
-# only as a manual action (Actions tab -> Run workflow), for whenever Pages
-# does get turned on.
+# Runs on every push to main: the full JS test suite, a Python smoke test,
+# and a check that the built HTML matches what build_site.py would produce
+# from the current fragments/content_source (so nobody can hand-edit the
+# built pages without CI catching it -- see PROJECT_NOTES.md's "the website is
+# built, not hand-edited" rule).
+#
+# Publishing to GitHub Pages is NOT wired to push -- Pages isn't enabled on
+# this repo right now, and a "deploy" job that fails for that reason on
+# every push is a false red X that has nothing to do with whether the code
+# is good. Deploy is kept, but only as a manual action (Actions tab -> Run
+# workflow), for whenever Pages does get turned on.
 #
 # WHY A WORKFLOW RATHER THAN "DEPLOY FROM BRANCH", if that day comes
 # Pages' branch mode can only serve the repository root or /docs. The site
@@ -16,6 +21,8 @@ name: Site checks
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:        # also lets you deploy on demand, see the `deploy` job
 
@@ -31,7 +38,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
+  test-js:
+    name: JavaScript test suites (all 9)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -41,23 +49,58 @@ jobs:
       # The site computes its numbers in the browser at load time, so a broken
       # engine script renders a blank panel and throws no visible error. These
       # suites boot the real pages headlessly and assert on computed output.
-      # Publishing a silently-empty site is the failure this prevents.
-      - name: Run the site test suites
+      # Publishing a silently-empty site, or a page with a wrong number on
+      # it, is the failure this prevents. All 9 suites in tests/, not a
+      # subset -- a suite left out of CI is a suite nobody is actually
+      # running on every push.
+      - name: Run every suite in 1_website/tests
         working-directory: 1_website/tests
         run: |
           npm install --no-audit --no-fund jsdom
-          node test_pages.js
-          node test_engines.js
-          node test_network_page.js
-          node test_decompose.js
-          node test_render_robustness.js
+          for f in test_*.js; do
+            echo "::group::$f"
+            node "$f"
+            echo "::endgroup::"
+          done
+
+  test-python:
+    name: Python reference pipeline smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Install dependencies
+        run: pip install numpy networkx
+      - name: Run the CI smoke test
+        working-directory: 2_python
+        run: python _ci_smoke_test.py
+
+  build-check:
+    name: Built HTML matches the source (no hand-edits)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Rebuild the site from content_source and fragments
+        run: python 1_website/_build/build_site.py
+      - name: Fail if the rebuild changed anything that was committed
+        run: |
+          if ! git diff --quiet -- 1_website/*.html; then
+            echo "::error::Rebuilding the site changed committed HTML. Someone edited"
+            echo "::error::a built page directly instead of editing _build/content_source.html"
+            echo "::error::or _build/fragments/*.html and re-running build_site.py. Diff:"
+            git diff -- 1_website/*.html
+            exit 1
+          fi
 
   # Deploy to GitHub Pages -- MANUAL ONLY (Actions tab -> "Site checks" ->
   # Run workflow). Does not run on push, so it cannot fail a normal push
   # just because Pages hasn't been switched on in Settings yet.
   deploy:
     if: github.event_name == 'workflow_dispatch'
-    needs: test
+    needs: [test-js, test-python, build-check]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
