@@ -11,6 +11,39 @@ supercell → multifractal spectrum → Δα.
 
 ---
 
+## Proof: coarse-grain-first and atomic-first give the IDENTICAL graph (2026-09-16)
+
+A teammate disputed the ordering claim below ("CG won't repeat as atoms do").
+Settled empirically, not just argued: `2_python/_prove_ordering_equivalence.py`
+builds the same n×n×n supercell two ways for five real cases, using this
+project's own bond-perception and decomposition code in both routes (so any
+difference found is about order, not about two implementations disagreeing).
+
+Route A: decompose the unit cell into blocks, then replicate the small block
+graph using the stored lattice translations (`code_12`'s `quotient_graph_from_cif`
++ `replicate`). Route B: replicate every atom n×n×n first (scaling the cell),
+run bond perception and metal-oxo decomposition on the whole enlarged
+periodic cell, then coarse-grain that.
+
+| Structure | n | Nodes/edges | Degree sequence | `nx.is_isomorphic` | Route B / Route A time |
+|---|---|---|---|---|---|
+| HKUST-1 | 2 | 112/192 | match | **True** | 134.7× |
+| MOF-5 | 2 | 256/384 | match | **True** | 57.6× |
+| ZIF-8 | 2 | 288/384 | match | **True** | 56.7× |
+| UiO-66 | 2 | 56/96 | match | **True** | 47.7× |
+| UiO-66 | 3 | 189/324 | match | **True** | 675.0× |
+
+All five: identical graph, confirmed by full isomorphism check, not just
+matching summary statistics. This holds because the metal-oxo decomposition
+is a purely local, translation-invariant rule (cut bonds touching a metal,
+take connected components) applied to a periodic bond graph found the same
+way (27-image search) on whichever cell it is handed — such a rule commutes
+with taking the periodic extension, so decomposing then replicating and
+replicating then decomposing are the same operation. The two routes differ
+only in cost, by 48×–675× in this test, growing with n (Route B pays for
+atoms it immediately discards; Route A never builds them). **Do not revisit
+this as an open question** — it is closed, with a reproducible script.
+
 ## Which graph each published number was computed on (settled 2026-09-15)
 
 The site and the dataset README describe the spectrum as computed on the

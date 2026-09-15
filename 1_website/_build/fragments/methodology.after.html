@@ -181,6 +181,35 @@
         enough to measure a scaling exponent on, the other does not.
       </div>
 
+      <div class="callout good" data-kind="Not just argued — tested, 2026-09-16">
+        <b>The claim above was disputed inside the team, so it was checked empirically rather than
+        settled by argument.</b> <code>2_python/_prove_ordering_equivalence.py</code> builds the
+        same n&times;n&times;n supercell both ways &mdash; coarse-grain-then-replicate, and
+        atomic-supercell-then-coarse-grain &mdash; for five real cases, using this project's own
+        bond-perception and decomposition code in both routes, so any difference found would be
+        about order, not about two implementations disagreeing.
+        <div class="table-wrap" style="margin-top:10px;">
+          <table class="data-table">
+            <thead><tr><td>Structure</td><td>n</td><td>Nodes / edges</td><td>Degree sequence</td><td><code>nx.is_isomorphic</code></td><td>Cost, atomic-first &divide; CG-first</td></tr></thead>
+            <tbody>
+              <tr><td class="dt-label">HKUST-1</td><td class="dt-value">2</td><td class="dt-note">112 / 192</td><td class="dt-value">match</td><td class="dt-value" style="color:var(--good)">True</td><td class="dt-value">134.7&times;</td></tr>
+              <tr><td class="dt-label">MOF-5</td><td class="dt-value">2</td><td class="dt-note">256 / 384</td><td class="dt-value">match</td><td class="dt-value" style="color:var(--good)">True</td><td class="dt-value">57.6&times;</td></tr>
+              <tr><td class="dt-label">ZIF-8</td><td class="dt-value">2</td><td class="dt-note">288 / 384</td><td class="dt-value">match</td><td class="dt-value" style="color:var(--good)">True</td><td class="dt-value">56.7&times;</td></tr>
+              <tr><td class="dt-label">UiO-66</td><td class="dt-value">2</td><td class="dt-note">56 / 96</td><td class="dt-value">match</td><td class="dt-value" style="color:var(--good)">True</td><td class="dt-value">47.7&times;</td></tr>
+              <tr><td class="dt-label">UiO-66</td><td class="dt-value">3</td><td class="dt-note">189 / 324</td><td class="dt-value">match</td><td class="dt-value" style="color:var(--good)">True</td><td class="dt-value">675.0&times;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <b>All five: an identical graph</b>, confirmed by a full graph-isomorphism check, not only
+        by matching node/edge counts. This is expected, not a coincidence: the metal-oxo
+        decomposition is a purely local, translation-invariant rule (cut bonds touching a metal,
+        take connected components), applied to a periodic bond graph found the same way (a 27-image
+        search) on whichever cell it is handed &mdash; a rule like that commutes with taking the
+        periodic extension, so decomposing then replicating and replicating then decomposing are
+        the same operation. The two orders differ only in cost, by 48&times; to 675&times; here and
+        growing with n, because the atomic-first route pays to build atoms it immediately discards.
+      </div>
+
       <div class="callout bad" data-kind="What actually happened in this project">
         <b>Both published bands were computed on the atomic graph, not the coarse-grained one.</b>
         Verified from the saved run outputs: the number of vertices analysed (<code>N</code> in
