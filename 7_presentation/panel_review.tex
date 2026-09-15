@@ -321,7 +321,7 @@ $\lambda_2: 1.44 \to 1.19$ --- the weakening, quantified.}
 \end{block}
 
 \column{0.5\textwidth}
-\begin{block}{\footnotesize The band --- and it transfers to real MOFs}
+\begin{block}{\footnotesize The band, as originally measured}
 {\scriptsize
 \begin{tabular}{@{}lcc@{}}
 \toprule
@@ -336,12 +336,12 @@ Mean asymmetry $A$ & $-1.31$ & \textbf{$-1.31$} \\
 \end{tabular}
 \vspace{0.1cm}
 
-Means differ by \textbf{0.018} (Welch $p=0.38$). Same band,
-same shape --- calibrated on generated structures,
-valid on ones that exist.}
+Means differ by \textbf{0.018} (Welch $p=0.38$). Same shape on both sets ---
+but \textbf{withdrawn}, see slide 3f: computed on the wrong graph, and shown
+not to converge on the right one either.}
 \end{block}
 
-\begin{alertblock}{\footnotesize What the band does \textit{not} yet mean}
+\begin{alertblock}{\footnotesize What the band does \textit{not} mean}
 {\scriptsize
 \begin{tabular}{@{}lr@{}}
 $\Delta\alpha$ vs pore diameter, raw & $-0.497$ \\
@@ -352,9 +352,9 @@ $R^2$: size alone / +pore & 0.533 / 0.538 \\
 \end{tabular}
 \vspace{0.08cm}
 
-Pore size adds \textbf{+0.005}.
-$\Delta\alpha$ tracks \textbf{supercell size} --- a
-computational parameter, not chemistry.}
+Pore size adds \textbf{+0.005}. This confound is now understood as one
+symptom of a larger problem, not a standalone finding --- \textbf{see slides
+3f--3g}.}
 \end{alertblock}
 \end{columns}
 \end{frame}
@@ -502,6 +502,72 @@ the same way, for the same reason, on structures that exist --- which is the str
 we have that the confound analysis was right rather than a quirk of one dataset.}
 \end{frame}
 
+% ---- 3f: the negative result that supersedes 3c/3d/3e above -----------------
+\begin{frame}{3f. Both Bands Above Are Withdrawn}
+\framesubtitle{A finite-size test run after slides 3c--3e were written, 2026-09-14/15}
+\begin{block}{\footnotesize The band does not converge with supercell size}
+\scriptsize
+$\Delta\alpha$ was measured over $q\in[-10,10]$; at extreme $q$ a single box (as small as one
+vertex) dominates the sum, so $\Delta\alpha$ inherits a term that grows with graph size without
+bound. Fitted slope of $\Delta\alpha$ vs $\ln(\text{diameter})$, full $q$ range, on the
+\textit{correct} coarse-grained graph, four nets: HKUST-1 (tbo) 0.782, MOF-5 (pcu) 0.732,
+ZIF-8 (sod) 0.886, UiO-66 (fcu) 0.692 --- all $R^2 \geq 0.998$. Tested at six caps on $|q|$
+(10, 8, 5, 4, 3, 2): \textbf{none converged} on any net.
+\end{block}
+\begin{block}{\footnotesize Both published bands were also measured on the wrong graph}
+\scriptsize
+Both the 77-framework and 61-framework bands in slides 3c--3e were computed on the
+\textbf{atomic} supercell graph, not the coarse-grained building-block graph this project's
+method describes. An atomic graph spans a molecular length scale and a framework length scale;
+fitting one power law across that crossover is invalid independently of the finite-size problem
+above.
+\end{block}
+\begin{block}{\footnotesize What this means for slides 3c--3e}
+\scriptsize
+None of the three is a structural or chemical finding. All are kept, with this notice, for
+audit --- the same treatment given to the pore-size and four-structure withdrawals already on
+this deck. The +0.62 correlation with graph size in 3c was not a confound contaminating the
+descriptor: it \textbf{was} the descriptor. See \texttt{CLAUDE.md} and the project Results page.
+\end{block}
+\end{frame}
+
+% ---- 3g: redone correctly, on the complete datasets --------------------------
+\begin{frame}{3g. Redone Correctly, on the Complete Datasets}
+\framesubtitle{All 77 hMOF, all 61 CoRE MOF, on the coarse-grained supercell graph this time}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{block}{\footnotesize What ran}
+\scriptsize
+Both datasets re-fetched in full and re-analysed on the graph the method actually specifies.
+72/77 hMOF and 55/61 CoRE MOF produced a usable spectrum (the rest fell below the diameter-8
+scaling gate). One spectrum per structure, one seed --- no per-structure error bar to check
+classes against, stated as a limitation, not hidden.
+\end{block}
+\begin{block}{\footnotesize The result does not change}
+\scriptsize
+Sorted into Narrow/Medium/Wide by $\Delta\alpha$ (same rule as before), class correlates with
+coarse-grained node count at $\mathbf{r=+0.70}$ on \textbf{both} datasets, independently.
+\textbf{Using the right graph fixes the graph. It does not fix the descriptor.}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{\footnotesize Nine-category check, per class}
+\scriptsize
+Chemistry, graph features, degree, edges, clustering, assortativity, heterogeneity, components
+--- checked per class, both datasets. hMOF: Narrow and Medium (65/72) are the \textbf{same
+graph} in every category except width --- same metal, same net, same block count, same
+assortativity to 3 decimals. CoRE MOF: classes differ on chemistry and graph size at once,
+always in the same direction, so this cannot separate which one is doing the separating.
+\end{block}
+\begin{alertblock}{\footnotesize A new, undocumented finding along the way}
+\scriptsize
+Several classes on both datasets average $>1$ connected component after replication, which
+should always be exactly 1. The metal-oxo decomposition is retaining disconnected
+guest/solvent fragments as small ``linker'' blocks on a real fraction of structures --- worth
+its own follow-up.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
 % ============================ SLIDE 4: MOOC ==================================
 \section{Technical Enrichment}
 \begin{frame}{4. Technical Enrichment Activity Choices}
@@ -550,88 +616,59 @@ recognised platform relevant to the project.}
 % ============================ SLIDE 5: NEXT STEPS ============================
 \section{Next Steps}
 \begin{frame}{5. Remaining Work \& Timeline}
-\framesubtitle{Concrete engineering tasks, not open research questions}
+\framesubtitle{Rewritten after the convergence finding (slides 3f--3g); concrete either way}
 \vspace{-0.3cm}
 \begin{columns}[T]
 \column{0.55\textwidth}
 {\scriptsize
 \setlength{\itemsep}{0pt}\setlength{\parskip}{1pt}
-\textbf{Priority 1 --- 61 synthesised frameworks} \hfill \textcolor{okGreen}{\textbf{done}}
+\textbf{Which graph the spectrum uses} \hfill \textcolor{okGreen}{\textbf{answered}}
 \begin{itemize}\scriptsize
-  \item Structures now come from the \textbf{Zenodo archive} of CoRE MOF 2019
-        (DOI 10.5281/zenodo.3370236), not a live API --- an immutable record is a
-        stronger provenance guarantee than any query.
-  \item It settled the question and settled it \textbf{against our own earlier claim}:
-        the two bands coincide.
+  \item Coarse-grained supercell: decompose the unit cell into blocks, \textit{then}
+        replicate that small block graph --- not the reverse. Full reasoning and the cost
+        argument for the ordering are now on the Methodology page.
+  \item Both published bands used the atomic graph. Re-running on the correct graph,
+        on the complete data, does not rescue them (3g).
 \end{itemize}
 
-\textbf{Priority 2 --- Confirm the size control at scale} \hfill \textcolor{okGreen}{\textbf{confirmed}}
+\textbf{Priority 1 --- Fix or retire $\Delta\alpha$} \hfill \textcolor{warnRed}{\textbf{now blocking}}
 \begin{itemize}\scriptsize
-  \item The partial-correlation check reproduces on real data: pore-size correlation
-        $-0.20 \rightarrow +0.10$ once graph size is held constant.
-  \item It also exposed the flaw in our four-structure comparison --- see right.
+  \item Option A: a size-independent redefinition --- a fixed \textit{a-priori} $q$ range
+        does \textbf{not} work, tested directly; a different partition-function
+        normalisation might.
+  \item Option B: report the $\Delta\alpha(D)$ growth \textbf{slope} instead of the width.
+        A capped check found the slope varies $\sim2.5\times$ more across CoRE MOF than
+        hMOF --- a candidate, stated as a proposal, not a result.
 \end{itemize}
 
-\textbf{Priority 3 --- Validate against measured properties} \hfill \textcolor{warnRed}{\textbf{now blocking}}
+\textbf{Priority 2 --- Validate against measured properties} \hfill \textcolor{warnRed}{\textbf{blocked on Priority 1}}
 \begin{itemize}\scriptsize
-  \item This is the only substantive item left. $\Delta\alpha$ is reproducible,
-        size-controlled and transferable, and still not shown to predict any property
-        a chemist would ask for.
-  \item Regress against measured adsorption on this same 61-structure set.
+  \item Cannot be attempted responsibly before the descriptor itself has a defensible
+        definition --- regressing a non-convergent number against adsorption data would
+        just be a second, more expensive version of the same mistake.
 \end{itemize}
 }
 \column{0.45\textwidth}
 \begin{block}{\footnotesize Position of the work}
 \scriptsize
-The \textbf{machinery is complete and verified}: the decomposition, the periodic graph,
-the centrality analysis and the spectrum all work, are cross-validated across two
-implementations, and reproduce published crystallography.
+The \textbf{machinery is complete and verified}: decomposition, periodic graph, centrality,
+and the spectrum mathematics all work, cross-validated across two implementations, and CI
+now runs all of this --- 9 JS suites, a Python smoke test, and a build-drift check --- on
+every push.
 
 \vspace{0.08cm}
-\textbf{New:} 61 \textit{synthesised} CoRE MOF frameworks land \textit{on} the hypothetical
-band, not beside it --- $\Delta\alpha=0.95$--$1.47$ vs $1.02$--$1.41$; means differ by
-$0.018$ (Welch $p=0.38$), mean asymmetry $-1.31$ in both. The descriptor \textbf{transfers}
-from generated structures to real ones.
+\textbf{Engineering: $\approx$88\%. Scientific validation: $\approx$35\%}, because the
+headline descriptor does not converge. \textbf{Overall $\approx$55\%}, treating that as a
+gate rather than averaging it away --- reported this way on purpose.
 \end{block}
-\begin{block}{\footnotesize We withdrew our own headline result}
+\begin{block}{\footnotesize Two earlier withdrawals, for context}
 \scriptsize
-Our previous claim --- four synthesised MOFs at $\Delta\alpha=1.66$--$2.26$, ``clear of the
-hMOF band, no overlap'' --- is \textbf{withdrawn}. Those four were expanded to 256--972
-atoms while the 77 hMOFs occupy 3024--6592: not one hMOF is as small as the largest of the
-four. Since $\Delta\alpha$ rises with atom count ($r=+0.73$), that comparison was reading
-graph size --- the same confound that killed our pore-size claim. This page had recorded, in
-advance, what it would do if a proper sample overlapped. It overlapped; we did it.
+Pore-size correlation ($-0.497 \to +0.101$ controlling for size) and the four-structure
+real-MOF gap ($\Delta\alpha=1.66$--$2.26$, a size artefact, $r=+0.73$ with atom count) were
+both withdrawn before the convergence finding. Both are subsumed by it: the size dependence
+they each caught piece by piece is the same non-convergence now shown directly.
 \end{block}
 \end{columns}
-\end{frame}
-
-% ---- NEW: the convergence withdrawal, dated after the frames above were written ----
-\begin{frame}{3e. Both Bands Above Are Withdrawn}
-\framesubtitle{A finite-size test run after these slides were written, 2026-09-14/15}
-\begin{block}{\footnotesize The band does not converge with supercell size}
-\scriptsize
-$\Delta\alpha$ was measured over $q\in[-10,10]$; at extreme $q$ a single box (as small as one
-vertex) dominates the sum, so $\Delta\alpha$ inherits a term that grows with graph size without
-bound. Tested on four demonstration nets (pcu, tbo, sod, fcu) at six caps on $|q|$
-(10, 8, 5, 4, 3, 2): \textbf{none converged} --- the drift between the two largest supercells
-tested stayed above our 5\% tolerance at every cap, on every net.
-\end{block}
-\begin{block}{\footnotesize Both published bands were also measured on the wrong graph}
-\scriptsize
-Both the 77-framework and 61-framework bands in slides 3c--3d were computed on the
-\textbf{atomic} supercell graph, not the coarse-grained building-block graph this project's
-method describes. An atomic graph spans a molecular length scale and a framework length scale;
-fitting one power law across that crossover is invalid independently of the finite-size problem
-above.
-\end{block}
-\begin{block}{\footnotesize What this means for slides 3c and 3d}
-\scriptsize
-Neither is a structural or chemical finding. Both are kept, with this notice, for audit ---
-the same treatment given to the pore-size and four-structure withdrawals already on this deck.
-The +0.62 correlation with graph size in 3c was not a confound contaminating the descriptor:
-it \textbf{was} the descriptor. See \texttt{CLAUDE.md} and the project Results page for the
-full account, and \S 8 (Outstanding Work) for what would fix it.
-\end{block}
 \end{frame}
 
 % ============================ REFERENCES =====================================
