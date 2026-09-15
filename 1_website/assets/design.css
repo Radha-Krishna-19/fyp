@@ -419,6 +419,28 @@ tbody tr:last-child td { border-bottom: 0; }
    wraps mid-identifier. */
 tbody td:first-child { font-weight: 570; color: var(--text); }
 
+/* Wide side-by-side comparison tables (several data columns per row, several
+   dataset groups): the label column is pinned so it never scrolls out of
+   view, group headers get a visible divider instead of relying on the reader
+   to re-count columns back to the header row, and labels stay short enough
+   (see the markup) that a row does not wrap to four lines while its
+   neighbouring data cells stay on one -- that mismatch is what made this
+   table hard to scan before. */
+.data-table.compare td, .data-table.compare th { white-space: nowrap; }
+.data-table.compare .dt-note { white-space: normal; min-width: 200px; }
+.data-table.compare tbody td:first-child,
+.data-table.compare thead td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--surface-0);
+  box-shadow: 2px 0 0 0 var(--border-strong);
+}
+.data-table.compare thead td:first-child { background: var(--surface-1); z-index: 3; }
+.data-table.compare tbody tr:hover td:first-child { background: var(--surface-1); }
+.data-table.compare .group-start { border-left: 3px solid var(--text-3); }
+.data-table.compare .sub-label { padding-left: 26px; color: var(--text-2); font-weight: 450; }
+
 /* Numerics right-align so digits line up in a column; text stays left. */
 .dt-value, td.num, .band-tbl td.r, .band-tbl th.r { text-align: right; }
 .dt-note  { color: var(--text-2); font-size: 13.5px; font-weight: 450; }
