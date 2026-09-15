@@ -14,7 +14,7 @@ implementations disagreeing):
       block graph n x n x n combinatorially. No atoms exist at replication
       time.
 
-  ROUTE B (the teammate's order): build the n x n x n ATOMIC supercell
+  ROUTE B (the alternative order): build the n x n x n ATOMIC supercell
       first -- literally replicate every atom's fractional coordinate and
       scale the cell matrix by n, exactly what ase.Atoms.repeat() does --
       then run bond perception and metal-oxo decomposition on THAT full

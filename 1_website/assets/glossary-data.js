@@ -125,6 +125,11 @@ window.GLOSSARY = [
   short: 'A maximal set of vertices each reachable from every other by following edges. A graph that is all one piece has exactly one.',
   long: 'If a graph has more than one component, at least two parts of it are not joined by any path at all — a genuine break, not just a long way round. This project checks the component count of every coarse-grained supercell graph rather than assuming it is 1: a replicated quotient graph should always come out as one piece, so a count above 1 signals a bug in the replication, not a property of the framework.' },
 
+{ term: 'diameter', aka: ['graph diameter'],
+  group: 'Graph theory', needs: ['graph', 'vertex', 'edge'],
+  short: 'The longest shortest path in the graph — pick the two vertices that are farthest apart in hops, and count how many edges separate them.',
+  long: 'A graph-theory term, not a physical or spatial one: it is measured in edges crossed, not in Ångströms, even though this project also reports physical sizes such as pore diameter elsewhere. Between any two vertices there may be many paths; the *shortest* one is the fewest hops needed to get from one to the other, and the diameter is the largest such shortest-path length over every pair of vertices in the graph. It matters here because it caps how far the box-covering sweep can meaningfully grow a box: a box cannot have a radius larger than the graph itself, so the diameter sets the top of the radius range the spectrum is fitted over. This project fits radii only out to half the diameter (`WINDOW_FRAC = 0.5`), because near the full diameter a graph is covered by only one or two giant boxes and the fit is decided almost entirely by whichever one happens to be largest — restricting to half the diameter keeps every fitted point in the range where several boxes still exist to average over. Checked directly (`2_python/_test_window_frac.py`), this keeps Δα’s growth with supercell size gentler at every step tested, though it does not stop the growth outright.' },
+
 { term: 'clustering coefficient', aka: ['average clustering', 'transitivity'],
   group: 'Graph theory', needs: ['graph', 'vertex', 'edge', 'degree'],
   short: 'The fraction of a vertex’s neighbours that are also neighbours of each other, averaged over all vertices — how often "a friend of a friend is a friend".',
@@ -138,7 +143,7 @@ window.GLOSSARY = [
 { term: 'heterogeneity', aka: ['degree heterogeneity', 'coefficient of variation', 'CV', 'degree entropy'],
   group: 'Graph theory', needs: ['degree'],
   short: 'How spread out the degree values in a graph are. Two common measures: the coefficient of variation (standard deviation divided by the mean) and the normalised Shannon entropy of the degree distribution (0 = every vertex has the same degree, 1 = as spread out as the number of distinct degree values allows).',
-  long: 'A perfectly regular graph — every vertex the same degree — has zero heterogeneity by both measures. A graph mixing a few very high-degree hubs with many low-degree vertices scores high on both. This project uses heterogeneity to test whether a claimed structural class (such as a teammate’s Narrow/Medium/Wide split) reflects a real difference in how connectivity is distributed, or whether two graphs with identical heterogeneity — meaning they are the same graph — were nonetheless given different labels.' },
+  long: 'A perfectly regular graph — every vertex the same degree — has zero heterogeneity by both measures. A graph mixing a few very high-degree hubs with many low-degree vertices scores high on both. This project uses heterogeneity to test whether a claimed structural class (such as a Narrow/Medium/Wide split by spectrum width) reflects a real difference in how connectivity is distributed, or whether two graphs with identical heterogeneity — meaning they are the same graph — were nonetheless given different labels.' },
 
 { term: 'labelled quotient graph', aka: ['quotient graph'],
   group: 'Graph theory', needs: ['graph', 'periodic boundary conditions', 'edge'],

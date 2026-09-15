@@ -423,11 +423,24 @@ def fast_diameter(G, adj=None):
     return int(d)
 
 
-def spectrum(G, influential, q_values=None, n_trials=40, seed=0, diameter=None):
+def spectrum(G, influential, q_values=None, n_trials=40, seed=0, diameter=None,
+             window_frac=1.0):
     """One multifractal spectrum, with its own quality report attached.
 
     `diameter` may be passed in so a caller sweeping several seeds over the
     same graph computes it once rather than once per seed.
+
+    `window_frac` caps the fitted radii at round(window_frac * diameter)
+    instead of the full diameter (default 1.0 = the full range). code_17
+    fits at window_frac=0.50: only out to half the diameter, where every
+    box still has several sibling boxes to average against. Past that
+    point box-covering has few boxes left to partition the graph into, so
+    the fit is dominated by whichever one happens to be largest -- noise,
+    not signal. Checked directly (2_python/_test_window_frac.py) on all
+    four demonstration nets: this keeps Delta-alpha's growth with
+    supercell size gentler at every step tested (slope vs ln(diameter)
+    0.63-0.79, against 0.73-0.91 at the full diameter), though the
+    quantity still grows rather than settling to a constant either way.
     """
     if q_values is None:
         q_values = np.linspace(-10, 10, 41)
@@ -445,7 +458,11 @@ def spectrum(G, influential, q_values=None, n_trials=40, seed=0, diameter=None):
         return {'ok': False, 'reason': f'diameter {diameter} too small to scale over',
                 'diameter': diameter}
 
-    radii = list(range(1, diameter + 1))
+    rmax = diameter
+    if window_frac < 1.0:
+        rmax = max(3, int(round(diameter * window_frac)))
+        rmax = min(rmax, max(2, diameter - 1))
+    radii = list(range(1, rmax + 1))
     trials = probability_measures(G, influential, radii,
                                   n_trials=n_trials, seed=seed)
     tau, r2 = compute_tau(trials, radii, diameter, q_values)

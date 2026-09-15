@@ -3,9 +3,8 @@ MODULE 18 -- EXPLAINING THE SUB-BANDS: SIZE/TOPOLOGY, NOT CHEMISTRY
 
 Takes the full, correctly-computed (coarse-grained supercell) per-structure
 results from code_17 for both datasets, sorts each dataset into
-Narrow/Medium/Wide terciles by Delta-alpha (the same convention the
-teammate's run used), and reports, PER CLASS, every category requested for
-this comparison:
+Narrow/Medium/Wide terciles by Delta-alpha, and reports, PER CLASS, every
+category requested for this comparison:
 
   1. Chemical properties       -- metal (parsed from mofid), net symbol
                                    (parsed from mofid, where MOFid assigned
@@ -30,8 +29,7 @@ this comparison:
                                    not assumed to be 1)
 
 CLASS DEFINITION AND ITS OWN LIMIT
-Terciles of Delta-alpha (25th/75th percentile cuts), the same rule the
-teammate's run used, for direct comparability. This module computes only ONE
+Terciles of Delta-alpha (25th/75th percentile cuts). This module computes only ONE
 seed per structure (code_17), so there is no per-structure error bar to test
 the classes against (the check code_12.assign_classes() performs on a
 multi-seed run cannot be repeated here) -- that limitation is reported

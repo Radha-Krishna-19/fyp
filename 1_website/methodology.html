@@ -457,7 +457,7 @@
       <div class="callout warn" data-kind="A question the table above does not fully answer: which order?">
         <b>&ldquo;Coarse-grain the supercell&rdquo; is ambiguous, and the two readings give
         different, non-equivalent graphs.</b> One reading &mdash; build the atomic supercell
-        first, then coarse-grain it &mdash; is what a teammate's separate analysis run did. The
+        first, then coarse-grain it &mdash; is a natural-sounding first attempt. The
         other &mdash; coarse-grain the unit cell first, then replicate that small block graph into
         a supercell &mdash; is what this project's own code (<code>code_12</code>,
         <code>code_17</code>) does, and it is the right order, for a reason that has nothing to do
@@ -468,8 +468,8 @@
           coarse-grained graph immediately throws almost all of that detail away. The size of
           graph reachable is capped by how many <i>atoms</i> fit in memory, which for a real MOF
           unit cell (hundreds of atoms) limits the coarse-grained diameter to roughly 8&ndash;12
-          before the atom count becomes unmanageable. This is why the teammate's run, and both
-          withdrawn CSV bands, plateaued at exactly that range.</li>
+          before the atom count becomes unmanageable. This is why runs built this way, including
+          both withdrawn CSV bands, plateaued at exactly that range.</li>
           <li><b>Coarse-grained unit cell, replicated after:</b> the unit cell is decomposed into
           blocks once &mdash; a handful of vertices &mdash; and <i>that</i> small graph is tiled
           n&times;n&times;n using the lattice translation already stored on each edge. No atom is
@@ -488,8 +488,8 @@
       </div>
 
       <div class="callout good" data-kind="Not just argued — tested, 2026-09-16">
-        <b>The claim above was disputed inside the team, so it was checked empirically rather than
-        settled by argument.</b> <code>2_python/_prove_ordering_equivalence.py</code> builds the
+        <b>The claim above is checked empirically, not just argued.</b>
+        <code>2_python/_prove_ordering_equivalence.py</code> builds the
         same n&times;n&times;n supercell both ways &mdash; coarse-grain-then-replicate, and
         atomic-supercell-then-coarse-grain &mdash; for five real cases, using this project's own
         bond-perception and decomposition code in both routes, so any difference found would be

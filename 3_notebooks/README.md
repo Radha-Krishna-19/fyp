@@ -28,10 +28,18 @@ cell *before* replicating it into a supercell (the correct order — proven,
 not just argued, identical to the reverse order but far cheaper; see
 `2_python/_prove_ordering_equivalence.py`), on the four demonstration
 structures live, then load and plot the complete-dataset result from
-`2_python/code_17_full_correct_band.py`. The answer does not change: Δα
-still correlates with coarse-grained graph size at r ≈ +0.70 on both
-datasets, independently. Using the right graph fixes the graph; it does not
-fix the descriptor.
+`2_python/code_17_full_correct_band.py`. That script's spectrum-fitting
+parameters — the top 20% of vertices by degree as "influential", and radii
+fitted only out to half the diameter — keep the measurement inside the
+structural core and away from the largest radii, where box-covering has
+only one or two boxes left to average over. Tested directly
+(`2_python/_test_window_frac.py`), the narrower window keeps Δα's growth
+with supercell size gentler at every step tested, though the quantity still
+grows with size rather than settling to a constant. The answer does not
+change: Δα still correlates with
+coarse-grained graph size, at r = +0.69 on hMOF and r = +0.72 on CoRE MOF,
+independently. Using the right graph fixes the graph; it does not fix the
+descriptor.
 
 ---
 

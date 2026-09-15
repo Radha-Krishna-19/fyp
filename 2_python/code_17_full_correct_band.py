@@ -96,6 +96,12 @@ def coordination_signature(blocks, edges):
     return node_d, linker_d, single_valued
 
 
+INFLUENTIAL_FRAC = 0.20  # the top fifth of vertices by degree: the
+WINDOW_FRAC = 0.50       # structural core, and radii out to half the
+                         # diameter, where box-covering still has several
+                         # boxes to average against -- see code_12.spectrum().
+
+
 def analyse_one(cif_path, n_trials=20, seed=0):
     name = os.path.splitext(os.path.basename(cif_path))[0]
     try:
@@ -124,9 +130,10 @@ def analyse_one(cif_path, n_trials=20, seed=0):
         return {'name': name, 'ok': False, 'reason': 'coarse graph has no edges'}
 
     try:
-        infl, sel = select_influential(G)
+        infl, sel = select_influential(G, top_percent=INFLUENTIAL_FRAC)
         diam = fast_diameter(G)
-        spec = spectrum(G, infl, n_trials=n_trials, seed=seed, diameter=diam)
+        spec = spectrum(G, infl, n_trials=n_trials, seed=seed, diameter=diam,
+                        window_frac=WINDOW_FRAC)
     except Exception as e:
         return {'name': name, 'ok': False, 'reason': f'spectrum failed: {type(e).__name__}: {e}'}
 
