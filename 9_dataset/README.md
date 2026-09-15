@@ -168,6 +168,23 @@ permanently, which is a stronger provenance guarantee than a query.
 > sample size. Not established either way; see
 > `size_scaling/slope_sweep_figure.png`.
 >
+> **The full, correct band, on the complete datasets.** Both datasets were
+> then re-fetched in full (all 77 hMOF, all 61 CoRE MOF) and run on the
+> correct coarse-grained supercell graph
+> (`2_python/code_17_full_correct_band.py`, `9_dataset/size_scaling/full_band_hmof_cg.json`,
+> `full_band_core_cg.json`). 72/77 hMOF and 55/61 CoRE MOF produced a usable
+> spectrum. Class (Narrow/Medium/Wide terciles) still correlates with
+> coarse-grained node count at r = +0.70 on both datasets, independently —
+> using the right graph fixes the graph, not the descriptor. A nine-category
+> comparison per class (chemistry, features, degree, edges, higher-order
+> structure, assortativity, heterogeneity, components —
+> `2_python/code_18_subband_explain.py`) is on the project's Results page.
+> This also surfaced an undocumented decomposition behaviour: several
+> classes on both datasets average more than one connected component after
+> replication, meaning the metal-oxo decomposition is retaining disconnected
+> guest/solvent fragments as small linker blocks on a real fraction of
+> structures.
+>
 > Practically: **every `delta_alpha` value in both CSV files below is a
 > function of the atomic graph it was measured on, not of the framework it is
 > attributed to, for two independent reasons.** The band widths, the

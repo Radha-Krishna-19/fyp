@@ -62,6 +62,18 @@ size survived at +0.621. That confound analysis is still correct as far as it
 goes, but it is now understood as one symptom of the larger problem: Δα was
 never a converged, size-independent quantity in the first place.
 
+**Redone correctly, on the complete datasets, the result does not change.**
+Both datasets were re-fetched in full (all 77 hMOF, all 61 CoRE MOF) and
+analysed on the graph the method actually calls for — the coarse-grained
+supercell, not the atomic graph the original runs used. 72/77 hMOF and
+55/61 CoRE MOF produced a usable spectrum. Sorting each dataset into
+Narrow/Medium/Wide by Δα still correlates with coarse-grained node count at
+*r* = +0.70 on both datasets, independently. A nine-category comparison
+(chemistry, graph features, degree, edges, higher-order structure,
+assortativity, heterogeneity, connected components) per class is on the
+[Results page](https://radha-krishna-19.github.io/fyp/results.html#full-correct-band).
+Using the correct graph fixes the graph; it does not fix the descriptor.
+
 **A claim we withdrew earlier.** This README previously reported that four
 synthesised MOFs sat *clear* of the hypothetical band at Δα = 1.66 – 2.26. That
 was withdrawn before the finding above: those four were expanded to 256–972
