@@ -151,6 +151,11 @@ def analyse_one(cif_path, n_trials=20, seed=0):
         'n_influential': len(infl),
         'width': spec['width'], 'alpha_0': spec['alpha_0'], 'asymmetry': spec['asymmetry'],
         'r2_linearity_mean': spec['r2_linearity_mean'],
+        # full curves, kept so the spectra can be plotted and grouped by
+        # class after the fact without recomputing anything
+        'q_values': spec['q_values'].tolist(),
+        'alpha': spec['alpha'].tolist(),
+        'f_alpha': spec['f_alpha'].tolist(),
         'degree_mean': float(degs.mean()), 'degree_std': float(degs.std()),
         'degree_cv': float(degs.std() / degs.mean()) if degs.mean() > 0 else float('nan'),
         'degree_min': int(degs.min()), 'degree_max': int(degs.max()),
