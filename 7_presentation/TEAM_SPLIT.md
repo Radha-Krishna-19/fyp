@@ -13,14 +13,24 @@ is aimed at.
 
 ## Speaking order at a glance
 
+> **Deck rewritten 2026-09-16** — the MOOC slide was removed, and slides 3c–3f now carry
+> the current, correct results figures (fig15/16/17 plus a reference comparison), replacing
+> the old withdrawn-band slides. The table below reflects the new slide list; the detailed
+> per-slide notes further down this document were written for the old slide numbers and
+> have not all been individually re-checked against the rewrite — read the current
+> `panel_review.tex` itself as the source of truth for exact wording.
+
 | # | Speaker | Slides | Time | Focus |
 |---|---|---|---|---|
 | 1 | **P. M. Radha Krishna** (CB.SC.U4CSE23134) | Title, 0, 1 | 5 min | Problem, motivation, methodology |
 | 2 | **P. Kshitij Varma** (CB.SC.U4CSE23122) | 1b | 3 min | The mathematical model |
 | 3 | **G. Rohith Abhinav** (CB.SC.U4CSE23141) | 2, 3b | 4 min | Implementation status + the platform |
-| 4 | **J. Keerthi Sree** (CB.SC.U4CSE23031) | 2b | 4 min | Results, validation, the band |
-| 5 | **Isha Sri Prakash** (CB.SC.U4CSE23029) | 3, 5 | 4 min | Design decisions, the τ defect, next steps |
-| — | All | 4, references | — | MOOCs, Q&A |
+| 4 | **J. Keerthi Sree** (CB.SC.U4CSE23031) | 2b, 3c, 3d | 5 min | Results, validation, the complete-dataset finding |
+| 5 | **Isha Sri Prakash** (CB.SC.U4CSE23029) | 3, 3e, 3f, 4 | 5 min | Design decisions, both datasets' spectra, next steps |
+| — | All | references | — | Q&A |
+
+MOOC completion is still an individual requirement (see the project README) — it no longer
+gets its own slide, so mention it only if asked.
 
 > **Rule for everyone:** if you do not know an answer, say *"I don't know — that's
 > [name]'s section"* or *"we haven't tested that yet."* Do **not** invent a number. The
@@ -288,12 +298,13 @@ If a laptop is available, **show it live**. Otherwise describe it.
 
 ## Preparation checklist
 
-- [ ] Compile `panel_review.tex` twice (`pdflatex`), check it's 13 pages
+- [ ] Compile `panel_review.tex` twice (`pdflatex`), check it's 16 pages
 - [ ] Fill in **Team Number** and the two missing roll numbers (guide is already in)
 - [ ] Save `three.min.js` into `1_website/` so the 3D works **without internet**
 - [ ] Open `index.html` once beforehand so nothing loads slowly in front of the panel
 - [ ] Each member: read your own section aloud once, timed
-- [ ] Each member: register for your MOOC and have the enrolment screenshot ready
+- [ ] Each member: register for your MOOC and have the enrolment screenshot ready (no slide
+      for this now, but be ready to answer if asked)
 - [ ] Agree who holds the laptop and who advances slides
 
 ## Timing discipline
@@ -301,8 +312,9 @@ If a laptop is available, **show it live**. Otherwise describe it.
 If you are running long, cut in this order:
 
 1. The pipeline demo in Section 3b (describe instead of showing)
-2. The three design decisions in Slide 3 (keep only the quotient graph)
-3. The MOOC slide (it's a table; let them read it)
+2. The design decisions in Slide 3 (keep only the graph-choice one)
+3. Slide 3f (the reference-comparison figures) --- mention it exists, move on
 
-**Never cut:** the validation table (2b), the τ defect (3), or the confound (2b). Those three
-are what make this a research project rather than a demo.
+**Never cut:** the validation table (2b), the design-decisions slide (3), or the
+complete-dataset result (3c--3d). Those are what make this a research project rather than a
+demo.

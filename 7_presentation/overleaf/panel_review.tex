@@ -183,11 +183,14 @@ independent ground truth the graph must reproduce.}
 % ============================ SLIDE 1b: MATH =================================
 \begin{frame}{1b. Mathematical Model}
 \framesubtitle{The descriptor, defined}
+\vspace{0.3cm}
 \begin{columns}[T]
 \column{0.52\textwidth}
 {\scriptsize
-\textbf{Step 1 --- the measure.} For each influential node $i$ (top 10\% by degree) and box
-radius $r$, let $M_i(r)$ be the number of vertices within $r$ steps:
+\textbf{Step 1 --- the measure.} For each influential node $i$ (top 20\% by degree) and box
+radius $r$ (a \textbf{graph} quantity, counted in hops between blocks --- not to be confused
+with a physical pore diameter in \AA), let $M_i(r)$ be the number of vertices within $r$
+steps:
 \vspace{-0.15cm}
 \[ p_i(r) = M_i(r)/N \]
 \vspace{-0.45cm}
@@ -197,7 +200,7 @@ radius $r$, let $M_i(r)$ be the number of vertices within $r$ steps:
 \[ \mathcal{P}_q(r) = \sum_{i \in I} p_i(r)^{\,q} \]
 \vspace{-0.45cm}
 
-\textbf{Step 3 --- the mass exponent.}
+\textbf{Step 3 --- the mass exponent}, fitted through the origin:
 \vspace{-0.15cm}
 \[ \boxed{\ \tau(q) = \frac{\ln \mathcal{P}_q(r)}{\ln (r/r_N)}\ } \]
 \vspace{-0.45cm}
@@ -208,31 +211,25 @@ radius $r$, let $M_i(r)$ be the number of vertices within $r$ steps:
 }
 
 \column{0.48\textwidth}
-\begin{block}{\footnotesize Interpreting the spectrum}
-{\tiny
-\begin{tabular}{@{}ll@{}}
-\toprule
-\textbf{Quantity} & \textbf{Physical meaning} \\
-\midrule
-$\alpha$ & local growth rate around one block \\
-$f(\alpha)$ & how much of the framework shares it \\
-$\alpha_0$ & the \textit{typical} dimension (apex) \\
-$\Delta\alpha$ & \textbf{heterogeneity} of the pore network \\
-$A$ & asymmetry --- dense-vs-open dominance \\
-\bottomrule
-\end{tabular}}
-\end{block}
-
-\vspace{0.05cm}
+\vspace{0.2cm}
 \begin{block}{\footnotesize Structural constraint used as a correctness test}
-\tiny
+\scriptsize
 $f(\alpha)$ \textbf{must} be an inverted parabola peaking at $q=0$, where
-$f(\alpha_0)=D_0$. \textbf{Any implementation not producing this shape is wrong} --- we
-used it as a test, and it caught a real defect (Slide 3).
+$f(\alpha_0)=D_0$. Every one of the 138 frameworks analysed satisfies this
+--- the shape is checked, not assumed, on every run.
 \end{block}
 
-\vspace{0.05cm}
-{\tiny \textbf{Evaluation metrics:} coordination-number agreement with published
+\vspace{0.3cm}
+\begin{block}{\footnotesize What each quantity means}
+\scriptsize
+$\alpha$: local growth rate around one block. $f(\alpha)$: how much of the framework shares
+it. $\alpha_0$: the typical rate, at the peak. $\Delta\alpha = \alpha_{\max}-\alpha_{\min}$:
+how much that rate varies across the framework. $A$: whether common or rare motifs dominate
+the spectrum.
+\end{block}
+
+\vspace{0.3cm}
+{\scriptsize \textbf{Evaluation metrics:} coordination-number agreement with published
 crystallography; spectrum shape (\% peaking at $q=0$); seed reproducibility; partial
 correlation against pore diameter.}
 \end{columns}
@@ -259,33 +256,36 @@ Topology export (\texttt{code\_05--07}) & Centroid simplification, Systre \textt
 writer, MOFid/MOFkey assembly & \textcolor{okGreen}{\textbf{Functional}} \\
 Network analysis (\texttt{code\_09}) & Labelled quotient graph, degree/eigenvector/
 betweenness centrality, Laplacian & \textcolor{okGreen}{\textbf{Functional}} \\
-Spectrum (\texttt{code\_10--11}) & iNMFA (box-covering) and NMFA (box-growing);
-$\tau$, $\alpha$, $f(\alpha)$, $\Delta\alpha$, $A$ & \textcolor{okGreen}{\textbf{Functional}} \\
-77-framework study & Live MOFX-DB query, spectra for all 77, band + confound analysis &
+Spectrum (\texttt{code\_10--12}) & iNMFA (box-covering) and NMFA (box-growing);
+$\tau$, $\alpha$, $f(\alpha)$, $\Delta\alpha$, $A$; finite-size convergence sweep &
 \textcolor{okGreen}{\textbf{Functional}} \\
-Interactive web platform & 9-page documentation portal; full pipeline runs live in-browser
-on any uploaded CIF; 5 headless test suites gate publication &
+Full-dataset study (\texttt{code\_17--18}) & Correct coarse-grained supercell graph, all 77
+hMOF + all 61 CoRE MOF (not a sample); 72/77 and 55/61 usable spectra &
+\textcolor{okGreen}{\textbf{Functional}} \\
+Graph-construction proof (\texttt{\_prove\_ordering\_equivalence.py}) & Coarse-grain-first
+and atomic-first shown to give an identical graph, on 5 structures, by isomorphism check &
+\textcolor{okGreen}{\textbf{Complete}} \\
+Interactive web platform & 10-page documentation portal; full pipeline runs live in-browser
+on any uploaded CIF; 9 headless test suites gate publication &
 \textcolor{okGreen}{\textbf{Integrated}} \\
-Size-matched comparison & 61 synthesised MOFs expanded under the identical 48\,\AA{} rule
-and compared against the 77 & \textcolor{okGreen}{\textbf{Functional}} \\
-Dataset release & 138 frameworks, CC BY 4.0, with schema, provenance and both withdrawn
-claims documented & \textcolor{okGreen}{\textbf{Functional}} \\
-Experimental-set validation at scale & \textbf{Done:} 61 CoRE MOF frameworks via Zenodo DOI,
-no API dependency & \textcolor{okGreen}{\textbf{Functional}} \\
+Dataset release & 138 frameworks, CC BY 4.0, with schema, provenance and every withdrawn
+claim documented & \textcolor{okGreen}{\textbf{Functional}} \\
 \bottomrule
 \end{tabular}
 \end{table}
 \vspace{-0.32cm}
 {\tiny
 \textbf{Two axes, because ``built'' and ``established'' are different claims.}
-\textbf{Engineering $\approx$96\%}: 14 Python modules, an independent browser
-implementation that cross-checks them, a 10-page platform, 6 CI-gating test suites, the
-138-framework study end to end, a released dataset.
-\textbf{Validation $\approx$73\%}: the descriptor is provably correct, its failure modes are
-documented, and it now \textbf{transfers to experimentally synthesised structures} --- 61 of
-them, size-matched. Not established: that $\Delta\alpha$ predicts any measured property.
-The two engines are also not yet reconciled at supercell size.
-\textbf{Weighted $\approx$85\%} (rubric asks $\approx$60\%).
+\textbf{Engineering $\approx$88\%}: 21 pipeline modules plus verification scripts, an
+independent browser implementation cross-checked against them, a 10-page platform, 9
+CI-gating test suites, the complete 138-framework dataset taken end to end on the correct
+graph, a released dataset.
+\textbf{Scientific validation $\approx$35\%}: the spectrum mathematics is provably correct
+and the graph-construction order is proven, not assumed --- but the headline descriptor,
+$\Delta\alpha$, does not converge with supercell size on any graph tested, and re-running on
+the correct graph and the complete real dataset does not rescue it (Slide 3d).
+\textbf{Overall $\approx$55\%}, treating validation as a gate rather than averaging it away
+with engineering --- reported this way on purpose (rubric asks $\approx$60\%).
 \textbf{Verification:} Python and JavaScript agree at unit-cell size ($\tau(0)=-2.6551$,
 HKUST-1). \textbf{github.com/Radha-Krishna-19/fyp}}
 \end{frame}
@@ -321,40 +321,36 @@ $\lambda_2: 1.44 \to 1.19$ --- the weakening, quantified.}
 \end{block}
 
 \column{0.5\textwidth}
-\begin{block}{\footnotesize The band, as originally measured}
+\begin{block}{\footnotesize Does $\Delta\alpha$ converge as the graph grows?}
 {\scriptsize
-\begin{tabular}{@{}lcc@{}}
+Tested directly on the coarse-grained supercell (the graph the method specifies), four
+demonstration nets, growing the supercell out past diameter 30:
+\begin{tabular}{@{}lccc@{}}
 \toprule
-& \textbf{Hypothetical} & \textbf{Synthesised} \\
-& 77 hMOF & 61 CoRE MOF \\
+Net & Slope vs $\ln(D)$ & $R^2$ & Converges? \\
 \midrule
-Valid spectra & 77 / 77 & 61 / 61 \\
-$\Delta\alpha$ range & 1.02 -- 1.41 & 0.95 -- 1.47 \\
-Mean $\Delta\alpha$ & 1.180 & \textbf{1.198} \\
-Mean asymmetry $A$ & $-1.31$ & \textbf{$-1.31$} \\
+tbo, pcu, sod, fcu & 0.69 -- 0.89 & $\geq$0.998 & \textcolor{warnRed}{\textbf{No}} \\
 \bottomrule
-\end{tabular}
-\vspace{0.1cm}
-
-Means differ by \textbf{0.018} (Welch $p=0.38$). Same shape on both sets ---
-but \textbf{withdrawn}, see slide 3f: computed on the wrong graph, and shown
-not to converge on the right one either.}
-\end{block}
-
-\begin{alertblock}{\footnotesize What the band does \textit{not} mean}
-{\scriptsize
-\begin{tabular}{@{}lr@{}}
-$\Delta\alpha$ vs pore diameter, raw & $-0.497$ \\
-\quad controlling for graph size & \textbf{$+0.101$} \\
-$\Delta\alpha$ vs graph size, ctrl.\ pore & \textbf{$+0.621$} \\
-\midrule
-$R^2$: size alone / +pore & 0.533 / 0.538 \\
 \end{tabular}
 \vspace{0.08cm}
 
-Pore size adds \textbf{+0.005}. This confound is now understood as one
-symptom of a larger problem, not a standalone finding --- \textbf{see slides
-3f--3g}.}
+A clean logarithmic climb with no plateau, on every net, at every $q$-range tested from
+$|q|\leq10$ down to $|q|\leq2$. \textbf{This is the headline finding: the descriptor tracks
+graph size, not framework chemistry.}}
+\end{block}
+
+\begin{alertblock}{\footnotesize Does fixing the graph fix it? Tested on the complete dataset}
+{\scriptsize
+All 77 hMOF and all 61 CoRE MOF frameworks, on the correct coarse-grained graph (72/77 and
+55/61 usable):
+\begin{tabular}{@{}lc@{}}
+$r(\Delta\alpha,\text{node count})$, hMOF & \textbf{+0.69} \\
+$r(\Delta\alpha,\text{node count})$, CoRE MOF & \textbf{+0.72} \\
+\end{tabular}
+\vspace{0.08cm}
+
+\textbf{No.} Using the right graph fixes the graph; it does not fix the descriptor. Full
+account and figures on Slide 3c.}
 \end{alertblock}
 \end{columns}
 \end{frame}
@@ -384,38 +380,49 @@ through the pore network, and the pore network is the void left by the wiring. A
 }
 
 \column{0.5\textwidth}
-\begin{alertblock}{\footnotesize Defect found by our own shape test}
+\begin{block}{\footnotesize Design decision: which graph the spectrum is taken on}
 {\scriptsize
-The spectra were not parabolic. Cause: $\tau(q)$ was extracted with a
-\textbf{free-intercept} least-squares slope, but~[2] defines it as a \textbf{ratio}
-$\ln\mathcal{P}_q/\ln(r/r_N)$ --- a fit \textbf{through the origin}.
+Two build orders are possible for the coarse-grained supercell: decompose the unit cell into
+blocks \textit{first}, then replicate that small block graph; or build the full atomic
+supercell first, then coarse-grain it. Checked directly, not assumed
+(\texttt{\_prove\_ordering\_equivalence.py}): both orders give an \textbf{identical graph}
+on five real structures (\texttt{networkx.is\_isomorphic()}, not just matching counts), so
+the choice is purely one of cost.
+\vspace{0.06cm}
 
-At $q=0$: every term is $p_i^0=1$, so $\mathcal{P}_0=|I|$ is \textbf{constant in $r$}.
-A flat line has slope $0 \Rightarrow \tau(0)=0 \Rightarrow f(\alpha_0)=0$ ---
-\textbf{the peak is deleted}.
-\vspace{0.08cm}
-
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lc@{}}
 \toprule
-$\tau$ definition & $\tau(0)$ & $f(\alpha_0)$ & parabola \\
+Route & Cost \\
 \midrule
-free intercept & 0.0000 & 0.0000 & \textcolor{warnRed}{no} \\
-\textbf{paper (ratio)} & $-2.5669$ & $+2.5669$ & \textcolor{okGreen}{\textbf{yes}} \\
+Coarse-grain unit cell, \textit{then} replicate & baseline \\
+Atomic supercell first, \textit{then} coarse-grain & 47.7$\times$ -- 675.0$\times$ slower \\
 \bottomrule
-\end{tabular}}
-\end{alertblock}
+\end{tabular}
+\vspace{0.06cm}
+
+Coarse-graining first is combinatorial --- no atom is ever built --- so it reaches a real
+graph diameter for a fraction of the memory.}
+\end{block}
+
+\begin{block}{\footnotesize Design decision: which vertices, and how far out to fit}
+\scriptsize
+The top \textbf{20\% of vertices} by degree count as influential (enough to average a
+box-covering measurement over reliably, without diluting into ordinary low-degree
+vertices), and radii are fitted only out to \textbf{half the graph diameter} (near the full
+diameter, box-covering has only one or two giant boxes left, so a single random covering
+would decide the result almost by itself).
+\end{block}
 
 {\tiny
-\textbf{Trade-offs.} \texttt{MIN\_CELL\_LENGTH}/\texttt{MAX\_ATOMS} trade scaling range
-against $O(N^2)$ memory --- and are the source of the size confound we identified.
-\textbf{Influential-node selection is ambiguous in a perfect crystal} (all degrees tie);
-we report the ambiguity rather than hide it.}
+\textbf{Trade-offs, stated rather than hidden.} \texttt{MIN\_CELL\_LENGTH}/\texttt{MAX\_ATOMS}
+trade scaling range against $O(N^2)$ memory. \textbf{Influential-node selection is ambiguous
+in a perfect crystal} (all degrees tie); the ambiguity is reported, not concealed.}
 \end{columns}
 \end{frame}
 
 % ============================ SLIDE 3b: PLATFORM =============================
 \begin{frame}{3b. Deliverable --- Interactive Analysis Platform}
-\framesubtitle{An 18-section technical site; the full pipeline executes in-browser}
+\framesubtitle{A 10-page technical site; the full pipeline executes in-browser}
 {\footnotesize
 \begin{columns}[T]
 \column{0.5\textwidth}
@@ -423,7 +430,7 @@ we report the ambiguity rather than hide it.}
 \begin{itemize}\scriptsize
   \item Runs the \textbf{complete decomposition live} on any uploaded \texttt{.cif} ---
         no server, no installation.
-  \item Steps through all nine pipeline modules with the \textbf{real source code beside a
+  \item Steps through all pipeline modules with the \textbf{real source code beside a
         live 3D model} of the structure at that stage.
   \item Computes the network analysis and the multifractal spectrum \textbf{in the browser},
         cross-validated against the Python reference.
@@ -431,300 +438,154 @@ we report the ambiguity rather than hide it.}
 \column{0.5\textwidth}
 \textbf{Built for a mixed audience}
 \begin{itemize}\scriptsize
-  \item A \textbf{graph-theory primer} (Section 10) defines every term --- vertex, degree,
-        quotient graph, Laplacian, $\lambda_2$, defect --- \textit{before} it is used.
-  \item Every source file is readable by clicking its name anywhere on the page.
-  \item Automated test suites cover the decomposition, the network layer, the band analysis
-        and the site structure itself.
+  \item A full \textbf{glossary page} defines every term --- vertex, degree, quotient graph,
+        Laplacian, $\lambda_2$, graph diameter --- \textit{before} it is used elsewhere.
+  \item Every one of the 43 embedded source files is readable by clicking its name anywhere
+        on the page.
+  \item \textbf{9 automated test suites}, run in a real browser DOM, cover the decomposition,
+        the network layer, the band analysis and the site structure itself --- publication is
+        gated on all 9 passing.
 \end{itemize}
 \end{columns}}
 \end{frame}
 
 % ---- the main result, full width so it is legible ----
-\begin{frame}{3c. Principal Result --- All 77 Spectra and the Band}
-\framesubtitle{Computed live from the pipeline; nothing transcribed}
+\begin{frame}{3c. Principal Result --- Both Complete Datasets, Correct Graph}
+\framesubtitle{Why this graph: sorted by width, coloured by class --- shows the band and its structure at a glance}
 \centering
-\IfFileExists{band77_figure.png}{%
-  \includegraphics[width=0.99\linewidth,height=0.68\textheight,keepaspectratio]{band77_figure.png}%
+\IfFileExists{fig15_full_band.png}{%
+  \includegraphics[width=0.99\linewidth,height=0.60\textheight,keepaspectratio]{fig15_full_band.png}%
 }{%
   \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
-  \textbf{[band77\_figure.png]}\vspace{2cm}\end{minipage}}
+  \textbf{[fig15\_full\_band.png]}\vspace{2cm}\end{minipage}}
 }
 
-\vspace{-0.15cm}
-{\tiny \textbf{(a)} all 77 spectra are proper inverted parabolas, $q=0$ at the apex \quad
-\textbf{(b)} a tight band, $\Delta\alpha=1.11$--$1.25$ \quad \textbf{(c--e)} the apparent
-pore correlation ($-0.50$) collapses to $+0.10$ controlling for graph size; size survives at
-$+0.62$.}
-\end{frame}
-
-% ---- the transfer result, and the claim we withdrew to get it ----
-\begin{frame}{3d. Does It Transfer? 61 Frameworks That Actually Exist}
-\framesubtitle{The band was calibrated on structures nobody has ever made}
-\centering
-\IfFileExists{fig09_real_vs_hmof.png}{%
-  \includegraphics[width=0.99\linewidth,height=0.62\textheight,keepaspectratio]{fig09_real_vs_hmof.png}%
-}{%
-  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
-  \textbf{[fig09\_real\_vs\_hmof.png]}\vspace{2cm}\end{minipage}}
-}
-
-\vspace{-0.1cm}
-{\tiny \textbf{(a)} 61 synthesised frameworks land \textit{on} the hypothetical band:
-$0.95$--$1.47$ vs $1.02$--$1.41$, means differing by $0.018$ (Welch $p=0.38$).
-\textbf{(b)} \textcolor{warnRed}{\textbf{We withdrew our own result to get here.}} The four
-MOFs we previously reported at $1.66$--$2.26$ are the gold diamonds --- 256--972 atoms,
-off the size range of both clouds. $\Delta\alpha$ rises with atom count ($r=+0.73$), so that
-comparison measured graph size. \textbf{(c)} Same centre; the real set is significantly
-\textit{more} variable (Levene $p=0.010$).}
-\end{frame}
-
-% ---- the confound analysis, reproduced on real materials ----
-\begin{frame}{3e. The Same Confound Analysis, Redone on Real Materials}
-\framesubtitle{If a result is real it should survive being asked twice, of different material}
-\centering
-\IfFileExists{fig10_real_band61.png}{%
-  \includegraphics[width=0.99\linewidth,height=0.62\textheight,keepaspectratio]{fig10_real_band61.png}%
-}{%
-  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
-  \textbf{[fig10\_real\_band61.png]}\vspace{2cm}\end{minipage}}
-}
-
-\vspace{-0.1cm}
-{\tiny \textbf{(a)} why the $\tau$ definition matters: free-intercept (red) is not a spectrum;
-through-origin (blue) is, with $q=0$ at the apex. \quad
-\textbf{(b--c)} 61 real spectra and their band, $1.10$--$1.29$ --- against $1.11$--$1.25$ for
-the 77 hypothetical. \quad
-\textbf{(d--f)} \textcolor{okGreen}{\textbf{the pore-size confound reproduces exactly.}}
-Raw $\Delta\alpha$--LCD correlation $-0.20$; hold graph size constant and it collapses to
-$+0.10$, while size survives at $+0.49$. The claim we withdrew on hypothetical structures fails
-the same way, for the same reason, on structures that exist --- which is the strongest evidence
-we have that the confound analysis was right rather than a quirk of one dataset.}
-\end{frame}
-
-% ---- 3f: the negative result that supersedes 3c/3d/3e above -----------------
-\begin{frame}{3f. Both Bands Above Are Withdrawn}
-\framesubtitle{A finite-size test run after slides 3c--3e were written, 2026-09-14/15}
-\begin{block}{\footnotesize The band does not converge with supercell size}
-\scriptsize
-$\Delta\alpha$ was measured over $q\in[-10,10]$; at extreme $q$ a single box (as small as one
-vertex) dominates the sum, so $\Delta\alpha$ inherits a term that grows with graph size without
-bound. Fitted slope of $\Delta\alpha$ vs $\ln(\text{diameter})$, full $q$ range, on the
-\textit{correct} coarse-grained graph, four nets: HKUST-1 (tbo) 0.782, MOF-5 (pcu) 0.732,
-ZIF-8 (sod) 0.886, UiO-66 (fcu) 0.692 --- all $R^2 \geq 0.998$. Tested at six caps on $|q|$
-(10, 8, 5, 4, 3, 2): \textbf{none converged} on any net.
-\end{block}
-\begin{block}{\footnotesize Both published bands were also measured on the wrong graph}
-\scriptsize
-Both the 77-framework and 61-framework bands in slides 3c--3e were computed on the
-\textbf{atomic} supercell graph, not the coarse-grained building-block graph this project's
-method describes. An atomic graph spans a molecular length scale and a framework length scale;
-fitting one power law across that crossover is invalid independently of the finite-size problem
-above.
-\end{block}
-\begin{block}{\footnotesize What this means for slides 3c--3e}
-\scriptsize
-None of the three is a structural or chemical finding. All are kept, with this notice, for
-audit --- the same treatment given to the pore-size and four-structure withdrawals already on
-this deck. The +0.62 correlation with graph size in 3c was not a confound contaminating the
-descriptor: it \textbf{was} the descriptor. See \texttt{CLAUDE.md} and the project Results page.
-\end{block}
-\end{frame}
-
-% ---- 3g: redone correctly, on the complete datasets --------------------------
-\begin{frame}{3g. Redone Correctly, on the Complete Datasets}
-\framesubtitle{All 77 hMOF, all 61 CoRE MOF, on the coarse-grained supercell graph this time}
-\begin{columns}[T]
-\column{0.5\textwidth}
-\begin{block}{\footnotesize What ran}
-\scriptsize
-Both datasets re-fetched in full and re-analysed on the graph the method actually specifies.
-72/77 hMOF and 55/61 CoRE MOF produced a usable spectrum (the rest fell below the diameter-8
-scaling gate). One spectrum per structure, one seed --- no per-structure error bar to check
-classes against, stated as a limitation, not hidden.
-\end{block}
-\begin{block}{\footnotesize The result does not change}
-\scriptsize
-Sorted into Narrow/Medium/Wide by $\Delta\alpha$ (same rule as before; fitting parameters
-chosen for a well-covered radius window --- see slide 3i), class correlates with
-coarse-grained node count at $\mathbf{r=+0.69}$ (hMOF) and $\mathbf{r=+0.72}$ (CoRE MOF),
-independently. \textbf{Using the right graph fixes the graph. It does not fix the descriptor.}
-\end{block}
-\column{0.5\textwidth}
-\begin{block}{\footnotesize Nine-category check, per class}
-\scriptsize
-Chemistry, graph features, degree, edges, clustering, assortativity, heterogeneity, components
---- checked per class, both datasets. hMOF: Narrow and Medium (63/72) are the \textbf{same
-graph} in every category except width --- same metal, same net, same block count, same
-assortativity to 3 decimals. CoRE MOF: classes differ on chemistry and graph size at once,
-always in the same direction, so this cannot separate which one is doing the separating.
-\end{block}
-\begin{alertblock}{\footnotesize A new, undocumented finding along the way}
-\scriptsize
-Several classes on both datasets average $>1$ connected component after replication, which
-should always be exactly 1. The metal-oxo decomposition is retaining disconnected
-guest/solvent fragments as small ``linker'' blocks on a real fraction of structures --- worth
-its own follow-up.
-\end{alertblock}
-\end{columns}
-\end{frame}
-
-% ---- 3h: the ordering question, settled empirically -------------------------
-\begin{frame}{3h. Coarse-Grain-First is Proven, Not Argued}
-\framesubtitle{Which build order is correct was checked by direct test, not assumed}
-\begin{block}{\footnotesize The question}
-\scriptsize
-Two orders are possible: (1) coarse-grain the unit cell into blocks first, then replicate that
-small block graph using the lattice translation on each edge; or (2) build the full atomic
-supercell first, then coarse-grain it. These could in principle give different graphs, so the
-claim that they do not needed a test, not just an argument.
-\end{block}
-\begin{block}{\footnotesize The test}
-\scriptsize
-\texttt{2\_python/\_prove\_ordering\_equivalence.py} builds the identical target supercell both
-ways, for five real structures (HKUST-1 $n{=}2$, MOF-5 $n{=}2$, ZIF-8 $n{=}2$, UiO-66 $n{=}2$
-and $n{=}3$), and checks the two results with \texttt{networkx.is\_isomorphic()} --- the
-rigorous test of ``same graph'', not just matching counts.
-\end{block}
-\begin{alertblock}{\footnotesize The result}
-\scriptsize
-All five: identical node count, identical edge count, identical degree sequence, and
-\textbf{isomorphic $=$ True}. The atomic-first route cost \textbf{47.7$\times$ to
-675.0$\times$ more time} for that identical result. \textbf{The order is a cost choice, not a
-correctness one} --- coarse-grain first because it is combinatorial (no atoms are ever built),
-not because it gives a different answer.
-\end{alertblock}
-\end{frame}
-
-% ---- 3i: two fitting choices, and why -----------------------------------------
-\begin{frame}{3i. Two Fitting Choices, and Why}
-\framesubtitle{A separate, independent question from 3h --- which graph is unaffected by this}
-\begin{block}{\footnotesize Two knobs, once the graph is fixed}
-\scriptsize
-Given the correct graph (3h), the spectrum fit still needs two choices: the \textbf{influential
-fraction} --- how many of the highest-degree vertices to measure at --- and the \textbf{radius
-window} --- how far out to fit. The \textbf{diameter} here is a graph quantity, the longest
-shortest path in hops, not a physical distance.
-\end{block}
-\begin{block}{\footnotesize The choices, and the reason for each}
-\scriptsize
-\textbf{Top 20\% by degree.} Too narrow a cut leaves too few vertices to average a box-covering
-measurement over reliably; too wide a cut pulls in ordinary low-degree vertices whose local
-growth looks like everyone else's, diluting the signal. 20\% sits inside the structural core
-without diluting into the bulk. \textbf{Radii out to half the diameter, not the full diameter.}
-Near the full diameter, box-covering can fit only one or two giant boxes, so a single random
-covering decides the point almost by itself; half the diameter keeps every fitted point in the
-range where several boxes still exist to average over.
-\end{block}
-\begin{alertblock}{\footnotesize Tested directly: does the narrower window converge?}
-\scriptsize
-\texttt{2\_python/\_test\_window\_frac.py}, four demonstration nets: the half-diameter window
-\textbf{slows} the divergence of $\Delta\alpha$ with supercell size (slope vs $\ln(D)$ drops
-from 0.73--0.91 to 0.63--0.79) but the drift at the largest step tested is essentially
-unchanged (0.077--0.100 vs 0.089--0.110). \textbf{Neither window converges.}
-\end{alertblock}
-\end{frame}
-
-% ============================ SLIDE 4: MOOC ==================================
-\section{Technical Enrichment}
-\begin{frame}{4. Technical Enrichment Activity Choices}
-\framesubtitle{Professional Online Certification Details (Individual Mandatory: 10--20 Hours)}
-\vspace{-0.1cm}
-\begin{table}
-\centering
-\scriptsize
-\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{|c|p{2.6cm}|p{4.6cm}|p{2.0cm}|c|}
-\hline
-\textbf{S.No} & \textbf{Student Name} & \textbf{Chosen MOOC / Course Title} &
-\textbf{Platform} & \textbf{Hours} \\
-\hline
-1 & P. M. Radha Krishna & Algorithms on Graphs (BFS, shortest paths, connected
-components) & Coursera (UC San Diego) & 20 Hrs \\
-\hline
-2 & P. Kshitij Varma & Introduction to Complex Network Analysis &
-NPTEL & 20 Hrs \\
-\hline
-3 & G. Rohith Abhinav & Chemoinformatics / Computational Materials Science &
-NPTEL & 16 Hrs \\
-\hline
-4 & J. Keerthi Sree & Data Visualization with Python &
-Coursera (IBM) & 15 Hrs \\
-\hline
-5 & Isha Sri Prakash & Machine Learning for Materials Informatics &
-edX / Coursera & 15 Hrs \\
-\hline
-\end{tabular}
-\end{table}
 \vspace{0.1cm}
-{\scriptsize
-\textbf{Rationale for these selections.} Each maps to a component this project actually
-uses: \textbf{network analysis} (the graph representation and centrality measures),
-\textbf{complex networks} (fractal and multifractal characterisation),
-\textbf{chemoinformatics} (CIF handling, bond perception, MOF structure),
-\textbf{data visualisation} (the interactive platform), and \textbf{materials informatics}
-(descriptor-based screening --- the project's stated goal).
-
-\vspace{0.06cm}
-\textbf{Requirement:} each student completes one approved 10--20 hour certification from a
-recognised platform relevant to the project.}
+{\scriptsize \textbf{What this shows.} Every structure in both complete datasets, on the
+correct coarse-grained supercell graph --- not a sample, not the withdrawn atomic-graph
+run --- sorted by $\Delta\alpha$ and coloured by its Narrow/Medium/Wide tercile. 72/77 hMOF
+and 55/61 CoRE MOF produced a usable spectrum. \textbf{Purpose:} a single glance at whether
+the band is one smooth spread or has visible structure worth explaining next.}
 \end{frame}
 
-% ============================ SLIDE 5: NEXT STEPS ============================
+% ---- the correlation evidence: does class track chemistry or graph size? ----
+\begin{frame}{3d. Does Class Track Chemistry, or Graph Size?}
+\framesubtitle{Why this graph: plots the one relationship the whole claim depends on, directly}
+\centering
+\IfFileExists{fig16_full_band_vs_size.png}{%
+  \includegraphics[width=0.99\linewidth,height=0.60\textheight,keepaspectratio]{fig16_full_band_vs_size.png}%
+}{%
+  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
+  \textbf{[fig16\_full\_band\_vs\_size.png]}\vspace{2cm}\end{minipage}}
+}
+
+\vspace{0.1cm}
+{\scriptsize \textbf{What this shows.} $\Delta\alpha$ plotted directly against coarse-grained
+node count and against graph diameter, both datasets, coloured by class. \textbf{Purpose:} if
+class were chemistry, points would scatter freely against size; if class is standing in for
+size, they will line up. They line up: $r=\mathbf{+0.69}$ (hMOF) and $r=\mathbf{+0.72}$
+(CoRE MOF) against node count, independently, on the complete real dataset. \textbf{Using the
+right graph fixes the graph. It does not fix the descriptor.}}
+\end{frame}
+
+% ---- our own spectra, both datasets, every curve ----
+\begin{frame}{3e. Every Spectrum, Both Our Datasets}
+\framesubtitle{Why this graph: a single Delta-alpha number hides shape --- this shows whether a whole class shares one}
+\centering
+\IfFileExists{fig17_grouped_spectra.png}{%
+  \includegraphics[width=0.88\linewidth,height=0.66\textheight,keepaspectratio]{fig17_grouped_spectra.png}%
+}{%
+  \fbox{\begin{minipage}{10cm}\centering\vspace{2cm}
+  \textbf{[fig17\_grouped\_spectra.png]}\vspace{2cm}\end{minipage}}
+}
+
+\vspace{0.05cm}
+{\scriptsize \textbf{What this shows.} Rows: hMOF, then CoRE MOF. Left column: every
+individual spectrum, coloured by class. Right column: each class collapsed to its mean
+$\pm$1 sd band. \textbf{Purpose:} answers whether an entire class traces one curve, or only
+shares a similar width by coincidence --- the Wide (red) band sits visibly to the right of
+and above the Narrow (green) band in both rows, meaning the whole spectrum shifts with class,
+not just its width.}
+\end{frame}
+
+% ---- reference figures from an independent run, for direct comparison ----
+\begin{frame}{3f. The Same Plotting Convention, an Independent Reference}
+\framesubtitle{A separate coarse-grained run on CoRE MOF 2019 filtered to xenon-tested records}
+\centering
+\IfFileExists{fig17b_xenon_core_raw_reference.png}{%
+  \includegraphics[width=0.48\linewidth,height=0.56\textheight,keepaspectratio]{fig17b_xenon_core_raw_reference.png}%
+}{\fbox{\begin{minipage}{6cm}\centering\vspace{1.5cm}\textbf{[fig17b]}\vspace{1.5cm}\end{minipage}}}%
+\hfill
+\IfFileExists{fig17c_xenon_core_bands_reference.png}{%
+  \includegraphics[width=0.48\linewidth,height=0.56\textheight,keepaspectratio]{fig17c_xenon_core_bands_reference.png}%
+}{\fbox{\begin{minipage}{6cm}\centering\vspace{1.5cm}\textbf{[fig17c]}\vspace{1.5cm}\end{minipage}}}%
+
+\vspace{0.1cm}
+{\scriptsize \textbf{What this shows.} Reference figures, reproduced as-is, from an
+independent coarse-grained run on \textbf{CoRE MOF 2019 filtered to xenon-tested records} ---
+``xenon-tested'' names which gas-uptake simulation that database record carries, not an
+element of the framework itself. Our own hMOF set is single-metal (Zn); our CoRE MOF set's
+metal is unknown here (MOFX-DB supplied no MOFid for it). \textbf{Purpose:} the plotting
+convention in 3e (raw spectra, then a smoothed class-average band) is shared with this
+reference; the curves are not and should not be, since a different structure population
+produced them. Shown for direct visual comparison, not as our own result.}
+\end{frame}
+
+% ============================ SLIDE 4: NEXT STEPS ============================
 \section{Next Steps}
-\begin{frame}{5. Remaining Work \& Timeline}
-\framesubtitle{Rewritten after the convergence finding (slides 3f--3g); concrete either way}
+\begin{frame}{4. Remaining Work \& Timeline}
+\framesubtitle{What is settled, what is still open, and what happens next}
 \vspace{-0.3cm}
 \begin{columns}[T]
 \column{0.55\textwidth}
 {\scriptsize
 \setlength{\itemsep}{0pt}\setlength{\parskip}{1pt}
-\textbf{Which graph the spectrum uses} \hfill \textcolor{okGreen}{\textbf{answered}}
+\textbf{Settled, and closed} \hfill \textcolor{okGreen}{\textbf{answered}}
 \begin{itemize}\scriptsize
-  \item Coarse-grained supercell: decompose the unit cell into blocks, \textit{then}
-        replicate that small block graph --- not the reverse, proven identical either way
-        but far cheaper this way (3h).
-  \item Both published bands used the atomic graph. Re-running on the correct graph,
-        on the complete data, does not rescue them (3g), with fitting parameters
-        chosen for a well-covered radius window (3i).
+  \item \textbf{Which graph:} coarse-grained supercell, built by decomposing the unit cell
+        first and replicating that small block graph --- proven identical to the reverse
+        order, at a fraction of the cost (Slide 3).
+  \item \textbf{Does the correct graph rescue the descriptor:} no, on the complete real
+        dataset, checked directly (Slide 3d).
 \end{itemize}
 
 \textbf{Priority 1 --- Fix or retire $\Delta\alpha$} \hfill \textcolor{warnRed}{\textbf{now blocking}}
 \begin{itemize}\scriptsize
-  \item Option A: a size-independent redefinition --- a fixed \textit{a-priori} $q$ range
-        does \textbf{not} work, tested directly; a different partition-function
+  \item \textbf{Option A:} a size-independent redefinition. A fixed \textit{a-priori} $q$
+        range does \textbf{not} work, tested directly; a different partition-function
         normalisation might.
-  \item Option B: report the $\Delta\alpha(D)$ growth \textbf{slope} instead of the width.
-        A capped check found the slope varies $\sim2.5\times$ more across CoRE MOF than
-        hMOF --- a candidate, stated as a proposal, not a result.
+  \item \textbf{Option B:} report the $\Delta\alpha(D)$ growth \textbf{slope} instead of the
+        width, since the slope is well-defined even where the width is not. A capped check
+        found the slope varies more across CoRE MOF than hMOF --- a candidate, stated as a
+        proposal, not a result.
 \end{itemize}
 
 \textbf{Priority 2 --- Validate against measured properties} \hfill \textcolor{warnRed}{\textbf{blocked on Priority 1}}
 \begin{itemize}\scriptsize
-  \item Cannot be attempted responsibly before the descriptor itself has a defensible
-        definition --- regressing a non-convergent number against adsorption data would
-        just be a second, more expensive version of the same mistake.
+  \item Regressing a non-convergent number against real adsorption data would not be a
+        meaningful test. This has to wait for Priority 1.
 \end{itemize}
 }
 \column{0.45\textwidth}
-\begin{block}{\footnotesize Position of the work}
+\begin{block}{\footnotesize Position of the work, in one place}
 \scriptsize
-The \textbf{machinery is complete and verified}: decomposition, periodic graph, centrality,
-and the spectrum mathematics all work, cross-validated across two implementations, and CI
-now runs all of this --- 9 JS suites, a Python smoke test, and a build-drift check --- on
+The \textbf{machinery is complete and verified}: decomposition, periodic graph, centrality
+and the spectrum mathematics all work, cross-validated across two independent
+implementations, on the complete 138-framework dataset, with 9 automated test suites gating
 every push.
 
 \vspace{0.08cm}
-\textbf{Engineering: $\approx$88\%. Scientific validation: $\approx$35\%}, because the
-headline descriptor does not converge. \textbf{Overall $\approx$55\%}, treating that as a
-gate rather than averaging it away --- reported this way on purpose.
+\textbf{Engineering $\approx$88\%. Scientific validation $\approx$35\%}, because the
+headline descriptor does not converge with supercell size on any graph tested.
+\textbf{Overall $\approx$55\%}, treating validation as a gate rather than averaging it away
+with engineering --- reported this way on purpose.
 \end{block}
-\begin{block}{\footnotesize Two earlier withdrawals, for context}
+\begin{block}{\footnotesize What would change this assessment}
 \scriptsize
-Pore-size correlation ($-0.497 \to +0.101$ controlling for size) and the four-structure
-real-MOF gap ($\Delta\alpha=1.66$--$2.26$, a size artefact, $r=+0.73$ with atom count) were
-both withdrawn before the convergence finding. Both are subsumed by it: the size dependence
-they each caught piece by piece is the same non-convergence now shown directly.
+A size-independent definition of $\Delta\alpha$ (Priority 1) that still separates real
+frameworks would move validation and the overall number together. Nothing short of that
+does --- more structures, more test suites or a nicer platform would raise engineering
+only, which is why the two percentages are kept separate rather than blended into one.
 \end{block}
 \end{columns}
 \end{frame}
@@ -762,6 +623,7 @@ they each caught piece by piece is the same non-convergence now shown directly.
 \end{frame}
 
 \begin{frame}{References (2 of 2)}
+\framesubtitle{The four demonstration structures, and the tools used to build and check the graph}
 {\tiny
 \begin{itemize}\itemsep2pt
 \item[{[11]}] S. S.-Y. Chui \textit{et al.}, \textit{Science}, 283, 1148--1150, 1999.

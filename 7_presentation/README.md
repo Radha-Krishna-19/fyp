@@ -5,11 +5,12 @@ Everything needed for the **23CSE498 Phase 2, Panel Review 1** presentation.
 | File | What it is |
 |---|---|
 | **`panel_review.tex`** | The Beamer deck source. Compile with `pdflatex` **twice**. |
-| **`panel_review.pdf`** | Pre-compiled, 13 pages. Ready to present. |
-| **`TEAM_SPLIT.md`** | **Who says what.** Per-member slides, exact script, timings, and a question-routing table. |
+| **`panel_review.pdf`** | Ready to present, but must be recompiled after the 2026-09-16 rewrite below — the checked-in copy predates it. |
+| **`TEAM_SPLIT.md`** | **Who says what.** Per-member slides, exact script, timings, and a question-routing table — also predates the rewrite, check against the new slide list before using. |
 | `references.bib` | BibTeX for the deck (references are also typeset inline, so no bibtex pass is needed). |
-| `band77_figure.png` | The results figure (all 77 spectra + the band + the confound), slide 3c. |
-| **`panel_review_overleaf.zip`** | **Upload this straight to Overleaf.** Contains the .tex, the figure, the .bib and instructions. |
+| `fig15_full_band.png`, `fig16_full_band_vs_size.png`, `fig17_grouped_spectra.png` | The current, correct results figures (complete 138-framework dataset, coarse-grained graph), slides 3c–3e. |
+| `fig17b_xenon_core_raw_reference.png`, `fig17c_xenon_core_bands_reference.png` | Reference figures from an independent run, reproduced as-is, slide 3f. |
+| **`panel_review_overleaf.zip`** | **Upload this straight to Overleaf.** Contains the .tex, all figures, the .bib and instructions. |
 | `overleaf/` | The same files unzipped, if you prefer to upload individually. |
 
 ---
@@ -46,7 +47,7 @@ Search the `.tex` for `XX` to find all of them.
 
 ---
 
-## Deck structure (13 pages)
+## Deck structure (16 pages, rewritten 2026-09-16)
 
 | Page | Slide | Rubric |
 |---|---|---|
@@ -54,19 +55,24 @@ Search the `.tex` for `XX` to find all of them.
 | 2 | **0 · Problem Context** — why the project exists | (framing) |
 | 3 | **1 · Methodology & Solution Design** | 5 marks |
 | 4 | **1b · Mathematical Model** | 5 marks |
-| 5 | **2 · Implementation Progress (~60%)** | 8 marks |
+| 5 | **2 · Implementation Progress & Module Functionality** | 8 marks |
 | 6 | **2b · Results Obtained So Far** | 8 marks |
 | 7 | **3 · Technical Knowledge & Design Decisions** | 5 marks |
 | 8 | **3b · Deliverable — the platform** | 5 marks |
-| 9 | **4 · Technical Enrichment (MOOCs)** | — |
-| 10 | **5 · Remaining Work & Timeline** | — |
-| 11–12 | References (19 entries) | — |
-| 13 | Thank You | — |
+| 9 | **3c · Principal Result** — both complete datasets, correct graph | 5 marks |
+| 10 | **3d · Does Class Track Chemistry, or Graph Size?** | 5 marks |
+| 11 | **3e · Every Spectrum, Both Our Datasets** | 5 marks |
+| 12 | **3f · The Same Plotting Convention, an Independent Reference** | 5 marks |
+| 13 | **4 · Remaining Work & Timeline** | — |
+| 14–15 | References (19 entries) | — |
+| 16 | Thank You | — |
 
-Slide 0 and the "b" slides are additions to the template. They exist because the rubric
-allocates **8 marks to implementation** and **5 to technical knowledge** — enough weight to
-deserve a full slide of results and a full slide of design reasoning rather than bullets
-squeezed onto one page.
+Slide 0 and the "b"/"c"/"d"/"e"/"f" slides are additions to the template. They exist because
+the rubric allocates **8 marks to implementation** and **5 to technical knowledge** — enough
+weight to deserve full slides of results and design reasoning rather than bullets squeezed
+onto one page. **The MOOC slide was removed** from the deck at the presenter's request; the
+MOOC assignments themselves are still tracked below, since the certification requirement is
+unaffected by whether it gets its own slide.
 
 ---
 
