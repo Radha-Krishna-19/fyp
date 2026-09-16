@@ -1,0 +1,233 @@
+% ============================================================================
+% References for the MOF Framework Analysis project (23CSE498, Phase 2).
+% Every entry here is a source the project actually uses -- an algorithm we
+% implement, a dataset we query, a method we follow, or a constant we cite.
+% Nothing is padded.
+% ============================================================================
+
+% ---- THE DECOMPOSITION ALGORITHM WE VISUALISE -----------------------------
+@article{bucior2019mofid,
+  author  = {Bucior, Benjamin J. and Rosen, Andrew S. and Haranczyk, Maciej and
+             Yao, Zhenpeng and Ziebel, Michael E. and Farha, Omar K. and
+             Hupp, Joseph T. and Siepmann, J. Ilja and Aspuru-Guzik, Al{\'a}n and
+             Snurr, Randall Q.},
+  title   = {Identification Schemes for Metal--Organic Frameworks to Enable
+             Rapid Search and Cheminformatics Analysis},
+  journal = {Crystal Growth \& Design},
+  volume  = {19}, number = {11}, pages = {6682--6697}, year = {2019},
+  doi     = {10.1021/acs.cgd.8b00126},
+  note    = {Defines MOFid/MOFkey and the metal-oxo, single-node and all-node
+             decomposition algorithms. Modules code\_01--code\_07 are a faithful
+             Python translation of this pipeline.}
+}
+
+% ---- THE MULTIFRACTAL METHOD WE IMPLEMENT ---------------------------------
+@article{xiao2021nmfa,
+  author  = {Xiao, Jian and Wang, Bo and Li, Xiang},
+  title   = {Deciphering the Generating Rules and Functionalities of Complex Networks},
+  journal = {Scientific Reports},
+  volume  = {11}, pages = {22964}, year = {2021},
+  doi     = {10.1038/s41598-021-02203-4},
+  note    = {Source of NMFA and iNMFA. Defines the partition function
+             P\_q(r), the mass exponent tau(q) = ln P\_q / ln(r/r\_N), and the
+             Legendre transform to f(alpha). The tau definition here is what
+             our correction restores.}
+}
+
+% ---- TOPOLOGY -------------------------------------------------------------
+@article{delgado2003systre,
+  author  = {Delgado-Friedrichs, Olaf and O'Keeffe, Michael},
+  title   = {Identification of and Symmetry Computation for Crystal Nets},
+  journal = {Acta Crystallographica Section A},
+  volume  = {59}, number = {4}, pages = {351--360}, year = {2003},
+  doi     = {10.1107/S0108767303012017},
+  note    = {Systre. Module code\_06 writes a genuine .cgd input file for it.
+             We do not reimplement the tool; quoted RCSR names are published.}
+}
+
+@article{okeeffe2008rcsr,
+  author  = {O'Keeffe, Michael and Peskov, Maxim A. and Ramsden, Stuart J. and
+             Yaghi, Omar M.},
+  title   = {The Reticular Chemistry Structure Resource (RCSR) Database of, and
+             Symbols for, Crystal Nets},
+  journal = {Accounts of Chemical Research},
+  volume  = {41}, number = {12}, pages = {1782--1789}, year = {2008},
+  doi     = {10.1021/ar800124u},
+  note    = {Source of the three-letter net symbols tbo, pcu, sod, fcu used as
+             ground truth for our coordination-number validation.}
+}
+
+% ---- DATA -----------------------------------------------------------------
+@article{bobbitt2023mofxdb,
+  author  = {Bobbitt, N. Scott and Chen, Jiayi and Snurr, Randall Q.},
+  title   = {{MOFX-DB}: An Online Database of Computational Adsorption Data for
+             Nanoporous Materials},
+  journal = {Journal of Chemical \& Engineering Data},
+  volume  = {68}, number = {2}, pages = {483--498}, year = {2023},
+  doi     = {10.1021/acs.jced.2c00583},
+  note    = {The database our notebook queries at run time. Supplies the CIFs,
+             the MOFid strings and the PLD/LCD pore diameters for all 77
+             frameworks.}
+}
+
+@article{wilmer2012hmof,
+  author  = {Wilmer, Christopher E. and Leaf, Michael and Lee, Chang Yeon and
+             Farha, Omar K. and Hauser, Brad G. and Hupp, Joseph T. and
+             Snurr, Randall Q.},
+  title   = {Large-Scale Screening of Hypothetical Metal--Organic Frameworks},
+  journal = {Nature Chemistry},
+  volume  = {4}, number = {2}, pages = {83--89}, year = {2012},
+  doi     = {10.1038/nchem.1192},
+  note    = {The hMOF database. IMPORTANT: our 77 structures are hMOF entries --
+             computer-generated candidates, NOT synthesised materials. This
+             citation is why we describe them that way.}
+}
+
+@article{chung2019coremof,
+  author  = {Chung, Yongchul G. and Haldoupis, Emmanuel and Bucior, Benjamin J.
+             and others},
+  title   = {Advances, Updates, and Analytics for the Computation-Ready,
+             Experimental Metal--Organic Framework Database: {CoRE MOF} 2019},
+  journal = {Journal of Chemical \& Engineering Data},
+  volume  = {64}, number = {12}, pages = {5985--5998}, year = {2019},
+  doi     = {10.1021/acs.jced.9b00835},
+  note    = {The experimental database our notebook requests. The server
+             returned hMOF records instead, which our provenance check now
+             detects -- this is the set we would need for metal diversity.}
+}
+
+% ---- CHEMISTRY CONSTANTS AND STRUCTURES -----------------------------------
+@article{cordero2008radii,
+  author  = {Cordero, Beatriz and G{\'o}mez, Ver{\'o}nica and
+             Platero-Prats, Ana E. and others},
+  title   = {Covalent Radii Revisited},
+  journal = {Dalton Transactions},
+  number  = {21}, pages = {2832--2838}, year = {2008},
+  doi     = {10.1039/B801115J},
+  note    = {Source of the covalent radii used for distance-based bond
+             perception in code\_02.}
+}
+
+@article{chui1999hkust,
+  author  = {Chui, Stephen S.-Y. and Lo, Samuel M.-F. and Charmant, Jonathan P. H.
+             and Orpen, A. Guy and Williams, Ian D.},
+  title   = {A Chemically Functionalizable Nanoporous Material
+             [Cu$_3$(TMA)$_2$(H$_2$O)$_3$]$_n$},
+  journal = {Science},
+  volume  = {283}, number = {5405}, pages = {1148--1150}, year = {1999},
+  doi     = {10.1126/science.283.5405.1148},
+  note    = {HKUST-1. Test structure; source of the published Cu paddlewheel
+             and its 4-connected tbo topology.}
+}
+
+@article{li1999mof5,
+  author  = {Li, Hailian and Eddaoudi, Mohamed and O'Keeffe, Michael and
+             Yaghi, Omar M.},
+  title   = {Design and Synthesis of an Exceptionally Stable and Highly Porous
+             Metal--Organic Framework},
+  journal = {Nature},
+  volume  = {402}, pages = {276--279}, year = {1999},
+  doi     = {10.1038/46248},
+  note    = {MOF-5 / IRMOF-1. Test structure; Zn4O node, 6-connected, pcu net.}
+}
+
+@article{park2006zif8,
+  author  = {Park, Kyo Sung and Ni, Zheng and C{\^o}t{\'e}, Adrien P. and others},
+  title   = {Exceptional Chemical and Thermal Stability of Zeolitic Imidazolate
+             Frameworks},
+  journal = {PNAS},
+  volume  = {103}, number = {27}, pages = {10186--10191}, year = {2006},
+  doi     = {10.1073/pnas.0602439103},
+  note    = {ZIF-8. Test structure and our chemical control: it binds through
+             nitrogen, not carboxylate, and has no oxygen at all.}
+}
+
+@article{cavka2008uio66,
+  author  = {Cavka, Jasmina Hafizovic and Jakobsen, S{\o}ren and Olsbye, Unni and
+             others},
+  title   = {A New Zirconium Inorganic Building Brick Forming Metal Organic
+             Frameworks with Exceptional Stability},
+  journal = {Journal of the American Chemical Society},
+  volume  = {130}, number = {42}, pages = {13850--13851}, year = {2008},
+  doi     = {10.1021/ja8057953},
+  note    = {UiO-66. The critical test case: its Zr6 cluster is 12-connected,
+             which is what exposes a non-periodic graph construction.}
+}
+
+@article{shearer2016defects,
+  author  = {Shearer, Greig C. and Chavan, Sachin and Bordiga, Silvia and
+             Svelle, Stian and Olsbye, Unni and Lillerud, Karl Petter},
+  title   = {Defect Engineering: Tuning the Porosity and Composition of the
+             Metal--Organic Framework {UiO-66} via Modulated Synthesis},
+  journal = {Chemistry of Materials},
+  volume  = {28}, number = {11}, pages = {3749--3761}, year = {2016},
+  doi     = {10.1021/acs.chemmater.6b00602},
+  note    = {Establishes that missing-linker defects are real, common and
+             deliberately engineered. This is the justification for our defect
+             simulation being chemistry rather than a workaround.}
+}
+
+% ---- NETWORK SCIENCE ------------------------------------------------------
+@article{fiedler1973algebraic,
+  author  = {Fiedler, Miroslav},
+  title   = {Algebraic Connectivity of Graphs},
+  journal = {Czechoslovak Mathematical Journal},
+  volume  = {23}, number = {2}, pages = {298--305}, year = {1973},
+  note    = {Defines lambda\_2, the second-smallest Laplacian eigenvalue, which
+             we use to quantify how much a defect weakens a framework.}
+}
+
+@article{brandes2001betweenness,
+  author  = {Brandes, Ulrik},
+  title   = {A Faster Algorithm for Betweenness Centrality},
+  journal = {Journal of Mathematical Sociology},
+  volume  = {25}, number = {2}, pages = {163--177}, year = {2001},
+  doi     = {10.1080/0022250X.2001.9990249},
+  note    = {The betweenness algorithm implemented in code\_09.}
+}
+
+@article{song2005selfsimilarity,
+  author  = {Song, Chaoming and Havlin, Shlomo and Makse, Hern{\'a}n A.},
+  title   = {Self-Similarity of Complex Networks},
+  journal = {Nature},
+  volume  = {433}, pages = {392--395}, year = {2005},
+  doi     = {10.1038/nature03248},
+  note    = {Introduces box-covering for network fractal dimension -- the
+             family of methods NMFA sits in, and the contrast the paper draws
+             against box-growing.}
+}
+
+@article{eddaoudi2001reticular,
+  author  = {Eddaoudi, Mohamed and Moler, David B. and Li, Hailian and
+             Chen, Banglin and Reineke, Theresa M. and O'Keeffe, Michael and
+             Yaghi, Omar M.},
+  title   = {Modular Chemistry: Secondary Building Units as a Basis for the
+             Design of Highly Porous and Robust Metal--Organic Carboxylate
+             Frameworks},
+  journal = {Accounts of Chemical Research},
+  volume  = {34}, number = {4}, pages = {319--330}, year = {2001},
+  doi     = {10.1021/ar000034b},
+  note    = {The secondary building unit (SBU) concept -- why node and linker
+             identity are the design variables of the field.}
+}
+
+% ---- SOFTWARE -------------------------------------------------------------
+@article{larsen2017ase,
+  author  = {Larsen, Ask Hjorth and Mortensen, Jens J{\o}rgen and others},
+  title   = {The Atomic Simulation Environment---a {Python} Library for Working
+             with Atoms},
+  journal = {Journal of Physics: Condensed Matter},
+  volume  = {29}, number = {27}, pages = {273002}, year = {2017},
+  doi     = {10.1088/1361-648X/aa680e},
+  note    = {ASE. Used in the notebook for CIF parsing and PBC-aware neighbour
+             lists.}
+}
+
+@inproceedings{hagberg2008networkx,
+  author    = {Hagberg, Aric A. and Schult, Daniel A. and Swart, Pieter J.},
+  title     = {Exploring Network Structure, Dynamics, and Function using {NetworkX}},
+  booktitle = {Proceedings of the 7th Python in Science Conference (SciPy2008)},
+  pages     = {11--15}, year = {2008},
+  note      = {Graph data structures and algorithms used throughout code\_09
+               and code\_10.}
+}

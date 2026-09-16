@@ -183,56 +183,30 @@ independent ground truth the graph must reproduce.}
 % ============================ SLIDE 1b: MATH =================================
 \begin{frame}{1b. Mathematical Model}
 \framesubtitle{The descriptor, defined}
-\vspace{0.3cm}
-\begin{columns}[T]
-\column{0.52\textwidth}
-{\scriptsize
+\vspace{0.2cm}
+\begin{center}
+\begin{minipage}{0.62\textwidth}
+\small
 \textbf{Step 1 --- the measure.} For each influential node $i$ (top 20\% by degree) and box
 radius $r$ (a \textbf{graph} quantity, counted in hops between blocks --- not to be confused
 with a physical pore diameter in \AA), let $M_i(r)$ be the number of vertices within $r$
 steps:
-\vspace{-0.15cm}
+\vspace{-0.1cm}
 \[ p_i(r) = M_i(r)/N \]
-\vspace{-0.45cm}
 
 \textbf{Step 2 --- the partition function}, reweighted by a distortion factor $q$:
-\vspace{-0.15cm}
+\vspace{-0.1cm}
 \[ \mathcal{P}_q(r) = \sum_{i \in I} p_i(r)^{\,q} \]
-\vspace{-0.45cm}
 
 \textbf{Step 3 --- the mass exponent}, fitted through the origin:
-\vspace{-0.15cm}
+\vspace{-0.1cm}
 \[ \boxed{\ \tau(q) = \frac{\ln \mathcal{P}_q(r)}{\ln (r/r_N)}\ } \]
-\vspace{-0.45cm}
 
 \textbf{Step 4 --- Legendre transform.}
-\vspace{-0.15cm}
+\vspace{-0.1cm}
 \[ \alpha(q) = \frac{d\tau}{dq}, \quad f(\alpha) = q\,\alpha(q) - \tau(q) \]
-}
-
-\column{0.48\textwidth}
-\vspace{0.2cm}
-\begin{block}{\footnotesize Structural constraint used as a correctness test}
-\scriptsize
-$f(\alpha)$ \textbf{must} be an inverted parabola peaking at $q=0$, where
-$f(\alpha_0)=D_0$. Every one of the 138 frameworks analysed satisfies this
---- the shape is checked, not assumed, on every run.
-\end{block}
-
-\vspace{0.3cm}
-\begin{block}{\footnotesize What each quantity means}
-\scriptsize
-$\alpha$: local growth rate around one block. $f(\alpha)$: how much of the framework shares
-it. $\alpha_0$: the typical rate, at the peak. $\Delta\alpha = \alpha_{\max}-\alpha_{\min}$:
-how much that rate varies across the framework. $A$: whether common or rare motifs dominate
-the spectrum.
-\end{block}
-
-\vspace{0.3cm}
-{\scriptsize \textbf{Evaluation metrics:} coordination-number agreement with published
-crystallography; spectrum shape (\% peaking at $q=0$); seed reproducibility; partial
-correlation against pore diameter.}
-\end{columns}
+\end{minipage}
+\end{center}
 \end{frame}
 
 % ============================ SLIDE 2: IMPLEMENTATION ========================
