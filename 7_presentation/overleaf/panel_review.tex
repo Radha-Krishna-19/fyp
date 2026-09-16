@@ -183,27 +183,27 @@ independent ground truth the graph must reproduce.}
 % ============================ SLIDE 1b: MATH =================================
 \begin{frame}{1b. Mathematical Model}
 \framesubtitle{The descriptor, defined}
-\vspace{0.2cm}
 \begin{center}
-\begin{minipage}{0.62\textwidth}
-\small
+\begin{minipage}{0.68\textwidth}
+\footnotesize
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+
 \textbf{Step 1 --- the measure.} For each influential node $i$ (top 20\% by degree) and box
 radius $r$ (a \textbf{graph} quantity, counted in hops between blocks --- not to be confused
 with a physical pore diameter in \AA), let $M_i(r)$ be the number of vertices within $r$
 steps:
-\vspace{-0.1cm}
 \[ p_i(r) = M_i(r)/N \]
 
 \textbf{Step 2 --- the partition function}, reweighted by a distortion factor $q$:
-\vspace{-0.1cm}
 \[ \mathcal{P}_q(r) = \sum_{i \in I} p_i(r)^{\,q} \]
 
 \textbf{Step 3 --- the mass exponent}, fitted through the origin:
-\vspace{-0.1cm}
 \[ \boxed{\ \tau(q) = \frac{\ln \mathcal{P}_q(r)}{\ln (r/r_N)}\ } \]
 
 \textbf{Step 4 --- Legendre transform.}
-\vspace{-0.1cm}
 \[ \alpha(q) = \frac{d\tau}{dq}, \quad f(\alpha) = q\,\alpha(q) - \tau(q) \]
 \end{minipage}
 \end{center}
