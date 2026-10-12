@@ -1,0 +1,177 @@
+      <h2 class="section-title" id="math-intro" data-toc="What is proved here"><span class="stitle-num">0</span>What Is Proved Here</h2>
+      <dl class="bridge"><dt>You know</dt><dd>The ideas on the <a href="learn_shape.html">Learn: Crystal Shape</a> page.</dd><dt>This page</dt><dd class="now">States each rule used by the morphology work as a proposition and proves it. This is Phase 2 of the plan.</dd><dt>Which lets us</dt><dd>Claim that the morphologies on the <a href="morphology.html">Morphology</a> page follow mathematically from the unit cell, and are not just pictures.</dd></dl>
+      <p class="section-sub">The chain of reasoning is: symmetry decides which faces exist (Propositions 1&ndash;2); growth rates turn faces into a convex shape with the crystal's symmetry (3&ndash;5); the shape changes continuously, through exact named thresholds, as the rates change (6&ndash;8); the shapes can be told apart by numbers, and one popular number cannot do it (9&ndash;10); and the periodic graph gives growth rates and face classes (11&ndash;13). Results that are classical are cited rather than re-proved, and say so. The last section checks every proposition numerically in your browser.</p>
+      <div class="callout" data-kind="Notation">
+        <b>h</b> = (<i>h</i>, <i>k</i>, <i>l</i>) is a row vector of Miller indices. <b>x</b> is a column vector of
+        fractional coordinates. A symmetry operation is (<i>R</i>, <b>t</b>), acting as <b>x</b> &rarr; <i>R</i><b>x</b> + <b>t</b>.
+        <b>n</b><sub><i>f</i></sub> is the outward unit normal of face <i>f</i> and <i>R<sub>f</sub></i> &gt; 0 its distance from the centre.
+        <i>P</i>(<b>R</b>) = {<b>x</b> : <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i> for all <i>f</i>}.
+      </div>
+
+      <h2 class="section-title" id="math-absence" data-toc="1&ndash;2: Forbidden faces"><span class="stitle-num">0</span>Propositions 1&ndash;2: Which Faces Exist</h2>
+      <figure class="fig wide">
+        <img src="figures/learn/absences.png" alt="Diagrams showing which crystal planes are present and which are forbidden by the space group, with the forbidden planes marked.">
+        <figcaption>Propositions 1&ndash;2 in a picture: some planes are forbidden by the symmetry, and the spacing of a face that survives is the effective spacing <i>d</i>/<i>n</i>.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="Proposition 1 (systematic absence)">
+        Let <i>F</i>(<b>h</b>) = &Sigma;<sub><i>j</i></sub> <i>f<sub>j</sub></i> e<sup>2&pi;i <b>h</b>&middot;<b>x</b><sub><i>j</i></sub></sup> be the
+        structure factor of reflection <b>h</b>, summed over the atoms <i>j</i> of the cell. If the space group contains
+        (<i>R</i>, <b>t</b>) with <b>h</b><i>R</i> = <b>h</b> and <b>h</b>&middot;<b>t</b> &notin; &#8484;, then <i>F</i>(<b>h</b>) = 0.
+      </div>
+      <p class="sd"><b>Proof.</b> The operation maps the set of atoms onto itself, so summing over the images <i>R</i><b>x</b><sub><i>j</i></sub> + <b>t</b> gives the same sum: <i>F</i>(<b>h</b>) = &Sigma; <i>f<sub>j</sub></i> e<sup>2&pi;i <b>h</b>&middot;(<i>R</i><b>x</b><sub><i>j</i></sub>+<b>t</b>)</sup> = e<sup>2&pi;i <b>h</b>&middot;<b>t</b></sup> &Sigma; <i>f<sub>j</sub></i> e<sup>2&pi;i (<b>h</b><i>R</i>)&middot;<b>x</b><sub><i>j</i></sub></sup> = e<sup>2&pi;i <b>h</b>&middot;<b>t</b></sup> <i>F</i>(<b>h</b><i>R</i>). With <b>h</b><i>R</i> = <b>h</b> this reads <i>F</i>(<b>h</b>)(1 &minus; e<sup>2&pi;i <b>h</b>&middot;<b>t</b></sup>) = 0. The bracket is non-zero because <b>h</b>&middot;<b>t</b> is not an integer, so <i>F</i>(<b>h</b>) = 0. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 2 (centring rules)">
+        (a) F-centring forbids (<i>hkl</i>) unless <i>h</i>, <i>k</i>, <i>l</i> are all even or all odd. (b) I-centring
+        forbids (<i>hkl</i>) unless <i>h</i> + <i>k</i> + <i>l</i> is even. (c) Hence for F-centred cubic crystals
+        <i>d</i><sub>eff</sub>(100) = <i>a</i>/2, <i>d</i><sub>eff</sub>(110) = <i>a</i>/(2&radic;2), <i>d</i><sub>eff</sub>(111) = <i>a</i>/&radic;3,
+        and for I-centred <i>d</i><sub>eff</sub>(100) = <i>a</i>/2, <i>d</i><sub>eff</sub>(110) = <i>a</i>/&radic;2, <i>d</i><sub>eff</sub>(111) = <i>a</i>/(2&radic;3).
+      </div>
+      <p class="sd"><b>Proof.</b> Centring operations have <i>R</i> = <i>I</i>, so <b>h</b><i>R</i> = <b>h</b> always and Proposition 1 applies. (a) The F translations give <b>h</b>&middot;<b>t</b> = (<i>k</i>+<i>l</i>)/2, (<i>h</i>+<i>l</i>)/2, (<i>h</i>+<i>k</i>)/2; all three are integers exactly when <i>h</i>, <i>k</i>, <i>l</i> have the same parity. (b) The I translation gives (<i>h</i>+<i>k</i>+<i>l</i>)/2. (c) Apply (a) and (b) to the first multiples: for F, (100) and (110) fail and (200), (220) pass, while (111) passes; for I, (100) and (111) fail and (200), (222) pass, while (110) passes. Then use <i>d<sub>hkl</sub></i> = <i>a</i>/&radic;(<i>h</i>&sup2;+<i>k</i>&sup2;+<i>l</i>&sup2;) for the first allowed multiple. &#8718;</p>
+      <div class="worked">The project's Python code applies Proposition 1 with <b>every</b> operation of the space group, not only centring, so screw axes and glide planes are also handled. It is tested on diamond silicon (Fd-3m), where a glide plane makes the first allowed reflection along (100) the (400), so <i>d</i><sub>eff</sub>(100) = <i>a</i>/4.</div>
+
+      <h2 class="section-title" id="math-polytope" data-toc="3&ndash;5: The shape is a polytope"><span class="stitle-num">0</span>Propositions 3&ndash;5: The Shape Is a Symmetric Convex Polytope</h2>
+      <figure class="fig wide">
+        <img src="figures/learn/growth.png" alt="Four snapshots of a growing two-dimensional crystal. Fast faces (red) shrink and vanish; the slow faces (blue) remain and bound the final square.">
+        <figcaption>Propositions 3&ndash;5 in a picture: every face moves outward at its own rate, the fast ones vanish, and what is left is the convex polytope bounded by the slowest faces.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="Proposition 3 (well defined)">
+        If every <i>R<sub>f</sub></i> &gt; 0 and the normals <b>n</b><sub><i>f</i></sub> <b>positively span</b> space (every vector is a
+        combination of them with non-negative coefficients), then <i>P</i>(<b>R</b>) is a bounded convex polytope with the
+        origin in its interior.
+      </div>
+      <p class="sd"><b>Proof.</b> Each set {<b>x</b> : <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i>} is a half-space, which is convex, and an intersection of convex sets is convex. The origin satisfies every inequality strictly because <i>R<sub>f</sub></i> &gt; 0, so a small ball around it lies inside. Suppose <i>P</i> were unbounded. A convex set containing the origin that is unbounded contains a whole ray {<i>s</i><b>x</b> : <i>s</i> &ge; 0} with <b>x</b> &ne; 0, which forces <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; 0 for every <i>f</i>. Write <b>x</b> = &Sigma; &mu;<sub><i>f</i></sub><b>n</b><sub><i>f</i></sub> with &mu;<sub><i>f</i></sub> &ge; 0, which positive spanning allows. Then |<b>x</b>|&sup2; = &Sigma; &mu;<sub><i>f</i></sub> (<b>n</b><sub><i>f</i></sub>&middot;<b>x</b>) &le; 0, so <b>x</b> = 0, a contradiction. &#8718;</p>
+      <p class="sd">The cubic face families always satisfy the hypothesis: the six {100} normals alone positively span space, and so do the eight {111} normals and the twelve {110} normals.</p>
+      <div class="callout good" data-kind="Proposition 4 (symmetry of the shape)">
+        Let <i>S</i> be a rotation or reflection of the crystal's point group. If the rates are equal on every symmetry
+        family (<i>R<sub>f</sub></i> = <i>R</i><sub><i>S</i>(<i>f</i>)</sub>), then <i>S</i>(<i>P</i>) = <i>P</i>.
+      </div>
+      <p class="sd"><b>Proof.</b> <i>S</i> is orthogonal, so <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> = (<i>S</i><b>n</b><sub><i>f</i></sub>)&middot;(<i>S</i><b>x</b>). If <b>x</b> &isin; <i>P</i>, then for every face <i>g</i> = <i>S</i>(<i>f</i>) we have <b>n</b><sub><i>g</i></sub>&middot;<i>S</i><b>x</b> = <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i> = <i>R<sub>g</sub></i>. Since <i>S</i> permutes the faces, this covers every face, so <i>S</i><b>x</b> &isin; <i>P</i>. Applying the same to <i>S</i><sup>&minus;1</sup> gives equality. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 5 (the growth shape)">
+        A crystal that starts as any bounded seed containing the origin, whose faces then move at constant speeds
+        <i>R<sub>f</sub></i>, has shape <i>P</i>(<b>r</b><sup>0</sup> + <i>t</i><b>R</b>) at time <i>t</i>, and
+        <i>P</i>(<b>r</b><sup>0</sup> + <i>t</i><b>R</b>)/<i>t</i> &rarr; <i>P</i>(<b>R</b>) as <i>t</i> &rarr; &infin;. So the long-time shape
+        is formula (4) of the Learn page, whatever the seed.
+      </div>
+      <p class="sd"><b>Proof.</b> Scaling a polytope multiplies all its distances: <i>P</i>(<b>b</b>)/<i>t</i> = <i>P</i>(<b>b</b>/<i>t</i>). Here <b>b</b>/<i>t</i> = <b>r</b><sup>0</sup>/<i>t</i> + <b>R</b> &rarr; <b>R</b>, and Proposition 6 below shows the polytope depends continuously on its distances. &#8718;</p>
+
+      <h2 class="section-title" id="math-continuity" data-toc="6: The morph is continuous"><span class="stitle-num">0</span>Proposition 6: The Shape Changes Continuously</h2>
+      <figure class="fig wide">
+        <img src="figures/morph/MOF-5_morph.png" alt="Six shapes from the MOF-5 unit cell as the ratio of the {111} to {100} growth distance goes 3.00, 1.60, 1.15, 1.00, 0.80, 0.57: a cube, truncated cube, cuboctahedron, two truncated octahedra and an octahedron.">
+        <figcaption>Proposition 6 in a picture: a small change in the growth distances gives a small change in the shape, so the family is one continuous path, not separate jumps.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="Proposition 6 (continuity)">
+        Fix the normals. Let <i>m</i> = min<sub><i>f</i></sub> <i>R<sub>f</sub></i> &gt; 0 and let <b>R</b>&prime; satisfy |<i>R</i>&prime;<sub><i>f</i></sub> &minus; <i>R<sub>f</sub></i>| &le; &epsilon; &lt; <i>m</i> for every <i>f</i>. Then
+        (1 &minus; &epsilon;/<i>m</i>)&nbsp;<i>P</i>(<b>R</b>) &sube; <i>P</i>(<b>R</b>&prime;) &sube; (1 + &epsilon;/<i>m</i>)&nbsp;<i>P</i>(<b>R</b>), so the Hausdorff
+        distance between the two shapes is at most (&epsilon;/<i>m</i>)&middot;max<sub><b>x</b>&isin;<i>P</i></sub>|<b>x</b>|. Volume, surface area and the gyration
+        tensor therefore change continuously too.
+      </div>
+      <p class="sd"><b>Proof.</b> Since every <i>R<sub>f</sub></i> &ge; <i>m</i>, we have &epsilon; &le; (&epsilon;/<i>m</i>)<i>R<sub>f</sub></i>, so (1 &minus; &epsilon;/<i>m</i>)<i>R<sub>f</sub></i> &le; <i>R</i>&prime;<sub><i>f</i></sub> &le; (1 + &epsilon;/<i>m</i>)<i>R<sub>f</sub></i> for every face. Enlarging every distance can only enlarge the polytope, and <i>P</i>(&lambda;<b>R</b>) = &lambda;<i>P</i>(<b>R</b>) for &lambda; &gt; 0, which gives the two inclusions. Any point of the larger set is within (&epsilon;/<i>m</i>)|<b>x</b>| of the smaller, which bounds the Hausdorff distance. Volume and area are continuous under Hausdorff convergence of convex bodies, and the gyration integral is continuous in the body. &#8718;</p>
+      <div class="callout" data-kind="What this means">
+        Changing the growth rates smoothly changes the shape smoothly. There are no jumps: between any two
+        morphologies of one unit cell there is a continuous path of morphologies. That is the precise sense in
+        which one unit cell <b>morphs</b>.
+      </div>
+
+      <h2 class="section-title" id="math-thresholds" data-toc="7&ndash;8: Exact thresholds"><span class="stitle-num">0</span>Propositions 7&ndash;8: Exact Thresholds of the Named Shapes</h2>
+      <figure class="fig wide">
+        <img src="figures/learn/morph_path.png" alt="Five shapes from a cube at t = infinity through a truncated cube at 1.5, a cuboctahedron at 1.155, a truncated octahedron at 0.85, to an octahedron at 0.577. Blue faces are {100}, red are {111}.">
+        <figcaption>Propositions 7&ndash;8 in a picture: the cube ends at <i>t</i> = &radic;3, the cuboctahedron sits at 2/&radic;3, and the octahedron begins at 1/&radic;3.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="Proposition 7 (cube to octahedron)">
+        With the six {100} faces at distance 1 and the eight {111} faces at distance <i>t</i>, the shape is a cube for
+        <i>t</i> &ge; &radic;3, a truncated cube for 2/&radic;3 &lt; <i>t</i> &lt; &radic;3, a cuboctahedron at <i>t</i> = 2/&radic;3, a truncated octahedron for
+        1/&radic;3 &lt; <i>t</i> &lt; 2/&radic;3, and an octahedron for <i>t</i> &le; 1/&radic;3.
+      </div>
+      <p class="sd"><b>Proof.</b> The {111} plane with normal (1,1,1)/&radic;3 is <i>x</i>+<i>y</i>+<i>z</i> = &radic;3<i>t</i>. (i) The cube [&minus;1,1]&sup3; has its farthest point along (1,1,1) at the corner (1,1,1), where <i>x</i>+<i>y</i>+<i>z</i> = 3. The plane misses the cube exactly when &radic;3<i>t</i> &ge; 3, that is <i>t</i> &ge; &radic;3; by symmetry the same holds for all eight corners. (ii) For &radic;3<i>t</i> &lt; 3 the plane cuts a triangle off each corner. The triangle reaches the midpoint (1,1,0) of a cube edge when &radic;3<i>t</i> = 2. At that value neighbouring triangles meet at every edge midpoint, the original square faces have become squares rotated by 45&deg;, and the shape has 12 vertices, all edge midpoints: a cuboctahedron. (iii) The octahedron |<i>x</i>|+|<i>y</i>|+|<i>z</i>| &le; &radic;3<i>t</i> has vertex (&radic;3<i>t</i>, 0, 0). The cube face <i>x</i> = 1 misses it exactly when &radic;3<i>t</i> &le; 1, that is <i>t</i> &le; 1/&radic;3. (iv) Between these values both families have faces of positive area, and the larger family names the shape. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 8 (tetrahedron)">
+        In point group -43m the {111} faces split into two sets of four, {111}+ at distance <i>r</i><sub>+</sub> and {111}&minus; at distance
+        <i>r</i><sub>&minus;</sub>. Ignoring other faces, the shape is a regular tetrahedron exactly when <i>r</i><sub>+</sub> &le; <i>r</i><sub>&minus;</sub>/3.
+      </div>
+      <p class="sd"><b>Proof.</b> The four {111}+ normals point to alternate corners of a cube and sum to zero. The tetrahedron they bound with in-radius <i>r</i><sub>+</sub> has its vertex opposite face <b>n</b><sub><i>k</i></sub> at &minus;3<i>r</i><sub>+</sub><b>n</b><sub><i>k</i></sub>, because a regular tetrahedron's circumradius is three times its in-radius. The {111}&minus; planes have normals &minus;<b>n</b><sub><i>k</i></sub>, and at that vertex (&minus;<b>n</b><sub><i>k</i></sub>)&middot;(&minus;3<i>r</i><sub>+</sub><b>n</b><sub><i>k</i></sub>) = 3<i>r</i><sub>+</sub>. So no {111}&minus; plane cuts the tetrahedron exactly when 3<i>r</i><sub>+</sub> &le; <i>r</i><sub>&minus;</sub>. &#8718;</p>
+      <div class="callout warn" data-kind="When it applies">
+        Proposition 8 needs a point group without an inversion centre. Our UiO-66 file (F-43m, ordered
+        &mu;<sub>3</sub>-OH groups) has one; the averaged Fm-3m structure usually reported does not, and there the two
+        halves are equivalent and a tetrahedron is impossible by Proposition 4.
+      </div>
+
+      <h2 class="section-title" id="math-kappa" data-toc="9&ndash;10: Measuring shape"><span class="stitle-num">0</span>Propositions 9&ndash;10: Which Numbers Can Tell Shapes Apart</h2>
+      <figure class="fig wide">
+        <img src="figures/learn/rod_plate.png" alt="Five crystal shapes stretched along z by a factor lambda from 0.35 (flat plate) to 3.0 (thin rod), with kappa squared 0.171, 0.074, 0.000, 0.180 and 0.526.">
+        <figcaption>Propositions 9&ndash;10 in a picture: &kappa;&sup2; is exactly 0 for the cubic shape and grows as the crystal becomes a plate or a rod.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="Proposition 9 (&kappa;&sup2; is blind to cubic shapes)">
+        If a body has the rotational symmetry of a cube or of a regular tetrahedron, its gyration tensor is a
+        multiple of the identity, so &kappa;&sup2; = 0.
+      </div>
+      <p class="sd"><b>Proof.</b> Symmetry gives <i>S</i> = <i>Q S Q</i><sup>T</sup> for every symmetry rotation <i>Q</i>. Both groups contain the 180&deg; rotations about the <i>x</i>, <i>y</i> and <i>z</i> axes. The rotation about <i>z</i> changes the sign of <i>x</i> and <i>y</i>, so it maps <i>S<sub>xz</sub></i> to &minus;<i>S<sub>xz</sub></i> and <i>S<sub>yz</sub></i> to &minus;<i>S<sub>yz</sub></i>; invariance makes both zero, and the other two rotations remove <i>S<sub>xy</sub></i>. Both groups also contain the 120&deg; rotation about (1,1,1), which permutes <i>x</i> &rarr; <i>y</i> &rarr; <i>z</i>, so the three diagonal entries are equal. Then &lambda;<sub>1</sub> = &lambda;<sub>2</sub> = &lambda;<sub>3</sub> and formula (8) of the Learn page gives 0. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 10 (face-normal order parameters)">
+        Define <i>Q<sub>l</sub></i><sup>2</sup> = (4&pi;/(2<i>l</i>+1)) &Sigma;<sub><i>m</i></sub> |&Sigma;<sub><i>i</i></sub> <i>w<sub>i</sub></i> <i>Y<sub>lm</sub></i>(<b>n</b><sub><i>i</i></sub>)|<sup>2</sup> with area
+        fractions <i>w<sub>i</sub></i>. Then (a) <i>Q<sub>l</sub></i><sup>2</sup> = &Sigma;<sub><i>i</i>,<i>j</i></sub> <i>w<sub>i</sub>w<sub>j</sub></i> <i>P<sub>l</sub></i>(<b>n</b><sub><i>i</i></sub>&middot;<b>n</b><sub><i>j</i></sub>), and (b) if the shape has an
+        inversion centre, <i>Q<sub>l</sub></i> = 0 for every odd <i>l</i>.
+      </div>
+      <p class="sd"><b>Proof.</b> (a) Expand the square and use the addition theorem for spherical harmonics, &Sigma;<sub><i>m</i></sub> <i>Y<sub>lm</sub></i>(<b>a</b>)<i>Y<sub>lm</sub></i>*(<b>b</b>) = ((2<i>l</i>+1)/4&pi;) <i>P<sub>l</sub></i>(<b>a</b>&middot;<b>b</b>). (b) With an inversion centre, every face <b>n</b> has an opposite face &minus;<b>n</b> of equal area. Since <i>Y<sub>lm</sub></i>(&minus;<b>n</b>) = (&minus;1)<sup><i>l</i></sup><i>Y<sub>lm</sub></i>(<b>n</b>), the pair contributes <i>w</i><i>Y<sub>lm</sub></i>(<b>n</b>)(1 + (&minus;1)<sup><i>l</i></sup>) = 0 for odd <i>l</i>. &#8718;</p>
+      <p class="sd">Formula (a) is what the browser engine uses: it needs only dot products and Legendre polynomials. The Python code computes the original definition with spherical harmonics; the two agree, which checks both.</p>
+
+      <h2 class="section-title" id="math-graph" data-toc="11&ndash;13: Faces from the graph"><span class="stitle-num">0</span>Propositions 11&ndash;13: Faces from the Periodic Graph</h2>
+      <figure class="fig wide">
+        <img src="figures/learn/fsk.png" alt="Diagram of flat (F), stepped (S) and kinked (K) faces of a crystal built from a periodic bond network.">
+        <figcaption>Propositions 11&ndash;13 in a picture: a face is flat, stepped or kinked according to how many directions the periodic bond chains lie in the face.</figcaption>
+      </figure>
+      <figure class="fig wide">
+        <img src="figures/learn/quotient.png" alt="A periodic network drawn with its small quotient graph, which holds one copy of each vertex and an edge label for each link that crosses a cell boundary.">
+        <figcaption>The quotient graph used in Propositions 11&ndash;13: one cell's vertices plus a label on each edge that crosses into a neighbouring cell.</figcaption>
+      </figure>
+      <p class="sd">These are the mathematical basis of Phase 3. A periodic graph is given by its quotient graph: vertices with positions in one cell, and edges (<i>i</i>, <i>j</i>, <b>t</b>) with voltage <b>t</b>.</p>
+      <div class="callout good" data-kind="Proposition 11 (bond chains are cycles)">
+        A closed walk in the quotient graph whose voltages sum to <b>&tau;</b> &ne; 0 lifts to an infinite chain of links in
+        the crystal that repeats with translation <b>&tau;</b>. The chain is parallel to face (<i>hkl</i>) if and only if
+        <i>h</i>&tau;<sub>1</sub> + <i>k</i>&tau;<sub>2</sub> + <i>l</i>&tau;<sub>3</sub> = 0.
+      </div>
+      <p class="sd"><b>Proof.</b> Lifting an edge adds its voltage to the cell index, so after one trip round the walk the same vertex is reached in the cell shifted by <b>&tau;</b>; repeating the walk gives an infinite chain with period <b>&tau;</b>. A lattice vector lies in the plane (<i>hkl</i>) exactly when it is perpendicular to <b>g</b><sub><i>hkl</i></sub>, and <b>g</b><sub><i>hkl</i></sub>&middot;<b>&tau;</b> = <i>h</i>&tau;<sub>1</sub> + <i>k</i>&tau;<sub>2</sub> + <i>l</i>&tau;<sub>3</sub> because the reciprocal basis satisfies <b>a</b>*&middot;<b>a</b> = 1 and <b>a</b>*&middot;<b>b</b> = 0. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 12 (attachment number of a lattice net)">
+        In a net whose vertices form a lattice (every vertex equivalent by translation), take one-layer slices
+        parallel to (<i>hkl</i>). A vertex of a new layer forms <i>E</i><sub>att</sub> = (deg &minus; <i>c</i><sub>0</sub>)/2 links with the
+        crystal below, where deg is the vertex degree and <i>c</i><sub>0</sub> the number of its neighbours in its own layer.
+        For pcu this gives 1, 2, 3 on (100), (110), (111); for fcu, 4, 5, 3.
+      </div>
+      <p class="sd"><b>Proof.</b> In a lattice net the neighbour vectors come in pairs <b>v</b>, &minus;<b>v</b> (if a vertex links to the one at <b>v</b>, translating by &minus;<b>v</b> shows it also links to the one at &minus;<b>v</b>). Neighbours not in the layer therefore split equally between above and below, giving (deg &minus; <i>c</i><sub>0</sub>)/2 below. pcu: deg 6, and <i>c</i><sub>0</sub> = 4, 2, 0 on (100), (110), (111). fcu: deg 12, and the neighbour vectors (&plusmn;&frac12;, &plusmn;&frac12;, 0) and permutations give <i>c</i><sub>0</sub> = 4, 2, 6. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 13 (exact counting per unit area)">
+        Let <i>D</i> be the spacing of lattice planes perpendicular to <b>n</b> and <i>V</i> the cell volume. Translating the
+        crystal by a lattice vector shifts every height <b>n</b>&middot;<b>x</b> by a multiple of <i>D</i>, and each height level
+        holds <i>D</i>/<i>V</i> lattice translates per unit area. Hence any count per unit area (vertices in a slice, links
+        crossing a plane) equals <i>D</i>/<i>V</i> times a finite sum, over the vertices or edges of one cell, of the
+        number of integers <i>k</i> that put the shifted copy in the required height range.
+      </div>
+      <p class="sd"><b>Proof.</b> The heights <b>n</b>&middot;<b>R</b> of lattice vectors <b>R</b> form the set <i>D</i>&#8484;. The lattice vectors at one height form a 2D lattice in that plane whose cell has area <i>V</i>/<i>D</i>, because stacking such layers at spacing <i>D</i> must reproduce one lattice point per volume <i>V</i>. A count per unit area is therefore the count per 2D cell divided by <i>V</i>/<i>D</i>, and the count per 2D cell is the number of (object, <i>k</i>) pairs in range. &#8718;</p>
+      <p class="sd">Proposition 13 lets the <a href="graph_faces.html">Graph Faces</a> page compute attachment numbers and broken-bond surface energies exactly, with no finite crystal and no rounding from cutting a cluster. Applied to a nearest-neighbour fcc crystal it reproduces the classical ratio &gamma;<sub>100</sub>/&gamma;<sub>111</sub> = 2/&radic;3.</p>
+
+      <h2 class="section-title" id="math-deform" data-toc="14&ndash;16: Changing the cell"><span class="stitle-num">0</span>Propositions 14&ndash;16: Changing the Unit Cell</h2>
+      <figure class="fig wide">
+        <img src="figures/morph/deform_curves.png" alt="Two plots against the stretch of the c axis from 0.2 to 3. Left: crystal height over width for MOF-5, HKUST-1, UiO-66 and ZIF-8 compared with the dashed line 1 over the stretch. The F-centred MOFs lie on the line for stretches above 1 and flatten below 1. Right: asphericity, zero at no stretch and growing on both sides.">
+        <figcaption>Propositions 14&ndash;16 in a picture. Stretching the cell edge <i>c</i> by &lambda; makes the crystal flatter by exactly 1/&lambda; (dashed line) while no other face cuts the end; compressing it makes the crystal taller until slanted faces cap the height.</figcaption>
+      </figure>
+      <p class="sd">These propositions answer the second reading of the panel's question: <b>change the cell parameters</b> <i>a, b, c, &alpha;, &beta;, &gamma;</i> of an established MOF and ask what shapes follow. Keep every atom at its fractional coordinates and replace the lattice <b>L</b> by <b>L</b>&prime; = <b>L</b>(<b>I</b> + &epsilon;)<sup>T</sup>, where &epsilon; is a strain. This is a <b>new, hypothetical framework</b> derived from the real one; the propositions say exactly what carries over from the original and what changes.</p>
+      <div class="callout good" data-kind="Proposition 14 (allowed faces do not change)">
+        The structure factor <i>F</i>(<b>h</b>) = &Sigma;<sub><i>j</i></sub> <i>f<sub>j</sub></i> e<sup>2&pi;i <b>h</b>&middot;<b>x</b><sub><i>j</i></sub></sup> depends only on the fractional coordinates <b>x</b><sub><i>j</i></sub> and the atom types. Hence the set of forbidden reflections, and the order <i>n</i>(<i>hkl</i>) of every face, are the same for every deformation of the lattice.
+      </div>
+      <p class="sd"><b>Proof.</b> Deforming the lattice changes the Cartesian positions <b>r</b><sub><i>j</i></sub> = <b>L</b>&prime;<sup>T</sup><b>x</b><sub><i>j</i></sub> and the reciprocal vectors <b>q</b> = <b>L</b>&prime;<sup>&minus;1</sup><b>h</b>, but the phase is <b>q</b>&middot;<b>r</b><sub><i>j</i></sub> = <b>h</b>&middot;<b>x</b><sub><i>j</i></sub>, unchanged. The symmetry operations (<b>R</b>, <b>t</b>) written in fractional coordinates still map the atom set to itself, so the forbidden reflections they imply stay forbidden. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 15 (faces stay equivalent only under surviving isometries)">
+        Let <b>G</b>&prime; = <b>L</b>&prime;<b>L</b>&prime;<sup>T</sup> be the new metric tensor and <i>H</i> = {(<b>R</b>, <b>t</b>) in the original space group : <b>R</b><sup>T</sup><b>G</b>&prime;<b>R</b> = <b>G</b>&prime;}. Two faces have the same spacing and the same energy for every isometry-invariant model if they are related by <i>H</i>. The family of a face is its <i>H</i>-orbit, of size |<i>H</i>|/|stabiliser|. A stretch of one cubic axis reduces the point group from <i>m</i>&#8315;3<i>m</i> (48 operations) to 4/<i>mmm</i> (16), and splits {100} (6 faces) into {100} (4 faces) and {001} (2 faces).
+      </div>
+      <p class="sd"><b>Proof.</b> An operation with <b>R</b><sup>T</sup><b>G</b>&prime;<b>R</b> = <b>G</b>&prime; preserves lengths, so it maps lattice planes to planes with equal spacing, and maps the (unchanged, Prop. 14) structure onto itself; this is exactly what makes two faces physically interchangeable. An operation that fails the condition changes some lengths, so it is not a symmetry of the deformed crystal and generally maps a plane to one of different spacing. Orbit sizes follow from the orbit&ndash;stabiliser theorem: in 4/<i>mmm</i> the stabiliser of (001) has 8 elements and that of (100) has 4, giving orbits of size 16/8 = 2 and 16/4 = 4. &#8718;</p>
+      <div class="callout good" data-kind="Proposition 16 (box law and the exact condition for a box)">
+        In an orthogonal cell with edges <i>a</i><sub>1</sub>, <i>a</i><sub>2</sub>, <i>a</i><sub>3</sub> and axial orders <i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>, <i>n</i><sub>3</sub>, the BFDH distances of the axial faces are <i>R</i><sub><i>i</i></sub> = <i>d</i><sub>max</sub><i>n</i><sub><i>i</i></sub>/<i>a</i><sub><i>i</i></sub>. The BFDH polytope is exactly the box with these half-widths unless some used plane (<i>hkl</i>) has order <i>n</i><sub>f</sub> &lt; &Sigma;<sub><i>i</i></sub> <i>w</i><sub><i>i</i></sub><i>n</i><sub><i>i</i></sub>, where <i>w</i><sub><i>i</i></sub> = (<i>h</i><sub><i>i</i></sub>/<i>a</i><sub><i>i</i></sub>)<sup>2</sup> / &Sigma;<sub><i>j</i></sub>(<i>h</i><sub><i>j</i></sub>/<i>a</i><sub><i>j</i></sub>)<sup>2</sup>. For a primitive cell every <i>n</i> = 1, so the shape is a box for <b>every</b> deformation, and stretching <i>c</i> by &lambda; flattens it by exactly 1/&lambda;.
+      </div>
+      <p class="sd"><b>Proof.</b> The unit normal of plane (<i>hkl</i>) is <b>n</b> = <i>d</i>(<i>h</i>/<i>a</i><sub>1</sub>, <i>k</i>/<i>a</i><sub>2</sub>, <i>l</i>/<i>a</i><sub>3</sub>) with <i>d</i> = (&Sigma;<i>h</i><sub><i>i</i></sub><sup>2</sup>/<i>a</i><sub><i>i</i></sub><sup>2</sup>)<sup>&minus;1/2</sup>. The box with half-widths <i>R</i><sub><i>i</i></sub> reaches out to <b>n</b>&middot;<b>v</b> = &Sigma;|<i>n</i><sub><i>i</i></sub>|<i>R</i><sub><i>i</i></sub> = <i>d d</i><sub>max</sub> &Sigma;<i>n</i><sub><i>i</i></sub><i>h</i><sub><i>i</i></sub><sup>2</sup>/<i>a</i><sub><i>i</i></sub><sup>2</sup> in direction <b>n</b>. The plane lies at <i>R</i><sub>f</sub> = <i>d</i><sub>max</sub><i>n</i><sub>f</sub>/<i>d</i>. It cuts the box exactly when <i>R</i><sub>f</sub> is smaller than that reach, that is when <i>n</i><sub>f</sub> &lt; <i>d</i><sup>2</sup>&Sigma;<i>n</i><sub><i>i</i></sub><i>h</i><sub><i>i</i></sub><sup>2</sup>/<i>a</i><sub><i>i</i></sub><sup>2</sup> = &Sigma;<i>w</i><sub><i>i</i></sub><i>n</i><sub><i>i</i></sub>. If no plane cuts, the polytope is the box. &#8718;</p>
+      <p class="sd"><b>Consequences.</b> (i) For F-centred cubic parents (MOF-5, HKUST-1, UiO-66) the axial order is 2 but {111} has order 1, so the {111} planes cut the box for every stretch: the shape stays a truncated box, which is why the curves in the figure bend away from the 1/&lambda; line when the crystal is made taller. (ii) For the I-centred ZIF-8 the {110} planes (order 1) cut instead, giving the rhombic-dodecahedron family. (iii) A lattice-only rule cannot tell MOF-5, HKUST-1 and UiO-66 apart (same lattice and centring): the three curves coincide. The graph and energy rules of Phases 3 and 4 are what separate them, and they have not yet been recomputed for deformed cells.</p>
+      <p class="sd">Proposition 16 is checked on 75 random cells for P, I and F lattices by <code>2_python/morphology/tests_deform.py</code>: the shape is a box exactly when the criterion says so (25 boxes, 50 cut shapes). The live page <a href="deform.html">Cell Deform</a> lets you change <i>a</i>, <i>b</i>, <i>c</i> and watch it.</p>
+
+      <h2 class="section-title" id="math-checks" data-toc="Live numerical checks"><span class="stitle-num">0</span>Every Proposition, Checked Numerically</h2>
+      <p class="section-sub">Each row below is computed by <code>mof_morphology.js</code> when this page loads. A proposition is only as good as its check: if a row ever shows a mismatch, the proof or the code is wrong.</p>
+      <div class="panel"><div id="math-check-table"></div></div>
+
+      <h2 class="section-title" id="math-cited" data-toc="Classical results cited"><span class="stitle-num">0</span>Classical Results Used Without Proof</h2>
+      <ul class="sd">
+        <li><b>Wulff's theorem</b>: among bodies of fixed volume, the minimum of &int;&gamma;(<b>n</b>)&nbsp;d<i>A</i> is attained by the Wulff shape. Wulff (1901); rigorous proofs by J. E. Taylor (1970s); review by Miracle-Sol&eacute;, arXiv:1307.5180.</li>
+        <li><b>BFDH law</b> (<i>R</i> &prop; 1/<i>d</i><sub>eff</sub>) and <b>Hartman&ndash;Bennema</b> (<i>R</i> &prop; <i>E</i><sub>att</sub>): empirical growth laws, not theorems. They are inputs to the model, and the comparison with experiment on the <a href="morphology.html#morph-evidence">Morphology page</a> is how they are tested.</li>
+        <li><b>Continuity of volume and area</b> under Hausdorff convergence of convex bodies: standard convex geometry.</li>
+      </ul>

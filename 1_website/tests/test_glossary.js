@@ -123,7 +123,7 @@ ok(nums.join(',') === nums.map((_, i) => i + 1).join(','), 'glossary sections nu
 
 // ---- 4. glossary is loaded everywhere ------------------------------------
 ['index.html','methodology.html','decomposition.html','network.html','spectrum.html',
- 'results.html','code.html','references.html','glossary.html','team.html'].forEach(p => {
+ 'results.html','learn_shape.html','morph_math.html','morphology.html','deform.html','graph_faces.html','surface_energy.html','code.html','references.html','glossary.html','team.html'].forEach(p => {
   const h = fs.readFileSync(path.join(SITE, p), 'utf8');
   ok(/assets\/glossary\.js/.test(h) && /assets\/glossary-data\.js/.test(h),
      `${p}: glossary loaded`);

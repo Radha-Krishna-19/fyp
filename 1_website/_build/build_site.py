@@ -53,6 +53,30 @@ PAGES = [
          title='Results: The Band',
          desc='The multifractal band across 77 frameworks, the size confound that killed the pore-size claim, and what survives.'),
 
+    dict(file='learn_shape.html',  nav='Learn',         sections=[],
+         title='Learn: Crystals and Their Shapes',
+         desc='Everything needed to follow the morphology work, from scratch and with a picture for each idea: unit cells, Miller planes, symmetry, how crystals grow, shape rules, measuring shape, and periodic graphs.'),
+
+    dict(file='morph_math.html',   nav='Maths',         sections=[],
+         title='Phase 2: The Mathematics of Crystal Shape',
+         desc='Every rule used by the morphology work stated as a proposition and proved, with each proposition checked numerically in your browser.'),
+
+    dict(file='morphology.html',   nav='Morphology',    sections=[],
+         title='Morphology: Crystal Shapes from the Unit Cell',
+         desc='The panel\'s second question: from one established unit cell, generate several crystal morphologies, mathematically and computationally. Method, live shape explorer, results for four MOFs, and the comparison with experiment.'),
+
+    dict(file='deform.html',       nav='Cell Deform',   sections=[],
+         title='Changing the Unit Cell: Plates, Crystals and Rods',
+         desc='The second reading of the panel\'s question: change the unit-cell parameters of an established MOF and see which shapes follow, with the exact rules and a live explorer.'),
+
+    dict(file='graph_faces.html',  nav='Graph Faces',   sections=[],
+         title='Phase 3: Crystal Faces from the Periodic Graph',
+         desc='Which faces are flat, how fast each grows, and which shape results, computed from each framework\'s own periodic graph and compared with experiment.'),
+
+    dict(file='surface_energy.html', nav='Surface Energy', sections=[],
+         title='Phase 4: Surface Energies from a Force Field',
+         desc='Cleavage energy of every crystal face computed from the atoms of each framework with a force field, the Wulff shapes that follow, and how robust they are.'),
+
     dict(file='code.html',         nav='Source',        sections=['source'],
          title='Every Line of Source Code',
          desc='All 28 source files, readable in the browser with no download and no web server.'),
@@ -84,6 +108,12 @@ SCRIPTS = {
                            'default_cif_data.js', 'network_page.js'],
     'results.html':       ['band_data.js', 'band_page.js',
                            'real_band_data.js', 'real_band_page.js'],
+    'learn_shape.html':   [],
+    'morph_math.html':    ['mof_morphology.js', 'mof_deform.js', 'morph_math_page.js'],
+    'morphology.html':    ['mof_morphology.js', 'morphology_page.js'],
+    'deform.html':        ['mof_morphology.js', 'mof_deform.js', 'deform_page.js'],
+    'graph_faces.html':   ['phase3_data.js', 'graph_faces_page.js'],
+    'surface_energy.html': [],
     'code.html':          ['code_sources.js', 'code_viewer.js', 'single_page.js'],
     'references.html':    [],
     'glossary.html':      [],
@@ -143,7 +173,7 @@ def fix_links(chunk, home, where):
 
 THEME_INIT = (
     '<script>(function(){try{var t=localStorage.getItem("mof-theme");'
-    'if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";'
+    'if(!t)t="light";'
     'document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>'
 )
 
@@ -202,6 +232,7 @@ def shell(page, idx, body_html, masthead_html):
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/academic.css">
 </head>
 <body>
 

@@ -19,13 +19,17 @@
    touch falls through to the rules here.
    ===================================================================== */
 
+  /* Self-referencing aliases such as --node:var(--node) were removed from every block below.
+     A custom property defined in terms of itself is a cycle, which CSS treats as invalid, so
+     each such token resolved to nothing (red drawn black, the active .mode-btn invisible).
+     Those tokens now come straight from tokens.css; only real aliases remain. */
   :root{
-    --bg:var(--page); --panel:var(--surface-0); --border:var(--border); --border-soft:var(--border);
-    --text:var(--text); --muted:var(--text-2); --muted2:var(--text-3);
+    --bg:var(--page); --panel:var(--surface-0); --border-soft:var(--border);
+    --muted:var(--text-2); --muted2:var(--text-3);
     --accent:var(--brand); --accent-soft:var(--brand-soft); --accent-dark:var(--brand-strong);
-    --node:var(--node); --node-soft:var(--node-soft); --linker:var(--brand); --linker-soft:var(--brand-soft);
-    --good:var(--good); --good-soft:var(--good-soft); --bad:var(--node); --bad-soft:var(--node-soft);
-    --code-bg:var(--code-bg); --code-text:var(--code-text); --code-accent:var(--code-kw);
+    --linker:var(--brand); --linker-soft:var(--brand-soft);
+    --bad:var(--node); --bad-soft:var(--node-soft);
+    --code-accent:var(--code-kw);
     --radius:14px; --shadow:0 1px 2px rgb(15 23 42 / .04), 0 1px 8px rgb(15 23 42 / .04);
   }
   *{box-sizing:border-box;}
@@ -143,11 +147,11 @@
   .file-group a:hover{text-decoration:underline;}
   footer{margin-top:60px;padding:24px 0 10px;border-top:1px solid var(--border);color:var(--muted2);font-size:12.5px;}
   :root{
-    --bg:var(--page); --panel:var(--surface-0); --border:var(--border); --border-soft:var(--border);
-    --text:var(--text); --muted:var(--text-2); --muted2:var(--text-3);
+    --bg:var(--page); --panel:var(--surface-0); --border-soft:var(--border);
+    --muted:var(--text-2); --muted2:var(--text-3);
     --accent:var(--brand); --accent-soft:var(--brand-soft); --accent-dark:var(--brand-strong);
-    --good:var(--good); --good-soft:var(--good-soft); --bad:var(--node); --bad-soft:var(--node-soft);
-    --code-bg:var(--code-bg); --code-text:var(--code-text); --code-accent:var(--code-kw);
+    --bad:var(--node); --bad-soft:var(--node-soft);
+    --code-accent:var(--code-kw);
     --radius:14px; --shadow:0 1px 2px rgb(15 23 42 / .04), 0 1px 8px rgb(15 23 42 / .04);
   }
   header.pagehead{background:var(--panel);border-bottom:1px solid var(--border);padding:34px 0 0;}
@@ -179,12 +183,12 @@
   .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px;}
   footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted2);font-size:12.5px;}
   :root{
-    --bg:var(--page); --panel:var(--surface-0); --border:var(--border); --border-soft:var(--border);
-    --text:var(--text); --muted:var(--text-2); --muted2:var(--text-3);
+    --bg:var(--page); --panel:var(--surface-0); --border-soft:var(--border);
+    --muted:var(--text-2); --muted2:var(--text-3);
     --accent:var(--brand); --accent-soft:var(--brand-soft); --accent-dark:var(--brand-strong);
-    --good:var(--good); --good-soft:var(--good-soft); --bad:var(--node); --bad-soft:var(--node-soft);
-    --warn-soft:var(--warn-soft); --warn-line:var(--warn-line); --warn-text:var(--warn-ink);
-    --code-bg:var(--code-bg); --code-text:var(--code-text); --code-accent:var(--code-kw);
+    --bad:var(--node); --bad-soft:var(--node-soft);
+    --warn-text:var(--warn-ink);
+    --code-accent:var(--code-kw);
     --radius:14px; --shadow:0 1px 2px rgb(15 23 42 / .04), 0 1px 8px rgb(15 23 42 / .04);
   }
   body{margin:0;background:var(--bg);color:var(--text);font-family:'Segoe UI',-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:15.5px;}

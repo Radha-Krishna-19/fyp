@@ -256,7 +256,7 @@
     var host = document.getElementById('glossary-full');
     if (!host) return;
 
-    var order = ['Chemistry', 'Graph theory', 'Fractals', 'Statistics'];
+    var order = ['Chemistry', 'Graph theory', 'Fractals', 'Statistics', 'Crystal shape'];
     var groups = {};
     window.GLOSSARY.forEach(function (e) { (groups[e.group] = groups[e.group] || []).push(e); });
 

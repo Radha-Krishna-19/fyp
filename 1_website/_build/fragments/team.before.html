@@ -93,6 +93,23 @@
         report something else as the headline. Neither has been done.
       </div>
 
+      <h2 class="section-title" id="morph-progress" data-toc="Morphology work"><span class="stitle-num">0</span>Morphology Work: Progress</h2>
+      <p class="section-sub">The panel's second question (October 2026): generate several crystal morphologies from an established MOF's unit cell, mathematically and computationally. Results are on the <a href="morphology.html">Morphology page</a>.</p>
+      <table class="data-table">
+        <thead><tr><td>Phase</td><td>Content</td><td>State</td><td>Where</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">0</td><td class="dt-note">Primer for the team, literature search, experimental shape references</td><td class="dt-note" style="color:var(--good)">Done</td><td class="dt-note"><code>MOF_morphology_primer.pdf</code></td></tr>
+          <tr><td class="dt-label">1</td><td class="dt-note">Unit cell to symmetry, allowed faces, BFDH, morph families, descriptors, graph rule; 14 Python checks and a second implementation in the browser</td><td class="dt-note" style="color:var(--good)">Done</td><td class="dt-note"><code>2_python/morphology/</code>, <code>mof_morphology.js</code>, <code>Phase1_morphology_report.pdf</code></td></tr>
+          <tr><td class="dt-label">1b</td><td class="dt-note">Second reading of the panel's question: change the unit-cell parameters, recompute allowed faces, symmetry families and BFDH shapes; plate, equant and rod reached; Propositions 14&ndash;16; live explorer; 9 checks</td><td class="dt-note" style="color:var(--good)">Done (BFDH only)</td><td class="dt-note"><a href="deform.html">Cell Deform</a>, <code>2_python/morphology/mofmorph/deform.py</code></td></tr>
+          <tr><td class="dt-label">2</td><td class="dt-note">Formal mathematical write-up: 16 propositions with proofs, each checked numerically in the browser</td><td class="dt-note" style="color:var(--good)">Done</td><td class="dt-note"><a href="morph_math.html">Mathematics</a>, <code>morph_math_page.js</code></td></tr>
+          <tr><td class="dt-label">3</td><td class="dt-note">Nets from the CIFs; attachment numbers, broken-bond surface energies and F/S/K classes for all four nets; 11 textbook checks</td><td class="dt-note" style="color:var(--good)">Done</td><td class="dt-note"><a href="graph_faces.html">Graph Faces</a>, <code>2_python/morphology/mofmorph/graphfaces.py</code></td></tr>
+
+          <tr><td class="dt-label">4</td><td class="dt-note">Force-field (UFF) cleavage energies of every face from the atoms, Wulff shapes, sensitivity to the van der Waals weight; 4 exact checks</td><td class="dt-note" style="color:var(--good)">Done (unrelaxed, no electrostatics)</td><td class="dt-note"><a href="surface_energy.html">Surface Energy</a>, <code>2_python/morphology/mofmorph/forcefield.py</code></td></tr>
+          <tr><td class="dt-label">&mdash;</td><td class="dt-note">Teaching page for newcomers: every concept from scratch, with figures</td><td class="dt-note" style="color:var(--good)">Done</td><td class="dt-note"><a href="learn_shape.html">Learn</a></td></tr>
+          <tr><td class="dt-label">5&ndash;6</td><td class="dt-note">Independent cross-check and final paper</td><td class="dt-note">Not started</td><td class="dt-note">&mdash;</td></tr>
+        </tbody>
+      </table>
+
       <h2 class="section-title" id="reproduce" data-toc="Reproducing every number"><span class="stitle-num">0</span>Reproducing Every Number</h2>
       <p class="section-sub">Nothing on this site is transcribed. Two independent routes regenerate all of it from a clean clone.</p>
 
