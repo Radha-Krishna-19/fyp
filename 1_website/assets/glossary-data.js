@@ -270,6 +270,67 @@ window.GLOSSARY = [
 { term: 'hold-out', aka: ['hold-out test', 'held out'],
   group: 'Statistics', needs: [],
   short: 'Setting some data aside, fitting on the rest, then checking the set-aside part.',
-  long: 'Guards against describing your own dataset rather than discovering something general. If a band is defined using every framework you have, of course they all fall inside it; the test is whether frameworks excluded from the definition still land in the band.' }
+  long: 'Guards against describing your own dataset rather than discovering something general. If a band is defined using every framework you have, of course they all fall inside it; the test is whether frameworks excluded from the definition still land in the band.' },
+
+/* ------------------------------------------------------- crystal shape (morphology page) */
+{ term: 'crystal morphology', aka: ['morphology', 'morphologies', 'crystal habit'],
+  group: 'Crystal shape', needs: ['unit cell'],
+  short: 'The outer shape of a whole crystal particle, such as a cube, an octahedron or a plate.',
+  long: 'One crystal contains billions of identical unit cells, and the same unit cell can be stacked into very different outer shapes. Which shape forms depends on how fast each crystal face grows: fast faces grow themselves out of existence, so the crystal ends up bounded by its slowest faces. The panel\'s second question asks for these shapes to be generated from the unit cell.' },
+
+{ term: 'Miller indices', aka: ['Miller index'],
+  group: 'Crystal shape', needs: ['unit cell'],
+  short: 'Three integers (hkl) that name a family of parallel lattice planes by where they cut the cell axes.',
+  long: 'A plane cutting the axes at a/h, b/k and c/l has indices (hkl). In a cubic crystal the six {100} planes bound a cube, the eight {111} planes an octahedron and the twelve {110} planes a rhombic dodecahedron, so naming the faces that survive is naming the shape.' },
+
+{ term: 'systematic absence', aka: ['systematic absences', 'systematically absent'],
+  group: 'Crystal shape', needs: ['Miller indices'],
+  short: 'A family of planes that symmetry forbids, because identical planes sit halfway between its members.',
+  long: 'Formally: (hkl) is absent when the space group has an operation (R, t) with hR = h and h&middot;t not an integer. For F-centred cubic crystals (MOF-5, HKUST-1, UiO-66) the indices must be all even or all odd, so (100) is absent and the first cube-face reflection is (200).' },
+
+{ term: 'effective spacing', aka: ['d_eff'],
+  group: 'Crystal shape', needs: ['systematic absence'],
+  short: 'The true repeat distance perpendicular to a face, once forbidden plane families are removed.',
+  long: 'If (hkl) is absent and n(hkl) is the first allowed multiple, the effective spacing is d/n. For MOF-5 (a = 25.87 &Aring;) the {111} planes have 14.93 &Aring; and the cube faces 12.93 &Aring;, not 25.87 &Aring;.' },
+
+{ term: 'BFDH', aka: ['BFDH rule', 'BFDH law'],
+  group: 'Crystal shape', needs: ['effective spacing', 'crystal morphology'],
+  short: 'A rule (Bravais, Friedel, Donnay, Harker) that predicts a shape from the lattice alone: widely spaced planes grow slowly and survive.',
+  long: 'Growth rate is taken as proportional to 1/d_eff. It needs only the unit cell and the space group, which is exactly the input the panel specified. It gives a truncated octahedron for every F-centred cubic MOF and a rhombic dodecahedron for ZIF-8.' },
+
+{ term: 'Wulff construction', aka: ['Wulff shape'],
+  group: 'Crystal shape', needs: ['crystal morphology'],
+  short: 'The equilibrium shape built from the energy cost of each face: low-energy faces become large.',
+  long: 'Each face is placed at a distance from the centre proportional to its surface energy, and the shape is the region inside all of them. It has the same mathematical form as the growth shape, so one polytope routine serves both. Planned for Phase 4 with force-field surface energies.' },
+
+{ term: 'attachment number', aka: ['attachment numbers'],
+  group: 'Crystal shape', needs: ['degree', 'crystal morphology'],
+  short: 'The number of links a new node forms when it lands on a given crystal face; more links means faster growth.',
+  long: 'On the pcu net of MOF-5 it is 1, 2 and 3 on (100), (110) and (111), which selects a cube. On the fcu net of UiO-66 it is 4, 5 and 3, which selects an octahedron. Chen et al. (Matter 2020) used the same count for UiO-67.' },
+
+{ term: 'sphericity', aka: [],
+  group: 'Crystal shape', needs: ['crystal morphology'],
+  short: 'How close a solid is to a ball: 1 for a sphere, 0.806 for a cube, 0.846 for an octahedron.',
+  long: 'Defined as &pi;<sup>1/3</sup>(6V)<sup>2/3</sup>/A for volume V and surface area A. Unlike the asphericity of the gyration tensor, which is zero for every shape with cubic symmetry, it separates the cube, the cuboctahedron and the octahedron.' },
+
+{ term: 'polytope', aka: ['polytopes', 'convex polytope'],
+  group: 'Crystal shape', needs: ['crystal morphology'],
+  short: 'A solid bounded by flat faces, made by intersecting half-spaces; every growth or equilibrium crystal shape here is one.',
+  long: 'Each face contributes one inequality n&middot;x &le; R. The set of points satisfying all of them is convex, and when the face normals point in every direction it is bounded (Proposition 3 on the Mathematics page). Changing the numbers R changes the solid continuously (Proposition 6).' },
+
+{ term: 'periodic bond chain', aka: ['periodic bond chains', 'PBC', 'PBCs'],
+  group: 'Crystal shape', needs: ['Miller indices', 'labelled quotient graph'],
+  short: 'An unbroken chain of strong bonds that repeats with a lattice translation, running right through the crystal.',
+  long: 'In the labelled quotient graph it is a cycle whose edge translations add up to a non-zero lattice vector &tau; (Proposition 11). It lies in face (hkl) when h&tau;<sub>1</sub> + k&tau;<sub>2</sub> + l&tau;<sub>3</sub> = 0.' },
+
+{ term: 'F face', aka: ['F faces', 'S face', 'K face', 'F/S/K'],
+  group: 'Crystal shape', needs: ['periodic bond chain'],
+  short: 'Hartman–Perdok class of a crystal face: flat (F), stepped (S) or kinked (K), by how chains of bonds run inside one slice.',
+  long: 'If the links inside one slice of thickness d_eff form a connected sheet (periodicity rank 2) the face is F, grows slowly and survives; chains in one direction give S; isolated pieces give K, which grows fastest and disappears. MOF-5 {100} and ZIF-8 {110} are F faces.' },
+
+{ term: 'broken-bond surface energy', aka: ['broken bonds', 'broken-bond'],
+  group: 'Crystal shape', needs: ['Wulff construction'],
+  short: 'The number of links cut per unit area when the crystal is split along a face, used as a stand-in for its energy cost.',
+  long: 'Counting each link as one unit of energy turns the Wulff construction into a pure graph calculation. For a nearest-neighbour fcc crystal it gives the classical ratio 2/&radic;3 between the {100} and {111} energies; for MOF-5 it gives a cube.' }
 
 ];

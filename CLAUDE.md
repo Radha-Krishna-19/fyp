@@ -243,6 +243,28 @@ F in the task list) as the authoritative version; those are kept on the
 Results page as a second, smaller, independently-consistent check, not
 replaced.
 
+## Morphology direction: the panel's second question (2026-10-09)
+
+After Panel Review 1 the panel asked: given an established MOF's unit cell, generate at
+least a few crystal morphologies, mathematically and computationally. Phase 1 is done.
+
+- Python: `2_python/morphology/` (`tests.py`: 14 checks, all pass; `run_phase1.py` writes
+  `results/phase1_results.json` and the figures). Needs numpy, scipy, matplotlib, ase, spglib.
+- Browser: `1_website/mof_morphology.js` (engine, no DOM) and `morphology_page.js`, page
+  `morphology.html` from `_build/fragments/morphology.before.html`.
+  `tests/test_morphology.js` checks the JS engine against the Python JSON number by number.
+- Symmetry found by spglib: MOF-5 Fm-3m a=25.866; HKUST-1 Fm-3m a=26.297 (file is the
+  primitive cell); UiO-66 F-43m a=20.518 (ordered mu3-OH; literature Fm-3m); ZIF-8 I-43m
+  a=16.991 only WITHOUT hydrogens (with H the file is P1).
+- Results: BFDH gives a truncated octahedron for all three F-centred MOFs and a rhombic
+  dodecahedron for ZIF-8. Varying R111/R100 gives cube (>= sqrt3), cuboctahedron (2/sqrt3),
+  octahedron (<= 1/sqrt3). Attachment numbers: pcu 1/2/3 on (100)/(110)/(111) gives a
+  cube; fcu 4/5/3 gives an octahedron (matches Chen et al., Matter 2020).
+- kappa^2 is zero for every cubic-symmetric shape; use sphericity and Q3/Q4/Q6.
+- The tetrahedral shape for UiO-66 depends on the F-43m ordering in our file and is
+  forbidden in Fm-3m. Report it as "allowed by the ordered structure", never as a prediction.
+- Open: sod (ZIF-8) is not resolved by single-node counting; tbo needs a two-node count.
+
 ## Defects already found and fixed (do not reintroduce)
 
 1. **τ(q) fitted with a free intercept** instead of through the origin. This
@@ -266,6 +288,11 @@ replaced.
    stall above about 3000 vertices. Use `fast_diameter()` (double sweep) and the
    BFS box covering in `code_12`, or a compiled distance matrix where N is small
    enough to store one.
+
+7. **Self-referencing CSS tokens** (fixed 2026-10-09). `assets/base.css` had aliases such as
+   `--node:var(--node)` and `--text:var(--text)`. A custom property defined in terms of itself
+   is a cycle, which CSS treats as invalid, so those tokens resolved to nothing: red drawn
+   black and the active `.mode-btn` invisible on every page. Never alias a token to itself.
 
 ## Known traps
 
@@ -313,3 +340,9 @@ use of dashes.
 
 See the task list at the end of this session's summary in the git log. Items
 still open after it are recorded on the Team page under "Completion".
+
+## Cell deformation (Phase 1b) and surface energy (Phase 4)
+- `2_python/morphology/mofmorph/deform.py` changes the lattice (a, b, c, angles) with atoms at fixed fractional coordinates; `faces.enumerate_faces(..., absence_ops=)` keeps the ORIGINAL space-group operations for the absence test (Prop. 14) while families come from the surviving isometric subgroup (Prop. 15). Box law and exact box criterion: Prop. 16. BFDH uses the 40 largest-d_eff families (10 can leave a strongly anisotropic shape unbounded).
+- `1_website/mof_deform.js` is the browser version (orthogonal cells only) and must agree with `results/deform_results.json`; `tests/test_morph_pages.js` compares all 52 stretched cases. Page `deform.html` is built from `_build/fragments/deform.before.html`, written by `_build/build_deform_fragment.py`.
+- `mofmorph/forcefield.py` (UFF Lennard-Jones plus a flat bond energy, unrelaxed, no electrostatics) gives the Phase 4 cleavage energies; page `surface_energy.html` is written by `_build/build_phase4_fragment.py`. Regenerate both fragments, then `build_site.py`, after rerunning `run_deform.py` / `run_phase4.py`.
+- `assets/academic.css` (loaded last) is the plain academic look; the site defaults to light.

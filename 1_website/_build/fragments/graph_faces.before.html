@@ -1,0 +1,78 @@
+      <h2 class="section-title" id="gf-intro" data-toc="What this page does"><span class="stitle-num">0</span>What This Page Does</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Faces, slices, bond chains and growth rates (<a href="learn_shape.html">Learn</a>), the propositions behind them (<a href="morph_math.html">Mathematics</a>), and the shapes a unit cell allows (<a href="morphology.html">Morphology</a>).</dd><dt>This page</dt><dd class="now">Phase 3. Uses each framework's own periodic graph, built from its CIF file, to compute which faces are flat, how fast each grows, and which shape results.</dd><dt>Which lets us</dt><dd>Choose, from the family of shapes a unit cell allows, the one its connectivity favours, and compare that with experiments.</dd></dl>
+      <p class="section-sub">Phase 1 showed that one unit cell allows a whole family of shapes, but the lattice-only rule (BFDH) gave the same truncated octahedron for MOF-5, HKUST-1 and UiO-66. Real crystals differ: MOF-5 grows as cubes. This page asks whether the way the building blocks are linked is enough to tell the three apart. It is, for all four structures.</p>
+
+      <h2 class="section-title" id="gf-method" data-toc="Method"><span class="stitle-num">0</span>Method: Three Numbers per Face, Counted on the Graph</h2>
+      <h3 class="sub-head">1. Build the graph from the CIF</h3>
+      <p class="sd">The project's own pipeline (<code>code_12.quotient_graph_from_cif</code>: bond perception, metal-oxo decomposition, labelled quotient graph) turns each CIF into building blocks and links (<i>i</i>, <i>j</i>, <b>t</b>). Each block is placed at the centroid of its atoms. Two-connected linkers (BDC, imidazolate) are then replaced by a single link between the two nodes they join, the standard way of reading off a framework's net. Three-connected linkers, such as BTC in HKUST-1, stay as vertices.</p>
+      <div class="panel"><div id="gf-net-table"></div></div>
+      <p class="sd">The nets come out as expected: pcu for MOF-5 (6-connected), tbo for HKUST-1 (3- and 4-connected), fcu for UiO-66 (12-connected), sod for ZIF-8 (4-connected).</p>
+
+      <h3 class="sub-head">2. Cut the net into slices</h3>
+      <p class="sd">For each face family, slices are cut parallel to the face with thickness <i>d</i><sub>eff</sub> from the space group (Proposition 2). Where a slice boundary falls matters, so every possible boundary between two levels of vertices is tried, and the one that cuts the fewest links is kept, as a real crystal face exposes its most stable termination.</p>
+
+      <h3 class="sub-head">3. Count, exactly</h3>
+      <div class="eq"><span class="ex"><i>E</i><sub>att</sub>(<i>hkl</i>) = (links from a slice to the crystal below) / (vertices in the slice)</span><span class="tag">(1)</span></div>
+      <div class="eq"><span class="ex">&gamma;(<i>hkl</i>) = links cut by the boundary plane, per unit area</span><span class="tag">(2)</span></div>
+      <div class="eq"><span class="ex">rank(<i>hkl</i>) = dimension of the translations carried by paths of links inside one slice</span><span class="tag">(3)</span></div>
+      <div class="where"><p class="lead">where</p><dl><dt><i>E</i><sub>att</sub></dt><dd><b>attachment number</b>: links a new building unit forms when a slice lands on the face, averaged over the slice. The graph form of the attachment energy; growth rate <i>R</i> &prop; <i>E</i><sub>att</sub> (Hartman&ndash;Bennema).</dd><dt>&gamma;</dt><dd><b>broken-bond surface energy</b>: each cut link costs one unit of energy. Used as the face distance in a Wulff shape.</dd><dt>rank</dt><dd>2: the slice is one connected sheet, an <b>F face</b>; 1: separate chains, an <b>S face</b>; 0: isolated pieces, a <b>K face</b>. This is the periodicity rank of the earlier project work, applied to one slice.</dd></dl></div>
+      <p class="sd">Counts (1) and (2) are computed exactly from the quotient graph with Proposition 13: no finite crystal is built, so nothing depends on how big a cluster was cut.</p>
+
+      <h2 class="section-title" id="gf-validate" data-toc="Validation on textbook nets"><span class="stitle-num">0</span>Validation on Textbook Crystals</h2>
+      <p class="section-sub">Before touching a MOF, the code was run on nets whose answers are in textbooks. All 11 checks in <code>2_python/morphology/tests_phase3.py</code> pass.</p>
+      <table class="data-table">
+        <thead><tr><td>Net</td><td>Face</td><td><i>E</i><sub>att</sub> expected</td><td>Class expected</td><td>Computed</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">Simple cubic (Kossel)</td><td class="dt-note">(100), (110), (111)</td><td class="dt-value">1, 2, 3</td><td class="dt-note">F, S, K</td><td class="dt-note" style="color:var(--good)">1, 2, 3; F, S, K</td></tr>
+          <tr><td class="dt-label">fcc (nearest neighbours)</td><td class="dt-note">(100), (110), (111)</td><td class="dt-value">4, 5, 3</td><td class="dt-note">F, S, F</td><td class="dt-note" style="color:var(--good)">4, 5, 3; F, S, F</td></tr>
+          <tr><td class="dt-label">bcc (nearest neighbours)</td><td class="dt-note">(110), (100)</td><td class="dt-value">2, 4</td><td class="dt-note">F, K</td><td class="dt-note" style="color:var(--good)">2, 4; F, K</td></tr>
+          <tr><td class="dt-label">fcc broken bonds</td><td class="dt-note">&gamma;<sub>100</sub>/&gamma;<sub>111</sub></td><td class="dt-value">2/&radic;3 = 1.1547</td><td class="dt-note">&mdash;</td><td class="dt-note" style="color:var(--good)">1.1547</td></tr>
+          <tr><td class="dt-label">Decorated pcu</td><td class="dt-note">contract two-connected linkers</td><td class="dt-value">pcu, degree 6</td><td class="dt-note">&mdash;</td><td class="dt-note" style="color:var(--good)">pcu, degree 6</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-title" id="gf-slices" data-toc="What a slice looks like"><span class="stitle-num">0</span>What a Slice Looks Like</h2>
+      <p class="sd">The pictures below show one slice of the real MOF-5 and ZIF-8 nets, seen face-on. Blue dots are vertices of the net inside the slice; red lines are links that stay inside it.</p>
+      <figure class="fig wide">
+        <img src="figures/morph/phase3_slices.png" alt="Six panels of slices. MOF-5 100: a square grid, an F face. MOF-5 110: parallel straight chains, an S face. MOF-5 211: isolated dots, a K face. ZIF-8 110: a connected sheet of hexagons and squares, an F face. ZIF-8 211: separate ribbons of rings, an S face. ZIF-8 111: isolated six-membered rings, a K face.">
+        <figcaption>F, S and K faces of real MOF nets, computed from the CIF files. A connected sheet (F) can only grow by starting a whole new layer, so it is slow and survives on the crystal.</figcaption>
+      </figure>
+
+      <h2 class="section-title" id="gf-results" data-toc="Faces of the four MOFs"><span class="stitle-num">0</span>Results: the Faces of the Four MOFs</h2>
+      <p class="section-sub">Lower <i>E</i><sub>att</sub> means slower growth, and lower &gamma; means a cheaper surface; both favour a face. Values are averaged over all vertices of a slice, so for HKUST-1, whose net has two kinds of vertex, they are fractions. These numbers were computed by <code>2_python/morphology/run_phase3.py</code> and are read from <code>phase3_data.js</code>.</p>
+      <div id="gf-face-tables"></div>
+
+      <h2 class="section-title" id="gf-shapes-sec" data-toc="Shapes and experiment"><span class="stitle-num">0</span>Shapes, and the Comparison with Experiment</h2>
+      <p class="sd">Each set of numbers is turned into a shape with the polytope of the Learn page: <i>E</i><sub>att</sub> as growth rates, and &gamma; as Wulff face distances. Faces covering under 1% of the surface are listed in the data but not used to name the shape.</p>
+      <figure class="fig wide">
+        <img src="figures/morph/phase3_shapes.png" alt="Eight shapes in four pairs. MOF-5: a truncated cube and a cube. HKUST-1: two truncated octahedra. UiO-66: two truncated octahedra. ZIF-8: two rhombic dodecahedra.">
+        <figcaption>For each MOF, the attachment-energy growth shape (left of each pair) and the broken-bond Wulff shape (right).</figcaption>
+      </figure>
+      <div class="panel"><div id="gf-shape-table"></div></div>
+      <div class="callout good" data-kind="The result">
+        From connectivity alone, the dominant faces match experiment for all four structures: {100} for MOF-5
+        (the broken-bond Wulff shape is a cube), {111} for HKUST-1 and UiO-66, and {110} for ZIF-8 (a rhombic
+        dodecahedron by both rules). Phase 1's simple link count could not resolve ZIF-8; counting whole slices,
+        with the slice thickness fixed by the space group, does.
+      </div>
+      <div class="callout warn" data-kind="What is not shown">
+        <ul style="margin:6px 0 0 18px;padding:0">
+          <li>Every link counts as one unit of energy. Real bonds differ (a Zn&ndash;N bond is not a Zr&ndash;O bond), and solvent and modulators change surface energies. That is the chemistry layer, Phase 4.</li>
+          <li>&ldquo;Match&rdquo; means the dominant faces agree. The exact truncation of a real crystal depends on synthesis, which is why Phase 1's whole family of shapes matters.</li>
+          <li>Four structures are a demonstration, not a statistical test. A wider set of nets is needed before a general claim.</li>
+          <li>The F/S/K classes use links as the strong bonds, a modelling choice stated here, and only the termination that cuts the fewest links.</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title" id="gf-files" data-toc="Code and reproduction"><span class="stitle-num">0</span>Code and How to Reproduce</h2>
+      <table class="data-table">
+        <thead><tr><td>File</td><td>What it does</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label"><code>2_python/morphology/mofmorph/graphfaces.py</code></td><td class="dt-note">Periodic graph, linker contraction, exact slice counts (Proposition 13), slice periodicity rank</td></tr>
+          <tr><td class="dt-label"><code>2_python/morphology/tests_phase3.py</code></td><td class="dt-note">The 11 textbook checks above</td></tr>
+          <tr><td class="dt-label"><code>2_python/morphology/run_phase3.py</code></td><td class="dt-note">Runs all four CIFs and writes <code>results/phase3_results.json</code> and the shape figures</td></tr>
+          <tr><td class="dt-label"><code>2_python/morphology/figs_phase3.py</code></td><td class="dt-note">Draws the slice figure</td></tr>
+          <tr><td class="dt-label"><code>1_website/_build/build_phase3_data.py</code></td><td class="dt-note">Copies the results into <code>phase3_data.js</code> for this page</td></tr>
+        </tbody>
+      </table>
+      <p class="sd">Order: <code>python3 2_python/morphology/tests_phase3.py</code>, then <code>run_phase3.py</code>, <code>figs_phase3.py</code>, and <code>python3 1_website/_build/build_phase3_data.py</code>.</p>

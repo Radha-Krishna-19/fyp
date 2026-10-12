@@ -1,0 +1,118 @@
+/* =====================================================================
+   academic.css  --  loaded LAST. Gives the site the look of a course text
+   or a journal article: white paper, serif body, one dark-blue accent,
+   thin rules, no shadows, no pills, no animation, no uppercase labels.
+   Colours still come from tokens.css, so dark mode keeps working.
+   ===================================================================== */
+:root{
+  --serif: "Source Serif 4","Charter","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:  system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --page:#ffffff; --surface-0:#ffffff; --surface-1:#f6f6f4; --surface-2:#eeeeea;
+  --border:#d9d9d4; --border-strong:#b9b9b2;
+  --text:#1b1b1b; --text-2:#3b3b3b; --text-3:#5f5f5f;
+  --brand:#1f3a68; --brand-strong:#14284b; --brand-ink:#14284b;
+  --brand-soft:#f1f4f9; --brand-line:#c9d3e4;
+  --shadow-1:none; --shadow-2:none; --shadow-3:none; --shadow:none;
+}
+:root[data-theme="dark"]{
+  --page:#16181c; --surface-0:#1c1f24; --surface-1:#22262c; --surface-2:#2a2f36;
+  --border:#33383f; --border-strong:#454b54;
+  --text:#e8e6e1; --text-2:#c9c6bf; --text-3:#9b988f;
+  --brand:#9db8e8; --brand-strong:#bcd0f2; --brand-ink:#bcd0f2;
+  --brand-soft:#1f2735; --brand-line:#34425a;
+}
+
+body{ font-family:var(--serif); font-size:18px; line-height:1.7; }
+.site-header,.site-nav,.site-nav a,.eyebrow,.meta-strip,.toc,.toc a,.page-nav,.keynum span,
+table,.table-wrap,figcaption,p.cap,.legend,button,.struct-tab,.mode-btn,.icon-btn,
+.callout::before,.gloss-pop,.code-chip,.read-progress{ font-family:var(--sans); }
+code,kbd,samp,pre,.code-block{ font-family:ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace; }
+
+/* headings: plain, serif, no rules above every section */
+h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; letter-spacing:0; color:var(--text); }
+h1{ font-size:34px; line-height:1.2; }
+h2.section-title,h2.st{ font-size:26px; border-top:0; padding-top:0; margin:56px 0 12px;
+  border-bottom:1px solid var(--border); padding-bottom:8px; }
+h2.section-title::before,h2.st::before{ display:none !important; }
+h3.sub-head,h3.sub,h3{ font-size:20px; font-weight:600; }
+.section-title .stitle-num,h2.st .n{ color:var(--text-3); font-weight:400; font-size:inherit; }
+.section-sub,p.sd{ font-size:18px; }
+
+/* masthead: no coloured label, no uppercase */
+.masthead{ background:var(--page); border-bottom:1px solid var(--border); }
+.masthead .lead{ font-size:19px; color:var(--text-2); }
+.eyebrow{ text-transform:none; letter-spacing:0; font-size:14px; font-weight:400; color:var(--text-3); }
+.eyebrow::before{ display:none; }
+
+/* header and navigation: quiet text links */
+.site-header{ background:var(--page); backdrop-filter:none; -webkit-backdrop-filter:none; }
+.site-nav a{ font-size:14px; font-weight:400; color:var(--text-2); border-radius:0; }
+.site-nav a:hover{ background:none; color:var(--brand); text-decoration:underline; }
+.site-nav a[aria-current="page"]{ color:var(--text); font-weight:600; }
+.site-nav a::after{ display:none !important; }
+.read-progress{ display:none; }
+
+/* links */
+a{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; }
+a:hover{ color:var(--brand-strong); }
+
+/* callouts: a left rule and a plain bold label, like a theorem box */
+.callout{ background:var(--surface-1); border:0; border-left:3px solid var(--co,var(--brand));
+  padding:12px 18px; margin:22px 0; font-size:17px; color:var(--text); }
+.callout::before{ text-transform:none; letter-spacing:0; font-size:15px; font-weight:700;
+  color:var(--text); }
+.callout > b:first-child,.callout > p:first-child > b:first-child{ font-size:inherit; }
+
+/* panels, cards: flat, square, hairline */
+.panel,.page-nav a,.keynum,.lim-card,.gloss-entry,.args-panel,.data-panel{
+  border-radius:2px !important; box-shadow:none !important; transform:none !important; }
+.keynums{ border-radius:2px; }
+.page-nav .dir{ text-transform:none; letter-spacing:0; font-size:13px; font-weight:400; }
+
+/* tables: journal style, rules top, under header and bottom */
+.table-wrap{ border:0; border-radius:0; border-top:2px solid var(--text); border-bottom:2px solid var(--text); }
+table,table.data-table{ border:0; font-size:15px; }
+thead td,thead th{ background:none; text-transform:none; letter-spacing:0; font-size:14.5px;
+  font-weight:600; color:var(--text); border-bottom:1px solid var(--text); }
+tbody td,tbody th{ border-bottom:1px solid var(--border); }
+tbody tr:hover td{ background:none; }
+
+/* figures */
+figure.fig{ border:0; border-radius:0; background:none; margin:30px 0; }
+figure.fig img{ border:1px solid var(--border); background:#fff; }
+figure.fig figcaption,p.cap{ font-size:14.5px; color:var(--text-2); text-align:left; }
+figure.fig.reveal img{ filter:none !important; opacity:1 !important; transform:none !important; }
+
+/* no entrance animation anywhere */
+.reveal,.keynums .keynum{ opacity:1 !important; transform:none !important; transition:none !important; }
+
+/* buttons and controls: plain */
+button,.struct-tab,.mode-btn,button.mini,.icon-btn{ border-radius:3px; font-weight:500; box-shadow:none; }
+.struct-tab.active,.mode-btn.active{ background:var(--brand); border-color:var(--brand); color:#fff; }
+
+/* code */
+.code-block,pre{ border-radius:2px; font-size:14px; }
+.code-chip{ border-radius:2px 2px 0 0; }
+
+/* table of contents */
+.toc a{ font-size:14px; }
+.toc .toc-title{ text-transform:none; letter-spacing:0; font-size:14px; font-weight:600; }
+
+/* glossary popover */
+.gloss-pop{ border-radius:3px; box-shadow:0 2px 8px rgb(0 0 0 / .15); }
+
+@media (max-width:700px){ body{ font-size:17px; } h1{ font-size:28px; } }
+
+/* ---- second pass ---- */
+.meta-strip{ border-radius:0; border-left:0; border-right:0; background:none; gap:0; }
+.meta-strip div{ background:none; padding:12px 16px 12px 0; }
+.meta-strip dt,.meta-strip .k{ text-transform:none; letter-spacing:0; font-size:13.5px; font-weight:400; color:var(--text-3); }
+.meta-strip dd,.meta-strip .v{ font-size:16px; font-weight:600; }
+figure.fig figcaption,p.cap{ background:none !important; border:0 !important; padding:8px 0 0 !important; }
+.callout,.callout.good,.callout.warn,.callout.bad,.verdict,main .verdict,main .verdict.ok,.negbox{
+  background:var(--surface-1) !important; border-radius:0 !important; }
+.callout.good{ --co:var(--brand); }
+.explain-block,.drawback-block,.fix-block,.algo-note,.fix-inline,.threeD-note,.where,.worked{
+  border-radius:0 !important; background:var(--surface-1); }
+.site-nav{ flex-wrap:wrap; overflow:visible; row-gap:0; }
+.site-header{ height:auto; min-height:56px; padding-top:6px; padding-bottom:6px; }

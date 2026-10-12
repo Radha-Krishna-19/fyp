@@ -1,0 +1,439 @@
+{
+ "MOF-5": {
+  "spacegroup": "Fm-3m",
+  "n_atoms": 424,
+  "a_conv": 25.866,
+  "pairs": 32768,
+  "bonds": 512,
+  "faces": {
+   "{100}": {
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "d": 25.866,
+    "gamma": 0.14786,
+    "gamma_vdw_only": 0.00243,
+    "gamma_bond_only": 0.14538,
+    "offset": 10.055
+   },
+   "{110}": {
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "d": 18.29,
+    "gamma": 0.41577,
+    "gamma_vdw_only": 0.00367,
+    "gamma_bond_only": 0.41121,
+    "offset": 13.603
+   },
+   "{111}": {
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "d": 14.934,
+    "gamma": 0.25542,
+    "gamma_vdw_only": 0.00361,
+    "gamma_bond_only": 0.25181,
+    "offset": 0.84
+   },
+   "{211}": {
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "d": 10.56,
+    "gamma": 0.42135,
+    "gamma_vdw_only": 0.00528,
+    "gamma_bond_only": 0.41547,
+    "offset": 5.161
+   },
+   "{221}": {
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "d": 8.622,
+    "gamma": 0.44166,
+    "gamma_vdw_only": 0.00551,
+    "gamma_bond_only": 0.43615,
+    "offset": 0.657
+   },
+   "{310}": {
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "d": 8.179,
+    "gamma": 0.37371,
+    "gamma_vdw_only": 0.00499,
+    "gamma_bond_only": 0.36779,
+    "offset": 1.932
+   }
+  },
+  "sensitivity_vdw_weight": {
+   "0": "cube",
+   "1": "cube",
+   "5": "cube",
+   "20": "cube",
+   "100": "truncated cube"
+  },
+  "shape_wulff_uff": {
+   "name": "cube",
+   "n_faces": 14,
+   "n_vertices": 24,
+   "sphericity": 0.806,
+   "kappa2": 0.0,
+   "aspect_ratio": 1.0,
+   "Q3": 0.0,
+   "Q4": 0.7637,
+   "Q6": 0.3536,
+   "face_area_fraction": {
+    "{111}": 0.0,
+    "{100}": 1.0
+   }
+  }
+ },
+ "HKUST-1": {
+  "spacegroup": "Fm-3m",
+  "n_atoms": 624,
+  "a_conv": 26.297,
+  "pairs": 74232,
+  "bonds": 792,
+  "faces": {
+   "{100}": {
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "d": 26.297,
+    "gamma": 0.28805,
+    "gamma_vdw_only": 0.00675,
+    "gamma_bond_only": 0.28131,
+    "offset": 10.223
+   },
+   "{110}": {
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "d": 18.595,
+    "gamma": 0.30694,
+    "gamma_vdw_only": 0.00857,
+    "gamma_bond_only": 0.29837,
+    "offset": 2.162
+   },
+   "{111}": {
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "d": 15.183,
+    "gamma": 0.25106,
+    "gamma_vdw_only": 0.00744,
+    "gamma_bond_only": 0.24362,
+    "offset": 11.292
+   },
+   "{211}": {
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "d": 10.736,
+    "gamma": 0.49707,
+    "gamma_vdw_only": 0.00898,
+    "gamma_bond_only": 0.48808,
+    "offset": 5.059
+   },
+   "{221}": {
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "d": 8.766,
+    "gamma": 0.6912,
+    "gamma_vdw_only": 0.01034,
+    "gamma_bond_only": 0.67983,
+    "offset": 4.35
+   },
+   "{310}": {
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "d": 8.316,
+    "gamma": 0.65599,
+    "gamma_vdw_only": 0.01053,
+    "gamma_bond_only": 0.64494,
+    "offset": 7.578
+   }
+  },
+  "sensitivity_vdw_weight": {
+   "0": "truncated octahedron",
+   "1": "truncated octahedron",
+   "5": "rhombicuboctahedron-like",
+   "20": "rhombicuboctahedron-like",
+   "100": "rhombicuboctahedron-like"
+  },
+  "shape_wulff_uff": {
+   "name": "truncated octahedron",
+   "n_faces": 26,
+   "n_vertices": 48,
+   "sphericity": 0.9115,
+   "kappa2": 0.0,
+   "aspect_ratio": 1.0,
+   "Q3": 0.0,
+   "Q4": 0.2142,
+   "Q6": 0.5611,
+   "face_area_fraction": {
+    "{110}": 0.0033,
+    "{100}": 0.2309,
+    "{111}": 0.7658
+   }
+  }
+ },
+ "UiO-66": {
+  "spacegroup": "F-43m",
+  "n_atoms": 456,
+  "a_conv": 20.518,
+  "pairs": 84252,
+  "bonds": 640,
+  "faces": {
+   "{100}": {
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "d": 20.518,
+    "gamma": 0.94651,
+    "gamma_vdw_only": 0.0203,
+    "gamma_bond_only": 0.92416,
+    "offset": 12.747
+   },
+   "{110}": {
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "d": 14.509,
+    "gamma": 1.00532,
+    "gamma_vdw_only": 0.02136,
+    "gamma_bond_only": 0.98022,
+    "offset": 2.557
+   },
+   "{111}+": {
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "d": 11.846,
+    "gamma": 0.42149,
+    "gamma_vdw_only": 0.01801,
+    "gamma_bond_only": 0.40017,
+    "offset": 6.974
+   },
+   "{111}-": {
+    "hkl": [
+     1,
+     1,
+     -1
+    ],
+    "d": 11.846,
+    "gamma": 0.42149,
+    "gamma_vdw_only": 0.01801,
+    "gamma_bond_only": 0.40017,
+    "offset": 3.687
+   },
+   "{211}+": {
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "d": 8.377,
+    "gamma": 1.29597,
+    "gamma_vdw_only": 0.02225,
+    "gamma_bond_only": 1.27334,
+    "offset": 6.23
+   },
+   "{211}-": {
+    "hkl": [
+     2,
+     1,
+     -1
+    ],
+    "d": 8.377,
+    "gamma": 1.29597,
+    "gamma_vdw_only": 0.02225,
+    "gamma_bond_only": 1.27334,
+    "offset": 2.084
+   },
+   "{310}": {
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "d": 6.488,
+    "gamma": 1.41166,
+    "gamma_vdw_only": 0.02346,
+    "gamma_bond_only": 1.38816,
+    "offset": 2.49
+   }
+  },
+  "sensitivity_vdw_weight": {
+   "0": "octahedron",
+   "1": "octahedron",
+   "5": "octahedron",
+   "20": "octahedron",
+   "100": "truncated octahedron"
+  },
+  "shape_wulff_uff": {
+   "name": "octahedron",
+   "n_faces": 8,
+   "n_vertices": 6,
+   "sphericity": 0.8456,
+   "kappa2": 0.0,
+   "aspect_ratio": 1.0,
+   "Q3": 0.0,
+   "Q4": 0.5092,
+   "Q6": 0.6285,
+   "face_area_fraction": {
+    "{111}-": 0.5,
+    "{111}+": 0.5
+   }
+  }
+ },
+ "ZIF-8": {
+  "spacegroup": "I-43m",
+  "n_atoms": 276,
+  "a_conv": 16.991,
+  "pairs": 53246,
+  "bonds": 312,
+  "faces": {
+   "{100}": {
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "d": 16.991,
+    "gamma": 0.36422,
+    "gamma_vdw_only": 0.02555,
+    "gamma_bond_only": 0.33692,
+    "offset": 4.269
+   },
+   "{110}": {
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "d": 12.014,
+    "gamma": 0.26883,
+    "gamma_vdw_only": 0.02457,
+    "gamma_bond_only": 0.23824,
+    "offset": 10.648
+   },
+   "{111}+": {
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "d": 9.81,
+    "gamma": 0.61913,
+    "gamma_vdw_only": 0.03065,
+    "gamma_bond_only": 0.58357,
+    "offset": 6.683
+   },
+   "{111}-": {
+    "hkl": [
+     1,
+     1,
+     -1
+    ],
+    "d": 9.81,
+    "gamma": 0.6192,
+    "gamma_vdw_only": 0.03049,
+    "gamma_bond_only": 0.58357,
+    "offset": 4.844
+   },
+   "{211}+": {
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "d": 6.937,
+    "gamma": 0.58516,
+    "gamma_vdw_only": 0.03126,
+    "gamma_bond_only": 0.55019,
+    "offset": 2.35
+   },
+   "{211}-": {
+    "hkl": [
+     2,
+     1,
+     -1
+    ],
+    "d": 6.937,
+    "gamma": 0.58554,
+    "gamma_vdw_only": 0.03142,
+    "gamma_bond_only": 0.55019,
+    "offset": 4.309
+   },
+   "{310}": {
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "d": 5.373,
+    "gamma": 0.83194,
+    "gamma_vdw_only": 0.03237,
+    "gamma_bond_only": 0.79908,
+    "offset": 5.111
+   }
+  },
+  "sensitivity_vdw_weight": {
+   "0": "rhombic dodecahedron",
+   "1": "rhombic dodecahedron",
+   "5": "truncated rhombic dodecahedron",
+   "20": "truncated rhombic dodecahedron",
+   "100": "truncated rhombic dodecahedron"
+  },
+  "shape_wulff_uff": {
+   "name": "rhombic dodecahedron",
+   "n_faces": 18,
+   "n_vertices": 32,
+   "sphericity": 0.9064,
+   "kappa2": 0.0,
+   "aspect_ratio": 1.0,
+   "Q3": 0.0,
+   "Q4": 0.1862,
+   "Q6": 0.5699,
+   "face_area_fraction": {
+    "{100}": 0.005,
+    "{110}": 0.995
+   }
+  }
+ }
+}

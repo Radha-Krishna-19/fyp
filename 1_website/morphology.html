@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morphology: Crystal Shapes from the Unit Cell &middot; MOF Structural Descriptors</title>
+<meta name="description" content="The panel&#x27;s second question: from one established unit cell, generate several crystal morphologies, mathematically and computationally. Method, live shape explorer, results for four MOFs, and the comparison with experiment.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/academic.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="learn_shape.html">Learn</a>
+      <a href="morph_math.html">Maths</a>
+      <a href="morphology.html" aria-current="page">Morphology</a>
+      <a href="deform.html">Cell Deform</a>
+      <a href="graph_faces.html">Graph Faces</a>
+      <a href="surface_energy.html">Surface Energy</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Morphology: Crystal Shapes from the Unit Cell</h1>
+    <p class="lead">The panel's second question: from one established unit cell, generate several crystal morphologies, mathematically and computationally. Method, live shape explorer, results for four MOFs, and the comparison with experiment.</p>
+<div class="place"><b>Step 9 of 12</b> &middot; next: <a href="deform.html">Cell Deform</a></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+      <h2 class="section-title" id="morph-question" data-toc="The panel's second question"><span class="stitle-num">1</span>The Panel's Second Question</h2>
+      <p class="section-sub">After Panel Review 1 the panel set a new task, written by hand: <i>&ldquo;We have a MOF (established) with a specified unit cell dimension which gives a unit cell structure. Is it possible to generate at least a few morphologies from the given unit cell structure?&rdquo;</i> They added that the result is known chemically, since laboratories grow the same MOF in different shapes, but that a mathematical and computational demonstration is missing. This page reports Phase 1 of that work.</p>
+
+      <div class="callout" data-kind="What &ldquo;morphology&rdquo; means here">
+        The word shape is used at three length scales in MOF science: the shape of one building unit
+        (the Zn<sub>4</sub>O core of MOF-5 is a tetrahedron, about 0.3&nbsp;nm), the shape of the net
+        inside one unit cell (about 2.6&nbsp;nm for MOF-5), and the outer shape of the whole crystal
+        particle (100&nbsp;nm to millimetres). The panel's question concerns the third. A crystal contains
+        billions of identical unit cells, and the same unit cell can be stacked into an octahedron, a
+        cube, a plate or a rod. Which one forms depends on how fast each crystal face grows.
+      </div>
+
+      <div class="callout warn" data-kind="How this relates to the rest of the site">
+        The earlier pages report the multifractal descriptor work, whose central result is negative: the
+        spectrum width &Delta;&alpha; grows with system size and is withdrawn as a material property
+        (<a href="results.html">Results</a>). The periodic quotient graph, the coordination numbers and the
+        decomposition built for that work are reused below. The multifractal spectrum is not.
+      </div>
+
+      <h2 class="section-title" id="morph-method" data-toc="From unit cell to shape"><span class="stitle-num">2</span>From Unit Cell to Crystal Shape: the Method</h2>
+      <p class="section-sub">Four steps, each with a stated rule. Every concept is taught from scratch on the <a href="learn_shape.html">Learn</a> page, and every rule is proved on the <a href="morph_math.html">Mathematics</a> page.</p>
+
+      <h3 class="sub-head">1. Find the true symmetry</h3>
+      <p class="sd">All four CIF files are stored in space group P1, with no symmetry written. The space group is found with spglib, with and without hydrogen atoms and at tolerances from 0.001 to 0.1&nbsp;&Aring;, and the structure is converted to its conventional cell. The result is in the table in the results section below.</p>
+
+      <h3 class="sub-head">2. Decide which faces can exist</h3>
+      <p class="sd">A family of planes (<i>hkl</i>) is <b>systematically absent</b> when the space group contains an operation (<i>R</i>, <b>t</b>) with <b>h</b><i>R</i> = <b>h</b> and <b>h</b>&middot;<b>t</b> not an integer. For a centred lattice this gives: F-centred, <i>h</i>, <i>k</i>, <i>l</i> all even or all odd; I-centred, <i>h</i>&nbsp;+&nbsp;<i>k</i>&nbsp;+&nbsp;<i>l</i> even. When (<i>hkl</i>) is absent the true repeat distance is that of the first allowed multiple <i>n</i>(<i>hkl</i>), so the <b>effective spacing</b> is <i>d</i><sub>eff</sub> = <i>d<sub>hkl</sub></i>/<i>n</i>, with <i>d<sub>hkl</sub></i> = <i>a</i>/&radic;(<i>h</i>&sup2;+<i>k</i>&sup2;+<i>l</i>&sup2;) for a cubic cell.</p>
+
+      <h3 class="sub-head">3. Build the shape as a polytope</h3>
+      <p class="sd">A crystal whose faces move outward at normal growth rates <i>R<sub>f</sub></i> ends up as the convex polytope <i>P</i> = {<b>x</b> : <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i> for every face <i>f</i>}. Fast faces grow themselves out of existence, so the crystal is bounded by its slowest faces. The same construction serves three growth-rate models: <b>BFDH</b> (<i>R</i> &prop; 1/<i>d</i><sub>eff</sub>, from the lattice alone), <b>Wulff</b> (<i>R</i> &prop; surface energy, Phase 4), and the <b>graph rule</b> below.</p>
+
+      <h3 class="sub-head">4. Measure the shape</h3>
+      <p class="sd">Each shape is reduced to numbers: face and vertex counts, sphericity &Psi; = &pi;<sup>1/3</sup>(6<i>V</i>)<sup>2/3</sup>/<i>A</i>, the asphericity &kappa;&sup2; of the gyration tensor, and the face-normal order parameters <i>Q<sub>l</sub></i>, computed from the area fractions <i>w</i> and unit normals of the faces as <i>Q<sub>l</sub></i>&sup2; = &Sigma;<sub><i>ij</i></sub> <i>w<sub>i</sub>w<sub>j</sub>P<sub>l</sub></i>(<b>n</b><sub><i>i</i></sub>&middot;<b>n</b><sub><i>j</i></sub>).</p>
+
+      <div class="callout warn" data-kind="Why not &kappa;&sup2; alone">
+        Any body with the symmetry of a cube or a tetrahedron has a gyration tensor proportional to the
+        identity, so &kappa;&sup2; = 0 for the cube, the octahedron, the tetrahedron and the sphere alike.
+        <i>Q</i><sub>4</sub> and <i>Q</i><sub>6</sub> separate the cube from the octahedron, and the odd
+        <i>Q</i><sub>3</sub> is non-zero only for shapes without an inversion centre, such as the
+        tetrahedron. &kappa;&sup2; remains the right measure for plates and rods.
+      </div>
+
+      <h2 class="section-title" id="morph-explorer" data-toc="Shape explorer"><span class="stitle-num">3</span>Shape Explorer: One Unit Cell, Many Morphologies</h2>
+      <p class="section-sub">Choose a structure and move the growth-rate sliders. The shape, its name and every number beside it are recomputed in your browser by <code>mof_morphology.js</code>, an implementation written independently of the Python package and checked against it by <code>tests/test_morphology.js</code>. Drag the shape to rotate it.</p>
+
+      <div class="panel" id="morph-explorer-panel">
+        <div class="toolbar" id="morph-structs"><span class="lbl">Structure</span></div>
+        <div class="toolbar" id="morph-presets"><span class="lbl">Start from</span></div>
+        <div id="morph-sliders"></div>
+        <div id="morph-view"></div>
+        <div id="morph-readout"></div>
+      </div>
+
+      <h2 class="section-title" id="morph-results" data-toc="Results for four MOFs"><span class="stitle-num">4</span>Results for the Four Demonstration MOFs</h2>
+      <p class="section-sub">The symmetry column comes from spglib (Python). Every other number in the two tables below is computed when this page loads.</p>
+
+      <div class="panel"><div id="morph-bfdh-table"></div></div>
+
+      <div class="callout warn" data-kind="Symmetry, stated with its limits">
+        <b>ZIF-8:</b> with hydrogen atoms included, spglib finds only P1, because the hydrogen positions in
+        our file break the symmetry; the framework without hydrogen is I-43m, the accepted space group,
+        and that is used. <b>UiO-66:</b> our file orders the &mu;<sub>3</sub>-O and &mu;<sub>3</sub>-OH
+        groups, which gives F-43m without an inversion centre. The averaged structure in the literature is
+        Fm-3m. Both are F-centred, so the allowed faces and the BFDH shape are the same; only the
+        tetrahedral result below depends on the difference.
+      </div>
+
+      <h3 class="sub-head">The named shapes appear at exact thresholds</h3>
+      <p class="sd">With only {100} faces at distance 1 and {111} faces at distance <i>t</i>, direct geometry gives a cube for <i>t</i> &ge; &radic;3, a cuboctahedron at <i>t</i> = 2/&radic;3 and an octahedron for <i>t</i> &le; 1/&radic;3, with the truncated cube and the truncated octahedron in between. The table checks this numerically.</p>
+      <div class="panel"><div id="morph-threshold-table"></div></div>
+
+      <figure class="fig wide">
+        <img src="figures/morph/MOF-5_morph.png" alt="Six crystal shapes from the MOF-5 unit cell as the growth-rate ratio of the 111 to the 100 faces falls from 3 to 0.57: cube, truncated cube, cuboctahedron, two truncated octahedra and an octahedron. Blue faces are 100, red faces are 111.">
+        <figcaption>MOF-5: one unit cell, the growth-rate ratio <i>R</i><sub>111</sub>/<i>R</i><sub>100</sub> varied. HKUST-1 and UiO-66 give the same family, because all three are F-centred cubic. Generated by <code>2_python/morphology/run_phase1.py</code>.</figcaption>
+      </figure>
+
+      <figure class="fig wide">
+        <img src="figures/morph/ZIF-8_morph.png" alt="Six ZIF-8 crystal shapes as the growth-rate ratio of the 110 to the 100 faces falls from 3 to 0.57: cube, cube, two truncated rhombic dodecahedra (chamfered cubes) and a rhombic dodecahedron. Blue faces are 100, green faces are 110.">
+        <figcaption>ZIF-8: one unit cell, <i>R</i><sub>110</sub>/<i>R</i><sub>100</sub> varied, from cube to rhombic dodecahedron.</figcaption>
+      </figure>
+
+      <h3 class="sub-head">A tetrahedral morphology, allowed by the ordered UiO-66 structure</h3>
+      <p class="sd">In point group -43m the eight {111} faces split into two sets of four that no symmetry relates, so they may grow at different rates. Slowing one set gives a truncated tetrahedron and then a tetrahedron. The panel mentioned tetrahedral shapes specifically.</p>
+      <figure class="fig wide">
+        <img src="figures/morph/UiO-66_tetrahedral.png" alt="Six UiO-66 shapes as one half of the 111 faces is slowed: truncated octahedron, two tetrahedrally distorted truncated octahedra, two truncated tetrahedra and a tetrahedron.">
+        <figcaption>UiO-66 (F-43m): the ratio <i>R</i><sub>111+</sub>/<i>R</i><sub>111&minus;</sub> varied with <i>R</i><sub>100</sub> = 1.155. Light red marks the {111}&minus; half.</figcaption>
+      </figure>
+      <div class="callout warn" data-kind="Not a prediction">
+        This follows from the symmetry of our file. In the averaged Fm-3m structure the two halves are
+        equivalent and a tetrahedron is forbidden by symmetry. It is reported as a shape the ordered
+        structure allows, not as a claim that UiO-66 grows as tetrahedra.
+      </div>
+
+      <h2 class="section-title" id="morph-graph" data-toc="The graph rule"><span class="stitle-num">5</span>The Graph Rule: Counting Links Selects the Shape</h2>
+      <p class="section-sub">BFDH uses the lattice alone, so it gives the same truncated octahedron for MOF-5, HKUST-1 and UiO-66. The framework's connectivity distinguishes them.</p>
+      <p class="sd">The <b>attachment number</b> <i>c<sub>hkl</sub></i> is the largest number of links a node in the next layer forms with the crystal below a plane parallel to (<i>hkl</i>). A node that forms more links is held more firmly, so that face grows faster. We set <i>R</i> = e<sup>&beta;<i>c</i></sup>, where &beta; plays the role of link energy divided by <i>kT</i>. Chen <i>et al.</i> used this counting argument for UiO-67 (Matter 2020), stating 5, 4 and 3 links on (110), (100) and (111).</p>
+      <div class="panel"><div id="morph-attach-table"></div></div>
+      <figure class="fig wide">
+        <img src="figures/morph/attach.png" alt="Six panels of node nets. Top row, the pcu net of MOF-5: a new node on the 100 face forms 1 bond, on 110 forms 2, on 111 forms 3. Bottom row, the fcu net of UiO-66: 3 bonds on 111, 4 on 100, 5 on 110.">
+        <figcaption>A new node (red) arriving on each face, and the links it can form at once. Top: pcu (MOF-5). Bottom: fcu (UiO-66/67).</figcaption>
+      </figure>
+      <figure class="fig wide">
+        <img src="figures/morph/UiO-66_growth_in_time.png" alt="A UiO-66 crystal grown from a spherical seed: a ball, then truncated octahedra with shrinking 100 faces, then an octahedron.">
+        <figcaption>UiO-66 grown from a spherical seed with graph-rule rates (&beta; = 0.6). The rough surface disappears first, then the fast {100} faces shrink until only {111} remains. Chen <i>et al.</i> observed the sequence ball, cuboctahedron, octahedron for UiO-67, with cuboctahedra after 1.5&nbsp;h and octahedra after one day.</figcaption>
+      </figure>
+      <div class="callout good" data-kind="The result">
+        The same mathematics, given each framework's connectivity, gives a <b>cube for MOF-5</b> and an
+        <b>octahedron for UiO-66</b>, the shapes most often reported, where the lattice-only BFDH rule gives
+        the same truncated octahedron for both. This is the clearest evidence so far that the periodic
+        graph adds information that the lattice alone does not carry.
+      </div>
+      <div class="callout warn" data-kind="Limits of the rule">
+        The rule uses ideal node nets and counts every link as equal. For the sod net of ZIF-8 a single
+        node forms one or two links on every face, so the count does not separate the faces, although
+        BFDH and experiment both give a rhombic dodecahedron. HKUST-1 (tbo) has two kinds of node and
+        needs a two-type count. Phase 3 resolves both by counting whole slices of the real nets: see the <a href="graph_faces.html">Graph Faces</a> page, where ZIF-8 correctly comes out as a rhombic dodecahedron.
+      </div>
+
+      <h2 class="section-title" id="morph-evidence" data-toc="Against experiment"><span class="stitle-num">6</span>Against Experiment and Prior Work</h2>
+      <p class="section-sub">Published experimental shapes for each structure, and whether our family contains them. Items marked &ldquo;checked&rdquo; were verified against the paper or its supplementary information; the others still need checking before they are cited.</p>
+      <table class="data-table">
+        <thead><tr><td>Structure</td><td>Reported shapes and conditions</td><td>Source</td><td>In our family?</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">MOF-5</td><td class="dt-note">Cubes as synthesised; octahedra grown by changing the Zn : H<sub>2</sub>bdc ratio (AFM)</td><td class="dt-note">Cubillas, Anderson, Attfield, <i>Chem. Eur. J.</i> <b>18</b>, 15406 (2012), checked</td><td class="dt-value">Yes, both end points; cube is the graph-rule shape</td></tr>
+          <tr><td class="dt-label">HKUST-1</td><td class="dt-note">Cube, then cuboctahedron, then octahedron as added salt concentration rises</td><td class="dt-note">Liu, Yang, Jin, Sun, <i>CrystEngComm</i> <b>18</b>, 4127 (2016), checked</td><td class="dt-value">Yes, the whole family</td></tr>
+          <tr><td class="dt-label">UiO-66 / UiO-67</td><td class="dt-note">Octahedra (halide-assisted); ball, cuboctahedron, octahedron for Hf-UiO-67 over time</td><td class="dt-note">Ceballos <i>et al.</i>, <i>Nanoscale</i> (2022), checked; Chen <i>et al.</i>, <i>Matter</i> <b>2</b>, 1651 (2020), read in full</td><td class="dt-value">Yes; octahedron is the graph-rule shape</td></tr>
+          <tr><td class="dt-label">ZIF-8</td><td class="dt-note">Cube, truncated rhombic dodecahedron, rhombic dodecahedron as CTAB changes the {100} : {110} ratio</td><td class="dt-note">Liu <i>et al.</i>, <i>Nano Lett.</i> <b>20</b>, 1774 (2020), checked; Pan <i>et al.</i>, <i>CrystEngComm</i> (2011), checked</td><td class="dt-value">Yes, the whole family</td></tr>
+        </tbody>
+      </table>
+      <p class="sd"><b>Prior work.</b> A literature search found one direct precedent: Pan <i>et al.</i> (2011) predicted ZIF-8 shapes from attachment energies in Materials Studio. Single-facet surface energies exist for ZIF-8 and HKUST-1, and Liu <i>et al.</i> (2020) explained the ZIF-8 cube to dodecahedron switch by the different coordination of Zn on the two facets. The search did not find BFDH applied across several MOFs, shape families measured with descriptors across several MOFs, link counting across several nets, or a link from the periodic graph to the Hartman&ndash;Perdok face classes. That is a search result, not proof of novelty; a Scopus or Google Scholar check is still to be done.</p>
+
+      <h2 class="section-title" id="morph-limits" data-toc="Limits and next steps"><span class="stitle-num">7</span>Limits and Next Steps</h2>
+      <ul class="sd">
+        <li>The morph families vary growth rates by hand. Phase 1 shows which shapes a unit cell <b>allows</b>, not which one a given synthesis produces.</li>
+        <li>Non-convex shapes (concave and hollow octahedra) and the shapes of a different phase (the Hf<sub>12</sub> nanoplates of Chen <i>et al.</i>) are outside the polytope model.</li>
+        <li>Plates and rods of a cubic phase need an external cause that breaks the symmetry, such as a surfactant or a substrate, and are not included.</li>
+      </ul>
+      <table class="data-table">
+        <thead><tr><td>Phase</td><td>Content</td><td>State</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">0</td><td class="dt-note">Primer, literature search, experimental shape references</td><td class="dt-note" style="color:var(--good)">Done</td></tr>
+          <tr><td class="dt-label">1</td><td class="dt-note">Unit cell to symmetry, allowed faces, BFDH shape, morph families, descriptors; 14 validation checks</td><td class="dt-note" style="color:var(--good)">Done</td></tr>
+          <tr><td class="dt-label">2</td><td class="dt-note">Mathematical write-up: the absence rule, the polytope and its symmetry, continuity of the morph, the exact thresholds, the &kappa;&sup2; result, the graph propositions</td><td class="dt-note" style="color:var(--good)">Done: <a href="morph_math.html">Mathematics</a></td></tr>
+          <tr><td class="dt-label">3</td><td class="dt-note">Nets from the CIFs, attachment numbers and broken-bond energies for all four nets, Hartman&ndash;Perdok F/S/K classes from slice periodicity rank</td><td class="dt-note" style="color:var(--good)">Done: <a href="graph_faces.html">Graph Faces</a></td></tr>
+          <tr><td class="dt-label">4</td><td class="dt-note">Force-field (UFF) surface energies of the leading faces and Wulff shapes</td><td class="dt-note">Not started</td></tr>
+          <tr><td class="dt-label">5&ndash;6</td><td class="dt-note">Cross-check against an independent tool; final paper</td><td class="dt-note">Not started</td></tr>
+        </tbody>
+      </table>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="morph_math.html"><div class="dir">&larr; Previous</div><div class="ttl">Phase 2: The Mathematics of Crystal Shape</div></a><a class="next" href="deform.html"><div class="dir">Next &rarr;</div><div class="ttl">Changing the Unit Cell: Plates, Crystals and Rods</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>2_python/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
+<script src="assets/site.js"></script>
+<script src="mof_morphology.js"></script>
+<script src="morphology_page.js"></script>
+</body>
+</html>

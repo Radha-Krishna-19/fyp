@@ -11,7 +11,7 @@ let fails = 0;
 const ok = (c, m) => { console.log((c ? 'PASS  ' : 'FAIL  ') + m); if (!c) fails++; };
 
 const PAGES = ['index.html', 'methodology.html', 'decomposition.html', 'network.html',
-               'spectrum.html', 'results.html', 'code.html', 'references.html',
+               'spectrum.html', 'results.html', 'learn_shape.html', 'morph_math.html', 'morphology.html', 'deform.html', 'graph_faces.html', 'surface_energy.html', 'code.html', 'references.html',
                'glossary.html', 'team.html'];
 
 // ---- 1. static structure, every page ----------------------------------

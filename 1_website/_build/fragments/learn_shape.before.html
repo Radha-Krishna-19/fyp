@@ -1,0 +1,192 @@
+      <h2 class="section-title" id="learn-start" data-toc="How to use this page"><span class="stitle-num">0</span>How to Use This Page</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Nothing about crystals is assumed. Basic school geometry and vectors are enough.</dd><dt>This page</dt><dd class="now">Teaches, in order, every idea needed to follow the morphology work: what a crystal is, how its planes are named, how symmetry forbids some planes, how a crystal gets its outer shape, how shape is measured, and how a periodic graph describes faces.</dd><dt>Which lets us</dt><dd>Read the <a href="morph_math.html">Mathematics</a>, <a href="morphology.html">Morphology</a> and <a href="graph_faces.html">Graph Faces</a> pages, where these ideas are used.</dd></dl>
+      <p class="section-sub">Read the sections in order: each one uses only ideas from the sections above it. Every idea has a picture. All the pictures on this page were computed by the project's own code, and the shapes are exact.</p>
+      <figure class="fig wide">
+        <img src="figures/learn/pipeline.png" alt="Flow chart of the morphology pipeline. Stage 1, pure geometry: CIF file, symmetry, allowed faces, BFDH polytope, morph family, shape numbers. Stage 2, graph layer: periodic graph, F/S/K classes and broken links. Stage 3, chemistry: force-field slab energies and Wulff shape. Stage 4: validation.">
+        <figcaption>The whole morphology pipeline at a glance. Stage 1 (blue) is Phase 1, Stage 2 (green) is Phase 3, Stage 3 (red) is future work, and Stage 4 checks everything.</figcaption>
+      </figure>
+
+      <h2 class="section-title" id="learn-shape" data-toc="Three meanings of shape"><span class="stitle-num">0</span>Three Meanings of &ldquo;Shape&rdquo;, and What a MOF Is</h2>
+      <dl class="bridge"><dt>You know</dt><dd>That a MOF is a porous crystal (see the <a href="index.html">Overview</a>).</dd><dt>This section</dt><dd class="now">Separates the three length scales at which people talk about the shape of a MOF, and introduces the four test structures.</dd><dt>Which lets us</dt><dd>State the panel's question precisely: it is about the outer shape of the whole crystal.</dd></dl>
+      <p class="sd">A <b>metal&ndash;organic framework</b> is built from <b>nodes</b> (small clusters of metal and oxygen atoms) joined by <b>linkers</b> (rigid organic molecules). The pattern repeats in three dimensions and leaves large empty pores. The word &ldquo;shape&rdquo; is used at three very different scales:</p>
+      <figure class="fig wide">
+        <img src="figures/learn/levels.png" alt="Three panels. (a) A tetrahedron: the Zn4O core of MOF-5, about 0.3 nanometres. (b) A cubic grid of nodes and links: the framework inside one unit cell, about 2.6 nanometres. (c) A red octahedron: the outer shape of a whole crystal, 100 nanometres to millimetres.">
+        <figcaption>(a) The shape of one building unit. (b) The shape of the network inside one unit cell. (c) The outer shape of the whole crystal, called its <b>morphology</b> or <b>habit</b>. The panel's question is about (c), starting from (b).</figcaption>
+      </figure>
+      <div class="callout" data-kind="Key idea">
+        One crystal contains billions of identical unit cells. The same unit cell can be stacked into an
+        octahedron, a cube, a plate or a rod. Which shape appears depends on how fast each flat face of the
+        crystal grows.
+      </div>
+      <figure class="fig wide">
+        <img src="figures/learn/mofs.png" alt="Unit cells of MOF-5, HKUST-1, UiO-66 and ZIF-8 viewed down one axis, with metal atoms as large dots and the pores as empty regions.">
+        <figcaption>The four test structures used throughout, drawn from the project's CIF files. Large dots are metal atoms; the empty regions are the pores.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><td>MOF</td><td>Node</td><td>Linker</td><td>Net</td><td>Lattice type</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">MOF-5</td><td class="dt-note">Zn<sub>4</sub>O cluster (tetrahedral core)</td><td class="dt-note">BDC (two-ended)</td><td class="dt-note">pcu</td><td class="dt-note">F-centred cubic</td></tr>
+          <tr><td class="dt-label">HKUST-1</td><td class="dt-note">Cu<sub>2</sub> paddlewheel (square)</td><td class="dt-note">BTC (three-ended)</td><td class="dt-note">tbo</td><td class="dt-note">F-centred cubic</td></tr>
+          <tr><td class="dt-label">UiO-66</td><td class="dt-note">Zr<sub>6</sub> cluster (octahedral)</td><td class="dt-note">BDC</td><td class="dt-note">fcu</td><td class="dt-note">F-centred cubic</td></tr>
+          <tr><td class="dt-label">ZIF-8</td><td class="dt-note">single Zn atom (tetrahedral)</td><td class="dt-note">2-methylimidazolate</td><td class="dt-note">sod</td><td class="dt-note">I-centred cubic</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-title" id="learn-lattice" data-toc="Lattices and unit cells"><span class="stitle-num">0</span>Lattices and Unit Cells</h2>
+      <dl class="bridge"><dt>You know</dt><dd>That a crystal repeats.</dd><dt>This section</dt><dd class="now">Defines the lattice, the unit cell, fractional coordinates, and the difference between a primitive and a conventional cell.</dd><dt>Which lets us</dt><dd>Read a CIF file and convert it to the cell in which crystal faces are named.</dd></dl>
+      <p class="sd">A <b>lattice</b> is the set of all points <b>r</b> = <i>u</i><b>a</b> + <i>v</i><b>b</b> + <i>w</i><b>c</b> with whole numbers <i>u</i>, <i>v</i>, <i>w</i>. The three vectors <b>a</b>, <b>b</b>, <b>c</b> are the <b>lattice vectors</b>, and the box they span is a <b>unit cell</b>. The atoms inside one cell are the <b>basis</b>; copying the basis to every lattice point rebuilds the whole crystal. A cell is described by six numbers, the lengths <i>a</i>, <i>b</i>, <i>c</i> and the angles &alpha;, &beta;, &gamma;. These are the &ldquo;unit cell dimensions&rdquo; in the panel's question.</p>
+      <p class="sd">Positions inside the cell are written as <b>fractional coordinates</b> (<i>x</i>, <i>y</i>, <i>z</i>), meaning <b>r</b> = <i>x</i><b>a</b> + <i>y</i><b>b</b> + <i>z</i><b>c</b> with 0 &le; <i>x</i>, <i>y</i>, <i>z</i> &lt; 1. CIF files store atoms this way.</p>
+      <figure class="fig">
+        <img src="figures/learn/lattice2d.png" alt="A two-dimensional lattice with a blue rectangular conventional cell containing an extra centre point, and a red rhombus-shaped primitive cell containing one lattice point.">
+        <figcaption>The same 2D crystal described by two unit cells. The blue <b>conventional</b> cell shows the symmetry and has an extra point at its centre (called <b>centring</b>). The red <b>primitive</b> cell holds exactly one lattice point but hides the symmetry.</figcaption>
+      </figure>
+      <div class="callout warn" data-kind="Our files">
+        The HKUST-1 and UiO-66 CIFs store the primitive cell: 18.59&nbsp;&Aring; and 14.51&nbsp;&Aring; with
+        60&deg; angles. They look non-cubic, but both crystals are cubic. Their conventional cubic cells are
+        26.30&nbsp;&Aring; and 20.52&nbsp;&Aring; (<i>a</i><sub>conv</sub> = &radic;2&nbsp;<i>a</i><sub>prim</sub>
+        for an F-centred lattice). Faces must always be named in the conventional cell.
+      </div>
+      <p class="sd">Put the lattice vectors as the rows of a 3&times;3 matrix <i>L</i>. The <b>metric tensor</b> collects all their dot products:</p>
+      <div class="eq"><span class="ex"><i>G</i> = <i>L</i>&#8239;<i>L</i><sup>T</sup>,&nbsp;&nbsp;&nbsp; |<b>r</b>|<sup>2</sup> = <b>u</b><sup>T</sup><i>G</i>&#8239;<b>u</b></span><span class="tag">(1)</span></div>
+      <div class="where"><p class="lead">where</p><dl><dt><i>L</i></dt><dd>matrix whose rows are <b>a</b>, <b>b</b>, <b>c</b></dd><dt><b>u</b></dt><dd>the fractional coordinates of a lattice vector <b>r</b></dd><dt><i>G</i></dt><dd>the metric tensor; for a cubic cell <i>G</i> = <i>a</i>&sup2;<i>I</i></dd></dl></div>
+
+      <h2 class="section-title" id="learn-planes" data-toc="Planes and Miller indices"><span class="stitle-num">0</span>Crystal Planes, Miller Indices and Spacing</h2>
+      <dl class="bridge"><dt>You know</dt><dd>The lattice and the unit cell.</dd><dt>This section</dt><dd class="now">Names families of parallel planes, and computes how far apart they are.</dd><dt>Which lets us</dt><dd>Name the faces of a crystal, because every flat face is parallel to one family of lattice planes.</dd></dl>
+      <p class="sd">A plane that cuts the three axes at <b>a</b>/<i>h</i>, <b>b</b>/<i>k</i> and <b>c</b>/<i>l</i> has <b>Miller indices</b> (<i>hkl</i>), reduced to have no common factor. A zero means the plane is parallel to that axis; a negative index is written with a bar, (1&#773;10). Curly brackets name a whole symmetry family: {100} means all six cube faces.</p>
+      <figure class="fig wide">
+        <img src="figures/learn/miller.png" alt="Three cubes. Left, the 100 plane: one face of the cube. Middle, the 110 plane: a diagonal plane through two opposite edges. Right, the 111 plane: a triangle cutting all three axes at the same distance.">
+        <figcaption>The three most important plane families in a cubic crystal.</figcaption>
+      </figure>
+      <div class="callout" data-kind="Key idea">
+        A cube is bounded by the six {100} planes, an octahedron by the eight {111} planes, and a rhombic
+        dodecahedron by the twelve {110} planes. Naming the faces that survive is naming the shape.
+      </div>
+      <p class="sd">A family (<i>hkl</i>) is a stack of equally spaced planes. Their spacing <i>d<sub>hkl</sub></i> shrinks as the indices grow:</p>
+      <figure class="fig wide">
+        <img src="figures/learn/dspacing.png" alt="Three square lattices with families of lines: 10 lines spaced a apart, 11 lines spaced 0.707 a apart, 21 lines spaced 0.447 a apart.">
+        <figcaption>Plane families in a square lattice. The red arrow is the spacing <i>d</i>.</figcaption>
+      </figure>
+      <p class="sd">The general formula uses the <b>reciprocal lattice</b>. Let <i>B</i> = (<i>L</i><sup>&minus;1</sup>)<sup>T</sup>; its rows <b>a</b>*, <b>b</b>*, <b>c</b>* satisfy <b>a</b>&middot;<b>a</b>* = 1, <b>a</b>&middot;<b>b</b>* = 0 and so on. The vector <b>g</b><sub><i>hkl</i></sub> = <i>h</i><b>a</b>* + <i>k</i><b>b</b>* + <i>l</i><b>c</b>* is perpendicular to the planes, and</p>
+      <div class="eq"><span class="ex">1 / <i>d<sub>hkl</sub></i><sup>2</sup> = |<b>g</b><sub><i>hkl</i></sub>|<sup>2</sup> = <b>h</b><sup>T</sup><i>G</i><sup>&minus;1</sup><b>h</b>,&nbsp;&nbsp;&nbsp; cubic: <i>d<sub>hkl</sub></i> = <i>a</i> / &radic;(<i>h</i><sup>2</sup> + <i>k</i><sup>2</sup> + <i>l</i><sup>2</sup>)</span><span class="tag">(2)</span></div>
+      <div class="worked"><b>Worked example.</b> MOF-5 has <i>a</i> = 25.866&nbsp;&Aring;. Then <i>d</i><sub>111</sub> = 25.866/&radic;3 = 14.93&nbsp;&Aring;, <i>d</i><sub>200</sub> = 25.866/2 = 12.93&nbsp;&Aring; and <i>d</i><sub>220</sub> = 25.866/&radic;8 = 9.15&nbsp;&Aring;.</div>
+
+      <h2 class="section-title" id="learn-symmetry" data-toc="Symmetry and forbidden faces"><span class="stitle-num">0</span>Symmetry, and Why Some Faces Cannot Exist</h2>
+      <dl class="bridge"><dt>You know</dt><dd>How to name planes and compute their spacing.</dd><dt>This section</dt><dd class="now">Explains symmetry operations and space groups, and proves the rule that forbids some plane families.</dd><dt>Which lets us</dt><dd>Compute the true spacing of each face, which sets how fast it grows in the simplest model.</dd></dl>
+      <p class="sd">A <b>symmetry operation</b> maps the crystal onto itself. In fractional coordinates it always has the form <b>x</b> &rarr; <i>R</i><b>x</b> + <b>t</b>, where <i>R</i> is a rotation, reflection or inversion (an integer matrix) and <b>t</b> a translation. Pure fractional translations are called <b>centring</b>: F-centring adds (0,&nbsp;&frac12;,&nbsp;&frac12;), (&frac12;,&nbsp;0,&nbsp;&frac12;), (&frac12;,&nbsp;&frac12;,&nbsp;0); I-centring adds (&frac12;,&nbsp;&frac12;,&nbsp;&frac12;). The full set of operations is the crystal's <b>space group</b>; there are 230, with names such as Fm-3m (number 225), whose first letter gives the centring.</p>
+      <p class="sd">Centring places identical planes halfway between the planes of a family. Waves scattered from the two sets cancel exactly, so the family is <b>systematically absent</b> and the true repeat distance is half the naive one. The general rule is proved on the <a href="morph_math.html#math-absence">Mathematics page</a>:</p>
+      <div class="eq"><span class="ex">(<i>hkl</i>) is absent if some operation has <b>h</b><i>R</i> = <b>h</b> and <b>h</b>&middot;<b>t</b> is not a whole number</span><span class="tag">(3)</span></div>
+      <p class="sd">For centring alone this gives: <b>F-centred</b>, <i>h</i>, <i>k</i>, <i>l</i> all even or all odd; <b>I-centred</b>, <i>h</i> + <i>k</i> + <i>l</i> even. If (<i>hkl</i>) is absent and <i>n</i>(<i>hkl</i>) is its first allowed multiple, the <b>effective spacing</b> is <i>d</i><sub>eff</sub> = <i>d<sub>hkl</sub></i>/<i>n</i>.</p>
+      <figure class="fig wide">
+        <img src="figures/learn/absences.png" alt="Left: blue planes with red dashed identical planes halfway between them, showing that the true spacing is a/2. Right: a bar chart of d over a for families 100 to 222 in primitive, I-centred and F-centred cubic lattices, with zero bars for forbidden families.">
+        <figcaption>Left: centring halves the true spacing of (100). Right: which families survive in primitive (P), body-centred (I, ZIF-8) and face-centred (F, MOF-5, HKUST-1, UiO-66) cubic lattices.</figcaption>
+      </figure>
+      <div class="callout warn" data-kind="Our files">
+        All four CIFs are stored in space group P1, with no symmetry written. The project finds the true
+        group with the spglib library: MOF-5 and HKUST-1 Fm-3m, UiO-66 F-43m, ZIF-8 I-43m. For ZIF-8 the
+        hydrogen positions in the file break the symmetry, so it is found only with the hydrogens removed.
+      </div>
+
+      <h2 class="section-title" id="learn-growth" data-toc="How a crystal grows"><span class="stitle-num">0</span>How a Crystal Gets Its Shape: the Slowest Faces Win</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Which faces a crystal can have.</dd><dt>This section</dt><dd class="now">Shows why a growing crystal ends up bounded by its slowest-growing faces, and turns that into one formula for the shape.</dd><dt>Which lets us</dt><dd>Predict a shape from any estimate of the face growth rates.</dd></dl>
+      <p class="sd">Each face moves outward at its own <b>normal growth rate</b> <i>R<sub>f</sub></i>. In the simulation below a crystal starts with four slow faces and four fast ones:</p>
+      <figure class="fig wide">
+        <img src="figures/learn/growth.png" alt="Four snapshots of a growing 2D crystal. At time 0 it is an octagon; by time 4 it is a square, because the fast diagonal faces have disappeared.">
+        <figcaption>Blue faces grow slowly (rate 0.5), red faces fast (rate 1.2). The fast faces shrink and vanish.</figcaption>
+      </figure>
+      <p class="sd">After long growth, the distance of each face from the centre is proportional to its rate, so the crystal is the region</p>
+      <div class="eq"><span class="ex"><i>P</i> = { <b>x</b> : <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i> for every face <i>f</i> }</span><span class="tag">(4)</span></div>
+      <div class="where"><p class="lead">where</p><dl><dt><b>n</b><sub><i>f</i></sub></dt><dd>unit vector perpendicular to face <i>f</i> (the direction of <b>g</b><sub><i>hkl</i></sub>)</dd><dt><i>R<sub>f</sub></i></dt><dd>growth rate of face <i>f</i>, used as its distance from the centre</dd><dt><i>P</i></dt><dd>the crystal shape: an intersection of half-spaces, always a convex polyhedron (a <b>polytope</b>)</dd></dl></div>
+      <div class="callout" data-kind="Key idea">
+        Every shape model in this project uses formula (4). They differ only in how the numbers
+        <i>R<sub>f</sub></i> are estimated: from the lattice (BFDH), from surface energies (Wulff), or from
+        the periodic graph (Phase 3).
+      </div>
+
+      <h2 class="section-title" id="learn-bfdh" data-toc="BFDH: shape from the lattice"><span class="stitle-num">0</span>BFDH: Shape from the Unit Cell Alone</h2>
+      <dl class="bridge"><dt>You know</dt><dd>That shape follows from the growth rates.</dd><dt>This section</dt><dd class="now">Gives the oldest rule for the rates, which uses only the lattice and the space group.</dd><dt>Which lets us</dt><dd>Answer the panel's question with the exact input they specified.</dd></dl>
+      <p class="sd">The rule named after Bravais, Friedel, Donnay and Harker says that widely spaced planes are densely packed and strongly bonded within themselves, so they grow slowly:</p>
+      <div class="eq"><span class="ex"><i>R<sub>hkl</sub></i> &prop; 1 / <i>d</i><sub>eff</sub>(<i>hkl</i>)</span><span class="tag">(5)</span></div>
+      <figure class="fig">
+        <img src="figures/learn/bfdh_FI.png" alt="Left: a red octahedron truncated by small blue cube faces, the BFDH shape for F-centred cubic crystals. Right: a green rhombic dodecahedron with twelve faces, the BFDH shape for I-centred cubic crystals.">
+        <figcaption>BFDH shapes. F-centred cubic (MOF-5, HKUST-1, UiO-66): octahedron truncated by small cube faces. I-centred cubic (ZIF-8): rhombic dodecahedron.</figcaption>
+      </figure>
+      <p class="sd">ZIF-8 crystals are indeed rhombic dodecahedra in the laboratory, and HKUST-1 and UiO-66 are usually octahedral. MOF-5, however, is usually reported as cubes, which BFDH does not predict. That gap is where the framework's connectivity matters, as the <a href="graph_faces.html">Graph Faces</a> page shows.</p>
+
+      <h2 class="section-title" id="learn-wulff" data-toc="Wulff and attachment energy"><span class="stitle-num">0</span>Wulff Shape and Attachment Energy: Shape from Energy</h2>
+      <dl class="bridge"><dt>You know</dt><dd>The lattice-only rule and its limits.</dd><dt>This section</dt><dd class="now">Introduces two energy-based rules: the equilibrium (Wulff) shape and the attachment-energy growth shape.</dd><dt>Which lets us</dt><dd>Bring chemistry, or its graph version, into the growth rates.</dd></dl>
+      <p class="sd">The <b>surface energy</b> &gamma;<sub><i>hkl</i></sub> is the energy cost per unit area of creating face (<i>hkl</i>). A crystal at equilibrium minimises its total surface energy for a fixed volume. Wulff's theorem says the winning shape is formula (4) with <i>R<sub>f</sub></i> replaced by &gamma;<sub><i>f</i></sub>:</p>
+      <div class="eq"><span class="ex"><i>W</i> = { <b>x</b> : <b>n</b>&middot;<b>x</b> &le; &gamma;(<b>n</b>) for every direction <b>n</b> }</span><span class="tag">(6)</span></div>
+      <figure class="fig wide">
+        <img src="figures/learn/wulff2d.png" alt="Left: a four-lobed polar plot of surface energy against direction. Right: lines drawn perpendicular to each direction at distance equal to the surface energy; the region inside all lines, shaded red, is the Wulff shape.">
+        <figcaption>The Wulff construction in 2D. Directions with low surface energy become large faces.</figcaption>
+      </figure>
+      <p class="sd">For growth rather than equilibrium, cut the crystal into slices of thickness <i>d<sub>hkl</sub></i>. The energy released when a new slice attaches is the <b>attachment energy</b> <i>E</i><sub>att</sub>; Hartman and Bennema (1980) proposed that the growth rate is proportional to it, <i>R<sub>hkl</sub></i> &prop; <i>E</i><sub>att</sub>. A face that gains little when a slice attaches grows slowly. On a graph, energy can be counted as links, which is exactly what Phase 3 does.</p>
+
+      <h2 class="section-title" id="learn-pbc" data-toc="Bond chains: F, S and K faces"><span class="stitle-num">0</span>Bond Chains: Flat, Stepped and Kinked Faces</h2>
+      <dl class="bridge"><dt>You know</dt><dd>That slow faces survive, and that bonds set the speed.</dd><dt>This section</dt><dd class="now">Explains Hartman&ndash;Perdok theory, which sorts faces into three classes by the chains of strong bonds inside one slice.</dd><dt>Which lets us</dt><dd>Predict which faces can appear at all, from the bond network alone.</dd></dl>
+      <p class="sd">A <b>periodic bond chain</b> (PBC) is an unbroken chain of strong bonds that repeats with a lattice translation. Take the slice of thickness <i>d<sub>hkl</sub></i> parallel to a face and look at the chains inside it:</p>
+      <ul class="sd">
+        <li><b>F face</b> (flat): chains in two or more directions, so the slice is a connected sheet. Growth needs a whole new layer to start, so it is slow. F faces dominate crystal shapes.</li>
+        <li><b>S face</b> (stepped): chains in one direction only. Growth is faster.</li>
+        <li><b>K face</b> (kinked): no chain inside the slice. Every site is a kink, so the face grows fastest and usually disappears.</li>
+      </ul>
+      <figure class="fig wide">
+        <img src="figures/learn/fsk.png" alt="Three cubes of lattice points. Left, the 100 face with a highlighted grid of chains in two directions: an F face. Middle, the 110 face with one highlighted vertical chain: an S face. Right, the 111 face with a single corner point and no chain: a K face.">
+        <figcaption>F, S and K faces in a simple cubic crystal where every edge is a strong bond. This crystal therefore grows as a cube.</figcaption>
+      </figure>
+
+      <h2 class="section-title" id="learn-morph" data-toc="One cell, many shapes"><span class="stitle-num">0</span>One Unit Cell, Many Shapes: the Morph</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Formula (4) and the main families of faces.</dd><dt>This section</dt><dd class="now">Shows that changing one ratio of growth rates moves the shape continuously through the named polyhedra.</dd><dt>Which lets us</dt><dd>Generate &ldquo;a few morphologies from the unit cell&rdquo;, which is the panel's request.</dd></dl>
+      <p class="sd">Put the {100} faces at distance 1 and the {111} faces at distance <i>t</i>. Simple geometry, proved on the <a href="morph_math.html#math-thresholds">Mathematics page</a>, gives a cube for <i>t</i> &ge; &radic;3, a cuboctahedron at <i>t</i> = 2/&radic;3 and an octahedron for <i>t</i> &le; 1/&radic;3, with truncated shapes in between:</p>
+      <figure class="fig wide">
+        <img src="figures/learn/morph_path.png" alt="Five polyhedra from left to right: cube, truncated cube, cuboctahedron, truncated octahedron and octahedron, with blue 100 faces and red 111 faces.">
+        <figcaption>One continuous morph from cube to octahedron. Chemistry (solvent, modulator) chooses where along this path a real crystal sits.</figcaption>
+      </figure>
+      <p class="sd">Plates and rods appear when growth along one axis is slowed or sped up, for example by a molecule that binds to one face:</p>
+      <figure class="fig wide">
+        <img src="figures/learn/rod_plate.png" alt="Five shapes from a flat plate through a truncated octahedron to a long rod, labelled with the stretch factor lambda and asphericity kappa squared.">
+        <figcaption>The same faces with growth along <i>z</i> slowed (plates, &lambda; &lt; 1) or sped up (rods, &lambda; &gt; 1).</figcaption>
+      </figure>
+
+      <h2 class="section-title" id="learn-measure" data-toc="Measuring shape"><span class="stitle-num">0</span>Measuring Shape with Numbers</h2>
+      <dl class="bridge"><dt>You know</dt><dd>What the shapes look like.</dd><dt>This section</dt><dd class="now">Defines the numbers used to tell shapes apart, and warns about one that cannot.</dd><dt>Which lets us</dt><dd>Show that the generated morphologies are measurably different, not just different in a picture.</dd></dl>
+      <div class="eq"><span class="ex">&Psi; = &pi;<sup>1/3</sup>(6<i>V</i>)<sup>2/3</sup> / <i>A</i></span><span class="tag">(7)</span></div>
+      <div class="eq"><span class="ex">&kappa;<sup>2</sup> = &frac32;&nbsp;(&lambda;<sub>1</sub><sup>2</sup>+&lambda;<sub>2</sub><sup>2</sup>+&lambda;<sub>3</sub><sup>2</sup>)/(&lambda;<sub>1</sub>+&lambda;<sub>2</sub>+&lambda;<sub>3</sub>)<sup>2</sup> &minus; &frac12;</span><span class="tag">(8)</span></div>
+      <div class="eq"><span class="ex"><i>Q<sub>l</sub></i><sup>2</sup> = &Sigma;<sub><i>i</i>,<i>j</i></sub> <i>w<sub>i</sub></i> <i>w<sub>j</sub></i> <i>P<sub>l</sub></i>(<b>n</b><sub><i>i</i></sub>&middot;<b>n</b><sub><i>j</i></sub>)</span><span class="tag">(9)</span></div>
+      <div class="where"><p class="lead">where</p><dl><dt><i>V</i>, <i>A</i></dt><dd>volume and surface area of the shape</dd><dt>&Psi;</dt><dd><b>sphericity</b>: 1 for a sphere, 0.806 for a cube, 0.846 for an octahedron</dd><dt>&lambda;<sub>1,2,3</sub></dt><dd>eigenvalues of the gyration tensor <i>S</i> = (1/<i>V</i>)&int; <b>x</b><b>x</b><sup>T</sup> d<i>V</i></dd><dt>&kappa;<sup>2</sup></dt><dd><b>asphericity</b>: 0 for an isotropic body, 1 for a line; good for plates and rods</dd><dt><i>w<sub>i</sub></i>, <b>n</b><sub><i>i</i></sub></dt><dd>area fraction and unit normal of face <i>i</i></dd><dt><i>P<sub>l</sub></i></dt><dd>the Legendre polynomial of order <i>l</i></dd><dt><i>Q<sub>l</sub></i></dt><dd><b>face-normal order parameter</b>: <i>Q</i><sub>4</sub>, <i>Q</i><sub>6</sub> tell cube (0.764, 0.354) from octahedron (0.509, 0.629); <i>Q</i><sub>3</sub> is non-zero only without an inversion centre (tetrahedron 0.745)</dd></dl></div>
+      <div class="callout warn" data-kind="A trap we fell into">
+        &kappa;<sup>2</sup> is exactly zero for every shape with the symmetry of a cube or a tetrahedron (proof on
+        the <a href="morph_math.html#math-kappa">Mathematics page</a>). It cannot tell a cube from an octahedron or
+        a tetrahedron. Our earlier work used it that way; the morphology work uses &Psi; and <i>Q<sub>l</sub></i>.
+      </div>
+
+      <h2 class="section-title" id="learn-graph" data-toc="Periodic graphs and faces"><span class="stitle-num">0</span>Periodic Graphs, and How They See Crystal Faces</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Faces, bond chains, and (from the <a href="network.html">Network</a> page) graphs.</dd><dt>This section</dt><dd class="now">Connects the labelled quotient graph built earlier in the project to crystal faces.</dd><dt>Which lets us</dt><dd>Compute face classes and growth rates from the framework's connectivity, which is Phase 3.</dd></dl>
+      <p class="sd">The <b>labelled quotient graph</b> has one vertex per building block in one unit cell. An edge (<i>i</i>, <i>j</i>, <b>t</b>) says block <i>i</i> in this cell is linked to block <i>j</i> in the cell shifted by the lattice vector <b>t</b>, called the edge's <b>voltage</b>. Unfolding the graph with its voltages rebuilds the infinite framework.</p>
+      <figure class="fig wide">
+        <img src="figures/learn/quotient.png" alt="Left: one vertex with two loop edges labelled with voltages (1,0) and (0,1). Right: the square net they generate, with a highlighted straight chain whose net translation is (1,0), inside a dashed slice.">
+        <figcaption>A quotient graph (left) and the net it describes (right). Walking around a cycle whose voltages add up to a non-zero vector <b>&tau;</b> traces a periodic bond chain.</figcaption>
+      </figure>
+      <div class="callout" data-kind="Key idea">
+        A periodic bond chain is a cycle in the quotient graph whose voltages add up to a non-zero lattice
+        vector <b>&tau;</b>. It lies in face (<i>hkl</i>) when <i>h</i>&tau;<sub>1</sub> + <i>k</i>&tau;<sub>2</sub>
+        + <i>l</i>&tau;<sub>3</sub> = 0. Counting the independent such directions inside one slice (its
+        <b>periodicity rank</b>) gives the face class: 2 is F, 1 is S, 0 is K. The
+        <a href="graph_faces.html">Graph Faces</a> page computes this for all four MOFs.
+      </div>
+
+      <h2 class="section-title" id="learn-nodes" data-toc="Node shapes"><span class="stitle-num">0</span>Node Shapes: Geometric Signatures</h2>
+      <dl class="bridge"><dt>You know</dt><dd>That shape exists at the node scale too.</dd><dt>This section</dt><dd class="now">Introduces the shape vocabulary for building units used by Wu and Jiang (Chem. Sci. 2024).</dd><dt>Which lets us</dt><dd>Describe tetrahedral, square or octahedral nodes precisely when we discuss chemistry.</dd></dl>
+      <p class="sd">Wu and Jiang classify every building unit by the arrangement of its connection points into one of 13 prototypes, using the number of connection points, a planarity test and the smallest root-mean-square deviation from ideal shapes. The Cu paddlewheel of HKUST-1 is a square (S4) and BTC a triangle (T3); together they form the tbo net.</p>
+      <figure class="fig wide">
+        <img src="figures/learn/prototypes.png" alt="Six small shapes with black dots at their connection points: linear L2, triangle T3, square S4, tetrahedron T4, octahedron O6 and cube C8.">
+        <figcaption>Six of the 13 geometric signatures, redrawn. Black dots are connection points.</figcaption>
+      </figure>
+
+      <h2 class="section-title" id="learn-next" data-toc="Where to go next"><span class="stitle-num">0</span>Where to Go Next</h2>
+      <ul class="sd">
+        <li><a href="morph_math.html"><b>Mathematics</b></a> (Phase 2): every rule on this page stated precisely and proved, with live numerical checks.</li>
+        <li><a href="morphology.html"><b>Morphology</b></a> (Phase 1): the shapes generated from the four unit cells, a live shape explorer, and the comparison with experiments.</li>
+        <li><a href="graph_faces.html"><b>Graph Faces</b></a> (Phase 3): face classes and growth rates computed from each framework's periodic graph.</li>
+        <li><a href="glossary.html"><b>Glossary</b></a>: every term, under &ldquo;Crystal shape&rdquo;.</li>
+      </ul>
