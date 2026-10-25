@@ -40,7 +40,17 @@ METHOD
                     A shape that fills its own diameter quickly (a cube in this graph
                     metric) has a small value; a shape whose blocks sit close to the centre
                     relative to its diameter (an octahedron, the "taxicab ball") a large one.
+* Calibration: the same calculation on three ideal lattices of known dimension, a path of
+  4001 vertices (1), a 121 x 121 square grid (2) and a 41 x 41 x 41 cubic grid (3). On a
+  lattice the ball of radius r is a taxicab ball, M(r) = 2r + 1 in one dimension and
+  2r^2 + 2r + 1 in two, so the local dimension approaches 1, 2 and 3 only slowly with r and
+  then falls as the ball reaches the edge of the finite graph. The peak values of these
+  references (about 0.99, 1.83 and 2.64) are what a one-, two- and three-dimensional object
+  gives with this method at these sizes; the particles are compared with them, not with the
+  ideal 1, 2 and 3.
 * The error bar is the standard deviation over the five seeds (choice of centre blocks).
+* D is the largest graph distance found from the sampled centres, a lower bound on the
+  graph diameter; r_half is an integer radius, so r_half / D moves in steps of 1/D.
 
 OUTPUT
 ------
@@ -50,9 +60,8 @@ Run time: about 1-2 minutes on a laptop.
 LIMITS
 ------
 * One MOF and one crystal-building rule (block centroid inside the polyhedron).
-* The local dimension of the node-linker graph never reaches 3 exactly at the scales
-  available, because a linker adds a step without adding branching; values are compared
-  between shapes, not against the ideal 3, 2 and 1.
+* The local dimension of a finite graph never reaches 3, 2 or 1 exactly (see the calibration);
+  values are compared between shapes and with the reference lattices.
 * r_half_over_D measures shape in the GRAPH metric, in which distance behaves like the
   taxicab (L1) distance for the pcu net of MOF-5. It is a property of the particle graph, and
   it is not claimed to equal any experimental shape measure.
@@ -108,7 +117,8 @@ def mass_radius_profile(G):
     # average the curves over seeds on the common radius range
     rmax = min(p['diameter'] for p in per_seed)
     M_mean = np.mean([p['M'][:rmax] for p in per_seed], axis=0)
-    d_mean = np.nanmean([p['d'][:rmax] for p in per_seed], axis=0)
+    d_stack = np.array([p['d'][:rmax] for p in per_seed])
+    d_mean = np.array([np.nan if np.all(np.isnan(c)) else np.nanmean(c) for c in d_stack.T])
     ratio = [p['r_half'] / p['diameter'] for p in per_seed]
     dh = [p['d_at_r_half'] for p in per_seed if p['d_at_r_half'] is not None]
     return dict(
@@ -125,10 +135,25 @@ def mass_radius_profile(G):
     )
 
 
+REFERENCE_LATTICES = {        # name -> (dimension, graph)
+    'path, 4001 vertices': (1, lambda: nx.path_graph(4001)),
+    'square grid 121 x 121': (2, lambda: nx.grid_2d_graph(121, 121)),
+    'cubic grid 41 x 41 x 41': (3, lambda: nx.grid_graph([41, 41, 41])),
+}
+
+
 def main():
     os.makedirs(T.RESULTS, exist_ok=True)
     t0 = time.time()
     q = T.load_quotient_graph_with_positions(CIF)
+
+    references = {}
+    for name, (dim, make) in REFERENCE_LATTICES.items():
+        p = mass_radius_profile(nx.convert_node_labels_to_integers(make()))
+        p['dimension'] = dim
+        references[name] = p
+        print(f'  reference {name:24s} (dimension {dim})  peak d {p["d_peak"]:.2f}  '
+              f'd at r_half {p["d_at_r_half_mean"]:.2f}', flush=True)
 
     boxes = {}
     for name, (a, b, c) in BOXES.items():
@@ -163,7 +188,7 @@ def main():
         produced_by='code/spectrum_shape_relation/run_04_dimension_profile_of_crystal_particles.py',
         method=dict(n_centres=N_CENTRES, seeds=list(SEEDS), structure='MOF-5 (pcu)',
                     reference='Song, Havlin and Makse, Nature 433, 392 (2005): cluster-growing'),
-        boxes=boxes, polyhedra=polys, compact_shape_separation=summary,
+        reference_lattices=references, boxes=boxes, polyhedra=polys, compact_shape_separation=summary,
         run_seconds=round(time.time() - t0, 1),
     )
     json.dump(out, open(OUT, 'w'), indent=1)

@@ -142,11 +142,16 @@ def fig04():
         r = np.array(p['r'], float)
         y = np.array([np.nan if v is None else v for v in p['d_mean']])
         ax[0].plot(r / p['diameter'], y, color=COL[k], lw=1.8, label=f"{name} (N = {p['blocks']})")
+    for (name, p), ls in zip(d.get('reference_lattices', {}).items(), (':', '--', '-.')):
+        r = np.array(p['r'], float)
+        y = np.array([np.nan if v is None else v for v in p['d_mean']])
+        ax[0].plot(r / p['diameter'], y, color='0.45', lw=1.0, ls=ls,
+                   label=f"reference: {name} ({p['dimension']}D)")
     ax[0].set_xlabel('radius r / diameter D of the particle graph')
     ax[0].set_ylabel('local dimension  d(r) = d ln M / d ln r')
-    ax[0].set_title('Plates and rods behave as lower-dimensional objects', fontsize=10)
+    ax[0].set_title('Cube, plate and rod follow the 3D, 2D and 1D references', fontsize=10)
     ax[0].set_ylim(0, 3)
-    ax[0].legend(fontsize=7.5, frameon=False)
+    ax[0].legend(fontsize=6.8, frameon=False)
     polys = d['polyhedra']
     names = list(dict.fromkeys(p['shape'] for p in polys))
     short = [n.replace(' (reference)', '').replace(' prediction', '').replace('cleavage ', '') for n in names]
