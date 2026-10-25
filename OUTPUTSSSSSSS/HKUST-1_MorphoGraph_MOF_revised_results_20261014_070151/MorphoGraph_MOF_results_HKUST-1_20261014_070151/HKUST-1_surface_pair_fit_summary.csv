@@ -1,0 +1,5 @@
+h,k,l,miller,n_pair_equations,n_surface_terminations,matrix_rank,matrix_columns,fit_rms_eV_A2,fit_status,detail,n_redundant_equations,has_redundant_equations,fit_validation
+-1,-1,-1,"(-1,-1,-1)",20,28,15,28,,underdetermined_surface_energies,Pair-equation matrix rank 15 is smaller than 28 unknown termination energies. Individual surface energies cannot be uniquely separated from these slabs.,0,False,pending
+-1,-1,0,"(-1,-1,0)",21,31,17,31,,underdetermined_surface_energies,Pair-equation matrix rank 17 is smaller than 31 unknown termination energies. Individual surface energies cannot be uniquely separated from these slabs.,0,False,pending
+-1,-1,1,"(-1,-1,1)",24,46,23,46,,underdetermined_surface_energies,Pair-equation matrix rank 23 is smaller than 46 unknown termination energies. Individual surface energies cannot be uniquely separated from these slabs.,0,False,pending
+-1,0,1,"(-1,0,1)",23,41,21,41,,underdetermined_surface_energies,Pair-equation matrix rank 21 is smaller than 41 unknown termination energies. Individual surface energies cannot be uniquely separated from these slabs.,0,False,pending

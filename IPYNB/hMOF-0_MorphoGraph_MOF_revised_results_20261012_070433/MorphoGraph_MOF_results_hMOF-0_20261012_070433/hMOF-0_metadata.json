@@ -1,0 +1,1094 @@
+{
+  "project": "MorphoGraph-MOF",
+  "input_cif": "/content/hMOF-0.cif",
+  "formula": "Zn4H12C24O13",
+  "input_atom_count": 53,
+  "working_cell_atom_count": 53,
+  "working_lattice_matrix_A": [
+    [
+      9.020337953983251,
+      -9.023693118315013,
+      0.0
+    ],
+    [
+      9.020337953983251,
+      9.023693118315013,
+      0.0
+    ],
+    [
+      -0.006711576635354215,
+      0.0,
+      12.759055186507169
+    ]
+  ],
+  "standardization_notes": [
+    "Using primitive-standard structure to reduce redundant atoms in slab calculations."
+  ],
+  "parameters": {
+    "max_miller_index": 2,
+    "slab_thickness_A": 15.0,
+    "vacuum_A": 20.0,
+    "force_tolerance_eV_A": 0.05,
+    "max_relax_steps": 4,
+    "particle_display_radius_A_visualization_only": 15.0,
+    "bulk_view_repeats_per_axis": 2,
+    "symmetry_tolerance_A": 0.1,
+    "surface_fingerprint_depth_A": 4.0,
+    "fingerprint_distance_quantization_A": 0.1,
+    "pair_fit_rms_tolerance_eV_A2": 0.2,
+    "termination_shift_deduplication_tolerance_fractional": 0.1
+  },
+  "bulk_reference": {
+    "available": true,
+    "converged": false,
+    "energy_total_eV": -366.29607915878296,
+    "energy_per_atom_eV": -6.9112467765808105,
+    "max_force_eV_A": 0.5162174174586681,
+    "error": "Bulk max force exceeded the selected tolerance; surface energies are disabled."
+  },
+  "miller_representatives": [
+    [
+      -2,
+      -2,
+      -1
+    ],
+    [
+      -2,
+      -2,
+      1
+    ],
+    [
+      -2,
+      -1,
+      -1
+    ],
+    [
+      -2,
+      -1,
+      0
+    ],
+    [
+      -2,
+      -1,
+      1
+    ],
+    [
+      -2,
+      -1,
+      2
+    ],
+    [
+      -2,
+      0,
+      1
+    ],
+    [
+      -2,
+      1,
+      1
+    ],
+    [
+      -2,
+      1,
+      2
+    ],
+    [
+      -1,
+      -1,
+      -1
+    ],
+    [
+      -1,
+      -1,
+      0
+    ],
+    [
+      -1,
+      -1,
+      1
+    ],
+    [
+      -1,
+      -1,
+      2
+    ],
+    [
+      -1,
+      0,
+      0
+    ],
+    [
+      -1,
+      0,
+      1
+    ],
+    [
+      -1,
+      0,
+      2
+    ],
+    [
+      -1,
+      1,
+      1
+    ],
+    [
+      -1,
+      1,
+      2
+    ],
+    [
+      -1,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      2
+    ]
+  ],
+  "directed_miller_orbits": {
+    "(-2, -2, -1)": [
+      [
+        -2,
+        -2,
+        -1
+      ],
+      [
+        -2,
+        -1,
+        -2
+      ],
+      [
+        -1,
+        -2,
+        -2
+      ]
+    ],
+    "(-2, -2, 1)": [
+      [
+        -2,
+        -2,
+        1
+      ],
+      [
+        -2,
+        1,
+        -2
+      ],
+      [
+        1,
+        -2,
+        -2
+      ]
+    ],
+    "(-2, -1, -1)": [
+      [
+        -2,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        -2,
+        -1
+      ],
+      [
+        -1,
+        -1,
+        -2
+      ]
+    ],
+    "(-2, -1, 0)": [
+      [
+        -2,
+        -1,
+        0
+      ],
+      [
+        -2,
+        0,
+        -1
+      ],
+      [
+        -1,
+        -2,
+        0
+      ],
+      [
+        -1,
+        0,
+        -2
+      ],
+      [
+        0,
+        -2,
+        -1
+      ],
+      [
+        0,
+        -1,
+        -2
+      ]
+    ],
+    "(-2, -1, 1)": [
+      [
+        -2,
+        -1,
+        1
+      ],
+      [
+        -2,
+        1,
+        -1
+      ],
+      [
+        -1,
+        -2,
+        1
+      ],
+      [
+        -1,
+        1,
+        -2
+      ],
+      [
+        1,
+        -2,
+        -1
+      ],
+      [
+        1,
+        -1,
+        -2
+      ]
+    ],
+    "(-2, -1, 2)": [
+      [
+        -2,
+        -1,
+        2
+      ],
+      [
+        -2,
+        2,
+        -1
+      ],
+      [
+        -1,
+        -2,
+        2
+      ],
+      [
+        -1,
+        2,
+        -2
+      ],
+      [
+        2,
+        -2,
+        -1
+      ],
+      [
+        2,
+        -1,
+        -2
+      ]
+    ],
+    "(-2, 0, 1)": [
+      [
+        -2,
+        0,
+        1
+      ],
+      [
+        -2,
+        1,
+        0
+      ],
+      [
+        0,
+        -2,
+        1
+      ],
+      [
+        0,
+        1,
+        -2
+      ],
+      [
+        1,
+        -2,
+        0
+      ],
+      [
+        1,
+        0,
+        -2
+      ]
+    ],
+    "(-2, 1, 1)": [
+      [
+        -2,
+        1,
+        1
+      ],
+      [
+        1,
+        -2,
+        1
+      ],
+      [
+        1,
+        1,
+        -2
+      ]
+    ],
+    "(-2, 1, 2)": [
+      [
+        -2,
+        1,
+        2
+      ],
+      [
+        -2,
+        2,
+        1
+      ],
+      [
+        1,
+        -2,
+        2
+      ],
+      [
+        1,
+        2,
+        -2
+      ],
+      [
+        2,
+        -2,
+        1
+      ],
+      [
+        2,
+        1,
+        -2
+      ]
+    ],
+    "(-1, -1, -1)": [
+      [
+        -1,
+        -1,
+        -1
+      ]
+    ],
+    "(-1, -1, 0)": [
+      [
+        -1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1
+      ],
+      [
+        0,
+        -1,
+        -1
+      ]
+    ],
+    "(-1, -1, 1)": [
+      [
+        -1,
+        -1,
+        1
+      ],
+      [
+        -1,
+        1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        -1
+      ]
+    ],
+    "(-1, -1, 2)": [
+      [
+        -1,
+        -1,
+        2
+      ],
+      [
+        -1,
+        2,
+        -1
+      ],
+      [
+        2,
+        -1,
+        -1
+      ]
+    ],
+    "(-1, 0, 0)": [
+      [
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ]
+    ],
+    "(-1, 0, 1)": [
+      [
+        -1,
+        0,
+        1
+      ],
+      [
+        -1,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        1
+      ],
+      [
+        0,
+        1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        0
+      ],
+      [
+        1,
+        0,
+        -1
+      ]
+    ],
+    "(-1, 0, 2)": [
+      [
+        -1,
+        0,
+        2
+      ],
+      [
+        -1,
+        2,
+        0
+      ],
+      [
+        0,
+        -1,
+        2
+      ],
+      [
+        0,
+        2,
+        -1
+      ],
+      [
+        2,
+        -1,
+        0
+      ],
+      [
+        2,
+        0,
+        -1
+      ]
+    ],
+    "(-1, 1, 1)": [
+      [
+        -1,
+        1,
+        1
+      ],
+      [
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        -1
+      ]
+    ],
+    "(-1, 1, 2)": [
+      [
+        -1,
+        1,
+        2
+      ],
+      [
+        -1,
+        2,
+        1
+      ],
+      [
+        1,
+        -1,
+        2
+      ],
+      [
+        1,
+        2,
+        -1
+      ],
+      [
+        2,
+        -1,
+        1
+      ],
+      [
+        2,
+        1,
+        -1
+      ]
+    ],
+    "(-1, 2, 2)": [
+      [
+        -1,
+        2,
+        2
+      ],
+      [
+        2,
+        -1,
+        2
+      ],
+      [
+        2,
+        2,
+        -1
+      ]
+    ],
+    "(0, 0, 1)": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "(0, 1, 1)": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "(0, 1, 2)": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ],
+    "(1, 1, 1)": [
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "(1, 1, 2)": [
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        1
+      ]
+    ],
+    "(1, 2, 2)": [
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        1
+      ]
+    ]
+  },
+  "miller_generation_notes": [],
+  "surface_pair_record_count": 751,
+  "surface_pair_status_counts": {
+    "surface_energy_disabled": 445,
+    "duplicate_surface_pair_not_relaxed": 306
+  },
+  "surface_fit_summary": [
+    {
+      "h": -2,
+      "k": -2,
+      "l": -1,
+      "miller": "(-2,-2,-1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": -2,
+      "l": 1,
+      "miller": "(-2,-2,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": -1,
+      "l": -1,
+      "miller": "(-2,-1,-1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": -1,
+      "l": 0,
+      "miller": "(-2,-1,0)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": -1,
+      "l": 1,
+      "miller": "(-2,-1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": -1,
+      "l": 2,
+      "miller": "(-2,-1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": 0,
+      "l": 1,
+      "miller": "(-2,0,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": 1,
+      "l": 1,
+      "miller": "(-2,1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -2,
+      "k": 1,
+      "l": 2,
+      "miller": "(-2,1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": -1,
+      "l": -1,
+      "miller": "(-1,-1,-1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": -1,
+      "l": 0,
+      "miller": "(-1,-1,0)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": -1,
+      "l": 1,
+      "miller": "(-1,-1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": -1,
+      "l": 2,
+      "miller": "(-1,-1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 0,
+      "l": 0,
+      "miller": "(-1,0,0)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 0,
+      "l": 1,
+      "miller": "(-1,0,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 0,
+      "l": 2,
+      "miller": "(-1,0,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 1,
+      "l": 1,
+      "miller": "(-1,1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 1,
+      "l": 2,
+      "miller": "(-1,1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": -1,
+      "k": 2,
+      "l": 2,
+      "miller": "(-1,2,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 0,
+      "k": 0,
+      "l": 1,
+      "miller": "(0,0,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 0,
+      "k": 1,
+      "l": 1,
+      "miller": "(0,1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 0,
+      "k": 1,
+      "l": 2,
+      "miller": "(0,1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 1,
+      "k": 1,
+      "l": 1,
+      "miller": "(1,1,1)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 1,
+      "k": 1,
+      "l": 2,
+      "miller": "(1,1,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    },
+    {
+      "h": 1,
+      "k": 2,
+      "l": 2,
+      "miller": "(1,2,2)",
+      "n_pair_equations": 0,
+      "n_surface_terminations": 0,
+      "matrix_rank": 0,
+      "matrix_columns": 0,
+      "fit_rms_eV_A2": NaN,
+      "fit_status": "no_valid_pair_energies",
+      "detail": "No stoichiometric, force-converged slab pairs were available."
+    }
+  ],
+  "individual_surface_energy_count": 0,
+  "valid_signed_direction_energy_count": 0,
+  "direction_energy_notes": [],
+  "morphologies": [
+    {
+      "morphology": "Equal_gamma_geometry_control_NOT_A_PREDICTION",
+      "method": "Equal-gamma geometry control; not a physical morphology prediction",
+      "atom_count": 323,
+      "display_radius_A": 15.0,
+      "relative_polyhedron_volume": 4.344595899590129,
+      "cif_file": "MorphoGraph_MOF_results_hMOF-0_20261012_070433/particles/hMOF-0_Equal_gamma_geometry_control_NOT_A_PREDICTION_atomistic_particle.cif",
+      "xyz_file": "MorphoGraph_MOF_results_hMOF-0_20261012_070433/particles/hMOF-0_Equal_gamma_geometry_control_NOT_A_PREDICTION_atomistic_particle.xyz",
+      "status": "ok",
+      "detail": "Actual CIF-derived atoms clipped geometrically; not passivated or nanoparticle-relaxed."
+    },
+    {
+      "morphology": "BFDH_like_d_hkl_geometry_baseline_NOT_MLIP",
+      "method": "BFDH-like d_hkl geometry baseline; not a surface-energy calculation",
+      "atom_count": 119,
+      "display_radius_A": 15.0,
+      "relative_polyhedron_volume": 5.4053591629260485,
+      "cif_file": "MorphoGraph_MOF_results_hMOF-0_20261012_070433/particles/hMOF-0_BFDH_like_d_hkl_geometry_baseline_NOT_MLIP_atomistic_particle.cif",
+      "xyz_file": "MorphoGraph_MOF_results_hMOF-0_20261012_070433/particles/hMOF-0_BFDH_like_d_hkl_geometry_baseline_NOT_MLIP_atomistic_particle.xyz",
+      "status": "ok",
+      "detail": "Actual CIF-derived atoms clipped geometrically; not passivated or nanoparticle-relaxed."
+    }
+  ],
+  "connectivity_note": "Bonds are inferred by CrystalNN for display; they are not guaranteed to be CIF-authored bond topology.",
+  "methodology": [
+    "Stoichiometric slabs only are used for the simple bulk-reference pair-energy equations.",
+    "A relaxed slab verified symmetric by pymatgen is constrained to one shared top/bottom surface-state unknown in the pair-energy equations.",
+    "For asymmetric slabs, (E_slab - N*E_bulk)/A is treated as gamma_top + gamma_bottom, not as one surface energy.",
+    "Slab generation tries the primitive surface cell first and retries with a non-primitive surface cell if slab generation raises an exception; the chosen mode is recorded per facet.",
+    "Individual termination energies are returned only when the surface-pair linear system, fingerprinted from relaxed surface states, is full rank; if redundant equations exist, their RMS residual must meet the explicit user tolerance.",
+    "A full-rank square pair system can identify energies algebraically but has no independent redundancy-based residual validation; this is marked in the fit CSV and requires external convergence/validation.",
+    "A CHGNet Wulff shape is created only when every requested directed facet class has valid positive surface-energy estimates.",
+    "No missing MLIP surface energies are filled with equal, mirrored, random, or guessed values.",
+    "BFDH-like and equal-gamma shapes are geometry controls, not MLIP surface-energy predictions.",
+    "Atomistic particles are geometric cuts of the periodic bulk; they are not passivated or separately relaxed nanoparticles.",
+    "CrystalNN connectivity is inferred for display and must be chemically checked for unusual metal coordination or disordered structures.",
+    "CHGNet is not automatically validated for a given MOF; validate representative surface energies against DFT-D3 and perform slab-thickness/vacuum convergence studies.",
+    "This code creates training labels/baselines; it does not train the proposed cross-MOF GNN."
+  ]
+}
