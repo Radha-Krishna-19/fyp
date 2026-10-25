@@ -1,0 +1,5547 @@
+{
+ "HKUST-1": [
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "1",
+   "n": 156,
+   "pair_J_m2": 2.6272286028878056,
+   "thickness_A": 15.18,
+   "fmax": 0.04028288667589553,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CuO2",
+    "CuO2",
+    "CuO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "2",
+   "n": 156,
+   "pair_J_m2": 1.4458009904506355,
+   "thickness_A": 15.18,
+   "fmax": 0.04736769934474469,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "3",
+   "n": 156,
+   "pair_J_m2": 0.4333892586415393,
+   "thickness_A": 15.18,
+   "fmax": 0.0494764081231277,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 10,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "4",
+   "n": 156,
+   "pair_J_m2": 1.7585038517793814,
+   "thickness_A": 15.18,
+   "fmax": 0.04660968158221277,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "5",
+   "n": 156,
+   "pair_J_m2": 1.0232055684846326,
+   "thickness_A": 15.18,
+   "fmax": 0.03374608903598125,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "6",
+   "n": 156,
+   "pair_J_m2": 0.909890183532862,
+   "thickness_A": 15.18,
+   "fmax": 0.04144844479901941,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "7",
+   "n": 156,
+   "pair_J_m2": 0.302143846321298,
+   "thickness_A": 15.18,
+   "fmax": 0.04811910724459261,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "8",
+   "n": 156,
+   "pair_J_m2": 1.6794485501989302,
+   "thickness_A": 15.18,
+   "fmax": 0.045444150915955696,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "9",
+   "n": 156,
+   "pair_J_m2": 0.30345725565128584,
+   "thickness_A": 15.18,
+   "fmax": 0.04612129187907887,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "10",
+   "n": 156,
+   "pair_J_m2": 0.5745091211063258,
+   "thickness_A": 15.18,
+   "fmax": 0.04904348918196026,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "11",
+   "n": 156,
+   "pair_J_m2": 0.5745011610497804,
+   "thickness_A": 15.18,
+   "fmax": 0.04905153954316388,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "12",
+   "n": 156,
+   "pair_J_m2": 0.30345725565128584,
+   "thickness_A": 15.18,
+   "fmax": 0.04625547039360573,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "13",
+   "n": 156,
+   "pair_J_m2": 1.6794485501989302,
+   "thickness_A": 15.18,
+   "fmax": 0.04543396082699775,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "14",
+   "n": 156,
+   "pair_J_m2": 0.3024065281872956,
+   "thickness_A": 15.18,
+   "fmax": 0.04934951439941834,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "15",
+   "n": 156,
+   "pair_J_m2": 0.909890183532862,
+   "thickness_A": 15.18,
+   "fmax": 0.041512396683805367,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "16",
+   "n": 156,
+   "pair_J_m2": 1.0232055684846326,
+   "thickness_A": 15.18,
+   "fmax": 0.033686010075885335,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "17",
+   "n": 156,
+   "pair_J_m2": 1.7584998717511084,
+   "thickness_A": 15.18,
+   "fmax": 0.04660741761262778,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "18",
+   "n": 156,
+   "pair_J_m2": 0.4326887736655458,
+   "thickness_A": 15.18,
+   "fmax": 0.049488063896291186,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 10,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "19",
+   "n": 156,
+   "pair_J_m2": 1.4464059547480845,
+   "thickness_A": 15.18,
+   "fmax": 0.04652968966599278,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "20",
+   "n": 156,
+   "pair_J_m2": 2.6272286028878056,
+   "thickness_A": 15.18,
+   "fmax": 0.04027454511373577,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CuO2",
+    "CuO2",
+    "CuO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "1",
+   "n": 312,
+   "pair_J_m2": 0.3269570848393203,
+   "thickness_A": 26.3,
+   "fmax": 0.04414455622356994,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "2",
+   "n": 312,
+   "pair_J_m2": 1.929956067867141,
+   "thickness_A": 26.3,
+   "fmax": 0.044979924085603466,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "3",
+   "n": 312,
+   "pair_J_m2": 0.34120617915636,
+   "thickness_A": 26.3,
+   "fmax": 0.0426152647816592,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "4",
+   "n": 312,
+   "pair_J_m2": 1.0499659194137947,
+   "thickness_A": 26.3,
+   "fmax": 0.038861217487368115,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "5",
+   "n": 312,
+   "pair_J_m2": 1.1856115066786181,
+   "thickness_A": 26.3,
+   "fmax": 0.04537161538673431,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "6",
+   "n": 312,
+   "pair_J_m2": 2.0268457730563005,
+   "thickness_A": 26.3,
+   "fmax": 0.04106300609767326,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "7",
+   "n": 312,
+   "pair_J_m2": 0.47104734580437274,
+   "thickness_A": 26.3,
+   "fmax": 0.049695769041098174,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2",
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 13,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "8",
+   "n": 312,
+   "pair_J_m2": 2.0597007239585796,
+   "thickness_A": 26.3,
+   "fmax": 0.04371251289225886,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "9",
+   "n": 312,
+   "pair_J_m2": 2.5679873573781666,
+   "thickness_A": 26.3,
+   "fmax": 0.04664206211166313,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "10",
+   "n": 312,
+   "pair_J_m2": 1.7302067902035987,
+   "thickness_A": 26.3,
+   "fmax": 0.0495465277123931,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "11",
+   "n": 312,
+   "pair_J_m2": 0.44414847496494897,
+   "thickness_A": 26.3,
+   "fmax": 0.04866261360855244,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "12",
+   "n": 312,
+   "pair_J_m2": 1.7302205774259665,
+   "thickness_A": 26.3,
+   "fmax": 0.04945339089652958,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "13",
+   "n": 312,
+   "pair_J_m2": 2.565140295959232,
+   "thickness_A": 26.3,
+   "fmax": 0.04509466991099035,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "14",
+   "n": 312,
+   "pair_J_m2": 2.0597007239585796,
+   "thickness_A": 26.3,
+   "fmax": 0.04335190940296946,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "15",
+   "n": 312,
+   "pair_J_m2": 0.4710887074714759,
+   "thickness_A": 26.3,
+   "fmax": 0.04974687722753328,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2",
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 13,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "16",
+   "n": 312,
+   "pair_J_m2": 2.026852666667484,
+   "thickness_A": 26.3,
+   "fmax": 0.04121321759262725,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "17",
+   "n": 312,
+   "pair_J_m2": 1.1856115066786181,
+   "thickness_A": 26.3,
+   "fmax": 0.045297044373128585,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "18",
+   "n": 312,
+   "pair_J_m2": 1.0499659194137947,
+   "thickness_A": 26.3,
+   "fmax": 0.03769914396455518,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "19",
+   "n": 312,
+   "pair_J_m2": 0.3403996266478483,
+   "thickness_A": 26.3,
+   "fmax": 0.04370236218060756,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "20",
+   "n": 312,
+   "pair_J_m2": 1.929956067867141,
+   "thickness_A": 26.3,
+   "fmax": 0.045030141722402495,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "21",
+   "n": 312,
+   "pair_J_m2": 0.326922616783401,
+   "thickness_A": 26.3,
+   "fmax": 0.04389875925497054,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "1",
+   "n": 312,
+   "pair_J_m2": 0.5321547041781328,
+   "thickness_A": 15.86,
+   "fmax": 0.04815690475735311,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "2",
+   "n": 312,
+   "pair_J_m2": 0.42160749802717207,
+   "thickness_A": 15.86,
+   "fmax": 0.04946732901787527,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "3",
+   "n": 312,
+   "pair_J_m2": 0.6095705888150424,
+   "thickness_A": 15.86,
+   "fmax": 0.0464955475862119,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "4",
+   "n": 312,
+   "pair_J_m2": 0.8345808988417114,
+   "thickness_A": 15.86,
+   "fmax": 0.043928926443000844,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "5",
+   "n": 312,
+   "pair_J_m2": 0.9113482908617839,
+   "thickness_A": 15.86,
+   "fmax": 0.04461957098500881,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "6",
+   "n": 312,
+   "pair_J_m2": 0.7652254448717708,
+   "thickness_A": 15.86,
+   "fmax": 0.04961508046251837,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "7",
+   "n": 312,
+   "pair_J_m2": 0.9683325010643699,
+   "thickness_A": 15.86,
+   "fmax": 0.048178099473834196,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CH"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "8",
+   "n": 312,
+   "pair_J_m2": 1.0059409158369697,
+   "thickness_A": 15.86,
+   "fmax": 0.04962393843539996,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "9",
+   "n": 312,
+   "pair_J_m2": 1.1724621802296737,
+   "thickness_A": 15.86,
+   "fmax": 0.04166860529922058,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "10",
+   "n": 312,
+   "pair_J_m2": 0.7466976782484175,
+   "thickness_A": 15.86,
+   "fmax": 0.04851347318862258,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "11",
+   "n": 312,
+   "pair_J_m2": 0.8579682030873889,
+   "thickness_A": 15.86,
+   "fmax": 0.04296493676651533,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 11
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "12",
+   "n": 312,
+   "pair_J_m2": 1.1637075299023725,
+   "thickness_A": 15.86,
+   "fmax": 0.045983127724012036,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "23",
+   "n": 312,
+   "pair_J_m2": 1.164031776210791,
+   "thickness_A": 15.86,
+   "fmax": 0.047882531830613514,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "24",
+   "n": 312,
+   "pair_J_m2": 0.8582882923918534,
+   "thickness_A": 15.86,
+   "fmax": 0.049054209565946,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 11
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "25",
+   "n": 312,
+   "pair_J_m2": 0.7467059922563256,
+   "thickness_A": 15.86,
+   "fmax": 0.04887009478938432,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "26",
+   "n": 312,
+   "pair_J_m2": 1.17257026233248,
+   "thickness_A": 15.86,
+   "fmax": 0.04283680620406959,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "27",
+   "n": 312,
+   "pair_J_m2": 1.0059492298448778,
+   "thickness_A": 15.86,
+   "fmax": 0.04992036195479215,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "28",
+   "n": 312,
+   "pair_J_m2": 0.9682659890011046,
+   "thickness_A": 15.86,
+   "fmax": 0.04683371962329918,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CH"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "29",
+   "n": 312,
+   "pair_J_m2": 0.7652296018757249,
+   "thickness_A": 15.86,
+   "fmax": 0.049903656292669,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "30",
+   "n": 312,
+   "pair_J_m2": 0.9105002620551508,
+   "thickness_A": 15.86,
+   "fmax": 0.04306629125538146,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "31",
+   "n": 312,
+   "pair_J_m2": 0.8345019157665836,
+   "thickness_A": 15.86,
+   "fmax": 0.045279959717944775,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "32",
+   "n": 312,
+   "pair_J_m2": 0.6037965103228196,
+   "thickness_A": 15.86,
+   "fmax": 0.03800440675896607,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "33",
+   "n": 312,
+   "pair_J_m2": 0.4195456240659463,
+   "thickness_A": 15.86,
+   "fmax": 0.04532796573565484,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "34",
+   "n": 312,
+   "pair_J_m2": 0.5321547041781328,
+   "thickness_A": 15.86,
+   "fmax": 0.048031499406328865,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "1",
+   "n": 312,
+   "pair_J_m2": 1.4679712106270046,
+   "thickness_A": 18.59,
+   "fmax": 0.047429401385707316,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CuO4"
+   ],
+   "small_relaxed": [
+    "CuO4"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "2",
+   "n": 312,
+   "pair_J_m2": 0.9292149743923136,
+   "thickness_A": 18.59,
+   "fmax": 0.04971846978852989,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "3",
+   "n": 312,
+   "pair_J_m2": 1.4918417312227186,
+   "thickness_A": 18.59,
+   "fmax": 0.046007948863916896,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "4",
+   "n": 312,
+   "pair_J_m2": 0.9309649267904883,
+   "thickness_A": 18.59,
+   "fmax": 0.04978369984743423,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 11
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "5",
+   "n": 312,
+   "pair_J_m2": 0.3632004267075036,
+   "thickness_A": 18.59,
+   "fmax": 0.049983984123608986,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "6",
+   "n": 312,
+   "pair_J_m2": 0.5117855214182555,
+   "thickness_A": 18.59,
+   "fmax": 0.04917415844723909,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "7",
+   "n": 312,
+   "pair_J_m2": 0.8095357786263409,
+   "thickness_A": 18.59,
+   "fmax": 0.04647409242628594,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "8",
+   "n": 312,
+   "pair_J_m2": 1.109523440154098,
+   "thickness_A": 18.59,
+   "fmax": 0.045701208577920115,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "9",
+   "n": 312,
+   "pair_J_m2": 0.9526809098931849,
+   "thickness_A": 18.59,
+   "fmax": 0.04771875936475453,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "10",
+   "n": 312,
+   "pair_J_m2": 0.38582794490339983,
+   "thickness_A": 18.59,
+   "fmax": 0.04899812003314146,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "11",
+   "n": 312,
+   "pair_J_m2": 0.483440192183198,
+   "thickness_A": 18.59,
+   "fmax": 0.04976606374514396,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "12",
+   "n": 312,
+   "pair_J_m2": 1.044360867288363,
+   "thickness_A": 18.59,
+   "fmax": 0.045401250612744186,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "13",
+   "n": 312,
+   "pair_J_m2": 0.48294786574248594,
+   "thickness_A": 18.59,
+   "fmax": 0.04929108573515345,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "14",
+   "n": 312,
+   "pair_J_m2": 0.386139914133158,
+   "thickness_A": 18.59,
+   "fmax": 0.049121270042998065,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "C3HO2",
+    "C3HO2"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "15",
+   "n": 312,
+   "pair_J_m2": 0.9526809098931849,
+   "thickness_A": 18.59,
+   "fmax": 0.04774103085546238,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "16",
+   "n": 312,
+   "pair_J_m2": 1.109523440154098,
+   "thickness_A": 18.59,
+   "fmax": 0.04565849776576051,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "17",
+   "n": 312,
+   "pair_J_m2": 0.8095309041071258,
+   "thickness_A": 18.59,
+   "fmax": 0.046983555227849125,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "18",
+   "n": 312,
+   "pair_J_m2": 0.5117952704566854,
+   "thickness_A": 18.59,
+   "fmax": 0.04632281133243441,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "19",
+   "n": 312,
+   "pair_J_m2": 0.36286408488167055,
+   "thickness_A": 18.59,
+   "fmax": 0.0494369349370532,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "20",
+   "n": 312,
+   "pair_J_m2": 0.931003922944208,
+   "thickness_A": 18.59,
+   "fmax": 0.049821112926752245,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 11
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "21",
+   "n": 312,
+   "pair_J_m2": 1.491749115357634,
+   "thickness_A": 18.59,
+   "fmax": 0.045591545465256504,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "22",
+   "n": 312,
+   "pair_J_m2": 0.929307590257398,
+   "thickness_A": 18.59,
+   "fmax": 0.04992317939072574,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "23",
+   "n": 312,
+   "pair_J_m2": 1.4676446178396017,
+   "thickness_A": 18.59,
+   "fmax": 0.03817793468940669,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CuO4"
+   ],
+   "small_relaxed": [
+    "CuO4"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  }
+ ],
+ "MOF-5": [
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "1",
+   "n": 212,
+   "pair_J_m2": 0.986146440159931,
+   "thickness_A": 29.87,
+   "fmax": 0.04689662297578724,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "2",
+   "n": 212,
+   "pair_J_m2": 0.5569352477566566,
+   "thickness_A": 29.87,
+   "fmax": 0.049849993665074185,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "3",
+   "n": 212,
+   "pair_J_m2": 1.722765270997114,
+   "thickness_A": 29.87,
+   "fmax": 0.049960527452121296,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "4",
+   "n": 212,
+   "pair_J_m2": 0.5056186451089855,
+   "thickness_A": 29.87,
+   "fmax": 0.0495760486554027,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "5",
+   "n": 212,
+   "pair_J_m2": 0.49320180509586015,
+   "thickness_A": 29.87,
+   "fmax": 0.04637362485395771,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "6",
+   "n": 212,
+   "pair_J_m2": 0.1956337157043203,
+   "thickness_A": 29.87,
+   "fmax": 0.048651456757270214,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "7",
+   "n": 212,
+   "pair_J_m2": 1.0207973066170903,
+   "thickness_A": 29.87,
+   "fmax": 0.04540538559517119,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "8",
+   "n": 212,
+   "pair_J_m2": 0.8924191448785053,
+   "thickness_A": 29.87,
+   "fmax": 0.0470843375140949,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "9",
+   "n": 212,
+   "pair_J_m2": 0.534880122204302,
+   "thickness_A": 29.87,
+   "fmax": 0.04714883807734608,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "10",
+   "n": 212,
+   "pair_J_m2": 1.2205569241357674,
+   "thickness_A": 29.87,
+   "fmax": 0.046778007764454746,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3O3Zn",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "11",
+   "n": 212,
+   "pair_J_m2": 0.7727847642207524,
+   "thickness_A": 29.87,
+   "fmax": 0.04545743890745227,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "12",
+   "n": 212,
+   "pair_J_m2": 1.0217980334799222,
+   "thickness_A": 29.87,
+   "fmax": 0.04986567186303398,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "13",
+   "n": 212,
+   "pair_J_m2": 1.4685471039206455,
+   "thickness_A": 29.87,
+   "fmax": 0.049563884457737815,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "14",
+   "n": 212,
+   "pair_J_m2": 1.7717337994414926,
+   "thickness_A": 29.87,
+   "fmax": 0.04643872029501423,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "15",
+   "n": 212,
+   "pair_J_m2": 1.4654834261506355,
+   "thickness_A": 29.87,
+   "fmax": 0.049920757766866844,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "16",
+   "n": 212,
+   "pair_J_m2": 1.0210432953431496,
+   "thickness_A": 29.87,
+   "fmax": 0.04967197896398939,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "17",
+   "n": 212,
+   "pair_J_m2": 0.7723375119915538,
+   "thickness_A": 29.87,
+   "fmax": 0.036631822211409,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "18",
+   "n": 212,
+   "pair_J_m2": 1.2205345615243077,
+   "thickness_A": 29.87,
+   "fmax": 0.04690418185109732,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C3O3Zn",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "19",
+   "n": 212,
+   "pair_J_m2": 0.534874531551437,
+   "thickness_A": 29.87,
+   "fmax": 0.04617715803264954,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "20",
+   "n": 212,
+   "pair_J_m2": 0.8924191448785053,
+   "thickness_A": 29.87,
+   "fmax": 0.04678215551899457,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "21",
+   "n": 212,
+   "pair_J_m2": 1.0207973066170903,
+   "thickness_A": 29.87,
+   "fmax": 0.04550064345906823,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "22",
+   "n": 212,
+   "pair_J_m2": 0.1956337157043203,
+   "thickness_A": 29.87,
+   "fmax": 0.04867811332295444,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "23",
+   "n": 212,
+   "pair_J_m2": 0.49320180509586015,
+   "thickness_A": 29.87,
+   "fmax": 0.04636832821918849,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "24",
+   "n": 212,
+   "pair_J_m2": 0.5056186451089855,
+   "thickness_A": 29.87,
+   "fmax": 0.04957721260856298,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "25",
+   "n": 212,
+   "pair_J_m2": 1.722765270997114,
+   "thickness_A": 29.87,
+   "fmax": 0.049942825067264454,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "26",
+   "n": 212,
+   "pair_J_m2": 0.5569184757980616,
+   "thickness_A": 29.87,
+   "fmax": 0.04867394105954123,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "27",
+   "n": 212,
+   "pair_J_m2": 0.986140849507066,
+   "thickness_A": 29.87,
+   "fmax": 0.0469028532868482,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "28",
+   "n": 212,
+   "pair_J_m2": 1.8828480251330126,
+   "thickness_A": 29.87,
+   "fmax": 0.045030459620857236,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "1",
+   "n": 212,
+   "pair_J_m2": 1.0844225024356076,
+   "thickness_A": 25.87,
+   "fmax": 0.046999401394359895,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "2",
+   "n": 212,
+   "pair_J_m2": 0.5661144644553744,
+   "thickness_A": 25.87,
+   "fmax": 0.049222165891856726,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "3",
+   "n": 212,
+   "pair_J_m2": 0.5225783709912798,
+   "thickness_A": 25.87,
+   "fmax": 0.04920156109242249,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "4",
+   "n": 212,
+   "pair_J_m2": 0.3208414485748619,
+   "thickness_A": 25.87,
+   "fmax": 0.04609656680343853,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "5",
+   "n": 212,
+   "pair_J_m2": 1.0959601482012813,
+   "thickness_A": 25.87,
+   "fmax": 0.04235508686691231,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "6",
+   "n": 212,
+   "pair_J_m2": 0.2546173953718051,
+   "thickness_A": 25.87,
+   "fmax": 0.04138605529636811,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "7",
+   "n": 212,
+   "pair_J_m2": 1.0939944393549264,
+   "thickness_A": 25.87,
+   "fmax": 0.04917972870147491,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "8",
+   "n": 212,
+   "pair_J_m2": 1.6356343761789622,
+   "thickness_A": 25.87,
+   "fmax": 0.04349461949042746,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "11",
+   "n": 212,
+   "pair_J_m2": 1.6356343761789622,
+   "thickness_A": 25.87,
+   "fmax": 0.043500572104814374,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "12",
+   "n": 212,
+   "pair_J_m2": 1.0939944393549264,
+   "thickness_A": 25.87,
+   "fmax": 0.04986521333218066,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 9
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "13",
+   "n": 212,
+   "pair_J_m2": 0.2546173953718051,
+   "thickness_A": 25.87,
+   "fmax": 0.04138732675344606,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "14",
+   "n": 212,
+   "pair_J_m2": 1.0959601482012813,
+   "thickness_A": 25.87,
+   "fmax": 0.04236483931380045,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "15",
+   "n": 212,
+   "pair_J_m2": 0.3208414485748619,
+   "thickness_A": 25.87,
+   "fmax": 0.0460641838197829,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "16",
+   "n": 212,
+   "pair_J_m2": 0.522573529343875,
+   "thickness_A": 25.87,
+   "fmax": 0.049068824117327686,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "17",
+   "n": 212,
+   "pair_J_m2": 0.5661144644553744,
+   "thickness_A": 25.87,
+   "fmax": 0.049222030666978854,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "1",
+   "n": 212,
+   "pair_J_m2": 1.2618144494893269,
+   "thickness_A": 15.6,
+   "fmax": 0.044847894366937806,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "O2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "2",
+   "n": 212,
+   "pair_J_m2": 1.23962531288057,
+   "thickness_A": 15.6,
+   "fmax": 0.046773425247955816,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "3",
+   "n": 212,
+   "pair_J_m2": 0.9215995124355656,
+   "thickness_A": 15.6,
+   "fmax": 0.048776966272509596,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "4",
+   "n": 212,
+   "pair_J_m2": 0.7652682861571609,
+   "thickness_A": 15.6,
+   "fmax": 0.0475788074993671,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "7",
+   "n": 212,
+   "pair_J_m2": 0.7085078907873138,
+   "thickness_A": 15.6,
+   "fmax": 0.04953368056182099,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "8",
+   "n": 212,
+   "pair_J_m2": 0.48647054353784763,
+   "thickness_A": 15.6,
+   "fmax": 0.04466884343211835,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "9",
+   "n": 212,
+   "pair_J_m2": 0.6197601032220013,
+   "thickness_A": 15.6,
+   "fmax": 0.046990475015589506,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "10",
+   "n": 212,
+   "pair_J_m2": 0.7358443231646544,
+   "thickness_A": 15.6,
+   "fmax": 0.046968490302186645,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "11",
+   "n": 212,
+   "pair_J_m2": 0.703337238032826,
+   "thickness_A": 15.6,
+   "fmax": 0.04420013315277958,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 6
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "12",
+   "n": 212,
+   "pair_J_m2": 0.444798761061955,
+   "thickness_A": 15.6,
+   "fmax": 0.0409948205328862,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "13",
+   "n": 212,
+   "pair_J_m2": 0.7569415206824012,
+   "thickness_A": 15.6,
+   "fmax": 0.04999894088341447,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "14",
+   "n": 212,
+   "pair_J_m2": 0.9645880449917936,
+   "thickness_A": 15.6,
+   "fmax": 0.047548461889904935,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "15",
+   "n": 212,
+   "pair_J_m2": 1.0084174290405639,
+   "thickness_A": 15.6,
+   "fmax": 0.04996567617678105,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "16",
+   "n": 212,
+   "pair_J_m2": 0.6448075509807544,
+   "thickness_A": 15.6,
+   "fmax": 0.04892375856673539,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "17",
+   "n": 212,
+   "pair_J_m2": 0.7190448110532353,
+   "thickness_A": 15.6,
+   "fmax": 0.04788912234161922,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "18",
+   "n": 212,
+   "pair_J_m2": 0.8749264153529888,
+   "thickness_A": 15.6,
+   "fmax": 0.04966070087534907,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "19",
+   "n": 212,
+   "pair_J_m2": 1.008995514441687,
+   "thickness_A": 15.6,
+   "fmax": 0.048337235526923074,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "20",
+   "n": 212,
+   "pair_J_m2": 1.0778373107703543,
+   "thickness_A": 15.6,
+   "fmax": 0.04947815356819728,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "21",
+   "n": 212,
+   "pair_J_m2": 1.008995514441687,
+   "thickness_A": 15.6,
+   "fmax": 0.049832569307745184,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "22",
+   "n": 212,
+   "pair_J_m2": 0.8748651032649909,
+   "thickness_A": 15.6,
+   "fmax": 0.04967844711365258,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "23",
+   "n": 212,
+   "pair_J_m2": 0.719167435229231,
+   "thickness_A": 15.6,
+   "fmax": 0.048595695295576995,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "24",
+   "n": 212,
+   "pair_J_m2": 0.6447258015300904,
+   "thickness_A": 15.6,
+   "fmax": 0.048629656381043544,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "25",
+   "n": 212,
+   "pair_J_m2": 1.0083473580828521,
+   "thickness_A": 15.6,
+   "fmax": 0.049128498711121536,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "26",
+   "n": 212,
+   "pair_J_m2": 0.9645851253685556,
+   "thickness_A": 15.6,
+   "fmax": 0.047549957533195,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "27",
+   "n": 212,
+   "pair_J_m2": 0.7573765445448624,
+   "thickness_A": 15.6,
+   "fmax": 0.0489595783826168,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "28",
+   "n": 212,
+   "pair_J_m2": 0.4459169767621069,
+   "thickness_A": 15.6,
+   "fmax": 0.04269248055676064,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "29",
+   "n": 212,
+   "pair_J_m2": 0.7033751931349199,
+   "thickness_A": 15.6,
+   "fmax": 0.049194746583122874,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 6
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "30",
+   "n": 212,
+   "pair_J_m2": 0.7352662377635315,
+   "thickness_A": 15.6,
+   "fmax": 0.04684484717367377,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "31",
+   "n": 212,
+   "pair_J_m2": 0.6199644768486609,
+   "thickness_A": 15.6,
+   "fmax": 0.04208468453931601,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "32",
+   "n": 212,
+   "pair_J_m2": 0.4864617846681336,
+   "thickness_A": 15.6,
+   "fmax": 0.044572732897342385,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "33",
+   "n": 212,
+   "pair_J_m2": 0.7162040176426668,
+   "thickness_A": 15.6,
+   "fmax": 0.048601438158712484,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "36",
+   "n": 212,
+   "pair_J_m2": 0.7653441963613488,
+   "thickness_A": 15.6,
+   "fmax": 0.04808380531504557,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "37",
+   "n": 212,
+   "pair_J_m2": 0.9216958600024193,
+   "thickness_A": 15.6,
+   "fmax": 0.04931976852504662,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "38",
+   "n": 212,
+   "pair_J_m2": 1.23962531288057,
+   "thickness_A": 15.6,
+   "fmax": 0.046517948563318735,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "39",
+   "n": 212,
+   "pair_J_m2": 1.261817369112565,
+   "thickness_A": 15.6,
+   "fmax": 0.04481366035843075,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "O2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "40",
+   "n": 212,
+   "pair_J_m2": 1.0888267726381649,
+   "thickness_A": 15.6,
+   "fmax": 0.04986333154769582,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "2",
+   "n": 212,
+   "pair_J_m2": 0.36826910980445193,
+   "thickness_A": 18.29,
+   "fmax": 0.04991655523866975,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "3",
+   "n": 212,
+   "pair_J_m2": 0.626888385095085,
+   "thickness_A": 18.29,
+   "fmax": 0.04377874481507021,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "4",
+   "n": 212,
+   "pair_J_m2": 0.47596066701897327,
+   "thickness_A": 18.29,
+   "fmax": 0.0455403845944167,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "5",
+   "n": 212,
+   "pair_J_m2": 0.9958730192973573,
+   "thickness_A": 18.29,
+   "fmax": 0.04772186429406018,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "6",
+   "n": 212,
+   "pair_J_m2": 1.0017820868123708,
+   "thickness_A": 18.29,
+   "fmax": 0.04269590760560838,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "7",
+   "n": 212,
+   "pair_J_m2": 0.82622868934142,
+   "thickness_A": 18.29,
+   "fmax": 0.03941909067155883,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "8",
+   "n": 212,
+   "pair_J_m2": 1.0342134869107038,
+   "thickness_A": 18.29,
+   "fmax": 0.04655849123556893,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "9",
+   "n": 212,
+   "pair_J_m2": 1.4413571399555831,
+   "thickness_A": 18.29,
+   "fmax": 0.045572228624405985,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "10",
+   "n": 212,
+   "pair_J_m2": 1.0341929455404313,
+   "thickness_A": 18.29,
+   "fmax": 0.04710782039768437,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "11",
+   "n": 212,
+   "pair_J_m2": 0.82622868934142,
+   "thickness_A": 18.29,
+   "fmax": 0.039299433192079854,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "12",
+   "n": 212,
+   "pair_J_m2": 1.0017820868123708,
+   "thickness_A": 18.29,
+   "fmax": 0.04269138886955609,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "13",
+   "n": 212,
+   "pair_J_m2": 0.9958216658716764,
+   "thickness_A": 18.29,
+   "fmax": 0.04782227186249316,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "14",
+   "n": 212,
+   "pair_J_m2": 0.4759675141423974,
+   "thickness_A": 18.29,
+   "fmax": 0.04476456174381111,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "15",
+   "n": 212,
+   "pair_J_m2": 0.6268849615333729,
+   "thickness_A": 18.29,
+   "fmax": 0.04393010955399489,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "16",
+   "n": 212,
+   "pair_J_m2": 0.36826910980445193,
+   "thickness_A": 18.29,
+   "fmax": 0.04995020036356526,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 3
+  }
+ ],
+ "UiO-66": [
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "1",
+   "n": 228,
+   "pair_J_m2": 3.370592804863802,
+   "thickness_A": 23.69,
+   "fmax": 0.049948532700871635,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "2",
+   "n": 228,
+   "pair_J_m2": 3.7084585295573125,
+   "thickness_A": 23.69,
+   "fmax": 0.048695413369671106,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C6H2O2",
+    "C6H2O2",
+    "C6H2O2",
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "3",
+   "n": 228,
+   "pair_J_m2": 4.26381575949612,
+   "thickness_A": 23.69,
+   "fmax": 0.040303440271199024,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "4",
+   "n": 228,
+   "pair_J_m2": 4.669990366141947,
+   "thickness_A": 23.69,
+   "fmax": 0.04610256304766478,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "5",
+   "n": 228,
+   "pair_J_m2": 2.149775778650121,
+   "thickness_A": 23.69,
+   "fmax": 0.04903880557043779,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "6",
+   "n": 228,
+   "pair_J_m2": 1.0158617152782796,
+   "thickness_A": 23.69,
+   "fmax": 0.045428410052486726,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO"
+   ],
+   "small_relaxed": [
+    "HO"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "7",
+   "n": 228,
+   "pair_J_m2": 0.8367718601331873,
+   "thickness_A": 23.69,
+   "fmax": 0.04975388339629482,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "8",
+   "n": 228,
+   "pair_J_m2": 2.9289212760676246,
+   "thickness_A": 23.69,
+   "fmax": 0.04903717636601153,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "9",
+   "n": 228,
+   "pair_J_m2": 2.8555100101507627,
+   "thickness_A": 23.69,
+   "fmax": 0.04423670575488691,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "10",
+   "n": 228,
+   "pair_J_m2": 0.8098649064924371,
+   "thickness_A": 23.69,
+   "fmax": 0.043247193176998024,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "11",
+   "n": 228,
+   "pair_J_m2": 1.5022985415911172,
+   "thickness_A": 23.69,
+   "fmax": 0.0491663463639197,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "12",
+   "n": 228,
+   "pair_J_m2": 2.915028268044311,
+   "thickness_A": 23.69,
+   "fmax": 0.03551334995674179,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "13",
+   "n": 228,
+   "pair_J_m2": 1.4966897412405773,
+   "thickness_A": 23.69,
+   "fmax": 0.04759364204881666,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "14",
+   "n": 228,
+   "pair_J_m2": 0.5961667466290218,
+   "thickness_A": 23.69,
+   "fmax": 0.049205403804436894,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "15",
+   "n": 228,
+   "pair_J_m2": 2.8220005334397857,
+   "thickness_A": 23.69,
+   "fmax": 0.04528321372304805,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "16",
+   "n": 228,
+   "pair_J_m2": 0.5750023637049232,
+   "thickness_A": 23.69,
+   "fmax": 0.04890414559529107,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "17",
+   "n": 228,
+   "pair_J_m2": 1.1342962644178745,
+   "thickness_A": 23.69,
+   "fmax": 0.04964451645565291,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O"
+   ],
+   "small_relaxed": [
+    "O"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "18",
+   "n": 228,
+   "pair_J_m2": 2.2747173005984336,
+   "thickness_A": 23.69,
+   "fmax": 0.049838322491101726,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "19",
+   "n": 228,
+   "pair_J_m2": 3.034666750478911,
+   "thickness_A": 23.69,
+   "fmax": 0.04917837361839969,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "20",
+   "n": 228,
+   "pair_J_m2": 3.7256098014980608,
+   "thickness_A": 23.69,
+   "fmax": 0.04818209763284325,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 10,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,-1)",
+   "term": "21",
+   "n": 228,
+   "pair_J_m2": 3.324394253424517,
+   "thickness_A": 23.69,
+   "fmax": 0.04940441738221845,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "1",
+   "n": 228,
+   "pair_J_m2": 1.3511993917778726,
+   "thickness_A": 20.52,
+   "fmax": 0.04977241242538047,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "2",
+   "n": 228,
+   "pair_J_m2": 0.4201081635699332,
+   "thickness_A": 20.52,
+   "fmax": 0.04013448493613161,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "3",
+   "n": 228,
+   "pair_J_m2": 0.8018290874699708,
+   "thickness_A": 20.52,
+   "fmax": 0.046045138775021414,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "4",
+   "n": 228,
+   "pair_J_m2": 2.033083870708259,
+   "thickness_A": 20.52,
+   "fmax": 0.04535807185248282,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "5",
+   "n": 228,
+   "pair_J_m2": 1.1893258883455609,
+   "thickness_A": 20.52,
+   "fmax": 0.03505769540385002,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "6",
+   "n": 228,
+   "pair_J_m2": 1.0350983882447826,
+   "thickness_A": 20.52,
+   "fmax": 0.04654156631547647,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "7",
+   "n": 228,
+   "pair_J_m2": 2.1926900528063276,
+   "thickness_A": 20.52,
+   "fmax": 0.04900898334469475,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "8",
+   "n": 228,
+   "pair_J_m2": 2.1367186604529818,
+   "thickness_A": 20.52,
+   "fmax": 0.04998488455299992,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "9",
+   "n": 228,
+   "pair_J_m2": 1.7900998427568018,
+   "thickness_A": 20.52,
+   "fmax": 0.04450681492875616,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "10",
+   "n": 228,
+   "pair_J_m2": 2.2319627062819314,
+   "thickness_A": 20.52,
+   "fmax": 0.049197355373072155,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "11",
+   "n": 228,
+   "pair_J_m2": 2.618458244816487,
+   "thickness_A": 20.52,
+   "fmax": 0.04978926068163394,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "12",
+   "n": 228,
+   "pair_J_m2": 3.1711716068580893,
+   "thickness_A": 20.52,
+   "fmax": 0.04929279866657183,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "13",
+   "n": 228,
+   "pair_J_m2": 2.6176224803830617,
+   "thickness_A": 20.52,
+   "fmax": 0.04974533610133697,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "14",
+   "n": 228,
+   "pair_J_m2": 2.2303077272058416,
+   "thickness_A": 20.52,
+   "fmax": 0.04977330969243873,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "15",
+   "n": 228,
+   "pair_J_m2": 1.7900998427568018,
+   "thickness_A": 20.52,
+   "fmax": 0.044516758945494214,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "16",
+   "n": 228,
+   "pair_J_m2": 2.136726935348362,
+   "thickness_A": 20.52,
+   "fmax": 0.049997954924824346,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "17",
+   "n": 228,
+   "pair_J_m2": 2.1930706979938286,
+   "thickness_A": 20.52,
+   "fmax": 0.04845750780583128,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 9,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "18",
+   "n": 228,
+   "pair_J_m2": 1.035106663140163,
+   "thickness_A": 20.52,
+   "fmax": 0.0467114798501542,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "19",
+   "n": 228,
+   "pair_J_m2": 1.1893176134501806,
+   "thickness_A": 20.52,
+   "fmax": 0.03529339525290388,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "20",
+   "n": 228,
+   "pair_J_m2": 2.033083870708259,
+   "thickness_A": 20.52,
+   "fmax": 0.04558108603197986,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "21",
+   "n": 228,
+   "pair_J_m2": 0.8018208125745905,
+   "thickness_A": 20.52,
+   "fmax": 0.04658200072937659,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "22",
+   "n": 228,
+   "pair_J_m2": 0.4201081635699332,
+   "thickness_A": 20.52,
+   "fmax": 0.04017778214571774,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,0)",
+   "term": "23",
+   "n": 228,
+   "pair_J_m2": 1.3511993917778726,
+   "thickness_A": 20.52,
+   "fmax": 0.049738310482192835,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "2",
+   "n": 342,
+   "pair_J_m2": 1.4928981306639393,
+   "thickness_A": 18.56,
+   "fmax": 0.04905041139352695,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "4",
+   "n": 342,
+   "pair_J_m2": 1.4723071033721502,
+   "thickness_A": 18.56,
+   "fmax": 0.04752340589376684,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "6",
+   "n": 342,
+   "pair_J_m2": 1.4931301633233525,
+   "thickness_A": 18.56,
+   "fmax": 0.048113962308451025,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "7",
+   "n": 342,
+   "pair_J_m2": 1.9615816479049266,
+   "thickness_A": 18.56,
+   "fmax": 0.04711888557412056,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2O",
+    "C2H2O",
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "8",
+   "n": 342,
+   "pair_J_m2": 1.1986133542076431,
+   "thickness_A": 18.56,
+   "fmax": 0.046000796774107865,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "10",
+   "n": 342,
+   "pair_J_m2": 1.9117170809046,
+   "thickness_A": 18.56,
+   "fmax": 0.04781202068722981,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "O2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "11",
+   "n": 342,
+   "pair_J_m2": 1.6914881474235712,
+   "thickness_A": 18.56,
+   "fmax": 0.04448041184282688,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "12",
+   "n": 342,
+   "pair_J_m2": 1.8936335033193719,
+   "thickness_A": 18.56,
+   "fmax": 0.049644731550881206,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "13",
+   "n": 342,
+   "pair_J_m2": 2.1434578282623176,
+   "thickness_A": 18.56,
+   "fmax": 0.04964039652037026,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "15",
+   "n": 342,
+   "pair_J_m2": 1.9091647216510559,
+   "thickness_A": 18.56,
+   "fmax": 0.04915579329200081,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "16",
+   "n": 342,
+   "pair_J_m2": 1.4163198681331164,
+   "thickness_A": 18.56,
+   "fmax": 0.04818577425876418,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "CO",
+    "CO",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 6
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "17",
+   "n": 342,
+   "pair_J_m2": 1.0665044368321153,
+   "thickness_A": 18.56,
+   "fmax": 0.04849102384686196,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "18",
+   "n": 342,
+   "pair_J_m2": 1.2060833088558458,
+   "thickness_A": 18.56,
+   "fmax": 0.04880399655920031,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2O",
+    "C2H2O",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "19",
+   "n": 342,
+   "pair_J_m2": 1.269802471100484,
+   "thickness_A": 18.56,
+   "fmax": 0.0499893730311221,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "20",
+   "n": 342,
+   "pair_J_m2": 1.570419493681409,
+   "thickness_A": 18.56,
+   "fmax": 0.04809932613238638,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "21",
+   "n": 342,
+   "pair_J_m2": 1.1970415200632318,
+   "thickness_A": 18.56,
+   "fmax": 0.048085589602011265,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,-1,1)",
+   "term": "23",
+   "n": 342,
+   "pair_J_m2": 1.4739013922900532,
+   "thickness_A": 18.56,
+   "fmax": 0.049914277983229845,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "1",
+   "n": 228,
+   "pair_J_m2": 3.3218430614422423,
+   "thickness_A": 23.69,
+   "fmax": 0.04797902834300914,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "2",
+   "n": 228,
+   "pair_J_m2": 3.7256098014980594,
+   "thickness_A": 23.69,
+   "fmax": 0.048192524704560716,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 10,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "3",
+   "n": 228,
+   "pair_J_m2": 3.0333099367654914,
+   "thickness_A": 23.69,
+   "fmax": 0.046569787109425595,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "4",
+   "n": 228,
+   "pair_J_m2": 2.2744306498139077,
+   "thickness_A": 23.69,
+   "fmax": 0.048657863962548877,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "5",
+   "n": 228,
+   "pair_J_m2": 1.1342580443132704,
+   "thickness_A": 23.69,
+   "fmax": 0.049572801504522764,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O"
+   ],
+   "small_relaxed": [
+    "O"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "6",
+   "n": 228,
+   "pair_J_m2": 0.5750310287833754,
+   "thickness_A": 23.69,
+   "fmax": 0.04890557629412303,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "7",
+   "n": 228,
+   "pair_J_m2": 2.8220005334397844,
+   "thickness_A": 23.69,
+   "fmax": 0.04521576754307673,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "8",
+   "n": 228,
+   "pair_J_m2": 0.5926887171101177,
+   "thickness_A": 23.69,
+   "fmax": 0.04985366705129564,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "9",
+   "n": 228,
+   "pair_J_m2": 1.4966897412405766,
+   "thickness_A": 23.69,
+   "fmax": 0.04751951557012025,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "10",
+   "n": 228,
+   "pair_J_m2": 2.9265611846083672,
+   "thickness_A": 23.69,
+   "fmax": 0.04742909332428186,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "11",
+   "n": 228,
+   "pair_J_m2": 1.5023080966172675,
+   "thickness_A": 23.69,
+   "fmax": 0.049071628396483435,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "12",
+   "n": 228,
+   "pair_J_m2": 0.8098744615185877,
+   "thickness_A": 23.69,
+   "fmax": 0.04327414521911631,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "13",
+   "n": 228,
+   "pair_J_m2": 2.8555004551246106,
+   "thickness_A": 23.69,
+   "fmax": 0.04420079977009306,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "14",
+   "n": 228,
+   "pair_J_m2": 2.92876839564921,
+   "thickness_A": 23.69,
+   "fmax": 0.04877318887001653,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "15",
+   "n": 228,
+   "pair_J_m2": 0.8367718601331868,
+   "thickness_A": 23.69,
+   "fmax": 0.04979001634833343,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "16",
+   "n": 228,
+   "pair_J_m2": 1.0158521602521284,
+   "thickness_A": 23.69,
+   "fmax": 0.04498472139056284,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO"
+   ],
+   "small_relaxed": [
+    "HO"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "17",
+   "n": 228,
+   "pair_J_m2": 2.1497853336762707,
+   "thickness_A": 23.69,
+   "fmax": 0.04877335617183295,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 8
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "18",
+   "n": 228,
+   "pair_J_m2": 4.669875705828135,
+   "thickness_A": 23.69,
+   "fmax": 0.04916299541933409,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "19",
+   "n": 228,
+   "pair_J_m2": 4.263873089653023,
+   "thickness_A": 23.69,
+   "fmax": 0.04024174462034893,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "20",
+   "n": 228,
+   "pair_J_m2": 3.708248318981993,
+   "thickness_A": 23.69,
+   "fmax": 0.04867571467948476,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C6H2O2",
+    "C6H2O2",
+    "C6H2O2",
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,0)",
+   "term": "21",
+   "n": 228,
+   "pair_J_m2": 3.3706023598899515,
+   "thickness_A": 23.69,
+   "fmax": 0.04989518792306629,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "1",
+   "n": 342,
+   "pair_J_m2": 1.5143317058780865,
+   "thickness_A": 21.76,
+   "fmax": 0.04896663093707367,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "2",
+   "n": 342,
+   "pair_J_m2": 1.217138721806624,
+   "thickness_A": 21.76,
+   "fmax": 0.04837371627558008,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "4",
+   "n": 342,
+   "pair_J_m2": 1.1764229055841997,
+   "thickness_A": 21.76,
+   "fmax": 0.04667673215339519,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "HO",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "5",
+   "n": 342,
+   "pair_J_m2": 1.1028992167514233,
+   "thickness_A": 21.76,
+   "fmax": 0.04696307587840056,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "6",
+   "n": 342,
+   "pair_J_m2": 1.3118672849643362,
+   "thickness_A": 21.76,
+   "fmax": 0.03994861742074762,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "8",
+   "n": 342,
+   "pair_J_m2": 1.6515226787974044,
+   "thickness_A": 21.76,
+   "fmax": 0.049960264857735984,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "9",
+   "n": 342,
+   "pair_J_m2": 2.00888098302509,
+   "thickness_A": 21.76,
+   "fmax": 0.04917006907568158,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "11",
+   "n": 342,
+   "pair_J_m2": 2.321231590424021,
+   "thickness_A": 21.76,
+   "fmax": 0.04948056488180236,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "13",
+   "n": 342,
+   "pair_J_m2": 2.009056520064204,
+   "thickness_A": 21.76,
+   "fmax": 0.04980901335236809,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "14",
+   "n": 342,
+   "pair_J_m2": 1.6482840204257565,
+   "thickness_A": 21.76,
+   "fmax": 0.04893517813646282,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2",
+    "H",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "16",
+   "n": 342,
+   "pair_J_m2": 1.3176424535511773,
+   "thickness_A": 21.76,
+   "fmax": 0.049641119372883624,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "17",
+   "n": 342,
+   "pair_J_m2": 1.1025218121173288,
+   "thickness_A": 21.76,
+   "fmax": 0.04974237536597805,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "18",
+   "n": 342,
+   "pair_J_m2": 1.1764053518802884,
+   "thickness_A": 21.76,
+   "fmax": 0.04661429585118406,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "HO",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "HO",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "20",
+   "n": 342,
+   "pair_J_m2": 1.2175951181083198,
+   "thickness_A": 21.76,
+   "fmax": 0.049955524980624964,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 4,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,0,1)",
+   "term": "21",
+   "n": 342,
+   "pair_J_m2": 1.5149285318110732,
+   "thickness_A": 21.76,
+   "fmax": 0.049153211569135546,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "2",
+   "n": 342,
+   "pair_J_m2": 1.493025374380392,
+   "thickness_A": 18.56,
+   "fmax": 0.04988814062189587,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2"
+   ],
+   "small_relaxed": [
+    "C2H2"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "4",
+   "n": 342,
+   "pair_J_m2": 1.4723744676926251,
+   "thickness_A": 18.56,
+   "fmax": 0.049777723117609196,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "6",
+   "n": 342,
+   "pair_J_m2": 1.4932199824173191,
+   "thickness_A": 18.56,
+   "fmax": 0.04934129907197137,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "7",
+   "n": 342,
+   "pair_J_m2": 1.9639843086685271,
+   "thickness_A": 18.56,
+   "fmax": 0.04821682843066146,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2O",
+    "C2H2O",
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 7,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "8",
+   "n": 342,
+   "pair_J_m2": 1.199361846657363,
+   "thickness_A": 18.56,
+   "fmax": 0.04959049683112851,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 4
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "10",
+   "n": 342,
+   "pair_J_m2": 1.9128697592771686,
+   "thickness_A": 18.56,
+   "fmax": 0.04938025215295838,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "O",
+    "O"
+   ],
+   "small_relaxed": [
+    "O2"
+   ],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "11",
+   "n": 342,
+   "pair_J_m2": 1.6914956323480688,
+   "thickness_A": 18.56,
+   "fmax": 0.044179100785284475,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "12",
+   "n": 342,
+   "pair_J_m2": 1.8936634430173611,
+   "thickness_A": 18.56,
+   "fmax": 0.04962973461747497,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H"
+   ],
+   "small_relaxed": [],
+   "n_pieces_initial": 3,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "13",
+   "n": 342,
+   "pair_J_m2": 2.1389593886395026,
+   "thickness_A": 18.56,
+   "fmax": 0.04991417758628128,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [],
+   "small_relaxed": [],
+   "n_pieces_initial": 1,
+   "n_pieces_relaxed": 1
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "15",
+   "n": 342,
+   "pair_J_m2": 1.9091722065755532,
+   "thickness_A": 18.56,
+   "fmax": 0.04922860601229598,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H"
+   ],
+   "small_relaxed": [
+    "H"
+   ],
+   "n_pieces_initial": 2,
+   "n_pieces_relaxed": 2
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "16",
+   "n": 342,
+   "pair_J_m2": 1.4165444158680325,
+   "thickness_A": 18.56,
+   "fmax": 0.04960480613259527,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "C2H2",
+    "C2H2",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2",
+    "C2H2",
+    "CO",
+    "CO",
+    "H"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 6
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "17",
+   "n": 342,
+   "pair_J_m2": 1.06651940668111,
+   "thickness_A": 18.56,
+   "fmax": 0.048938620157987944,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "O",
+    "O",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 8,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "18",
+   "n": 342,
+   "pair_J_m2": 1.206195582723304,
+   "thickness_A": 18.56,
+   "fmax": 0.049406722770914166,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "C2H2O",
+    "C2H2O",
+    "CO2",
+    "CO2",
+    "CO2",
+    "H"
+   ],
+   "n_pieces_initial": 6,
+   "n_pieces_relaxed": 7
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "19",
+   "n": 342,
+   "pair_J_m2": 1.2698698354209592,
+   "thickness_A": 18.56,
+   "fmax": 0.049385024100925025,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "CH",
+    "CH",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 3
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "20",
+   "n": 342,
+   "pair_J_m2": 1.5696410615337009,
+   "thickness_A": 18.56,
+   "fmax": 0.04836024681386977,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  },
+  {
+   "miller": "(-1,1,1)",
+   "term": "21",
+   "n": 342,
+   "pair_J_m2": 1.197460675835075,
+   "thickness_A": 18.56,
+   "fmax": 0.048132864960795926,
+   "status": "pair_fit_underdetermined",
+   "small_initial": [
+    "H",
+    "H",
+    "H",
+    "H"
+   ],
+   "small_relaxed": [
+    "CO2",
+    "CO2",
+    "H",
+    "H"
+   ],
+   "n_pieces_initial": 5,
+   "n_pieces_relaxed": 5
+  }
+ ]
+}

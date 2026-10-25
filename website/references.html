@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References &middot; MOF Structural Descriptors</title>
+<meta name="description" content="Every paper, dataset and tool this project builds on.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/academic.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="journey.html">How We Got Here</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="learn_shape.html">Learn</a>
+      <a href="learn_energy.html">Learn 2</a>
+      <a href="morph_math.html">Maths</a>
+      <a href="morphology.html">Morphology</a>
+      <a href="deform.html">Cell Deform</a>
+      <a href="graph_faces.html">Graph Faces</a>
+      <a href="surface_energy.html">Surface Energy</a>
+      <a href="hybrid.html">Hybrid</a>
+      <a href="experiment.html">Experiment</a>
+      <a href="bridge.html">Why Shape</a>
+      <a href="relation.html">Spectrum ↔ Shape</a>
+      <a href="lessons.html">Mistakes</a>
+      <a href="code.html">Source</a>
+      <a href="references.html" aria-current="page">References</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>References</h1>
+    <p class="lead">Every paper, dataset and tool this project builds on.</p>
+<div class="place ref">Reference material &mdash; outside the reading sequence. <a href="index.html">Start at the beginning</a>.</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+<h2 class="section-title" id="references"><span class="stitle-num">1</span>References</h2>
+  <p class="section-sub">Every source this project actually uses &mdash; an algorithm we implement, a dataset we query, a method we follow, or a physical constant we cite. Nothing here is padding. The two that matter most are marked.</p>
+
+  <div class="panel">
+    <h3 class="sub-head">The algorithm we visualise, and the method we implement</h3>
+    <table class="data-table">
+      <thead><tr><td style="width:38px">#</td><td>Reference</td><td style="width:31%">Why it is here</td></tr></thead>
+      <tbody>
+      <tr><td class="dt-label"><b>[1]</b></td>
+          <td class="dt-note">B. J. Bucior <i>et al.</i>, &ldquo;Identification Schemes for Metal&ndash;Organic Frameworks to Enable Rapid Search and Cheminformatics Analysis,&rdquo; <i>Cryst. Growth Des.</i> <b>19</b>(11), 6682&ndash;6697 (2019).</td>
+          <td class="dt-value" style="color:var(--brand)"><b>Core.</b> Defines MOFid/MOFkey and the metal-oxo decomposition. Modules <code>code_01</code>&ndash;<code>code_07</code> are a faithful translation.</td></tr>
+      <tr><td class="dt-label"><b>[2]</b></td>
+          <td class="dt-note">J. Xiao, B. Wang, X. Li, &ldquo;Deciphering the Generating Rules and Functionalities of Complex Networks,&rdquo; <i>Sci. Rep.</i> <b>11</b>, 22964 (2021).</td>
+          <td class="dt-value" style="color:var(--brand)"><b>Core.</b> Source of NMFA/iNMFA. <b>Its &tau; definition is exactly what our correction restores</b> (Section 16).</td></tr>
+      <tr><td class="dt-label">[3]</td>
+          <td class="dt-note">C. Song, S. Havlin, H. A. Makse, &ldquo;Self-Similarity of Complex Networks,&rdquo; <i>Nature</i> <b>433</b>, 392&ndash;395 (2005).</td>
+          <td class="dt-note">Box-covering &mdash; the method family, and the contrast [2] draws against box-growing.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Topology</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[4]</td><td class="dt-note">O. Delgado-Friedrichs, M. O'Keeffe, <i>Acta Cryst. A</i> <b>59</b>(4), 351&ndash;360 (2003).</td><td class="dt-value" style="width:31%">Systre &mdash; <code>code_06</code> writes its <code>.cgd</code> input</td></tr>
+      <tr><td class="dt-label">[5]</td><td class="dt-note">M. O'Keeffe <i>et al.</i>, &ldquo;The Reticular Chemistry Structure Resource (RCSR),&rdquo; <i>Acc. Chem. Res.</i> <b>41</b>(12), 1782&ndash;1789 (2008).</td><td class="dt-value">the net symbols <code>tbo</code>, <code>pcu</code>, <code>sod</code>, <code>fcu</code></td></tr>
+      <tr><td class="dt-label">[6]</td><td class="dt-note">M. Eddaoudi <i>et al.</i>, &ldquo;Modular Chemistry: Secondary Building Units&hellip;,&rdquo; <i>Acc. Chem. Res.</i> <b>34</b>(4), 319&ndash;330 (2001).</td><td class="dt-value">the SBU concept</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Data &mdash; and why the distinction matters</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[7]</td><td class="dt-note">N. S. Bobbitt, J. Chen, R. Q. Snurr, &ldquo;MOFX-DB,&rdquo; <i>J. Chem. Eng. Data</i> <b>68</b>(2), 483&ndash;498 (2023).</td><td class="dt-value" style="width:31%">the database our notebook queries live</td></tr>
+      <tr><td class="dt-label">[8]</td><td class="dt-note">C. E. Wilmer <i>et al.</i>, &ldquo;Large-Scale Screening of Hypothetical Metal&ndash;Organic Frameworks,&rdquo; <i>Nature Chem.</i> <b>4</b>(2), 83&ndash;89 (2012).</td><td class="dt-value" style="color:var(--node-ink)"><b>Our 77 are hMOF entries &mdash; hypothetical, never synthesised</b></td></tr>
+      <tr><td class="dt-label">[9]</td><td class="dt-note">Y. G. Chung <i>et al.</i>, &ldquo;CoRE MOF 2019,&rdquo; <i>J. Chem. Eng. Data</i> <b>64</b>(12), 5985&ndash;5998 (2019).</td><td class="dt-value" style="color:var(--node-ink)"><b>The experimental set: all 61 CIFs later obtained and run (Results page; Spectrum &harr; Shape page)</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Chemistry &mdash; constants and test structures</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[10]</td><td class="dt-note">B. Cordero <i>et al.</i>, &ldquo;Covalent Radii Revisited,&rdquo; <i>Dalton Trans.</i> 2832&ndash;2838 (2008).</td><td class="dt-value" style="width:31%">the bond-perception cutoffs in <code>code_02</code></td></tr>
+      <tr><td class="dt-label">[11]</td><td class="dt-note">S. S.-Y. Chui <i>et al.</i>, <i>Science</i> <b>283</b>, 1148&ndash;1150 (1999).</td><td class="dt-value">HKUST-1</td></tr>
+      <tr><td class="dt-label">[12]</td><td class="dt-note">H. Li, M. Eddaoudi, M. O'Keeffe, O. M. Yaghi, <i>Nature</i> <b>402</b>, 276&ndash;279 (1999).</td><td class="dt-value">MOF-5 / IRMOF-1</td></tr>
+      <tr><td class="dt-label">[13]</td><td class="dt-note">K. S. Park <i>et al.</i>, <i>PNAS</i> <b>103</b>(27), 10186&ndash;10191 (2006).</td><td class="dt-value">ZIF-8 &mdash; our chemical control</td></tr>
+      <tr><td class="dt-label">[14]</td><td class="dt-note">J. H. Cavka <i>et al.</i>, <i>JACS</i> <b>130</b>(42), 13850&ndash;13851 (2008).</td><td class="dt-value" style="color:var(--brand)"><b>UiO-66 &mdash; the 12-connected test case</b></td></tr>
+      <tr><td class="dt-label">[15]</td><td class="dt-note">G. C. Shearer <i>et al.</i>, &ldquo;Defect Engineering&hellip;UiO-66,&rdquo; <i>Chem. Mater.</i> <b>28</b>(11), 3749&ndash;3761 (2016).</td><td class="dt-value" style="color:var(--brand)"><b>Why our defect work is real chemistry</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Network science and software</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[16]</td><td class="dt-note">M. Fiedler, &ldquo;Algebraic Connectivity of Graphs,&rdquo; <i>Czech. Math. J.</i> <b>23</b>(2), 298&ndash;305 (1973).</td><td class="dt-value" style="width:31%">defines &lambda;&#8322;</td></tr>
+      <tr><td class="dt-label">[17]</td><td class="dt-note">U. Brandes, &ldquo;A Faster Algorithm for Betweenness Centrality,&rdquo; <i>J. Math. Sociol.</i> <b>25</b>(2), 163&ndash;177 (2001).</td><td class="dt-value">betweenness, in <code>code_09</code></td></tr>
+      <tr><td class="dt-label">[18]</td><td class="dt-note">A. H. Larsen <i>et al.</i>, &ldquo;The Atomic Simulation Environment,&rdquo; <i>J. Phys. Condens. Matter</i> <b>29</b>(27), 273002 (2017).</td><td class="dt-value">ASE &mdash; CIF parsing in the notebook</td></tr>
+      <tr><td class="dt-label">[19]</td><td class="dt-note">A. A. Hagberg, D. A. Schult, P. J. Swart, &ldquo;Exploring Network Structure&hellip; using NetworkX,&rdquo; <i>SciPy2008</i>, 11&ndash;15.</td><td class="dt-value">NetworkX</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Crystal morphology (the <a href="morphology.html">Morphology page</a>)</h3>
+    <table class="data-table">
+      <tbody>
+      <tr><td class="dt-label" style="width:38px">[20]</td><td class="dt-note">P. Chen <i>et al.</i>, &ldquo;Machine-Learning-Guided Morphology Engineering of Nanoscale Metal-Organic Frameworks,&rdquo; <i>Matter</i> <b>2</b>(6), 1651&ndash;1666 (2020).</td><td class="dt-value" style="width:31%;color:var(--brand)"><b>Core.</b> One MOF chemistry, many shapes; the link-counting argument for UiO-67</td></tr>
+      <tr><td class="dt-label">[21]</td><td class="dt-note">X. Wu, J. Jiang, &ldquo;Precision-engineered metal&ndash;organic frameworks: fine-tuning reverse topological structure prediction and design,&rdquo; <i>Chem. Sci.</i> <b>15</b>, 16467&ndash;16479 (2024).</td><td class="dt-value">Geometric signatures of building units; UFF workflow for Phase 4</td></tr>
+      <tr><td class="dt-label">[22]</td><td class="dt-note">R. F. P. Grimbergen, H. Meekes, P. Bennema, C. S. Strom, L. J. P. Vogels, &ldquo;On the prediction of crystal morphology. I. The Hartman&ndash;Perdok theory revisited,&rdquo; <i>Acta Cryst. A</i> <b>54</b>, 491&ndash;500 (1998).</td><td class="dt-value">Periodic bond chains and F/S/K faces (Phase 3)</td></tr>
+      <tr><td class="dt-label">[23]</td><td class="dt-note">S. Miracle-Sol&eacute;, &ldquo;Wulff shape of equilibrium crystals,&rdquo; arXiv:1307.5180 (2013).</td><td class="dt-value">The Wulff construction (Phase 4)</td></tr>
+      <tr><td class="dt-label">[24]</td><td class="dt-note">P. Cubillas, M. W. Anderson, M. P. Attfield, &ldquo;Crystal Growth Mechanisms and Morphological Control of the Prototypical Metal&ndash;Organic Framework MOF-5 Revealed by Atomic Force Microscopy,&rdquo; <i>Chem. Eur. J.</i> <b>18</b>, 15406&ndash;15415 (2012).</td><td class="dt-value">MOF-5 cubes and octahedra</td></tr>
+      <tr><td class="dt-label">[25]</td><td class="dt-note">Q. Liu, J. Yang, L. Jin, W. Sun, <i>CrystEngComm</i> <b>18</b>, 4127&ndash;4132 (2016).</td><td class="dt-value">HKUST-1 cube, cuboctahedron, octahedron</td></tr>
+      <tr><td class="dt-label">[26]</td><td class="dt-note">X.-Y. Liu <i>et al.</i>, &ldquo;Tuning Metal&ndash;Organic Framework Nanocrystal Shape through Facet-Dependent Coordination,&rdquo; <i>Nano Lett.</i> <b>20</b>, 1774&ndash;1780 (2020).</td><td class="dt-value">ZIF-8 cube to rhombic dodecahedron</td></tr>
+      <tr><td class="dt-label">[27]</td><td class="dt-note">Y. Pan <i>et al.</i>, &ldquo;Tuning the crystal morphology and size of zeolitic imidazolate framework-8 in aqueous solution by surfactants,&rdquo; <i>CrystEngComm</i> (2011).</td><td class="dt-value">The one direct precedent: attachment-energy shapes for ZIF-8</td></tr>
+      <tr><td class="dt-label">[28]</td><td class="dt-note">A. Togo, I. Tanaka, &ldquo;Spglib: a software library for crystal symmetry search,&rdquo; arXiv:1808.01590 (2018).</td><td class="dt-value">Space groups of our CIF files</td></tr>
+      <tr><td class="dt-label">[29]</td><td class="dt-note">A. K. Rapp&eacute;, C. J. Casewit, K. S. Colwell, W. A. Goddard III, W. M. Skiff, &ldquo;UFF, a full periodic table force field for molecular mechanics and molecular dynamics simulations,&rdquo; J. Am. Chem. Soc. 114, 10024 (1992).</td><td class="dt-value">Force-field parameters (Phase 4)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout" data-kind="Note">
+    <b>If you only read two:</b> <b>[1]</b> is the algorithm we visualise &mdash; Sections 7&ndash;9 are a faithful implementation of it. <b>[2]</b> is the method we apply &mdash; Sections 15&ndash;17 come from it, and the &tau; definition on its page 22 is the one line our correction restores.
+    <br><br>
+    <b>[8] and [9] together explain the dataset problem.</b> We requested [9] (experimental) and first received [8] (hypothetical); the 61 CoRE MOF CIFs were obtained afterwards and are used on the Results page. Both are cited because the distinction changes what we are allowed to claim.
+    <br><br>
+    Full annotated list in <span class="code-chip">docs/references/README.md</span>; BibTeX in <span class="code-chip">references.bib</span>.
+  </div>
+
+      <h2 class="section-title" id="ref-morph" data-toc="Morphology and experiment"><span class="stitle-num">2</span>Morphology Work: Experimental and Computational Sources</h2>
+      <p class="section-sub">Sources cited on the <a href="experiment.html">Experiment</a> page. The full list of the 35 sources behind the experimental dataset, with DOIs and access level, is in <code>data/experimental_morphology/dataset/sources.jsonl</code> and <code>PAPERS_USED.md</code>.</p>
+      <ul>
+        <li>J. Cravillon, C. A. Schr&ouml;der, H. Bux, A. Rothkirch, J. Caro, M. Wiebcke, <i>CrystEngComm</i> 2012, 14, 492&ndash;498. ZIF-8 shape against time with formate. doi:10.1039/c1ce06002c</li>
+        <li>A. Umemura, S. Diring, S. Furukawa, H. Uehara, T. Tsuruoka, S. Kitagawa, <i>J. Am. Chem. Soc.</i> 2011, 133, 15506&ndash;15513. HKUST-1 octahedron to cube by coordination modulation. doi:10.1021/ja204233q</li>
+        <li>K. Suresh, D. Aulakh, J. Purewal, D. J. Siegel, M. Veenstra, A. J. Matzger, <i>J. Am. Chem. Soc.</i> 2021, 143, 10727&ndash;10734. MOF-5 cubes and their size. doi:10.1021/jacs.1c04926</li>
+        <li>Y. Zhang, Y. Jia, M. Li, L. Hou, <i>Sci. Rep.</i> 2018, 8, 9597. ZIF-8 shape against the Hmim/Zn ratio. doi:10.1038/s41598-018-28015-7</li>
+        <li>V. V. Butova, V. R. Zdravkova, O. A. Burachevskaia, A. A. Tereshchenko, P. S. Shestakova, K. I. Hadjiivanov, <i>Nanomaterials</i> 2023, 13, 1675. Octahedral UiO-66 with benzoic acid modulator. doi:10.3390/nano13101675</li>
+        <li>D. Morelli Venturi, F. Campana, F. Marmottini, F. Costantino, L. Vaccaro, <i>ACS Sustainable Chem. Eng.</i> 2020, 8, 17154&ndash;17164. UiO-66 in green solvents with acetic acid.</li>
+        <li>Zelenka et al., <i>Sci. Rep.</i> 2024. Additive-free HKUST-1 octahedra and CO<sub>2</sub> sorption after grinding. doi:10.1038/s41598-024-66432-z</li>
+        <li>B. Deng, P. Zhong, K. Jun, J. Riebesell, K. Han, C. J. Bartel, G. Ceder, <i>Nat. Mach. Intell.</i> 2023, 5, 1031&ndash;1041. CHGNet, the machine-learned potential used for the slab runs. doi:10.1038/s42256-023-00716-3</li>
+        <li>A. K. Rapp&eacute;, C. J. Casewit, K. S. Colwell, W. A. Goddard, W. M. Skiff, <i>J. Am. Chem. Soc.</i> 1992, 114, 10024&ndash;10035. The Universal Force Field. doi:10.1021/ja00051a040</li>
+        <li>S. P. Ong et al., <i>Comput. Mater. Sci.</i> 2013, 68, 314&ndash;319. pymatgen, whose slab generator built the CHGNet slabs. doi:10.1016/j.commatsci.2012.10.028</li>
+        <li>Y. G. Chung et al., <i>J. Chem. Eng. Data</i> 2019, 64, 5985&ndash;5998. CoRE MOF 2019, source of the eight structures run on the Experiment page. doi:10.1021/acs.jced.9b00835</li>
+      </ul>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="code.html"><div class="dir">&larr; Previous</div><div class="ttl">Every Line of Source Code</div></a><a class="next" href="glossary.html"><div class="dir">Next &rarr;</div><div class="ttl">Glossary</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

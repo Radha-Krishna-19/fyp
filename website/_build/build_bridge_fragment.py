@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""Writes fragments/bridge.before.html (page 'From Spectrum to Shape').
+The page explains why the project changes crystal shape and how the first half of the project
+connects to the second. The calculations that test the connection are on relation.html
+(build_relation_fragment.py)."""
+import json, os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+OUT = os.path.join(HERE, 'fragments', 'bridge.before.html')
+
+html = f'''      <h2 class="section-title" id="br-why" data-toc="Why change the shape?"><span class="stitle-num">0</span>Why We Want to Change the Shape of a MOF</h2>
+      <dl class="bridge"><dt>You know</dt><dd>How a unit cell gives faces and how the faces give a shape (<a href="morphology.html">Morphology</a>), and how stretching the cell gives plates and rods (<a href="deform.html">Cell Deform</a>).</dd><dt>This page adds</dt><dd>The reason the project cares about shape at all, and how the earlier spectrum work connects to it.</dd><dt>Which lets us</dt><dd>Keep the earlier work as part of one story, not as a separate project that was abandoned.</dd></dl>
+      <h3 class="sub-head">In simple words</h3>
+      <p class="sd">A MOF is a sponge made of crystal. Gas or liquid molecules have to get into its pores. The outside shape of a crystal particle decides three things that matter for that job: <b>which kinds of surface are open to the outside</b>, <b>how far a molecule must travel to reach the inside</b>, and <b>how the particles pack together</b> in a filter, a film or a tablet. Two crystals of exactly the same MOF can therefore behave differently only because one is a cube and the other a thin plate. If we can predict, from the structure alone, which shapes a MOF can take and what makes it take each one, we can choose the shape that works best for adsorption before spending weeks in the laboratory. This is the link to the original aim of the project: to improve how strongly and how selectively a MOF adsorbs, by working on the computational side of how MOFs are made.</p>
+      <h3 class="sub-head">In technical words</h3>
+      <ul class="sd">
+        <li><b>Exposed faces.</b> Different crystal faces expose different pore openings, metal sites and linker orientations, so adsorption, catalysis and growth happen at different rates on different faces. The surface-energy ranking of faces (<a href="surface_energy.html">Phase 4</a>) decides which are large.</li>
+        <li><b>Diffusion path.</b> Uptake into a pore channel is diffusion-limited, and the time to fill scales as <i>t</i> &prop; <i>L</i>&sup2;/<i>D</i>, where <i>L</i> is the length of the channel the molecule must follow and <i>D</i> the diffusion coefficient. A plate or rod whose short side lies along the channel reduces <i>L</i> and so the uptake time. This is the standard diffusion scaling, not a result of this project.</li>
+        <li><b>Packing and processing.</b> Aspect ratio and facet shape set how crystals pack, how a membrane or film orients, and how a pellet behaves.</li>
+        <li><b>The panel's question.</b> A morphology is the output that connects a unit cell to a usable particle; it is why the panel asked for several morphologies from one established cell.</li>
+      </ul>
+      <div class="callout warn" data-kind="What is and is not shown">These are reasons taken from standard crystal-engineering and transport arguments. This project has not computed adsorption or diffusion for any shape. What it does compute is which shapes a MOF can take and, with limits, which one is favoured.</div>
+      <h3 class="sub-head">How a shape can be changed</h3>
+      <div class="table-wrap"><table class="data-table"><thead><tr><td>Where</td><td>The lever</td><td>What it does</td></tr></thead><tbody>
+        <tr><td class="dt-label">In the laboratory</td><td class="dt-note">Solvent, modulator (an acid that competes with the linker), temperature, time</td><td class="dt-note">Slows growth on some faces more than others, so the slow faces grow large. Examples are on the <a href="experiment.html">Experiment</a> page.</td></tr>
+        <tr><td class="dt-label">In the energy model</td><td class="dt-note">The surface energy of each face</td><td class="dt-note">Wulff: a lower energy gives a larger face (<a href="surface_energy.html">Phase 4</a>).</td></tr>
+        <tr><td class="dt-label">In the growth model</td><td class="dt-note">The growth rate of each face</td><td class="dt-note">BFDH and the graph rule: slower growth gives a larger face (<a href="graph_faces.html">Phase 3</a>).</td></tr>
+        <tr><td class="dt-label">In the geometry</td><td class="dt-note">The cell lengths and angles</td><td class="dt-note">Stretching one axis turns an equant crystal into a plate or a rod (<a href="deform.html">Cell Deform</a>).</td></tr>
+      </tbody></table></div>
+
+      <h2 class="section-title" id="br-before" data-toc="The first half"><span class="stitle-num">0</span>The First Half of the Project in One Table</h2>
+      <p class="section-sub">Before the panel's suggestion the project asked whether a number computed from connectivity alone could sort MOFs, so that only promising ones are simulated. The number was the width &Delta;&alpha; of a multifractal spectrum of the MOF's periodic graph.</p>
+      <div class="table-wrap"><table class="data-table"><thead><tr><td>Step</td><td>What we did</td><td>What survived</td><td>What was withdrawn</td></tr></thead><tbody>
+        <tr><td class="dt-label">Graph</td><td class="dt-note">CIF to bonds to metal-oxo building blocks to a periodic quotient graph whose edges carry the lattice translation</td><td class="dt-note">The graph, and the proof that coarse-graining first or replicating first gives the identical graph</td><td class="dt-note">Nothing</td></tr>
+        <tr><td class="dt-label">Spectrum</td><td class="dt-note">Box covering, &tau;(q) through the origin, &alpha; and f(&alpha;), width &Delta;&alpha;</td><td class="dt-note">The method, after four fixes</td><td class="dt-note">Both published bands (atomic graph, not the stated coarse graph)</td></tr>
+        <tr><td class="dt-label">Classes</td><td class="dt-note">Narrow, Medium and Wide by &Delta;&alpha;</td><td class="dt-note">The rule that classes must be wider than the error bar</td><td class="dt-note">The three classes, which tracked graph size (r = +0.69 and +0.72)</td></tr>
+        <tr><td class="dt-label">Size</td><td class="dt-note">Sweeps of &Delta;&alpha; against supercell size on four nets</td><td class="dt-note">&Delta;&alpha; is linear in ln(diameter) with a net-dependent slope (0.69 to 0.89)</td><td class="dt-note">The idea that one converged value exists</td></tr>
+      </tbody></table></div>
+      <p class="sd">Every step of this is explained, with its mistakes, on the <a href="spectrum.html">Spectrum</a>, <a href="results.html">Results</a> and <a href="lessons.html">Mistakes and Fixes</a> pages.</p>
+
+      <h2 class="section-title" id="br-share" data-toc="What the halves share"><span class="stitle-num">0</span>What the Two Halves Share</h2>
+      <div class="table-wrap"><table class="data-table"><thead><tr><td>Object</td><td>Spectrum work</td><td>Morphology work</td></tr></thead><tbody>
+        <tr><td class="dt-label">Starting point</td><td class="dt-note">A CIF file</td><td class="dt-note">The same CIF file</td></tr>
+        <tr><td class="dt-label">Periodic graph</td><td class="dt-note">The quotient graph is tiled into a supercell</td><td class="dt-note">The same graph is cut by a plane to count the bonds a face breaks (<a href="graph_faces.html">Phase 3</a>)</td></tr>
+        <tr><td class="dt-label">Lattice translations</td><td class="dt-note">Make replication exact</td><td class="dt-note">Decide which plane cuts which bonds</td></tr>
+        <tr><td class="dt-label">Size confound</td><td class="dt-note">&Delta;&alpha; grows with graph size</td><td class="dt-note">A crystal has a size and a shape; a torus has neither</td></tr>
+        <tr><td class="dt-label">Question</td><td class="dt-note">Which MOFs deserve simulation?</td><td class="dt-note">Which shape will a given MOF take, and is it a useful one?</td></tr>
+      </tbody></table></div>
+      <p class="sd">The size confound is the opening for the test on the next page. Every earlier spectrum was measured on a <b>torus</b>: the graph was tiled with wrap-around, so it has no edge, no surface and no shape. A real crystal particle is finite and has faces. If the spectrum is to say anything about real particles, it has to be measured on a finite graph, and a finite graph can have a shape.</p>
+
+      <div class="callout good" data-kind="The relation, tested">Whether the spectrum and the crystal shape are actually related is tested on its own page, <a href="relation.html">Spectrum &harr; Shape</a>: three calculations, each produced by the notebook <code>code/spectrum_shape_relation/Spectrum_Shape_Relation.ipynb</code>.</div>
+'''
+open(OUT, 'w', encoding='utf-8').write(html)
+print('wrote', OUT)

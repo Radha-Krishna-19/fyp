@@ -1,0 +1,797 @@
+{
+ "HKUST-1": {
+  "all_slabs": {
+   "working_cell": "data/chgnet_morphograph_runs/HKUST-1_2026-10-14/HKUST-1_working_cell.cif",
+   "spacegroup": "Fm-3m",
+   "n_slab_records": 88,
+   "n_slabs_used": 88,
+   "gamma": {
+    "{111}": 0.15107,
+    "{100}": 0.16346,
+    "{311}": 0.20977,
+    "{110}": 0.18143
+   },
+   "faces_info": {
+    "{111}": {
+     "gamma_cleavage_J_m2": 0.15107,
+     "min_cut_J_m2": 0.30214,
+     "n_slabs": 20,
+     "best_slab": "(-1,-1,-1) termination 7",
+     "median_cut_J_m2": 1.02321,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.16346,
+     "min_cut_J_m2": 0.32692,
+     "n_slabs": 21,
+     "best_slab": "(-1,-1,0) termination 21",
+     "median_cut_J_m2": 1.18561,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{311}": {
+     "gamma_cleavage_J_m2": 0.20977,
+     "min_cut_J_m2": 0.41955,
+     "n_slabs": 24,
+     "best_slab": "(-1,-1,1) termination 33",
+     "median_cut_J_m2": 0.85797,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      2,
+      1
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 0.18143,
+     "min_cut_J_m2": 0.36286,
+     "n_slabs": 23,
+     "best_slab": "(-1,0,1) termination 19",
+     "median_cut_J_m2": 0.92931,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{111}": 0.776,
+      "{100}": 0.224
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.912,
+     "faces": {
+      "{111}": 0.759,
+      "{100}": 0.241
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.914,
+     "faces": {
+      "{100}": 0.259,
+      "{111}": 0.741
+     }
+    },
+    "0.75": {
+     "name": "truncated octahedron",
+     "sphericity": 0.916,
+     "faces": {
+      "{111}": 0.722,
+      "{100}": 0.278
+     }
+    },
+    "1": {
+     "name": "rhombicuboctahedron-like",
+     "sphericity": 0.924,
+     "faces": {
+      "{110}": 0.031,
+      "{100}": 0.298,
+      "{111}": 0.671
+     }
+    }
+   },
+   "n_excluded_fragmented": 0
+  },
+  "intact_only": {
+   "working_cell": "data/chgnet_morphograph_runs/HKUST-1_2026-10-14/HKUST-1_working_cell.cif",
+   "spacegroup": "Fm-3m",
+   "n_slab_records": 88,
+   "n_slabs_used": 25,
+   "gamma": {
+    "{111}": 0.15173,
+    "{100}": 0.16346,
+    "{110}": 0.47634
+   },
+   "faces_info": {
+    "{111}": {
+     "gamma_cleavage_J_m2": 0.15173,
+     "min_cut_J_m2": 0.30346,
+     "n_slabs": 10,
+     "best_slab": "(-1,-1,-1) termination 12",
+     "median_cut_J_m2": 0.90989,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.16346,
+     "min_cut_J_m2": 0.32692,
+     "n_slabs": 11,
+     "best_slab": "(-1,-1,0) termination 21",
+     "median_cut_J_m2": 1.73021,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 0.47634,
+     "min_cut_J_m2": 0.95268,
+     "n_slabs": 4,
+     "best_slab": "(-1,0,1) termination 15",
+     "median_cut_J_m2": 1.10952,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{111}": 0.776,
+      "{100}": 0.224
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.912,
+     "faces": {
+      "{111}": 0.758,
+      "{100}": 0.242
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.914,
+     "faces": {
+      "{100}": 0.262,
+      "{111}": 0.738
+     }
+    },
+    "0.75": {
+     "name": "truncated octahedron",
+     "sphericity": 0.916,
+     "faces": {
+      "{100}": 0.282,
+      "{111}": 0.718
+     }
+    },
+    "1": {
+     "name": "truncated octahedron",
+     "sphericity": 0.918,
+     "faces": {
+      "{111}": 0.698,
+      "{100}": 0.302
+     }
+    }
+   },
+   "n_excluded_fragmented": 63
+  },
+  "symmetric_slab_gammas": {
+   "{100}": [
+    {
+     "gamma_J_m2": 0.22207,
+     "miller": "(-1,-1,0)",
+     "termination": "11",
+     "intact": true
+    }
+   ],
+   "{110}": [
+    {
+     "gamma_J_m2": 0.52218,
+     "miller": "(-1,0,1)",
+     "termination": "12",
+     "intact": false
+    }
+   ]
+  }
+ },
+ "MOF-5": {
+  "all_slabs": {
+   "working_cell": "data/chgnet_morphograph_runs/MOF-5_2026-10-14/MOF-5_working_cell.cif",
+   "spacegroup": "Fm-3m",
+   "n_slab_records": 94,
+   "n_slabs_used": 94,
+   "gamma": {
+    "{111}": 0.09782,
+    "{100}": 0.12731,
+    "{311}": 0.2224,
+    "{110}": 0.18413
+   },
+   "faces_info": {
+    "{111}": {
+     "gamma_cleavage_J_m2": 0.09782,
+     "min_cut_J_m2": 0.19563,
+     "n_slabs": 28,
+     "best_slab": "(-1,-1,-1) termination 22",
+     "median_cut_J_m2": 0.98614,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.12731,
+     "min_cut_J_m2": 0.25462,
+     "n_slabs": 15,
+     "best_slab": "(-1,-1,0) termination 13",
+     "median_cut_J_m2": 0.56611,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{311}": {
+     "gamma_cleavage_J_m2": 0.2224,
+     "min_cut_J_m2": 0.4448,
+     "n_slabs": 36,
+     "best_slab": "(-1,-1,1) termination 12",
+     "median_cut_J_m2": 0.76527,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      2,
+      1
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 0.18413,
+     "min_cut_J_m2": 0.36827,
+     "n_slabs": 15,
+     "best_slab": "(-1,0,1) termination 16",
+     "median_cut_J_m2": 0.82623,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{100}": 0.224,
+      "{111}": 0.776
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.905,
+     "faces": {
+      "{100}": 0.194,
+      "{111}": 0.806
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.9,
+     "faces": {
+      "{111}": 0.834,
+      "{100}": 0.166
+     }
+    },
+    "0.75": {
+     "name": "truncated octahedron",
+     "sphericity": 0.895,
+     "faces": {
+      "{111}": 0.86,
+      "{100}": 0.14
+     }
+    },
+    "1": {
+     "name": "truncated octahedron",
+     "sphericity": 0.889,
+     "faces": {
+      "{111}": 0.884,
+      "{100}": 0.116
+     }
+    }
+   },
+   "n_excluded_fragmented": 0
+  },
+  "intact_only": {
+   "working_cell": "data/chgnet_morphograph_runs/MOF-5_2026-10-14/MOF-5_working_cell.cif",
+   "spacegroup": "Fm-3m",
+   "n_slab_records": 94,
+   "n_slabs_used": 30,
+   "gamma": {
+    "{111}": 0.09782,
+    "{100}": 0.12731,
+    "{311}": 0.53892,
+    "{110}": 0.23798
+   },
+   "faces_info": {
+    "{111}": {
+     "gamma_cleavage_J_m2": 0.09782,
+     "min_cut_J_m2": 0.19563,
+     "n_slabs": 14,
+     "best_slab": "(-1,-1,-1) termination 22",
+     "median_cut_J_m2": 0.55694,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.12731,
+     "min_cut_J_m2": 0.25462,
+     "n_slabs": 7,
+     "best_slab": "(-1,-1,0) termination 13",
+     "median_cut_J_m2": 0.52258,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{311}": {
+     "gamma_cleavage_J_m2": 0.53892,
+     "min_cut_J_m2": 1.07784,
+     "n_slabs": 4,
+     "best_slab": "(-1,-1,1) termination 20",
+     "median_cut_J_m2": 1.23963,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      2,
+      1
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 0.23798,
+     "min_cut_J_m2": 0.47596,
+     "n_slabs": 5,
+     "best_slab": "(-1,0,1) termination 4",
+     "median_cut_J_m2": 1.03419,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{100}": 0.224,
+      "{111}": 0.776
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.905,
+     "faces": {
+      "{100}": 0.194,
+      "{111}": 0.806
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.9,
+     "faces": {
+      "{111}": 0.834,
+      "{100}": 0.166
+     }
+    },
+    "0.75": {
+     "name": "truncated octahedron",
+     "sphericity": 0.895,
+     "faces": {
+      "{111}": 0.86,
+      "{100}": 0.14
+     }
+    },
+    "1": {
+     "name": "truncated octahedron",
+     "sphericity": 0.889,
+     "faces": {
+      "{111}": 0.884,
+      "{100}": 0.116
+     }
+    }
+   },
+   "n_excluded_fragmented": 64
+  },
+  "symmetric_slab_gammas": {
+   "{111}": [
+    {
+     "gamma_J_m2": 0.88587,
+     "miller": "(-1,-1,-1)",
+     "termination": "14",
+     "intact": true
+    },
+    {
+     "gamma_J_m2": 0.94142,
+     "miller": "(-1,-1,-1)",
+     "termination": "28",
+     "intact": true
+    }
+   ],
+   "{100}": [
+    {
+     "gamma_J_m2": 0.54221,
+     "miller": "(-1,-1,0)",
+     "termination": "1",
+     "intact": true
+    }
+   ],
+   "{311}": [
+    {
+     "gamma_J_m2": 0.53892,
+     "miller": "(-1,-1,1)",
+     "termination": "20",
+     "intact": true
+    },
+    {
+     "gamma_J_m2": 0.54441,
+     "miller": "(-1,-1,1)",
+     "termination": "40",
+     "intact": true
+    }
+   ],
+   "{110}": [
+    {
+     "gamma_J_m2": 0.72068,
+     "miller": "(-1,0,1)",
+     "termination": "9",
+     "intact": true
+    }
+   ]
+  }
+ },
+ "UiO-66": {
+  "all_slabs": {
+   "working_cell": "data/chgnet_morphograph_runs/UiO-66_2026-10-14/UiO-66_working_cell.cif",
+   "spacegroup": "F-43m",
+   "n_slab_records": 113,
+   "n_slabs_used": 113,
+   "gamma": {
+    "{111}+": 0.2875,
+    "{111}-": 0.2875,
+    "{100}": 0.21005,
+    "{311}+": 0.53325,
+    "{311}-": 0.53325,
+    "{110}": 0.55126
+   },
+   "faces_info": {
+    "{111}+": {
+     "gamma_cleavage_J_m2": 0.2875,
+     "min_cut_J_m2": 0.575,
+     "n_slabs": 42,
+     "best_slab": "(-1,-1,-1) termination 16",
+     "median_cut_J_m2": 2.822,
+     "split_equal": true,
+     "family_working_cell": [
+      1,
+      0,
+      0
+     ]
+    },
+    "{111}-": {
+     "gamma_cleavage_J_m2": 0.2875,
+     "min_cut_J_m2": 0.575,
+     "n_slabs": 42,
+     "best_slab": "(-1,-1,-1) termination 16",
+     "median_cut_J_m2": 2.822,
+     "split_equal": true,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.21005,
+     "min_cut_J_m2": 0.42011,
+     "n_slabs": 23,
+     "best_slab": "(-1,-1,0) termination 2",
+     "median_cut_J_m2": 1.7901,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{311}+": {
+     "gamma_cleavage_J_m2": 0.53325,
+     "min_cut_J_m2": 1.0665,
+     "n_slabs": 33,
+     "best_slab": "(-1,-1,1) termination 17",
+     "median_cut_J_m2": 1.49303,
+     "split_equal": true,
+     "family_working_cell": [
+      2,
+      1,
+      0
+     ]
+    },
+    "{311}-": {
+     "gamma_cleavage_J_m2": 0.53325,
+     "min_cut_J_m2": 1.0665,
+     "n_slabs": 33,
+     "best_slab": "(-1,-1,1) termination 17",
+     "median_cut_J_m2": 1.49303,
+     "split_equal": true,
+     "family_working_cell": [
+      2,
+      2,
+      1
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 0.55126,
+     "min_cut_J_m2": 1.10252,
+     "n_slabs": 15,
+     "best_slab": "(-1,0,1) termination 17",
+     "median_cut_J_m2": 1.31764,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{100}": 0.224,
+      "{111}-": 0.388,
+      "{111}+": 0.388
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.921,
+     "faces": {
+      "{111}-": 0.32,
+      "{100}": 0.36,
+      "{111}+": 0.32
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.916,
+     "faces": {
+      "{100}": 0.531,
+      "{111}+": 0.235,
+      "{111}-": 0.235
+     }
+    },
+    "0.75": {
+     "name": "truncated cube",
+     "sphericity": 0.89,
+     "faces": {
+      "{111}-": 0.136,
+      "{111}+": 0.136,
+      "{100}": 0.729
+     }
+    },
+    "1": {
+     "name": "truncated cube",
+     "sphericity": 0.855,
+     "faces": {
+      "{111}+": 0.062,
+      "{111}-": 0.062,
+      "{100}": 0.875
+     }
+    }
+   },
+   "n_excluded_fragmented": 0
+  },
+  "intact_only": {
+   "working_cell": "data/chgnet_morphograph_runs/UiO-66_2026-10-14/UiO-66_working_cell.cif",
+   "spacegroup": "F-43m",
+   "n_slab_records": 113,
+   "n_slabs_used": 24,
+   "gamma": {
+    "{111}+": 0.2875,
+    "{111}-": 0.2875,
+    "{100}": 0.21005,
+    "{311}+": 1.06948,
+    "{311}-": 1.06948,
+    "{110}": 1.16062
+   },
+   "faces_info": {
+    "{111}+": {
+     "gamma_cleavage_J_m2": 0.2875,
+     "min_cut_J_m2": 0.575,
+     "n_slabs": 10,
+     "best_slab": "(-1,-1,-1) termination 16",
+     "median_cut_J_m2": 2.822,
+     "split_equal": true,
+     "family_working_cell": [
+      1,
+      0,
+      0
+     ]
+    },
+    "{111}-": {
+     "gamma_cleavage_J_m2": 0.2875,
+     "min_cut_J_m2": 0.575,
+     "n_slabs": 10,
+     "best_slab": "(-1,-1,-1) termination 16",
+     "median_cut_J_m2": 2.822,
+     "split_equal": true,
+     "family_working_cell": [
+      1,
+      1,
+      1
+     ]
+    },
+    "{100}": {
+     "gamma_cleavage_J_m2": 0.21005,
+     "min_cut_J_m2": 0.42011,
+     "n_slabs": 11,
+     "best_slab": "(-1,-1,0) termination 2",
+     "median_cut_J_m2": 1.3512,
+     "split_equal": false,
+     "family_working_cell": [
+      1,
+      1,
+      0
+     ]
+    },
+    "{311}+": {
+     "gamma_cleavage_J_m2": 1.06948,
+     "min_cut_J_m2": 2.13896,
+     "n_slabs": 2,
+     "best_slab": "(-1,1,1) termination 13",
+     "median_cut_J_m2": 2.14346,
+     "split_equal": true,
+     "family_working_cell": [
+      2,
+      1,
+      0
+     ]
+    },
+    "{311}-": {
+     "gamma_cleavage_J_m2": 1.06948,
+     "min_cut_J_m2": 2.13896,
+     "n_slabs": 2,
+     "best_slab": "(-1,1,1) termination 13",
+     "median_cut_J_m2": 2.14346,
+     "split_equal": true,
+     "family_working_cell": [
+      2,
+      2,
+      1
+     ]
+    },
+    "{110}": {
+     "gamma_cleavage_J_m2": 1.16062,
+     "min_cut_J_m2": 2.32123,
+     "n_slabs": 1,
+     "best_slab": "(-1,0,1) termination 11",
+     "median_cut_J_m2": 2.32123,
+     "split_equal": false,
+     "family_working_cell": [
+      2,
+      1,
+      1
+     ]
+    }
+   },
+   "shapes": {
+    "0": {
+     "name": "truncated octahedron",
+     "sphericity": 0.91,
+     "faces": {
+      "{100}": 0.224,
+      "{111}-": 0.388,
+      "{111}+": 0.388
+     }
+    },
+    "0.25": {
+     "name": "truncated octahedron",
+     "sphericity": 0.921,
+     "faces": {
+      "{111}-": 0.32,
+      "{100}": 0.36,
+      "{111}+": 0.32
+     }
+    },
+    "0.5": {
+     "name": "truncated octahedron",
+     "sphericity": 0.916,
+     "faces": {
+      "{100}": 0.531,
+      "{111}+": 0.235,
+      "{111}-": 0.235
+     }
+    },
+    "0.75": {
+     "name": "truncated cube",
+     "sphericity": 0.89,
+     "faces": {
+      "{111}-": 0.136,
+      "{111}+": 0.136,
+      "{100}": 0.729
+     }
+    },
+    "1": {
+     "name": "truncated cube",
+     "sphericity": 0.855,
+     "faces": {
+      "{111}+": 0.062,
+      "{111}-": 0.062,
+      "{100}": 0.875
+     }
+    }
+   },
+   "n_excluded_fragmented": 89
+  },
+  "symmetric_slab_gammas": {
+   "{100}": [
+    {
+     "gamma_J_m2": 1.58559,
+     "miller": "(-1,-1,0)",
+     "termination": "12",
+     "intact": true
+    }
+   ],
+   "{110}": [
+    {
+     "gamma_J_m2": 1.16062,
+     "miller": "(-1,0,1)",
+     "termination": "11",
+     "intact": true
+    }
+   ]
+  }
+ }
+}

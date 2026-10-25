@@ -1,0 +1,169 @@
+{
+ "structure": "MOF-5",
+ "blocks_per_cell": 32,
+ "cubes": [
+  {
+   "box": [
+    2,
+    2,
+    2
+   ],
+   "cells": 8,
+   "nodes": 256,
+   "edges": 336,
+   "components": 1,
+   "diameter": 20,
+   "n_ok": 5,
+   "width_mean": 1.1186045211192899,
+   "width_sd": 0.008059459021666243,
+   "sec": 0.5
+  },
+  {
+   "box": [
+    3,
+    3,
+    3
+   ],
+   "cells": 27,
+   "nodes": 864,
+   "edges": 1188,
+   "components": 1,
+   "diameter": 32,
+   "n_ok": 5,
+   "width_mean": 1.4546876084494031,
+   "width_sd": 0.005918331328580754,
+   "sec": 2.4
+  },
+  {
+   "box": [
+    4,
+    4,
+    4
+   ],
+   "cells": 64,
+   "nodes": 2048,
+   "edges": 2880,
+   "components": 1,
+   "diameter": 44,
+   "n_ok": 5,
+   "width_mean": 1.7222936555989683,
+   "width_sd": 0.003470079014291793,
+   "sec": 7.5
+  },
+  {
+   "box": [
+    5,
+    5,
+    5
+   ],
+   "cells": 125,
+   "nodes": 4000,
+   "edges": 5700,
+   "components": 1,
+   "diameter": 56,
+   "n_ok": 5,
+   "width_mean": 1.8910750719408376,
+   "width_sd": 0.0012415321099623195,
+   "sec": 18.1
+  },
+  {
+   "box": [
+    6,
+    6,
+    6
+   ],
+   "cells": 216,
+   "nodes": 6912,
+   "edges": 9936,
+   "components": 1,
+   "diameter": 68,
+   "n_ok": 5,
+   "width_mean": 2.0314224289311276,
+   "width_sd": 0.0027548332397525324,
+   "sec": 42.2
+  }
+ ],
+ "shapes": [
+  {
+   "box": [
+    4,
+    4,
+    4
+   ],
+   "cells": 64,
+   "nodes": 2048,
+   "edges": 2880,
+   "components": 1,
+   "diameter": 44,
+   "n_ok": 5,
+   "width_mean": 1.7222936555989683,
+   "width_sd": 0.003470079014291793,
+   "label": "cube 4x4x4",
+   "sec": 7.6,
+   "trend_prediction": 1.7083977742072158,
+   "excess_over_trend": 0.013895881391752463
+  },
+  {
+   "box": [
+    8,
+    8,
+    1
+   ],
+   "cells": 64,
+   "nodes": 2048,
+   "edges": 2752,
+   "components": 1,
+   "diameter": 64,
+   "n_ok": 5,
+   "width_mean": 1.5908667521291846,
+   "width_sd": 0.006251242760733983,
+   "label": "plate 8x8x1",
+   "sec": 10.4,
+   "trend_prediction": 1.9903600660802563,
+   "excess_over_trend": -0.3994933139510717
+  },
+  {
+   "box": [
+    16,
+    2,
+    2
+   ],
+   "cells": 64,
+   "nodes": 2048,
+   "edges": 2800,
+   "components": 1,
+   "diameter": 76,
+   "n_ok": 5,
+   "width_mean": 1.4098565968162915,
+   "width_sd": 0.007842720829166368,
+   "label": "rod 16x2x2",
+   "sec": 11.5,
+   "trend_prediction": 2.1196798937266927,
+   "excess_over_trend": -0.7098232969104012
+  },
+  {
+   "box": [
+    8,
+    4,
+    2
+   ],
+   "cells": 64,
+   "nodes": 2048,
+   "edges": 2848,
+   "components": 1,
+   "diameter": 52,
+   "n_ok": 5,
+   "width_mean": 1.62616215835926,
+   "width_sd": 0.009433131743907785,
+   "label": "slab 8x4x2",
+   "sec": 8.1,
+   "trend_prediction": 1.834108412193015,
+   "excess_over_trend": -0.20794625383375487
+  }
+ ],
+ "trend": {
+  "a": -1.1392601809891394,
+  "b": 0.752514601718785,
+  "n_points": 5
+ }
+}

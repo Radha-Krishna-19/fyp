@@ -1,0 +1,164 @@
+{
+ "structure": "ZIF-8",
+ "blocks_per_cell": 36,
+ "cubes": [
+  {
+   "diameter": 24,
+   "width_mean": 1.2678183872756215,
+   "width_sd": 0.0050332267498558346,
+   "n_ok": 5,
+   "box": [
+    2,
+    2,
+    2
+   ],
+   "cells": 8,
+   "nodes": 288,
+   "edges": 288,
+   "components": 34
+  },
+  {
+   "diameter": 36,
+   "width_mean": 1.3970319456874072,
+   "width_sd": 0.002052092995844157,
+   "n_ok": 5,
+   "box": [
+    3,
+    3,
+    3
+   ],
+   "cells": 27,
+   "nodes": 972,
+   "edges": 1080,
+   "components": 67
+  },
+  {
+   "diameter": 48,
+   "width_mean": 1.6325387782490863,
+   "width_sd": 0.002154423612756324,
+   "n_ok": 5,
+   "box": [
+    4,
+    4,
+    4
+   ],
+   "cells": 64,
+   "nodes": 2304,
+   "edges": 2688,
+   "components": 112
+  },
+  {
+   "diameter": 60,
+   "width_mean": 1.8159292031242693,
+   "width_sd": 0.0029781195668498244,
+   "n_ok": 5,
+   "box": [
+    5,
+    5,
+    5
+   ],
+   "cells": 125,
+   "nodes": 4500,
+   "edges": 5400,
+   "components": 169
+  },
+  {
+   "diameter": 72,
+   "width_mean": 1.9805264733225407,
+   "width_sd": 0.002411524770029652,
+   "n_ok": 5,
+   "box": [
+    6,
+    6,
+    6
+   ],
+   "cells": 216,
+   "nodes": 7776,
+   "edges": 9504,
+   "components": 238
+  }
+ ],
+ "shapes": [
+  {
+   "diameter": 48,
+   "width_mean": 1.6325387782490863,
+   "width_sd": 0.002154423612756324,
+   "n_ok": 5,
+   "box": [
+    4,
+    4,
+    4
+   ],
+   "cells": 64,
+   "nodes": 2304,
+   "edges": 2688,
+   "components": 112,
+   "label": "cube 4x4x4",
+   "trend_prediction": 1.665356721026551,
+   "excess_over_trend": -0.03281794277746464
+  },
+  {
+   "diameter": 92,
+   "width_mean": 1.7902645601181653,
+   "width_sd": 0.002005763758550838,
+   "n_ok": 5,
+   "box": [
+    8,
+    8,
+    1
+   ],
+   "cells": 64,
+   "nodes": 2304,
+   "edges": 2432,
+   "components": 181,
+   "label": "plate 8x8x1",
+   "trend_prediction": 2.0956186110987125,
+   "excess_over_trend": -0.30535405098054724
+  },
+  {
+   "diameter": 133,
+   "width_mean": 1.1263443199820724,
+   "width_sd": 0.0028385734428536427,
+   "n_ok": 5,
+   "box": [
+    16,
+    2,
+    2
+   ],
+   "cells": 64,
+   "nodes": 2304,
+   "edges": 2528,
+   "components": 160,
+   "label": "rod 16x2x2",
+   "trend_prediction": 2.3393637541148715,
+   "excess_over_trend": -1.2130194341327991
+  },
+  {
+   "diameter": 77,
+   "width_mean": 1.4366295420376887,
+   "width_sd": 0.0009645229854143958,
+   "n_ok": 5,
+   "box": [
+    8,
+    4,
+    2
+   ],
+   "cells": 64,
+   "nodes": 2304,
+   "edges": 2624,
+   "components": 130,
+   "label": "slab 8x4x2",
+   "trend_prediction": 1.9779105995399018,
+   "excess_over_trend": -0.5412810575022131
+  }
+ ],
+ "trend": {
+  "a": -0.8948370952830618,
+  "b": 0.6613435492230316
+ },
+ "check_against_code_19": {
+  "same_graphs": true,
+  "largest_width_difference": 0.0
+ },
+ "seconds": 304.6
+}

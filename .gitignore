@@ -25,9 +25,10 @@ Thumbs.db
 *.ipynb.bak
 
 # Large downloaded datasets: fetched by the notebook, not stored here.
-3_notebooks/core_mof_download/
-3_notebooks/core_mof_cifs/
-3_notebooks/real_cifs/
-3_notebooks/mof_cifs/
-3_notebooks/multi_mof_output/
-1_website/tests/err.txt
+notebooks/spectrum/core_mof_download/
+notebooks/spectrum/core_mof_cifs/
+notebooks/spectrum/real_cifs/
+notebooks/spectrum/mof_cifs/
+notebooks/spectrum/multi_mof_output/
+website/tests/err.txt
+code/spectrum_pipeline/.cache/

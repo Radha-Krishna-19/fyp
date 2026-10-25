@@ -1,0 +1,790 @@
+{
+ "HKUST-1": {
+  "(-1,-1,-1)": {
+   "as_cut": {
+    "n": 20,
+    "stoichiometric": 20,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 4,
+    "stoichiometric": 4,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 20,
+    "stoichiometric": 20,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,0)": {
+   "as_cut": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "symmetrized": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  },
+  "(-1,-1,1)": {
+   "as_cut": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,0,1)": {
+   "as_cut": {
+    "n": 23,
+    "stoichiometric": 23,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 23,
+    "stoichiometric": 23,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  }
+ },
+ "MOF-5": {
+  "(-1,-1,-1)": {
+   "as_cut": {
+    "n": 28,
+    "stoichiometric": 28,
+    "symmetric": 2,
+    "stoich_and_symmetric": 2
+   },
+   "intact": {
+    "n": 6,
+    "stoichiometric": 6,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 28,
+    "stoichiometric": 28,
+    "symmetric": 2,
+    "stoich_and_symmetric": 2
+   }
+  },
+  "(-1,-1,0)": {
+   "as_cut": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 2,
+    "stoichiometric": 2,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  },
+  "(-1,-1,1)": {
+   "as_cut": {
+    "n": 40,
+    "stoichiometric": 40,
+    "symmetric": 2,
+    "stoich_and_symmetric": 2
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 40,
+    "stoichiometric": 40,
+    "symmetric": 2,
+    "stoich_and_symmetric": 2
+   }
+  },
+  "(-1,0,1)": {
+   "as_cut": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  }
+ },
+ "UiO-66": {
+  "(-1,-1,-1)": {
+   "as_cut": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,0)": {
+   "as_cut": {
+    "n": 23,
+    "stoichiometric": 23,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 4,
+    "stoichiometric": 4,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 23,
+    "stoichiometric": 23,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  },
+  "(-1,-1,1)": {
+   "as_cut": {
+    "n": 24,
+    "stoichiometric": 24,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 24,
+    "stoichiometric": 24,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,0,0)": {
+   "as_cut": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,0,1)": {
+   "as_cut": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 21,
+    "stoichiometric": 21,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  },
+  "(-1,1,1)": {
+   "as_cut": {
+    "n": 24,
+    "stoichiometric": 24,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 24,
+    "stoichiometric": 24,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  }
+ },
+ "hMOF-0": {
+  "(-2,-2,-1)": {
+   "as_cut": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,-2,1)": {
+   "as_cut": {
+    "n": 32,
+    "stoichiometric": 32,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 32,
+    "stoichiometric": 32,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,-1,-1)": {
+   "as_cut": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,-1,0)": {
+   "as_cut": {
+    "n": 46,
+    "stoichiometric": 46,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 46,
+    "stoichiometric": 46,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,-1,1)": {
+   "as_cut": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,-1,2)": {
+   "as_cut": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,0,1)": {
+   "as_cut": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,1,1)": {
+   "as_cut": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-2,1,2)": {
+   "as_cut": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,-1)": {
+   "as_cut": {
+    "n": 11,
+    "stoichiometric": 11,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 11,
+    "stoichiometric": 11,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,0)": {
+   "as_cut": {
+    "n": 15,
+    "stoichiometric": 15,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 2,
+    "stoichiometric": 2,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 15,
+    "stoichiometric": 15,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,1)": {
+   "as_cut": {
+    "n": 18,
+    "stoichiometric": 18,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 18,
+    "stoichiometric": 18,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,-1,2)": {
+   "as_cut": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,0,0)": {
+   "as_cut": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 2,
+    "stoichiometric": 2,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,0,1)": {
+   "as_cut": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 1,
+    "stoich_and_symmetric": 1
+   }
+  },
+  "(-1,0,2)": {
+   "as_cut": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 44,
+    "stoichiometric": 44,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,1,1)": {
+   "as_cut": {
+    "n": 18,
+    "stoichiometric": 18,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 18,
+    "stoichiometric": 18,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,1,2)": {
+   "as_cut": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(-1,2,2)": {
+   "as_cut": {
+    "n": 32,
+    "stoichiometric": 32,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 32,
+    "stoichiometric": 32,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(0,0,1)": {
+   "as_cut": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 2,
+    "stoichiometric": 2,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 17,
+    "stoichiometric": 17,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(0,1,1)": {
+   "as_cut": {
+    "n": 15,
+    "stoichiometric": 15,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 2,
+    "stoichiometric": 2,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 15,
+    "stoichiometric": 15,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(0,1,2)": {
+   "as_cut": {
+    "n": 46,
+    "stoichiometric": 46,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 46,
+    "stoichiometric": 46,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(1,1,1)": {
+   "as_cut": {
+    "n": 11,
+    "stoichiometric": 11,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 3,
+    "stoichiometric": 3,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 11,
+    "stoichiometric": 11,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(1,1,2)": {
+   "as_cut": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 36,
+    "stoichiometric": 36,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  },
+  "(1,2,2)": {
+   "as_cut": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "intact": {
+    "n": 0,
+    "stoichiometric": 0,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   },
+   "symmetrized": {
+    "n": 34,
+    "stoichiometric": 34,
+    "symmetric": 0,
+    "stoich_and_symmetric": 0
+   }
+  }
+ }
+}

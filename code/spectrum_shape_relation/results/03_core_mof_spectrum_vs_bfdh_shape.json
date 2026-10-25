@@ -1,0 +1,838 @@
+{
+ "n_band_records": 61,
+ "n_with_shape": 55,
+ "settings": {
+  "max_index": 4,
+  "n_families": 40
+ },
+ "structures": [
+  {
+   "name": "ABAVIJ_clean",
+   "width": 1.7001647477536679,
+   "cg_nodes": 1500,
+   "diameter": 14,
+   "n_components": 1,
+   "spacegroup": "Cc",
+   "sg_number": 9,
+   "bfdh_name": "tetrahedral {100} + {110} + {111} + {210}",
+   "sphericity": 0.8754431077655452,
+   "aspect_ratio": 1.74635942176105,
+   "cell_length_ratio": 2.6681559121208607
+  },
+  {
+   "name": "ABAYIO_clean",
+   "width": 1.3633542203384188,
+   "cg_nodes": 448,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ABAYOU_clean",
+   "width": 1.394397473718744,
+   "cg_nodes": 448,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ABETIN_clean",
+   "width": 1.444758190666171,
+   "cg_nodes": 256,
+   "diameter": 8,
+   "n_components": 1,
+   "spacegroup": "I4_1/acd",
+   "sg_number": 142,
+   "bfdh_name": "{100} + {211}+",
+   "sphericity": 0.9287157979963934,
+   "aspect_ratio": 1.1559037663851766,
+   "cell_length_ratio": 1.0212736760511667
+  },
+  {
+   "name": "ABEXEN_clean",
+   "width": 1.060853798845141,
+   "cg_nodes": 288,
+   "diameter": 14,
+   "n_components": 1,
+   "spacegroup": "P6/mcc",
+   "sg_number": 192,
+   "bfdh_name": "{100}",
+   "sphericity": 0.8297054609936833,
+   "aspect_ratio": 1.674029291191279,
+   "cell_length_ratio": 1.1334130209578452
+  },
+  {
+   "name": "ABEYIR_clean",
+   "width": 1.7952505473042777,
+   "cg_nodes": 2500,
+   "diameter": 21,
+   "n_components": 1,
+   "spacegroup": "Pna2_1",
+   "sg_number": 33,
+   "bfdh_name": "rhombicuboctahedron-like",
+   "sphericity": 0.8919311442800977,
+   "aspect_ratio": 1.586698119815035,
+   "cell_length_ratio": 1.7573806475214926
+  },
+  {
+   "name": "ABIYIV_clean",
+   "width": 1.6630405306533262,
+   "cg_nodes": 4500,
+   "diameter": 32,
+   "n_components": 1,
+   "spacegroup": "Pccn",
+   "sg_number": 56,
+   "bfdh_name": "{100} + {110} + {111} + {210}",
+   "sphericity": 0.9184896057685586,
+   "aspect_ratio": 1.052011641971472,
+   "cell_length_ratio": 1.918452809798271
+  },
+  {
+   "name": "ACAJIY_clean",
+   "width": 1.4134808132989676,
+   "cg_nodes": 648,
+   "diameter": 18,
+   "n_components": 1,
+   "spacegroup": "R3",
+   "sg_number": 146,
+   "bfdh_name": "tetrahedral {110} + {111} + {210}",
+   "sphericity": 0.8154898788019044,
+   "aspect_ratio": 1.0295219663164639,
+   "cell_length_ratio": 1.1873886223440713
+  },
+  {
+   "name": "ACAJIZ_clean",
+   "width": 1.758427263391546,
+   "cg_nodes": 3456,
+   "diameter": 24,
+   "n_components": 1,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8578365635727487,
+   "aspect_ratio": 1.9819958466590457,
+   "cell_length_ratio": 2.9417765042979944
+  },
+  {
+   "name": "ACAJOF_clean",
+   "width": 1.7521130658736865,
+   "cg_nodes": 3456,
+   "diameter": 24,
+   "n_components": 1,
+   "spacegroup": "Pccn",
+   "sg_number": 56,
+   "bfdh_name": "rhombicuboctahedron-like",
+   "sphericity": 0.8480025216440602,
+   "aspect_ratio": 2.1658579398216546,
+   "cell_length_ratio": 3.250086435403942
+  },
+  {
+   "name": "ACALIB_clean",
+   "width": 1.4722912889798891,
+   "cg_nodes": 750,
+   "diameter": 10,
+   "n_components": 1,
+   "spacegroup": "P2_1/c",
+   "sg_number": 14,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.9068647332703099,
+   "aspect_ratio": 1.2543897913241313,
+   "cell_length_ratio": 2.1011036576609845
+  },
+  {
+   "name": "ACIBIY_clean",
+   "width": 2.5357588527966755,
+   "cg_nodes": 5504,
+   "diameter": 18,
+   "n_components": 1,
+   "spacegroup": "P-1",
+   "sg_number": 2,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8748063386360573,
+   "aspect_ratio": 1.439060073867622,
+   "cell_length_ratio": 1.4140085498191386
+  },
+  {
+   "name": "ACIBOE_clean",
+   "width": 1.3870721895949814,
+   "cg_nodes": 324,
+   "diameter": 8,
+   "n_components": 1,
+   "spacegroup": "I4cm",
+   "sg_number": 108,
+   "bfdh_name": "truncated rhombic dodecahedron",
+   "sphericity": 0.7919450488630492,
+   "aspect_ratio": 1.6326139751635944,
+   "cell_length_ratio": 1.1545453862054504
+  },
+  {
+   "name": "ACOCOM_clean",
+   "width": 1.5121288686441332,
+   "cg_nodes": 384,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ACOCUS_clean",
+   "width": 1.4977291982726442,
+   "cg_nodes": 384,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ACODAZ_clean",
+   "width": 1.4993374944664133,
+   "cg_nodes": 384,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941675,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ACODUT_clean",
+   "width": 1.761000048769624,
+   "cg_nodes": 648,
+   "diameter": 8,
+   "n_components": 1,
+   "spacegroup": "P-3m1",
+   "sg_number": 164,
+   "bfdh_name": "{100}",
+   "sphericity": 0.8262739944324025,
+   "aspect_ratio": 1.752028347703057,
+   "cell_length_ratio": 1.846800034641032
+  },
+  {
+   "name": "ACOLIP_clean",
+   "width": 1.3405552635022602,
+   "cg_nodes": 750,
+   "diameter": 18,
+   "n_components": 1,
+   "spacegroup": "Cc",
+   "sg_number": 9,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8964379391880996,
+   "aspect_ratio": 1.548167822304321,
+   "cell_length_ratio": 1.7862107037147161
+  },
+  {
+   "name": "ACOLOV_clean",
+   "width": 1.7434005243149642,
+   "cg_nodes": 1000,
+   "diameter": 15,
+   "n_components": 1,
+   "spacegroup": "P2_1/c",
+   "sg_number": 14,
+   "bfdh_name": "{100} + {110} + {111} + {210}",
+   "sphericity": 0.8146750704345296,
+   "aspect_ratio": 2.1678717210633263,
+   "cell_length_ratio": 3.219495029471276
+  },
+  {
+   "name": "ACUJOZ_manual",
+   "width": 1.896123348411919,
+   "cg_nodes": 1944,
+   "diameter": 16,
+   "n_components": 1,
+   "spacegroup": "R-3",
+   "sg_number": 148,
+   "bfdh_name": "{110} + {210}",
+   "sphericity": 0.8937376572443029,
+   "aspect_ratio": 1.2547895104839935,
+   "cell_length_ratio": 2.183667729233077
+  },
+  {
+   "name": "ADABIS_clean",
+   "width": 1.7341669592443054,
+   "cg_nodes": 2160,
+   "diameter": 22,
+   "n_components": 1,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8257012558972311,
+   "aspect_ratio": 2.2347153409081004,
+   "cell_length_ratio": 2.8224714440343663
+  },
+  {
+   "name": "ADABUE_clean",
+   "width": 1.7487712152410282,
+   "cg_nodes": 2160,
+   "diameter": 22,
+   "n_components": 1,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8169492488693817,
+   "aspect_ratio": 2.5057421832353075,
+   "cell_length_ratio": 3.0851482123469682
+  },
+  {
+   "name": "ADASAB_charged",
+   "width": 1.313699451664469,
+   "cg_nodes": 352,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADASEF_clean",
+   "width": 1.2913066028777997,
+   "cg_nodes": 352,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941672,
+   "aspect_ratio": 1.0000000000000004,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADATAC_clean",
+   "width": 1.347720060261011,
+   "cg_nodes": 160,
+   "diameter": 8,
+   "n_components": 1,
+   "spacegroup": "Fm-3",
+   "sg_number": 202,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADATIK_clean",
+   "width": 1.2986798402662032,
+   "cg_nodes": 352,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "I4/m",
+   "sg_number": 87,
+   "bfdh_name": "truncated rhombic dodecahedron",
+   "sphericity": 0.9099162406542587,
+   "aspect_ratio": 1.0008416561302511,
+   "cell_length_ratio": 1.419794097123454
+  },
+  {
+   "name": "ADATOQ_clean",
+   "width": 0.932988321098577,
+   "cg_nodes": 160,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "I2_13",
+   "sg_number": 199,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADATUW_clean",
+   "width": 0.8921264541758909,
+   "cg_nodes": 160,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "I2_13",
+   "sg_number": 199,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADAVIM_clean",
+   "width": 0.9037270063346767,
+   "cg_nodes": 160,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "I2_13",
+   "sg_number": 199,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADAXEK_clean",
+   "width": 1.8348978818736867,
+   "cg_nodes": 1715,
+   "diameter": 14,
+   "n_components": 1,
+   "spacegroup": "C2/m",
+   "sg_number": 12,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8206168061818802,
+   "aspect_ratio": 1.7022034828192854,
+   "cell_length_ratio": 3.3046545482345553
+  },
+  {
+   "name": "ADAXIO_clean",
+   "width": 1.8052281678136666,
+   "cg_nodes": 1280,
+   "diameter": 13,
+   "n_components": 1,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8487298303485679,
+   "aspect_ratio": 1.2742798674157971,
+   "cell_length_ratio": 1.3285569261555763
+  },
+  {
+   "name": "ADIQEL_clean",
+   "width": 1.6830380048810838,
+   "cg_nodes": 1296,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "P2_1/c",
+   "sg_number": 14,
+   "bfdh_name": "tetrahedral {100} + {110} + {111} + {210}",
+   "sphericity": 0.8969077913524633,
+   "aspect_ratio": 1.1015535877434097,
+   "cell_length_ratio": 1.6095153791486505
+  },
+  {
+   "name": "ADODAA_charged",
+   "width": 1.4148299863699059,
+   "cg_nodes": 864,
+   "diameter": 14,
+   "n_components": 1,
+   "spacegroup": "F-43c",
+   "sg_number": 219,
+   "bfdh_name": "cube",
+   "sphericity": 0.8059959770082347,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADOGEH_clean",
+   "width": 1.428622202038504,
+   "cg_nodes": 448,
+   "diameter": 12,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941674,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADUWIH_clean",
+   "width": 1.5818117085244126,
+   "cg_nodes": 432,
+   "diameter": 9,
+   "n_components": 1,
+   "spacegroup": "Pn-3",
+   "sg_number": 201,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ADUWON_clean",
+   "width": 1.2217731460800607,
+   "cg_nodes": 160,
+   "diameter": 8,
+   "n_components": 1,
+   "spacegroup": "Im-3m",
+   "sg_number": 229,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "ac403674p_si_001_clean",
+   "width": 1.581466829631367,
+   "cg_nodes": 768,
+   "diameter": 15,
+   "n_components": 1,
+   "spacegroup": "P6_1",
+   "sg_number": 169,
+   "bfdh_name": "chamfered cube",
+   "sphericity": 0.9023113837620588,
+   "aspect_ratio": 1.5862397585172985,
+   "cell_length_ratio": 1.079110948776743
+  },
+  {
+   "name": "acs.chemmater.6b02817_cm6b02817_si_004_clean",
+   "width": 1.604602045360103,
+   "cg_nodes": 540,
+   "diameter": 10,
+   "n_components": 1,
+   "spacegroup": "P-43n",
+   "sg_number": 218,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.9046998952817772,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "acs.inorgchem.5b02108_ic5b02108_si_002_clean",
+   "width": 1.3647107217429024,
+   "cg_nodes": 750,
+   "diameter": 10,
+   "n_components": 1,
+   "spacegroup": "I4_122",
+   "sg_number": 98,
+   "bfdh_name": "rhombic dodecahedron",
+   "sphericity": 0.8958135320558538,
+   "aspect_ratio": 1.0677114895086806,
+   "cell_length_ratio": 1.2724733005025295
+  },
+  {
+   "name": "acs.inorgchem.6b00894_ic6b00894_si_002_clean",
+   "width": 1.3946796113384892,
+   "cg_nodes": 864,
+   "diameter": 10,
+   "n_components": 3,
+   "spacegroup": "C2",
+   "sg_number": 5,
+   "bfdh_name": "{100} + {110} + {111} + {210}",
+   "sphericity": 0.8595820490714566,
+   "aspect_ratio": 1.485561886014922,
+   "cell_length_ratio": 1.115568339411372
+  },
+  {
+   "name": "acs.inorgchem.6b00894_ic6b00894_si_003_clean",
+   "width": 1.8393168233795976,
+   "cg_nodes": 4000,
+   "diameter": 26,
+   "n_components": 1,
+   "spacegroup": "P2_12_12_1",
+   "sg_number": 19,
+   "bfdh_name": "truncated rhombic dodecahedron",
+   "sphericity": 0.8694429563611977,
+   "aspect_ratio": 1.6088896464156033,
+   "cell_length_ratio": 2.810430534771316
+  },
+  {
+   "name": "acs.inorgchem.6b01211_ic6b01211_si_002_clean",
+   "width": 1.504472401047174,
+   "cg_nodes": 486,
+   "diameter": 10,
+   "n_components": 1,
+   "spacegroup": "R-3",
+   "sg_number": 148,
+   "bfdh_name": "{100} + {110} + {210}",
+   "sphericity": 0.9045468937565415,
+   "aspect_ratio": 1.094677542230228,
+   "cell_length_ratio": 2.0693532766598515
+  },
+  {
+   "name": "acs.inorgchem.6b01416_ic6b01416_si_004_clean",
+   "width": 1.7119094470782024,
+   "cg_nodes": 1536,
+   "diameter": 20,
+   "n_components": 1,
+   "spacegroup": "Fdd2",
+   "sg_number": 43,
+   "bfdh_name": "cuboctahedron",
+   "sphericity": 0.862447960378846,
+   "aspect_ratio": 1.251828953094844,
+   "cell_length_ratio": 2.145483359746434
+  },
+  {
+   "name": "acs.inorgchem.6b01569_ic6b01569_si_002_clean",
+   "width": 1.7984333777461572,
+   "cg_nodes": 5184,
+   "diameter": 24,
+   "n_components": 3,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8205846156067084,
+   "aspect_ratio": 2.382202559173371,
+   "cell_length_ratio": 3.7480109187862376
+  },
+  {
+   "name": "acs.inorgchem.6b01740_ic6b01740_si_002_clean",
+   "width": 1.2428873573191304,
+   "cg_nodes": 832,
+   "diameter": 14,
+   "n_components": 1,
+   "spacegroup": "Fm-3m",
+   "sg_number": 225,
+   "bfdh_name": "truncated octahedron",
+   "sphericity": 0.9099177259941675,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "acs.inorgchem.6b02407_ic6b02407_si_002_clean",
+   "width": 1.9033335456936378,
+   "cg_nodes": 1500,
+   "diameter": 15,
+   "n_components": 1,
+   "spacegroup": "P2_1/c",
+   "sg_number": 14,
+   "bfdh_name": "tetrahedral {100} + {110} + {111} + {210}",
+   "sphericity": 0.8702042007091273,
+   "aspect_ratio": 1.400076052750635,
+   "cell_length_ratio": 2.1740626251630326
+  },
+  {
+   "name": "acs.inorgchem.6b02407_ic6b02407_si_003_clean",
+   "width": 1.8339548388277755,
+   "cg_nodes": 2000,
+   "diameter": 20,
+   "n_components": 1,
+   "spacegroup": "C2/m",
+   "sg_number": 12,
+   "bfdh_name": "tetrahedral {100} + {110} + {111} + {210}",
+   "sphericity": 0.830116705426394,
+   "aspect_ratio": 1.7200605539240135,
+   "cell_length_ratio": 2.4933316055978625
+  },
+  {
+   "name": "acs.inorgchem.6b02514_ic6b02514_si_002_clean",
+   "width": 1.835522943729714,
+   "cg_nodes": 4320,
+   "diameter": 26,
+   "n_components": 1,
+   "spacegroup": "P2_12_12_1",
+   "sg_number": 19,
+   "bfdh_name": "truncated rhombic dodecahedron",
+   "sphericity": 0.8802794479717457,
+   "aspect_ratio": 1.47345422708191,
+   "cell_length_ratio": 2.5968354809709324
+  },
+  {
+   "name": "acs.inorgchem.6b02696_ic6b02696_si_002_clean",
+   "width": 1.7956919847712172,
+   "cg_nodes": 3200,
+   "diameter": 26,
+   "n_components": 1,
+   "spacegroup": "Fd-3",
+   "sg_number": 203,
+   "bfdh_name": "octahedron",
+   "sphericity": 0.8455825205365873,
+   "aspect_ratio": 1.0,
+   "cell_length_ratio": 1.0
+  },
+  {
+   "name": "acs.jchemed.6b00258_ed6b00258_si_005_clean",
+   "width": 1.9382948958470436,
+   "cg_nodes": 4320,
+   "diameter": 30,
+   "n_components": 1,
+   "spacegroup": "C2/c",
+   "sg_number": 15,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8169490742185815,
+   "aspect_ratio": 2.5057442249290935,
+   "cell_length_ratio": 3.0851511197852086
+  },
+  {
+   "name": "acs.jpcc.6b04690_jp6b04690_si_005_clean",
+   "width": 1.1658149577352432,
+   "cg_nodes": 810,
+   "diameter": 12,
+   "n_components": 9,
+   "spacegroup": "P-1",
+   "sg_number": 2,
+   "bfdh_name": "tetrahedral rhombicuboctahedron-like",
+   "sphericity": 0.8517119920298368,
+   "aspect_ratio": 1.7844210559101312,
+   "cell_length_ratio": 1.7640772350643208
+  },
+  {
+   "name": "acs.jpcc.6b08594_UiO66_Ce2Zr4_opt_clean",
+   "width": 1.9650280115733167,
+   "cg_nodes": 896,
+   "diameter": 10,
+   "n_components": 1,
+   "spacegroup": "I-4m2",
+   "sg_number": 119,
+   "bfdh_name": "truncated rhombic dodecahedron",
+   "sphericity": 0.9099171483063079,
+   "aspect_ratio": 1.00051374278626,
+   "cell_length_ratio": 1.4107356025709337
+  },
+  {
+   "name": "acs.jpcc.6b08594_Zn2Cd6MOF5_opt_clean",
+   "width": 1.407114897215422,
+   "cg_nodes": 648,
+   "diameter": 18,
+   "n_components": 1,
+   "spacegroup": "R-3m",
+   "sg_number": 166,
+   "bfdh_name": "{100} + {110} + {210}",
+   "sphericity": 0.9049132661670458,
+   "aspect_ratio": 1.129542194266485,
+   "cell_length_ratio": 2.9124387898843995
+  },
+  {
+   "name": "acscombsci.5b00188_24205_clean",
+   "width": 1.5260061606830462,
+   "cg_nodes": 1372,
+   "diameter": 17,
+   "n_components": 1,
+   "spacegroup": "P1",
+   "sg_number": 1,
+   "bfdh_name": "chamfered cube",
+   "sphericity": 0.8516831287973925,
+   "aspect_ratio": 1.438305198372565,
+   "cell_length_ratio": 1.387046800755061
+  },
+  {
+   "name": "acscombsci.5b00188_34903_clean",
+   "width": 1.450909000024005,
+   "cg_nodes": 648,
+   "diameter": 11,
+   "n_components": 1,
+   "spacegroup": "P1",
+   "sg_number": 1,
+   "bfdh_name": "chamfered cube",
+   "sphericity": 0.8181329392696034,
+   "aspect_ratio": 1.2105038238948784,
+   "cell_length_ratio": 1.1669496073513466
+  }
+ ],
+ "tests": {
+  "all usable": {
+   "width vs sphericity": {
+    "n": 55,
+    "spearman": -0.3836819638827136,
+    "spearman_p": 0.0044995500449955,
+    "spearman_ci95": [
+     -0.5858834069098697,
+     -0.15263056934608296
+    ],
+    "partial_spearman_size_controlled": 0.003379643745101794,
+    "partial_p": 0.981001899810019,
+    "partial_ci95": [
+     -0.320299020537957,
+     0.34354252556789056
+    ]
+   },
+   "width vs aspect ratio": {
+    "n": 55,
+    "spearman": 0.5037908378695126,
+    "spearman_p": 0.00029997000299970003,
+    "spearman_ci95": [
+     0.2657807533363806,
+     0.6943534434803271
+    ],
+    "partial_spearman_size_controlled": 0.0013003259754362335,
+    "partial_p": 0.9931006899310069,
+    "partial_ci95": [
+     -0.31965036841064726,
+     0.33813182710594736
+    ]
+   },
+   "width vs cell length ratio": {
+    "n": 55,
+    "spearman": 0.6225581721605669,
+    "spearman_p": 9.999000099990002e-05,
+    "spearman_ci95": [
+     0.4436093565880239,
+     0.7551140939878551
+    ],
+    "partial_spearman_size_controlled": 0.09542903540788578,
+    "partial_p": 0.49335066493350666,
+    "partial_ci95": [
+     -0.15108027056633533,
+     0.34850676616370885
+    ]
+   },
+   "sphericity vs ln(node count)": {
+    "n": 55,
+    "spearman": -0.4790496280346238
+   },
+   "width vs ln(node count)": {
+    "n": 55,
+    "spearman": 0.804600532443891
+   }
+  },
+  "one connected piece only": {
+   "width vs sphericity": {
+    "n": 52,
+    "spearman": -0.41941911803764403,
+    "spearman_p": 0.0026997300269973002,
+    "spearman_ci95": [
+     -0.6197473580656564,
+     -0.18553428146938242
+    ],
+    "partial_spearman_size_controlled": -0.07197035645499877,
+    "partial_p": 0.6195380461953804,
+    "partial_ci95": [
+     -0.41567342701183047,
+     0.30826193320662687
+    ]
+   },
+   "width vs aspect ratio": {
+    "n": 52,
+    "spearman": 0.5670366903703511,
+    "spearman_p": 9.999000099990002e-05,
+    "spearman_ci95": [
+     0.34718320715971845,
+     0.7379974121787203
+    ],
+    "partial_spearman_size_controlled": 0.1322216580294012,
+    "partial_p": 0.35566443355664434,
+    "partial_ci95": [
+     -0.18545732535428414,
+     0.4311074690308835
+    ]
+   },
+   "width vs cell length ratio": {
+    "n": 52,
+    "spearman": 0.6382872035736461,
+    "spearman_p": 9.999000099990002e-05,
+    "spearman_ci95": [
+     0.45714222761924117,
+     0.7706857984489854
+    ],
+    "partial_spearman_size_controlled": 0.12188468458335042,
+    "partial_p": 0.39946005399460055,
+    "partial_ci95": [
+     -0.1530373644097852,
+     0.3858913188331023
+    ]
+   },
+   "sphericity vs ln(node count)": {
+    "n": 52,
+    "spearman": -0.46486852446726634
+   },
+   "width vs ln(node count)": {
+    "n": 52,
+    "spearman": 0.8247088164297263
+   }
+  }
+ },
+ "seconds": 478.4
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combining BFDH and Wulff &middot; MOF Structural Descriptors</title>
+<meta name="description" content="One rule that blends the geometric (BFDH) and energetic (Wulff) shape methods, what it gives for four MOFs, why no best weight is claimed, and the notebook that runs it on any crystal file.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/academic.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <nav class="site-nav" aria-label="Sections of this site">
+      <a href="index.html">Overview</a>
+      <a href="journey.html">How We Got Here</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="decomposition.html">Decomposition</a>
+      <a href="network.html">Network</a>
+      <a href="spectrum.html">Spectrum</a>
+      <a href="results.html">Results</a>
+      <a href="learn_shape.html">Learn</a>
+      <a href="learn_energy.html">Learn 2</a>
+      <a href="morph_math.html">Maths</a>
+      <a href="morphology.html">Morphology</a>
+      <a href="deform.html">Cell Deform</a>
+      <a href="graph_faces.html">Graph Faces</a>
+      <a href="surface_energy.html">Surface Energy</a>
+      <a href="hybrid.html" aria-current="page">Hybrid</a>
+      <a href="experiment.html">Experiment</a>
+      <a href="bridge.html">Why Shape</a>
+      <a href="relation.html">Spectrum ↔ Shape</a>
+      <a href="lessons.html">Mistakes</a>
+      <a href="code.html">Source</a>
+      <a href="references.html">References</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="team.html">Team</a>
+  </nav>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="masthead">
+  <div class="container">
+    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+    <h1>Combining BFDH and Wulff</h1>
+    <p class="lead">One rule that blends the geometric (BFDH) and energetic (Wulff) shape methods, what it gives for four MOFs, why no best weight is claimed, and the notebook that runs it on any crystal file.</p>
+<div class="place"><b>Step 15 of 19</b> &middot; next: <a href="experiment.html">Experiment</a></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="with-toc">
+    <main id="main">
+      <h2 class="section-title" id="hy-intro" data-toc="What this page does"><span class="stitle-num">1</span>What This Page Does</h2>
+      <dl class="bridge"><dt>You know</dt><dd>Two ways to turn a MOF into a shape: BFDH from the face spacing (<a href="morphology.html">Morphology</a>) and Wulff from the face energies (<a href="surface_energy.html">Phase 4</a>).</dd><dt>This page adds</dt><dd>One rule that blends the two, what it gives for four MOFs, and the notebook that runs it on any crystal file.</dd><dt>Which lets us</dt><dd>Ask whether the blend is better, worse or the same as either method alone, which was the team's question for the guide review.</dd></dl>
+      <h3 class="sub-head">In simple words</h3>
+      <p class="sd">There are two ways to guess the outside shape of a crystal. The first (BFDH) says that faces whose layers are far apart are slow to grow, so they end up large. It looks only at the geometry. The second (Wulff) says that the faces that cost the least energy to create end up large. It looks at the chemistry. The idea is to blend them with a dial: at 0 we use only the geometry, at 1 only the energy, and in between a mixture. We then see whether the mixture gives a shape closer to the one seen in the laboratory.</p>
+      <h3 class="sub-head">In technical words</h3>
+      <p class="sd">Each face family <i>f</i> has a distance to the centre of the crystal <i>R<sub>f</sub></i> and the shape is the convex region {<b>x</b> : <b>n</b><sub><i>f</i></sub>&middot;<b>x</b> &le; <i>R<sub>f</sub></i>}. BFDH gives <i>R<sub>f</sub></i> &prop; 1/<i>d</i><sub>eff</sub> and Wulff gives <i>R<sub>f</sub></i> &prop; &gamma;<sub><i>f</i></sub>. Both are scaled so that the smallest value is 1, so neither dominates because of its units. The blend is the weighted geometric mean</p>
+      <p class="sd" style="text-align:center"><i>R<sub>f</sub></i>(<i>w</i>) = <i>R</i><sub>BFDH,<i>f</i></sub><sup>1&minus;<i>w</i></sup> &middot; <i>R</i><sub>Wulff,<i>f</i></sub><sup><i>w</i></sup>, &nbsp; 0 &le; <i>w</i> &le; 1.</p>
+      <p class="sd">Taking logarithms, ln <i>R<sub>f</sub></i>(<i>w</i>) = (1&minus;<i>w</i>) ln <i>R</i><sub>BFDH</sub> + <i>w</i> ln <i>R</i><sub>Wulff</sub>, so the blend moves along a straight line between the two methods in log space, and <i>w</i> = 0 and <i>w</i> = 1 give exactly the two original shapes. The same list of faces is used for both so that the comparison is fair. The set of face families and their energies come from the same pipeline as Phase 4 (UFF, unrelaxed, flat bond cost).</p>
+      <h3 class="sub-head">A worked example (MOF-5)</h3>
+      <div class="table-wrap"><table class="data-table" id="hy-example"><thead><tr><td>Face</td><td><i>R</i> from BFDH</td><td><i>R</i> from Wulff</td><td><i>R</i> at <i>w</i> = 0.5</td></tr></thead><tbody><tr><td class="dt-label">{100}</td><td class="dt-value">1.155</td><td class="dt-value">1.000</td><td class="dt-value">1.075</td></tr><tr><td class="dt-label">{111}</td><td class="dt-value">1.000</td><td class="dt-value">1.727</td><td class="dt-value">1.314</td></tr></tbody></table></div>
+      <p class="sd">BFDH makes {111} the closest face (<i>R</i> = 1) and {100} further out, so {111} is large and the crystal is a truncated octahedron. Wulff reverses it: {100} is the cheapest face and {111} lies further out. At <i>w</i> = 0.5 the ratio <i>R</i><sub>111</sub>/<i>R</i><sub>100</sub> passes through an intermediate value and the shape is a truncated cube; the name for each <i>w</i> is in the table below.</p>
+
+      <h2 class="section-title" id="hy-results" data-toc="Results"><span class="stitle-num">2</span>Results for Four MOFs</h2>
+      <div class="table-wrap"><table class="data-table" id="hy-table"><thead><tr><td>MOF</td><td><i>w</i> = 0 (BFDH)</td><td><i>w</i> = 0.25</td><td><i>w</i> = 0.5</td><td><i>w</i> = 0.75</td><td><i>w</i> = 1 (Wulff)</td><td>Crystals show</td><td>Shape changes with <i>w</i>?</td></tr></thead><tbody><tr data-mof="MOF-5"><td class="dt-label">MOF-5</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated cube</td><td class="dt-note">truncated cube</td><td class="dt-note">cube</td><td class="dt-note">cube</td><td class="dt-value">yes</td></tr><tr data-mof="HKUST-1"><td class="dt-label">HKUST-1</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron</td><td class="dt-value">no</td></tr><tr data-mof="UiO-66"><td class="dt-label">UiO-66</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron (with modulator)</td><td class="dt-value">yes</td></tr><tr data-mof="ZIF-8"><td class="dt-label">ZIF-8</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-value">no</td></tr></tbody></table></div>
+      <ul class="sd">
+        <li><b>Blending adds nothing for HKUST-1, ZIF-8.</b> BFDH and Wulff already give the same shape, so every blend does too.</li>
+        <li><b>It matters for MOF-5 and UiO-66.</b> There the two methods disagree and the blend passes through intermediate shapes. This is a transition, not a new shape.</li>
+        <li><b>Against experiment,</b> Wulff matches MOF-5 (cube), UiO-66 (octahedron) and ZIF-8, BFDH matches only ZIF-8, and HKUST-1 is a truncated octahedron in every column while crystals show an octahedron (additive-dependent). The experimental shapes are those of Rohith's notebook; the conditions behind them are on the <a href="experiment.html">Experiment</a> page.</li>
+      </ul>
+      <div class="callout warn" data-kind="Why no best weight is given">The dial <i>w</i> is a free parameter and there are four MOFs. Picking the weight that scores best would fit it to the test set, so the table shows all five values and no ranking. The honest reading today is that the blend has not been shown to beat either method. To show that, <i>w</i> must be chosen on some MOFs and tested on others, and the energies must first be checked by DFT. If the blend does win on held-out MOFs, that would be a new model worth writing up; today it is an idea with a working implementation.</div>
+
+      <h2 class="section-title" id="hy-nb" data-toc="The notebook"><span class="stitle-num">3</span>The Notebook: Any Crystal File</h2>
+      <p class="sd">The Colab notebook <code>code/morphology/MorphoGraph_hybrid.ipynb</code> (generated by <code>tools/make_nb.py</code>) runs the whole chain on any CIF that contains a unit cell, with no machine-learning model and no GPU:</p>
+      <ol class="sd">
+        <li>Upload the CIF in the upload cell (any crystal system; a file without a cell is refused).</li>
+        <li>Set <code>NAME</code> so the plot titles carry the right name.</li>
+        <li>The notebook finds the symmetry, lists the allowed faces, computes the UFF energy of each face family with all atoms including hydrogen, and draws the BFDH, blended and Wulff shapes.</li>
+        <li>An optional cell accepts energies from another source (for example CHGNet or DFT) and recomputes the same shapes from them.</li>
+      </ol>
+      <p class="sd">The notebook differs from Keerthi's CHGNet notebook: it uses the force-field energies and needs seconds, whereas the CHGNet notebook relaxes slabs and needs a GPU for hours. Its limits are those of Phase 4 (no solvent, no charges, no temperature).</p>
+
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="surface_energy.html"><div class="dir">&larr; Previous</div><div class="ttl">Phase 4: Surface Energies from a Force Field</div></a><a class="next" href="experiment.html"><div class="dir">Next &rarr;</div><div class="ttl">Experiment, CHGNet and Every Method Compared</div></a></nav>
+    </main>
+    <aside id="toc" class="toc" aria-label="On this page"></aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    Every number on this site is computed in your browser from the CIF files in this
+    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
+    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+  </div>
+</footer>
+
+<script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

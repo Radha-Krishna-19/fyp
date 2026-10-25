@@ -12,10 +12,10 @@ Science and Engineering · M.E., Ph.D.
 
 | | |
 |---|---|
-| **Project site** | [`1_website/index.html`](1_website/index.html) — open it directly, no server needed |
-| **Dataset** | [`9_dataset/`](9_dataset/) — 81 frameworks, CC BY 4.0 |
-| **Panel deck** | [`7_presentation/panel_review.pdf`](7_presentation/panel_review.pdf) |
-| **Textbook** | [`8_textbook/`](8_textbook/) — 12 chapters, zero background assumed |
+| **Project site** | [`website/index.html`](website/index.html) — open it directly, no server needed |
+| **Dataset** | [`data/spectrum_descriptors/`](data/spectrum_descriptors/) — 81 frameworks, CC BY 4.0 |
+| **Panel deck** | [`docs/presentation/panel_review.pdf`](docs/presentation/panel_review.pdf) |
+| **Textbook** | [`docs/textbook/`](docs/textbook/) — 12 chapters, zero background assumed |
 
 ---
 
@@ -37,7 +37,7 @@ numbers. Does that compression retain anything real?
 ## What we found
 
 **Both published bands are withdrawn as structural findings.** The 77-framework
-hMOF band and the 61-framework CoRE MOF band (`9_dataset/`) were both computed
+hMOF band and the 61-framework CoRE MOF band (`data/spectrum_descriptors/`) were both computed
 by running the multifractal analysis on the **atomic** supercell bond graph,
 not on the coarse-grained building-block graph the site and dataset
 documentation describe. A finite-size sweep on four demonstration structures
@@ -50,8 +50,8 @@ term that grows with graph size forever. On top of that, an atomic MOF graph
 spans two length scales — molecular, inside one linker or cluster, and
 framework, above one linker length — and fitting one power law across that
 crossover is not a valid scaling measurement to begin with. Both bands are kept
-in `9_dataset/` for audit, with this reasoning, rather than deleted or
-recomputed at a cap that does not exist. See `PROJECT_NOTES.md` and the Results page
+in `data/spectrum_descriptors/` for audit, with this reasoning, rather than deleted or
+recomputed at a cap that does not exist. See `docs/project_notes.md` and the Results page
 for the full account, including the earlier pore-size and four-structure
 withdrawals this project already carried.
 
@@ -80,7 +80,7 @@ was withdrawn before the finding above: those four were expanded to 256–972
 atoms while the 77 hMOFs occupy 3024–6592 atoms, and Δα rises with atom count at
 r = +0.73. The comparison was reading graph size. The reasoning is on the
 [Results page](https://radha-krishna-19.github.io/fyp/results.html#realband)
-and in [`4_reference/make_real_band_figures.py`](4_reference/make_real_band_figures.py).
+and in [`docs/report_figures/make_real_band_figures.py`](docs/report_figures/make_real_band_figures.py).
 
 ## Three defects we found and fixed
 
@@ -109,21 +109,21 @@ maintainer's machine.
 
 ```
 fyp/
-├── 1_website/        The documentation portal. Open index.html — no server needed.
-├── 2_python/         Reference implementation, 12 annotated modules
-├── 3_notebooks/      The 77-framework analysis + the real-MOF twin
-├── 4_reference/      Generated figures + the scripts that make and verify them
-├── 5_concepts/       Five long-form background documents
-├── 6_references/     Annotated bibliography + BibTeX
-├── 7_presentation/   Beamer deck, PDF, Overleaf archive, speaking script, 5-way split
-├── 8_textbook/       Twelve chapters, zero background assumed
-├── 9_dataset/        The released dataset, CC BY 4.0
-└── 10_enrichment/    Technical Enrichment plan and course recommendations
+├── website/        The documentation portal. Open index.html — no server needed.
+├── code/spectrum_pipeline/         Reference implementation, 12 annotated modules
+├── notebooks/spectrum/      The 77-framework analysis + the real-MOF twin
+├── docs/report_figures/      Generated figures + the scripts that make and verify them
+├── docs/concepts/       Five long-form background documents
+├── docs/references/     Annotated bibliography + BibTeX
+├── docs/presentation/   Beamer deck, PDF, Overleaf archive, speaking script, 5-way split
+├── docs/textbook/       Twelve chapters, zero background assumed
+├── data/spectrum_descriptors/        The released dataset, CC BY 4.0
+└── docs/technical_enrichment/    Technical Enrichment plan and course recommendations
 ```
 
-Inside `1_website/`, `_build/` holds the build inputs (the content source, the
+Inside `website/`, `_build/` holds the build inputs (the content source, the
 page fragments and `build_site.py`); everything else in that folder is served
-as-is. Run `python 1_website/_build/build_site.py` after editing content.
+as-is. Run `python website/_build/build_site.py` after editing content.
 
 ## Getting started
 
@@ -131,7 +131,7 @@ as-is. Run `python 1_website/_build/build_site.py` after editing content.
 
 ```bash
 git clone https://github.com/Radha-Krishna-19/fyp.git
-cd fyp/1_website
+cd fyp/website
 # open index.html in any browser
 ```
 
@@ -145,7 +145,7 @@ files in the folder; none is hardcoded.
 Requires Python 3.9+, NumPy and NetworkX.
 
 ```bash
-cd fyp/2_python
+cd fyp/code/spectrum_pipeline
 pip install numpy networkx
 
 # decompose one framework end to end
@@ -161,17 +161,17 @@ python code_11_nmfa_paper.py
 ### Reproduce the 77-framework band
 
 ```bash
-jupyter notebook 3_notebooks/mof_band_analysis.ipynb
+jupyter notebook notebooks/spectrum/mof_band_analysis.ipynb
 ```
 
 Also runs unchanged in Google Colab; it installs its own dependencies. Writes
-`results.json`, which `1_website/band_data.js` is generated from. Roughly 20
+`results.json`, which `website/band_data.js` is generated from. Roughly 20
 minutes.
 
 ### Run the tests
 
 ```bash
-cd fyp/1_website/tests
+cd fyp/website/tests
 npm install jsdom
 npm test
 ```
@@ -199,10 +199,10 @@ decomposition, used **unmodified**. Modules 5–8 are this project's work.
                                  nodes)            lattice direction)
 ```
 
-**Every figure is verifiable.** `python 4_reference/verify_figures.py` reads
+**Every figure is verifiable.** `python docs/report_figures/verify_figures.py` reads
 the PNG metadata of every image in the repository and confirms it was produced
 by matplotlib rather than downloaded, and that duplicated copies have not
-drifted. `4_reference/make_figures.py` regenerates the data figures from the
+drifted. `docs/report_figures/make_figures.py` regenerates the data figures from the
 live pipeline.
 
 **Two independent implementations.** The Python modules and the JavaScript
@@ -236,7 +236,7 @@ true" are different claims and a single percentage hides the difference.
 that is the honest consequence of the 2026-09-14/15 finite-size finding, not a
 new setback: the convergence problem was always there, in every number this
 project had published, and was simply not tested for until now. See
-`PROJECT_NOTES.md` and the Results page for the finding and what would resolve it.
+`docs/project_notes.md` and the Results page for the finding and what would resolve it.
 
 **What remains.** (1) Either a size-independent Δα — a fixed, a-priori q range,
 a different partition-function normalisation, or reporting the Δα(D) growth
@@ -244,7 +244,7 @@ slope itself as the descriptor — or a documented decision to retire Δα and
 report the slope, or another descriptor, as the headline instead. (2) A
 topologically diverse comparison set spanning pcu, tbo, sod, fcu and rht nets;
 the current 77-framework hMOF sample is dominated by one net (pcu) at one
-graph size. Full module-by-module audit on the [Team page](1_website/team.html).
+graph size. Full module-by-module audit on the [Team page](website/team.html).
 
 ---
 
@@ -280,9 +280,9 @@ Stated plainly, because a reviewer will ask.
 - Bucior *et al.*, *CrystEngComm* **21**, 3777 (2019) — MOFid decomposition
 - Wilmer *et al.*, *Nature Chemistry* **4**, 83 (2012) — the hMOF structures
 
-Full annotated bibliography in [`6_references/`](6_references/).
+Full annotated bibliography in [`docs/references/`](docs/references/).
 
 ## Licence
 
-Dataset: CC BY 4.0 ([`9_dataset/LICENSE`](9_dataset/LICENSE)).
+Dataset: CC BY 4.0 ([`data/spectrum_descriptors/LICENSE`](data/spectrum_descriptors/LICENSE)).
 `three.min.js` is vendored under the MIT licence of the three.js project.
