@@ -19,7 +19,7 @@ statistics grouped by that run's own published class labels.
 
 DATA AVAILABILITY
 Only 34 of the 76 hMOF CIFs are available locally (MOFX-DB was not re-queried
-for this module, per this session's instruction not to re-fetch). All three
+for this module; the analysis was run on the files already downloaded). All three
 classes are represented (10 Narrow, 18 Medium, 6 Wide from this subset), which
 is enough to show whether the pattern holds; it is not a claim about all 76.
 

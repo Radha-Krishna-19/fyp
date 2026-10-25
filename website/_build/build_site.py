@@ -18,6 +18,7 @@ import re, os, sys, json, html
 # Paths are resolved relative to THIS file, not the shell's working directory,
 # so the build works from anywhere.
 HERE  = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)            # figure_sources.py lives beside this script
 SRC   = os.path.join(HERE, 'content_source.html')   # all 19 sections, one file
 OUT   = os.path.abspath(os.path.join(HERE, '..'))   # the served folder
 FRAG  = os.path.join(HERE, 'fragments')
@@ -107,7 +108,11 @@ PAGES = [
 
     dict(file='code.html',         nav='Source',        sections=['source'],
          title='Every Line of Source Code',
-         desc='All 28 source files, readable in the browser with no download and no web server.'),
+         desc='Every source file of the project, readable in the browser with no download and no web server.'),
+
+    dict(file='resources.html',    nav='Resources',     sections=[],
+         title='Resources: Paper, Reports, Notebooks and Data',
+         desc='The team paper, the reports and slides, every notebook (in the repository and in Google Colab), the datasets, the certifications and a map of the repository.'),
 
     dict(file='references.html',   nav='References',    sections=['references'],
          title='References',
@@ -150,6 +155,7 @@ SCRIPTS = {
     'relation.html':      [],
     'lessons.html':       [],
     'code.html':          ['code_sources.js', 'code_viewer.js', 'single_page.js'],
+    'resources.html':     [],
     'references.html':    [],
     'glossary.html':      [],
     'team.html':          [],
@@ -259,7 +265,7 @@ def shell(page, idx, body_html, masthead_html):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{page['title']} &middot; MOF Structural Descriptors</title>
+<title>{page['title']} &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="{html.escape(page['desc'], quote=True)}">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -274,7 +280,7 @@ def shell(page, idx, body_html, masthead_html):
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html">{MARK}<span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html">{MARK}<span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
 {nav}
   </nav>
@@ -296,9 +302,10 @@ def shell(page, idx, body_html, masthead_html):
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>
@@ -325,7 +332,7 @@ def step_of(idx):
     that — and only that — is what survives here.
     """
     steps = [p for p in PAGES if p['file'] not in
-             ('code.html', 'references.html', 'glossary.html', 'team.html')]
+             ('code.html', 'resources.html', 'references.html', 'glossary.html', 'team.html')]
     here = PAGES[idx]['file']
     names = [p['file'] for p in steps]
     if here not in names:
@@ -348,6 +355,31 @@ def masthead(page, idx, extra=''):
 {extra}  </div>
 </div>
 """
+
+
+def add_figure_sources(html, page):
+    """Add a Source line (script and data) under every figure image that has none."""
+    from figure_sources import FIGURE_SOURCES, source_line
+    def repl(m):
+        fig = m.group(0)
+        if 'class="provenance' in fig:
+            return fig
+        srcs = re.findall(r'<img[^>]*src="(figures/[^"]+)"', fig)
+        if not srcs:
+            return fig
+        missing = [x for x in srcs if x not in FIGURE_SOURCES]
+        if missing:
+            sys.exit(f'{page}: no source recorded for {missing} in _build/figure_sources.py')
+        lines = ''.join(source_line(x) for x in dict.fromkeys(srcs))
+        return fig.replace('</figure>', lines + '</figure>')
+    out, pos = [], 0
+    for m in re.finditer(r'<figure\b.*?</figure>', html, flags=re.S):
+        out.append(html[pos:m.start()])
+        following = html[m.end():m.end() + 300]
+        out.append(m.group(0) if 'class="provenance' in following.split('<figure')[0] else repl(m))
+        pos = m.end()
+    out.append(html[pos:])
+    return ''.join(out)
 
 
 def main():
@@ -396,6 +428,8 @@ def main():
             counter[0] += 1
             return f'{m.group(1)}{counter[0]}{m.group(2)}'
         assembled = re.sub(r'(<span class="(?:stitle-num|n)">)\d+(</span>)', bump, assembled)
+
+        assembled = add_figure_sources(assembled, p['file'])
 
         head_extra = extras.get(p['file'], {}).get('masthead', '')
         out = shell(p, i, assembled, masthead(p, i, head_extra))

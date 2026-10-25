@@ -55,7 +55,7 @@ ok(/no best weight|Why no best weight/i.test(HD.body.textContent), 'hybrid: refu
 // ---- Mistakes page: every entry has all six rows, and the key admissions are there
 const L = doc('lessons.html');
 const tabs = [...L.querySelectorAll('table.lesson')];
-ok(tabs.length === 17, `lessons: 17 entries (found ${tabs.length})`);
+ok(tabs.length === 22, `lessons: 22 entries: 9 spectrum, 8 morphology, 5 audit (found ${tabs.length})`);
 const need = ['In simple words', 'Why we chose it', 'Why it was wrong', 'The technical reason', 'How we fixed it', 'Where to see it'];
 ok(tabs.every(t => need.every((n, i) => t.querySelectorAll('tr')[i].querySelector('td').textContent === n)), 'lessons: every entry has the six rows in order');
 ['l-tau', 'l-classes', 'l-size', 'm-hydrogen', 'm-never', 'm-trustuff'].forEach(id => ok(!!L.getElementById(id), `lessons: entry ${id}`));
@@ -63,7 +63,7 @@ ok(tabs.every(t => need.every((n, i) => t.querySelectorAll('tr')[i].querySelecto
 // ---- How We Got Here (journey.html): ten stages, six rows each, every mistake link resolves
 const J = doc('journey.html');
 const jt = [...J.querySelectorAll('table.journey')];
-ok(jt.length === 10, `journey: 10 stages (found ${jt.length})`);
+ok(jt.length === 11, `journey: 11 stages (found ${jt.length})`);
 ok(jt.every(t => t.querySelectorAll('tr').length === 7 && t.querySelector('td').textContent === 'Purpose of this step'), 'journey: every stage has the seven rows, starting with its purpose');
 const LL = doc('lessons.html');
 const links = [...J.querySelectorAll('a[href^="lessons.html#"]')].map(a => a.getAttribute('href').split('#')[1]);

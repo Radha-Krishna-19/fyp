@@ -54,16 +54,16 @@
         const d = window.CODE_SOURCES[n];
         if (filter === 'py') return d.lang === 'python';
         if (filter === 'js') return d.lang === 'javascript';
-        if (filter === 'ours') return OURS.indexOf(n) !== -1;
+        if (filter === 'ours') return OURS.indexOf(n) !== -1 || d.tag === 'OURS';
         return true;
       });
       grid.innerHTML = shown.map(n => {
         const d = window.CODE_SOURCES[n];
-        const ours = OURS.indexOf(n) !== -1;
+        const ours = OURS.indexOf(n) !== -1 || d.tag === 'OURS';
         const lines = d.src.split('\n').length;
         return '<div class="codecard" data-code="' + n + '">' +
           '<span class="ct' + (ours ? ' ours' : '') + '">' + (ours ? 'OUR WORK' : d.tag || 'JS') + '</span>' +
-          '<div class="cf">' + n + '</div>' +
+          '<div class="cf">' + (d.path || n) + '</div>' +
           '<div class="cd">' + (d.desc || '') + '</div>' +
           '<div class="cd" style="color:var(--muted2);margin-top:5px;">' + lines + ' lines · click to read</div>' +
           '</div>';

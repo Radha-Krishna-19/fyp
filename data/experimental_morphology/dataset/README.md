@@ -187,7 +187,7 @@ not independent.
 ## What this means for the computational pipeline
 
 1. **Vacuum surface energies cannot reproduce most of these results.** The
-   CHGNet notebook (`../notebook/MorphoGraph_MOF_revised.ipynb`) computes gamma for
+   CHGNet notebook ([`notebooks/morphograph_mof/MorphoGraph_MOF_revised.ipynb`](../../../notebooks/morphograph_mof/MorphoGraph_MOF_revised.ipynb)) computes gamma for
    bare slabs. In the data above, the shape of one MOF moves across the whole
    cube–cuboctahedron–octahedron range with the additive alone. Two
    additives even push HKUST-1 in opposite directions. A single set of

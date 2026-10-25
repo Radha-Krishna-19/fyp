@@ -1,38 +1,41 @@
-# Website test suite
+# Website test suites
 
-Five Node + jsdom suites that run the real site headlessly. They exist because
-this site computes its numbers live in the browser rather than displaying
-transcribed results — so a broken script does not throw a visible error, it
-silently shows a blank panel. These catch that.
+Twelve Node.js suites that load the built pages in [jsdom](https://github.com/jsdom/jsdom), run the
+real page scripts and check the content they produce. Most numbers on the site are computed in the
+browser or generated from result files, so a broken script does not raise a visible error; it leaves
+an empty panel. These suites detect that, and they also check that the text of each page agrees
+with the Python result files it was generated from.
 
-## Running them
+## Running
 
 ```bash
 cd website/tests
-npm install jsdom          # the only dependency
-node test_stage.js
-node test_single_page.js
-node test_network_page.js
-node test_decompose.js
-node test_render_robustness.js
+npm install      # once; installs jsdom
+npm test         # runs run_all_tests.js: every test_*.js, then a pass/fail summary
+node test_pages.js   # or any single suite
 ```
 
-Each exits `0` on success and `1` on the first failure, so they drop into CI
-unchanged.
+Each suite exits with status 0 on success and 1 on failure. The GitHub workflow
+[`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) runs `npm test` on every push and
+pull request, and deploys the site only when all suites pass.
 
-## What each one guards
+## What each suite checks
 
-| Suite | Guards against |
+| Suite | Checks |
 |---|---|
-| `test_stage.js` | The presentation layer. Checks `stage.css`/`stage.js` are wired in, the hero canvas and its three CTAs exist and point at real sections, every `data-count` parses as a number, the scrollytelling block has one pipeline stage per step, all 19 nav links resolve **and appear in document order with matching numbers**, no duplicate `id`s, and that booting `stage.js` actually injects the progress bar, theme button, back-to-top and section anchors. |
-| `test_single_page.js` | The merged single page. All 19 sections present, every engine (walkthrough, overview tables, network validation, multifractal table, published-method table, code browser) renders real content rather than an empty shell. |
-| `test_network_page.js` | The chemistry. The periodic graph must reproduce literature coordination numbers, the naive non-periodic construction must demonstrably fail, centrality degeneracy must be reported honestly, and a simulated defect must lower λ₂. |
-| `test_decompose.js` | The CIF parser and decomposition on HKUST-1 — atom count, cell parameters, and the recovered formula. |
-| `test_render_robustness.js` | The 3D renderer surviving degenerate input (empty structures, single atoms, missing elements) instead of throwing. |
+| [`test_pages.js`](test_pages.js) | Every one of the 24 pages loads, its engine scripts fill their containers, every internal link and `#anchor` resolves, every figure file exists and every figure carries a source line naming the script that produced it |
+| [`test_engines.js`](test_engines.js) | The browser engines (decomposition, network, spectrum, morphology) produce computed content on the pages that use them |
+| [`test_decompose.js`](test_decompose.js) | The CIF parser and metal-oxo decomposition on HKUST-1: atom count, cell parameters, building blocks, formula |
+| [`test_network_page.js`](test_network_page.js) | The periodic graph reproduces literature coordination numbers, the non-periodic construction fails as expected, centrality degeneracy is reported, a simulated defect lowers λ<sub>2</sub> |
+| [`test_block_inspector.js`](test_block_inspector.js) | The inspector of a coarse-grained vertex draws the correct atoms and only bonds that exist inside that building block |
+| [`test_maths.js`](test_maths.js) | Every symbol in a displayed equation is defined before use; equations are numbered consecutively; stated values agree with the data files |
+| [`test_real_band_numbers.js`](test_real_band_numbers.js) | Every statistic stated about the CoRE MOF and hMOF spectra is recomputed from `notebooks/spectrum/real_results.json` and `results.json` |
+| [`test_morphology.js`](test_morphology.js) | The JavaScript morphology engine agrees with the independent Python package (`code/morphology/`) number by number, and the Morphology page draws its shapes |
+| [`test_morph_pages.js`](test_morph_pages.js) | Learn, Maths and Graph Faces pages: figures exist, every live check on the Maths page holds, Phase 3 tables equal the Python output |
+| [`test_bridge_pages.js`](test_bridge_pages.js) | Hybrid, Spectrum ↔ Shape, Mistakes and How We Got Here: every number equals the result files; entry and stage counts |
+| [`test_glossary.js`](test_glossary.js) | Glossary entries are defined, ordered, and annotate pages without altering their text |
+| [`test_render_robustness.js`](test_render_robustness.js) | The 3D renderer draws on demand, recovers from a lost WebGL context, pauses off-screen panels and tolerates degenerate input |
 
-## Why the nav-order test matters
-
-The sticky nav was hand-maintained at one point and drifted to
-`1 3 2 3 4 5 6 10 11`. `test_stage.js` now asserts that link *n* is labelled
-*n* and that the targets appear in the same order in the document, so that
-class of drift cannot come back unnoticed.
+Python checks are separate: `code/morphology/tests*.py`,
+`code/spectrum_shape_relation/check_spectrum_shape_relation.py` and
+`code/spectrum_pipeline/_ci_smoke_test.py`.

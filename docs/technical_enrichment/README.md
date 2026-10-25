@@ -1,142 +1,59 @@
-# Technical Enrichment Activities — 35 marks
+# Technical Enrichment Activities (35 marks)
 
-| Component | Nature | Marks | Status |
-|---|---|---|---|
-| Professional online certification (individual) | Mandatory | 20 | Recommendations ready — see [`COURSES.md`](COURSES.md) |
-| Group activities — any 3 of 8 | Optional, min. 3 | 15 (5 each) | 4 selected, 3 substantially done |
+| Component | Marks | Status (25 October 2026) |
+|---|---|---|
+| Professional online certification, one per member | 20 | **Completed by all five members** ([certificates](certificates/)) |
+| Group activities, at least three of eight | 15 | Four in hand: website, open-source repository, dataset release, research paper |
 
-**Everything below needs the guide's prior approval before it counts.** The
-rubric is explicit: *"Activities completed without prior approval from the guide
-may not be considered for evaluation."* Get it in writing, for all four.
+All activities require the guide's prior approval; the evidence for each is listed below.
 
----
+## 1. Professional online certifications
 
-## Group activities — what we selected and why
+| Member | Roll number | Course | Provider | Completed | Certificate |
+|---|---|---|---|---|---|
+| Pasupuleti Meena Radha Krishna | CB.SC.U4CSE23134 | Fractals and Scaling (lead instructor D. Feldman) | Santa Fe Institute, Complexity Explorer | 24 Oct 2026 | [G070_23134_OnlineCourse.pdf](certificates/G070_23134_OnlineCourse.pdf) |
+| Keerthi Sree Jonnakuti | CB.SC.U4CSE23031 | Introduction to Complexity (lead instructor M. Mitchell) | Santa Fe Institute, Complexity Explorer | 23 Oct 2026 | [G070_23031_OnlineCourse.pdf](certificates/G070_23031_OnlineCourse.pdf) |
+| Kshitij Varma Pinnamaraju | CB.SC.U4CSE23122 | Graph Theory (M. Fattah), 10 h | Udemy | 24 Oct 2026 | [G070_23122_OnlineCourse.pdf](certificates/G070_23122_OnlineCourse.pdf) |
+| Rohith Abhinav Sai Komal Gullolla | CB.SC.U4CSE23141 | Advanced Algorithms (Graph Algorithms) in Java (H. Balazs), 12.5 h; Social Network Analysis (T. Khan), 3 h | Udemy | 24 Oct 2026 | [G070_23141_OnlineCourse.pdf](certificates/G070_23141_OnlineCourse.pdf) |
+| Isha Sri Prakash | CB.SC.U4CSE23029 | Graph Algorithms for Machine Learning | TigerGraph University | 23 Oct 2026 | [G070_23029_OnlineCourse.pdf](certificates/G070_23029_OnlineCourse.pdf) |
 
-We picked four rather than three, so one can fail without costing marks.
+The Santa Fe Institute certificates do not print the course length; the courses' own pages give
+about 1–2 hours per unit for videos, quizzes and tests (10 and 9 units). The TigerGraph certificate
+does not state a length.
 
-| # | Activity | Why this one | State |
-|---|---|---|---|
-| **4** | Project Website / Documentation Portal | Already built. Nine pages, computed live. | ✅ Complete |
-| **5** | Open-source Technical Repository | Already exists, with history. | ✅ Complete |
-| **3** | Dataset Release | The descriptor table was already computed; releasing it is packaging. | ✅ Complete |
-| **1** | Submission-ready Research Paper Draft | The withdrawn claim and the real-MOF gap make a genuine short paper. | ⏳ To write |
+### How each course supports the project and its next steps
 
-Activities 2 (patent), 6 (competition), 7 (user study) and 8 (working
-demonstration) were considered and set aside. Activity 8 is the closest
-near-miss and is worth reconsidering if the paper stalls — the pipeline already
-runs end to end, so it is a screen recording plus instructions.
+* **Fractals and Scaling.** Box-counting dimension, power laws and how to fit them to data, and scaling
+  with system size. These are the mathematics of the spectrum width Δα and of the size dependence that
+  led to its withdrawal. Applied directly in the dimension profile of crystal particles
+  ([`code/spectrum_shape_relation/run_04_dimension_profile_of_crystal_particles.py`](../../code/spectrum_shape_relation/run_04_dimension_profile_of_crystal_particles.py)),
+  which separates crystal shapes that Δα could not.
+* **Introduction to Complexity.** Fractals, networks (random, small-world, scale-free) and scaling in
+  complex systems. Provides the reference network models against which a MOF graph is judged, and the
+  growth and self-organisation ideas behind crystal habit.
+* **Graph Theory.** Paths, connectivity, trees and graph parameters: the definitions behind the
+  labelled quotient graph, its diameter and the connected-component checks used in both parts.
+* **Graph algorithms (two courses).** Breadth-first search, shortest paths, spanning trees and
+  centrality: the algorithms that make distance computation and box covering affordable on particle
+  graphs of 10<sup>4</sup>–10<sup>5</sup> building blocks.
+* **Graph Algorithms for Machine Learning.** Graph features, community detection and embeddings: the
+  route to learning face energies from graph descriptors, the graph-neural-network step planned in the
+  MorphoGraph-MOF pipeline.
 
----
+## 2. Group activities
 
-## Activity 4 — Project Website / Documentation Portal ✅
-
-**Required deliverables**, and where each lives:
-
-| Required | Where |
-|---|---|
-| Project objectives | [`index.html`](../website/index.html) — "In one paragraph" |
-| Problem statement | `index.html` §1 — The Problem |
-| Methodology | [`methodology.html`](../website/methodology.html) — workflow, architecture, datasets, evaluation strategy |
-| Team details | [`team.html`](../website/team.html) — five members, roll numbers, ownership |
-| Project progress | `team.html` — module-by-module audit, 85% |
-| Documentation | Nine pages, plus [`docs/textbook/`](../docs/textbook/) (12 chapters) |
-| GitHub repository link | Site header and footer, on every page |
-| Demonstration videos | ⏳ **Outstanding** — see below |
-
-**What is left:** a demonstration video. Two to three minutes is enough:
-open the site from a fresh clone, switch a structure in the 3D viewer, step
-through the pipeline walkthrough, show the band on the Results page. Screen
-recording with narration. This is also most of Activity 8 if you add it later.
-
-**Evidence to submit:** the live Pages URL, a repository link, and the video.
-
----
-
-## Activity 5 — Open-source Technical Repository ✅
-
-| Required | Where |
-|---|---|
-| Source code | `website/`, `code/spectrum_pipeline/`, `notebooks/spectrum/` |
-| Well-structured organisation | Nine numbered top-level folders, each with a README |
-| README | [Root README](../README.md) — problem, findings, defects, architecture, status |
-| Installation guide | Root README, "Getting started" — three routes, all tested |
-| Documentation | Per-folder READMEs, textbook, in-code comments explaining *why* |
-| Regular commits with version history | `git log` — the history is real, not squashed |
-
-**Notable for a reviewer:** the repository ships a **test suite** (five jsdom
-suites, 200+ assertions) and a **CI workflow** that gates publication on those
-tests passing. Most student repositories have neither.
-
-**Before submitting:** push the outstanding commits, enable GitHub Pages
-(Settings → Pages → Source: GitHub Actions), and add a repository description
-and topics.
-
----
-
-## Activity 3 — Dataset Release ✅
-
-Located in [`data/spectrum_descriptors/`](../data/spectrum_descriptors/).
-
-| Required | Where |
-|---|---|
-| Public repository link | GitHub; **Zenodo DOI recommended** — see below |
-| Dataset documentation (README) | [`data/spectrum_descriptors/README.md`](../data/spectrum_descriptors/README.md) — schema, methodology, limitations |
-| Metadata and annotation guidelines | [`metadata.json`](../data/spectrum_descriptors/metadata.json) — Frictionless Data schema, typed and described per column |
-| Licence information | [`LICENSE`](../data/spectrum_descriptors/LICENSE) — CC BY 4.0, with a note on upstream terms |
-| Version details | v1.0.0, dated, with a changelog |
-| Organised dataset repository | Two CSVs — hypothetical and synthesised, deliberately separate |
-
-**Strongly recommended:** mint a **Zenodo DOI**. Link the GitHub repository to
-Zenodo, cut a release, and Zenodo issues a permanent citable DOI. It takes ten
-minutes and turns "we put a CSV on GitHub" into a citable research output. The
-rubric names Zenodo explicitly.
-
-**What makes this dataset defensible rather than filler:** the README documents
-a **negative result** — that Δα's apparent correlation with pore size is a
-graph-size confound, and that anyone reusing the data must control for
-`n_blocks`. A dataset that tells you how it can mislead you is more useful than
-one that does not.
-
----
-
-## Activity 1 — Research Paper Draft ⏳
-
-**Required:** complete manuscript, figures and tables, references, similarity
-report.
-
-**The paper has a real argument**, which is why this is worth attempting rather
-than padding:
-
-1. A simulation-free structural descriptor for MOFs, from the periodic quotient
-   graph.
-2. A **definition error in the τ estimator** that silently invalidates every
-   spectrum — free-intercept fit versus through-origin — with a before/after on
-   77 frameworks (0/77 → 77/77 valid). This is a genuine methodological
-   contribution and is reusable by anyone applying the method.
-3. A **negative result**: the descriptor's apparent correlation with pore size is
-   a graph-size confound.
-4. A **preliminary finding**: synthesised frameworks sit outside the band
-   computed from generated ones, size-matched.
-
-Target: a short paper or a workshop track. Format in IEEE conference style.
-References are already in [`docs/references/references.bib`](../docs/references/references.bib) (19 entries).
-
-**Similarity report:** run it through Turnitin via the institution before
-submitting. Text reused from this repository's own READMEs will flag — rewrite
-rather than paste.
-
----
+| # | Activity | Evidence |
+|---|---|---|
+| 4 | Project website / documentation portal | <https://radha-krishna-19.github.io/fyp/>: objectives, problem statement, methodology, team, progress, documentation, repository link ([`website/`](../../website/)) |
+| 5 | Open-source technical repository | <https://github.com/Radha-Krishna-19/fyp>: source code, organised folders with READMEs, installation guide in the root [README](../../README.md), test suites and a CI workflow, version history |
+| 3 | Dataset release | [`data/spectrum_descriptors/`](../../data/spectrum_descriptors/) (CC BY 4.0, with metadata and README) and the experimental morphology dataset [`data/experimental_morphology/`](../../data/experimental_morphology/) |
+| 1 | Submission-ready research paper draft | [`docs/paper/G070_Paper.pdf`](../paper/G070_Paper.pdf) |
 
 ## Submission checklist
 
-- [ ] Guide approval, in writing, for all four group activities
-- [ ] Guide approval for each member's individual certification
-- [ ] Five completion certificates + course details + one-page summaries
-- [ ] Demonstration video recorded and linked from the site
-- [ ] GitHub Pages enabled; live URL noted
-- [ ] Zenodo DOI minted for the dataset
-- [ ] Paper draft + similarity report
-- [ ] Everything organised per-activity in one folder for the guide to upload
-
-**Deadline:** one week before the last working day of the 7th semester.
+- [x] Five completion certificates
+- [ ] Course details and a one-page summary per member (the sections above can be used as the basis)
+- [ ] Guide approval recorded for each activity
+- [x] Website published on GitHub Pages
+- [ ] Zenodo DOI for the dataset (optional, recommended)
+- [ ] Similarity report for the paper

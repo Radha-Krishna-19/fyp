@@ -16,7 +16,9 @@
         The earlier pages report the multifractal descriptor work, whose central result is negative: the
         spectrum width &Delta;&alpha; grows with system size and is withdrawn as a material property
         (<a href="results.html">Results</a>). The periodic quotient graph, the coordination numbers and the
-        decomposition built for that work are reused below. The multifractal spectrum is not.
+        decomposition built for that work are reused below. Whether the multifractal spectrum itself
+        carries any information about crystal shape is tested separately on the
+        <a href="relation.html">Spectrum &harr; Shape</a> page.
       </div>
 
       <h2 class="section-title" id="morph-method" data-toc="From unit cell to shape"><span class="stitle-num">0</span>From Unit Cell to Crystal Shape: the Method</h2>
@@ -107,9 +109,11 @@
       </figure>
       <div class="callout good" data-kind="The result">
         The same mathematics, given each framework's connectivity, gives a <b>cube for MOF-5</b> and an
-        <b>octahedron for UiO-66</b>, the shapes most often reported, where the lattice-only BFDH rule gives
-        the same truncated octahedron for both. This is the clearest evidence so far that the periodic
-        graph adds information that the lattice alone does not carry.
+        <b>octahedron for UiO-66</b>, where the lattice-only BFDH rule gives the same truncated octahedron
+        for both. The periodic graph therefore separates frameworks that the lattice alone cannot. Against
+        experiment (<a href="experiment.html">Experiment</a>), the MOF-5 cube matches the eight additive-free
+        records; the UiO-66 octahedron matches crystals grown with modulators, whereas the two additive-free
+        UiO-66 records report poorly faceted cubes, so for UiO-66 the rule is not confirmed.
       </div>
       <div class="callout warn" data-kind="Limits of the rule">
         The rule uses ideal node nets and counts every link as equal. For the sod net of ZIF-8 a single
@@ -123,9 +127,9 @@
       <table class="data-table">
         <thead><tr><td>Structure</td><td>Reported shapes and conditions</td><td>Source</td><td>In our family?</td></tr></thead>
         <tbody>
-          <tr><td class="dt-label">MOF-5</td><td class="dt-note">Cubes as synthesised; octahedra grown by changing the Zn : H<sub>2</sub>bdc ratio (AFM)</td><td class="dt-note">Cubillas, Anderson, Attfield, <i>Chem. Eur. J.</i> <b>18</b>, 15406 (2012), checked</td><td class="dt-value">Yes, both end points; cube is the graph-rule shape</td></tr>
+          <tr><td class="dt-label">MOF-5</td><td class="dt-note">Cubes as synthesised; octahedra grown by changing the Zn : H<sub>2</sub>bdc ratio (AFM)</td><td class="dt-note">Cubillas, Anderson, Attfield, <i>Chem. Eur. J.</i> <b>18</b>, 15406 (2012), checked</td><td class="dt-value">Yes, both end points; the cube is the graph-rule shape and the additive-free habit</td></tr>
           <tr><td class="dt-label">HKUST-1</td><td class="dt-note">Cube, then cuboctahedron, then octahedron as added salt concentration rises</td><td class="dt-note">Liu, Yang, Jin, Sun, <i>CrystEngComm</i> <b>18</b>, 4127 (2016), checked</td><td class="dt-value">Yes, the whole family</td></tr>
-          <tr><td class="dt-label">UiO-66 / UiO-67</td><td class="dt-note">Octahedra (halide-assisted); ball, cuboctahedron, octahedron for Hf-UiO-67 over time</td><td class="dt-note">Ceballos <i>et al.</i>, <i>Nanoscale</i> (2022), checked; Chen <i>et al.</i>, <i>Matter</i> <b>2</b>, 1651 (2020), read in full</td><td class="dt-value">Yes; octahedron is the graph-rule shape</td></tr>
+          <tr><td class="dt-label">UiO-66 / UiO-67</td><td class="dt-note">Octahedra (halide-assisted); ball, cuboctahedron, octahedron for Hf-UiO-67 over time</td><td class="dt-note">Ceballos <i>et al.</i>, <i>Nanoscale</i> (2022), checked; Chen <i>et al.</i>, <i>Matter</i> <b>2</b>, 1651 (2020), read in full</td><td class="dt-value">Yes; the octahedron is the graph-rule shape, but it is the modulated, not the additive-free, habit</td></tr>
           <tr><td class="dt-label">ZIF-8</td><td class="dt-note">Cube, truncated rhombic dodecahedron, rhombic dodecahedron as CTAB changes the {100} : {110} ratio</td><td class="dt-note">Liu <i>et al.</i>, <i>Nano Lett.</i> <b>20</b>, 1774 (2020), checked; Pan <i>et al.</i>, <i>CrystEngComm</i> (2011), checked</td><td class="dt-value">Yes, the whole family</td></tr>
         </tbody>
       </table>
@@ -135,7 +139,7 @@
       <ul class="sd">
         <li>The morph families vary growth rates by hand. Phase 1 shows which shapes a unit cell <b>allows</b>, not which one a given synthesis produces.</li>
         <li>Non-convex shapes (concave and hollow octahedra) and the shapes of a different phase (the Hf<sub>12</sub> nanoplates of Chen <i>et al.</i>) are outside the polytope model.</li>
-        <li>Plates and rods of a cubic phase need an external cause that breaks the symmetry, such as a surfactant or a substrate, and are not included.</li>
+        <li>Plates and rods of an undistorted cubic phase need an external cause that breaks the symmetry, such as a surfactant or a substrate; this page does not model that. Plates and rods that follow from a changed unit cell are treated on the <a href="deform.html">Cell Deform</a> page.</li>
       </ul>
       <table class="data-table">
         <thead><tr><td>Phase</td><td>Content</td><td>State</td></tr></thead>
@@ -144,7 +148,12 @@
           <tr><td class="dt-label">1</td><td class="dt-note">Unit cell to symmetry, allowed faces, BFDH shape, morph families, descriptors; 14 validation checks</td><td class="dt-note" style="color:var(--good)">Done</td></tr>
           <tr><td class="dt-label">2</td><td class="dt-note">Mathematical write-up: the absence rule, the polytope and its symmetry, continuity of the morph, the exact thresholds, the &kappa;&sup2; result, the graph propositions</td><td class="dt-note" style="color:var(--good)">Done: <a href="morph_math.html">Mathematics</a></td></tr>
           <tr><td class="dt-label">3</td><td class="dt-note">Nets from the CIFs, attachment numbers and broken-bond energies for all four nets, Hartman&ndash;Perdok F/S/K classes from slice periodicity rank</td><td class="dt-note" style="color:var(--good)">Done: <a href="graph_faces.html">Graph Faces</a></td></tr>
-          <tr><td class="dt-label">4</td><td class="dt-note">Force-field (UFF) surface energies of the leading faces and Wulff shapes</td><td class="dt-note">Not started</td></tr>
-          <tr><td class="dt-label">5&ndash;6</td><td class="dt-note">Cross-check against an independent tool; final paper</td><td class="dt-note">Not started</td></tr>
+          <tr><td class="dt-label">1b</td><td class="dt-note">Deformed unit cells: plates, equant crystals and rods from changed cell parameters</td><td class="dt-note" style="color:var(--good)">Done (BFDH only): <a href="deform.html">Cell Deform</a></td></tr>
+          <tr><td class="dt-label">4</td><td class="dt-note">Force-field (UFF) cleavage energies of every face and the Wulff shapes; bond-cost sensitivity</td><td class="dt-note" style="color:var(--good)">Done (unrelaxed, no electrostatics): <a href="surface_energy.html">Surface Energy</a></td></tr>
+          <tr><td class="dt-label">4b&ndash;4d</td><td class="dt-note">Experimental dataset (134 records, 35 papers, 12 MOFs); CHGNet slab energies; BFDH&times;Wulff blend; every method scored against experiment</td><td class="dt-note" style="color:var(--good)">Done: <a href="experiment.html">Experiment</a>, <a href="hybrid.html">Hybrid</a></td></tr>
+          <tr><td class="dt-label">4f</td><td class="dt-note">Spectrum of the first half tested against crystal shape; box-counting dimension of crystal particles</td><td class="dt-note" style="color:var(--good)">Done: <a href="relation.html">Spectrum &harr; Shape</a></td></tr>
+          <tr><td class="dt-label">4e</td><td class="dt-note">DFT check of the faces where CHGNet and the force field disagree</td><td class="dt-note">Planned (see <a href="team.html">Team</a>)</td></tr>
+          <tr><td class="dt-label">5</td><td class="dt-note">Growth model with solvent, modulator and temperature; more MOFs with known shapes</td><td class="dt-note">Planned</td></tr>
+          <tr><td class="dt-label">6</td><td class="dt-note">Final paper on the morphology work</td><td class="dt-note">Planned</td></tr>
         </tbody>
       </table>

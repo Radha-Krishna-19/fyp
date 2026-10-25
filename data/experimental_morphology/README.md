@@ -26,9 +26,8 @@ the pipeline does not yet model.
 | `dataset/records/` | The curated source data, one file per paper. |
 | `compare/COMPARISON.md` | **Project predictions vs experiment** for MOF-5, HKUST-1, UiO-66 and ZIF-8 (BFDH, graph rule, attachment Wulff, broken-bond Wulff, UFF Wulff with its bond-cost robustness, BFDH x UFF hybrid, CHGNet cleavage-energy proxy). Also shown on the website's Experiment page. Rerun with `python compare/compare_with_project.py`. |
 | `PAPERS_USED.md` | Every paper used, with DOI, MOFs, and which table it feeds. |
-| `papers/pdf/` | (not copied into the repository: licences vary; kept in Rohith's local folder) The 15 open-access papers that were read in full (journal open access, author manuscripts in university repositories, OSTI). |
-| `papers/text_from_pmc/` | (local folder only) Full text of 7 more open-access papers, taken from PubMed Central. |
-| `notebook/` | Keerthi's `MorphoGraph_MOF_revised.ipynb`, the Colab version that was run (`..._colab_4MOFs.ipynb`) and the revised version (`..._colab_symmetric_slabs.ipynb`, not yet run; see `WORK_LOG.md`). |
+| Papers | The 15 open-access papers read in full and 7 full texts from PubMed Central are not stored in the repository, because their licences vary; every one is identified by DOI in `PAPERS_USED.md` and `dataset/sources.jsonl`. |
+| Notebooks | Keerthi's `MorphoGraph_MOF_revised.ipynb`, the Colab version that was run (`MorphoGraph_MOF_colab_4MOFs.ipynb`) and the symmetric-slab version (not yet run) are in [`notebooks/morphograph_mof/`](../../notebooks/morphograph_mof/); their outputs are in [`data/chgnet_morphograph_runs/`](../chgnet_morphograph_runs/). |
 | `tools/` | The literature-search scripts used to find and read the papers. |
 
 ## Status (2026-10-14): about 75 % done (CO2 focus)
@@ -45,7 +44,7 @@ the pipeline does not yet model.
 ## To do
 
 1. **Optional, needs college library access.** Download these and put the
-   PDFs in `papers/pdf/`, then the abstract-only rows can be completed:
+   PDFs locally (they are not committed), then the abstract-only rows can be completed:
    - Umemura et al., JACS 2011, `10.1021/ja204233q` (HKUST-1, lauric acid)
    - Schaate et al., Chem. Eur. J. 2011, `10.1002/chem.201003211` (UiO-66 modulators)
    - Ma et al., Nano Res. 2023, `10.1007/s12274-023-5655-5` (ZIF-8, 30 C vs -40 C)

@@ -30,7 +30,7 @@ After editing any `.py` file, run `python make_colab.py` to rebuild the notebook
 | `symprec` | no | symmetry tolerance in Å, default 0.1 |
 
 Lab CSV, either layout:
-- **Project dataset** (`fyp/data/experimental_morphology/dataset/experimental_morphology.csv`):
+- **Project dataset** ([`data/experimental_morphology/dataset/experimental_morphology.csv`](../../../data/experimental_morphology/dataset/experimental_morphology.csv)):
   rows with no additive are the benchmark, and the most frequent shape per MOF is the lab
   shape. A tie is reported as `ambiguous:a/b`, never resolved silently.
 - **Simple table**: columns `mof, shape` (optional `facet, source`).

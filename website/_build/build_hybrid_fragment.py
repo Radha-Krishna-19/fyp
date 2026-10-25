@@ -5,11 +5,24 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 D = json.load(open(os.path.join(ROOT, 'code', 'morphology', 'results', 'hybrid_results.json')))
 OUT = os.path.join(HERE, 'fragments', 'hybrid.before.html')
-EXPECT = {'MOF-5': 'cube', 'HKUST-1': 'octahedron', 'UiO-66': 'octahedron (with modulator)', 'ZIF-8': 'rhombic dodecahedron'}
+# The experimental benchmark is read from the single comparison table, so this page cannot
+# disagree with the Experiment page: additive-free crystals, data/experimental_morphology/compare/comparison.csv
+import csv as _csv
+_CMP = list(_csv.DictReader(open(os.path.join(ROOT, 'data', 'experimental_morphology', 'compare', 'comparison.csv'))))
+EXPECT = {}
+for _r in _CMP:
+    _n = len(_r['benchmark_records'].split())
+    EXPECT[_r['mof']] = f"{_r['experiment'].replace('_', ' ')} ({_n} additive-free record{'s' if _n != 1 else ''})"
+EXPECT['UiO-66'] += '; octahedra only with modulators'
+def _match(m, w):
+    return D[m]['shapes'][w]['name'] == _r_exp(m)
+def _r_exp(m):
+    return next(r['experiment'].replace('_', ' ') for r in _CMP if r['mof'] == m)
 WS = ['0', '0.25', '0.5', '0.75', '1']
 
 rows = ''
-for m in ['MOF-5', 'HKUST-1', 'UiO-66', 'ZIF-8']:
+MOFS4 = ['MOF-5', 'HKUST-1', 'UiO-66', 'ZIF-8']
+for m in MOFS4:
     sh = D[m]['shapes']
     cells = ''.join(f'<td class="dt-note">{sh[w]["name"]}</td>' for w in WS)
     changed = len({sh[w]['name'] for w in WS}) > 1
@@ -38,16 +51,16 @@ html = f'''      <h2 class="section-title" id="hy-intro" data-toc="What this pag
       <p class="sd">BFDH makes {{111}} the closest face (<i>R</i> = 1) and {{100}} further out, so {{111}} is large and the crystal is a truncated octahedron. Wulff reverses it: {{100}} is the cheapest face and {{111}} lies further out. At <i>w</i> = 0.5 the ratio <i>R</i><sub>111</sub>/<i>R</i><sub>100</sub> passes through an intermediate value and the shape is a truncated cube; the name for each <i>w</i> is in the table below.</p>
 
       <h2 class="section-title" id="hy-results" data-toc="Results"><span class="stitle-num">0</span>Results for Four MOFs</h2>
-      <div class="table-wrap"><table class="data-table" id="hy-table"><thead><tr><td>MOF</td><td><i>w</i> = 0 (BFDH)</td><td><i>w</i> = 0.25</td><td><i>w</i> = 0.5</td><td><i>w</i> = 0.75</td><td><i>w</i> = 1 (Wulff)</td><td>Crystals show</td><td>Shape changes with <i>w</i>?</td></tr></thead><tbody>{rows}</tbody></table></div>
+      <div class="table-wrap"><table class="data-table" id="hy-table"><thead><tr><td>MOF</td><td><i>w</i> = 0 (BFDH)</td><td><i>w</i> = 0.25</td><td><i>w</i> = 0.5</td><td><i>w</i> = 0.75</td><td><i>w</i> = 1 (Wulff)</td><td>Additive-free crystals</td><td>Shape changes with <i>w</i>?</td></tr></thead><tbody>{rows}</tbody></table></div>
       <ul class="sd">
         <li><b>Blending adds nothing for {', '.join(same)}.</b> BFDH and Wulff already give the same shape, so every blend does too.</li>
         <li><b>It matters for MOF-5 and UiO-66.</b> There the two methods disagree and the blend passes through intermediate shapes. This is a transition, not a new shape.</li>
-        <li><b>Against experiment,</b> Wulff matches MOF-5 (cube), UiO-66 (octahedron) and ZIF-8, BFDH matches only ZIF-8, and HKUST-1 is a truncated octahedron in every column while crystals show an octahedron (additive-dependent). The experimental shapes are those of Rohith's notebook; the conditions behind them are on the <a href="experiment.html">Experiment</a> page.</li>
+        <li><b>Against the additive-free crystals</b> of the experimental benchmark (<a href="experiment.html">Experiment</a>), Wulff (<i>w</i> = 1) matches {', '.join(m for m in MOFS4 if _match(m, '1'))} and BFDH (<i>w</i> = 0) matches {', '.join(m for m in MOFS4 if _match(m, '0')) or 'none'}. HKUST-1 is a truncated octahedron in every column while the crystals are octahedra, so the dominant {{111}} face is right but the shape name is not. For UiO-66 the additive-free records report poorly faceted cubes, which no column gives; the octahedron at <i>w</i> &ge; 0.5 is the habit grown with modulators.</li>
       </ul>
       <div class="callout warn" data-kind="Why no best weight is given">The dial <i>w</i> is a free parameter and there are four MOFs. Picking the weight that scores best would fit it to the test set, so the table shows all five values and no ranking. The honest reading today is that the blend has not been shown to beat either method. To show that, <i>w</i> must be chosen on some MOFs and tested on others, and the energies must first be checked by DFT. If the blend does win on held-out MOFs, that would be a new model worth writing up; today it is an idea with a working implementation.</div>
 
       <h2 class="section-title" id="hy-nb" data-toc="The notebook"><span class="stitle-num">0</span>The Notebook: Any Crystal File</h2>
-      <p class="sd">The Colab notebook <code>code/morphology/MorphoGraph_hybrid.ipynb</code> (generated by <code>tools/make_nb.py</code>) runs the whole chain on any CIF that contains a unit cell, with no machine-learning model and no GPU:</p>
+      <p class="sd">The Colab notebook <code>notebooks/morphograph_mof/MorphoGraph_hybrid.ipynb</code> (generated by <code>code/morphology/tools/make_nb.py</code>) runs the whole chain on any CIF that contains a unit cell, with no machine-learning model and no GPU:</p>
       <ol class="sd">
         <li>Upload the CIF in the upload cell (any crystal system; a file without a cell is refused).</li>
         <li>Set <code>NAME</code> so the plot titles carry the right name.</li>

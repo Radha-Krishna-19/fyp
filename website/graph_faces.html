@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Phase 3: Crystal Faces from the Periodic Graph &middot; MOF Structural Descriptors</title>
+<title>Phase 3: Crystal Faces from the Periodic Graph &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="Which faces are flat, how fast each grows, and which shape results, computed from each framework&#x27;s own periodic graph and compared with experiment.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -99,7 +100,7 @@
       <figure class="fig wide">
         <img src="figures/morph/phase3_slices.png" alt="Six panels of slices. MOF-5 100: a square grid, an F face. MOF-5 110: parallel straight chains, an S face. MOF-5 211: isolated dots, a K face. ZIF-8 110: a connected sheet of hexagons and squares, an F face. ZIF-8 211: separate ribbons of rings, an S face. ZIF-8 111: isolated six-membered rings, a K face.">
         <figcaption>F, S and K faces of real MOF nets, computed from the CIF files. A connected sheet (F) can only grow by starting a whole new layer, so it is slow and survives on the crystal.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/figs_phase3.py"><code>code/morphology/figs_phase3.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/results/phase3_results.json"><code>code/morphology/results/phase3_results.json</code></a>.</p></figure>
 
       <h2 class="section-title" id="gf-results" data-toc="Faces of the four MOFs"><span class="stitle-num">5</span>Results: the Faces of the Four MOFs</h2>
       <p class="section-sub">Lower <i>E</i><sub>att</sub> means slower growth, and lower &gamma; means a cheaper surface; both favour a face. Values are averaged over all vertices of a slice, so for HKUST-1, whose net has two kinds of vertex, they are fractions. These numbers were computed by <code>code/morphology/run_phase3.py</code> and are read from <code>phase3_data.js</code>.</p>
@@ -110,13 +111,16 @@
       <figure class="fig wide">
         <img src="figures/morph/phase3_shapes.png" alt="Eight shapes in four pairs. MOF-5: a truncated cube and a cube. HKUST-1: two truncated octahedra. UiO-66: two truncated octahedra. ZIF-8: two rhombic dodecahedra.">
         <figcaption>For each MOF, the attachment-energy growth shape (left of each pair) and the broken-bond Wulff shape (right).</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/figs_phase3.py"><code>code/morphology/figs_phase3.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/results/phase3_results.json"><code>code/morphology/results/phase3_results.json</code></a>.</p></figure>
       <div class="panel"><div id="gf-shape-table"></div></div>
       <div class="callout good" data-kind="The result">
-        From connectivity alone, the dominant faces match experiment for all four structures: {100} for MOF-5
-        (the broken-bond Wulff shape is a cube), {111} for HKUST-1 and UiO-66, and {110} for ZIF-8 (a rhombic
-        dodecahedron by both rules). Phase 1's simple link count could not resolve ZIF-8; counting whole slices,
-        with the slice thickness fixed by the space group, does.
+        From connectivity alone, the dominant face matches the additive-free crystals of the experimental
+        benchmark for three of the four structures: {100} for MOF-5 (the broken-bond Wulff shape is a cube),
+        {111} for HKUST-1 and {110} for ZIF-8 (a rhombic dodecahedron by both rules). For UiO-66 both rules give
+        {111}, the face of the octahedra grown with a modulator; the two additive-free records report poorly
+        faceted cubes, so UiO-66 is not a test (<a href="experiment.html">Experiment</a>). Phase 1's simple link
+        count could not resolve ZIF-8; counting whole slices, with the slice thickness fixed by the space group,
+        does.
       </div>
       <div class="callout warn" data-kind="What is not shown">
         <ul style="margin:6px 0 0 18px;padding:0">
@@ -148,9 +152,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

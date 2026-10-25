@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Phase 2: The Mathematics of Crystal Shape &middot; MOF Structural Descriptors</title>
+<title>Phase 2: The Mathematics of Crystal Shape &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="Every rule used by the morphology work stated as a proposition and proved, with each proposition checked numerically in your browser.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -75,7 +76,7 @@
       <figure class="fig wide">
         <img src="figures/learn/absences.png" alt="Diagrams showing which crystal planes are present and which are forbidden by the space group, with the forbidden planes marked.">
         <figcaption>Propositions 1&ndash;2 in a picture: some planes are forbidden by the symmetry, and the spacing of a face that survives is the effective spacing <i>d</i>/<i>n</i>.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs2.py"><code>docs/reports/morphology_primer_source/figs2.py</code></a>.</p></figure>
       <div class="callout good" data-kind="Proposition 1 (systematic absence)">
         Let <i>F</i>(<b>h</b>) = &Sigma;<sub><i>j</i></sub> <i>f<sub>j</sub></i> e<sup>2&pi;i <b>h</b>&middot;<b>x</b><sub><i>j</i></sub></sup> be the
         structure factor of reflection <b>h</b>, summed over the atoms <i>j</i> of the cell. If the space group contains
@@ -95,7 +96,7 @@
       <figure class="fig wide">
         <img src="figures/learn/growth.png" alt="Four snapshots of a growing two-dimensional crystal. Fast faces (red) shrink and vanish; the slow faces (blue) remain and bound the final square.">
         <figcaption>Propositions 3&ndash;5 in a picture: every face moves outward at its own rate, the fast ones vanish, and what is left is the convex polytope bounded by the slowest faces.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs2.py"><code>docs/reports/morphology_primer_source/figs2.py</code></a>.</p></figure>
       <div class="callout good" data-kind="Proposition 3 (well defined)">
         If every <i>R<sub>f</sub></i> &gt; 0 and the normals <b>n</b><sub><i>f</i></sub> <b>positively span</b> space (every vector is a
         combination of them with non-negative coefficients), then <i>P</i>(<b>R</b>) is a bounded convex polytope with the
@@ -120,7 +121,7 @@
       <figure class="fig wide">
         <img src="figures/morph/MOF-5_morph.png" alt="Six shapes from the MOF-5 unit cell as the ratio of the {111} to {100} growth distance goes 3.00, 1.60, 1.15, 1.00, 0.80, 0.57: a cube, truncated cube, cuboctahedron, two truncated octahedra and an octahedron.">
         <figcaption>Proposition 6 in a picture: a small change in the growth distances gives a small change in the shape, so the family is one continuous path, not separate jumps.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/run_phase1.py"><code>code/morphology/run_phase1.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/results/phase1_results.json"><code>code/morphology/results/phase1_results.json</code></a>.</p></figure>
       <div class="callout good" data-kind="Proposition 6 (continuity)">
         Fix the normals. Let <i>m</i> = min<sub><i>f</i></sub> <i>R<sub>f</sub></i> &gt; 0 and let <b>R</b>&prime; satisfy |<i>R</i>&prime;<sub><i>f</i></sub> &minus; <i>R<sub>f</sub></i>| &le; &epsilon; &lt; <i>m</i> for every <i>f</i>. Then
         (1 &minus; &epsilon;/<i>m</i>)&nbsp;<i>P</i>(<b>R</b>) &sube; <i>P</i>(<b>R</b>&prime;) &sube; (1 + &epsilon;/<i>m</i>)&nbsp;<i>P</i>(<b>R</b>), so the Hausdorff
@@ -138,7 +139,7 @@
       <figure class="fig wide">
         <img src="figures/learn/morph_path.png" alt="Five shapes from a cube at t = infinity through a truncated cube at 1.5, a cuboctahedron at 1.155, a truncated octahedron at 0.85, to an octahedron at 0.577. Blue faces are {100}, red are {111}.">
         <figcaption>Propositions 7&ndash;8 in a picture: the cube ends at <i>t</i> = &radic;3, the cuboctahedron sits at 2/&radic;3, and the octahedron begins at 1/&radic;3.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs1.py"><code>docs/reports/morphology_primer_source/figs1.py</code></a>.</p></figure>
       <div class="callout good" data-kind="Proposition 7 (cube to octahedron)">
         With the six {100} faces at distance 1 and the eight {111} faces at distance <i>t</i>, the shape is a cube for
         <i>t</i> &ge; &radic;3, a truncated cube for 2/&radic;3 &lt; <i>t</i> &lt; &radic;3, a cuboctahedron at <i>t</i> = 2/&radic;3, a truncated octahedron for
@@ -160,7 +161,7 @@
       <figure class="fig wide">
         <img src="figures/learn/rod_plate.png" alt="Five crystal shapes stretched along z by a factor lambda from 0.35 (flat plate) to 3.0 (thin rod), with kappa squared 0.171, 0.074, 0.000, 0.180 and 0.526.">
         <figcaption>Propositions 9&ndash;10 in a picture: &kappa;&sup2; is exactly 0 for the cubic shape and grows as the crystal becomes a plate or a rod.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs1.py"><code>docs/reports/morphology_primer_source/figs1.py</code></a>.</p></figure>
       <div class="callout good" data-kind="Proposition 9 (&kappa;&sup2; is blind to cubic shapes)">
         If a body has the rotational symmetry of a cube or of a regular tetrahedron, its gyration tensor is a
         multiple of the identity, so &kappa;&sup2; = 0.
@@ -178,11 +179,11 @@
       <figure class="fig wide">
         <img src="figures/learn/fsk.png" alt="Diagram of flat (F), stepped (S) and kinked (K) faces of a crystal built from a periodic bond network.">
         <figcaption>Propositions 11&ndash;13 in a picture: a face is flat, stepped or kinked according to how many directions the periodic bond chains lie in the face.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs2.py"><code>docs/reports/morphology_primer_source/figs2.py</code></a>.</p></figure>
       <figure class="fig wide">
         <img src="figures/learn/quotient.png" alt="A periodic network drawn with its small quotient graph, which holds one copy of each vertex and an edge label for each link that crosses a cell boundary.">
         <figcaption>The quotient graph used in Propositions 11&ndash;13: one cell's vertices plus a label on each edge that crosses into a neighbouring cell.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs2.py"><code>docs/reports/morphology_primer_source/figs2.py</code></a>.</p></figure>
       <p class="sd">These are the mathematical basis of Phase 3. A periodic graph is given by its quotient graph: vertices with positions in one cell, and edges (<i>i</i>, <i>j</i>, <b>t</b>) with voltage <b>t</b>.</p>
       <div class="callout good" data-kind="Proposition 11 (bond chains are cycles)">
         A closed walk in the quotient graph whose voltages sum to <b>&tau;</b> &ne; 0 lifts to an infinite chain of links in
@@ -211,7 +212,7 @@
       <figure class="fig wide">
         <img src="figures/morph/deform_curves.png" alt="Two plots against the stretch of the c axis from 0.2 to 3. Left: crystal height over width for MOF-5, HKUST-1, UiO-66 and ZIF-8 compared with the dashed line 1 over the stretch. The F-centred MOFs lie on the line for stretches above 1 and flatten below 1. Right: asphericity, zero at no stretch and growing on both sides.">
         <figcaption>Propositions 14&ndash;16 in a picture. Stretching the cell edge <i>c</i> by &lambda; makes the crystal flatter by exactly 1/&lambda; (dashed line) while no other face cuts the end; compressing it makes the crystal taller until slanted faces cap the height.</figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/figs_deform.py"><code>code/morphology/figs_deform.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/results/deform_results.json"><code>code/morphology/results/deform_results.json</code></a>.</p></figure>
       <p class="sd">These propositions answer the second reading of the panel's question: <b>change the cell parameters</b> <i>a, b, c, &alpha;, &beta;, &gamma;</i> of an established MOF and ask what shapes follow. Keep every atom at its fractional coordinates and replace the lattice <b>L</b> by <b>L</b>&prime; = <b>L</b>(<b>I</b> + &epsilon;)<sup>T</sup>, where &epsilon; is a strain. This is a <b>new, hypothetical framework</b> derived from the real one; the propositions say exactly what carries over from the original and what changes.</p>
       <div class="callout good" data-kind="Proposition 14 (allowed faces do not change)">
         The structure factor <i>F</i>(<b>h</b>) = &Sigma;<sub><i>j</i></sub> <i>f<sub>j</sub></i> e<sup>2&pi;i <b>h</b>&middot;<b>x</b><sub><i>j</i></sub></sup> depends only on the fractional coordinates <b>x</b><sub><i>j</i></sub> and the atom types. Hence the set of forbidden reflections, and the order <i>n</i>(<i>hkl</i>) of every face, are the same for every deformation of the lattice.
@@ -247,9 +248,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

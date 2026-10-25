@@ -19,4 +19,4 @@ source, so they cannot drift apart.
 Document 4 contains the analysis and the results.
 
 **If you are presenting:** Document 5 tells you what to click and in what order;
-`../PRESENTATION_SCRIPT.md` gives you the words.
+[`../presentation/PRESENTATION_SCRIPT.md`](../presentation/PRESENTATION_SCRIPT.md) gives you the words.

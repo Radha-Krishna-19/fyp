@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Combining BFDH and Wulff &middot; MOF Structural Descriptors</title>
+<title>Combining BFDH and Wulff &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="One rule that blends the geometric (BFDH) and energetic (Wulff) shape methods, what it gives for four MOFs, why no best weight is claimed, and the notebook that runs it on any crystal file.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -74,16 +75,16 @@
       <p class="sd">BFDH makes {111} the closest face (<i>R</i> = 1) and {100} further out, so {111} is large and the crystal is a truncated octahedron. Wulff reverses it: {100} is the cheapest face and {111} lies further out. At <i>w</i> = 0.5 the ratio <i>R</i><sub>111</sub>/<i>R</i><sub>100</sub> passes through an intermediate value and the shape is a truncated cube; the name for each <i>w</i> is in the table below.</p>
 
       <h2 class="section-title" id="hy-results" data-toc="Results"><span class="stitle-num">2</span>Results for Four MOFs</h2>
-      <div class="table-wrap"><table class="data-table" id="hy-table"><thead><tr><td>MOF</td><td><i>w</i> = 0 (BFDH)</td><td><i>w</i> = 0.25</td><td><i>w</i> = 0.5</td><td><i>w</i> = 0.75</td><td><i>w</i> = 1 (Wulff)</td><td>Crystals show</td><td>Shape changes with <i>w</i>?</td></tr></thead><tbody><tr data-mof="MOF-5"><td class="dt-label">MOF-5</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated cube</td><td class="dt-note">truncated cube</td><td class="dt-note">cube</td><td class="dt-note">cube</td><td class="dt-value">yes</td></tr><tr data-mof="HKUST-1"><td class="dt-label">HKUST-1</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron</td><td class="dt-value">no</td></tr><tr data-mof="UiO-66"><td class="dt-label">UiO-66</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron (with modulator)</td><td class="dt-value">yes</td></tr><tr data-mof="ZIF-8"><td class="dt-label">ZIF-8</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-value">no</td></tr></tbody></table></div>
+      <div class="table-wrap"><table class="data-table" id="hy-table"><thead><tr><td>MOF</td><td><i>w</i> = 0 (BFDH)</td><td><i>w</i> = 0.25</td><td><i>w</i> = 0.5</td><td><i>w</i> = 0.75</td><td><i>w</i> = 1 (Wulff)</td><td>Additive-free crystals</td><td>Shape changes with <i>w</i>?</td></tr></thead><tbody><tr data-mof="MOF-5"><td class="dt-label">MOF-5</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated cube</td><td class="dt-note">truncated cube</td><td class="dt-note">cube</td><td class="dt-note">cube (8 additive-free records)</td><td class="dt-value">yes</td></tr><tr data-mof="HKUST-1"><td class="dt-label">HKUST-1</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron (5 additive-free records)</td><td class="dt-value">no</td></tr><tr data-mof="UiO-66"><td class="dt-label">UiO-66</td><td class="dt-note">truncated octahedron</td><td class="dt-note">truncated octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">octahedron</td><td class="dt-note">cube (2 additive-free records); octahedra only with modulators</td><td class="dt-value">yes</td></tr><tr data-mof="ZIF-8"><td class="dt-label">ZIF-8</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron</td><td class="dt-note">rhombic dodecahedron (10 additive-free records)</td><td class="dt-value">no</td></tr></tbody></table></div>
       <ul class="sd">
         <li><b>Blending adds nothing for HKUST-1, ZIF-8.</b> BFDH and Wulff already give the same shape, so every blend does too.</li>
         <li><b>It matters for MOF-5 and UiO-66.</b> There the two methods disagree and the blend passes through intermediate shapes. This is a transition, not a new shape.</li>
-        <li><b>Against experiment,</b> Wulff matches MOF-5 (cube), UiO-66 (octahedron) and ZIF-8, BFDH matches only ZIF-8, and HKUST-1 is a truncated octahedron in every column while crystals show an octahedron (additive-dependent). The experimental shapes are those of Rohith's notebook; the conditions behind them are on the <a href="experiment.html">Experiment</a> page.</li>
+        <li><b>Against the additive-free crystals</b> of the experimental benchmark (<a href="experiment.html">Experiment</a>), Wulff (<i>w</i> = 1) matches MOF-5, ZIF-8 and BFDH (<i>w</i> = 0) matches ZIF-8. HKUST-1 is a truncated octahedron in every column while the crystals are octahedra, so the dominant {111} face is right but the shape name is not. For UiO-66 the additive-free records report poorly faceted cubes, which no column gives; the octahedron at <i>w</i> &ge; 0.5 is the habit grown with modulators.</li>
       </ul>
       <div class="callout warn" data-kind="Why no best weight is given">The dial <i>w</i> is a free parameter and there are four MOFs. Picking the weight that scores best would fit it to the test set, so the table shows all five values and no ranking. The honest reading today is that the blend has not been shown to beat either method. To show that, <i>w</i> must be chosen on some MOFs and tested on others, and the energies must first be checked by DFT. If the blend does win on held-out MOFs, that would be a new model worth writing up; today it is an idea with a working implementation.</div>
 
       <h2 class="section-title" id="hy-nb" data-toc="The notebook"><span class="stitle-num">3</span>The Notebook: Any Crystal File</h2>
-      <p class="sd">The Colab notebook <code>code/morphology/MorphoGraph_hybrid.ipynb</code> (generated by <code>tools/make_nb.py</code>) runs the whole chain on any CIF that contains a unit cell, with no machine-learning model and no GPU:</p>
+      <p class="sd">The Colab notebook <code>notebooks/morphograph_mof/MorphoGraph_hybrid.ipynb</code> (generated by <code>code/morphology/tools/make_nb.py</code>) runs the whole chain on any CIF that contains a unit cell, with no machine-learning model and no GPU:</p>
       <ol class="sd">
         <li>Upload the CIF in the upload cell (any crystal system; a file without a cell is refused).</li>
         <li>Set <code>NAME</code> so the plot titles carry the right name.</li>
@@ -100,9 +101,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

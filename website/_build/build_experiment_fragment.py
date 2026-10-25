@@ -6,13 +6,13 @@ number on the page comes straight from a JSON or CSV file:
   code/morphology/results/slab_options.json              slab_options_check.py (optional)
   code/morphology/results/bond_sensitivity.json          run_bond_sensitivity.py
   code/morphology/results/core_results.json              run_core.py
-  code/morphology/data/chgnet_runs/*.zip                 the CHGNet notebook runs (fit summaries)
+  data/chgnet_morphograph_runs/<MOF>_<date>/          the CHGNet notebook runs (fit summaries)
   data/experimental_morphology/dataset/experimental_morphology.csv
   data/experimental_morphology/compare/comparison.csv        compare_with_project.py
 
 Run:  python website/_build/build_experiment_fragment.py   then   python website/_build/build_site.py
 """
-import csv, glob, html, io, json, os, zipfile
+import csv, glob, html, io, json, os, sys
 from collections import Counter, defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -55,7 +55,8 @@ for m in sorted(by_mof, key=lambda m: -len(by_mof[m])):
     shapes = Counter(r["morphology"].replace("_", " ") for r in rs if r["morphology"])
     solv = Counter(r["solvent"].split(" (")[0] for r in rs if r["solvent"])
     temps = [float(r["temperature_C"]) for r in rs if r["temperature_C"].replace(".", "", 1).isdigit()]
-    trange = f"{min(temps):g}&ndash;{max(temps):g} &deg;C" if temps else "not stated"
+    trange = ("not stated" if not temps else f"{min(temps):g} &deg;C" if min(temps) == max(temps)
+              else f"{min(temps):g}&ndash;{max(temps):g} &deg;C")
     add = sum(1 for r in rs if r["additive"] and r["additive"].lower() not in ("none", ""))
     ds_rows.append(f'<tr data-mof="{E(m)}"><td class="dt-label">{E(m)}</td><td class="dt-value">{len(rs)}</td>'
                    f'<td class="dt-value">{len({r["source_id"] for r in rs})}</td>'
@@ -250,8 +251,8 @@ H.append(f'''      <h2 class="section-title" id="ex-core" data-toc="Any framewor
 ''')
 H.append('''      <h2 class="section-title" id="ex-next" data-toc="Limits and next steps"><span class="stitle-num">0</span>Limits and Next Steps</h2>
       <ul>
-        <li><b>A DFT check (Kshitiz)</b> of two or three faces of MOF-5 and UiO-66, where CHGNet and UFF disagree, is the decisive test. The relaxed slab files are in the CHGNet result zips; the intact lowest-energy slabs listed above are the ones to use.</li>
-        <li><b>A revised CHGNet notebook</b> (<code>code/morphology/data/chgnet_runs/MorphoGraph_MOF_colab_symmetric_slabs.ipynb</code>) keeps linkers whole where possible, treats a slab symmetric as cut as one termination, keeps any termination energy the equations do fix, and fills the rest with the cleavage bound, labelled as an upper bound. It has not yet been run. The dry run and the symmetric-slab table above say what to expect: cleaner slabs, but a shape still set mostly by the cleavage bound.</li>
+        <li><b>A DFT check (Kshitij)</b> of two or three faces of MOF-5 and UiO-66, where CHGNet and UFF disagree, is the decisive test. The relaxed slab files are in the CHGNet result zips; the intact lowest-energy slabs listed above are the ones to use.</li>
+        <li><b>A revised CHGNet notebook</b> (<code>notebooks/morphograph_mof/MorphoGraph_MOF_colab_symmetric_slabs.ipynb</code>) keeps linkers whole where possible, treats a slab symmetric as cut as one termination, keeps any termination energy the equations do fix, and fills the rest with the cleavage bound, labelled as an upper bound. It has not yet been run. The dry run and the symmetric-slab table above say what to expect: cleaner slabs, but a shape still set mostly by the cleavage bound.</li>
         <li><b>A better route to individual &gamma;</b> is to make the cheap asymmetric slab symmetric by hand: cut at the cheap plane on both sides and cap the exposed metal sites with a solvent or formate molecule, as real surfaces are capped. This needs chemical potentials for the capping group and is a separate piece of work.</li>
         <li><b>Thickness convergence.</b> One face of one MOF at 15, 30 and 45 &Aring; would show whether the CHGNet energies are converged.</li>
         <li><b>Solvent and modulator.</b> No model here contains them. The additive records in the dataset are the test set for a model that does.</li>

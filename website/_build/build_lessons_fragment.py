@@ -101,7 +101,7 @@ MORPH = [
   'It matched the experimental shape, and the machine-learning route disagreed, so the simple model looked better.',
   'The Phase 4 energy uses one flat cost of 70 kcal/mol for every bond. At half or a quarter of that cost for metal&ndash;ligand bonds the MOF-5 shape becomes a truncated cube or a truncated octahedron. A match found with a free setting is weak evidence.',
   'Run a sensitivity test on every free constant before quoting the result. The decisive test is a DFT calculation on a few faces.',
-  'Added the bond-cost sensitivity test, quote the cube only with this caveat, and wrote the DFT plan for Kshitiz.',
+  'Added the bond-cost sensitivity test, quote the cube only with this caveat, and wrote the DFT plan for Kshitij.',
   '<a href="experiment.html">Experiment</a> section 6; <code>code/morphology/DFT_CHECK_PLAN.md</code>'),
  ('m-oneshape', 'One "correct" shape per MOF',
   'We compared our shapes with a single experimental shape per MOF. In the laboratory the same MOF gives different shapes depending on what it is grown in and for how long.',
@@ -133,6 +133,44 @@ MORPH = [
   '<a href="hybrid.html">Hybrid</a> page'),
 ]
 
+AUDIT = [
+ ('l-uio66', 'Claiming a UiO-66 match that the benchmark does not support',
+  'Several pages said our methods "match" UiO-66 because they give an octahedron. Our own experimental dataset says that UiO-66 grown without additives forms poorly faceted cubes; octahedra appear only when a modulator is added.',
+  'The octahedron is the UiO-66 shape most often shown in the literature, and the first comparison was made with one shape per MOF, before the dataset recorded the conditions.',
+  'A model with no solvent and no modulator must be compared with crystals grown without them. The octahedra in the literature are grown with acetic or benzoic acid, so they are not a test of a bare-crystal model.',
+  'The benchmark is the most frequent shape among additive-free records (<code>data/experimental_morphology/compare/comparison.csv</code>): cube (2 records) for UiO-66, octahedron (5) for HKUST-1, cube (8) for MOF-5, rhombic dodecahedron (10) for ZIF-8. No model gives the UiO-66 cube, so UiO-66 confirms nothing.',
+  'The Overview, Morphology and Hybrid pages now take the experimental shape from <code>comparison.csv</code>, the same file the Experiment page uses, and state that the UiO-66 benchmark is weak.',
+  '<a href="experiment.html">Experiment</a>, <a href="hybrid.html">Hybrid</a>'),
+ ('l-status', 'Status tables that fell behind the work',
+  'The Morphology page still listed the surface-energy work as "Not started" a week after it was finished, and said the spectrum was not used in the morphology half after a page testing exactly that had been added.',
+  'Each page was written when its phase was done; earlier pages were not revisited.',
+  'A reader who opens the Morphology page first sees a project that stopped at Phase 3, and a statement that contradicts the Spectrum &harr; Shape page.',
+  'Status was recorded in three places (Morphology page, Team page, project notes) with no single source.',
+  'All phase tables were rewritten with one numbering (Phases 0 to 6, with 4b to 4h), and the audit below checks every page against the result files.',
+  '<a href="morphology.html">Morphology</a>, <a href="team.html">Team</a>'),
+ ('l-provenance', 'Figures that did not say where they came from',
+  'Most pictures on the site had a caption saying what they show but not which program drew them or from which data, so a reader could not check them.',
+  'The figures were drawn by the same scripts that produced the numbers, so the link seemed obvious to the people who made them.',
+  'It is not obvious to anyone else, and four early figures had in fact been drawn by scripts that were not kept.',
+  'A figure is evidence only if its producing script and input data are named and can be rerun.',
+  'One table (<code>website/_build/figure_sources.py</code>) names the script and data of every image; the build adds a Source line under each figure, and <code>tests/test_pages.js</code> fails if an image has none. The four figures whose scripts were lost say so.',
+  'every page with a figure'),
+ ('l-footer', 'A footer that claimed more than was true',
+  'Every page ended with "every number on this site is computed in your browser". That was true for the first pages and became false when the morphology pages were added, whose numbers come from the Python results.',
+  'The sentence was written for the original single-page site and copied into the shared page template.',
+  'A false general statement on every page undermines the true specific ones.',
+  'The morphology, experiment and relation pages are generated from JSON and CSV result files by the build scripts; only the network, spectrum and shape-explorer pages compute in the browser.',
+  'The footer now states both routes and that the test suites check every page against the result files.',
+  'the footer of every page'),
+ ('l-copies', 'Work kept in more than one place',
+  'Recent work existed only on one computer, an older copy of the experimental dataset was on GitHub, and the same CHGNet results were stored twice (as zip files and as folders). It was not clear which copy was the latest.',
+  'Work was done in Colab and on a laptop under deadline, and files were copied rather than committed.',
+  'Two copies of a result can disagree without anyone noticing; here the GitHub copy of the dataset lacked the verified/unverified split that the website already used.',
+  'Each file of the local copy was compared with GitHub by size and content before merging; the CHGNet folders were checked to be identical to the zips (1,118 files) before the zips were removed, and every script was rerun to confirm identical results.',
+  'One repository layout (<code>code/</code>, <code>data/</code>, <code>notebooks/</code>, <code>docs/</code>, <code>website/</code>), one copy of every file, and GitHub as the only shared copy.',
+  'root <code>README.md</code>'),
+]
+
 SMALL = [
  ('Plot title said "MOF-5" for a different structure', 'The title was a fixed name, not read from the file.', 'Set the NAME field; titles now follow the input.'),
  ('Primitive-cell indices mapped to nothing', 'HKUST-1\'s file is a primitive cell, so (hkl) are not the usual cubic indices.', 'Convert through the transformation matrix between the primitive and the conventional cell.'),
@@ -141,6 +179,10 @@ SMALL = [
  ('Wrong zip uploaded (an older copy)', 'Two project folders looked alike.', 'Noticed because the folder showed no changes in git, then asked for the right zip.'),
  ('CSS tokens that referred to themselves', 'Custom properties such as <code>--node:var(--node)</code> form a cycle and resolve to nothing, so colours vanished on every page.', 'Never alias a token to itself.'),
  ('Sideways scrolling on every page', 'Wide tables and hidden pop-ups stretched the page.', '<code>min-width:0</code> on the content grid and <code>overflow-x:clip</code>.'),
+ ('"Grows as 0.78 ln D" on the Team page', 'The slope of HKUST-1 was quoted as if it held for every net.', 'Now 0.69&ndash;0.89 depending on the net, as on the Results page.'),
+ ('<code>npm test</code> called two test files that no longer existed', 'The test list in <code>package.json</code> was written before the site was split into pages.', 'A runner (<code>run_all_tests.js</code>) now runs every <code>test_*.js</code> file.'),
+ ('A temperature range printed as "125&ndash;125 &deg;C"', 'The range was formatted without checking whether its ends were equal.', 'A single value is printed when both ends are equal.'),
+ ('A team member\'s name spelt two ways', 'The name was typed from memory on some pages.', 'Every page now uses the spelling in the paper and the certificate (Kshitij).'),
  ('Website still said 104 records, 28 papers, 14 MOFs', 'The Team page was not updated when the dataset grew.', 'Now 134 records from 35 papers for 12 MOFs, as on the Experiment page.'),
 ]
 
@@ -148,7 +190,7 @@ PATTERNS = [
  ('A number that looks good is trusted before it is stressed.', 'The size correlation, the force-field cube and the "best" weight all looked like results. Each fell when one more thing was varied (size, bond cost, test set).', 'Vary the thing you did not control, then report what survived.'),
  ('Code written for the examples at hand.', 'Cubic labels, hydrogens dropped, one-cell graphs. All four demonstration MOFs share properties that real MOFs do not.', 'Test on a deliberately different case (eight CoRE MOFs of six crystal systems).'),
  ('One value per thing that varies.', 'One shape per MOF, one class per structure. In both cases the real quantity depends on conditions or noise.', 'Record the conditions and the error bar next to every value.'),
- ('Words and numbers drifting apart.', 'The text described one graph and the code used another; the Team page lagged behind the dataset.', 'Numbers on this site are generated from the data files and checked by tests.'),
+ ('Words and numbers drifting apart.', 'The text described one graph and the code used another; the Team page lagged behind the dataset; status tables and shape claims lagged behind the results.', 'Numbers on this site are generated from the data files and checked by tests; claims that summarise results (the experimental shapes, the phase status) are read from the same files or checked in an audit.'),
 ]
 
 
@@ -185,6 +227,10 @@ def main():
       <p class="section-sub">After the panel asked for crystal shapes from the unit cell, a second set of mistakes was made, mostly in the last two weeks while the force-field, CHGNet and experiment parts were joined. Most were found by an independent review of the code and by comparing with real crystals.</p>
 ''')
     p.extend(entry(x) for x in MORPH)
+    p.append('''      <h2 class="section-title" id="ls-audit" data-toc="Part C: the audit of 25 October 2026"><span class="stitle-num">0</span>Part C: Found in the Audit of 25 October 2026</h2>
+      <p class="section-sub">Before the next phase every page of the site was compared with the result files and with every other page, and the repository was reorganised. These are the problems that check found; each is now fixed.</p>
+''')
+    p.extend(entry(x) for x in AUDIT)
     p.append('''      <h2 class="section-title" id="ls-small" data-toc="Smaller slips"><span class="stitle-num">0</span>Smaller Slips</h2>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>What went wrong</td><td>Why</td><td>Fix</td></tr></thead><tbody>''' +
              ''.join(f'<tr><td class="dt-label">{a}</td><td class="dt-note">{b}</td><td class="dt-note">{c}</td></tr>' for a, b, c in SMALL) +
@@ -192,13 +238,13 @@ def main():
       <h2 class="section-title" id="ls-next" data-toc="What is still not safe"><span class="stitle-num">0</span>What Is Still Not Safe</h2>
       <ul class="sd">
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
-        <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until Kshitiz's calculation is done.</li>
+        <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until Kshitij's calculation is done.</li>
         <li>Only four MOFs have a clean experimental shape; no method can yet be ranked as better.</li>
         <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum &harr; Shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; it cannot yet be used as a stand-alone classifier.</li>
       </ul>
 ''')
     open(OUT, 'w', encoding='utf-8').write(''.join(p))
-    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries')
+    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries,', len(AUDIT), 'audit entries')
 
 
 if __name__ == '__main__':

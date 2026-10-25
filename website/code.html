@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Every Line of Source Code &middot; MOF Structural Descriptors</title>
-<meta name="description" content="All 28 source files, readable in the browser with no download and no web server.">
+<title>Every Line of Source Code &middot; MOF Graphs and Crystal Morphology</title>
+<meta name="description" content="Every source file of the project, readable in the browser with no download and no web server.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
 <script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html" aria-current="page">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -53,7 +54,7 @@
   <div class="container">
     <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
     <h1>Every Line of Source Code</h1>
-    <p class="lead">All 28 source files, readable in the browser with no download and no web server.</p>
+    <p class="lead">Every source file of the project, readable in the browser with no download and no web server.</p>
 <div class="place ref">Reference material &mdash; outside the reading sequence. <a href="index.html">Start at the beginning</a>.</div>
   </div>
 </div>
@@ -72,7 +73,7 @@
   </div>
   <div id="code-grid" class="codegrid"></div>
 
-      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="lessons.html"><div class="dir">&larr; Previous</div><div class="ttl">What We Got Wrong and How We Fixed It</div></a><a class="next" href="references.html"><div class="dir">Next &rarr;</div><div class="ttl">References</div></a></nav>
+      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="lessons.html"><div class="dir">&larr; Previous</div><div class="ttl">What We Got Wrong and How We Fixed It</div></a><a class="next" href="resources.html"><div class="dir">Next &rarr;</div><div class="ttl">Resources: Paper, Reports, Notebooks and Data</div></a></nav>
     </main>
     <aside id="toc" class="toc" aria-label="On this page"></aside>
   </div>
@@ -80,9 +81,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

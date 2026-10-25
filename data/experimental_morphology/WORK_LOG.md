@@ -1,6 +1,6 @@
 # Work log: experimental morphology task and CHGNet runs
 
-Last updated 2026-10-14. This file records what was done, in order, with the
+Last updated 2026-10-14 (file paths updated to the repository layout of 2026-10-25). This file records what was done, in order, with the
 result of each step and its limits. Folder layout and how to rebuild the
 dataset are in `README.md`.
 
@@ -48,7 +48,7 @@ bare crystal in vacuum.
 
 ## 4. Keerthi's notebook (MorphoGraph-MOF, CHGNet)
 
-Notebook: `notebook/MorphoGraph_MOF_revised.ipynb` (unchanged copy).
+Notebook: `notebooks/morphograph_mof/MorphoGraph_MOF_revised.ipynb` (unchanged copy).
 
 What it does for each MOF:
 1. Reads the CIF, finds symmetry (spglib), reduces to the primitive cell.
@@ -65,7 +65,7 @@ What it does for each MOF:
 
 ### 4a. How it was run
 
-- A Colab version was built: `notebook/MorphoGraph_MOF_colab_4MOFs.ipynb`. It
+- A Colab version was built: `notebooks/morphograph_mof/MorphoGraph_MOF_colab_4MOFs.ipynb`. It
   embeds the CIFs from the repository's `code/spectrum_pipeline/` folder, fixes the Miller
   limit at 1 (other settings are the notebook defaults) and adds a driver cell
   that runs each MOF and downloads its zip. The science cell is the original.
@@ -135,8 +135,8 @@ notebook, so it has not been done without her agreement.
 
 ## 5. Revised notebook (written, not yet run)
 
-`notebook/MorphoGraph_MOF_colab_symmetric_slabs.ipynb`, built by
-`tools/make_symmetric_nb.py` from the Colab notebook. Every change is marked
+`notebooks/morphograph_mof/MorphoGraph_MOF_colab_symmetric_slabs.ipynb`, built by
+`code/morphology/tools/make_symmetric_nb.py` from the Colab notebook. Every change is marked
 `SYMMETRIC-SLAB CHANGE`: linkers kept whole where pymatgen can (no loose H,
 CH or CO2 pieces); a slab symmetric as cut counts as one termination; any
 termination energy the equations do fix is kept (null-space test); remaining
@@ -168,7 +168,7 @@ the script that shows each:
 
 1. Run the revised notebook on Colab (HKUST-1 first) and add its zips to
    `code/morphology/data/chgnet_runs/`.
-2. DFT check of MOF-5 and UiO-66 faces (Kshitiz): `code/morphology/DFT_CHECK_PLAN.md`.
+2. DFT check of MOF-5 and UiO-66 faces (Kshitij): `code/morphology/DFT_CHECK_PLAN.md`.
 3. ZIF-8 with a CIF that keeps its symmetry, so all four benchmark MOFs run.
 4. Identify the 11 unverified records' sources.
 5. A fifth MOF if the team wants one (ZIF-67 or CALF-20); needs a CIF and shape records.

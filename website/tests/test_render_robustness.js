@@ -1,7 +1,7 @@
 const path = require('path');
 const SITE = path.join(__dirname, '..');
 // test_render_robustness.js
-// Targets the exact bug the user reported: "3D model stops after a few minutes."
+// Targets a reported defect: "the 3D model stops after a few minutes."
 // Verifies the three fixes in mof_render.js:
 //   1. On-demand rendering  -- a static scene must NOT keep issuing GL draw
 //      calls every frame (the old code did, from N independent rAF loops).

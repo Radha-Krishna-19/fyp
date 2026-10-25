@@ -1,5 +1,5 @@
 """One-off figure for the size-strata analysis (task E). matplotlib only.
-Reads _work/teammate_cg_run.csv (an independent 76-structure coarse-grained
+Reads data/spectrum_descriptors/independent_cg_run/independent_cg_run_76_hmof.csv (an independent 76-structure coarse-grained
 run) and data/spectrum_descriptors/size_scaling/size_strata.json (34-structure
 network-statistics subset), draws two panels:
   (a) Delta-alpha vs coarse-grained node count, coloured by the

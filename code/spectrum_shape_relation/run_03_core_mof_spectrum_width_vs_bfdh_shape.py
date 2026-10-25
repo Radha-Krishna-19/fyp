@@ -14,8 +14,7 @@ DATA
 * Delta-alpha for the CoRE MOF 2019 set: data/spectrum_descriptors/size_scaling/full_band_core_cg.json
   (written by code/spectrum_pipeline/code_17_full_correct_band.py; coarse-grained quotient graph tiled to
   48 Angstrom per axis; 55 of 61 structures usable).
-* The 61 CoRE MOF CIF files: data/core_mof_cifs/ (a copy of fyp/_work/core_cifs, kept here so
-  this folder is complete on its own).
+* The 61 CoRE MOF CIF files: data/structures/core_mof_2019/ (repository root).
 * Predicted shape: BFDH from the morphology package (code/morphology/mofmorph):
   symmetry by spglib, faces up to |h|,|k|,|l| <= 4, the 40 widest-spaced face families
   (the setting used for Phase 1b), then

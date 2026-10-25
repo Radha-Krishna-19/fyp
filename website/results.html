@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Results: The Band &middot; MOF Structural Descriptors</title>
+<title>Results: The Band &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="The multifractal band across 77 frameworks, the size confound that killed the pore-size claim, and what survives.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -130,7 +131,7 @@
         <code>data/spectrum_descriptors/size_scaling/make_convergence_figure.py</code> from
         <code>code/spectrum_pipeline/_run_size_scaling.py</code>'s output.
       </figcaption>
-    </figure>
+    <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/make_convergence_figure.py"><code>data/spectrum_descriptors/size_scaling/make_convergence_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/convergence_sweep.json"><code>data/spectrum_descriptors/size_scaling/convergence_sweep.json</code></a> (code/spectrum_pipeline/_run_size_scaling.py).</p></figure>
 
     <div class="table-wrap">
       <table class="data-table">
@@ -212,7 +213,7 @@
       collapses from &minus;0.50 to <b>+0.10</b>. Hold pore size constant and the size correlation
       barely moves, +0.73 to +0.62. The pore-size claim was graph size wearing a disguise.
     </figcaption>
-  </figure>
+  <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/mof_band_analysis.ipynb"><code>notebooks/spectrum/mof_band_analysis.ipynb</code></a>, step 11; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/results.json"><code>notebooks/spectrum/results.json</code></a> (77 hMOF, atomic graph).</p></figure>
 
   <div class="callout" data-kind="Why this matters">
     <b>Panels (c) to (e) are the reason to trust panel (b).</b> Any pipeline can produce a narrow
@@ -232,7 +233,7 @@
       Explained in full, with every number, in the
       <a href="results.html#realband">real-synthesised-MOF section</a> further down this page.
     </figcaption>
-  </figure>
+  <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/real_mof_band.ipynb"><code>notebooks/spectrum/real_mof_band.ipynb</code></a>, step 11; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/real_results.json"><code>notebooks/spectrum/real_results.json</code></a> (61 CoRE MOF, atomic graph).</p></figure>
 
   <div class="callout bad" data-kind="Both figures above used the atomic graph — see the corrected version">
     Both fig08 and fig10 were computed on the atomic supercell graph, which this project has
@@ -349,7 +350,7 @@
           can and cannot establish.
           Generated by <code>data/spectrum_descriptors/size_scaling/make_grouped_spectra_figure.py</code>.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/make_grouped_spectra_figure.py"><code>data/spectrum_descriptors/size_scaling/make_grouped_spectra_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/subband_explain_hmof.json and subband_explain_core.json"><code>data/spectrum_descriptors/size_scaling/subband_explain_hmof.json and subband_explain_core.json</code></a> (code_18_subband_explain.py).</p></figure>
 
       <div class="callout" data-kind="Why this will never look pixel-identical to another run of the same idea">
         The plotting <b>convention</b> above (raw spectra + smoothed class-average band, same
@@ -375,7 +376,7 @@
           data and the identical plotting convention (colour scheme, smoothing, grid) but not the
           same structures.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> An independent coarse-grained run outside this repository; shown for comparison only; data: CoRE MOF 2019, xenon-tested records.</p></figure>
 
       <figure class="fig wide">
         <img src="figures/fig17c_xenon_core_bands_reference.png" alt="Reference figure from an independent run: average spectrum by Delta-alpha class on the xenon-filtered CoRE MOF population, showing flat-extrapolated tails and a wide, noisy uncertainty band for the Wide class.">
@@ -386,7 +387,7 @@
           reproduces under its own data &mdash; the shared convention is visible directly, without
           needing to take the earlier paragraph's word for it.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> An independent coarse-grained run outside this repository; shown for comparison only; data: CoRE MOF 2019, xenon-tested records.</p></figure>
 
       <figure class="fig wide">
         <img src="figures/fig15_full_band.png" alt="Two horizontal bar charts, hMOF and CoRE MOF, each structure's Delta-alpha sorted and coloured by Narrow, Medium or Wide class.">
@@ -396,7 +397,7 @@
           <code>data/spectrum_descriptors/size_scaling/make_full_band_figure.py</code> from
           <code>code/spectrum_pipeline/code_17_full_correct_band.py</code>'s output.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/make_full_band_figure.py"><code>data/spectrum_descriptors/size_scaling/make_full_band_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/full_band_hmof_cg.json and full_band_core_cg.json"><code>data/spectrum_descriptors/size_scaling/full_band_hmof_cg.json and full_band_core_cg.json</code></a> (code_17_full_correct_band.py).</p></figure>
 
       <h3 class="sub-head">Does class membership track graph size here too?</h3>
       <p>The earlier finding on this page used a smaller sample and the wrong graph. Repeated on the full datasets, on the correct graph, the answer is the same.</p>
@@ -413,7 +414,7 @@
           differently once node count and diameter stop moving in lockstep across structures of
           different unit-cell shapes.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/make_full_band_figure.py"><code>data/spectrum_descriptors/size_scaling/make_full_band_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/full_band_hmof_cg.json and full_band_core_cg.json"><code>data/spectrum_descriptors/size_scaling/full_band_hmof_cg.json and full_band_core_cg.json</code></a>.</p></figure>
 
       <div class="callout bad" data-kind="What this means">
         <b>Using the correct graph fixes the graph. It does not fix the descriptor.</b> The
@@ -641,7 +642,7 @@
           values on every statistic (entropy 0.811 to three decimal places), because they are
           the same graph. Generated by <code>code/spectrum_pipeline/_make_strata_figure.py</code>.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/spectrum_pipeline/_make_strata_figure.py"><code>code/spectrum_pipeline/_make_strata_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/size_strata.json and data/spectrum_descriptors/independent_cg_run/independent_cg_run_76_hmof.csv"><code>data/spectrum_descriptors/size_scaling/size_strata.json and data/spectrum_descriptors/independent_cg_run/independent_cg_run_76_hmof.csv</code></a>.</p></figure>
 
       <div class="table-wrap">
         <table class="data-table">
@@ -746,7 +747,7 @@
           <code>data/spectrum_descriptors/size_scaling/make_slope_figure.py</code> from
           <code>code/spectrum_pipeline/code_15_dataset_sweeps.py</code>'s output.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/make_slope_figure.py"><code>data/spectrum_descriptors/size_scaling/make_slope_figure.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/data/spectrum_descriptors/size_scaling/slope_sweep_hmof.json and slope_sweep_core.json"><code>data/spectrum_descriptors/size_scaling/slope_sweep_hmof.json and slope_sweep_core.json</code></a> (code_15_dataset_sweeps.py).</p></figure>
 
       <div class="callout" data-kind="Reading this, carefully">
         <b>The slope varies about 2.5&times; more across CoRE MOF than across hMOF, at this sample
@@ -802,7 +803,7 @@
           <b>(c)</b> The centres agree; the spreads do not.
           Generated by <code>docs/report_figures/make_real_band_figures.py</code>.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/report_figures/make_real_band_figures.py"><code>docs/report_figures/make_real_band_figures.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/real_results.json and notebooks/spectrum/results.json"><code>notebooks/spectrum/real_results.json and notebooks/spectrum/results.json</code></a>.</p></figure>
 
       <h3 class="sub-head">The full real-MOF analysis, panel by panel</h3>
       <p>This is the exact counterpart of the 77-framework figure on the previous section, recomputed on structures that exist. It is laid out the same way on purpose: the same questions, asked again, of different material. If a result is real it should survive being asked twice.</p>
@@ -840,7 +841,7 @@
           <br>
           Generated by <code>notebooks/spectrum/real_mof_band.ipynb</code>, step 11.
         </figcaption>
-      </figure>
+      <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/real_mof_band.ipynb"><code>notebooks/spectrum/real_mof_band.ipynb</code></a>, step 11; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/notebooks/spectrum/real_results.json"><code>notebooks/spectrum/real_results.json</code></a> (61 CoRE MOF, atomic graph).</p></figure>
 
       <div class="callout" data-kind="What this is for">
         <b>Tie this back to the goal.</b> The aim is a number, computable in seconds, that helps
@@ -1069,9 +1070,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

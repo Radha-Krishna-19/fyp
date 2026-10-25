@@ -1,0 +1,12 @@
+# Python dependencies of the project (tested with Python 3.11 to 3.13).
+# Spectrum pipeline (code/spectrum_pipeline): numpy and networkx only.
+numpy>=1.24
+networkx>=3.0
+# Morphology (code/morphology) and the spectrum-shape study (code/spectrum_shape_relation)
+scipy>=1.10
+matplotlib>=3.7
+ase>=3.22
+spglib>=2.0
+# Optional: slab_options_check.py and the CHGNet notebooks (run in Google Colab with a GPU)
+# pymatgen>=2024.1
+# chgnet>=0.3

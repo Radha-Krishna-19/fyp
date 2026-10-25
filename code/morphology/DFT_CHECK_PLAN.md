@@ -1,4 +1,4 @@
-# DFT spot-check plan (for Kshitiz)
+# DFT spot-check plan (Kshitij Varma Pinnamaraju)
 
 Written 2026-10-14. Purpose: settle the one disagreement that decides which energy model the
 project can trust, using the fewest DFT calculations.
@@ -19,9 +19,8 @@ favours {100}, UFF favours {111}); HKUST-1 is a control (all models agree on {11
 
 ## Which slabs (all intact, lowest-energy, already relaxed by CHGNet)
 
-Files are inside `data/chgnet_runs/<MOF>_MorphoGraph_MOF_revised_results_*.zip`, folder
-`slabs_relaxed/`, named `<MOF>_hkl_<h>_<k>_<l>_term_<NNNN>.cif` (minus signs written `m1`).
-The bulk reference is `<MOF>_bulk_relaxed_fixed_cell.cif` in the same zip.
+Files are in [`data/chgnet_morphograph_runs/<MOF>_2026-10-14/slabs_relaxed/`](../../data/chgnet_morphograph_runs/), named `<MOF>_hkl_<h>_<k>_<l>_term_<NNNN>.cif` (minus signs written `m1`).
+The bulk reference is `<MOF>_bulk_relaxed_fixed_cell.cif` in the same folder.
 
 | Priority | MOF | Face | Slab file (primitive hkl, termination) | Atoms | Thickness | CHGNet gamma_cl |
 |---|---|---|---|---|---|---|

@@ -10,7 +10,7 @@ from each of this project's two published datasets. If the slope itself
 varies systematically between frameworks, it is a candidate size-independent
 descriptor; if not, that too is worth knowing before proposing one.
 
-COST CONTROL (explicit, per this session's instructions)
+COST CONTROL (explicit project limit for this sweep)
   - at most 20 structures per dataset
   - chosen for SIZE spread (a proxy for topological spread where net labels
     are not available -- see the module docstring in code_14 and the F-task

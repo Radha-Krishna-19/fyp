@@ -7,7 +7,7 @@ so the published hMOF sample cannot show band structure across topologies --
 it barely contains more than one topology. This module assembles a genuinely
 diverse comparison set from what is available locally (the four demonstration
 structures with published net assignments, plus CIFs already fetched for
-other tasks this session) and shows what real topological variation looks
+earlier tasks) and shows what real topological variation looks
 like against that degenerate sample.
 
 HOW NETS ARE IDENTIFIED HERE -- AND THE HONEST LIMIT OF THIS METHOD
@@ -30,9 +30,9 @@ simple pairing cannot recognise, and no structure in the local sample was
 found to have an rht-net signature by any method available here. That gap
 is reported rather than papered over with a guess.
 
-CAP (per this session's instructions)
+CAP (explicit project limit for this module)
 At most 10 structures, drawn from: the 4 demonstration structures (published
-net, ground truth) plus CIFs already fetched this session for other tasks
+net, ground truth) plus CIFs already fetched for earlier tasks
 (hmof_cifs/, core_cifs/) -- no new downloads for this module specifically.
 Supercell replication for any comparison figure is the same MAX_NODES cap
 used in code_15.

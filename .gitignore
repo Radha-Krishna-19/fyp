@@ -32,3 +32,4 @@ notebooks/spectrum/mof_cifs/
 notebooks/spectrum/multi_mof_output/
 website/tests/err.txt
 code/spectrum_pipeline/.cache/
+build/

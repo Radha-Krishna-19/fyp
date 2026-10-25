@@ -11,7 +11,7 @@ let fails = 0;
 const ok = (c, m) => { console.log((c ? 'PASS  ' : 'FAIL  ') + m); if (!c) fails++; };
 
 const PAGES = ['index.html', 'journey.html', 'methodology.html', 'decomposition.html', 'network.html',
-               'spectrum.html', 'results.html', 'learn_shape.html', 'learn_energy.html', 'morph_math.html', 'morphology.html', 'deform.html', 'graph_faces.html', 'surface_energy.html', 'hybrid.html', 'experiment.html', 'bridge.html', 'relation.html', 'lessons.html', 'code.html', 'references.html',
+               'spectrum.html', 'results.html', 'learn_shape.html', 'learn_energy.html', 'morph_math.html', 'morphology.html', 'deform.html', 'graph_faces.html', 'surface_energy.html', 'hybrid.html', 'experiment.html', 'bridge.html', 'relation.html', 'lessons.html', 'code.html', 'resources.html', 'references.html',
                'glossary.html', 'team.html'];
 
 // ---- 1. static structure, every page ----------------------------------
@@ -38,6 +38,16 @@ PAGES.forEach(p => {
   ok(!D.querySelector('#notation'), `${p}: the per-page term panel is not back`);
   ok(/assets\/tokens\.css/.test(html) && /assets\/design\.css/.test(html), `${p}: design system linked`);
   ok(/data-theme/.test(html), `${p}: theme applied before paint`);
+  // Every figure image must say which script produced it (a Source line in or just after the figure).
+  D.querySelectorAll('figure').forEach(fig => {
+    const img = fig.querySelector('img[src^="figures/"]');
+    if (!img) return;
+    let has = !!fig.querySelector('.provenance, .provenance-inline');
+    let n = fig.nextElementSibling;
+    if (!has && n && n.classList && n.classList.contains('provenance')) has = true;
+    ok(has, `${p}: figure ${img.getAttribute('src')} names its source`);
+    ok(fs.existsSync(path.join(SITE, img.getAttribute('src'))), `${p}: ${img.getAttribute('src')} exists`);
+  });
 
   // no colour may be hardcoded outside the token system
   const body = html.slice(html.indexOf('<body'));

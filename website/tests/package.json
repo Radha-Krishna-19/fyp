@@ -2,7 +2,7 @@
   "name": "mof-site-tests",
   "private": true,
   "scripts": {
-    "test": "node test_stage.js && node test_single_page.js && node test_network_page.js && node test_decompose.js && node test_render_robustness.js"
+    "test": "node run_all_tests.js"
   },
   "devDependencies": {
     "jsdom": "^24.1.3"

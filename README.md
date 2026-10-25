@@ -1,288 +1,197 @@
-# Structural Descriptors for Metal–Organic Frameworks
+# MOF Graphs and Crystal Morphology
 
-**Can a descriptor computed from connectivity alone — in seconds, with no
-molecular simulation — carry enough structural information to group metal–organic
-frameworks usefully?**
-
-23CSE498 Final Year Project · Phase II · Research-based
-Amrita Vishwa Vidyapeetham, School of Computing, Coimbatore
-
-**Guide:** Dr. T. Ramraj, Assistant Professor (Sl. Gd.), Department of Computer
-Science and Engineering · M.E., Ph.D.
+**23CSE498 Final Year Project, Phase II (research-based)**
+Department of Computer Science and Engineering, School of Computing, Amrita Vishwa Vidyapeetham, Coimbatore
+**Guide:** Dr. T. Ramraj, M.E., Ph.D., Assistant Professor (Sl. Gd.)
 
 | | |
 |---|---|
-| **Project site** | [`website/index.html`](website/index.html) — open it directly, no server needed |
-| **Dataset** | [`data/spectrum_descriptors/`](data/spectrum_descriptors/) — 81 frameworks, CC BY 4.0 |
-| **Panel deck** | [`docs/presentation/panel_review.pdf`](docs/presentation/panel_review.pdf) |
-| **Textbook** | [`docs/textbook/`](docs/textbook/) — 12 chapters, zero background assumed |
+| **Project website** | <https://radha-krishna-19.github.io/fyp/> (also opens offline from [`website/index.html`](website/index.html)) |
+| **Team paper** | [Topology-Based Coarse-Graining for Multifractal Spectrum Analysis in Metal-Organic Frameworks](docs/paper/G070_Paper.pdf) |
+| **Project notes** | [`docs/project_notes.md`](docs/project_notes.md): verified findings, quotable numbers, defects fixed |
+| **Mistakes and corrections** | [Mistakes page](https://radha-krishna-19.github.io/fyp/lessons.html): every mistake, why it was made, how it was fixed |
 
 ---
 
-## The problem in one paragraph
+## Summary
 
-A metal–organic framework is a crystal built from metal clusters ("nodes")
-joined by organic struts ("linkers"). Change the parts and you change the pore
-network, and with it everything useful — surface area, gas capacity, stability,
-catalytic behaviour. Hundreds of thousands of candidate structures exist on
-paper. Deciding whether one is worth making means running a molecular simulation
-that takes **hours per structure**. At that rate the candidate space cannot be
-searched, only sampled.
+A metal–organic framework (MOF) is a porous crystal of metal clusters joined by organic linkers.
+The project has two parts.
 
-So we ask a narrower question that can actually be answered: build the
-framework's **periodic graph** from its crystal structure, compute the
-**multifractal spectrum** of that graph, and reduce each framework to three
-numbers. Does that compression retain anything real?
+**Part 1: a connectivity descriptor.** Each MOF is cut into building blocks (the published
+metal-oxo decomposition), turned into a periodic graph (the labelled quotient graph), and summarised
+by the width Δα of the multifractal spectrum of that graph. The question was whether Δα, computed in
+seconds without simulation, carries enough structural information to pre-select MOFs for
+simulation. On 77 hypothetical (hMOF) and 61 synthesised (CoRE MOF 2019) frameworks the answer is
+**no, as currently defined**: Δα grows linearly in the logarithm of the graph diameter on every net
+tested and never converges, and classes formed from it follow graph size (r = +0.69 and +0.72).
+The two published bands are therefore withdrawn as structural results; the pipeline itself is
+verified and reused.
 
-## What we found
+**Part 2: crystal morphology** (the question set at Panel Review 1). From the unit cell of an
+established MOF the project generates several crystal morphologies, mathematically and
+computationally:
 
-**Both published bands are withdrawn as structural findings.** The 77-framework
-hMOF band and the 61-framework CoRE MOF band (`data/spectrum_descriptors/`) were both computed
-by running the multifractal analysis on the **atomic** supercell bond graph,
-not on the coarse-grained building-block graph the site and dataset
-documentation describe. A finite-size sweep on four demonstration structures
-(HKUST-1, MOF-5, ZIF-8, UiO-66 — tbo, pcu, sod and fcu nets) shows the spectrum
-width Δα growing with supercell diameter at every range of the distortion
-exponent *q* tested, with no plateau. The mechanism: at the extremes of
-*q* ∈ [−10, 10] the partition function is dominated by a single box, and the
-smallest possible box is one vertex — so the tail of the spectrum inherits a
-term that grows with graph size forever. On top of that, an atomic MOF graph
-spans two length scales — molecular, inside one linker or cluster, and
-framework, above one linker length — and fitting one power law across that
-crossover is not a valid scaling measurement to begin with. Both bands are kept
-in `data/spectrum_descriptors/` for audit, with this reasoning, rather than deleted or
-recomputed at a cap that does not exist. See `docs/project_notes.md` and the Results page
-for the full account, including the earlier pore-size and four-structure
-withdrawals this project already carried.
+* the space group fixes which faces may exist; from them MOF-5, HKUST-1 and UiO-66 admit the family
+  cube → cuboctahedron → octahedron and ZIF-8 the family cube → rhombic dodecahedron (16 propositions,
+  each proved and checked numerically);
+* changing the cell parameters adds plates and rods;
+* seven growth models select a member of the family: BFDH, the graph attachment rule, two graph-energy
+  Wulff models, a force-field (UFF) Wulff model, a BFDH × Wulff blend and a CHGNet cleavage-energy model;
+* the models are scored against 134 laboratory records from 35 papers (12 MOFs). ZIF-8 is reproduced
+  by every model; the MOF-5 cube by the graph rule, the broken-bond Wulff model and the force-field
+  model (the last only at the default bond cost); the HKUST-1 octahedron only as the dominant {111}
+  face of a truncated octahedron; additive-free UiO-66 (poorly faceted cubes) by none. Four MOFs are
+  too few to rank the models.
 
-**One claim, now superseded by the above.** Δα correlated with pore diameter at
-*r* = −0.497 in the 77-framework set, which looked like a result. Controlling
-for the number of blocks in the graph collapsed it to **+0.101**, while graph
-size survived at +0.621. That confound analysis is still correct as far as it
-goes, but it is now understood as one symptom of the larger problem: Δα was
-never a converged, size-independent quantity in the first place.
-
-**Redone correctly, on the complete datasets, the result does not change.**
-Both datasets were re-fetched in full (all 77 hMOF, all 61 CoRE MOF) and
-analysed on the graph the method actually calls for — the coarse-grained
-supercell, not the atomic graph the original runs used. 72/77 hMOF and
-55/61 CoRE MOF produced a usable spectrum. Sorting each dataset into
-Narrow/Medium/Wide by Δα still correlates with coarse-grained node count at
-*r* = +0.70 on both datasets, independently. A nine-category comparison
-(chemistry, graph features, degree, edges, higher-order structure,
-assortativity, heterogeneity, connected components) per class is on the
-[Results page](https://radha-krishna-19.github.io/fyp/results.html#full-correct-band).
-Using the correct graph fixes the graph; it does not fix the descriptor.
-
-**A claim we withdrew earlier.** This README previously reported that four
-synthesised MOFs sat *clear* of the hypothetical band at Δα = 1.66 – 2.26. That
-was withdrawn before the finding above: those four were expanded to 256–972
-atoms while the 77 hMOFs occupy 3024–6592 atoms, and Δα rises with atom count at
-r = +0.73. The comparison was reading graph size. The reasoning is on the
-[Results page](https://radha-krishna-19.github.io/fyp/results.html#realband)
-and in [`docs/report_figures/make_real_band_figures.py`](docs/report_figures/make_real_band_figures.py).
-
-## Three defects we found and fixed
-
-These are the substance of the work, and each was a silent wrong answer rather
-than a crash.
-
-| # | Defect | Consequence | Fix |
-|---|---|---|---|
-| 1 | τ(q) fitted with a free intercept instead of through the origin | **Every one of the 77 spectra had no apex.** Mathematically invalid, but each individual curve looked plausible | Fit τ = ln 𝒫_q / ln(r/r_N) through the origin. 0/77 → **77/77** valid |
-| 2 | Spectrum computed on the induced subgraph of influential nodes only | In a MOF the high-degree blocks are metal clusters, and metal clusters never bond to each other — they connect *through* linkers. That subgraph has **zero edges**, so no distances exist | Box-cover the full block graph; read the measure only *at* the influential nodes |
-| 3 | Averaging in the wrong order — mean of ln Z instead of ln of mean Z | Jensen's inequality makes this biased, not noisy. HKUST-1: 0.021 → **0.327** | Exponentiate per trial, then average |
-
-A fourth is a data-provenance defect: the analysis requested CoRE MOF 2019 and
-received hMOF records, because on that endpoint `database=` is advisory and
-loses to the `gases[]` filter. Every quantitative result in the project was
-computed on hypothetical structures as a result. A provenance check caught it;
-the query now filters each returned record on its own `database` field.
+**Linking the parts.** The periodic Δα carries no shape information beyond graph size
+(size-controlled ρ = +0.001, p = 0.99, 55 CoRE MOFs), but the spectrum and the box-counting
+(mass–radius) dimension of a *finite* crystal particle do respond to its shape.
 
 ---
 
-## Repository layout
+## Repository structure
 
-This is the repository root — there is no `metal_oxo_deep_dive/` prefix inside
-it; that name belongs only to the local folder containing `.git` on the
-maintainer's machine.
+| Folder | Contents |
+|---|---|
+| [`code/spectrum_pipeline/`](code/spectrum_pipeline/) | Part 1: decomposition pipeline (`code_00`–`code_07`, Python translation of the published method), spectrum analysis (`code_09`–`code_19`), the four demonstration CIFs |
+| [`code/morphology/`](code/morphology/) | Part 2: the `mofmorph` package, one run script per phase, tests, result files and figures; [`chgnet_wulff/`](code/morphology/chgnet_wulff/) CHGNet Wulff pipeline |
+| [`code/spectrum_shape_relation/`](code/spectrum_shape_relation/) | The link between the parts: finite crystal particles, their spectrum and dimension profile, notebook and results |
+| [`data/`](data/) | [Structures](data/structures/) (77 hMOF, 61 CoRE MOF CIFs), [spectrum descriptors](data/spectrum_descriptors/), [experimental morphology dataset](data/experimental_morphology/), [CHGNet runs](data/chgnet_morphograph_runs/) |
+| [`notebooks/`](notebooks/) | [Spectrum notebooks](notebooks/spectrum/) and [MorphoGraph-MOF notebooks](notebooks/morphograph_mof/) |
+| [`docs/`](docs/) | [Paper](docs/paper/), [reports](docs/reports/), [slides](docs/presentation/), [textbook](docs/textbook/), [concept notes](docs/concepts/), [references](docs/references/), [certifications](docs/technical_enrichment/), [report figures](docs/report_figures/), [project notes](docs/project_notes.md) |
+| [`website/`](website/) | The project website: pages, browser engines, build scripts ([`_build/`](website/_build/)), test suites ([`tests/`](website/tests/)) |
 
-```
-fyp/
-├── website/        The documentation portal. Open index.html — no server needed.
-├── code/spectrum_pipeline/         Reference implementation, 12 annotated modules
-├── notebooks/spectrum/      The 77-framework analysis + the real-MOF twin
-├── docs/report_figures/      Generated figures + the scripts that make and verify them
-├── docs/concepts/       Five long-form background documents
-├── docs/references/     Annotated bibliography + BibTeX
-├── docs/presentation/   Beamer deck, PDF, Overleaf archive, speaking script, 5-way split
-├── docs/textbook/       Twelve chapters, zero background assumed
-├── data/spectrum_descriptors/        The released dataset, CC BY 4.0
-└── docs/technical_enrichment/    Technical Enrichment plan and course recommendations
-```
-
-Inside `website/`, `_build/` holds the build inputs (the content source, the
-page fragments and `build_site.py`); everything else in that folder is served
-as-is. Run `python website/_build/build_site.py` after editing content.
+---
 
 ## Getting started
 
-### Read the site — no installation
+### Read the website
+
+Online at <https://radha-krishna-19.github.io/fyp/>, or offline:
 
 ```bash
 git clone https://github.com/Radha-Krishna-19/fyp.git
-cd fyp/website
-# open index.html in any browser
+cd fyp/website        # open index.html in a browser; no server or internet connection needed
 ```
 
-Every asset is relative and `three.min.js` is vendored into the repository, so
-this works from a `file://` URL with **no web server and no internet
-connection**. Every number is computed in your browser at page load from the CIF
-files in the folder; none is hardcoded.
-
-### Run the pipeline
-
-Requires Python 3.9+, NumPy and NetworkX.
+### Run the Python code
 
 ```bash
-cd fyp/code/spectrum_pipeline
-pip install numpy networkx
+pip install -r requirements.txt
 
-# decompose one framework end to end
+# Part 1: decompose one framework and compute its spectrum
+cd code/spectrum_pipeline
 python code_00_pipeline_driver.py HKUST-1.cif
+python code_12_converged_band.py
 
-# its multifractal spectrum
-python code_10_multifractal_spectrum.py
+# Part 2: shapes of the four demonstration MOFs, and the checks
+cd ../morphology
+python run_phase1.py          # symmetry, allowed faces, BFDH, morph families
+python run_phase4.py          # force-field face energies and Wulff shapes
+python tests.py               # Phase 1 checks (also tests_phase3/4, tests_deform, tests_review)
 
-# against the published method
-python code_11_nmfa_paper.py
+# The link between the parts
+cd ../spectrum_shape_relation
+python run_04_dimension_profile_of_crystal_particles.py
+python check_spectrum_shape_relation.py
 ```
 
-### Reproduce the 77-framework band
+Every script names its inputs and outputs in its header. The notebook
+[`Spectrum_Shape_Relation.ipynb`](code/spectrum_shape_relation/Spectrum_Shape_Relation.ipynb) runs the
+whole spectrum–shape study in Google Colab and writes a run report.
+
+### Rebuild and test the website
 
 ```bash
-jupyter notebook notebooks/spectrum/mof_band_analysis.ipynb
+python website/_build/update_code_sources.py   # refresh the embedded source browser
+python website/_build/build_site.py            # rebuild every page from website/_build/
+cd website/tests && npm install && npm test     # 12 suites
 ```
 
-Also runs unchanged in Google Colab; it installs its own dependencies. Writes
-`results.json`, which `website/band_data.js` is generated from. Roughly 20
-minutes.
-
-### Run the tests
-
-```bash
-cd fyp/website/tests
-npm install jsdom
-npm test
-```
-
-Nine suites. They boot the real pages headlessly and assert on
-**computed output**, because this site's failure mode is a silently blank panel
-rather than a visible error.
+The pages are built from `website/_build/content_source.html`, `website/_build/fragments/` and the
+result files; built pages are never edited by hand (the GitHub workflow checks this). Every figure
+names the script and data that produced it.
 
 ---
 
-## Architecture
+## Notebooks
 
-Eight modules, each independently runnable and independently testable. Modules
-1–4 are a faithful translation of the published `snurr-group/mofid` metal-oxo
-decomposition, used **unmodified**. Modules 5–8 are this project's work.
+| Notebook | Purpose |
+|---|---|
+| [`notebooks/spectrum/mof_band_analysis.ipynb`](notebooks/spectrum/mof_band_analysis.ipynb) | Spectrum band of 77 hMOF frameworks (atomic graph, withdrawn) |
+| [`notebooks/spectrum/real_mof_band.ipynb`](notebooks/spectrum/real_mof_band.ipynb) | The same for 61 CoRE MOF 2019 frameworks |
+| [`notebooks/spectrum/pipeline_walkthrough_full.ipynb`](notebooks/spectrum/pipeline_walkthrough_full.ipynb) | The decomposition pipeline module by module |
+| [`notebooks/morphograph_mof/MorphoGraph_MOF_revised.ipynb`](notebooks/morphograph_mof/MorphoGraph_MOF_revised.ipynb) | CHGNet bulk and slab relaxation, surface energies, atomistic particles |
+| [`notebooks/morphograph_mof/MorphoGraph_MOF_colab_4MOFs.ipynb`](notebooks/morphograph_mof/MorphoGraph_MOF_colab_4MOFs.ipynb) | The same, unattended, for the four demonstration MOFs |
+| [`notebooks/morphograph_mof/MorphoGraph_MOF_colab_symmetric_slabs.ipynb`](notebooks/morphograph_mof/MorphoGraph_MOF_colab_symmetric_slabs.ipynb) | Symmetric-slab variant (prepared, not yet run) |
+| [`notebooks/morphograph_mof/MorphoGraph_hybrid.ipynb`](notebooks/morphograph_mof/MorphoGraph_hybrid.ipynb) | BFDH, blended and force-field Wulff shapes for any CIF |
+| [`code/morphology/chgnet_wulff/MOF_Wulff_Colab.ipynb`](code/morphology/chgnet_wulff/MOF_Wulff_Colab.ipynb) | CHGNet Wulff shapes compared with a laboratory shape table |
+| [`code/spectrum_shape_relation/Spectrum_Shape_Relation.ipynb`](code/spectrum_shape_relation/Spectrum_Shape_Relation.ipynb) | Spectrum and crystal shape |
+| Google Colab working copies (Keerthi): [coarse-grained MOF spectrum](https://colab.research.google.com/drive/1lnWFEl2flCUrFI-n3BJurn_ICbJaNpPy), [Wulff shapes](https://colab.research.google.com/drive/1A4wcRz-HMCVbwJ7zgqPqCQv-NQeTumUb), [morphologies](https://colab.research.google.com/drive/1dWTwj7SkIVFL2EHxg1cDPOqwMOtS8Mny) | Working copies edited by the team |
 
-```
-  CIF ──▶ bond perception ──▶ metal-oxo split ──▶ quotient graph
-          (27 images,          (nodes and         (edges carry the
-           covalent radii)      linkers)           lattice translation)
-                                                          │
-                                                          ▼
-   Δα, α₀, A  ◀── spectrum ◀── box growing ◀── supercell expansion
-                  τ(q) → f(α)   (influential      (past 48 Å per
-                                 nodes)            lattice direction)
-```
+---
 
-**Every figure is verifiable.** `python docs/report_figures/verify_figures.py` reads
-the PNG metadata of every image in the repository and confirms it was produced
-by matplotlib rather than downloaded, and that duplicated copies have not
-drifted. `docs/report_figures/make_figures.py` regenerates the data figures from the
-live pipeline.
+## Defects found and corrected
 
-**Two independent implementations.** The Python modules and the JavaScript
-engine were written from the same specification but not from each other. Where
-they disagree, one is wrong — and that disagreement is loud, whereas a single
-implementation is silently self-consistent even when it is wrong. Two of the
-three defects above were caught exactly this way.
+Each was a silent wrong answer rather than a crash. The full list, with plain and technical
+explanations, is on the [Mistakes page](https://radha-krishna-19.github.io/fyp/lessons.html).
 
-## The project goal, stated plainly
-
-Decide whether a descriptor computed from a MOF's connectivity alone — no
-molecular simulation, seconds per structure — carries enough structural
-information to be a useful pre-filter: to say which of a large candidate set
-is worth the hours of simulation the field currently spends on all of them
-indiscriminately. That is a yes/no question about a specific descriptor
-(Δα, the multifractal spectrum width), not a general claim that graphs are
-useful for MOFs.
-
-## Implementation status
-
-Reported on two axes, because "we built a lot" and "we established something
-true" are different claims and a single percentage hides the difference.
-
-| Axis | Figure | What it covers |
+| Defect | Consequence | Correction |
 |---|---|---|
-| **Engineering** | **~85%** | The decomposition, the periodic quotient graph, the supercell expansion and the multifractal spectrum all run correctly, end to end, live in the browser and from the command line, and agree between the two independent implementations. What is missing is a size-independent version of the spectrum computation (see below) and a topologically diverse comparison set. |
-| **Scientific validation** | **~35%** | The pipeline up to and including the raw spectrum is provably correct. But the project's own finite-size sweep (2026-09-14/15) shows the headline descriptor, Δα, does not converge with supercell size at any tested range of the distortion exponent — so the descriptor as defined **has not been shown to be a property of the framework at all**, on either published dataset. Answering the project's stated goal requires either a size-independent redefinition of Δα or a different descriptor; neither exists yet. |
-| **Overall** | **~55%** | Not an average of the two rows above: the scientific-validation failure is a gating one. A correctly engineered pipeline computing a descriptor that has not been shown to converge is a real result — it rules out the naive approach — but it is not the answer the project set out to find. |
+| τ(q) fitted with a free intercept | No spectrum had its apex at q = 0 (0 of 77 valid) | Fit through the origin, τ = Σxy / Σx² (77 of 77 valid) |
+| Spectrum computed on the subgraph of influential nodes | Metal clusters never bond directly, so that subgraph has no edges | Cover the whole graph; read the measure at the influential nodes |
+| Averaging p<sub>i</sub>(r) over trials before taking logarithms | Spectra biased narrow by more than a factor of ten | Build Z per trial, take ln Z per trial, then average |
+| Periodicity discarded | UiO-66's 12-connected cluster reported with the wrong connectivity | Labelled quotient graph with lattice translations on the edges |
+| Bands computed on the atomic graph | One power law fitted across two length scales | Re-run on the coarse-grained graph; the size dependence remains, so the bands are withdrawn |
+| Database returned hMOF records for a CoRE MOF query | Every early result was on hypothetical structures | Each record filtered on its own `database` field |
+| Hydrogen atoms dropped from the ZIF-8 energy cell | {111} energy 0.312 instead of 0.619 J/m² | Energies computed on the full cell |
+| UiO-66 counted as a match | The additive-free benchmark reports cubes, not octahedra | Every page reads the benchmark from one file |
 
-**This figure is lower than an earlier version of this README reported**, and
-that is the honest consequence of the 2026-09-14/15 finite-size finding, not a
-new setback: the convergence problem was always there, in every number this
-project had published, and was simply not tested for until now. See
-`docs/project_notes.md` and the Results page for the finding and what would resolve it.
+## What the project does not claim
 
-**What remains.** (1) Either a size-independent Δα — a fixed, a-priori q range,
-a different partition-function normalisation, or reporting the Δα(D) growth
-slope itself as the descriptor — or a documented decision to retire Δα and
-report the slope, or another descriptor, as the headline instead. (2) A
-topologically diverse comparison set spanning pcu, tbo, sod, fcu and rht nets;
-the current 77-framework hMOF sample is dominated by one net (pcu) at one
-graph size. Full module-by-module audit on the [Team page](website/team.html).
+* Δα, as defined, is not a converged property of a framework; neither published band is a structural finding.
+* Nothing here computes or predicts gas adsorption.
+* The 77 hMOF structures are hypothetical and share one metal (Zn₄O); the 61 CoRE MOF structures are synthesised.
+* The force-field face energies are unrelaxed, without solvent, charge or temperature; the CHGNet energies are upper bounds and are not yet checked against DFT.
+* With four MOFs no morphology model can be ranked as best; the blend weight is shown at a fixed value and never tuned.
+
+## Future work
+
+1. DFT check of the MOF-5 and UiO-66 faces on which the force field and CHGNet disagree (Kshitij).
+2. Solvent, modulator and temperature in the face energies (Isha); more MOFs with known shapes (Rohith).
+3. Choose the blend weight on some MOFs and test it on others (held-out validation).
+4. Dimension profile and spectrum of the plates and rods of the deformed cells, and of the CHGNet atomistic particles.
+5. Final paper on the morphology work.
 
 ---
-
-## What this project does *not* claim
-
-Stated plainly, because a reviewer will ask.
-
-- **Δα, as currently defined, has not been shown to converge with graph size.**
-  Neither published band should be read as a structural or chemical finding.
-- **Δα does not predict gas uptake.** Nothing here computes adsorption.
-- **The hMOF dataset is not experimental.** All 77 are hypothetical, generated
-  structures. Any sentence calling them experimental is false.
-- **No cross-family claim from the hMOF set.** All 77 share one metal (Zn₄O),
-  so any band computed on it is a band *within* one family.
-- **The graph is unweighted and untyped.** Bond order and element identity are
-  discarded by design. What survives is pure architecture.
-- **This does not replace simulation.** It is intended as a pre-filter for
-  deciding *what* to simulate — an intended use, not yet a demonstrated one.
 
 ## Team
 
-| Member | Roll number | Owns |
+| Member | Roll number | Certification (October 2026) |
 |---|---|---|
-| P. M. Radha Krishna | CB.SC.U4CSE23134 | Problem framing, methodology, integration, documentation portal |
-| P. Kshitij Varma | CB.SC.U4CSE23122 | The mathematical model — partition function, τ(q), Legendre transform |
-| G. Rohith Abhinav | CB.SC.U4CSE23141 | Implementation status, 3D viewer, decomposition engine |
-| J. Keerthi Sree | CB.SC.U4CSE23031 | Results, validation, the band, dataset provenance |
-| Isha Sri Prakash | CB.SC.U4CSE23029 | Design decisions, the τ defect, network construction, roadmap |
+| Pasupuleti Meena Radha Krishna | CB.SC.U4CSE23134 | [Fractals and Scaling](docs/technical_enrichment/certificates/G070_23134_OnlineCourse.pdf), Santa Fe Institute |
+| Kshitij Varma Pinnamaraju | CB.SC.U4CSE23122 | [Graph Theory](docs/technical_enrichment/certificates/G070_23122_OnlineCourse.pdf), Udemy |
+| Rohith Abhinav Sai Komal Gullolla | CB.SC.U4CSE23141 | [Advanced Algorithms (Graph Algorithms) in Java; Social Network Analysis](docs/technical_enrichment/certificates/G070_23141_OnlineCourse.pdf), Udemy |
+| Keerthi Sree Jonnakuti | CB.SC.U4CSE23031 | [Introduction to Complexity](docs/technical_enrichment/certificates/G070_23031_OnlineCourse.pdf), Santa Fe Institute |
+| Isha Sri Prakash | CB.SC.U4CSE23029 | [Graph Algorithms for Machine Learning](docs/technical_enrichment/certificates/G070_23029_OnlineCourse.pdf), TigerGraph University |
 
-## Built on
+Responsibilities in each part are listed on the [Team page](https://radha-krishna-19.github.io/fyp/team.html);
+how each course supports the project is in [`docs/technical_enrichment/`](docs/technical_enrichment/).
 
-- Xiao *et al.*, *Scientific Reports* **11**, 22964 (2021) — the multifractal method
-- Bucior *et al.*, *CrystEngComm* **21**, 3777 (2019) — MOFid decomposition
-- Wilmer *et al.*, *Nature Chemistry* **4**, 83 (2012) — the hMOF structures
+## Principal references
 
-Full annotated bibliography in [`docs/references/`](docs/references/).
+* Bucior et al., *Cryst. Growth Des.* **19**, 6682 (2019): MOFid and the metal-oxo decomposition.
+* Xiao, Wang and Li, *Sci. Rep.* **11**, 22964 (2021): multifractal analysis of networks (NMFA, iNMFA).
+* Song, Havlin and Makse, *Nature* **433**, 392 (2005): box covering of complex networks.
+* Hartman and Perdok (1955); Wulff (1901): crystal growth and equilibrium shapes.
+* Deng et al., *Nat. Mach. Intell.* **5**, 1031 (2023): CHGNet.
+
+The annotated bibliography is in [`docs/references/`](docs/references/) and on the
+[References page](https://radha-krishna-19.github.io/fyp/references.html).
 
 ## Licence
 
-Dataset: CC BY 4.0 ([`data/spectrum_descriptors/LICENSE`](data/spectrum_descriptors/LICENSE)).
-`three.min.js` is vendored under the MIT licence of the three.js project.
+The spectrum descriptor dataset is released under CC BY 4.0
+([`data/spectrum_descriptors/LICENSE`](data/spectrum_descriptors/LICENSE)). `three.min.js` is included
+under the MIT licence of the three.js project.

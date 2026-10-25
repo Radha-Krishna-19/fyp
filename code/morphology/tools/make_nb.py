@@ -86,6 +86,6 @@ cells.append(md("""
 - Tested on MOF-5, HKUST-1, UiO-66, ZIF-8 (cubic) and hMOF-0 (R3m). Very large cells (many hundreds of atoms) can be slow.
 """))
 nb={"cells":cells,"metadata":{"kernelspec":{"display_name":"Python 3","language":"python","name":"python3"},"language_info":{"name":"python"}},"nbformat":4,"nbformat_minor":5}
-json.dump(nb,open(os.path.join(HERE, "..", "MorphoGraph_hybrid.ipynb"),"w",encoding="utf-8"),indent=1)
+json.dump(nb,open(os.path.join(HERE, "..", "..", "..", "notebooks", "morphograph_mof", "MorphoGraph_hybrid.ipynb"),"w",encoding="utf-8"),indent=1)
 # test script: run all code cells outside jupyter
 open(os.path.join(HERE, "nb_test.py"),"w",encoding="utf-8").write("\n".join(("".join(c['source']) if not "".join(c['source']).startswith('%') else "") for c in cells if c['cell_type']=='code'))

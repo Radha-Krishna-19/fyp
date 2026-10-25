@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview &middot; MOF Structural Descriptors</title>
+<title>Overview &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="What a metal-organic framework is, the question this project asks, and the honest answer so far.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
@@ -18,7 +18,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Structural Descriptors</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
   <nav class="site-nav" aria-label="Sections of this site">
       <a href="index.html" aria-current="page">Overview</a>
       <a href="journey.html">How We Got Here</a>
@@ -40,6 +40,7 @@
       <a href="relation.html">Spectrum ↔ Shape</a>
       <a href="lessons.html">Mistakes</a>
       <a href="code.html">Source</a>
+      <a href="resources.html">Resources</a>
       <a href="references.html">References</a>
       <a href="glossary.html">Glossary</a>
       <a href="team.html">Team</a>
@@ -87,17 +88,28 @@
         framework itself. Both what held up under testing and what did not are reported below.
       </p>
 
-      <div class="callout good" data-kind="The panel's second question, October 2026">
+      <div class="callout good" data-kind="The second half: crystal morphology (October 2026 onward)">
         After Panel Review 1 the panel asked whether an established MOF's unit cell can generate at
-        least a few crystal morphologies, shown mathematically and computationally. Phases 1 to 3 of that work
-        are complete: from the unit cell and its symmetry, MOF-5, HKUST-1 and UiO-66 each give the family
-        cube, cuboctahedron, octahedron, ZIF-8 gives cube to rhombic dodecahedron, and counting the links
-        a new node forms on each face selects the cube for MOF-5 and the octahedron for UiO-66. The
-        concepts are taught from scratch on the <a href="learn_shape.html">Learn</a> page and proved on the
-        <a href="morph_math.html">Mathematics</a> page (Phase 2); the shapes, a live shape explorer and the
-        comparison with experiment are on the <a href="morphology.html">Morphology</a> page; and on the
-        <a href="graph_faces.html">Graph Faces</a> page (Phase 3) each framework's own periodic graph picks the
-        observed dominant faces for all four structures, including the ZIF-8 rhombic dodecahedron.
+        least a few crystal morphologies, shown mathematically and computationally. It can. From the
+        unit cell and its space group alone, MOF-5, HKUST-1 and UiO-66 each admit the continuous family
+        cube &rarr; cuboctahedron &rarr; octahedron, and ZIF-8 the family cube &rarr; rhombic
+        dodecahedron (<a href="morphology.html">Morphology</a>, proved on <a href="morph_math.html">Maths</a>).
+        Changing the cell parameters adds plates and rods (<a href="deform.html">Cell Deform</a>).
+        To decide which member of the family a crystal takes, seven growth models were built and scored
+        against 134 laboratory records from 35 papers (<a href="experiment.html">Experiment</a>):
+        the lattice-only BFDH rule, the graph attachment rule, two graph-energy Wulff models
+        (<a href="graph_faces.html">Graph Faces</a>), a force-field Wulff model
+        (<a href="surface_energy.html">Surface Energy</a>), a BFDH&times;Wulff blend
+        (<a href="hybrid.html">Hybrid</a>) and a machine-learned (CHGNet) cleavage-energy model.
+        No model reproduces all four MOFs. ZIF-8 (rhombic dodecahedron) is reproduced by every model;
+        the MOF-5 cube by the graph attachment rule, the broken-bond Wulff model and the force-field Wulff
+        model (the last only at the default bond cost); the HKUST-1 octahedron appears in every model that applies to it only
+        as the dominant {111} face of a truncated octahedron; and no model gives the additive-free UiO-66
+        crystals, which are poorly faceted and reported as cubes in the two available records.
+        Finally, the spectrum of the first half was tested against crystal shape
+        (<a href="relation.html">Spectrum &harr; Shape</a>): the periodic spectrum width carries no shape
+        information beyond graph size, but the spectrum and the box-counting dimension of a
+        <i>finite</i> crystal particle do respond to its shape.
       </div>
 
       <div class="keynums">
@@ -129,7 +141,7 @@
         Both datasets were re-fetched in full (all 77 hMOF, all 61 CoRE MOF) and re-analysed on
         the coarse-grained supercell graph &mdash; the correct one. 72/77 and 55/61 produced a
         usable spectrum. Sorting each set into Narrow/Medium/Wide by &Delta;&alpha; still
-        correlates with graph size at <i>r</i>&nbsp;=&nbsp;+0.70 on both datasets, independently.
+        correlates with coarse-grained graph size at <i>r</i>&nbsp;=&nbsp;+0.69 (hMOF) and +0.72 (CoRE MOF), independently.
         Using the right graph fixes the graph; it does not fix the descriptor. Full nine-category
         breakdown on the <a href="results.html#full-correct-band">Results</a> page.
       </div>
@@ -329,9 +341,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    Every number on this site is computed in your browser from the CIF files in this
-    folder when the page loads &mdash; none of them is hardcoded. The Python modules in
-    <code>code/spectrum_pipeline/</code> reproduce all of them from the command line.
+    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+    files when the page loads; the other pages are generated from the result files of the Python
+    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+    page against those files. Each figure names the script that produced it.
     &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
     &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
   </div>

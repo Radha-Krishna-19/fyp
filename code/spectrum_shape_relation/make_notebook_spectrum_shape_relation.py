@@ -63,8 +63,8 @@ subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'numpy', 'scipy', 
 print('libraries ready')"""),
 code("""# ---- 1. find the project folder ----------------------------------------------------------------
 # ON YOUR PC (Jupyter / VS Code): open this notebook from
-#     fyp/metal_oxo_deep_dive/code/spectrum_shape_relation/   and just run. Nothing else to do.
-# IN GOOGLE COLAB: upload the zip  spectrum_shape_relation_bundle.zip  (it is in fyp/_work/)
+#     code/spectrum_shape_relation/ of the repository and run all. Nothing else to do.
+# IN GOOGLE COLAB: upload the zip  spectrum_shape_relation_bundle.zip  (written to build/ by make_colab_bundle_spectrum_shape_relation.py)
 #     when the upload box appears. It is unpacked and used automatically.
 import os, sys, json, zipfile
 IN_COLAB = 'google.colab' in sys.modules
