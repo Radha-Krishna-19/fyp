@@ -1,0 +1,373 @@
+Different view of solvent effect on the synthesis methods of zeolitic imidazolate framework-8 to tuning the crystal structure and properties
+One of the important aims in the synthesis of zeolite imidazolate framework-8 is to prepare crystals with predictable structures and valuable properties. It is observed that the properties of ZIF-8 have been directly or indirectly determined by various synthetic factors. Among many synthetic factors, solvents and synthesis methods are unavoidable parameters that control the overall structure of ZIF-8. This article presents a deep understanding of how solvents play their role in the crystallization and structure and therefore the properties of ZIF-8 by considering the polarity, viscosity, interfacial tension and molecular structure and comparing the behaviour of each solvent in every synthesis method. Also, to clearly realize their effect on the formation and final properties of ZIF-8, the crystallization process and mass transfer are discussed.
+One of the important aims in the synthesis of zeolite imidazolate framework-8 is to prepare crystals with predictable structures and valuable properties.
+
+## Introduction
+For a long time, porous materials have played a major role in some industries such as gas purification, separation, ion exchange and catalysis for their natural characteristics.1 In order to achieve a porous material with chemical and thermal stability and flexibility, a great deal of research had been carried out which led to the discovery of structures with organic and metal units that were later called Metal–Organic Frameworks (MOFs). Metal–Organic Frameworks (MOFs) as a new kind of crystalline porous material consist of metal ions which are connected together by organic ligands.2–5 Hybrids of organic and inorganic materials lead to three-dimensional networks with unique intrinsic features, including low density (reduced to 0.124 g cm−3),6 large specific surface area (higher than 10 000 m2 g−1),7 large pore volume, surface functionality8,9 and pore size tunability.4,10,11
+Although MOFs are preferable to porous materials in many aspects, the chemical and thermal stability of MOFs is lower than porous materials. Zeolitic Imidazolate Framework-8 (ZIF-8), a subclass of MOFs, was synthesized and employed to address this problem.12,13 ZIF-8 structure is consisted of tetrahedral Zn ions that are bonded strongly to the nitrogen atom of deprotonated 2-methylimidazole linker at 1,3 position to form sodalite-type topology with 11.6 Å pore width that can be accessed to the outside through 3.4 Å windows.14,15
+Because of these unique properties having high surface area, pore volume, chemical and thermal stability, ZIF-8 has been used in broad spectrum of applications but in each application field, part of the properties is more effective and tuning the crystal structure and properties are required for best performance. It is well known that ZIF-8 properties depend on many synthetic conditions, that general parameters are known as temperature, pH,18 reaction time, solvent,19–21 concentration of precursor,22–24 Structure Directing Agent (SDA)25 and synthesis methods.26
+Among these parameters, the solvent and synthetic method as an essential component of each synthesis are unavoidable and their effect on properties, morphology and structural of ZIF-8 is still under investigation and development. For example, Bustamante et al. investigated the performance of some solvents including water, aliphatic alcohol series, dimethylformamide (DMF) and acetone. They proved alcohols (especially methanol) were the best solvent for the formation of ZIF-8. However under the same synthesis conditions, water and DMF were unable to form the ZIF-8.21 The disadvantage of their work was investigation of solvent effects in only one synthesis method. In addition to the solvent, the method of synthesis is another significant parameter that plays a crucial role in crystallization process and final properties of ZIF-8 product. For instance, Lee et al. compared different methods of synthesis by preparing ZIF-8 through solvothermal, microwave-assisted, sonochemical, mechanochemical, dry-gel, and microfluidic method26 but inconsistency of the synthesis conditions and solvents in each method prevented examining effect of different methods on the ZIF-8 formation.
+In this study the role of polarity, viscosity, interfacial tension and molecular structure of solvents on the formation pathways of ZIF-8 were investigated and the performance of solvents in different synthetic method was compared to understand how each solvent led to ZIF-8 product with different morphology, particle size, crystallinity, surface area for usage in different applications. For this purpose, as shown in Fig. 1, many series of ZIF-8 crystals were synthesized in various solvents namely water, MeOH, DMF by means of three important preparation methods at optimal conditions (obtained from the results of other articles to prevent duplication). The powdered product was characterized by X-Ray Diffraction (XRD), Scanning Electron Microscopy (SEM), Fourier-Transform Infrared spectroscopy (FT-IR), Thermal Gravimetric Analysis (TGA) and Brunauer–Emmett–Teller (BET).
+Summary of important synthetic methods of ZIF-8 and effective parameters in each method.
+
+## Summary of important synthetic methods of ZIF-8 and effective parameters in each method.
+This study could be a huge forwarding step because this article aims to provide complete information for the design and synthesis ZIF-8 according to the required property in the future usage of ZIF-8 and other MOFs.
+
+## Materials and methods
+
+## Solution preparation
+Based on the reported procedures,27,28 initial solution with the molar composition of 1 : 8 (Zn2+ : Hmim) was prepared by using 2-methylimidazole (98 wt% Merck), zinc nitrate hexahydrate (98 wt% Merck) in methanol (99.9 wt% Merck), dimethylformamide (99 wt% Merck) or distilled water. First, 3 g zinc nitrate hexahydrate (Zn(NO3)2) and 6.6 g 2-methylimidazole (Hmim) were separately dissolved in a certain molar ratio in various solvent, which is shown in Table 1. Then the obtained solutions were mixed together and treated by three common crystallization methods.
+ZIF-8 synthesis conditions for different samples
+
+## ZIF-8 synthesis conditions for different samples
+Sample name
+Crs routea
+Solvent
+Crs timea (h)
+Zn/Hmim molar ratio
+M1
+Mixing
+Methanol
+6
+1/8
+M2
+DMF
+6
+1/8
+M3
+Water
+6
+1/8
+H1
+Solvothermal
+Methanol
+12
+1/8
+H2
+DMF
+12
+1/8
+H3
+Water
+12
+1/8
+S1
+Sonochemical
+Methanol
+1
+1/8
+S2
+DMF
+1
+1/8
+S3
+Water
+1
+1/8
+Crystallization.
+
+## Crystallization methods
+
+## Mixing method
+The prepared solution of zinc nitrate hexahydrate (0.202 M) and solution of 2-methylimidazole (1.61 M) were blended together and stirred for 6 h with a magnetic stirrer at room temperature (22 ± 3 °C). The container must be closed with a cover to prevent solvent evaporation.
+
+## Solvothermal method
+According to the Lee et al.26 50 ml of the zinc nitrate hexahydrate (0.202 M) and 2-methylimidazole solution (1.61 M) were loaded in 80 ml Teflon lined stainless steel autoclave and autoclave was placed in convection oven at 140 °C for 24 hours.
+
+## Sonochemical method
+Preparation solution was held under ultrasonic waves with frequency of 50 Hz and voltage of 200 V with 100% ultrasonic power intensity for one-hour period. Also, the synthesis temperature was maintained by placing the solution in a bath water.
+
+## Sample washing and activation method
+The final solution was filtered and washed three times with methanol to remove unreacted ligands. After washing, residual methanol and impurities were removed by centrifugation of the mixture. Finally, the solid products were dried up in an oven at 120 °C for 12 h. The details of the synthesis conditions of samples are presented in Table 1 and a schematic of above-mentioned steps are drawn in Fig. 2.
+Representation of the process of ZIF-8 formation: (a) solution preparation, (b) crystallization, (c) washing and activation method.
+
+## Representation of the process of ZIF-8 formation: (a) solution preparation, (b) crystallization, (c) washing and activation method.
+
+## Characterization of samples
+The crystal structure, phase purity and crystallite size of the synthesized powder were identified by using X-ray diffraction (XRD, Equinox 3000) with a Cu Kα radiation at 40 kV and 30 mA and a wavelength of λ = 1.54056. The relative crystallinity from XRD data was measured based on the ratio sum of the area under the diffraction peaks at 2θ = 7.4°, 10.4°, 12.7°, 18.0° to the sum of those peak areas in the standard sample which was a highly crystalline product.1
+Similarly, average crystallite size in samples was measured through Scherrer equation from XRD data based on four significant peaks of the samples at 2θ = 7.4°, 10.4°, 12.7°, 18.0° which are shown in Fig. 3.2where D is the crystallite size (nm), K (=1) is the shape factor of crystallite size, λ (Cu = 0.1541) is the X-ray wavelength, θ is the angle of diffraction, B is the full width at half maximum (FWHM) of the four intense peaks.16,17,21
+XRD patterns of ZIF-8 samples synthesized with different solvents (water, MeOH, DMF) at different conditions: (a) mixing method, (b) solvothermal method, (c) ultrasonic method.
+
+## XRD patterns of ZIF-8 samples synthesized with different solvents (water, MeOH, DMF) at different conditions: (a) mixing method, (b) solvothermal method, (c) ultrasonic method.
+A Scanning Electron Microscope (SEM, TESCAN) was employed to analyze the shape and size of crystals. Additionally, Thermal Gravimetric Analysis (TGA) was performed under air flow from room temperature to 600 °C with a Shimadzu (TGA-50) apparatus to evaluate the thermal stability. The FT-IR characterization of the samples was determined by using Fourier-Transform Infrared spectroscopy (FT-IR, Thermo Scientific, Nicolet iS10). The Brunauer–Emmett–Teller (BET) analysis was used for determination of specific surface area, pore volume from nitrogen adsorption–desorption isotherms with BELSORB-mini II device.
+
+## Results and discussion
+Because ZIF-8 is synthesized in solution, effect of solvent is unavoidable. To determine the role of the solvent on the crystallization, structure and morphology of ZIF-8, a comparison between structural characteristics of samples which was synthesized in methanol (1), DMF (2) and water (3) by mixing (M1, M2, M3) and solvothermal (H1, H2, H3) and sonochemical (S1, S2, S3) has been done. Obtained results from XRD are presented in Fig. 3. According to the observed peaks and their comparison with simulated ZIF-8 pattern, all of the samples are pure and in good agreement with the structural pattern of the ZIF-8 except M3, H3, S3.15,27
+According to Fig. 4 all samples except the synthesized samples in water have the main characteristic diffraction peaks at 2θ = 7.4°, 10.4°, 12.7°, 18.0° which assign to planes of (011), (002), (112) and (222). The observation of the M3, H3 and S3 peaks clearly indicates that their reflection has not the same position and amorphous phase is seen in their pattern. It is observed that samples were synthesized in DMF and methanol have different peak intensities. Prepared samples in DMF in all three methods (M2, H2, S2) have more peak intensity than prepared samples in methanol and their peak position are shifted in comparison to methanol samples. The results of XRD and BET analysis of samples are presented in Table 2. The results demonstrate that DMF solvent can increase the relative crystallinity, product yield and consequently, decrease crystallite size in each method. Also, the highest crystallinity and lower BET surface area and pore volume belong to the DMF sample which was synthesized in solvothermal method. But these results are changed by varying the solvent. In methanol, the highest intensities, relative crystallinity and surface area are observed in mixing method.
+Schematic of the crystallite, lattice spacing and particle size in XRD diagram of synthesized samples.
+
+## Schematic of the crystallite, lattice spacing and particle size in XRD diagram of synthesized samples.
+Physical properties of synthesized ZIF-8
+
+## Physical properties of synthesized ZIF-8
+Sample name
+Morphology
+Crystallite sizea (nm)
+Crystallinity (%)
+Mean particle sizea (nm)
+BET surface area (m2 g−1)
+Total pore volume (cm3 g−1)
+Product yield (%)
+M1
+Sod
+49.19
+51.74
+121.6
+1687.2
+1.1445
+24.9
+M2
+Sod
+31.27
+87.73
+72.9
+1451
+0.670
+35
+M3
+2D-layered
+—
+—
+826.4
+—
+—
+—
+H1
+Sod
+54.04
+40.35
+527.7
+1600.5
+0.7349
+23
+H2
+Sod
+39.71
+100
+736.5
+1375.1
+0.5361
+30.5
+H3
+2D-layered
+—
+—
+1888.1
+—
+—
+—
+S1
+Sod
+48
+40.16
+278.4
+1650
+0.8210
+25
+S2
+Sod
+39.72
+82.29
+80.6
+1408
+0.5940
+33.2
+S3
+2D-layered
+—
+—
+1554.7
+—
+—
+—
+Crystallite size was measured by Scherrer and particle size was determined by SEM.
+The recorded TGA profiles are shown in Fig. 5. TGA analysis reveals synthesized samples via mixing method are stable up to 400 °C while prepared samples via solvothermal and sonochemical show a thermal stability up to 450 °C. Besides that, TGA profile indicate increasing in weight loss, respectively in MeOH, DMF and water (M1 < M2 < M3), (S1 < S2 < S3) while this trend is not true in solvothermal method (H1 < H3 < H2). According to the information are presented in Table 3, samples were obtained in MeOH and DMF exhibit two weight loss stage, a negligible weight loss at temperature 25–200 °C due to evaporated residual solvent and a significant weight loss around 400–600 °C. Decomposition of ZIF-8 is started at 400 °C and it continued to collapse the ZIF-8 structure.
+TGA curves of the synthesized ZIF-8 in different solvents. (a) Mixing method, (b) solvothermal method, (c) sonochemical method.
+
+## TGA curves of the synthesized ZIF-8 in different solvents. (a) Mixing method, (b) solvothermal method, (c) sonochemical method.
+Weight loss stages and thermal stability of the samples obtained from TGA curves
+
+## Weight loss stages and thermal stability of the samples obtained from TGA curves
+Sample
+Weight loss stages
+Thermal stability (°C)
+1
+2
+3
+Temperature range (°C)
+Weight loss (%)
+Temperature range (°C)
+Weight loss (%)
+Temperature range (°C)
+Weight loss (%)
+M1
+25–150
+7
+400–600
+18.2
+—
+400
+M2
+25–150
+3.5
+400–600
+41.25
+—
+400
+M3
+25–150
+5
+400–600
+83
+—
+400
+H1
+25–200
+6
+450–600
+6.8
+—
+450
+H2
+25–200
+2.5
+400–600
+73.5
+—
+450
+H3
+25–200
+2
+200–450
+6
+450–600
+31
+450
+S1
+—
+0
+450–600
+32.4
+—
+450
+S2
+25–200
+5
+200–600
+45
+—
+450
+S3
+25–200
+5
+200–450
+20
+450–600
+44
+450
+When the ZIF-8 heats up to decomposition, first the existing organic ligands are destroyed and finally the zinc oxide remains.
+Indeed, weight loss in ZIF-8 is corresponding to ligand decomposition and it can be determined amount of ligands needed to stabilize ZIF-8 in each samples. Therefore, sample was synthesized in DMF by solvothermal because of highest weight loss shows more crystallinity, stability and less defect than others. In order to verify stability of samples, ZIF-8 was heated in different temperatures: 200, 400 °C. It is observed from Fig. 6 that at temperatures 200 °C, XRD pattern of ZIF-8 show no change. However, at 400 °C XRD peaks are changed and decomposition of ZIF-8 is started, which is agreement with the TG result in Fig. 5.
+XRD patterns of heated ZIF-8 at 200, 400 °C.
+
+## XRD patterns of heated ZIF-8 at 200, 400 °C.
+In Fig. 7 SEM micrograph of prepared products are presented. As we expected, M3, H3 and S3 (formed in water) had different shape with micrometric size. The M3 indicates intergrowth of two-dimensional flake structure, while H3 and S3 had rod shape particle. The rest of the samples were obtained in MeOH (Fig. 7a–c) and DMF (Fig. 7d–f) showed rhombic dodecahedron shape and nanometric size. Close observation of SEM images reveals that DMF solvent cause smaller particle size than methanol in mixing, while the solvothermal method show the opposite result.
+SEM images of ZIF-8 samples: (a) mixing method (MeOH), (b) solvothermal method (MeOH), (c) ultrasonic method (MeOH), (d) mixing method (DMF), (e) solvothermal method (DMF), (f) ultrasonic method (DMF), (g) mixing method (water), (h) solvothermal method (water) and (i) ultrasonic method (water).
+
+## SEM images of ZIF-8 samples: (a) mixing method (MeOH), (b) solvothermal method (MeOH), (c) ultrasonic method (MeOH), (d) mixing method (DMF), (e) solvothermal method (DMF), (f) ultrasonic method (DMF), (g) mixing method (water), (h) solvothermal method (water) and (i) ultrasonic method (water).
+In this study, FTIR analysis was performed to identify the molecular composition and functional groups of obtained product. The main spectra of ZIF-8 are included 3455 cm−1 (N–H stretching vibration of the unreacted Hmim), 3135 and 2929 cm−1 (aromatic and aliphatic C–H asymmetric stretching vibrations), 1635 cm−1 (C <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="13.200000pt" height="16.000000pt" viewBox="0 0 13.200000 16.000000" preserveAspectRatio="xMidYMid meet"><metadata> Created by potrace 1.16, written by Peter Selinger 2001-2019 </metadata><g transform="translate(1.000000,15.000000) scale(0.017500,-0.017500)" fill="currentColor" stroke="none"><path d="M0 440 l0 -40 320 0 320 0 0 40 0 40 -320 0 -320 0 0 -40z M0 280 l0 -40 320 0 320 0 0 40 0 40 -320 0 -320 0 0 -40z"/></g></svg> C stretch), 1585 cm−1 (CN stretch vibration), 1300–1460 cm−1 (entire ring stretching), 1146 cm−1 (aromatic C–N stretching), 995, 760 cm−1 (C–N bending vibration and C–H bending), 694 cm−1 (ring out-of-plane bending vibration of the Hmim) which are corresponded well with the results of Fig. 8.29,30 The peak at 426 cm−1 is related to Zn–N stretching vibration band, which shows the chemical composition of zinc with the nitrogen atom in the 2-methylimidazole ligand. In addition, bands are detected around 1600 cm−1, 2350 cm−1 are respectively related to H–O–H bending of adsorbed water and stretching vibration of adsorbed CO2 from surrounding. It can be seen in Fig. 8 that applying different solvents did not change the chemical composition of samples. Consistency of results are observed from products which demonstrate the prepared samples in water (2D-layered) is created from the same building units as ZIF-8 crystals.
+FTIR spectrum of the synthesized samples.
+
+## FTIR spectrum of the synthesized samples.
+
+## Effects of solvent in different crystallization method
+The possible reason for the various results that were obtained from the characterization analysis is described in this section by investigating the effect of the solvent in ZIF-8 crystallization process:14,31 solubility of reagent materials, nucleation, the particles grow in regards to the Ostwald theory.32,33
+Solvent controls the growth of the crystal and crystalline morphology of ZIF-8 depending on polarity, solubility, viscosity and molecular structure of solvents. Thus, role of each solvent properties is examined to obtain reason of difference between sample characterizations.
+
+## Role of interfacial tension
+In this work, all samples were synthesized under the same conditions but the solvent which was used in each sample was different. Therefore, the only factor that affects the characteristic of ZIF-8 is the solvent. Due to which solvent are used, its properties such as polarity, viscosity and interfacial tension between the solute and the solvent are changed. Changing these parameters affects the crystallization process and show different behavior in each synthesis method.
+Interfacial tension between the solute (dissolved reactants in solvent) and the solvent is one of the important parameters in crystallization. The interfacial tension between the solute and the solvent has increased, respectively in DMF and methanol and water (water > methanol > DMF).
+Water among other solvents providing high interfacial tension among the dissolved reactants and the solvent so, it creates a higher surface barrier to crystallization and retardation of the formation of nuclei. For this reason, samples in water couldn't grow to form 3D ZIF-8 network and they have different SEM image as shown in Fig. 7. DMF provides lower interfacial tension than methanol so it creates lower surface barrier against crystallization. It leads to accelerate crystallization, particularly intensifies primary nucleus production. Large number of nucleus are created and they growth to form ZIF-8 crystal. Thus, higher product yield is obtained in DMF as shown in Table 2.
+
+## Role of polarity of solvent
+For synthesis process of ZIF-8, zinc salt and Hmim were first dissolved in solvent and separated H+ ions from Hmim created deprotonated Hmim (mim−). The bond between Zn2+ and mim− started to form ZIF-8. The number and rate of H+ dissociated depended on polarities of solvent. The polarity of solvent is indicated by its dielectric constant and dipole moments. Water, MeOH and DMF with a dielectric constant greater than 15 are considered to be polar. Water has higher dielectric constant (80) and it is more polar in comparison to other solvents. However, high polarization is not beneficial in this specific synthesis process because water can hydrolyze and postpone ZIF-8 formation.28,34
+As can be seen in Scheme 1 unsaturated nitrogen of 2-methylimidazole reacts to H+ from hydrolysis of water. Consequently, it gets the proton instead of removing it and thus Zn2+ ions bonded to hydroxide group that are released from water. Also, the XRD patterns of the synthesized samples in water possess unknown peak that do not match to ZIF-8 diffraction peak. These abnormal peaks are attributed to Zn(NO3)2, Zn(OH)2 and zinc hydrate complex which is probably due to the side effects that occur in water according to Scheme 1.
+Reaction scheme of the synthesis process of ZIF-8 in water.
+
+## Reaction scheme of the synthesis process of ZIF-8 in water.
+To put it differently, in this synthesis condition, zinc ions has a greater tendency to react with water instead of 2-methylimidazole. This solvent actually acts as a ligand in the reaction and it has curbed the formation of the 3-dimensional ZIF-8 crystal by forming a two-dimensional material.
+MeOH due to the hydrogen bond is classified as a protic solvent. 2-Methylimidazole as ligand in this solvent is deprotonated according to the reaction mechanism in Scheme 2.
+Reaction scheme of Hmim deprotonation in methanol.
+
+## Reaction scheme of Hmim deprotonation in methanol.
+DMF is an aprotic solvent with the high dipole moment. Because of lack of hydrogen bond in DMF, it tends to deprotonate the ligand according to the reaction mechanism in Scheme 3.
+Reaction scheme of deprotonated Hmim in DMF.
+
+## Reaction scheme of deprotonated Hmim in DMF.
+The DMF has higher dielectric constant (38) than the methanol solvent (33). It also shows the higher dipole moment (3.82) than MeOH (1.7), which indicates that DMF has greater ability to dissolve current ionic compounds including zinc nitrate and mim−. Therefore, in DMF more deprotonated ligands are formed, which results in a larger number of nuclei (the nucleus of ZIF-8 crystal) and a faster nucleation process.
+For this reason, prepared sample in DMF has the higher crystallinity and smaller crystallite size than other samples. Also, the mean particle size in DMF is lower than prepared samples in methanol except H2 because this sample was synthesized in solvothermal condition at a large amount of energy and temperature. This condition hydrolyzes DMF and prepares samples that are more stable than other methods. In addition, fast nucleation improves product yield of samples that were synthesized in DMF at the same time but their BET surface area is low due to the high rate of nucleation and crystal growth as shown in Table 2.
+It can be figured out from Fig. 5 the thermal stability of prepared samples in DMF and methanol is approximately identical but ability of DMF to creating great number of deprotonated ligand cause to form stable crystal. As it is presented in Table 3, synthesized samples in DMF lost a lot of weight in the temperature range of 400–600 °C attributing to linker decomposition and collapsing structure to ZnO. Thus, we can conclude that M2, H2 and S2 have larger number of ligands compare to samples that were prepared in methanol. Actually, the great number of destroyed ligand show the great bond between ligand and metal ion. As a result, M2, H2 and S2 show stable crystalline structure with lower structural defect.
+
+## Role of solvent viscosity
+In this section, how viscosity of solvent plays a crucial role in the shape and size of ZIF-8 particles are discussed. It should be noted that the solvent viscosity varies depending on the type of solvent. The solvent viscosity is related to mass transfer and mass transfer is a superior factor in the growth of ZIF-8 particles. Relying on the theory of diffusion-limited aggregation, diffusion limitation adjusts the chemical diffusion and reaction rates in synthesized samples.
+Therefore, the diffusivity of reactant defines the growth pathway of crystal.35,36 The diffusion of reactants is changed by using the different kind of solvents. In this synthesis process, three solvents were employed, namely methanol, DMF and water. The viscosity of water, DMF and MeOH is 0.8949, 0.802 and 0.544 cP, respectively.
+The diffusivity of Zn2+ ions in every solvent is determined on the basis of the Stokes–Einstein equation in eqn (3).3where D is the diffusivity of Zn2+ (cm2 s−1), K is the Boltzmann constant (1.380648 × 10−23 J K−1), T is the absolute temperature (K), r is the radius of Zn2+ (74 pm), and μ is the viscosity of each solvent (g cm−1 s−1).
+As shown in Fig. 9, the methanol with less viscosity has more diffusion of reactants. Since, the diffusion of reactant is relatively higher in methanol so Zn2+ and mim− ions have higher mobility in comparison to another solvent which cause they are incorporated together to growth the ZIF-8 crystals with more BET surface area and total pore volume. However, in DMF the ionic diffusion is low and the collision possibility between nuclei is lowered.
+Bar graphs show the diffusivities of zinc ions at different solvents. The viscosity values at 25 °C were adapted from pubchem websites (https://pubchem.ncbi.nlm.nih.gov).
+
+## Bar graphs show the diffusivities of zinc ions at different solvents. The viscosity values at 25 °C were adapted from pubchem websites (https://pubchem.ncbi.nlm.nih.gov).
+According to Ostwald theory, the nuclei are unstable in solution and very tiny nanoparticles with high surface energy tend to stick together to decrease the particle surface energy. In methanol, due to its low viscosity, nanoparticles are easily transferred and bonded together but in DMF, their aggregation is limited, due to the higher viscosity of DMF. Hence, ZIF-8 particles were synthesized in DMF have lower size compare to that were prepared in other solvent.
+Furthermore, the lower viscosity of methanol permits further diffusivity and consequently causes high crystal growth rate. The high rate of growth and rapid formation of crystals causes defects in the structure of prepared sample in methanol which can be confirmed from TGA analysis.
+
+## Role of molecular structure of solvents
+Fig. 3 reveals the shifting in XRD results of S2 and H2 samples derived from DMF solvent. Changing 2 theta indeed mean that d-spacing and lattice parameter is changed and it can be described by molecular structure of solvents.
+Solvents with different molecular sizes may cause the formation of ZIF-8 with different structures. DMF molecule has bigger steric hindrance than methanol thus it can disorder in growing process and the distance of the crystal network. This case is apparent in Fig. 3, the XRD patterns of H2 samples that was synthesized in DMF has shifted to the left, which are related to increasing d-spacing and lattice spacing. In contrast, the XRD patterns of S2 samples was synthesized in DMF via ultrasonic method has shifted to right. DMF molecule due to bigger steric hindrance has created tension stress under the effect of ultrasonic irradiation thus causing the ZIF-8 structure to contract.
+Methanol molecule size is almost the same as the aperture of the ZIF-8 sodalite cage then it could trap into the pores and the heating of the sample, lead the methanol as guest molecule to leave the structure without causing displacement in ZIF-8 structure but defects in the structure are created.
+In addition, the pore size and pore volumes are varied depending on size of solvent molecule. As the size of solvents are increase in the order of methanol < DMF, the pore volumes of the synthesized ZIF-8 reduce in the order to M1 > M2 and also same result in another synthesis method H1 > H2, S1 > S2.
+
+## Conclusion
+This study attempts to provide systematic investigation to tuning the crystal structure and properties of ZIF-8 under the effective and indelible parameter in synthesis. For this purpose, the role of polarity, viscosity, interfacial tension and molecular structure of solvents on the formation pathways of ZIF-8 were investigated and the performance of solvents in different synthetic method was compared to understand how each solvent led to formation of ZIF-8 with different morphology, particle size, crystallinity, surface area, etc.
+The results elucidate that water has acted as ligand and react to Zn ion instead of 2-methylimidazole. Therefore, at all crystallization methods ZIF-8 do not growth in water. However, ZIF-8 is formed properly when DMF and methanol have been used as solvent. DMF as aprotic solvent accelerate the reaction rate via modulating the pH of the reaction mixture and DMF facilitate deprotonation of Hmim via reduction the surface barrier against crystallization. Also, steric hindrance of DMF is very effective to tuning lattice spacing of ZIF-8.
+On the other hand, methanol as protic solvents can change the rate of crystallization and adjust the particle size of ZIF-8 by increasing mass transfer. Furthermore, the lower viscosity of methanol permits further diffusivity and consequently high crystal growth rate. The high rate of growth and rapid formation of crystals can create defects in the structure and which is formed the ZIF-8 crystals with more BET surface area and total pore volume. While, in DMF the ionic diffusion is low and the collision possibility between nuclei is lowered. The formation of ZIF-8 in methanol via different synthetic routes achieves the same influences but in DMF via solvothermal method result is changed. It can be a guide for researchers in industrial application and even in the synthesis of other MOFs to controlling, optimizing and delivering required nanocrystals properties.
+
+## Conflicts of interest
+There are no conflicts to declare.
+
+## Supplementary Material
+
+## References
+Ordered porous materials for emerging applications
+Towards industrial use of metal–organic framework: Impact of shaping on the MOF properties
+Metal–organic frameworks: structure, properties, methods of synthesis and characterization
+Metal–organic frameworks
+Zeolitic imidazolate framework materials: recent progress in synthesis and applications
+Metal–organic framework materials as catalysts
+et al., Bottom-up construction of a superstructure in a porous uranium–organic crystal
+et al., Metal–organic framework materials with ultrahigh surface areas: is the sky the limit?
+Metal–organic framework functionalization and design strategies for advanced electrochemical energy storage devices
+et al., Efficient and selective removal of congo red by mesoporous amino-modified MIL-101 (Cr) nanoadsorbents
+The chemistry and applications of metal–organic frameworks
+et al., Large-pore apertures in a series of metal–organic frameworks
+Metal–organic frameworks: opportunities for catalysis
+et al., High-throughput synthesis of zeolitic imidazolate frameworks and application to CO2 capture
+Structural evolution of zeolitic imidazolate framework-8
+et al., Exceptional chemical and thermal stability of zeolitic imidazolate frameworks
+The Scherrer formula for X-ray particle size determination
+A cost-effective method for the synthesis of zeolitic imidazolate framework-8 materials from stoichiometric precursors via aqueous ammonia modulation at room temperature
+et al., Solvent determines the formation and properties of metal–organic frameworks
+Parametric study on the mixed solvent synthesis of ZIF-8 nano-and micro-particles for CO adsorption: a response surface study
+Influence of the solvent in the synthesis of zeolitic imidazolate framework-8 (ZIF-8) nanocrystals at room temperature
+Synthesis of ZIF-8 from recycled mother liquors
+Influence of the 2-methylimidazole/zinc nitrate hexahydrate molar ratio on the synthesis of zeolitic imidazolate framework-8 crystals at room temperature
+Effect of the solvent molar ratios on the synthesis of zeolitic imidazolate framework 8 (ZIF-8) and its performance in CO2 adsorption
+et al., Tuning the crystal morphology and size of zeolitic imidazolate framework-8 in aqueous solution by surfactants
+ZIF-8: a comparison of synthesis methods
+Controlling ZIF-8 nano-and microcrystal formation and reactivity through zinc salt variations
+et al., Amino acid assisted templating synthesis of hierarchical zeolitic imidazolate framework-8 for efficient arsenate removal
+Hydrothermal synthesis of high surface area ZIF-8 with minimal use of TEA
+Rapid room-temperature synthesis and characterization of nanocrystals of a prototypical zeolitic imidazolate framework
+Synthesis and adsorption properties of ZIF-8 nanoparticles using a micromixer
+Kinetics of phase transitions: theory of Ostwald ripening
+The theory of Ostwald ripening
+Role of solvents in coordination supramolecular systems
+Thermodynamic and kinetic effects in the crystallization of metal–organic frameworks
+Diffusion-limited aggregation, a kinetic critical phenomenon

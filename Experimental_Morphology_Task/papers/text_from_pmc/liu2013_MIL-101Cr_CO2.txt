@@ -1,0 +1,189 @@
+Adsorption of Carbon Dioxide by MIL-101(Cr): Regeneration Conditions and Influence of Flue Gas Contaminants
+MIL-101(Cr) has drawn much attention due to its high stability compared with other metal-organic frameworks. In this study, three trace flue gas contaminants (H2O, NO, SO2) were each added to a 10 vol% CO2/N2 feed flow and found to have a minimal impact on the adsorption capacity of CO2. In dynamic CO2 regeneration experiments, complete regeneration occurred in 10 min at 328 K for temperature swing adsorption-N2-stripping under a 50 cm3/min N2 flow and at 348 K for vacuum-temperature swing adsorption at 20 KPa. Almost 99% of the pre-regeneration adsorption capacity was preserved after 5 cycles of adsorption/desorption under a gas flow of 10 vol% CO2, 100 ppm SO2, 100 ppm NO, and 10% RH, respectively. Strong resistance to flue gas contaminants, mild recovery conditions, and excellent recycling efficiency make MIL-101(Cr) an attractive adsorbent support for CO2 capture.
+The development of efficient technologies for the capture and sequestration of carbon dioxide produced by existing point sources, such as fossil-fuel power plants and blast furnaces, will prove vital in controlling the environmental impact of anthropogenic emissions. In order for these technologies to be economically viable, carbon capture and sequestration (CCS) systems must curb the energy penalty associated with CO2 capture and sorbent regeneration, and operate effectively in realistic conditions. The search for materials that fulfill the criteria of an efficient CO2 sorbent has been proceeding with urgency1.
+Processes based on aqueous amine absorbents represent the best, currently available, and practically applied technology for CO2 capture. They include an energy penalty of roughly 30% on top of the power generation of the plant2. An alternative approach to reduce the energy penalty is by using solid sorbents since the desorption processes consume comparatively less energy.
+Metal-organic frameworks (MOFs) is one of the major families of sorbents capable of capturing CO2345. Their properties of highly tunable pore surfaces6789 and exceptional surface areas10 are well-suited for CO2 capture. Many studies have reported outstanding capacities for MOFs at high pressures. Recently, more researches have focused on understanding the performance of MOFs materials at the lower pressures relevant to the majority of CO2 capture processes. Yazaydın et al11 performed a screening of a diverse collection of 14 MOFs for CO2 capture from flue gas at 0.1 bar. They found that the best-performing MOFs in regards to CO2 adsorption at the test pressure of 0.1 bar were of the M2(dobdc) class (M = Zn, Ni, Co, Mg; dobdc = 2,5-dioxido-1,4-benzenedicarboxylate), likely due to their higher density of open metal sites. Despite of these progresses in knowledge, essential elements of applying MOFs in many large scale processes, namely contaminant influence on CO2 capture and adsorbent regeneration, call for more in-depth examination.
+A thorough investigation of MOFs for CO2 capture requires consideration of the stability of the framework to humidity as well as the impact of humidity on CO2/N2 separation1213. Liu et al1415 examined the adsorption equilibria of CO2, H2O, and CO2/H2O for two MOFs, HKUST-1 and Ni/dobdc. HKUST-1 experienced a significant decrease in CO2 uptake to about 75% of its original value and a concomitant loss of partial crystallinity after exposure to 30% relative humidity (RH). Ni/dobdc, on the other hand, retained substantial CO2 capacity and CO2/N2 selectivity with moderate H2O loadings, though CO2 capacity could not be fully recovered after water adsorption. The effect of humidity on the M2(dobdc) series of MOFs was also studied by Kizzie et al16. Mg2(dobdc), which displayed the highest capacity for CO2 at low pressures, performed the worst out of the series with a recovery of only 16% of its initial CO2 capacity after regeneration, while Co2(dobdc) performed the best with a recovery of 85%.
+Despite water's status as a very common, high concentration contaminant, other gaseous substances (e.g. SOx and NOx) often have a considerable impact on adsorption processes. A modeling-based analysis of several contaminants on Mg/MOF-74 by Yu et al. suggests that SOx and its hydrates could corrupt CO2 adsorption ability to a major extent. NOx on the other hand was predicted to have a significantly smaller effect on limiting CO2 adsorption17. However, experimental evaluations of trace gas impacts on MOFs appear to be untested.
+Another area of research regarding MOFs that could use further investigation is the regeneration of the frameworks, which must be carried out after each adsorption cycle. Regeneration of a solid adsorbent can be achieved by temperature swing adsorption (TSA), pressure swing adsorption (PSA), vacuum swing adsorption (VSA), vacuum temperature swing adsorption (VTSA), or steam stripping. Regenerated under a variation of steam stripping, He purge, Ni/dobdc was found to adsorb CO2 reversibly, with more than 94% of CO2 capacity recovered at room temperature. That translates to a CO2 capacity of 3.52 mmol/g after regeneration compared to an initial capacity of 3.74 mmol/g, which was obtained for a dry CO2/N2 (15:85) mixture under ambient conditions15.
+In order to research the regeneration conditions as well as the influence of flue gas contaminants, a particularly promising MOFs, chromium(III) terephthalate MIL-101(Cr), was selected as the focal point of this study. MIL-101(Cr) is an exceptionally porous material in the MOFs family that harbors active metal sites of unsaturated Cr(III) capable of capturing CO2 by Lewis acid-base interactions between the O of CO2 and Cr(III)1819. It exhibits a CO2 adsorption capacity of approximately 40 mmol/g at 298 K and 5 MPa. MIL-101(Cr) also displays superb hydrothermal stability, especially compared to other MOFs2021. The framework remains chemically and structurally intact even after immersion in boiling water and exposure at elevated temperatures to a number of organic solvents. In spite of the ample studies on the adsorption properties of MIL-101(Cr), including after modifications such as with various amines (tetraethylenepentamine22, pentaethylenehexamine23, polyethyleneimine24, eg.), more research is needed with respect to the nature of CO2 adsorption on MIL-101(Cr) in the realistic operating conditions of contaminant-filled, multi-component gas flows and multiple cycles of regeneration.
+Herein, MIL-101(Cr) was synthesized by the hydrothermal method, and then characterized with various experimental methods including N2 adsorption/desorption isotherms, X-ray diffraction (XRD), Fourier transform infrared (FT-IR) and thermogravimetric analysis (TGA). The effects of adsorption temperature on MIL-101(Cr) were evaluated by analyzing breakthrough curves at different temperatures. A deactivation model was then applied to better understand the breakthrough curves. Next, we detailed the influence of three contaminants (H2O, NO, and SO2) on CO2 adsorption of MIL-101(Cr). Lastly, this study sought to clarify the regeneration conditions under a mixed CO2/N2 flow, in order to further ascertain the suitability of MIL-101(Cr) for CO2 separation and storage.
+
+## Results
+
+## Characteristics of MIL-101(Cr)
+The absorbent structure was analyzed by XRD to verify its identity. The diffraction peak patterns (Supplementary Figure S1) are consistent with the peak locations and relative intensities reported for MIL-101(Cr)2526, suggesting that the synthesized product exhibits the MIL-101(Cr) structure.
+The nitrogen adsorption isotherm and total pore volume of the dehydrated MIL-101(Cr) are shown in Supplementary Figure S2. The specific surface area of MIL-101(Cr), calculated by the BET and the Langmuir methods, is about 3314 and 4842 m2/g, respectively. These values are close to the reported values for MIL-101(Cr)25. The total pore volume of MIL-101(Cr) is estimated to be 1.68 cm3/g at a relative pressure of P/P0 = 0.99. The pore diameter distribution of MIL-101(Cr) confirms two domains of pore sizes (i.e., 18 and 23 Å), which is similar to those estimated from the crystal structure25.
+TGA and DSC were employed to analyze the MIL-101(Cr) sample (Supplementary Figure S3). Exhibited are three distinct weight loss stages. The first stage, in the range from 303 to 423 K, corresponds to the loss of guest water molecules in the large cages (internal diameter of 34 Å)26. The second weight loss step (423–573 K) is also due to the loss of guest water molecules, but in the middle-sized cages (internal diameter of 29 Å)26. The third weight loss stage (>573 K) may result from the elimination of OH/F groups, leading to the decomposition of the frameworks25.
+FT-IR characterization was conducted to detect the identity of the MIL-101(Cr) functional groups and their status after being exposed to contaminant-containing flows. The patterns of FT-IR are shown in Figure 1. For MIL-101(Cr), the band at 1625 cm−1 indicates the presence of adsorbed water. The bands at 1404 cm−1 correspond to the symmetric (O−C−O) vibrations, implying the presence of dicarboxylate within the MIL-101(Cr) framework2728. The other bands between 600 and 1600 cm−1 are attributed to benzene, including the stretching vibration (C = C) at 1508 cm−1 and deformation vibration (C−H) at 1160, 1017, 884, and 750 cm−1. These results confirm that the MIL-101(Cr) framework did not transform after CO2 adsorption under contaminant-containing CO2/N2 flows.
+
+## Adsorption behavior
+
+## Effects of temperature
+The effects of adsorption temperature on MIL-101(Cr) were evaluated by analyzing breakthrough curves at different temperatures, as shown in Figure 2. The breakthrough time was found to decrease with increasing temperature. The adsorption capacity of MIL-101(Cr) at various temperatures is given in Figure 3. The adsorption capacity of MIL-101(Cr) decreases with increasing temperature from 0.495 mmol/g at 298 K to 0.279 mmol/g at 348 K. Capacity decreases sharply from 298 K to 318 K but more gradually from 318 K to 348 K. This adsorption behavior is typical of physical adsorption, which was verified by FT-IR. Note that after CO2 adsorption there were no obvious shifts in the locations of the bands. The discrepancy between the two CO2 capacities for MIL-101(Cr) given in Table 1 can be explained by the lower gas flow rate employed in this work.
+To better understand the effect of temperature on the breakthrough curves, a deactivation model with two rate constants was selected to simulate the experimental data. The application of the deactivation model requires the following basic assumptions: 1) an isothermal absorber; 2) pseudo-steady-state; 3) negligible axial dispersion in the fixed-bed column; and 4) negligible mass-transfer resistances. The initial adsorption rate constant (mL/min·g), parameter a, and the deactivation rate constant (min−1), parameter b, were calculated by equation (1)29. where W is the mass of adsorbent (g), and Q is the gas flow rate (cm3/min). In this model, the effects of the overall factors on the diminishing rate of CO2 capture are reflected in terms of the deactivation rate.
+The increase in the initial adsorption and deactivation rate constants a and b with increasing temperature (Table 2) indicates that the adsorption and desorption processes of MIL-101(Cr) were enhanced. The shift in breakthrough curves toward the left can be contributed to the stronger desorption than adsorption process, where the growth rate of b is greater than that of a. (Supplementary Figure S4).
+
+## Effects of H2O, NO, and SO2
+The importance of testing the impact of humidity lies in ascertaining the stability of the framework structure and retention of adsorption capacity after exposure to water in gas flows. Figure 4(a) depicts the relationship between adsorption capacity and relative humidity (RH). Results show that adsorption capacity increases slightly to 0.509 mmol/g at 10% RH, but decreases from 10% RH to 100% RH. The increased CO2 capacity may be attributed to electrostatic interactions between water bound to Cr3+ sites and the quadrupole moment of CO230. The slightly decreased CO2 capacity above 10% RH is due to the competitive adsorption of water and CO2. Unlike other MOFs such as HKUST-1 that lost about 25% of its adsorption capacity after exposure to a 30% RH gas flow or Mg2(dobdc) that experienced a 84% decrease in capacity, MIL-101(Cr) performed much better in humidified environments1630.
+Besides the gases H2O, CO2, and N2 that constitute 95% or more of typical flue gas, the more minor components like SO2 and NO can play a major role in affecting adsorption processes1. The effect of NO on adsorption capacity is shown in Figure 4(b). Capacity follows a gradually declining trend when the concentration of NO rises from 0 to 2000 ppm. The adsorption stability of MIL-101(Cr) in the presence of SO2 is illustrated in Figure 4(c). Results show that adsorption capacity changes very little when the concentration of SO2 rises from 0 to 2000 ppm. At SO2 concentrations of 0, 200, 500, 1000 and 2000 ppm, MIL-101(Cr) adsorption capacities are 0.495, 0.481, 0.486, 0.478 and 0.49 mmol/g.
+The experimental results for the impact of SO2 and NO on MIL-101 are supported by the results of a simulation study. However, the influence of H2O determined here differs from the conclusion of that study, where the models predicted H2O would completely occupy the coordinatively unsaturated “open metal” sites17. A possible explanation for the relatively small effect of trace contaminants on CO2 adsorption may be as follows. Gas adsorption onto MIL-101(Cr) is a physical adsorption process; thus MIL-101(Cr) lacks the reactive functional groups to chemically adsorb the flue gas contaminants. Secondly, because concentrations of contaminants are always significantly less than that of CO2 in flue gas, trace gases that do adsorb onto the framework will be largely substituted by the much higher-concentrated CO2.
+
+## Desorption of CO2
+The results of the regeneration experiment are shown in Figure 5. For both TSA-N2-stripping and VTSA regeneration methods, desorption efficiency increases with the increasing temperature. Desorption attains 100% efficiency when temperature reaches 328 K for TSA-N2-stripping and 348 K at 20 KPa for VTSA. Full regeneration temperatures of different MOFs are presented in Table 3. The milder desorption temperature, corresponding to the low enthalpy of CO2 adsorption of MIL-101(Cr)16, suggests that the regenerative heat can come from the waste heat of the power plant, thus enhance the economic feasibility of the process.
+
+## Cyclic adsorption/regeneration behavior of MIL-101(Cr)
+Durable cyclic adsorption/regeneration behavior of sorbents is essential for long-term operation. Figure 6 depicts the CO2 adsorption of MIL-101(Cr) during repetitive cycles (5 cycles) in the presence of moisture (RH 10%), SO2 (100 ppm), and NO (100 ppm) at 298 K, with regenerations under flowing N2 at a temperature of 328 K and pressure of 20 KPa at 348 K for 10 min. The cyclical data reveal that the adsorption performance of MIL-101(Cr) is fairly stable, with <5% drop in CO2 adsorption capacity after 5 adsorption/regeneration cycles.
+
+## Discussion
+This study revealed that the CO2 adsorption capacity of MIL-101(Cr) was able to maintain a high level of performance in trace gas-contaminated environments as well as after multiple cycles of adsorption and mild-condition regeneration. The addition of H2O, SO2, and NO to a 10 vol% CO2/N2 feed flow was found to have only a minor effect on adsorption capacity. Furthermore, complete regeneration was observed at 328K after 10 min for TSA-N2-stripping and at 348 K and 20 KPa for VTSA. At the above temperatures and under feed flow conditions of 10 vol% CO2, 100 ppm SO2, 100 ppm NO, and 10% RH, MIL-101(Cr) preserved greater than 95% of its adsorption capacity after 5 cycles of adsorption/desorption. The deactivation model applied to express CO2 uptake fit well with the breakthrough curves under various temperatures. The findings of this study provide evidence for MIL-101(Cr)'s resistance to gaseous contaminants and its viability as an easily-regenerated material in gas adsorption processes.
+
+## Methods
+
+## Adsorbent preparation
+MIL-101(Cr), the highly crystallized green powder of chromium terephthalate, was synthesized according to the method described in the literature25. Briefly, 8.0 g of chromium nitrate nonahydrate (Cr(NO3)3·9H2O, ≥99.0%; Sinopharm Chemical Reagent Co., Ltd.), 3.28 g of terephthalic acid (HOOC-C6H4−COOH, ≥99.0%; Sinopharm Chemical Reagent Co., Ltd.), 250 μL hydrofluoric acid (HF, ≥40.0%; Sinopharm Chemical Reagent Co., Ltd.) and 140 mL of ultrapure water were transferred into a 100 mL Teflon-lined stainless steel autoclave, sealed, heated up to 220°C for 8 h, and then slowly cooled to room temperature. The purification of MIL-101(Cr) was conducted following a previously reported method31. The green suspension of MIL-101(Cr) was filtered by using a stainless steel meshwork (with a diameter of 0.061 mm) to remove the re-crystallized needle-shaped, colorless terephthalic acid, which retained on the meshwork while the MIL-101(Cr) suspension passed through it. The filtrated MIL-101(Cr) suspension was subsequently centrifuged at 8000 rpm (for 15 min to collect the precipitates of MIL-101(Cr)) and 3500 rpm twice (for 10 min to collect the suspension of MIL-101(Cr)). Lastly, the suspension of MIL-101(Cr) was washed several times with ultrapure water and dried at 378 K for 24 h in a hot air oven for the usage of adsorption experiments.
+
+## Characterization of synthesized MIL-101(Cr)
+The surface area and pore volume were measured with a static volume adsorption system (Model-ASAP 2020, Micromeritics Inc., USA) by obtaining the N2 adsorption/desorption isotherms at 77.4 K. Prior to the adsorption measurement, the samples were out-gassed at 473 K for 24 h. The N2 adsorption/desorption data were recorded at the liquid nitrogen temperature (77 K) and then used to determine the surface areas with the Brunuer−Emmett−Teller equation. The pore size distributions were calculated by the Barrett−Joyner−Halenda method. The total pore volume was calculated from the amount of adsorbed N2 at P/P0 = 0.99. Thermogravimetric analysis (TGA) and differential scanning calorimetry (DSC) was carried out with a thermogravimetric analyzer (SDT Q600, TA Instruments, Inc., New Castle, DE) under a dynamic N2 atmosphere from 303 to 873 K with a heating rate of 10 K/min. The crystal phase and the surface functional groups of sorbents were characterized by a powder X-ray diffractometer (XRD, Rigaku D/Max 2550/PC, Rigaku Co., Ltd., Japan) using Cu Kα radiation (40 kV, 30 mA) and by a Fourier transform infrared spectrometer (FT-IR, NICOLET 6700, Thermal Scientific, USA), respectively.
+
+## Adsorption/desorption experiments
+The experiment flowchart is shown in Figure 7. The procedure for the CO2 adsorption experiment, similar to a previously reported method, is given in detail in the Supplementary Information. In this work, the adsorbent MIL-101(Cr) was regenerated using TSA-N2-stripping and VTSA. The mass of the adsorbent measured before adsorption. As the adsorption process reached equilibrium, the mass of the adsorbent was quickly measured and the influent gas valve closed. The adsorption column was then heated to the desired temperature. For steam stripping regeneration, the inlet of the adsorption column was switched to a nitrogen flow of 50 cm3/min. For VTSA regeneration, the outlet of the adsorption column was connected to a vacuum pump system, which can be operated at a given pressure. The mass of adsorbent was measured after 10 min. The adsorbents were completely regenerated when the mass of regenerated adsorbent equaled the mass of the initial sample of pure adsorbent. The total mass loss equals the amount of desorbed CO2.
+
+## Author Contributions
+Y.S., Y.H. and Q.L. designed the project; Q.L. carried out the experiment with help from L.N., S.Z. and M.T.; Q.L. and L.N. wrote the manuscript. All authors discussed the results and commented on the manuscript.
+
+## Supplementary Material
+Supplementary Informationrevised supplementary information
+
+## Supplementary Information
+revised supplementary information
+We would like to thank the Zhejiang Provincial Natural Science Foundation of China (Grant No. LZ12E08002) and the Fundamental Research Funds for the Central Universities for financial support.
+Carbon Dioxide Capture in Metal-Organic Frameworks
+Amine Scrubbing for CO2 Capture
+Metal-Organic Frameworks for Separations
+Porous metal-organic frameworks as platforms for functional applications
+High-connected mesoporous metal-organic framework
+Postsynthetic modification of metal-organic frameworks-a progress report
+Effects of functionalization, catenation, and variation of the metal oxide and organic linking units on the low-pressure hydrogen adsorption properties of metal-organic frameworks
+Control of vertex geometry, structure dimensionality, functionality, and pore metrics in the reticular synthesis of crystalline metal-organic frameworks and polyhedra
+Postsynthetic modification of metal-organic frameworks
+Ultrahigh Porosity in Metal-Organic Frameworks
+Screening of Metal-Organic Frameworks for Carbon Dioxide Capture from Flue Gas Using a Combined Experimental and Modeling Approach
+Can Metal-Organic Framework Materials Play a Useful Role in Large-Scale Carbon Dioxide Separations?
+Photochemical removal of mercury from flue gas
+CO2/H2O Adsorption Equilibrium and Rates on Metal-Organic Frameworks: HKUST-1 and Ni/DOBDC
+Selective CO2 Capture from Flue Gas Using Metal-Organic Frameworks-A Fixed Bed Study
+Effect of Humidity on the Performance of Microporous Coordination Polymers as Adsorbents for CO2 Capture
+Trace Flue Gas Contaminants Poison Coordinatively Unsaturated Metal-Organic Frameworks: Implications for CO2 Adsorption and Separation
+High uptakes of CO2 and CH4 in mesoporous metal-organic frameworks MIL-100 and MIL-101
+Gas Adsorption Properties of the Chromium-Based Metal Organic Framework MIL-101
+Gas adsorption and storage in metal-organic framework MOF-177
+Hydrogen physisorption in metal-organic porous crystals
+Amine-Functionalized Metal Organic Framework as a Highly Selective Adsorbent for CO2 over CO
+Enhancement of CO2 adsorption on nanoporous chromium terephthalate (MIL-101) by amine modification
+Polyethyleneimine Incorporated Metal-Organic Frameworks Adsorbent for Highly Selective CO2 Capture
+A chromium terephthalate-based solid with unusually large pore volumes and surface area
+Porous Chromium Terephthalate MIL-101 with Coordinatively Unsaturated Sites: Surface Functionalization, Encapsulation, Sorption and Catalysis
+Adsorption Equilibrium and Kinetics of CO2 on Chromium Terephthalate MIL-101
+Microwave synthesis of chromium terephthalate MIL-101 and its benzene sorption ability
+Adsorption of Low-Concentration Carbon Dioxide on Amine-Modified Carbon Nanotubes at Ambient Temperature
+Enhanced CO2 Adsorption in Metal-Organic Frameworks via Occupation of Open-Metal Sites by Coordinated Water Molecules
+Adsorption of volatile organic compounds by metal-organic frameworks MIL-101: Influence of molecular size and shape
+Comparative study of CO2 capture by carbon nanotubes, activated carbons, and zeolites
+Adsorption of carbon dioxide, methane and nitrogen: pure and binary mixture adsorption for ZSM-5 with SiO2/Al2O3 ratio of 280
+Sorption of carbon dioxide, methane, nitrogen and carbon monoxide on MIL-101(Cr): Volumetric measurements and dynamic adsorption studies
+Highly efficient separation of carbon dioxide by a metal-organic framework replete with open metal sites
+An Amine-Functionalized MIL-53 Metal-Organic Framework with Large Separation Power for CO2 and CH4
+CO2 adsorption and catalytic application of Co-MOF-74 synthesized by microwave heating
+Capture of Carbon Dioxide from Air and Flue Gas in the Alkylamine-Appended Metal-Organic Framework mmen-Mg-2(dobpdc)
+CO2 capture and conversion using Mg-MOF-74 prepared by a sonochemical method
+FT-IR spectra of MIL-101(Cr) before and after gas adsorption.From bottom to top: MIL-101(Cr), MIL-101(Cr)-CO2, MIL-101(Cr)-H2O, MIL-101(Cr)-NO, and MIL-101(Cr)-SO2.
+
+## FT-IR spectra of MIL-101(Cr) before and after gas adsorption.
+From bottom to top: MIL-101(Cr), MIL-101(Cr)-CO2, MIL-101(Cr)-H2O, MIL-101(Cr)-NO, and MIL-101(Cr)-SO2.
+Breakthrough curves of 10 vol% CO2 adsorption on MIL-101(Cr) at different temperatures.
+
+## Breakthrough curves of 10 vol% CO2 adsorption on MIL-101(Cr) at different temperatures.
+The adsorption capacity of MIL-101(Cr) at various temperatures.
+
+## The adsorption capacity of MIL-101(Cr) at various temperatures.
+Effects of (a) moisture, (b) NO, and (c) SO2 on 10 vol% CO2 adsorption on MIL-101(Cr) at 298 K.
+
+## Effects of (a) moisture, (b) NO, and (c) SO2 on 10 vol% CO2 adsorption on MIL-101(Cr) at 298 K.
+Results of the regeneration experiment.(a) TSA-N2-stripping regeneration, a nitrogen flow of 50 cm3/min for 10 min. (b) VTSA regeneration, a pressure of 20 KPa for 10 min.
+
+## Results of the regeneration experiment.
+(a) TSA-N2-stripping regeneration, a nitrogen flow of 50 cm3/min for 10 min. (b) VTSA regeneration, a pressure of 20 KPa for 10 min.
+Cycling adsorption/regeneration runs of MIL-101(Cr) (adsorption at 298 K; CO2, 10 vol%; SO2, 100 ppm; NO, 100 ppm; RH, 10%; gas flow rate, 50 cm3/min; (a) regeneration at 328 K; N2 flow rate, 50 cm3/min; (b) regeneration at 348 K; pressure at 20 KPa).
+
+## Cycling adsorption/regeneration runs of MIL-101(Cr) (adsorption at 298 K; CO2, 10 vol%; SO2, 100 ppm; NO, 100 ppm; RH, 10%; gas flow rate, 50 cm3/min; (a) regeneration at 328 K; N2 flow rate, 50 cm3/min; (b) regeneration at 348 K; pressure at 20 KPa).
+Schematic for the experimental system.1) Nitrogen; 2) Carbon dioxide; 3) Sulfur dioxide; 4) Nitric oxide; 5) Mass flow meters; 6) Mixing tank; 7) Saturator; 8) Adsorber; 9) Tubular furnace; 10) Temperature controller; 11) Gas chromatograph; 12) Data recording system; 13) Vacuum pump.
+
+## Schematic for the experimental system.
+1) Nitrogen; 2) Carbon dioxide; 3) Sulfur dioxide; 4) Nitric oxide; 5) Mass flow meters; 6) Mixing tank; 7) Saturator; 8) Adsorber; 9) Tubular furnace; 10) Temperature controller; 11) Gas chromatograph; 12) Data recording system; 13) Vacuum pump.
+Dynamic CO2 Adsorption Capacity of Sorbents at 0.1 atm
+
+## Dynamic CO2 Adsorption Capacity of Sorbents at 0.1 atm
+Sorbent
+Temperature, T (K)
+Capacity (mmol/g)
+Ref
+AC
+298
+0.57
+32
+ZSM-5
+313
+0.32
+33
+MIL-101(Cr)
+303
+0.31
+34
+MIL-101(Cr)
+298
+0.49
+This work
+Parameters of the Deactivation Model for CO2 Adsorption on MIL-101(Cr) at Different Temperatures
+
+## Parameters of the Deactivation Model for CO2 Adsorption on MIL-101(Cr) at Different Temperatures
+Temperature (K)
+a (mL/min·g)
+b (min−1)
+R2
+298
+48.2425
+0.5361
+0.9974
+318
+48.5590
+0.7777
+0.9976
+338
+52.1053
+0.9834
+0.9948
+The Full Regeneration Temperature of Purge Flow with Different MOFs
+
+## The Full Regeneration Temperature of Purge Flow with Different MOFs
+Material
+Full regeneration temperature of purge flow (K)
+Ref
+Mg-MOF-74
+353
+35
+Amino-MIL-53
+432
+36
+Co-MOF-74
+373
+37
+mmen-2
+393
+38
+Mg-MOF-74(S)
+323
+39
+MIL-101(Cr)
+328
+This work

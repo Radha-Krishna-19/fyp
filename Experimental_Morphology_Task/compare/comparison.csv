@@ -1,0 +1,19 @@
+mof,method,predicted,largest_face,largest_face_fraction,experiment,experiment_face,name_match,facet_match,benchmark_records
+MOF-5,BFDH (Phase 1),truncated octahedron,{111},0.776,cube,{100},False,False,MOF-5-suresh2021-1 MOF-5-suresh2021-2 MOF-5-suresh2021-3 MOF-5-suresh2021-4 MOF-5-suresh2022-1 MOF-5-mulyati2015-1 MOF-5-mulyati2015-2 MOF-5-mulyati2015-3
+MOF-5,"Graph attachment rule (Phase 1), largest beta",cube,{100},1.0,cube,{100},True,True,MOF-5-suresh2021-1 MOF-5-suresh2021-2 MOF-5-suresh2021-3 MOF-5-suresh2021-4 MOF-5-suresh2022-1 MOF-5-mulyati2015-1 MOF-5-mulyati2015-2 MOF-5-mulyati2015-3
+MOF-5,Attachment-energy Wulff (Phase 3),truncated cube,{100},0.952,cube,{100},False,True,MOF-5-suresh2021-1 MOF-5-suresh2021-2 MOF-5-suresh2021-3 MOF-5-suresh2021-4 MOF-5-suresh2022-1 MOF-5-mulyati2015-1 MOF-5-mulyati2015-2 MOF-5-mulyati2015-3
+MOF-5,Broken-bond Wulff (Phase 3),cube,{100},1.0,cube,{100},True,True,MOF-5-suresh2021-1 MOF-5-suresh2021-2 MOF-5-suresh2021-3 MOF-5-suresh2021-4 MOF-5-suresh2022-1 MOF-5-mulyati2015-1 MOF-5-mulyati2015-2 MOF-5-mulyati2015-3
+MOF-5,UFF surface-energy Wulff (Phase 4),cube,{100},1.0,cube,{100},True,True,MOF-5-suresh2021-1 MOF-5-suresh2021-2 MOF-5-suresh2021-3 MOF-5-suresh2021-4 MOF-5-suresh2022-1 MOF-5-mulyati2015-1 MOF-5-mulyati2015-2 MOF-5-mulyati2015-3
+HKUST-1,BFDH (Phase 1),truncated octahedron,{111},0.776,octahedron,{111},False,True,HKUST-1-ediati2019-1 HKUST-1-rubio2014-1 HKUST-1-rubio2014-2 HKUST-1-rubio2014-3
+HKUST-1,Attachment-energy Wulff (Phase 3),truncated octahedron,{111},0.901,octahedron,{111},False,True,HKUST-1-ediati2019-1 HKUST-1-rubio2014-1 HKUST-1-rubio2014-2 HKUST-1-rubio2014-3
+HKUST-1,Broken-bond Wulff (Phase 3),truncated octahedron,{111},0.776,octahedron,{111},False,True,HKUST-1-ediati2019-1 HKUST-1-rubio2014-1 HKUST-1-rubio2014-2 HKUST-1-rubio2014-3
+HKUST-1,UFF surface-energy Wulff (Phase 4),truncated octahedron,{111},0.766,octahedron,{111},False,True,HKUST-1-ediati2019-1 HKUST-1-rubio2014-1 HKUST-1-rubio2014-2 HKUST-1-rubio2014-3
+UiO-66,BFDH (Phase 1),truncated octahedron,{111},0.776,cube,{100},False,False,UiO-66-cao2018-1 UiO-66-rahmawati2014-1
+UiO-66,"Graph attachment rule (Phase 1), largest beta",octahedron,{111},1.0,cube,{100},False,False,UiO-66-cao2018-1 UiO-66-rahmawati2014-1
+UiO-66,Attachment-energy Wulff (Phase 3),truncated octahedron,{111},0.902,cube,{100},False,False,UiO-66-cao2018-1 UiO-66-rahmawati2014-1
+UiO-66,Broken-bond Wulff (Phase 3),truncated octahedron,{111},0.776,cube,{100},False,False,UiO-66-cao2018-1 UiO-66-rahmawati2014-1
+UiO-66,UFF surface-energy Wulff (Phase 4),octahedron,{111},1.0,cube,{100},False,False,UiO-66-cao2018-1 UiO-66-rahmawati2014-1
+ZIF-8,BFDH (Phase 1),rhombic dodecahedron,{110},1.0,rhombic_dodecahedron,{110},True,True,ZIF-8-zhang2018-4 ZIF-8-zhang2018-5 ZIF-8-tezerjani2021-1 ZIF-8-tezerjani2021-2 ZIF-8-tezerjani2021-4 ZIF-8-tezerjani2021-5 ZIF-8-tezerjani2021-7 ZIF-8-tezerjani2021-8 ZIF-8-cravillon2012-4
+ZIF-8,Attachment-energy Wulff (Phase 3),rhombic dodecahedron,{110},1.0,rhombic_dodecahedron,{110},True,True,ZIF-8-zhang2018-4 ZIF-8-zhang2018-5 ZIF-8-tezerjani2021-1 ZIF-8-tezerjani2021-2 ZIF-8-tezerjani2021-4 ZIF-8-tezerjani2021-5 ZIF-8-tezerjani2021-7 ZIF-8-tezerjani2021-8 ZIF-8-cravillon2012-4
+ZIF-8,Broken-bond Wulff (Phase 3),rhombic dodecahedron,{110},1.0,rhombic_dodecahedron,{110},True,True,ZIF-8-zhang2018-4 ZIF-8-zhang2018-5 ZIF-8-tezerjani2021-1 ZIF-8-tezerjani2021-2 ZIF-8-tezerjani2021-4 ZIF-8-tezerjani2021-5 ZIF-8-tezerjani2021-7 ZIF-8-tezerjani2021-8 ZIF-8-cravillon2012-4
+ZIF-8,UFF surface-energy Wulff (Phase 4),rhombic dodecahedron,{110},0.995,rhombic_dodecahedron,{110},True,True,ZIF-8-zhang2018-4 ZIF-8-zhang2018-5 ZIF-8-tezerjani2021-1 ZIF-8-tezerjani2021-2 ZIF-8-tezerjani2021-4 ZIF-8-tezerjani2021-5 ZIF-8-tezerjani2021-7 ZIF-8-tezerjani2021-8 ZIF-8-cravillon2012-4

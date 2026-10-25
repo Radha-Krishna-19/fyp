@@ -1,0 +1,214 @@
+Enhancing CO2 Capture Via Fast Microwave-Assisted Synthesis of the CALF-20 Metal–Organic Framework
+Metal–organic frameworks (MOFs) are promising porous materials for CO2 adsorption due to their high surface area, tunable properties, and selective adsorption capabilities. The recently reported Calgary Framework 20 (CALF-20) MOF has very appealing CO2 capture properties: high uptake capacity; low regeneration energy; durability (>450 000 cycles) under steam and wet acid gases; simple and scalable synthesis. This study investigates the microwave (MW)-assisted synthesis of CALF-20, which reduces reaction time 12-fold while enhancing the synthesis yield to 97%. Structural analysis confirmed that MW-synthesized CALF-20 retains its crystallographic structure and shows improved CO2 capture performance, exhibiting higher adsorption capacity (∼20% higher), selectivity, and lower regeneration energy. This method provides a rapid and efficient alternative for producing the CALF-20 adsorbent for CO2 capture and separation applications.
+This study demonstrates a microwave-assisted synthesis of the CALF-20 MOF, achieving a 12-fold reduction in reaction time and 97% synthesis yield. The MW-synthesized CALF-20 exhibits ∼20% higher CO2 adsorption capacity, enhanced selectivity, and lower regeneration energy, marking a significant advancement in the efficient production methods for this high-performance CO2 sorbent.
+
+## Introduction
+The escalating concerns surrounding global CO2 emissions and their impact on climate change have intensified research into effective CO2 capture technologies.1 Flue gas contains a low CO2 concentration, predominantly diluted in N2, along with H2O and other acid gases.1−3 The low CO2 content poses a unique challenge for selective CO2 capture.2,3 The disadvantages of liquid amine scrubbing4−6 are significantly mitigated using solid sorbents due to their lower energy regeneration and convenient operational requirements.2,7 Solid CO2 adsorbents can bind CO2 via chemisorption, physisorption, or a combination thereof, allowing for the tuning of CO2 adsorption capacity and kinetics.2,3,8,9 While chemisorption-based materials often exhibit higher uptake capacity and selectivity for CO2, this advantage frequently comes at the cost of increased regeneration energy.2,3
+CALF-20 (Figure 1), a metal–organic framework (MOF), is attracting significant attention due to its favorable properties for industrial postcombustion CO2 capture.10−13 Unlike most MOFs, which are hindered by complex synthesis, low yields (synthesis/precursors), and poor water stability, CALF-20 has a simple and scalable synthesis process, with its production already at TRL-9. CALF-20 demonstrates high CO2 capacity and selectivity, low regeneration energy requirements, and excellent stability under industrially relevant conditions (steam, wet acid gases, and direct flue gas from natural gas combustion).10 CALF-20 industrial carbon capture has been successfully demonstrated at Lafarge Holcim’s Richmond Cement Plant (1 tonne per day). This set of unique properties makes CALF-20 capable of achieving high CO2 purity and recovery,12 rendering this MOF highly promising for large-scale CO2 capture applications.
+Crystallographic structure of CALF-20: (a) zinc triazolate layers oriented along the bc-plane and (b) interconnected by bis-bidentate oxalate anions in the c-axis, forming a 3D lattice with a pore size of ∼5 Å.
+Crystallographic structure of CALF-20: (a) zinc triazolate layers oriented along the bc-plane and (b) interconnected by bis-bidentate oxalate anions in the c-axis, forming a 3D lattice with a pore size of ∼5 Å.
+The synthesis of MOFs can be performed using various techniques, with the solvothermal method being the conventional approach.14−16 Typically, in solvothermal synthesis, the precursors are dissolved in a solvent and heated inside an autoclave, resulting in high-quality, crystalline materials. Nevertheless, this method requires long reaction times, ranging from several hours to days and elevated temperatures.16 Alternative synthesis routes have been developed, including ionothermal, sonochemical, electrochemical, and mechanochemical techniques among others.14,17 Of these, microwave (MW)-assisted synthesis has emerged as a particularly effective technique due to its ability to deliver rapid and homogeneous heating through microwave irradiation.14,18 Unlike conventional solvothermal synthesis, which relies on slow conductive heat transfer, MW irradiation generates heat within the reaction medium itself, resulting in more uniform temperature distribution, accelerated reaction kinetics, and reduced thermal gradients, leading to shorter synthesis times, higher yields, and control over particle size and morphology.14,17 MW-assisted synthesis also typically yields materials with higher surface areas, improved porosity, and more uniform crystallinity compared to solvothermal methods.14,17 Additionally, MW-assisted synthesis significantly reduces reaction times and energy consumption, enhancing the sustainability of the process.18,19
+The optimization of CALF-20 synthesis can enable faster and more cost-effective production, improved performance, or a combination of these benefits. Given the advanced TRL of this material and its relevance in the mitigation of CO2 emissions, improving the production methods of CALF-20 could pave the way for its widespread industrial application.
+In this study, we report the synthesis of CALF-20 using a MW-assisted method, reducing the synthesis time by 92% compared to solvothermal methods, while enhancing the reaction yield from ∼70% (solvothermal synthesis) to 97% (MW-assisted synthesis). Structural analyses via X-ray diffraction (XRD), thermal gravimetric analysis (TGA), and solid-state NMR (SSNMR) confirmed that the sorbent has the same crystalline structure as the conventionally synthesized counterpart, with similar stability and thermal properties. Moreover, surface area and gas adsorption measurements demonstrated that the MW sorbent exhibits enhanced CO2 uptake and higher CO2/N2 selectivity. This work highlights the potential of the MW-assisted synthesis for the efficient production of CALF-20.
+
+## Experimental Section
+
+## Synthesis of CALF-20 by Solvothermal Methodology (CALF-20-SOL)
+CALF-20 was prepared following a modified version of the solvothermal synthesis reported previously.10,12,20−22 Briefly, 2.64 g of zinc oxalate, 2.00 g of 1,2,4-triazole, and 26.40 mL of methanol were added into a 50 mL Teflon reactor. The reactor was heated in a convection oven at 180 °C for 48 h. The product, CALF-20-SOL, was filtered and washed with methanol. The powder was then dried in a convection oven at 80 °C for 24 h.
+
+## Synthesis of CALF-20 by MW-Assisted Methodology (CALF-20-MW)
+Microwave-assisted synthesis of CALF-20 was achieved by following a similar rationale used for solvothermal synthesis. In short, 0.264 g of zinc oxalate, 0.200 g of 1,2,4-triazole, and 2.65 mL of methanol were added into a 35 mL MW reactor. The reactor was kept at 180 °C for distinct dwell times (1, 2, 3, 4, and 5 h). The product, CALF-20-MW-TX (X is the reaction time, in hours), was filtered and abundantly washed with methanol. The powder was then dried in a convection oven at 80 °C for 24 h.
+
+## Characterization
+Fourier transform infrared spectroscopy (FTIR) was carried out with an FTIR 27 instrument with a Golden Gate ATR (Attenuated Total Reflectance). The FTIR spectra were recorded in absorbance mode for 256 scans.
+Powder X-ray diffraction (PXRD) was carried out using a Panalytical empyrean diffractometer using Cu–Kα radiation. The samples were scanned in 0.02° 2θ steps with a count time of 96 s per step.
+Thermogravimetric analysis (TGA) was carried out on a Hitachi STA300 instrument with a program rate of 5.0 °C/min in O2 (sample amount between 3 and 5 mg). The O2 gas flow was set at 50 mL/min. Dynamic TGA adsorption of CO2 was performed on a Mettler Toledo TGA/DSC 3+ instrument with a program rate of 2.0 °C/min in a pure atmosphere of CO2 (flow of 20 mL/min).
+Volumetric gas adsorption was performed in a Microtrac Belsorp MAX II HP, used to record adsorption–desorption isotherms of N2 (−196 and 25 °C), CO2 (0, 10, 25 °C), and H2O (25 °C). Prior to the experiment, the samples were degassed under vacuum at 150 °C for 12 h using a 5 °C/min ramp. The BET surface area (sBET) and the pore size distributions of the samples were calculated using the N2 adsorption–desorption isotherms. The sBET values were calculated using the BETSI package,23 while pore sizes were determined using an NLDFT metal-oxide kernel for cylindrical pores.
+13C solid-state NMR (SSNMR) spectra were acquired on a Bruker Avance III 700 spectrometer operating at a field strength of 16.4 T, with a Larmor frequency of 176.048 MHz, respectively. All experiments were performed on a double-resonance 4 mm Bruker magic-angle-spinning (MAS) probe at a spinning frequency between 2 and 12 kHz at room temperature. Samples were packed into ZrO2 rotors with Kel-F caps. 1H chemical shifts are given in parts per million and referenced from adamantane (secondary reference at 1.85 ppm). 13C chemical shifts are given in ppm and referenced from α-glycine (secondary reference, C=O at 176.50 ppm). The 13C cross-polarization (CP) MAS spectra were acquired under the following experimental conditions: 1H 90° pulse set to 3.0 μs corresponding to a radio frequency of ∼83.33 kHz; the CP step was performed with a contact time of 8000 μs using a 50–100% RAMP shape in the 1H channel and using a 30–50 kHz square shape pulse on the 13C channel; Recycle delay was set to 5–10 s. During acquisition, a SPINAL-64 decoupling24 scheme was employed using a pulse length for the basic decoupling units of 5.5 μs at rf field strength of 83.33 kHz.
+Prior to the NMR measurements, the CALF-20 samples were activated (150 °C for 12 h, with a temperature ramp of 5 °C/min) and incubated with He inside a custom-made sorption apparatus.8,9,25
+
+## Results and Discussion
+
+## Microwave-Assisted Synthesis of CALF-20
+In this work, we employ MW-assisted synthesis to produce CALF-20 MOF and evaluate its performance for CO2 capture in postcombustion applications. This synthetic methodology has been extensively compared with the conventional solvothermal method reported in the literature.
+The duration of the MW-assisted synthesis was varied between 1 and 5 h, in increments of 1 h (CALF-20-MW-TX, where X is the reaction time in hours). All MW samples achieved synthesis yields exceeding 90% (Table 1), which represents a significant improvement (∼30–40%) compared to the yield of ∼70% obtained via solvothermal synthesis (Table 1).10 The pressure inside the MW reactor (Figure S1) was recorded at 250 ± 10 psi (∼17.2 ± 0.7 bar) at the start of the synthesis and gradually decreased over time, reaching a minimum of 220 psi for the longest reaction time (CALF-20-MW-T5). The temperature was maintained at a constant 180 °C across all samples, with an initial MW power burst of 150 W used to reach this temperature, followed by a sustained MW power of 50–100 W to keep the temperature constant during the synthesis.
+Overview of Synthesis Conditions and Reaction Yields for CALF-20 using Solvothermal (SOL) and MW-Assisted Methodsa
+
+## Overview of Synthesis Conditions and Reaction Yields for CALF-20 using Solvothermal (SOL) and MW-Assisted Methodsa
+sample
+heating method
+temperature (°C)
+synthesis duration (h)
+CALF-20 yield (%)
+CALF-20-SOL
+convection
+180
+48
+69.42
+CALF-20-MW-T1
+MW irradiation
+1
+91.91
+CALF-20-MW-T2
+2
+98.39
+CALF-20-MW-T3
+3
+99.89
+CALF-20-MW-T4
+4
+97.26
+CALF-20-MW-T5
+5
+91.17
+Five different samples were synthesized by the MW-assisted method at dwell times of 1, 2, 3, 4, and 5 h.
+To determine if the product formed by MW-assisted synthesis was the CALF-20 MOF, the samples were analyzed using TGA, FTIR, PXRD, and SSNMR. The MW-assisted synthesized samples were evaluated against CALF-20-SOL (synthesized by conventional solvothermal method) for comparative analysis.
+All samples show a similar TGA thermal decomposition profile, albeit some differences can be observed in the 400 and 600 °C region (Figure 2a). The first weight loss, observed between 50 and 60 °C, is attributed to the desorption of adsorbed gases and moisture. The second weight loss, around 370 °C, is attributed to the depolymerization of the CALF-20 framework and decomposition of 1,2,4-triazole and zinc oxalate precursors. Notably, the samples CALF-20-MW-T1 to T3 show an additional degradation zone around 410 °C (Figure 2a,c), which is not observed in CALF-20-SOL, CALF-20-MW-T4, and CALF-20-MW-T5. This additional weight loss is linked to the unreacted precursor zinc oxalate (Figure S2). The final weight losses at 590 °C (for CALF-20-MW-T1, -T2, and -T3) and 650 °C (CALF-20-SOL and CALF-20-MW-T4 and -T5) correspond to the total decomposition and collapse of the structure. Following TGA thermal decomposition, approximately 40 wt % of the sample remains, corresponding to inorganic zinc salts. In summary, CALF-20-MW-T4 and CALF-20-MW-T5 show the same thermal decomposition profile as that obtained for CALF-20-SOL.
+Characterization of CALF-20 samples: (a) TGA, (b) FTIR, (c) DTG, and (d) PXRD data sets were collected for the solvothermal (CALF-20-SOL) and MW-assisted samples (CALF-20-MW-TX, where X is the reaction time in hours).
+Characterization of CALF-20 samples: (a) TGA, (b) FTIR, (c) DTG, and (d) PXRD data sets were collected for the solvothermal (CALF-20-SOL) and MW-assisted samples (CALF-20-MW-TX, where X is the reaction time in hours).
+FTIR spectroscopy was utilized to further elucidate the structural features of the products obtained from the MW-assisted synthesis (Figure 2b). Given the large variation in the nature of chemical bonds formed in MOFs, the precise identification of the IR bands is challenging. The spectral region of 1350–1540 cm–1 corresponds to the stretching (ν) of the entire azolate ring.26 The bands within the 870–1340 cm–1 range are attributed to in-plane bending (δ) of the ring, while those below 820 cm–1 correspond to out-of-plane bending (δ).26 The band centered at 1658 cm–1 observed in CALF-20 is associated with C=O bond stretching (ν) in the oxalate linker.26 Although FTIR provides insights into the chemical bonds and functional groups present, all CALF-20 samples analyzed exhibit similar spectra (Figure 2b). This suggests the presence of identical bond types and functional groups across the samples; however, definitive conclusions about the molecular structure and potential polymorphism of the framework cannot be drawn unambiguously from this data set alone.
+Figure 2d shows the experimental PXRD diffractograms for all CALF-20 samples. The diffractogram of CALF-20-SOL depicts the same peaks as previously reported.10,22,26 The diffractograms show major differences for the samples CALF-20-MW-T1 to -T3, when compared to its solvothermal counterpart (Figure 2d and S3). CALF-20-MW-T1 shows additional diffraction peaks around ∼6.7°, 15.5°, and 16.8° (Figure 2d and S3) that gradually shift and change intensity (CALF-20-MW-T2 and -T3) until they completely disappear from the diffractogram (CALF-20-MW-T4 and -T5). The MW samples obtained after 4 h (CALF-20-MW-T4) and 5 h (CALF-20-MW-T5) of reaction present the same diffraction pattern as the one observed in CALF-20-SOL (Figure 2d and S3), showing that a pure CALF-20 framework has been formed. This trend agrees with the TGA (Figure 2a) and DTG curves (Figure 2c).
+SSNMR spectroscopy confirmed the structure and purity of all samples. While PXRD is sensitive to long-range order, SSNMR is a site-selective technique capable of probing the local structure and dynamics. All samples were degassed (vacuum and temperature, see Experimental Section for details) in a custom-made vacuum line (incubated with He gas) attached to the SSNMR glass cell containing the sample holder, which has been sealed under controlled pressure and temperature conditions prior to NMR measurements. The 13C CPMAS spectra (Figure 3) of all samples, produced by solvothermal and MW-assisted methods, exhibit two resonances at ∼152 and ∼151 ppm assigned to the triazole moieties, while the signal at ∼168 ppm is assigned to the oxalate groups. Consistent with the trend observed in PXRD and TGA for the samples CALF-20-MW-TX (X = 1–3), the intensity of the broad signals observed at ∼149.8 and 165.9 ppm in CALF-20-MW-T1 steadily decreased over reaction duration and vanish in CALF-20-MW-T4 and -T5. These peaks are likely due to the existence of an intermediate structure during the formation of CALF-20.
+13C CPMAS NMR spectra of CALF-20 samples synthesized by solvothermal and MW-assisted methods. The spectra were recorded at a field strength of 16.4 T and an MAS rate of 10.0 kHz.
+13C CPMAS NMR spectra of CALF-20 samples synthesized by solvothermal and MW-assisted methods. The spectra were recorded at a field strength of 16.4 T and an MAS rate of 10.0 kHz.
+In summary, the data set acquired using TGA, FTIR, PXRD, and SSNMR techniques provides a solid indication of the formation of CALF-20 using MW irradiation. CALF-20 framework starts to form within 1 h of reaction but requires at least 4 h of MW radiation for complete formation, under the tested synthesis conditions. Additionally, the MW-assisted synthesis achieves a 12-fold reduction in time compared to conventional solvothermal methods, with yield improvements exceeding 30%.
+
+## Adsorption Studies of CALF-20
+Volumetric gas adsorption was performed to investigate the textural properties of the CALF-20 sorbents. N2, CO2, and H2O isotherms were measured at various temperatures to assess the pore structure, surface area, and the material’s performance toward CO2 separation.
+All materials exhibit a type-I adsorption isotherm, characteristic of microporosity (Figure 4e). CALF-20-SOL exhibited an sBET of 536 m2/g and a pore size of ∼4 Å (Table 2), consistent with previously reported values for this material.10,22,27 The sBET of the samples synthesized using MW-assisted synthesis increased proportionally with reaction time, reaching a maximum sBET (548 m2/g) after a reaction time of 4 h. Pore volume followed a similar trend, while smaller pores steadily formed with longer reaction times (Table 2 and Figure S4). CALF-20-MW-T4 exhibits textural properties very similar to those of CALF-20-SOL. These findings suggest a gradual transformation of the initial phase (CALF-20-MW-T1) toward the final phase, i.e., the CALF-20 framework, forming between -T4 and -T5 hours, in good agreement with the results presented in the previous section. .
+Volumetric gas adsorption on CALF-20 sorbents: (a,b) CO2 isotherms performed at 273 and 298 K, respectively. (c,d) Low pressure (L.P.) region of CO2 isotherms performed at 273 and 298 K, respectively. (e) N2 isotherm performed at 77 K. (f) H2O isotherm performed at 298 K. Adsorption and desorption data points are shown as colored and white scatter points, respectively.
+Volumetric gas adsorption on CALF-20 sorbents: (a,b) CO2 isotherms performed at 273 and 298 K, respectively. (c,d) Low pressure (L.P.) region of CO2 isotherms performed at 273 and 298 K, respectively. (e) N2 isotherm performed at 77 K. (f) H2O isotherm performed at 298 K. Adsorption and desorption data points are shown as colored and white scatter points, respectively.
+CALF-20 Sorbent Textural and CO2 Adsorption Related Properties
+
+## CALF-20 Sorbent Textural and CO2 Adsorption Related Properties
+sample
+SBET (m2/g)
+Vpore (cm3/g)
+Dpore (nm)
+CO2 uptake (mmol/g)a
+Selectivity (CO2/N2)b
+Qst (kJ/mol)c
+273 K
+298 K
+1 bar
+5 bar
+CALF-20-SOL
+536.06
+0.6444
+0.4316
+4.65
+3.38
+209
+277
+39.09
+CALF-20-MW-T1
+335.67
+0.4061
+0.4276
+3.06
+2.38
+CALF-20-MW-T2
+404.58
+0.4944
+0.4316
+3.54
+2.93
+CALF-20-MW-T3
+482.33
+0.6063
+0.4636
+4.24
+3.43
+CALF-20-MW-T4
+548.80
+0.6523
+0.4316
+4.89
+4.02
+242
+370
+37.37
+CALF-20-MW-T5
+525.19
+0.6346
+0.4316
+4.82
+3.82
+203
+323
+38.45
+Determined by volumetric adsorption at 100 kPa.
+Selectivity calculated by ideal adsorbed solution theory (IAST) for a 15/85 CO2/N2 gas mixture at 298 K
+Zero loading CO2 heat of adsorption; – data not acquired.
+The CO2 adsorption capacity of the CALF-20 sorbents was measured at 273 K (Figure 4a,c) and 298 K (Figure 4b,d) using volumetric gas adsorption measurements. The adsorption behavior followed a trend consistent with the sBET values, with CO2 uptake increasing proportionally with reaction time and reaching a maximum for the sample synthesized at 4 h. Notably, both CALF-20-MW-T4 and CALF-20-MW-T5 show higher CO2 uptake compared to CALF-20-SOL, with improved performance even at low CO2 pressures (Figure 4c,d). To evaluate CO2 affinity toward the surface of CALF-20 materials, Henry’s constant (KH) and virial coefficients (C1 and C2) were derived from the CO2 isotherms (Table S1). KH values suggest that CALF-20-MW-T5 and CALF-20-MW-T4 have a slightly stronger CO2 affinity than CALF-20-SOL, though all samples display comparable values within experimental error. These results align with the expected similar surface chemistry features of this series of adsorbents. Consequently, the differences in the CO2 adsorption capacity between solvothermal and MW-assisted samples are primarily attributed to variations in void space and pore size rather than surface chemistry.
+The H2O adsorption capacity of the top performing samples (CALF-20-SOL, CALF-20-MW-T4, and CALF-20-MW-T5) was measured at 298 K (Figure 4f) by using volumetric gas adsorption measurements. All samples show a similar adsorption trend, with CALF-20-MW-T4 and CALF-20-MW-T5 showing slightly higher loading capacities at higher relative humidities, attributed to their higher void space. At low relative humidities (<25%), all materials display comparable adsorption capacities (Figure S5), which aligns with typical relative humidity levels in flue gas from postcombustion plants employing predrying before CO2 separation.
+Given the improved CO2 adsorption of the CALF-20-MW samples, N2 isotherms at 298 K (Figure S6) were recorded to determine the CO2/N2 selectivity. Table 2 presents the CO2/N2 selectivity, calculated via ideal adsorbed solution theory (IAST) for a 15/85 CO2/N2 gas mixture at 298 K and pressures of 1 and 5 bar. The MW-assisted samples exhibit higher selectivity for CO2 than CALF-20-SOL, with the difference becoming more pronounced at higher pressures (Figure 5a). Additionally, the heat of adsorption (Qst) for the top three samples (CALF-20-SOL, CALF-20-MW-T4, and CALF-20-MW-T5) was determined (Figure 5b) using the Clausius–Clapeyron method.28 The zero-loading Qst for CALF-20-SOL is consistent with previously reported values.10 It is worth mentioning that CALF-20-MW-T4 and CALF-20-MW-T5 exhibit slightly lower Qst, likely reflecting the effects of higher void space and pore volume observed for the mentioned samples. The CO2 uptake, CO2/N2 selectivity, and Qst values of CALF-20 are comparable to other MOFs reported elsewhere.29−33
+CO2 selectivity and adsorption energy: (a) Selectivity determined using ideal adsorbed solution theory (IAST) for a 15/85 CO2/N2 gas mixture at 298 K. (b) CO2 isosteric heat of adsorption (Qst) for the best-performing samples, determined from CO2 isotherms performed at 273, 283, and 298 K.
+CO2 selectivity and adsorption energy: (a) Selectivity determined using ideal adsorbed solution theory (IAST) for a 15/85 CO2/N2 gas mixture at 298 K. (b) CO2 isosteric heat of adsorption (Qst) for the best-performing samples, determined from CO2 isotherms performed at 273, 283, and 298 K.
+The dynamic CO2 adsorption performance of the best-performing samples was evaluated using the TGA adsorption of pure CO2. All samples exhibit approximately 40% lower CO2 uptake compared to single-component CO2 sorption isotherms, likely due to competitive N2 adsorption (used as protective gas) and the sample packing in the crucible. Nevertheless, the sorption trend remains consistent, with CALF-20-MW-T4 ∼ T5 adsorbing approximately 20% more CO2 than CALF-20-SOL. Notably, CALF-20-SOL displays slightly faster adsorption kinetics, reaching saturation within 1 min, whereas the MW-synthesized samples take approximately 2 min (Figure 6a). Despite this, all samples achieve saturation within 5 min, making them suitable for rapid adsorption–desorption cycles on a large scale. Temperature sweep experiments (298–363.15 K) under isobaric conditions confirm the sorption stability and recyclability of CALF-20 samples (Figure 6b). As expected, higher temperatures reduce the amount of adsorbed CO2, with the adsorption capacity fully restored upon cooling. Moreover, switching the carrier gas from CO2 to N2 (denoted by an arrow) effectively desorbs nearly all of the CO2 within 25 min at 298 K, demonstrating that the MW-synthesized samples retain the fast desorption rate characteristic of CALF-20.
+Dynamic TGA adsorption: (a) CO2 adsorption of the best-performing samples (CALF-20-SOL, CALF-20-MW-T4, and CALF-20-MW-T5) at ∼298 K, 1 bar. (b) Continuous adsorption of CO2 in isobaric conditions with a temperature sweep from 298 to 363.15 K at a temperature rate of 2 K/min. The arrow points to the switch of the carrier gas from CO2 to N2, leading to the desorption of CO2. All measurements were performed with a pure atmosphere of CO2 flowing at 20 mL/min.
+Dynamic TGA adsorption: (a) CO2 adsorption of the best-performing samples (CALF-20-SOL, CALF-20-MW-T4, and CALF-20-MW-T5) at ∼298 K, 1 bar. (b) Continuous adsorption of CO2 in isobaric conditions with a temperature sweep from 298 to 363.15 K at a temperature rate of 2 K/min. The arrow points to the switch of the carrier gas from CO2 to N2, leading to the desorption of CO2. All measurements were performed with a pure atmosphere of CO2 flowing at 20 mL/min.
+The differences in the adsorption properties and performance of the CALF-20 sorbent synthesized via solvothermal and MW-assisted methods can be attributed to the distinct heating mechanisms involved. MW-assisted synthesis provides rapid and uniform heating through MW irradiation, which accelerates nucleation and crystal growth, resulting in more uniform crystallite sizes and a controlled degree of defects.18,34,35 Fast, homogeneous heating of the reactants leads to a faster reaction rate, high-purity products, a narrower particle size distribution, and smaller overall particle size.36 In contrast, solvothermal synthesis relies on convection-based heat transfer mechanisms, which take longer for the core of the sample to reach the desired temperature, especially for larger reactors. This slower, uneven heating leads to heterogeneous particle size and morphologies.14
+Similar effects have been documented previously, with MW-assisted synthesis producing MOFs with higher surface area and improved CO2 uptake compared to solvothermal methods.37−41 The promising potential of MW technology in the production of adsorbents for multiple applications has recently been addressed in the literature,42 with particular emphasis on the physical phenomena behind the improved yields and performance of MW-assisted MOFs.
+
+## Conclusions
+In summary, the findings of this study demonstrate that MW-assisted synthesis offers a significant improvement over conventional solvothermal methods for producing the CALF-20 MOF, allowing for a reduction of reaction time by 92%, while simultaneously improving the yield from ∼70% (solvothermal) to 97% (MW-assisted synthesis). Structural and thermal analyses confirmed that MW-synthesized CALF-20 retains its crystalline structure (Cambridge Crystallographic Data Centre—CCDC—deposition number 2084733) and chemical stability while exhibiting an enhanced CO2 adsorption capacity, improved CO2/N2 selectivity, and lower regeneration energy. The MW-assisted synthesis of CALF-20 provides a fast alternative to produce this CO2 sorbent, which has attracted significant interest for industrial CO2 capture applications and is currently deployed at TRL-9. Future works should further explore whether MW-assisted synthesis can be successfully implemented, scaled, and optimized for a large-scale multiton production of CALF-20.
+
+## Supporting Information Available
+The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acs.inorgchem.4c04727.Additional experimental results including MW pressure during synthesis, TG of the synthesis precursors, zoomed section of pXRD (all samples), pore size distribution, H2O isotherms, and additional CO2/N2 selectivity plots (PDF)
+Additional experimental results including MW pressure during synthesis, TG of the synthesis precursors, zoomed section of pXRD (all samples), pore size distribution, H2O isotherms, and additional CO2/N2 selectivity plots (PDF)
+
+## Supplementary Material
+ic4c04727_si_001.pdf
+ic4c04727_si_001.pdf
+
+## Author Contributions
+D.P. conceived the study and performed the synthesis/characterization of all the materials. D.P. drafted the original manuscript, and all authors contributed to the writing and reviewing of the final manuscript.
+The authors declare no competing financial interest.
+
+## Acknowledgments
+This work was developed within the scope of the project CICECO-Aveiro Institute of Materials, UIDB/50011/2020 (DOI 10.54499/UIDB/50011/2020), UIDP/50011/2020 (DOI 10.54499/UIDP/50011/2020) & LA/P/0006/2020 (DOI 10.54499/LA/P/0006/2020), financed by national funds through the FCT/MCTES (PIDDAC). The NMR spectrometers are part of the National NMR Network (PTNMR) and are partially supported by Infrastructure Project 022161 (cofinanced by FEDER through COMPETE 2020, POCI and PORL and FCT through PIDDAC). This work has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation program (Grant Agreement 865974). FCT is also acknowledged by D.P. for a Ph.D. Studentship UI/BD/151048/2021 (DOI: 10.54499/UI/BD/151048/2021). M.S. for an Assistant Research (DOI 10.54499/2020.00056.CEECIND/CP1589/CT0005) and R.V. for a Junior Researcher position (CEECIND/02127/2017).
+
+## References
+Carbon Capture and Storage (CCS): The Way Forward
+Carbon Dioxide Capture Adsorbents: Chemistry and Methods
+A Search for Selectivity to Enable CO2 Capture with Porous Adsorbents
+Post-Combustion CO2 Capture with Chemical Absorption: A State-of-the-Art Review
+Techno-Economic Assessment for CO2 Capture From Air Using a Conventional Liquid-Based Absorption Process
+Amine Degradation in CO2 Capture. I. A Review
+The Influence of Polyethyleneimine Type and Molecular Weight on the CO2 Capture Performance of PEI-Nano Silica Adsorbents
+Understanding CO2 Adsorption Mechanisms in Porous Adsorbents: A Solid-State NMR Survey
+Valorization of Crab Shells as Potential Sorbent Materials for CO2 Capture
+A Scalable Metal-Organic Framework as a Durable Physisorbent for Carbon Dioxide Capture
+Separation of CO2 and N2 on a Hydrophobic Metal Organic Framework CALF-20
+CO2/N2 Separation by Vacuum Swing Adsorption Using a Metal–Organic Framework, CALF-20: Multi-Objective Optimization and Experimental Validation
+Direct Contact TSA Cycle Based on a Hydrophobic MOF Sorbent for Post-Combustion CO2 Capture from Wet Flue Gas
+Synthesis of Metal-Organic Frameworks (MOFs): Routes to Various MOF Topologies, Morphologies, and Composites
+Best Practices for the Synthesis, Activation, and Characterization of Metal–Organic Frameworks
+A Review on Metal-Organic Frameworks: Synthesis and Applications
+New Synthetic Routes towards MOF Production at Scale
+Microwave-Assisted Synthesis of Metal–Organic Frameworks
+Beyond Solvothermal: Alternative Synthetic Methods for Covalent Organic Frameworks
+Efficient Xe Selective Separation from Xe/Kr/N2Mixtures over a Microporous CALF-20 Framework
+Reversed CO2/C2H2 Separation with Ultrahigh Carbon Dioxide Adsorption Capacity in Zn-Based Pillared Metal-Organic Frameworks
+Humidity-Responsive Polymorphism in CALF-20: A Resilient MOF Physisorbent for CO2 Capture
+How Reproducible Are Surface Areas Calculated from the BET Equation?
+An Improved Broadband Decoupling Sequence for Liquid Crystals and Solids
+Assessing CO2 Capture in Porous Sorbents via Solid-State NMR-Assisted Adsorption Techniques
+Ligand-Engineered Metal–Organic Frameworks for Electrochemical Reduction of Carbon Dioxide to Carbon Monoxide
+Tailoring Hydrophobicity and Pore Environment in Physisorbents for Improved Carbon Dioxide Capture under High Humidity
+A Practical Guide to Calculate the Isosteric Heat/Enthalpy of Adsorption via Adsorption Isotherms in Metal–Organic Frameworks MOFs
+Exploring the Limits of Adsorption-Based CO2 Capture Using MOFs with PVSA–from Molecular Design to Process Economics
+Carbon Capture and Conversion Using Metal–Organic Frameworks and MOF-Based Materials
+Recent Advances in Gas Storage and Separation Using Metal–Organic Frameworks
+CO2 Capture and Separations Using MOFs: Computational and Experimental Studies
+Emerging Trends in Porous Materials for CO2 Capture and Conversion
+The Properties of Microwave-Assisted Synthesis of Metal–Organic Frameworks and Their Applications
+Microwave-Assisted Synthesis of Zr-Based Metal–Organic Frameworks and Metal-Organic Cages
+ZIF-8: A Comparison of Synthesis Methods
+Microwave Synthesis of the CPM-5 Metal Organic Framework
+Microwave-Assisted Synthesis of Zirconium-Based Metal Organic Frameworks (MOFs): Optimization and Gas Adsorption
+Microwave-Assisted Synthesis of Defects Metal-Imidazolate-Amide-Imidate Frameworks and Improved CO2 Capture
+Microwave Synthesis and Characterization of MOF-74 (M = Ni, Mg) for Gas Separation
+Upcycling Plastic Waste: Rapid Aqueous Depolymerization of PET and Simultaneous Growth of Highly Defective UiO-66 Metal-Organic Framework with Enhanced CO2 Capture via One-Pot Synthesis
+A Review of Adsorption Intensified by Microwave Irradiation from Absorbent Preparation to Separation Processes
