@@ -2,7 +2,7 @@
 check_spectrum_shape_relation.py
 ================================
 
-Checks for the spectrum <-> shape study. Run after the three run_0x scripts:
+Checks for the spectrum <-> shape study. Run after the four run_0x scripts:
 
     python check_spectrum_shape_relation.py
 
@@ -12,7 +12,9 @@ check fails. The checks are of three kinds:
   A. the tools are right on cases whose answer is known by hand;
   B. the two independent routes to the box-particle numbers agree (run_01 vs code_19);
   C. the saved results are internally consistent (sizes matched, counts complete, the
-     statistics recomputed from the saved table give the saved values).
+     statistics recomputed from the saved table give the saved values);
+  D. the dimension profile (run_04): the method gives the exact answer on a path graph, the
+     reference lattices fall in their expected ranges, and the saved read-outs are consistent.
 """
 import json
 import os
@@ -98,6 +100,45 @@ if os.path.exists(p3):
        'saved rho(width, aspect ratio) recomputes with scipy')
 else:
     ok(False, 'results/03_core_mof_spectrum_vs_bfdh_shape.json exists')
+
+# ---- D. dimension profile (run_04) ----------------------------------------------------------------
+import networkx as nx
+import run_04_dimension_profile_of_crystal_particles as R4
+# Known answer: on a path the ball of radius r holds 2r + 1 vertices when the centre is at least r
+# from both ends, so the central difference is d(r) = ln((2r+3)/(2r-1)) / ln((r+1)/(r-1)).
+pr = R4.mass_radius_profile(nx.path_graph(4001))
+r_ = 10
+exact = np.log((2 * r_ + 3) / (2 * r_ - 1)) / np.log((r_ + 1) / (r_ - 1))
+ok(abs(pr['d_mean'][r_ - 1] - exact) < 0.01, f'path graph: d(10) = {pr["d_mean"][r_ - 1]:.3f}, exact {exact:.3f}')
+p4 = os.path.join(RES, '04_dimension_profile_MOF5.json')
+if os.path.exists(p4):
+    r4 = json.load(open(p4))
+    ref = {v['dimension']: v for v in r4['reference_lattices'].values()}
+    ok(ref[1]['d_peak'] < ref[2]['d_peak'] < ref[3]['d_peak'] and 0.9 < ref[1]['d_peak'] <= 1.0
+       and 1.7 < ref[2]['d_peak'] <= 2.0 and 2.5 < ref[3]['d_peak'] <= 3.0,
+       'reference lattices: peak local dimension ordered 1D < 2D < 3D and inside the expected ranges')
+    B = {k.split()[0]: v for k, v in r4['boxes'].items()}
+    ok(B['cube']['d_at_r_half_mean'] > B['slab']['d_at_r_half_mean'] > B['plate']['d_at_r_half_mean']
+       > B['rod']['d_at_r_half_mean'], 'boxes: d at r_half falls from cube to slab to plate to rod')
+    ok(all(abs(v['M_mean'][-1] - v['blocks']) / v['blocks'] < 0.01 for v in list(r4['boxes'].values()) + r4['polyhedra']),
+       'every mass-radius curve ends within 1% of the particle size (the whole particle is reached)')
+    again = {}
+    for t in ('4000', '8000'):
+        vals = [p['r_half_over_D_mean'] for p in r4['polyhedra'] if str(p['target_blocks']) == t]
+        again[t] = round(max(vals) - min(vals), 4)
+    ok(all(abs(again[t] - r4['compact_shape_separation'][t]['spread']) < 1e-9 for t in again),
+       'saved spread of r_half/D across the compact shapes recomputes from the table')
+    P = {(p['shape'], p['target_blocks']): p for p in r4['polyhedra']}
+    trio = ('UFF Wulff prediction', 'BFDH x Wulff blend w=0.5', 'BFDH prediction')
+    sep = []
+    for t in (4000, 8000):
+        v = [P[(n, t)] for n in trio]
+        sd = max(x['r_half_over_D_sd'] for x in v)
+        sep += [(v[1]['r_half_over_D_mean'] - v[0]['r_half_over_D_mean']) / sd,
+                (v[2]['r_half_over_D_mean'] - v[1]['r_half_over_D_mean']) / sd]
+    ok(min(sep) > 3, f'UFF Wulff < blend < BFDH in r_half/D at both sizes, each gap > 3 seed sd (smallest {min(sep):.1f})')
+else:
+    ok(False, 'results/04_dimension_profile_MOF5.json exists')
 
 print(f'\n{fails} FAILURES' if fails else '\nAll checks passed.')
 sys.exit(1 if fails else 0)

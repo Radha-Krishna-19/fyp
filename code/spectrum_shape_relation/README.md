@@ -12,15 +12,18 @@ the website page [Spectrum ↔ Shape](https://radha-krishna-19.github.io/fyp/rel
 The notebook [`Spectrum_Shape_Relation.ipynb`](Spectrum_Shape_Relation.ipynb) is the entry point.
 
 * **Locally (Jupyter or VS Code).** Open the notebook from this folder and run all cells. It installs
-  the libraries, runs every calculation (about 20 minutes), draws the figures and runs the checks.
+  the libraries, runs every calculation (about 20 minutes; `RECOMPUTE = False` reads the saved
+  results in seconds), draws the figures and runs the checks.
 * **Google Colab.** Run `python make_colab_bundle_spectrum_shape_relation.py` locally; it writes
   `build/spectrum_shape_relation_bundle.zip` at the repository root. Open the notebook in Colab, run
   all cells and upload the zip when asked. Download the `results/` folder at the end.
 
 Every line the notebook prints is also written to
 [`results/RUN_REPORT_spectrum_shape_relation.md`](results/RUN_REPORT_spectrum_shape_relation.md).
-The results in [`results/`](results/) are from the run of 16 October 2026 (all calculations
-recomputed, 15 of 15 checks passed).
+The results of steps 1–3 in [`results/`](results/) are from the notebook run of 16 October 2026
+(all calculations recomputed, 15 of 15 checks passed). Step 4 was added afterwards; its result file
+was produced by running `run_04_dimension_profile_of_crystal_particles.py` directly, and all 21
+checks now pass.
 
 ## Files, in the order they run
 
@@ -30,8 +33,9 @@ recomputed, 15 of 15 checks passed).
 | [`run_01_spectrum_of_box_particles_same_cell_count.py`](run_01_spectrum_of_box_particles_same_cell_count.py) | At equal cell count (64), do MOF-5 cubes, slabs, plates and rods differ in Δα beyond what their diameters explain? Checked against `code_19` | [`results/01_box_particles_MOF5.json`](results/01_box_particles_MOF5.json) |
 | [`run_02_spectrum_of_predicted_crystal_shapes_MOF5.py`](run_02_spectrum_of_predicted_crystal_shapes_MOF5.py) | Do the MOF-5 crystal shapes predicted by BFDH, the BFDH × Wulff blend, UFF Wulff and CHGNet, and the cube, octahedron and rhombic dodecahedron, differ in Δα at about 2000 and 4000 blocks? | [`results/02_predicted_crystal_shapes_MOF5.json`](results/02_predicted_crystal_shapes_MOF5.json) |
 | [`run_03_core_mof_spectrum_width_vs_bfdh_shape.py`](run_03_core_mof_spectrum_width_vs_bfdh_shape.py) | Across 55 CoRE MOF 2019 structures, is the periodic Δα related to the BFDH shape (sphericity, aspect ratio), with and without graph size held fixed? | [`results/03_core_mof_spectrum_vs_bfdh_shape.json`](results/03_core_mof_spectrum_vs_bfdh_shape.json) |
+| [`run_04_dimension_profile_of_crystal_particles.py`](run_04_dimension_profile_of_crystal_particles.py) | Does the whole mass–radius curve of a particle carry the shape information Δα does not? Local dimension d(r) of the boxes (about 1000 cells) against a path, a square grid and a cubic grid; r½/D of the seven polyhedra at about 4000 and 8000 blocks | [`results/04_dimension_profile_MOF5.json`](results/04_dimension_profile_MOF5.json) |
 | [`make_figures_spectrum_shape_relation.py`](make_figures_spectrum_shape_relation.py) | Draws the figures and copies them to [`website/figures/relation/`](../../website/figures/relation/) | [`figures/`](figures/) |
-| [`check_spectrum_shape_relation.py`](check_spectrum_shape_relation.py) | 15 checks: known answers, agreement with `code_19`, internal consistency | prints PASS/FAIL |
+| [`check_spectrum_shape_relation.py`](check_spectrum_shape_relation.py) | 21 checks: known answers (including the exact local dimension of a path), agreement with `code_19`, internal consistency | prints PASS/FAIL |
 | [`make_notebook_spectrum_shape_relation.py`](make_notebook_spectrum_shape_relation.py) | Writes the notebook (edit this file, not the `.ipynb`) | `Spectrum_Shape_Relation.ipynb` |
 | [`make_colab_bundle_spectrum_shape_relation.py`](make_colab_bundle_spectrum_shape_relation.py) | Zip of every file the notebook needs, for Colab | `build/spectrum_shape_relation_bundle.zip` |
 
@@ -47,6 +51,15 @@ recomputed, 15 of 15 checks passed).
 * Δα of the CoRE MOFs:
   [`data/spectrum_descriptors/size_scaling/full_band_core_cg.json`](../../data/spectrum_descriptors/size_scaling/full_band_core_cg.json)
   (from `code_17`).
+
+## Main results
+
+| Test | Result |
+|---|---|
+| 1. Box shapes at equal cell count | Δα of the MOF-5 plate and rod lies below the cube size trend: Δα responds to flatness and elongation |
+| 2. Predicted compact shapes | Δα does not separate the cube, truncated cube and truncated octahedron predicted for MOF-5 |
+| 3. 55 CoRE MOFs | The periodic Δα is unrelated to the BFDH shape once graph size is held fixed |
+| 4. Dimension profile | Cube, plate and rod have the local dimension of a 3D, 2D and (nearly) 1D lattice; r½/D separates the three MOF-5 predictions by at least 3.6 seed spreads |
 
 ## Spectrum settings
 

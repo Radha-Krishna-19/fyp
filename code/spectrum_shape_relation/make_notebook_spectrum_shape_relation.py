@@ -51,8 +51,9 @@ hMOF bands) and compare shapes at matched size.
 | 1 | `run_01_spectrum_of_box_particles_same_cell_count.py` | Same MOF-5, same 64 cells, cube / slab / plate / rod: does Δα change? |
 | 2 | `run_02_spectrum_of_predicted_crystal_shapes_MOF5.py` | Does Δα separate the shapes that BFDH, the blend, UFF Wulff and CHGNet predict for MOF-5? |
 | 3 | `run_03_core_mof_spectrum_width_vs_bfdh_shape.py` | Across 55 real CoRE MOFs, is the periodic-graph Δα related to the predicted shape once size is held fixed? |
-| 4 | `make_figures_spectrum_shape_relation.py` | Figures |
-| 5 | `check_spectrum_shape_relation.py` | Checks |
+| 4 | `run_04_dimension_profile_of_crystal_particles.py` | Does the whole mass–radius curve of a particle (its local dimension) carry the shape information that Δα does not? |
+| 5 | `make_figures_spectrum_shape_relation.py` | Figures |
+| 6 | `check_spectrum_shape_relation.py` | Checks |
 
 **Requirements:** numpy, scipy, networkx, matplotlib, ase, spglib (all used elsewhere in the
 project). Run from inside this folder, or in Colab after uploading the repository (see README.md).
@@ -192,24 +193,63 @@ graph size: more stretched predicted shapes come with bigger periodic graphs (ρ
 between sphericity and node count), and a bigger graph has a wider spectrum (ρ about +0.8). With size held fixed every correlation is close to zero and not significant. So
 the **periodic** Δα of the first half carries no shape information beyond size. Steps 1 and 2 show
 where shape information does appear: in the spectrum of a **finite particle**."""),
-md("""## Step 4. Figures"""),
+md("""## Step 4. The dimension profile of a crystal particle (MOF-5)
+
+**In simple words.** Δα squeezes the whole scaling behaviour of a particle into one number. Here we
+keep the whole curve. Stand on a block, count how many blocks are within 1, 2, 3, ... steps, and see
+how fast that count grows. In a solid three-dimensional crystal it grows like r³, in a thin sheet
+like r², along a thin wire like r. The growth rate at each distance is the *local dimension*.
+
+**In technical words.** Mass–radius (cluster-growing) form of box counting (Song, Havlin and
+Makse, Nature 433, 392 (2005)): M(r) is the mean number of blocks within graph distance r of a
+centre block (64 random centres, 5 seeds) and d(r) = d ln M / d ln r by central differences.
+Read-outs: d at the half-mass radius r½, and r½/D with D the largest distance found. Because a
+finite graph never reaches the ideal 1, 2 and 3, the same calculation is run on a path, a square
+grid and a cubic grid, and the particles are compared with these references. Particles: the boxes
+of step 1 enlarged to about 1000 cells, and the seven polyhedra of step 2 at about 4000 and 8000
+blocks."""),
+code("""import run_04_dimension_profile_of_crystal_particles as S4
+if RECOMPUTE:
+    S4.main()
+r4 = load('04_dimension_profile_MOF5.json')
+say('reference lattices and boxes: peak d(r), and d at the half-mass radius')
+for k, v in r4['reference_lattices'].items():
+    say(f"  {k:28s} ({v['dimension']}D)  N {v['blocks']:6d}  peak {v['d_peak']:.2f}  d(r_half) {v['d_at_r_half_mean']:.2f}")
+for k, v in r4['boxes'].items():
+    say(f"  MOF-5 {k:22s}       N {v['blocks']:6d}  peak {v['d_peak']:.2f}  d(r_half) {v['d_at_r_half_mean']:.2f} +- {v['d_at_r_half_sd']:.2f}")
+say('\\ncompact shapes: r_half / D')
+for p in r4['polyhedra']:
+    say(f"  {p['target_blocks']:5d} {p['shape']:40s} N {p['blocks']:5d}  D {p['diameter']:3d}  "
+        f"r_half/D {p['r_half_over_D_mean']:.3f} +- {p['r_half_over_D_sd']:.3f}")"""),
+md("""**Reading.** At the half-mass radius the MOF-5 cube, plate and rod give the local dimension of
+the cubic grid, the square grid and (nearly) the path: about 1.80 vs 1.78, 1.41 vs 1.40 and 0.94 vs
+0.83. So plates and rods really are lower-dimensional objects over the radii the spectrum is fitted
+on, which is consistent with their lower Δα in step 1. The ratio r½/D separates the compact shapes
+that Δα could not: cube and UFF Wulff about 0.36, the blend (truncated cube) 0.42–0.46, BFDH and
+CHGNet (truncated octahedra) 0.51–0.54, octahedron 0.53–0.56, each predicted-shape gap at least
+3.5 times the seed spread. This identifies a shape from the graph; it does not predict which shape
+a MOF grows."""),
+md("""## Step 5. Figures"""),
 code("""import make_figures_spectrum_shape_relation as F
-F.fig01(); F.fig02(); F.fig03()
+F.fig01(); F.fig02(); F.fig03(); F.fig04()
 from IPython.display import Image, display
-for name in ('01_box_particles_MOF5.png', '02_predicted_crystal_shapes_MOF5.png', '03_core_mof_spectrum_vs_bfdh_shape.png'):
+for name in ('01_box_particles_MOF5.png', '02_predicted_crystal_shapes_MOF5.png', '03_core_mof_spectrum_vs_bfdh_shape.png',
+             '04_dimension_profile_MOF5.png'):
     display(Image(os.path.join(T.FIGURES, name)))"""),
-md("""## Step 5. Checks"""),
+md("""## Step 6. Checks"""),
 code("""import subprocess
 say(subprocess.run([sys.executable, 'check_spectrum_shape_relation.py'], capture_output=True, text=True).stdout)"""),
 md("""## What this does and does not show
 
 * **Shown:** for MOF-5, the spectrum width of a finite particle depends on how flat or elongated
   it is at fixed size (cube vs slab, plate, rod).
-* **Not separated:** compact shapes (cube, octahedron, truncated octahedron, the BFDH, blend, UFF
-  Wulff and CHGNet predictions); their differences are within the method's own scatter.
+* **Not separated by Δα:** compact shapes (cube, octahedron, truncated octahedron, the BFDH, blend,
+  UFF Wulff and CHGNet predictions); their differences are within the method's own scatter.
+* **Separated by the dimension profile (step 4):** the same compact shapes, by r½/D, and the
+  dimensionality of cube, plate and rod, by d(r) against reference lattices.
 * **Shown:** across 55 CoRE MOFs, the periodic Δα of the first half is *not* related to the
   predicted BFDH shape once size is controlled.
-* **Not shown:** that this holds for other MOFs (one structure for steps 1–2), for faceted
+* **Not shown:** that this holds for other MOFs (one structure for steps 1, 2 and 4), for faceted
   particles with smooth surfaces (a block is in or out by its centroid), or that Δα of a particle
   predicts adsorption. The error bars are the seed spread only.
 """),

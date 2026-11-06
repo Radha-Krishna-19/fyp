@@ -39,14 +39,19 @@ computationally:
 * seven growth models select a member of the family: BFDH, the graph attachment rule, two graph-energy
   Wulff models, a force-field (UFF) Wulff model, a BFDH × Wulff blend and a CHGNet cleavage-energy model;
 * the models are scored against 134 laboratory records from 35 papers (12 MOFs). ZIF-8 is reproduced
-  by every model; the MOF-5 cube by the graph rule, the broken-bond Wulff model and the force-field
+  by every model applied to it (the graph rule covers only pcu and fcu nets, and CHGNet was not run on ZIF-8); the MOF-5 cube by the graph rule, the broken-bond Wulff model and the force-field
   model (the last only at the default bond cost); the HKUST-1 octahedron only as the dominant {111}
   face of a truncated octahedron; additive-free UiO-66 (poorly faceted cubes) by none. Four MOFs are
   too few to rank the models.
 
 **Linking the parts.** The periodic Δα carries no shape information beyond graph size
-(size-controlled ρ = +0.001, p = 0.99, 55 CoRE MOFs), but the spectrum and the box-counting
-(mass–radius) dimension of a *finite* crystal particle do respond to its shape.
+(size-controlled ρ = +0.001, p = 0.99, 55 CoRE MOFs). On a *finite* MOF-5 particle the spectrum
+width separates plates and rods from compact shapes but not compact shapes from each other. The
+mass–radius dimension profile does both: the cube, plate and rod have the local dimension of a 3D,
+2D and (nearly) 1D reference lattice, and the half-mass radius over the diameter separates the cube,
+truncated cube and truncated octahedron predicted for MOF-5 by at least 3.6 seed spreads
+([Spectrum ↔ Shape, Test 4](https://radha-krishna-19.github.io/fyp/relation.html#dimension-profile)).
+This identifies a particle's shape from its graph; it does not predict which shape grows.
 
 ---
 
@@ -161,7 +166,7 @@ explanations, is on the [Mistakes page](https://radha-krishna-19.github.io/fyp/l
 1. DFT check of the MOF-5 and UiO-66 faces on which the force field and CHGNet disagree (Kshitij).
 2. Solvent, modulator and temperature in the face energies (Isha); more MOFs with known shapes (Rohith).
 3. Choose the blend weight on some MOFs and test it on others (held-out validation).
-4. Dimension profile and spectrum of the plates and rods of the deformed cells, and of the CHGNet atomistic particles.
+4. Dimension profile of the plates and rods of the deformed cells, of a second MOF with a connected block graph, and of the CHGNet atomistic particles.
 5. Final paper on the morphology work.
 
 ---

@@ -63,7 +63,7 @@ ok(tabs.every(t => need.every((n, i) => t.querySelectorAll('tr')[i].querySelecto
 // ---- How We Got Here (journey.html): ten stages, six rows each, every mistake link resolves
 const J = doc('journey.html');
 const jt = [...J.querySelectorAll('table.journey')];
-ok(jt.length === 11, `journey: 11 stages (found ${jt.length})`);
+ok(jt.length === 12, `journey: 12 stages (found ${jt.length})`);
 ok(jt.every(t => t.querySelectorAll('tr').length === 7 && t.querySelector('td').textContent === 'Purpose of this step'), 'journey: every stage has the seven rows, starting with its purpose');
 const LL = doc('lessons.html');
 const links = [...J.querySelectorAll('a[href^="lessons.html#"]')].map(a => a.getAttribute('href').split('#')[1]);

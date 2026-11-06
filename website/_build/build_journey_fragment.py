@@ -127,6 +127,15 @@ STAGES = [
             ('Work existed in several copies.', 'l-copies')],
   fix='See the Mistakes page, Part C.',
   why=[('Why audit before new work?', 'A new result is only as credible as the record it joins; contradictions between pages are the first thing a reviewer finds.')]),
+ dict(id='j12', purpose="Stage 10 left one question open: the spectrum width separates plates and rods but not the compact shapes the methods predict. The Fractals and Scaling course suggested keeping the whole scaling curve instead of one number.", title='Stage 12. The dimension profile of a crystal particle', when='25 October 2026',
+  read='Song, Havlin and Makse, Nature 433, 392 (2005) (cluster growing); the Fractals and Scaling course (Santa Fe Institute), units on box counting and scaling.',
+  did='Measured the mass&ndash;radius curve M(r) and the local dimension d(r) of MOF-5 boxes of about 1000 cells and of the seven polyhedra of stage 10 at two sizes, and calibrated the method on a path, a square grid and a cubic grid.',
+  code='<code>code/spectrum_shape_relation/run_04_dimension_profile_of_crystal_particles.py</code>, six new checks in <code>check_spectrum_shape_relation.py</code>, step 4 of <code>Spectrum_Shape_Relation.ipynb</code>.',
+  out='Cube, plate and rod have the local dimension of a 3D, 2D and (nearly) 1D lattice; r&frac12;/D separates the cube, truncated cube and truncated octahedron predicted for MOF-5 (<a href="relation.html#dimension-profile">Spectrum &harr; Shape, Test 4</a>).',
+  mistakes=[('The first draft explained the local dimension staying below 3 by the linkers, which add a step without branching. The cubic grid, which has no linkers, also peaks at 2.64, so the cause is the finite size of the graph and the lattice itself.', None)],
+  fix='Reference lattices were added to the calculation, and particles are compared with them rather than with the ideal 1, 2 and 3.',
+  why=[('Why calibrate on lattices of known dimension?', 'On a finite graph d(r) never reaches its ideal value; only a reference computed the same way shows what a 1D, 2D or 3D object gives at that size.'),
+       ('Does this predict crystal shape?', 'No. It identifies a shape from a particle graph; which shape a MOF grows still comes from the morphology models.')]),
 ]
 
 OPEN = [
