@@ -37,9 +37,10 @@ METHOD
     d(r)            central difference of ln M against ln r.
     d_at_r_half     d(r) at the radius that holds half of the particle on average.
     r_half_over_D   that radius divided by the largest distance found (the diameter D).
-                    A shape that fills its own diameter quickly (a cube in this graph
-                    metric) has a small value; a shape whose blocks sit close to the centre
-                    relative to its diameter (an octahedron, the "taxicab ball") a large one.
+                    Graph distance in the pcu net behaves like taxicab distance. A cube
+                    has far corners in that metric, so its diameter is large compared with
+                    the radius holding half its blocks (a small value); the octahedron is
+                    the taxicab ball, has no far corners, and gives a large value.
 * Calibration: the same calculation on three ideal lattices of known dimension, a path of
   4001 vertices (1), a 121 x 121 square grid (2) and a 41 x 41 x 41 cubic grid (3). On a
   lattice the ball of radius r is a taxicab ball, M(r) = 2r + 1 in one dimension and

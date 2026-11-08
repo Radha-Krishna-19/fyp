@@ -1,5 +1,11 @@
 """Keerthi's MorphoGraph-MOF CHGNet slabs -> Wulff shape -> compare with lab shapes.
 
+STATUS: first analysis of the CHGNet runs (14 October 2026), kept for the record. It is
+superseded by add_chgnet.py and compare_with_project.py, which write comparison.csv, the
+single benchmark used by the website. The LAB table below predates the additive-free
+benchmark: it lists UiO-66 as octahedra, which are grown only with modulators; the
+additive-free UiO-66 records report poorly faceted cubes (see comparison.csv).
+
 Her notebook (MorphoGraph_MOF_revised.ipynb, md5 90a57760...) relaxes stoichiometric
 slabs with CHGNet and records, per slab, pair_excess = (E_slab - N*E_bulk)/A, which is
 gamma_top + gamma_bottom. Her pair-equation fit was underdetermined for every facet, so
@@ -12,7 +18,7 @@ It also reports the median termination as a sensitivity check, because the sprea
 between terminations is large.
 
 Run from the repository root:  python data/experimental_morphology/compare/keerthi_vs_lab.py
-Writes keerthi_vs_lab.json and KEERTHI_VS_LAB.md next to this script.
+Writes keerthi_vs_lab.json next to this script.
 """
 import glob
 import itertools
@@ -23,8 +29,8 @@ import numpy as np
 import pandas as pd
 from scipy.spatial import ConvexHull, HalfspaceIntersection
 
-ROOT = Path(__file__).resolve().parents[2]          # repository root
-RUNS = ROOT / "OUTPUTSSSSSSS"
+ROOT = Path(__file__).resolve().parents[3]          # repository root
+RUNS = ROOT / "data" / "chgnet_morphograph_runs"
 HERE = Path(__file__).resolve().parent
 EV_A2_TO_J_M2 = 16.0218
 
@@ -104,7 +110,7 @@ def name_shape(frac):
 def main():
     results = {}
     for mof in LAB:
-        d = Path(glob.glob(str(RUNS / f"{mof}_*" / "MorphoGraph*"))[0])
+        d = Path(sorted(glob.glob(str(RUNS / f"{mof}_*")))[-1])
         meta = json.load(open(next(d.glob("*_metadata.json"))))
         L = np.array(meta["working_lattice_matrix_A"])
         df = pd.read_csv(next(d.glob("*_surface_pair_records.csv")))

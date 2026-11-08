@@ -14,7 +14,7 @@ from mofmorph.graphrule import attachment_number
 from mofmorph import render
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CIF = os.path.join(HERE, "..")            # the four CIFs live in code/spectrum_pipeline/
+CIF = os.path.join(HERE, "..", "spectrum_pipeline")   # the four demonstration CIFs
 OUT = os.path.join(HERE, "results"); os.makedirs(os.path.join(OUT, "figs"), exist_ok=True)
 MOFS = [("MOF-5", os.path.join(CIF, "MOF5.cif"), "pcu"), ("HKUST-1", os.path.join(CIF, "HKUST-1.cif"), "tbo"),
         ("UiO-66", os.path.join(CIF, "UiO-66.cif"), "fcu"), ("ZIF-8", os.path.join(CIF, "ZIF-8.cif"), "sod")]

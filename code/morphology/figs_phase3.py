@@ -1,7 +1,7 @@
 """Figure: what one slice of a real MOF net looks like for F, S and K faces.
 Run after run_phase3.py:  python3 code/morphology/figs_phase3.py"""
 import sys, os, json, warnings
-HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
+HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, "..", "spectrum_pipeline"))
 warnings.filterwarnings("ignore")
 import numpy as np
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt

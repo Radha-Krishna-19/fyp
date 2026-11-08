@@ -106,12 +106,16 @@ This is not a theoretical concern. Here are our actual measurements:
 
 ![periodic vs naive](figures/fig03_periodic_vs_naive.png)
 
-| Structure | Naive graph | Labelled quotient graph | Published |
+| Structure | Naive graph (cell-crossing bonds dropped; range over the node vertices) | Labelled quotient graph | Published |
 |---|---|---|---|
-| HKUST-1 | 1 | **4** | 4 ✓ |
-| MOF-5 | 4 | **6** | 6 ✓ |
+| HKUST-1 | 0–2 | **4** | 4 ✓ |
+| MOF-5 | 3–5 | **6** | 6 ✓ |
 | ZIF-8 | 2 | **4** | 4 ✓ |
 | **UiO-66** | **1** | **12** | 12 ✓ |
+
+Numbers from `docs/report_figures/make_figures.py` (the figure above plots the largest value per
+structure). Merging repeated block pairs instead of dropping cell-crossing bonds is a milder error:
+it leaves HKUST-1, MOF-5 and ZIF-8 correct and gives UiO-66 six instead of twelve.
 
 **UiO-66 is the extreme case.** Its unit cell contains exactly one zirconium cluster, and
 nearly all twelve of its connections run out of the cell and back. Discard the translations

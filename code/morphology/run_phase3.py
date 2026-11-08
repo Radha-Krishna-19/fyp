@@ -19,7 +19,7 @@ Steps for each CIF:
 import sys, os, json, math, warnings
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, ".."))          # the project's code/spectrum_pipeline modules
+sys.path.insert(0, os.path.join(HERE, "..", "spectrum_pipeline"))   # the project's Part 1 modules
 warnings.filterwarnings("ignore")
 import numpy as np
 import spglib
@@ -32,7 +32,7 @@ from mofmorph.models import from_rates, describe
 from mofmorph.graphfaces import PeriodicGraph, contract_two_connected, classify
 from mofmorph import render
 
-CIF = os.path.join(HERE, "..")
+CIF = os.path.join(HERE, "..", "spectrum_pipeline")
 OUT = os.path.join(HERE, "results"); os.makedirs(os.path.join(OUT, "figs"), exist_ok=True)
 MOFS = [("MOF-5", "MOF5.cif"), ("HKUST-1", "HKUST-1.cif"), ("UiO-66", "UiO-66.cif"), ("ZIF-8", "ZIF-8.cif")]
 REPS = {"{100}": (1, 0, 0), "{110}": (1, 1, 0), "{111}": (1, 1, 1), "{111}+": (1, 1, 1), "{111}-": (1, 1, -1),

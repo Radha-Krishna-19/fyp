@@ -327,8 +327,9 @@ least a few crystal morphologies, mathematically and computationally. Phase 1 is
 - **Tests:** `cd website/tests && node test_*.js`. They load the real pages in
   jsdom and assert on computed output, because this site's typical failure is a
   silently blank panel rather than an error.
-- **CI** (`.github/workflows/pages.yml`) runs the suites on push. The deploy job
-  is manual-only (`workflow_dispatch`) because GitHub Pages is not enabled.
+- **CI** (`.github/workflows/pages.yml`) runs the suites and a Python smoke test on every
+  push and pull request, checks that the committed pages equal a fresh build, and on `main`
+  deploys `website/` to GitHub Pages (repository setting: Pages source = GitHub Actions).
 - **Two independent implementations** (Python in `code/spectrum_pipeline/`, JavaScript in
   `website/`) were written from the same specification. Where they disagree,
   one of them is wrong. Keep both.

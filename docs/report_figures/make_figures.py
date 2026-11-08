@@ -35,7 +35,7 @@ matplotlib.use("Agg")                 # no display needed, and none available in
 import matplotlib.pyplot as plt
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = HERE.parent.parent
 SITE = ROOT / "website"
 sys.path.insert(0, str(ROOT / "code" / "spectrum_pipeline"))
 
@@ -164,7 +164,7 @@ def fig04_degeneracy(out):
 
 def fig07_tau_fix(out):
     """The defect that invalidated every spectrum, shown on real output."""
-    res_path = ROOT / "notebooks", "spectrum" / "results.json"
+    res_path = ROOT / "notebooks" / "spectrum" / "results.json"
     if not res_path.exists():
         print("  fig07 skipped: notebooks/spectrum/results.json not found")
         return

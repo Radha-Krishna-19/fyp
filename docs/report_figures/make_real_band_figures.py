@@ -47,7 +47,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, ".."))
+ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 REAL = os.path.join(ROOT, "notebooks", "spectrum", "real_results.json")
 HMOF = os.path.join(ROOT, "notebooks", "spectrum", "results.json")
 

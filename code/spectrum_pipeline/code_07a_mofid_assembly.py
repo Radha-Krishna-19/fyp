@@ -2,7 +2,7 @@
 MODULE 7a — MOFid ASSEMBLY (real source)
 File in the real repo : Python/run_mofid.py
 Source                 : https://github.com/snurr-group/mofid
-Paper                  : Bucior et al., Cryst. Growth Des. 2019, 19, 6487-6495
+Paper                  : Bucior et al., Cryst. Growth Des. 2019, 19, 6682-6697
 
 WHAT THIS FILE SHOWS
 Modules 1-6 (all C++, see code_00/04a/04b/04c/05/06) only ever produce

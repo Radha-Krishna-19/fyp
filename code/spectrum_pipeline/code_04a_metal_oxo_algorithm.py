@@ -5,7 +5,7 @@ Real file   : src/deconstructor.cpp  (base class `Deconstructor` + its thin
 Header      : src/deconstructor.h
 Source      : https://github.com/snurr-group/mofid
 Paper       : Bucior et al., "Identification schemes for metal-organic
-              frameworks...", Cryst. Growth Des. 2019, 19, 6487-6495.
+              frameworks...", Cryst. Growth Des. 2019, 19, 6682-6697.
 
 IMPORTANT DISCOVERY WHILE TRACING THE SOURCE (unchanged from the C++ version)
 `MetalOxoDeconstructor` does NOT override DetectInitialNodesAndLinkers(),

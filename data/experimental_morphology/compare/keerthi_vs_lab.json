@@ -1,6 +1,6 @@
 {
  "MOF-5": {
-  "run": "MorphoGraph_MOF_results_MOF-5_20261014_062453",
+  "run": "MOF-5_2026-10-14",
   "n_slabs_used": 94,
   "n_slabs_not_converged": 8,
   "facets": {
@@ -96,7 +96,7 @@
   "dominant_facet_match": false
  },
  "HKUST-1": {
-  "run": "MorphoGraph_MOF_results_HKUST-1_20261014_070151",
+  "run": "HKUST-1_2026-10-14",
   "n_slabs_used": 88,
   "n_slabs_not_converged": 10,
   "facets": {
@@ -194,7 +194,7 @@
   "dominant_facet_match": true
  },
  "UiO-66": {
-  "run": "MorphoGraph_MOF_results_UiO-66_20261014_080008",
+  "run": "UiO-66_2026-10-14",
   "n_slabs_used": 113,
   "n_slabs_not_converged": 21,
   "facets": {

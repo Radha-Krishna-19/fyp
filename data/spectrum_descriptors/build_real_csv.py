@@ -19,7 +19,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, ".."))
+ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(ROOT, "notebooks", "spectrum", "real_results.json")
 OUT = os.path.join(HERE, "mof_multifractal_descriptors_real_v2.csv")
 

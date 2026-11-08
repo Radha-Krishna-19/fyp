@@ -100,7 +100,7 @@ PAGES = [
 
     dict(file='relation.html',     nav='Spectrum ↔ Shape', sections=[],
          title='Spectrum and Crystal Shape: Testing the Relation',
-         desc='Three calculations that test whether the spectrum width of the first half of the project is related to the crystal shapes predicted in the second half, all produced by one notebook.'),
+         desc='Four calculations that test whether the spectrum width of the first half of the project, and the related mass-radius dimension profile, carry information about the crystal shapes predicted in the second half.'),
 
     dict(file='lessons.html',      nav='Mistakes',      sections=[],
          title='What We Got Wrong and How We Fixed It',

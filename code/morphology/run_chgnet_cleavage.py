@@ -43,5 +43,5 @@ for run in runs():
         print("   exact gamma from symmetric slabs:", {k: v[0]["gamma_J_m2"] for k, v in out[name]["symmetric_slab_gammas"].items()})
     except Exception as e:
         out.pop(name, None)
-        print(name, "- no usable slab energies (this run produced none; see HANDOFF):", e)
+        print(name, "- no usable slab energies (this run produced none):", e)
 json.dump(out, open(os.path.join(HERE, "results", "chgnet_cleavage_results.json"), "w"), indent=1)
