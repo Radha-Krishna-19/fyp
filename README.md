@@ -93,6 +93,7 @@ python code_12_converged_band.py
 # Part 2: shapes of the four demonstration MOFs, and the checks
 cd ../morphology
 python run_phase1.py          # symmetry, allowed faces, BFDH, morph families
+python run_cif_to_shape.py    # every step from each CIF to its BFDH shape (CIF to Shape page)
 python run_phase4.py          # force-field face energies and Wulff shapes
 python tests.py               # Phase 1 checks (also tests_phase3/4, tests_deform, tests_review)
 

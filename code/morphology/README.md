@@ -39,6 +39,7 @@ Requirements: `numpy scipy matplotlib ase spglib` (see the root [`requirements.t
 | Script | Produces | Website page |
 |---|---|---|
 | [`run_phase1.py`](run_phase1.py) | `results/phase1_results.json`, morph-family and graph-rule figures | Morphology |
+| [`run_cif_to_shape.py`](run_cif_to_shape.py) | `results/cif_to_shape.json`: every step from each CIF to its BFDH shape, symmetry found by direct search and checked with spglib | CIF to Shape |
 | [`run_phase3.py`](run_phase3.py), [`figs_phase3.py`](figs_phase3.py) | `results/phase3_results.json`, slice and shape figures | Graph Faces |
 | [`run_phase4.py`](run_phase4.py), [`figs_phase4.py`](figs_phase4.py) | `results/phase4_results.json`, Wulff shapes | Surface Energy |
 | [`run_deform.py`](run_deform.py), [`figs_deform.py`](figs_deform.py) | `results/deform_results.json`, 52 deformed cells | Cell Deform |
@@ -64,9 +65,9 @@ scores every model against the benchmark, and `python website/_build/build_site.
 | [`tests_deform.py`](tests_deform.py) | Phase 1b: subgroup symmetry and the box criterion |
 | [`tests_review.py`](tests_review.py) | The fixes made in the review of 14 October 2026 |
 
-The browser engines `website/mof_morphology.js` and `website/mof_deform.js` are independent second
-implementations; `website/tests/test_morphology.js` and `test_morph_pages.js` check them against the
-JSON files in `results/`.
+The browser engines `website/mof_morphology.js`, `website/mof_deform.js` and `website/mof_cif_shape.js`
+are independent second implementations; `website/tests/test_morphology.js`, `test_morph_pages.js` and
+`test_cif_to_shape.js` check them against the JSON files in `results/`.
 
 ## Other folders
 

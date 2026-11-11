@@ -6,62 +6,98 @@
 <title>From Crystal to Network &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="Every graph-theory term defined from scratch, the periodic quotient graph, centrality, defects, and the Laplacian spectrum.">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/design.css">
-<link rel="stylesheet" href="assets/academic.css">
+<link rel="stylesheet" href="assets/study.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/><line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/><circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/><circle cx="21" cy="6" r="2.1" fill="var(--linker)"/><circle cx="12" cy="21" r="2.1" fill="var(--linker)"/><circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg><span>MOF Graphs and Crystal Morphology</span></a>
-  <nav class="site-nav" aria-label="Sections of this site">
-      <a href="index.html">Overview</a>
-      <a href="journey.html">How We Got Here</a>
-      <a href="methodology.html">Methodology</a>
-      <a href="decomposition.html">Decomposition</a>
-      <a href="network.html" aria-current="page">Network</a>
-      <a href="spectrum.html">Spectrum</a>
-      <a href="results.html">Results</a>
-      <a href="learn_shape.html">Learn</a>
-      <a href="learn_energy.html">Learn 2</a>
-      <a href="morph_math.html">Maths</a>
-      <a href="morphology.html">Morphology</a>
-      <a href="deform.html">Cell Deform</a>
-      <a href="graph_faces.html">Graph Faces</a>
-      <a href="surface_energy.html">Surface Energy</a>
-      <a href="hybrid.html">Hybrid</a>
-      <a href="experiment.html">Experiment</a>
-      <a href="bridge.html">Why Shape</a>
-      <a href="relation.html">Spectrum ↔ Shape</a>
-      <a href="lessons.html">Mistakes</a>
-      <a href="code.html">Source</a>
-      <a href="resources.html">Resources</a>
-      <a href="references.html">References</a>
-      <a href="glossary.html">Glossary</a>
-      <a href="team.html">Team</a>
-  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>Contents</span>
+  </button>
+  <a class="brand" href="index.html">MOF Graphs and Crystal Morphology</a>
   <div class="header-tools">
     <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
   </div>
 </header>
 
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Contents">
+    <nav class="site-nav" aria-label="All pages">
+      <div class="nav-part">
+        <p class="nav-part-title">Start</p>
+        <ol>
+        <li><a href="index.html"><span class="nav-n">1</span><span class="nav-t">Overview</span></a></li>
+        <li><a href="journey.html"><span class="nav-n">2</span><span class="nav-t">How we got here</span></a></li>
+        <li><a href="methodology.html"><span class="nav-n">3</span><span class="nav-t">Methodology</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part I. Graphs and the spectrum</p>
+        <ol>
+        <li><a href="decomposition.html"><span class="nav-n">4</span><span class="nav-t">Decomposition</span></a></li>
+        <li><a href="network.html" aria-current="page"><span class="nav-n">5</span><span class="nav-t">From crystal to network</span></a></li>
+        <li><a href="spectrum.html"><span class="nav-n">6</span><span class="nav-t">The multifractal spectrum</span></a></li>
+        <li><a href="results.html"><span class="nav-n">7</span><span class="nav-t">Results: the band</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part II. Crystal shape</p>
+        <ol>
+        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Connecting the two parts</p>
+        <ol>
+        <li><a href="bridge.html"><span class="nav-n">18</span><span class="nav-t">Why shape</span></a></li>
+        <li><a href="relation.html"><span class="nav-n">19</span><span class="nav-t">Spectrum and shape</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Reference</p>
+        <ol>
+        <li><a href="lessons.html"><span class="nav-n"></span><span class="nav-t">Mistakes and fixes</span></a></li>
+        <li><a href="code.html"><span class="nav-n"></span><span class="nav-t">Source code</span></a></li>
+        <li><a href="resources.html"><span class="nav-n"></span><span class="nav-t">Resources</span></a></li>
+        <li><a href="references.html"><span class="nav-n"></span><span class="nav-t">References</span></a></li>
+        <li><a href="glossary.html"><span class="nav-n"></span><span class="nav-t">Glossary</span></a></li>
+        <li><a href="team.html"><span class="nav-n"></span><span class="nav-t">Team and progress</span></a></li>
+        </ol>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+  <div class="page-col">
 <div class="masthead">
   <div class="container">
-    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+<div class="place">Part I. Graphs and the spectrum. Chapter 5 of 19.</div>
     <h1>From Crystal to Network</h1>
     <p class="lead">Every graph-theory term defined from scratch, the periodic quotient graph, centrality, defects, and the Laplacian spectrum.</p>
-<div class="place"><b>Step 5 of 19</b> &middot; next: <a href="spectrum.html">Spectrum</a></div>
   </div>
 </div>
 
-<div class="container">
-  <div class="with-toc">
-    <main id="main">
+    <div class="container">
+      <div class="with-toc">
+        <main id="main">
 <h2 class="section-title" id="primer"><span class="stitle-num">1</span>From Crystal to Network — Every Term Explained</h2>
   <p class="section-sub">Everything after this point is network science. If you have not met these ideas before, this section builds them from nothing, in order, with a picture for each. <b>No term is used later that is not defined here.</b></p>
 <dl class="bridge"><dt>You know</dt><dd>That the crystal has been cut into blocks.</dd><dt>This section</dt><dd class="now">Defines every graph-theory term used from here on &mdash; vertex, edge, degree, adjacency &mdash; from scratch, assuming none of it.</dd><dt>Which lets us</dt><dd>Read the rest of this page without a mathematics background.</dd></dl>
@@ -602,22 +638,24 @@
 
   <!-- ================= 5 ================= -->
 
-      <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="decomposition.html"><div class="dir">&larr; Previous</div><div class="ttl">The Decomposition Algorithm</div></a><a class="next" href="spectrum.html"><div class="dir">Next &rarr;</div><div class="ttl">The Multifractal Spectrum</div></a></nav>
-    </main>
-    <aside id="toc" class="toc" aria-label="On this page"></aside>
+          <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="decomposition.html"><div class="dir">Previous</div><div class="ttl">The Decomposition Algorithm</div></a><a class="next" href="spectrum.html"><div class="dir">Next</div><div class="ttl">The Multifractal Spectrum</div></a></nav>
+        </main>
+        <aside id="toc" class="toc" aria-label="On this page"></aside>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+        files when the page loads; the other pages are generated from the result files of the Python
+        code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+        page against those files. Each figure names the script that produced it.
+        23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+        <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+      </div>
+    </footer>
   </div>
 </div>
-
-<footer class="site-footer">
-  <div class="container">
-    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
-    files when the page loads; the other pages are generated from the result files of the Python
-    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
-    page against those files. Each figure names the script that produced it.
-    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
-    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
-  </div>
-</footer>
 
 <script src="assets/palette.js"></script>
 <script src="assets/glossary-data.js"></script>

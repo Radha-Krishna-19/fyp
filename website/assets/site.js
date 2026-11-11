@@ -5,9 +5,10 @@
      1. theme()     dark / light, remembered, applied before first paint
      2. toc()       builds the in-page table of contents and tracks position
      3. progress()  the 2px reading indicator under the header
-     4. reveal()    one fade-and-rise the first time a block is seen
+     4. reveal()    kept for reference, not called (no entrance animations)
      5. anchors()   copyable deep links on every heading
      6. tables()    wraps wide tables so they scroll instead of overflowing
+     7. rail()      the contents rail: current page in view, drawer on small screens
 
    WHAT IT DELIBERATELY DOES NOT DO
    No parallax, no cursor effects, no animated backgrounds, no count-up
@@ -94,7 +95,7 @@
     heads.forEach(function (h) {
       // Strip the section number span so the rail reads as plain titles.
       var label = (h.getAttribute('data-toc') || h.textContent || '')
-                    .replace(/^\s*\d+\s*/, '').trim();
+                    .replace(/^\s*\d+\.?\s*/, '').trim();
       html += '<a href="#' + h.id + '">' + label + '</a>';
     });
     rail.innerHTML = html;
@@ -201,8 +202,37 @@
     });
   }
 
+  /* ===================================================================
+     7 · CONTENTS RAIL
+     On wide screens the rail is always open; the current page is scrolled
+     into view inside it. On small screens it is a drawer opened by the
+     Contents button and closed by the scrim, the Escape key or a link.
+     =================================================================== */
+  function rail() {
+    var side = document.getElementById('sidebar');
+    if (!side) return;
+    var cur = side.querySelector('a[aria-current="page"]');
+    if (cur) {
+      var r = cur.getBoundingClientRect(), s = side.getBoundingClientRect();
+      if (r.bottom > s.bottom - 40 || r.top < s.top) side.scrollTop += r.top - s.top - s.height / 3;
+    }
+    var btn = document.getElementById('nav-toggle'), scrim = document.getElementById('sidebar-scrim');
+    if (!btn) return;
+    function set(open) {
+      document.body.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (scrim) scrim.hidden = !open;
+      if (open && cur) cur.focus({ preventScroll: true });
+    }
+    btn.addEventListener('click', function () { set(!document.body.classList.contains('nav-open')); });
+    if (scrim) scrim.addEventListener('click', function () { set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+    side.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  }
+
   function boot() {
-    [theme, tables, toc, progress, reveal, anchors].forEach(function (fn) {
+    // reveal() is no longer called: the pages read as notes, with nothing fading in.
+    [theme, tables, toc, progress, rail, anchors].forEach(function (fn) {
       try { fn(); } catch (e) {
         // Chrome is presentation. A failure here must never take down the
         // computational parts of the page below it.

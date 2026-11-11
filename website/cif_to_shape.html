@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From a CIF File to a Crystal Shape &middot; MOF Graphs and Crystal Morphology</title>
+<meta name="description" content="Every step from the numbers in a CIF file to the crystal shape, computed in your browser with the full working shown: lattice, metric tensor, centring and point group found from the atoms, structure factors, face spacings, the BFDH rule, the shape built plane by plane, and the map of every shape a cubic crystal can take.">
+<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/study.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>Contents</span>
+  </button>
+  <a class="brand" href="index.html">MOF Graphs and Crystal Morphology</a>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Contents">
+    <nav class="site-nav" aria-label="All pages">
+      <div class="nav-part">
+        <p class="nav-part-title">Start</p>
+        <ol>
+        <li><a href="index.html"><span class="nav-n">1</span><span class="nav-t">Overview</span></a></li>
+        <li><a href="journey.html"><span class="nav-n">2</span><span class="nav-t">How we got here</span></a></li>
+        <li><a href="methodology.html"><span class="nav-n">3</span><span class="nav-t">Methodology</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part I. Graphs and the spectrum</p>
+        <ol>
+        <li><a href="decomposition.html"><span class="nav-n">4</span><span class="nav-t">Decomposition</span></a></li>
+        <li><a href="network.html"><span class="nav-n">5</span><span class="nav-t">From crystal to network</span></a></li>
+        <li><a href="spectrum.html"><span class="nav-n">6</span><span class="nav-t">The multifractal spectrum</span></a></li>
+        <li><a href="results.html"><span class="nav-n">7</span><span class="nav-t">Results: the band</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part II. Crystal shape</p>
+        <ol>
+        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html" aria-current="page"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Connecting the two parts</p>
+        <ol>
+        <li><a href="bridge.html"><span class="nav-n">18</span><span class="nav-t">Why shape</span></a></li>
+        <li><a href="relation.html"><span class="nav-n">19</span><span class="nav-t">Spectrum and shape</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Reference</p>
+        <ol>
+        <li><a href="lessons.html"><span class="nav-n"></span><span class="nav-t">Mistakes and fixes</span></a></li>
+        <li><a href="code.html"><span class="nav-n"></span><span class="nav-t">Source code</span></a></li>
+        <li><a href="resources.html"><span class="nav-n"></span><span class="nav-t">Resources</span></a></li>
+        <li><a href="references.html"><span class="nav-n"></span><span class="nav-t">References</span></a></li>
+        <li><a href="glossary.html"><span class="nav-n"></span><span class="nav-t">Glossary</span></a></li>
+        <li><a href="team.html"><span class="nav-n"></span><span class="nav-t">Team and progress</span></a></li>
+        </ol>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+  <div class="page-col">
+<div class="masthead">
+  <div class="container">
+<div class="place">Part II. Crystal shape. Chapter 11 of 19.</div>
+    <h1>From a CIF File to a Crystal Shape</h1>
+    <p class="lead">Every step from the numbers in a CIF file to the crystal shape, computed in your browser with the full working shown: lattice, metric tensor, centring and point group found from the atoms, structure factors, face spacings, the BFDH rule, the shape built plane by plane, and the map of every shape a cubic crystal can take.</p>
+  </div>
+</div>
+
+    <div class="container">
+      <div class="with-toc">
+        <main id="main">
+<style>
+  .c2s-mat{display:inline-block;vertical-align:middle;border-left:1.6px solid var(--text);border-right:1.6px solid var(--text);border-radius:5px;padding:1px 3px;margin:2px 3px}
+  .c2s-mat table{border-collapse:collapse;margin:0;width:auto !important;border:0 !important;display:table}
+  .c2s-mat td{padding:1px 7px;text-align:right;font-variant-numeric:tabular-nums;font-size:.92em;border:0;background:none}
+  .c2s-small td{font-size:11px;padding:0 3px}
+  .c2s-eq{overflow-x:auto;margin:10px 0;line-height:2}
+  .c2s-work{background:var(--surface-1);border-left:3px solid var(--border-strong);padding:8px 14px;margin:10px 0;font-variant-numeric:tabular-nums;overflow-x:auto}
+  .c2s-work p{margin:5px 0}
+  .c2s-py{font-size:13px;color:var(--muted);border-top:1px dashed var(--border);padding-top:6px;margin-top:10px}
+  .c2s-cif{font-size:12px;overflow-x:auto;background:var(--surface-1) !important;color:var(--text) !important;padding:10px 12px;border:1px solid var(--border)}
+  .c2s-svg{width:100%;max-width:420px;height:auto;display:block;margin:6px auto;cursor:grab;touch-action:none}
+  .c2s-flat{cursor:crosshair;max-width:400px}
+  .c2s-ov{text-decoration:overline}
+  .c2s-chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:4px 0 8px}
+  .c2s-box{border:1px solid var(--border-strong);padding:8px 10px;border-radius:4px;background:var(--surface-0);min-width:118px;flex:1}
+  .c2s-k{font-family:var(--sans);font-size:13px;color:var(--text-3)}
+  .c2s-v{font-weight:600;margin-top:2px}
+  .c2s-arrow{align-self:center;color:var(--muted)}
+  .c2s-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+  @media (max-width:760px){.c2s-two{grid-template-columns:minmax(0,1fr)}.c2s-arrow{display:none}}
+  .c2s-plain{border-left:3px solid var(--linker);padding:4px 12px;margin:10px 0}
+  .c2s-plain::before{content:"In plain words";display:block;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text-3);margin-bottom:2px}
+  .c2s-rule{border-left:3px solid var(--node);padding:4px 12px;margin:10px 0}
+  .c2s-rule::before{content:"The rule";display:block;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text-3);margin-bottom:2px}
+  .c2s-live::before{content:"With this file's numbers";display:block;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--text-3);margin:16px 0 4px}
+  .c2s-stop{color:var(--bad)}
+  .c2s-list li{margin:4px 0}
+  .c2s-file{font-size:13px}
+  #main code{overflow-wrap:anywhere}
+  @media print{.c2s-svg{cursor:default}#c2s-file-row,#c2s-grow-controls,.c2s-presets{display:none}}
+</style>
+
+      <h2 class="section-title" id="c2s-intro" data-toc="What this page does">What This Page Does</h2>
+      <p class="section-sub">The panel asked whether a computer can start from the unit cell of an established MOF and produce the crystal shapes it can take. This page does the first, purely geometric version of that, in front of you: it reads a CIF file and computes every step from the six cell numbers to the finished shape, printing each intermediate number so the working can be checked by hand.</p>
+
+      <div class="panel">
+        <div class="toolbar" id="c2s-structs"><span class="lbl">CIF file</span></div>
+        <div class="toolbar" id="c2s-file-row"><span class="lbl">or your own</span><input type="file" id="c2s-file" class="c2s-file" accept=".cif,.txt"></div>
+        <div id="c2s-summary"></div>
+      </div>
+
+      <div class="callout" data-kind="How to read this page">
+        <span>Each step has three parts.</span> <b>In plain words</b> says what is being done and why. <b>The rule</b> gives the
+        mathematics in general form. <b>With this file's numbers</b> applies the rule to the chosen CIF; everything in
+        those boxes is computed when the page loads by <code>mof_cif_shape.js</code>, and nothing is typed in. For the
+        four bundled files, a line marked <b>Python check</b> repeats the result of the independent Python
+        implementation <code>code/morphology/run_cif_to_shape.py</code>, which also runs spglib. The test
+        <code>website/tests/test_cif_to_shape.js</code> fails if the two disagree. The page prints in full from the
+        browser, for reading on paper.
+      </div>
+
+      <h2 class="section-title" id="c2s-read" data-toc="Read the file"><span class="stitle-num">1</span>Read the File</h2>
+      <p class="c2s-plain">A CIF is a plain text file. Two things in it matter here: the box that repeats to fill space (the unit cell, given by three edge lengths and three angles) and the list of atoms inside it. Each atom is given as an element and three <b>fractional coordinates</b>: how far along each edge of the box it sits, as a fraction of that edge.</p>
+      <div class="c2s-rule">Unit cell: <i>a</i>, <i>b</i>, <i>c</i> (&Aring;) and &alpha; (between <b>b</b> and <b>c</b>), &beta; (between <b>a</b> and <b>c</b>), &gamma; (between <b>a</b> and <b>b</b>). An atom at fractional coordinates <b>x</b> = (<i>x</i>, <i>y</i>, <i>z</i>) sits at the point <b>r</b> = <i>x</i><b>a</b> + <i>y</i><b>b</b> + <i>z</i><b>c</b>, and also at <b>r</b> + <i>u</i><b>a</b> + <i>v</i><b>b</b> + <i>w</i><b>c</b> for every whole number <i>u</i>, <i>v</i>, <i>w</i>.</div>
+      <div class="c2s-live" id="c2s-s1"></div>
+
+      <h2 class="section-title" id="c2s-metric" data-toc="Lattice and metric tensor"><span class="stitle-num">2</span>The Lattice Vectors and the Metric Tensor</h2>
+      <p class="c2s-plain">The six numbers are turned into three arrows, the cell edges <b>a</b>, <b>b</b>, <b>c</b>, written in ordinary x-y-z coordinates. From the arrows we build one 3&times;3 table, the metric tensor <i>G</i>, which holds every length and angle of the cell. Every later step that needs a distance or an angle reads it from <i>G</i>. <i>G</i> does not change when the crystal is turned, so it describes the lattice itself, not the way it happens to be drawn.</p>
+      <div class="c2s-rule">
+        <p><b>a</b> = (<i>a</i>, 0, 0),&emsp; <b>b</b> = (<i>b</i> cos&gamma;, <i>b</i> sin&gamma;, 0),&emsp; <b>c</b> = (<i>c</i> cos&beta;, <i>c</i>(cos&alpha; &minus; cos&beta; cos&gamma;)/sin&gamma;, <i>c<sub>z</sub></i>), with <i>c<sub>z</sub></i> fixed by |<b>c</b>| = <i>c</i>.</p>
+        <p>Put the three edges as the rows of a matrix <i>A</i>. Then <i>G</i> = <i>A A</i><sup>T</sup>, that is <i>G<sub>ij</sub></i> = <b>a</b><sub><i>i</i></sub>&middot;<b>a</b><sub><i>j</i></sub>: the diagonal holds <i>a</i>&sup2;, <i>b</i>&sup2;, <i>c</i>&sup2; and the off-diagonal entries <i>ab</i> cos&gamma;, <i>ac</i> cos&beta;, <i>bc</i> cos&alpha;.</p>
+        <p>Cell volume <i>V</i> = &radic;(det <i>G</i>). The length of any lattice vector with integer or fractional components <b>u</b> is |<b>u</b>|&sup2; = <b>u</b><sup>T</sup> <i>G</i> <b>u</b>.</p>
+      </div>
+      <div class="c2s-live" id="c2s-s2"></div>
+
+      <h2 class="section-title" id="c2s-cubic" data-toc="Is the lattice cubic?"><span class="stitle-num">3</span>Is the Lattice Cubic? The Conventional Cell</h2>
+      <p class="c2s-plain">Files often store the smallest box that repeats, not the most symmetric one. A face-centred cube, for example, can be stored as a slanted box with 60&deg; angles that is one quarter of the cube. To see the cube we look for whole-number combinations of the stored edges that are equal in length and at right angles.</p>
+      <div class="c2s-rule">The lattice is cubic exactly when there is an integer matrix <i>M</i> (its rows say how to combine the stored edges) such that <i>M G M</i><sup>T</sup> = <i>a</i><sub>c</sub>&sup2; <i>I</i>. The new edges <i>M A</i> form the conventional cube of edge <i>a</i><sub>c</sub>, which contains |det <i>M</i>| lattice points. Three candidates cover every cubic lattice: <i>M</i> = <i>I</i> (the file already holds the cube); the 60&deg; rhombohedral cell of a face-centred cube (det <i>M</i> = 4); the 109.47&deg; rhombohedral cell of a body-centred cube (det <i>M</i> = 2). Agreement is tested to a relative tolerance of 2&times;10<sup>&minus;4</sup>, which allows for the rounding of the numbers in the file.</div>
+      <div class="c2s-live" id="c2s-s3"></div>
+      <figure class="fig">
+        <div id="c2s-cell-view"></div>
+        <figcaption id="c2s-cell-cap"></figcaption>
+      </figure>
+
+      <h2 class="section-title" id="c2s-centring" data-toc="Centring from the atoms"><span class="stitle-num">4</span>Lattice Centring, Found from the Atoms</h2>
+      <p class="c2s-plain">A cube of lattice points may have extra points that repeat the whole pattern: one at the centre of the body (a body-centred cube, I) or one at the centre of each face (a face-centred cube, F). We test this directly. Shift every atom by half a cell along a diagonal; if each one lands on an atom of the same element, that shift is a symmetry of the crystal.</p>
+      <div class="c2s-rule">A translation <b>t</b> is a symmetry when, for every atom <i>j</i>, some atom <i>k</i> of the same element satisfies |(<b>x</b><sub><i>j</i></sub> + <b>t</b> &minus; <b>x</b><sub><i>k</i></sub> &minus; <b>m</b>) <i>A</i><sub>c</sub>| &lt; 0.02 &Aring; for some whole-number vector <b>m</b> (the wrap-around into the next cell). I-centring is <b>t</b> = (&frac12;, &frac12;, &frac12;); F-centring is the three vectors (0, &frac12;, &frac12;), (&frac12;, 0, &frac12;), (&frac12;, &frac12;, 0). The test is run with all atoms and again without hydrogen, because hydrogen positions in a CIF are often placed by software and can break a symmetry the framework has.</div>
+      <div class="c2s-live" id="c2s-s4"></div>
+
+      <h2 class="section-title" id="c2s-pointgroup" data-toc="Point group from the atoms"><span class="stitle-num">5</span>The Point Group, Found from the Atoms</h2>
+      <p class="c2s-plain">Now we turn and reflect the crystal instead of shifting it. If the crystal looks exactly the same after a rotation (perhaps combined with a shift), that rotation is a symmetry. Which rotations survive decides which crystal faces are equivalent, and so which faces must grow at the same rate.</p>
+      <div class="c2s-rule">An operation (<i>R</i>, <b>t</b>) is a symmetry when every atom <i>j</i> is sent onto an atom of the same element: <i>R</i><b>x</b><sub><i>j</i></sub> + <b>t</b> &equiv; <b>x</b><sub><i>k</i></sub> (mod 1, within 0.02 &Aring;). The shift <b>t</b> is not known in advance. However, a symmetry must send the first atom of the rarest element onto some atom of that element, so only that many values of <b>t</b> need to be tried. Four operations decide the cubic point group: inversion, a 3-fold axis along the body diagonal, a 4-fold axis along an edge, and a 4-fold rotoinversion along an edge.</div>
+      <div class="c2s-live" id="c2s-s5"></div>
+
+      <h2 class="section-title" id="c2s-absent" data-toc="Which planes cancel"><span class="stitle-num">6</span>Which Planes Cancel: Structure Factors and the Space Group</h2>
+      <p class="c2s-plain">A crystal face is a plane of atoms, and the face grows by adding the next identical layer. If the centring places an identical layer exactly half-way between two planes of a family, the true repeat distance of that family is half its nominal spacing. X-ray diffraction shows this directly: the waves scattered by the two layers are exactly out of step and cancel, so that reflection is missing. We compute this cancellation from the atoms in the file.</p>
+      <div class="c2s-rule">
+        <p>Structure factor: <i>F</i>(<i>hkl</i>) = &Sigma;<sub><i>j</i></sub> <i>Z<sub>j</sub></i> exp(2&pi;i (<i>hx<sub>j</sub></i> + <i>ky<sub>j</sub></i> + <i>lz<sub>j</sub></i>)), taking each atom's atomic number <i>Z<sub>j</sub></i> as its weight.</p>
+        <p>If the translations <b>t</b><sub>1</sub>, &hellip;, <b>t</b><sub><i>m</i></sub> are symmetries, the atoms come in sets {<b>x</b>, <b>x</b> + <b>t</b><sub>1</sub>, &hellip;}, and the sum factorises as <i>F</i>(<b>h</b>) = <i>S</i>(<b>h</b>) &times; &Sigma;<sub>one atom per set</sub> <i>Z<sub>j</sub></i> exp(2&pi;i <b>h</b>&middot;<b>x</b><sub><i>j</i></sub>), with <i>S</i>(<b>h</b>) = &Sigma;<sub><i>s</i></sub> exp(2&pi;i <b>h</b>&middot;<b>t</b><sub><i>s</i></sub>). When <i>S</i>(<b>h</b>) = 0, the reflection vanishes whatever the atoms are. This is a <b>systematic absence</b>. The weights change the size of an allowed reflection but never make an absent one non-zero.</p>
+        <p>Glide planes (a reflection combined with a half-cell shift) forbid further reflections. Each possible glide group is checked against the one reflection it would remove.</p>
+      </div>
+      <div class="c2s-live" id="c2s-s6"></div>
+
+      <h2 class="section-title" id="c2s-families" data-toc="Face families and d-spacings"><span class="stitle-num">7</span>Face Families, Spacings and Effective Spacings</h2>
+      <p class="c2s-plain">Every set of parallel lattice planes is a possible crystal face, labelled by three whole numbers (<i>hkl</i>), its Miller indices. Planes related by the crystal's symmetry form a family, written {<i>hkl</i>}, and all members of a family behave identically. For each family we need one number, the distance between neighbouring identical layers. The picture shows why the centring can halve it.</p>
+      <div class="c2s-rule">
+        <p>Spacing: 1/<i>d</i>&sup2; = <b>h</b><sup>T</sup> <i>G</i><sup>&minus;1</sup> <b>h</b>. For the cubic cell <i>G</i> = <i>a</i>&sup2;<i>I</i>, so <i>d<sub>hkl</sub></i> = <i>a</i> / &radic;(<i>h</i>&sup2; + <i>k</i>&sup2; + <i>l</i>&sup2;).</p>
+        <p>First allowed order: the smallest <i>n</i> for which <i>n</i>(<i>hkl</i>) is not absent (Step 6). Effective spacing <i>d</i><sub>eff</sub> = <i>d<sub>hkl</sub></i> / <i>n</i>.</p>
+        <p>The members of a family are all signed permutations of (<i>hkl</i>) in point group m-3m. In -43m a family with no zero index splits into two halves of equal size, told apart by the sign of <i>hkl</i>. Every primitive (<i>hkl</i>) with indices up to 6 is listed.</p>
+      </div>
+      <div class="c2s-two">
+        <div>
+          <div class="toolbar"><span class="lbl">Planes</span><button type="button" class="mode-btn active" id="c2s-planes-100">(100)</button><button type="button" class="mode-btn" id="c2s-planes-110">(110)</button></div>
+          <div id="c2s-planes-fig"></div>
+        </div>
+        <p class="sm" id="c2s-planes-cap"></p>
+      </div>
+      <div class="c2s-live" id="c2s-s7"></div>
+
+      <h2 class="section-title" id="c2s-bfdh" data-toc="BFDH face distances"><span class="stitle-num">8</span>How Far Out Each Face Sits: the BFDH Rule</h2>
+      <p class="c2s-plain">A face made of widely spaced planes is densely packed with atoms and is flat at the molecular scale, so new material sticks to it slowly. A slow face moves outward slowly and stays large on the finished crystal, while fast faces grow themselves out of existence. The simplest version of this idea says that each face's distance from the centre is inversely proportional to its effective spacing.</p>
+      <div class="c2s-rule">BFDH rule (Bravais 1866, Friedel 1907, Donnay and Harker 1937): the distance of face family <i>f</i> from the centre is <i>R<sub>f</sub></i> &prop; 1/<i>d</i><sub>eff,<i>f</i></sub>. Scale it so the widest-spaced family is at distance 1: <i>R<sub>f</sub></i> = <i>d</i><sub>eff,max</sub> / <i>d</i><sub>eff,<i>f</i></sub>. Only ratios of distances matter, because the shape does not depend on its size.</div>
+      <div class="c2s-live" id="c2s-s8"></div>
+
+      <h2 class="section-title" id="c2s-build" data-toc="Building the shape"><span class="stitle-num">9</span>Building the Shape, Plane by Plane</h2>
+      <p class="c2s-plain">Every member of every family becomes a flat wall at its distance <i>R</i> from the centre, facing outward. The crystal is everything that lies inside all the walls. We build it as a sculptor would: start from a large block and cut it with one wall at a time, nearest walls first. Most walls end up outside the shape and cut nothing. The animation shows only the cuts that change it.</p>
+      <div class="c2s-rule">
+        <p>The shape is the convex polytope <i>P</i> = {<b>x</b> : <b>n</b><sub><i>p</i></sub>&middot;<b>x</b> &le; <i>R<sub>p</sub></i> for every plane <i>p</i>}, with outward unit normal <b>n</b> = <b>h</b>/|<b>h</b>|. In a cubic cell the normal of (<i>hkl</i>) points along (<i>h</i>, <i>k</i>, <i>l</i>), and the wall is the plane <i>hx</i> + <i>ky</i> + <i>lz</i> = <i>R</i>|<b>h</b>|.</p>
+        <p>One cut: every face polygon is clipped to the inner side of the new plane (each edge that crosses the plane is cut at the crossing point <b>A</b> + (<b>B</b> &minus; <b>A</b>) <i>s<sub>A</sub></i>/(<i>s<sub>A</sub></i> &minus; <i>s<sub>B</sub></i>), with <i>s</i> = <b>n</b>&middot;<b>x</b> &minus; <i>R</i>). The crossing points, ordered around their centre, form the new face.</p>
+        <p>A corner of the shape is a point on three planes with independent normals: the 3&times;3 linear system <i>N</i><b>x</b> = <b>r</b>, solved by Cramer's rule.</p>
+      </div>
+      <div class="panel">
+        <div class="toolbar" id="c2s-grow-controls"><button type="button" class="mode-btn" id="c2s-grow-play">Play</button>
+          <input type="range" id="c2s-grow-slider" min="0" max="1" step="1" value="0" aria-label="cut number" style="flex:1;min-width:140px">
+          <span class="sm" id="c2s-grow-count"></span></div>
+        <div id="c2s-grow-view"></div>
+        <p id="c2s-grow-txt"></p>
+        <p class="sm">Face colours: blue {100}, red {111} (dark red: the second half {111}<sub>&minus;</sub> where the point group splits it), green {110}. Drag to rotate.</p>
+      </div>
+      <div class="c2s-live" id="c2s-s9"></div>
+
+      <h2 class="section-title" id="c2s-survive" data-toc="Which faces survive"><span class="stitle-num">10</span>Which Faces Survive, and by How Much the Others Miss</h2>
+      <p class="c2s-plain">For each family we compare two distances: how far out its wall sits, and how far the finished shape reaches in that direction. If the wall is farther out than the shape reaches, it never touches the crystal and that face does not appear.</p>
+      <div class="c2s-rule">Reach of the shape along a direction <b>n</b> (the support function): <i>h<sub>P</sub></i>(<b>n</b>) = max over the corners <b>v</b> of <b>n</b>&middot;<b>v</b>. On the finished shape every wall satisfies <i>R<sub>f</sub></i> &ge; <i>h<sub>P</sub></i>(<b>n</b><sub><i>f</i></sub>). A family carries faces when equality holds and the wall meets the shape in a polygon of positive area; it is absent when <i>R<sub>f</sub></i> &gt; <i>h<sub>P</sub></i>(<b>n</b><sub><i>f</i></sub>), and the difference is the margin by which it misses. When <i>R<sub>f</sub></i> = <i>h<sub>P</sub></i>(<b>n</b><sub><i>f</i></sub>) but the face has zero area, the wall touches the shape only at a corner or along an edge.</div>
+      <div class="c2s-live" id="c2s-s10"></div>
+
+      <h2 class="section-title" id="c2s-measure" data-toc="Measuring the shape"><span class="stitle-num">11</span>Measuring and Naming the Shape</h2>
+      <p class="c2s-plain">The finished shape is reduced to a few numbers: how much of its surface each family covers, its volume, and how close it is to a sphere. The name follows from which families are present and from the outline of their faces.</p>
+      <div class="c2s-rule">
+        <p>Area of a face with corners <b>v</b><sub>1</sub>, &hellip;, <b>v</b><sub><i>m</i></sub> in order: <i>A</i> = &frac12; |&Sigma;<sub><i>t</i>=2</sub><sup><i>m</i>&minus;1</sup> (<b>v</b><sub><i>t</i></sub> &minus; <b>v</b><sub>1</sub>) &times; (<b>v</b><sub><i>t</i>+1</sub> &minus; <b>v</b><sub>1</sub>)|.</p>
+        <p>Volume: the shape is a union of pyramids from the centre to each face, of height <i>R<sub>f</sub></i>, so <i>V</i> = &frac13; &Sigma;<sub><i>f</i></sub> <i>R<sub>f</sub></i> <i>A<sub>f</sub></i>.</p>
+        <p>Sphericity: &Psi; = &pi;<sup>1/3</sup> (6<i>V</i>)<sup>2/3</sup> / <i>A</i>, the area of the sphere of the same volume divided by the actual area (1 for a sphere).</p>
+      </div>
+      <div class="c2s-two">
+        <figure class="fig"><div id="c2s-final-view"></div><figcaption>The finished BFDH shape for this file, with Miller indices on the front faces. Drag to rotate.</figcaption></figure>
+        <div class="c2s-live" id="c2s-s11"></div>
+      </div>
+
+      <h2 class="section-title" id="c2s-map-sec" data-toc="Beyond BFDH: the map"><span class="stitle-num">12</span>Beyond BFDH: Every Shape a Cubic Crystal Can Take</h2>
+      <p class="c2s-plain">BFDH fixes one set of distances from the geometry alone. Real growth conditions (solvent, temperature, added modulators) change how fast each face grows, which moves the distances. For a cubic crystal bounded by {100}, {110} and {111}, two ratios decide the shape completely, so all possible shapes fit on one map. Click or drag on the map to see the shape at any point. The diamond marks where BFDH puts this file.</p>
+      <div class="c2s-rule">
+        <p>Set <i>R</i><sub>100</sub> = 1, <i>x</i> = <i>R</i><sub>110</sub>/<i>R</i><sub>100</sub>, <i>y</i> = <i>R</i><sub>111</sub>/<i>R</i><sub>100</sub>. Each boundary follows from the reach of one simple shape (Step 10):</p>
+        <ul class="c2s-list">
+          <li><b>Cube</b> (six {100} walls at 1, corners (&plusmn;1, &plusmn;1, &plusmn;1)): its reach along (111)/&radic;3 is 3/&radic;3 = &radic;3, and along (110)/&radic;2 it is 2/&radic;2 = &radic;2. No other face cuts it when <i>y</i> &ge; &radic;3 and <i>x</i> &ge; &radic;2.</li>
+          <li><b>Octahedron</b> (eight {111} walls at <i>y</i>, corners (&plusmn;&radic;3 <i>y</i>, 0, 0) and permutations): its reach along (100) is &radic;3 <i>y</i>, and along (110)/&radic;2 it reaches the edge midpoint (&radic;3<i>y</i>/2, &radic;3<i>y</i>/2, 0), which gives &radic;(3/2) <i>y</i>. It is pure when <i>y</i> &le; 1/&radic;3 and <i>x</i> &ge; &radic;(3/2) <i>y</i>.</li>
+          <li><b>Rhombic dodecahedron</b> (twelve {110} walls at <i>x</i>, corners (&plusmn;&radic;2 <i>x</i>, 0, 0) and (&plusmn;<i>x</i>/&radic;2)(1, 1, 1)): its reach along (100) is &radic;2 <i>x</i> and along (111)/&radic;3 it is &radic;(3/2) <i>x</i>. It is pure when <i>x</i> &le; 1/&radic;2 and <i>y</i> &ge; &radic;(3/2) <i>x</i>.</li>
+          <li><b>Cuboctahedron</b>: the {111} triangles and {100} squares share corners at (1, 1, 0), where (1,1,1)&middot;(1,1,0)/&radic;3 = 2/&radic;3. So it occurs only on the line <i>y</i> = 2/&radic;3, and only for <i>x</i> &ge; &radic;2. Above the line the shape is a truncated cube, below it a truncated octahedron.</li>
+        </ul>
+        <p>The map is coloured by the area fraction of each family (blue {100}, red {111}, green {110}); the black lines are the exact boundaries above. It treats the two halves of {111} as equal. The tetrahedral shapes that -43m allows when they differ are on the <a href="morphology.html">Morphology</a> page.</p>
+      </div>
+      <div class="panel">
+        <div class="toolbar c2s-presets"><span class="lbl">Go to</span><button type="button" class="mode-btn" id="c2s-preset-bfdh">BFDH of this file</button><button type="button" class="mode-btn" id="c2s-preset-cube">cube</button><button type="button" class="mode-btn" id="c2s-preset-cubo">cuboctahedron</button><button type="button" class="mode-btn" id="c2s-preset-oct">octahedron</button><button type="button" class="mode-btn" id="c2s-preset-rd">rhombic dodecahedron</button></div>
+        <div class="c2s-two">
+          <div id="c2s-map"></div>
+          <div><div id="c2s-map-view"></div><p id="c2s-map-txt"></p></div>
+        </div>
+      </div>
+
+      <h2 class="section-title" id="c2s-limits" data-toc="What this shows, and its limits"><span class="stitle-num">13</span>What This Shows, and What It Does Not</h2>
+      <ul class="c2s-list">
+        <li><b>Steps 1 to 7 are exact crystallography of the file.</b> The cell, the cubic lattice, the centring, the point group, the space group and the effective spacings follow from the numbers in the CIF, and for the four bundled files they agree with spglib.</li>
+        <li><b>Step 8 is a rule, not a physical model of growth.</b> BFDH ignores the chemistry of the faces, the solvent, the temperature and any modulator. Step 8 also shows that the BFDH shape depends only on the centring and the point group, so MOF-5, HKUST-1 and UiO-66, all face-centred cubic, receive the same truncated octahedron. Laboratories grow these three MOFs in different shapes, so BFDH cannot by itself tell them apart. How the project's other models (graph attachment numbers, force-field and CHGNet surface energies) move each MOF to a different point of the map in Step 12, and how those points compare with laboratory crystals, is on the <a href="morphology.html">Morphology</a>, <a href="surface_energy.html">Surface Energy</a> and <a href="experiment.html">Experiment</a> pages.</li>
+        <li><b>Only equilibrium-like shapes are produced.</b> Every shape here is a convex polytope with flat faces. Rods, plates and spheres grown under kinetic control or with additives that block particular faces are not produced by this construction.</li>
+        <li><b>Cubic crystals only.</b> A file whose lattice is not cubic stops at Step 3 with a message. The Python package handles any lattice, and the <a href="deform.html">Cell Deform</a> page uses it on stretched cells.</li>
+      </ul>
+      <div class="callout" data-kind="Where every number comes from">
+        Browser: <code>website/mof_cif_shape.js</code> (all steps) and <code>website/cif_shape_page.js</code> (this page), with
+        <code>website/mof_morphology.js</code> for the shape descriptors and names. Python reference:
+        <code>code/morphology/run_cif_to_shape.py</code>, which writes <code>code/morphology/results/cif_to_shape.json</code>;
+        <code>website/_build/build_cif_shape_data.py</code> copies the Python numbers into <code>website/cif_shape_data.js</code>.
+        Check: <code>website/tests/test_cif_to_shape.js</code>.
+      </div>
+
+          <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="morph_math.html"><div class="dir">Previous</div><div class="ttl">Phase 2: The Mathematics of Crystal Shape</div></a><a class="next" href="morphology.html"><div class="dir">Next</div><div class="ttl">Morphology: Crystal Shapes from the Unit Cell</div></a></nav>
+        </main>
+        <aside id="toc" class="toc" aria-label="On this page"></aside>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+        files when the page loads; the other pages are generated from the result files of the Python
+        code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+        page against those files. Each figure names the script that produced it.
+        23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+        <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
+<script src="assets/site.js"></script>
+<script src="default_cif_data.js"></script>
+<script src="mof_morphology.js"></script>
+<script src="mof_cif_shape.js"></script>
+<script src="cif_shape_data.js"></script>
+<script src="cif_shape_page.js"></script>
+</body>
+</html>

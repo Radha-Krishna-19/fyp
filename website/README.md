@@ -28,6 +28,7 @@ Two kinds of content are on the pages, and each page says which is which:
 | [Learn](https://radha-krishna-19.github.io/fyp/learn_shape.html) | `learn_shape.html` | Everything needed to follow the morphology work, from scratch and with a picture for each idea: unit cells, Miller planes, symmetry, how crystals grow, shape rules, measuring shape, and periodic graphs. |
 | [Learn 2](https://radha-krishna-19.github.io/fyp/learn_energy.html) | `learn_energy.html` | Just enough, from scratch, to follow the rest of the project: surface and cleavage energy, slabs and terminations, where energies come from (force field, CHGNet, DFT), combining two shape methods, the statistics used, finite particles, and the software tools. |
 | [Maths](https://radha-krishna-19.github.io/fyp/morph_math.html) | `morph_math.html` | Every rule used by the morphology work stated as a proposition and proved, with each proposition checked numerically in your browser. |
+| [CIF to Shape](https://radha-krishna-19.github.io/fyp/cif_to_shape.html) | `cif_to_shape.html` | Every step from the numbers in a CIF file to the crystal shape, computed in your browser with the full working shown: lattice, metric tensor, centring and point group found from the atoms, structure factors, face spacings, the BFDH rule, the shape built plane by plane, and the map of every shape a cubic crystal can take. |
 | [Morphology](https://radha-krishna-19.github.io/fyp/morphology.html) | `morphology.html` | The panel's second question: from one established unit cell, generate several crystal morphologies, mathematically and computationally. Method, live shape explorer, results for four MOFs, and the comparison with experiment. |
 | [Cell Deform](https://radha-krishna-19.github.io/fyp/deform.html) | `deform.html` | The second reading of the panel's question: change the unit-cell parameters of an established MOF and see which shapes follow, with the exact rules and a live explorer. |
 | [Graph Faces](https://radha-krishna-19.github.io/fyp/graph_faces.html) | `graph_faces.html` | Which faces are flat, how fast each grows, and which shape results, computed from each framework's own periodic graph and compared with experiment. |
@@ -51,6 +52,8 @@ The built pages (`*.html` in this folder) are never edited by hand. They are pro
 
 ```bash
 python website/_build/build_relation_fragment.py   # and any other build_*_fragment.py whose inputs changed
+python code/morphology/run_cif_to_shape.py         # CIF to Shape: the Python reference numbers
+python website/_build/build_cif_shape_data.py     # copies them into cif_shape_data.js
 python website/_build/update_code_sources.py       # refreshes code_sources.js for the Source page
 python website/_build/build_site.py                # writes every page
 ```

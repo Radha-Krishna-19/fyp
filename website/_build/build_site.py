@@ -70,6 +70,10 @@ PAGES = [
          title='Phase 2: The Mathematics of Crystal Shape',
          desc='Every rule used by the morphology work stated as a proposition and proved, with each proposition checked numerically in your browser.'),
 
+    dict(file='cif_to_shape.html', nav='CIF to Shape',  sections=[],
+         title='From a CIF File to a Crystal Shape',
+         desc='Every step from the numbers in a CIF file to the crystal shape, computed in your browser with the full working shown: lattice, metric tensor, centring and point group found from the atoms, structure factors, face spacings, the BFDH rule, the shape built plane by plane, and the map of every shape a cubic crystal can take.'),
+
     dict(file='morphology.html',   nav='Morphology',    sections=[],
          title='Morphology: Crystal Shapes from the Unit Cell',
          desc='The panel\'s second question: from one established unit cell, generate several crystal morphologies, mathematically and computationally. Method, live shape explorer, results for four MOFs, and the comparison with experiment.'),
@@ -145,6 +149,7 @@ SCRIPTS = {
     'learn_shape.html':   [],
     'learn_energy.html':  [],
     'morph_math.html':    ['mof_morphology.js', 'mof_deform.js', 'morph_math_page.js'],
+    'cif_to_shape.html':  ['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'cif_shape_data.js', 'cif_shape_page.js'],
     'morphology.html':    ['mof_morphology.js', 'morphology_page.js'],
     'deform.html':        ['mof_morphology.js', 'mof_deform.js', 'deform_page.js'],
     'graph_faces.html':   ['phase3_data.js', 'graph_faces_page.js'],
@@ -160,6 +165,29 @@ SCRIPTS = {
     'glossary.html':      [],
     'team.html':          [],
 }
+
+# The contents rail groups the pages into the parts a reader moves through. Each entry is
+# (file, label in the rail). The labels are longer and plainer than the old one-word menu.
+PARTS = [
+    ('Start', [('index.html', 'Overview'), ('journey.html', 'How we got here'),
+               ('methodology.html', 'Methodology')]),
+    ('Part I. Graphs and the spectrum', [('decomposition.html', 'Decomposition'),
+               ('network.html', 'From crystal to network'), ('spectrum.html', 'The multifractal spectrum'),
+               ('results.html', 'Results: the band')]),
+    ('Part II. Crystal shape', [('learn_shape.html', 'Learn: crystal shapes'),
+               ('learn_energy.html', 'Learn: surface energy'), ('morph_math.html', 'The mathematics'),
+               ('cif_to_shape.html', 'From a CIF to a shape'), ('morphology.html', 'Morphology'),
+               ('deform.html', 'Changing the cell'), ('graph_faces.html', 'Faces from the graph'),
+               ('surface_energy.html', 'Surface energy'), ('hybrid.html', 'Blending BFDH and Wulff'),
+               ('experiment.html', 'Against experiment')]),
+    ('Connecting the two parts', [('bridge.html', 'Why shape'), ('relation.html', 'Spectrum and shape')]),
+    ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
+               ('resources.html', 'Resources'), ('references.html', 'References'),
+               ('glossary.html', 'Glossary'), ('team.html', 'Team and progress')]),
+]
+# Pages outside the numbered reading sequence.
+REFERENCE = ('lessons.html', 'code.html', 'resources.html', 'references.html', 'glossary.html', 'team.html')
+
 
 # Short labels used when a cross-page link's visible text said "Section 7".
 LABELS = {
@@ -218,15 +246,6 @@ THEME_INIT = (
     'document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>'
 )
 
-MARK = ('<svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">'
-        '<line x1="12" y1="12" x2="3" y2="6"  stroke="var(--linker)" stroke-width="1.6"/>'
-        '<line x1="12" y1="12" x2="21" y2="6" stroke="var(--linker)" stroke-width="1.6"/>'
-        '<line x1="12" y1="12" x2="12" y2="21" stroke="var(--linker)" stroke-width="1.6"/>'
-        '<circle cx="3" cy="6" r="2.1"  fill="var(--linker)"/>'
-        '<circle cx="21" cy="6" r="2.1" fill="var(--linker)"/>'
-        '<circle cx="12" cy="21" r="2.1" fill="var(--linker)"/>'
-        '<circle cx="12" cy="12" r="3.4" fill="var(--node)"/></svg>')
-
 
 def script_tags(names):
     out = []
@@ -243,21 +262,32 @@ def script_tags(names):
     return '\n'.join(out)
 
 
-def shell(page, idx, body_html, masthead_html):
-    nav = '\n'.join(
-        '      <a href="{f}"{cur}>{n}</a>'.format(
-            f=p['file'], n=p['nav'],
-            cur=' aria-current="page"' if p['file'] == page['file'] else '')
-        for p in PAGES)
+def sidebar(page):
+    """The contents rail: every page, grouped into parts, the reading steps numbered."""
+    steps = [p['file'] for p in PAGES if p['file'] not in REFERENCE]
+    files = [f for _, items in PARTS for f, _ in items]
+    assert sorted(files) == sorted(p['file'] for p in PAGES), 'PARTS must list every page exactly once'
+    out = []
+    for part, items in PARTS:
+        lis = []
+        for f, label in items:
+            cur = ' aria-current="page"' if f == page['file'] else ''
+            num = f'<span class="nav-n">{steps.index(f) + 1}</span>' if f in steps else '<span class="nav-n"></span>'
+            lis.append(f'        <li><a href="{f}"{cur}>{num}<span class="nav-t">{label}</span></a></li>')
+        out.append(f'      <div class="nav-part">\n        <p class="nav-part-title">{part}</p>\n'
+                   f'        <ol>\n' + '\n'.join(lis) + '\n        </ol>\n      </div>')
+    return '\n'.join(out)
 
+
+def shell(page, idx, body_html, masthead_html):
     prev_a = next_a = ''
     if idx > 0:
         p = PAGES[idx - 1]
-        prev_a = (f'<a class="prev" href="{p["file"]}"><div class="dir">&larr; Previous</div>'
+        prev_a = (f'<a class="prev" href="{p["file"]}"><div class="dir">Previous</div>'
                   f'<div class="ttl">{p["title"]}</div></a>')
     if idx < len(PAGES) - 1:
         p = PAGES[idx + 1]
-        next_a = (f'<a class="next" href="{p["file"]}"><div class="dir">Next &rarr;</div>'
+        next_a = (f'<a class="next" href="{p["file"]}"><div class="dir">Next</div>'
                   f'<div class="ttl">{p["title"]}</div></a>')
 
     return f"""<!DOCTYPE html>
@@ -268,48 +298,61 @@ def shell(page, idx, body_html, masthead_html):
 <title>{page['title']} &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="{html.escape(page['desc'], quote=True)}">
 <meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23b91c1c'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 {THEME_INIT}
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/design.css">
-<link rel="stylesheet" href="assets/academic.css">
+<link rel="stylesheet" href="assets/study.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html">{MARK}<span>MOF Graphs and Crystal Morphology</span></a>
-  <nav class="site-nav" aria-label="Sections of this site">
-{nav}
-  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>Contents</span>
+  </button>
+  <a class="brand" href="index.html">MOF Graphs and Crystal Morphology</a>
   <div class="header-tools">
     <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
   </div>
 </header>
 
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Contents">
+    <nav class="site-nav" aria-label="All pages">
+{sidebar(page)}
+    </nav>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+  <div class="page-col">
 {masthead_html}
-<div class="container">
-  <div class="with-toc">
-    <main id="main">
+    <div class="container">
+      <div class="with-toc">
+        <main id="main">
 {body_html}
-      <nav class="page-nav" aria-label="Previous and next page">{prev_a}{next_a}</nav>
-    </main>
-    <aside id="toc" class="toc" aria-label="On this page"></aside>
+          <nav class="page-nav" aria-label="Previous and next page">{prev_a}{next_a}</nav>
+        </main>
+        <aside id="toc" class="toc" aria-label="On this page"></aside>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+        files when the page loads; the other pages are generated from the result files of the Python
+        code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+        page against those files. Each figure names the script that produced it.
+        23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+        <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+      </div>
+    </footer>
   </div>
 </div>
-
-<footer class="site-footer">
-  <div class="container">
-    The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
-    files when the page loads; the other pages are generated from the result files of the Python
-    code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
-    page against those files. Each figure names the script that produced it.
-    &middot; 23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
-    &middot; <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
-  </div>
-</footer>
 
 <script src="assets/palette.js"></script>
 <script src="assets/glossary-data.js"></script>
@@ -322,36 +365,23 @@ def shell(page, idx, body_html, masthead_html):
 
 
 def step_of(idx):
-    """Where this page sits in the seven-page sequence, as one short line.
-
-    This replaces a numbered step-strip that listed all seven pages on every
-    page. That strip repeated the navigation bar immediately above it: the same
-    seven titles in the same order, twice, costing a band of vertical space on
-    every page to tell the reader something the nav already told them. What the
-    nav genuinely does NOT say is how far through the sequence this page is, so
-    that — and only that — is what survives here.
-    """
-    steps = [p for p in PAGES if p['file'] not in
-             ('code.html', 'resources.html', 'references.html', 'glossary.html', 'team.html')]
+    """Where this page sits: its part, and its place in the reading sequence."""
     here = PAGES[idx]['file']
+    part = next(name for name, items in PARTS if here in [f for f, _ in items])
+    steps = [p for p in PAGES if p['file'] not in REFERENCE]
     names = [p['file'] for p in steps]
     if here not in names:
-        return ('<div class="place ref">Reference material &mdash; outside the reading '
-                'sequence. <a href="index.html">Start at the beginning</a>.</div>')
+        return f'<div class="place ref">{part}. Reference material, outside the reading sequence.</div>'
     n = names.index(here) + 1
-    nxt = steps[n] if n < len(steps) else None
-    tail = (f' &middot; next: <a href="{nxt["file"]}">{nxt["nav"]}</a>' if nxt
-            else ' &middot; last step')
-    return (f'<div class="place"><b>Step {n} of {len(steps)}</b>{tail}</div>')
+    return f'<div class="place">{part}. Chapter {n} of {len(steps)}.</div>'
 
 
 def masthead(page, idx, extra=''):
     return f"""<div class="masthead">
   <div class="container">
-    <div class="eyebrow">23CSE498 &middot; Final Year Project &middot; Phase II</div>
+{step_of(idx)}
     <h1>{page['title']}</h1>
     <p class="lead">{page['desc']}</p>
-{step_of(idx)}
 {extra}  </div>
 </div>
 """
