@@ -55,6 +55,9 @@ import math
 
 from code_12_converged_band import quotient_graph_from_cif, replicate
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+
 MIN_CELL_LENGTH = 48.0  # matches MIN_CELL_LENGTH in both band notebooks
 
 
@@ -204,7 +207,7 @@ def run(cif_dir, class_csv, out_json):
 
 if __name__ == '__main__':
     import sys
-    cif_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join('..', '..', 'data', 'structures', 'hmof')
-    class_csv = sys.argv[2] if len(sys.argv) > 2 else os.path.join('..', '..', 'data', 'spectrum_descriptors', 'independent_cg_run', 'independent_cg_run_76_hmof.csv')
-    out_json = sys.argv[3] if len(sys.argv) > 3 else os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling', 'size_strata.json')
+    cif_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, 'data', 'structures', 'hmof')
+    class_csv = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, 'data', 'spectrum_descriptors', 'independent_cg_run', 'independent_cg_run_76_hmof.csv')
+    out_json = sys.argv[3] if len(sys.argv) > 3 else os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling', 'size_strata.json')
     run(cif_dir, class_csv, out_json)

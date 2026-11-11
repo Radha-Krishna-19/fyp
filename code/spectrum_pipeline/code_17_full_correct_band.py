@@ -69,6 +69,9 @@ import networkx as nx
 from code_12_converged_band import (quotient_graph_from_cif, replicate,
                                       select_influential, fast_diameter, spectrum)
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+
 TARGET_CELL_LENGTH = 48.0
 MAX_NODES = 6000
 MAX_N = 8
@@ -210,9 +213,9 @@ def run_dataset(cif_dir, label, out_path, n_trials=20, verbose=True):
 
 if __name__ == '__main__':
     import sys
-    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join('..', '..', 'data', 'structures', 'hmof')
-    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join('..', '..', 'data', 'structures', 'core_mof_2019')
-    out_dir = os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling')
+    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, 'data', 'structures', 'hmof')
+    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, 'data', 'structures', 'core_mof_2019')
+    out_dir = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling')
 
     hmof_result = run_dataset(hmof_dir, 'hMOF (full, CG supercell)',
                                os.path.join(out_dir, 'full_band_hmof_cg.json'))

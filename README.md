@@ -57,6 +57,8 @@ This identifies a particle's shape from its graph; it does not predict which sha
 
 ## Repository structure
 
+A one-page guide to Phase 1, Phase 2 and the link between them is in [`PROJECT_MAP.md`](PROJECT_MAP.md).
+
 | Folder | Contents |
 |---|---|
 | [`code/spectrum_pipeline/`](code/spectrum_pipeline/) | Part 1: decomposition pipeline (`code_00`–`code_07`, Python translation of the published method), spectrum analysis (`code_09`–`code_19`), the four demonstration CIFs |

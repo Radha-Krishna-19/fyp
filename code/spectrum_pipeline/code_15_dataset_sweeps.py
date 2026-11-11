@@ -43,6 +43,9 @@ import numpy as np
 from code_12_converged_band import (quotient_graph_from_cif, replicate,
                                       select_influential, fast_diameter, spectrum)
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+
 MAX_NODES = 5000
 N_VALUES = (2, 3, 4)
 
@@ -124,9 +127,9 @@ def run_dataset(cif_dir, label, max_structures=20, out_path=None, verbose=True):
 
 if __name__ == '__main__':
     import sys
-    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join('..', '..', 'data', 'structures', 'hmof')
-    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join('..', '..', 'data', 'structures', 'core_mof_2019')
-    out_dir = os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling')
+    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, 'data', 'structures', 'hmof')
+    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, 'data', 'structures', 'core_mof_2019')
+    out_dir = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling')
 
     hmof_result = run_dataset(hmof_dir, 'hMOF', max_structures=20,
                                out_path=os.path.join(out_dir, 'slope_sweep_hmof.json'))

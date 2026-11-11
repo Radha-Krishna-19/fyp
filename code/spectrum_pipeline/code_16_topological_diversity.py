@@ -47,6 +47,9 @@ import networkx as nx
 
 from code_12_converged_band import quotient_graph_from_cif
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+
 SIGNATURE_TO_NET = {
     (6, 2): 'pcu',
     (4, 3): 'tbo',
@@ -174,8 +177,8 @@ def build_diverse_set(demo_dir='.', hmof_dir=None, core_dir=None, target_size=10
 
 if __name__ == '__main__':
     import sys
-    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join('..', '..', 'data', 'structures', 'hmof')
-    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join('..', '..', 'data', 'structures', 'core_mof_2019')
+    hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, 'data', 'structures', 'hmof')
+    core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, 'data', 'structures', 'core_mof_2019')
 
     result = build_diverse_set(demo_dir='.', hmof_dir=hmof_dir, core_dir=core_dir, target_size=10)
 
@@ -189,7 +192,7 @@ if __name__ == '__main__':
     for pool, name, reason in result['unclassified_examples']:
         print(f"  [{pool}] {name}: {reason}")
 
-    out_path = os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling', 'topological_diversity.json')
+    out_path = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling', 'topological_diversity.json')
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, 'w') as fh:
         json.dump(result, fh, indent=2, default=str)

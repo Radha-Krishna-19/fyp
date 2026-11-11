@@ -64,6 +64,9 @@ from code_09_network_analysis import build_periodic_block_graph
 from code_12_converged_band import replicate, fast_diameter, _adjacency, _bfs_far
 
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
+
 def atomic_quotient_graph(cif_path: str):
     """The SAME labelled-quotient-graph construction used for building blocks,
     applied with one atom per block. Returns (blocks, edges, geom, linker_atom_diam)
@@ -192,7 +195,7 @@ def analyse_structure(cif_path: str, n: int = 4, n_centres: int = 12, seed: int 
 
 if __name__ == '__main__':
     import sys
-    cifs = sys.argv[1:] or ['HKUST-1.cif', 'MOF5.cif', 'ZIF-8.cif', 'UiO-66.cif']
+    cifs = sys.argv[1:] or [os.path.join(HERE, c) for c in ('HKUST-1.cif', 'MOF5.cif', 'ZIF-8.cif', 'UiO-66.cif')]
     out = {}
     for cif in cifs:
         if not os.path.exists(cif):
@@ -212,7 +215,7 @@ if __name__ == '__main__':
         else:
             print(f"  {f.get('reason')}")
 
-    outdir = os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling')
+    outdir = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling')
     os.makedirs(outdir, exist_ok=True)
     with open(os.path.join(outdir, 'scaling_regimes.json'), 'w') as fh:
         json.dump(out, fh, indent=2, default=str)
