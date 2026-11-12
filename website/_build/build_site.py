@@ -153,7 +153,7 @@ SCRIPTS = {
     'learn_shape.html':   [],
     'learn_energy.html':  [],
     'morph_math.html':    ['mof_morphology.js', 'mof_deform.js', 'morph_math_page.js'],
-    'cif_to_shape.html':  ['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'cif_shape_data.js', 'cif_shape_page.js'],
+    'cif_to_shape.html':  ['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'general_shape_data.js', 'cif_shape_data.js', 'cif_shape_page.js'],
     'morphology.html':    ['mof_morphology.js', 'morphology_page.js'],
     'deform.html':        ['mof_morphology.js', 'mof_deform.js', 'deform_page.js'],
     'graph_faces.html':   ['phase3_data.js', 'graph_faces_page.js'],

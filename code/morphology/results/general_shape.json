@@ -1,0 +1,6454 @@
+{
+ "MIL-47": {
+  "file": "MIL-47.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "aa71711c65795fd1b3a0bf7c680ad6568fa451d9bf2625745bde15001e230375",
+  "n_atoms": 72,
+  "cell": [
+   6.8179,
+   16.143,
+   13.939,
+   90.0,
+   90.0,
+   90.0
+  ],
+  "spacegroup": "Pnma",
+  "sg_number": 62,
+  "lattice_system": "orthorhombic",
+  "operations": 8,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": false,
+  "families": [
+   {
+    "label": "{011}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 10.55022,
+    "order": 1,
+    "d_eff": 10.55022,
+    "R": 1.0,
+    "area_fraction": 0.640602
+   },
+   {
+    "label": "{010}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 16.143,
+    "order": 2,
+    "d_eff": 8.0715,
+    "R": 1.307096,
+    "area_fraction": 0.077041
+   },
+   {
+    "label": "{001}",
+    "four_index": null,
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 13.939,
+    "order": 2,
+    "d_eff": 6.9695,
+    "R": 1.51377,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{101}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 6.12453,
+    "order": 1,
+    "d_eff": 6.12453,
+    "R": 1.722619,
+    "area_fraction": 0.189671
+   },
+   {
+    "label": "{111}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 5.72626,
+    "order": 1,
+    "d_eff": 5.72626,
+    "R": 1.842428,
+    "area_fraction": 0.092685
+   },
+   {
+    "label": "{031}",
+    "four_index": null,
+    "hkl": [
+     0,
+     3,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 5.01993,
+    "order": 1,
+    "d_eff": 5.01993,
+    "R": 2.101666,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{121}",
+    "four_index": null,
+    "hkl": [
+     1,
+     2,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 4.87897,
+    "order": 1,
+    "d_eff": 4.87897,
+    "R": 2.162386,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{102}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     2
+    ],
+    "multiplicity": 4,
+    "d": 4.8737,
+    "order": 1,
+    "d_eff": 4.8737,
+    "R": 2.164726,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{112}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 4.6657,
+    "order": 1,
+    "d_eff": 4.6657,
+    "R": 2.261231,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{013}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     3
+    ],
+    "multiplicity": 4,
+    "d": 4.46506,
+    "order": 1,
+    "d_eff": 4.46506,
+    "R": 2.362838,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{122}",
+    "four_index": null,
+    "hkl": [
+     1,
+     2,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 4.17212,
+    "order": 1,
+    "d_eff": 4.17212,
+    "R": 2.528743,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{131}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 4.0424,
+    "order": 1,
+    "d_eff": 4.0424,
+    "R": 2.609892,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{103}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     3
+    ],
+    "multiplicity": 4,
+    "d": 3.83951,
+    "order": 1,
+    "d_eff": 3.83951,
+    "R": 2.747802,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{113}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 3.73531,
+    "order": 1,
+    "d_eff": 3.73531,
+    "R": 2.824454,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{132}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 3.61229,
+    "order": 1,
+    "d_eff": 3.61229,
+    "R": 2.920644,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{021}",
+    "four_index": null,
+    "hkl": [
+     0,
+     2,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 6.98495,
+    "order": 2,
+    "d_eff": 3.49248,
+    "R": 3.020844,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{123}",
+    "four_index": null,
+    "hkl": [
+     1,
+     2,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 3.46722,
+    "order": 1,
+    "d_eff": 3.46722,
+    "R": 3.042847,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{100}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 6.8179,
+    "order": 2,
+    "d_eff": 3.40895,
+    "R": 3.09486,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{141}",
+    "four_index": null,
+    "hkl": [
+     1,
+     4,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.3699,
+    "order": 1,
+    "d_eff": 3.3699,
+    "R": 3.130721,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{210}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 3.33539,
+    "order": 1,
+    "d_eff": 3.33539,
+    "R": 3.163113,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 3.31136,
+    "order": 1,
+    "d_eff": 3.31136,
+    "R": 3.186069,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{211}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.24382,
+    "order": 1,
+    "d_eff": 3.24382,
+    "R": 3.252408,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{012}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     2
+    ],
+    "multiplicity": 4,
+    "d": 6.39863,
+    "order": 2,
+    "d_eff": 3.19931,
+    "R": 3.297651,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{051}",
+    "four_index": null,
+    "hkl": [
+     0,
+     5,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 3.14533,
+    "order": 1,
+    "d_eff": 3.14533,
+    "R": 3.35425,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{110}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 6.28071,
+    "order": 2,
+    "d_eff": 3.14036,
+    "R": 3.359562,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{133}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 3.12545,
+    "order": 1,
+    "d_eff": 3.12545,
+    "R": 3.37558,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{142}",
+    "four_index": null,
+    "hkl": [
+     1,
+     4,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 3.10838,
+    "order": 1,
+    "d_eff": 3.10838,
+    "R": 3.394118,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 4,
+    "d": 3.10293,
+    "order": 1,
+    "d_eff": 3.10293,
+    "R": 3.40008,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{221}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.06357,
+    "order": 1,
+    "d_eff": 3.06357,
+    "R": 3.443767,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{114}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     4
+    ],
+    "multiplicity": 8,
+    "d": 3.04715,
+    "order": 1,
+    "d_eff": 3.04715,
+    "R": 3.462321,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{212}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 3.00861,
+    "order": 1,
+    "d_eff": 3.00861,
+    "R": 3.506677,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{124}",
+    "four_index": null,
+    "hkl": [
+     1,
+     2,
+     4
+    ],
+    "multiplicity": 8,
+    "d": 2.89629,
+    "order": 1,
+    "d_eff": 2.89629,
+    "R": 3.64267,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{230}",
+    "four_index": null,
+    "hkl": [
+     2,
+     3,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 2.87971,
+    "order": 1,
+    "d_eff": 2.87971,
+    "R": 3.663643,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{151}",
+    "four_index": null,
+    "hkl": [
+     1,
+     5,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 2.85605,
+    "order": 1,
+    "d_eff": 2.85605,
+    "R": 3.693986,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{231}",
+    "four_index": null,
+    "hkl": [
+     2,
+     3,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 2.82015,
+    "order": 1,
+    "d_eff": 2.82015,
+    "R": 3.74101,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{143}",
+    "four_index": null,
+    "hkl": [
+     1,
+     4,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 2.78173,
+    "order": 1,
+    "d_eff": 2.78173,
+    "R": 3.792679,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{203}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     3
+    ],
+    "multiplicity": 4,
+    "d": 2.74853,
+    "order": 1,
+    "d_eff": 2.74853,
+    "R": 3.838494,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{015}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     5
+    ],
+    "multiplicity": 4,
+    "d": 2.74714,
+    "order": 1,
+    "d_eff": 2.74714,
+    "R": 3.840443,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{213}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 2.70954,
+    "order": 1,
+    "d_eff": 2.70954,
+    "R": 3.893733,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{152}",
+    "four_index": null,
+    "hkl": [
+     1,
+     5,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 2.69158,
+    "order": 1,
+    "d_eff": 2.69158,
+    "R": 3.919714,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 18,
+  "habit": "rod",
+  "radii": [
+   1.0,
+   0.61714,
+   0.537265
+  ],
+  "b_over_a": 0.61714,
+  "c_over_b": 0.870572,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "sphericity": 0.84569
+ },
+ "MIL-53Cr-lt": {
+  "file": "MIL-53Cr-lt.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "9a74630f4dbe8854b4ca4b133f92f22102f52d89cf9c504c2feb39cc75e62bf4",
+  "n_atoms": 76,
+  "cell": [
+   19.685,
+   7.849,
+   6.782,
+   90.0,
+   104.9,
+   90.0
+  ],
+  "spacegroup": "C2/c",
+  "sg_number": 15,
+  "lattice_system": "monoclinic",
+  "operations": 8,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": false,
+  "families": [
+   {
+    "label": "{100}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 19.02311,
+    "order": 2,
+    "d_eff": 9.51156,
+    "R": 1.0,
+    "area_fraction": 0.38267
+   },
+   {
+    "label": "{110}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 7.25565,
+    "order": 1,
+    "d_eff": 7.25565,
+    "R": 1.310916,
+    "area_fraction": 0.29821
+   },
+   {
+    "label": "{11-1}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 5.11973,
+    "order": 1,
+    "d_eff": 5.11973,
+    "R": 1.857825,
+    "area_fraction": 0.280594
+   },
+   {
+    "label": "{310}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 4.93251,
+    "order": 1,
+    "d_eff": 4.93251,
+    "R": 1.928342,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{111}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 4.64235,
+    "order": 1,
+    "d_eff": 4.64235,
+    "R": 2.048865,
+    "area_fraction": 0.038526
+   },
+   {
+    "label": "{31-1}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 4.38494,
+    "order": 1,
+    "d_eff": 4.38494,
+    "R": 2.169142,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{010}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 7.849,
+    "order": 2,
+    "d_eff": 3.9245,
+    "R": 2.423635,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{311}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 3.60945,
+    "order": 1,
+    "d_eff": 3.60945,
+    "R": 2.635182,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{510}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 3.42362,
+    "order": 1,
+    "d_eff": 3.42362,
+    "R": 2.778219,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-1}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 6.75444,
+    "order": 2,
+    "d_eff": 3.37722,
+    "R": 2.816388,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{51-1}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 3.37153,
+    "order": 1,
+    "d_eff": 3.37153,
+    "R": 2.821141,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{021}",
+    "four_index": null,
+    "hkl": [
+     0,
+     2,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 3.36702,
+    "order": 1,
+    "d_eff": 3.36702,
+    "R": 2.824922,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{22-1}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 3.31475,
+    "order": 1,
+    "d_eff": 3.31475,
+    "R": 2.869469,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{001}",
+    "four_index": null,
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 6.55396,
+    "order": 2,
+    "d_eff": 3.27698,
+    "R": 2.902536,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{11-2}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     -2
+    ],
+    "multiplicity": 4,
+    "d": 3.10284,
+    "order": 1,
+    "d_eff": 3.10284,
+    "R": 3.065433,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{20-1}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 6.1917,
+    "order": 2,
+    "d_eff": 3.09585,
+    "R": 3.072355,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{221}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 3.04981,
+    "order": 1,
+    "d_eff": 3.04981,
+    "R": 3.118738,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{210}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 6.05389,
+    "order": 2,
+    "d_eff": 3.02695,
+    "R": 3.142293,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{31-2}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     -2
+    ],
+    "multiplicity": 4,
+    "d": 3.02233,
+    "order": 1,
+    "d_eff": 3.02233,
+    "R": 3.147095,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{42-1}",
+    "four_index": null,
+    "hkl": [
+     4,
+     2,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 2.93708,
+    "order": 1,
+    "d_eff": 2.93708,
+    "R": 3.238443,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{112}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     2
+    ],
+    "multiplicity": 4,
+    "d": 2.88235,
+    "order": 1,
+    "d_eff": 2.88235,
+    "R": 3.299933,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{101}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 5.75734,
+    "order": 2,
+    "d_eff": 2.87867,
+    "R": 3.304147,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{511}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 2.78186,
+    "order": 1,
+    "d_eff": 2.78186,
+    "R": 3.419141,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{51-2}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     -2
+    ],
+    "multiplicity": 4,
+    "d": 2.69985,
+    "order": 1,
+    "d_eff": 2.69985,
+    "R": 3.523,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{30-1}",
+    "four_index": null,
+    "hkl": [
+     3,
+     0,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 5.28691,
+    "order": 2,
+    "d_eff": 2.64346,
+    "R": 3.598151,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{130}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 2.59193,
+    "order": 1,
+    "d_eff": 2.59193,
+    "R": 3.669675,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{421}",
+    "four_index": null,
+    "hkl": [
+     4,
+     2,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 2.59132,
+    "order": 1,
+    "d_eff": 2.59132,
+    "R": 3.67054,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{011}",
+    "four_index": null,
+    "hkl": [
+     0,
+     1,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 5.03075,
+    "order": 2,
+    "d_eff": 2.51538,
+    "R": 3.781365,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{312}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     2
+    ],
+    "multiplicity": 4,
+    "d": 2.50806,
+    "order": 1,
+    "d_eff": 2.50806,
+    "R": 3.792391,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{62-1}",
+    "four_index": null,
+    "hkl": [
+     6,
+     2,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 2.47734,
+    "order": 1,
+    "d_eff": 2.47734,
+    "R": 3.839424,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{13-1}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 2.4397,
+    "order": 1,
+    "d_eff": 2.4397,
+    "R": 3.898657,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{21-1}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 4.86123,
+    "order": 2,
+    "d_eff": 2.43061,
+    "R": 3.913231,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 4.84595,
+    "order": 2,
+    "d_eff": 2.42298,
+    "R": 3.925566,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{131}",
+    "four_index": null,
+    "hkl": [
+     1,
+     3,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 2.38192,
+    "order": 1,
+    "d_eff": 2.38192,
+    "R": 3.993227,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{33-1}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     -1
+    ],
+    "multiplicity": 4,
+    "d": 2.34491,
+    "order": 1,
+    "d_eff": 2.34491,
+    "R": 4.056253,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{40-1}",
+    "four_index": null,
+    "hkl": [
+     4,
+     0,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 4.42829,
+    "order": 2,
+    "d_eff": 2.21415,
+    "R": 4.295814,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{331}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 2.19999,
+    "order": 1,
+    "d_eff": 2.19999,
+    "R": 4.323448,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{621}",
+    "four_index": null,
+    "hkl": [
+     6,
+     2,
+     1
+    ],
+    "multiplicity": 4,
+    "d": 2.16962,
+    "order": 1,
+    "d_eff": 2.16962,
+    "R": 4.383971,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{31-3}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     -3
+    ],
+    "multiplicity": 4,
+    "d": 2.1642,
+    "order": 1,
+    "d_eff": 2.1642,
+    "R": 4.394951,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{530}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 2.1558,
+    "order": 1,
+    "d_eff": 2.1558,
+    "R": 4.412088,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 14,
+  "habit": "rod",
+  "radii": [
+   1.0,
+   0.569663,
+   0.482434
+  ],
+  "b_over_a": 0.569663,
+  "c_over_b": 0.846876,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "sphericity": 0.835266
+ },
+ "MIL-88A-dry": {
+  "file": "MIL-88A-dry.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "2910f39696cc5c93a39dd4cebdacbcfe1fbea6a9088cd55df10b946f40f8e774",
+  "n_atoms": 74,
+  "cell": [
+   9.7798,
+   9.7798,
+   14.8265,
+   90.0,
+   90.0,
+   120.0
+  ],
+  "spacegroup": "P-62c",
+  "sg_number": 190,
+  "lattice_system": "hexagonal",
+  "operations": 12,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": true,
+  "families": [
+   {
+    "label": "{100}",
+    "four_index": "{10-10}",
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 8.46956,
+    "order": 1,
+    "d_eff": 8.46956,
+    "R": 1.0,
+    "area_fraction": 0.42355
+   },
+   {
+    "label": "{001}",
+    "four_index": "{0001}",
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 14.8265,
+    "order": 2,
+    "d_eff": 7.41325,
+    "R": 1.142489,
+    "area_fraction": 0.168252
+   },
+   {
+    "label": "{101}",
+    "four_index": "{10-11}",
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 7.35422,
+    "order": 1,
+    "d_eff": 7.35422,
+    "R": 1.15166,
+    "area_fraction": 0.408198
+   },
+   {
+    "label": "{102}",
+    "four_index": "{10-12}",
+    "hkl": [
+     1,
+     0,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 5.57826,
+    "order": 1,
+    "d_eff": 5.57826,
+    "R": 1.518315,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-10}",
+    "four_index": "{2-1-10}",
+    "hkl": [
+     2,
+     -1,
+     0
+    ],
+    "multiplicity": 3,
+    "d": 4.8899,
+    "order": 1,
+    "d_eff": 4.8899,
+    "R": 1.732051,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{110}",
+    "four_index": "{11-20}",
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 3,
+    "d": 4.8899,
+    "order": 1,
+    "d_eff": 4.8899,
+    "R": 1.732051,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{103}",
+    "four_index": "{10-13}",
+    "hkl": [
+     1,
+     0,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 4.26859,
+    "order": 1,
+    "d_eff": 4.26859,
+    "R": 1.984158,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-12}",
+    "four_index": "{2-1-12}",
+    "hkl": [
+     2,
+     -1,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 4.08188,
+    "order": 1,
+    "d_eff": 4.08188,
+    "R": 2.074917,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{112}",
+    "four_index": "{11-22}",
+    "hkl": [
+     1,
+     1,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 4.08188,
+    "order": 1,
+    "d_eff": 4.08188,
+    "R": 2.074917,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": "{20-21}",
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 4.07194,
+    "order": 1,
+    "d_eff": 4.07194,
+    "R": 2.079981,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": "{10-14}",
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 3.39568,
+    "order": 1,
+    "d_eff": 3.39568,
+    "R": 2.494218,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{203}",
+    "four_index": "{20-23}",
+    "hkl": [
+     2,
+     0,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 3.21572,
+    "order": 1,
+    "d_eff": 3.21572,
+    "R": 2.633796,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-10}",
+    "four_index": "{3-1-20}",
+    "hkl": [
+     3,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 3.20119,
+    "order": 1,
+    "d_eff": 3.20119,
+    "R": 2.645751,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{210}",
+    "four_index": "{21-30}",
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 3.20119,
+    "order": 1,
+    "d_eff": 3.20119,
+    "R": 2.645751,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-11}",
+    "four_index": "{3-1-21}",
+    "hkl": [
+     3,
+     -1,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 3.12909,
+    "order": 1,
+    "d_eff": 3.12909,
+    "R": 2.706718,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{211}",
+    "four_index": "{21-31}",
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 3.12909,
+    "order": 1,
+    "d_eff": 3.12909,
+    "R": 2.706718,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-14}",
+    "four_index": "{2-1-14}",
+    "hkl": [
+     2,
+     -1,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 2.95389,
+    "order": 1,
+    "d_eff": 2.95389,
+    "R": 2.86725,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{114}",
+    "four_index": "{11-24}",
+    "hkl": [
+     1,
+     1,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 2.95389,
+    "order": 1,
+    "d_eff": 2.95389,
+    "R": 2.86725,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-12}",
+    "four_index": "{3-1-22}",
+    "hkl": [
+     3,
+     -1,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.93889,
+    "order": 1,
+    "d_eff": 2.93889,
+    "R": 2.881888,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{212}",
+    "four_index": "{21-32}",
+    "hkl": [
+     2,
+     1,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.93889,
+    "order": 1,
+    "d_eff": 2.93889,
+    "R": 2.881888,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{105}",
+    "four_index": "{10-15}",
+    "hkl": [
+     1,
+     0,
+     5
+    ],
+    "multiplicity": 12,
+    "d": 2.79872,
+    "order": 1,
+    "d_eff": 2.79872,
+    "R": 3.026219,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{301}",
+    "four_index": "{30-31}",
+    "hkl": [
+     3,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 2.77335,
+    "order": 1,
+    "d_eff": 2.77335,
+    "R": 3.053902,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-13}",
+    "four_index": "{3-1-23}",
+    "hkl": [
+     3,
+     -1,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 2.6868,
+    "order": 1,
+    "d_eff": 2.6868,
+    "R": 3.152282,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{213}",
+    "four_index": "{21-33}",
+    "hkl": [
+     2,
+     1,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 2.6868,
+    "order": 1,
+    "d_eff": 2.6868,
+    "R": 3.152282,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{302}",
+    "four_index": "{30-32}",
+    "hkl": [
+     3,
+     0,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.63834,
+    "order": 1,
+    "d_eff": 2.63834,
+    "R": 3.210184,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{205}",
+    "four_index": "{20-25}",
+    "hkl": [
+     2,
+     0,
+     5
+    ],
+    "multiplicity": 12,
+    "d": 2.42901,
+    "order": 1,
+    "d_eff": 2.42901,
+    "R": 3.486833,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-14}",
+    "four_index": "{3-1-24}",
+    "hkl": [
+     3,
+     -1,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 2.42273,
+    "order": 1,
+    "d_eff": 2.42273,
+    "R": 3.495872,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{214}",
+    "four_index": "{21-34}",
+    "hkl": [
+     2,
+     1,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 2.42273,
+    "order": 1,
+    "d_eff": 2.42273,
+    "R": 3.495872,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{106}",
+    "four_index": "{10-16}",
+    "hkl": [
+     1,
+     0,
+     6
+    ],
+    "multiplicity": 12,
+    "d": 2.37218,
+    "order": 1,
+    "d_eff": 2.37218,
+    "R": 3.570368,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-10}",
+    "four_index": "{4-1-30}",
+    "hkl": [
+     4,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 2.34903,
+    "order": 1,
+    "d_eff": 2.34903,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{310}",
+    "four_index": "{31-40}",
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 2.34903,
+    "order": 1,
+    "d_eff": 2.34903,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-11}",
+    "four_index": "{2-1-11}",
+    "hkl": [
+     2,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.64385,
+    "order": 2,
+    "d_eff": 2.32193,
+    "R": 3.64764,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{111}",
+    "four_index": "{11-21}",
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.64385,
+    "order": 2,
+    "d_eff": 2.32193,
+    "R": 3.64764,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-11}",
+    "four_index": "{4-1-31}",
+    "hkl": [
+     4,
+     -1,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 2.32009,
+    "order": 1,
+    "d_eff": 2.32009,
+    "R": 3.650523,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{311}",
+    "four_index": "{31-41}",
+    "hkl": [
+     3,
+     1,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 2.32009,
+    "order": 1,
+    "d_eff": 2.32009,
+    "R": 3.650523,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{304}",
+    "four_index": "{30-34}",
+    "hkl": [
+     3,
+     0,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 2.24592,
+    "order": 1,
+    "d_eff": 2.24592,
+    "R": 3.77109,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-12}",
+    "four_index": "{4-1-32}",
+    "hkl": [
+     4,
+     -1,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.2393,
+    "order": 1,
+    "d_eff": 2.2393,
+    "R": 3.782232,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{312}",
+    "four_index": "{31-42}",
+    "hkl": [
+     3,
+     1,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.2393,
+    "order": 1,
+    "d_eff": 2.2393,
+    "R": 3.782232,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-16}",
+    "four_index": "{2-1-16}",
+    "hkl": [
+     2,
+     -1,
+     6
+    ],
+    "multiplicity": 6,
+    "d": 2.20547,
+    "order": 1,
+    "d_eff": 2.20547,
+    "R": 3.840251,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{116}",
+    "four_index": "{11-26}",
+    "hkl": [
+     1,
+     1,
+     6
+    ],
+    "multiplicity": 6,
+    "d": 2.20547,
+    "order": 1,
+    "d_eff": 2.20547,
+    "R": 3.840251,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 20,
+  "habit": "equant",
+  "radii": [
+   1.0,
+   0.837976,
+   0.837976
+  ],
+  "b_over_a": 0.837976,
+  "c_over_b": 1.0,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": null,
+  "sphericity": 0.925555
+ },
+ "MIL-88A-open": {
+  "file": "MIL-88A-open.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "cd73eef47b05f33f617a036df7c44dc59e34480b7aff6aa0104380b7bd435f7e",
+  "n_atoms": 74,
+  "cell": [
+   13.8711,
+   13.8711,
+   12.663,
+   90.0,
+   90.0,
+   120.0
+  ],
+  "spacegroup": "P6_3/mmc",
+  "sg_number": 194,
+  "lattice_system": "hexagonal",
+  "operations": 24,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": true,
+  "families": [
+   {
+    "label": "{100}",
+    "four_index": "{10-10}",
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 12.01272,
+    "order": 1,
+    "d_eff": 12.01272,
+    "R": 1.0,
+    "area_fraction": 0.567076
+   },
+   {
+    "label": "{101}",
+    "four_index": "{10-11}",
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 8.7151,
+    "order": 1,
+    "d_eff": 8.7151,
+    "R": 1.37838,
+    "area_fraction": 0.429932
+   },
+   {
+    "label": "{2-10}",
+    "four_index": "{2-1-10}",
+    "hkl": [
+     2,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 6.93555,
+    "order": 1,
+    "d_eff": 6.93555,
+    "R": 1.732051,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{001}",
+    "four_index": "{0001}",
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 12.663,
+    "order": 2,
+    "d_eff": 6.3315,
+    "R": 1.897295,
+    "area_fraction": 0.002993
+   },
+   {
+    "label": "{102}",
+    "four_index": "{10-12}",
+    "hkl": [
+     1,
+     0,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 5.60113,
+    "order": 1,
+    "d_eff": 5.60113,
+    "R": 2.144698,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": "{20-21}",
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 5.42683,
+    "order": 1,
+    "d_eff": 5.42683,
+    "R": 2.213579,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-12}",
+    "four_index": "{2-1-12}",
+    "hkl": [
+     2,
+     -1,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 4.67604,
+    "order": 1,
+    "d_eff": 4.67604,
+    "R": 2.568994,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-10}",
+    "four_index": "{3-1-20}",
+    "hkl": [
+     3,
+     -1,
+     0
+    ],
+    "multiplicity": 12,
+    "d": 4.54038,
+    "order": 1,
+    "d_eff": 4.54038,
+    "R": 2.645751,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-11}",
+    "four_index": "{3-1-21}",
+    "hkl": [
+     3,
+     -1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 4.27395,
+    "order": 1,
+    "d_eff": 4.27395,
+    "R": 2.810682,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{103}",
+    "four_index": "{10-13}",
+    "hkl": [
+     1,
+     0,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 3.98231,
+    "order": 1,
+    "d_eff": 3.98231,
+    "R": 3.01652,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{301}",
+    "four_index": "{30-31}",
+    "hkl": [
+     3,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 3.81791,
+    "order": 1,
+    "d_eff": 3.81791,
+    "R": 3.146416,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-12}",
+    "four_index": "{3-1-22}",
+    "hkl": [
+     3,
+     -1,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 3.68973,
+    "order": 1,
+    "d_eff": 3.68973,
+    "R": 3.255723,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{203}",
+    "four_index": "{20-23}",
+    "hkl": [
+     2,
+     0,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 3.4535,
+    "order": 1,
+    "d_eff": 3.4535,
+    "R": 3.478418,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{302}",
+    "four_index": "{30-32}",
+    "hkl": [
+     3,
+     0,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 3.38424,
+    "order": 1,
+    "d_eff": 3.38424,
+    "R": 3.54961,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-10}",
+    "four_index": "{4-1-30}",
+    "hkl": [
+     4,
+     -1,
+     0
+    ],
+    "multiplicity": 12,
+    "d": 3.33173,
+    "order": 1,
+    "d_eff": 3.33173,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-11}",
+    "four_index": "{4-1-31}",
+    "hkl": [
+     4,
+     -1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 3.22207,
+    "order": 1,
+    "d_eff": 3.22207,
+    "R": 3.728261,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-13}",
+    "four_index": "{3-1-23}",
+    "hkl": [
+     3,
+     -1,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 3.09145,
+    "order": 1,
+    "d_eff": 3.09145,
+    "R": 3.885793,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": "{10-14}",
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 3.06123,
+    "order": 1,
+    "d_eff": 3.06123,
+    "R": 3.924145,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-11}",
+    "four_index": "{2-1-11}",
+    "hkl": [
+     2,
+     -1,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 6.08293,
+    "order": 2,
+    "d_eff": 3.04147,
+    "R": 3.949649,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-12}",
+    "four_index": "{4-1-32}",
+    "hkl": [
+     4,
+     -1,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 2.94843,
+    "order": 1,
+    "d_eff": 2.94843,
+    "R": 4.074277,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{401}",
+    "four_index": "{40-41}",
+    "hkl": [
+     4,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 2.92213,
+    "order": 1,
+    "d_eff": 2.92213,
+    "R": 4.110953,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-14}",
+    "four_index": "{2-1-14}",
+    "hkl": [
+     2,
+     -1,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 2.87992,
+    "order": 1,
+    "d_eff": 2.87992,
+    "R": 4.171201,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-20}",
+    "four_index": "{5-2-30}",
+    "hkl": [
+     5,
+     -2,
+     0
+    ],
+    "multiplicity": 12,
+    "d": 2.75591,
+    "order": 1,
+    "d_eff": 2.75591,
+    "R": 4.358899,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-21}",
+    "four_index": "{5-2-31}",
+    "hkl": [
+     5,
+     -2,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 2.69287,
+    "order": 1,
+    "d_eff": 2.69287,
+    "R": 4.460934,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-10}",
+    "four_index": "{5-1-40}",
+    "hkl": [
+     5,
+     -1,
+     0
+    ],
+    "multiplicity": 12,
+    "d": 2.62139,
+    "order": 1,
+    "d_eff": 2.62139,
+    "R": 4.582576,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-13}",
+    "four_index": "{4-1-33}",
+    "hkl": [
+     4,
+     -1,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 2.61521,
+    "order": 1,
+    "d_eff": 2.61521,
+    "R": 4.593407,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-14}",
+    "four_index": "{3-1-24}",
+    "hkl": [
+     3,
+     -1,
+     4
+    ],
+    "multiplicity": 24,
+    "d": 2.59684,
+    "order": 1,
+    "d_eff": 2.59684,
+    "R": 4.625896,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-11}",
+    "four_index": "{5-1-41}",
+    "hkl": [
+     5,
+     -1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 2.56697,
+    "order": 1,
+    "d_eff": 2.56697,
+    "R": 4.679736,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-22}",
+    "four_index": "{5-2-32}",
+    "hkl": [
+     5,
+     -2,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 2.52691,
+    "order": 1,
+    "d_eff": 2.52691,
+    "R": 4.753917,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{304}",
+    "four_index": "{30-34}",
+    "hkl": [
+     3,
+     0,
+     4
+    ],
+    "multiplicity": 12,
+    "d": 2.48338,
+    "order": 1,
+    "d_eff": 2.48338,
+    "R": 4.837243,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{105}",
+    "four_index": "{10-15}",
+    "hkl": [
+     1,
+     0,
+     5
+    ],
+    "multiplicity": 12,
+    "d": 2.47813,
+    "order": 1,
+    "d_eff": 2.47813,
+    "R": 4.847505,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{403}",
+    "four_index": "{40-43}",
+    "hkl": [
+     4,
+     0,
+     3
+    ],
+    "multiplicity": 12,
+    "d": 2.44703,
+    "order": 1,
+    "d_eff": 2.44703,
+    "R": 4.909113,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-12}",
+    "four_index": "{5-1-42}",
+    "hkl": [
+     5,
+     -1,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 2.42201,
+    "order": 1,
+    "d_eff": 2.42201,
+    "R": 4.959811,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{501}",
+    "four_index": "{50-51}",
+    "hkl": [
+     5,
+     0,
+     1
+    ],
+    "multiplicity": 12,
+    "d": 2.36044,
+    "order": 1,
+    "d_eff": 2.36044,
+    "R": 5.089198,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{205}",
+    "four_index": "{20-25}",
+    "hkl": [
+     2,
+     0,
+     5
+    ],
+    "multiplicity": 12,
+    "d": 2.33363,
+    "order": 1,
+    "d_eff": 2.33363,
+    "R": 5.147651,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-23}",
+    "four_index": "{5-2-33}",
+    "hkl": [
+     5,
+     -2,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 2.30761,
+    "order": 1,
+    "d_eff": 2.30761,
+    "R": 5.205708,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-14}",
+    "four_index": "{4-1-34}",
+    "hkl": [
+     4,
+     -1,
+     4
+    ],
+    "multiplicity": 24,
+    "d": 2.29496,
+    "order": 1,
+    "d_eff": 2.29496,
+    "R": 5.234398,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{502}",
+    "four_index": "{50-52}",
+    "hkl": [
+     5,
+     0,
+     2
+    ],
+    "multiplicity": 12,
+    "d": 2.24626,
+    "order": 1,
+    "d_eff": 2.24626,
+    "R": 5.347871,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-21}",
+    "four_index": "{6-2-41}",
+    "hkl": [
+     6,
+     -2,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 2.23457,
+    "order": 1,
+    "d_eff": 2.23457,
+    "R": 5.375866,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-13}",
+    "four_index": "{5-1-43}",
+    "hkl": [
+     5,
+     -1,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 2.22689,
+    "order": 1,
+    "d_eff": 2.22689,
+    "R": 5.394385,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 20,
+  "habit": "rod",
+  "radii": [
+   1.0,
+   0.628939,
+   0.628939
+  ],
+  "b_over_a": 0.628939,
+  "c_over_b": 1.0,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "sphericity": 0.902968
+ },
+ "MOF5": {
+  "file": "MOF5.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "6c02e61d0a82f52cc1f93a06f09072d2c780ccaa2645ee54b4baea2c3d8acdbd",
+  "n_atoms": 424,
+  "cell": [
+   25.8658,
+   25.8658,
+   25.8658,
+   90.0,
+   90.0,
+   90.0
+  ],
+  "spacegroup": "Fm-3m",
+  "sg_number": 225,
+  "lattice_system": "cubic",
+  "operations": 192,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": false,
+  "families": [
+   {
+    "label": "{111}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 14.93365,
+    "order": 1,
+    "d_eff": 14.93365,
+    "R": 1.0,
+    "area_fraction": 0.775991
+   },
+   {
+    "label": "{100}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 25.86584,
+    "order": 2,
+    "d_eff": 12.93292,
+    "R": 1.154701,
+    "area_fraction": 0.224009
+   },
+   {
+    "label": "{110}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 12,
+    "d": 18.28991,
+    "order": 2,
+    "d_eff": 9.14496,
+    "R": 1.632993,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{311}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 7.79884,
+    "order": 1,
+    "d_eff": 7.79884,
+    "R": 1.914854,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{331}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 5.93403,
+    "order": 1,
+    "d_eff": 5.93403,
+    "R": 2.516611,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{210}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 11.56756,
+    "order": 2,
+    "d_eff": 5.78378,
+    "R": 2.581989,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{211}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 10.55968,
+    "order": 2,
+    "d_eff": 5.27984,
+    "R": 2.828427,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{511}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 4.97788,
+    "order": 1,
+    "d_eff": 4.97788,
+    "R": 3.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{531}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 4.37212,
+    "order": 1,
+    "d_eff": 4.37212,
+    "R": 3.41565,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{221}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 8.62195,
+    "order": 2,
+    "d_eff": 4.31097,
+    "R": 3.464102,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{310}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 8.1795,
+    "order": 2,
+    "d_eff": 4.08975,
+    "R": 3.651484,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{533}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 3.9445,
+    "order": 1,
+    "d_eff": 3.9445,
+    "R": 3.785939,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{551}",
+    "four_index": null,
+    "hkl": [
+     5,
+     5,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 3.62194,
+    "order": 1,
+    "d_eff": 3.62194,
+    "R": 4.123106,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{320}",
+    "four_index": null,
+    "hkl": [
+     3,
+     2,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 7.17389,
+    "order": 2,
+    "d_eff": 3.58695,
+    "R": 4.163332,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{321}",
+    "four_index": null,
+    "hkl": [
+     3,
+     2,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 6.91294,
+    "order": 2,
+    "d_eff": 3.45647,
+    "R": 4.320494,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{553}",
+    "four_index": null,
+    "hkl": [
+     5,
+     5,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 3.36745,
+    "order": 1,
+    "d_eff": 3.36745,
+    "R": 4.434712,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{410}",
+    "four_index": null,
+    "hkl": [
+     4,
+     1,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 6.27339,
+    "order": 2,
+    "d_eff": 3.13669,
+    "R": 4.760952,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{322}",
+    "four_index": null,
+    "hkl": [
+     3,
+     2,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 6.27339,
+    "order": 2,
+    "d_eff": 3.13669,
+    "R": 4.760952,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{411}",
+    "four_index": null,
+    "hkl": [
+     4,
+     1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 6.09664,
+    "order": 2,
+    "d_eff": 3.04832,
+    "R": 4.898979,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{421}",
+    "four_index": null,
+    "hkl": [
+     4,
+     2,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 5.64439,
+    "order": 2,
+    "d_eff": 2.82219,
+    "R": 5.291503,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{332}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 5.51462,
+    "order": 2,
+    "d_eff": 2.75731,
+    "R": 5.416026,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{430}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 5.17317,
+    "order": 2,
+    "d_eff": 2.58658,
+    "R": 5.773503,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{431}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 5.07271,
+    "order": 2,
+    "d_eff": 2.53635,
+    "R": 5.887841,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{510}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 5.07271,
+    "order": 2,
+    "d_eff": 2.53635,
+    "R": 5.887841,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{432}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     2
+    ],
+    "multiplicity": 48,
+    "d": 4.80317,
+    "order": 2,
+    "d_eff": 2.40158,
+    "R": 6.218253,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{520}",
+    "four_index": null,
+    "hkl": [
+     5,
+     2,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 4.80317,
+    "order": 2,
+    "d_eff": 2.40158,
+    "R": 6.218253,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{521}",
+    "four_index": null,
+    "hkl": [
+     5,
+     2,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 4.72243,
+    "order": 2,
+    "d_eff": 2.36122,
+    "R": 6.324555,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{522}",
+    "four_index": null,
+    "hkl": [
+     5,
+     2,
+     2
+    ],
+    "multiplicity": 24,
+    "d": 4.50266,
+    "order": 2,
+    "d_eff": 2.25133,
+    "R": 6.63325,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{441}",
+    "four_index": null,
+    "hkl": [
+     4,
+     4,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 4.50266,
+    "order": 2,
+    "d_eff": 2.25133,
+    "R": 6.63325,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{530}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 4.43595,
+    "order": 2,
+    "d_eff": 2.21798,
+    "R": 6.733003,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{433}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 4.43595,
+    "order": 2,
+    "d_eff": 2.21798,
+    "R": 6.733003,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{610}",
+    "four_index": null,
+    "hkl": [
+     6,
+     1,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 4.25232,
+    "order": 2,
+    "d_eff": 2.12616,
+    "R": 7.023769,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{532}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     2
+    ],
+    "multiplicity": 48,
+    "d": 4.19599,
+    "order": 2,
+    "d_eff": 2.098,
+    "R": 7.118052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{611}",
+    "four_index": null,
+    "hkl": [
+     6,
+     1,
+     1
+    ],
+    "multiplicity": 24,
+    "d": 4.19599,
+    "order": 2,
+    "d_eff": 2.098,
+    "R": 7.118052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{621}",
+    "four_index": null,
+    "hkl": [
+     6,
+     2,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 7.393691,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{540}",
+    "four_index": null,
+    "hkl": [
+     5,
+     4,
+     0
+    ],
+    "multiplicity": 24,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 7.393691,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{443}",
+    "four_index": null,
+    "hkl": [
+     4,
+     4,
+     3
+    ],
+    "multiplicity": 24,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 7.393691,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{541}",
+    "four_index": null,
+    "hkl": [
+     5,
+     4,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 3.99119,
+    "order": 2,
+    "d_eff": 1.99559,
+    "R": 7.483315,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{542}",
+    "four_index": null,
+    "hkl": [
+     5,
+     4,
+     2
+    ],
+    "multiplicity": 48,
+    "d": 3.85585,
+    "order": 2,
+    "d_eff": 1.92793,
+    "R": 7.745967,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{631}",
+    "four_index": null,
+    "hkl": [
+     6,
+     3,
+     1
+    ],
+    "multiplicity": 48,
+    "d": 3.81371,
+    "order": 2,
+    "d_eff": 1.90686,
+    "R": 7.83156,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 14,
+  "habit": "equant",
+  "radii": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "b_over_a": 1.0,
+  "c_over_b": 1.0,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "sphericity": 0.909918
+ },
+ "MgMOF-74": {
+  "file": "MgMOF-74.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "84923453752f66781295f70de4d8eaba8ecc8510d676ebcfd547ee8d68e23e43",
+  "n_atoms": 162,
+  "cell": [
+   26.136,
+   26.136,
+   6.942,
+   90.0,
+   90.0,
+   120.0
+  ],
+  "spacegroup": "R-3",
+  "sg_number": 148,
+  "lattice_system": "trigonal",
+  "operations": 18,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": true,
+  "families": [
+   {
+    "label": "{2-10}",
+    "four_index": "{2-1-10}",
+    "hkl": [
+     2,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 13.068,
+    "order": 1,
+    "d_eff": 13.068,
+    "R": 1.0,
+    "area_fraction": 0.774273
+   },
+   {
+    "label": "{100}",
+    "four_index": "{10-10}",
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 22.63444,
+    "order": 3,
+    "d_eff": 7.54481,
+    "R": 1.732051,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{101}",
+    "four_index": "{10-11}",
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 6.63686,
+    "order": 1,
+    "d_eff": 6.63686,
+    "R": 1.969002,
+    "area_fraction": 0.225727
+   },
+   {
+    "label": "{20-1}",
+    "four_index": "{20-2-1}",
+    "hkl": [
+     2,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 5.91744,
+    "order": 1,
+    "d_eff": 5.91744,
+    "R": 2.208386,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-11}",
+    "four_index": "{3-1-21}",
+    "hkl": [
+     3,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 5.39054,
+    "order": 1,
+    "d_eff": 5.39054,
+    "R": 2.424246,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-2-1}",
+    "four_index": "{3-2-1-1}",
+    "hkl": [
+     3,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 5.39054,
+    "order": 1,
+    "d_eff": 5.39054,
+    "R": 2.424246,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-10}",
+    "four_index": "{5-1-40}",
+    "hkl": [
+     5,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.93924,
+    "order": 1,
+    "d_eff": 4.93924,
+    "R": 2.645751,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-40}",
+    "four_index": "{5-4-10}",
+    "hkl": [
+     5,
+     -4,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.93924,
+    "order": 1,
+    "d_eff": 4.93924,
+    "R": 2.645751,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-1-1}",
+    "four_index": "{4-1-3-1}",
+    "hkl": [
+     4,
+     -1,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 4.65618,
+    "order": 1,
+    "d_eff": 4.65618,
+    "R": 2.806594,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-31}",
+    "four_index": "{4-3-11}",
+    "hkl": [
+     4,
+     -3,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.65618,
+    "order": 1,
+    "d_eff": 4.65618,
+    "R": 2.806594,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{401}",
+    "four_index": "{40-41}",
+    "hkl": [
+     4,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.38608,
+    "order": 1,
+    "d_eff": 4.38608,
+    "R": 2.979424,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-21}",
+    "four_index": "{5-2-31}",
+    "hkl": [
+     5,
+     -2,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.15812,
+    "order": 1,
+    "d_eff": 4.15812,
+    "R": 3.142765,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-3-1}",
+    "four_index": "{5-3-2-1}",
+    "hkl": [
+     5,
+     -3,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 4.15812,
+    "order": 1,
+    "d_eff": 4.15812,
+    "R": 3.142765,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{50-1}",
+    "four_index": "{50-5-1}",
+    "hkl": [
+     5,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.7919,
+    "order": 1,
+    "d_eff": 3.7919,
+    "R": 3.446298,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-2-1}",
+    "four_index": "{6-2-4-1}",
+    "hkl": [
+     6,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.64168,
+    "order": 1,
+    "d_eff": 3.64168,
+    "R": 3.588449,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-41}",
+    "four_index": "{6-4-21}",
+    "hkl": [
+     6,
+     -4,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 3.64168,
+    "order": 1,
+    "d_eff": 3.64168,
+    "R": 3.588449,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-20}",
+    "four_index": "{7-2-50}",
+    "hkl": [
+     7,
+     -2,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 3.62441,
+    "order": 1,
+    "d_eff": 3.62441,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-50}",
+    "four_index": "{7-5-20}",
+    "hkl": [
+     7,
+     -5,
+     0
+    ],
+    "multiplicity": 2,
+    "d": 3.62441,
+    "order": 1,
+    "d_eff": 3.62441,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-11}",
+    "four_index": "{6-1-51}",
+    "hkl": [
+     6,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 3.50802,
+    "order": 1,
+    "d_eff": 3.50802,
+    "R": 3.72518,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-5-1}",
+    "four_index": "{6-5-1-1}",
+    "hkl": [
+     6,
+     -5,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.50802,
+    "order": 1,
+    "d_eff": 3.50802,
+    "R": 3.72518,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-2}",
+    "four_index": "{10-1-2}",
+    "hkl": [
+     1,
+     0,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 3.43089,
+    "order": 1,
+    "d_eff": 3.43089,
+    "R": 3.80892,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-31}",
+    "four_index": "{7-3-41}",
+    "hkl": [
+     7,
+     -3,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 3.27963,
+    "order": 1,
+    "d_eff": 3.27963,
+    "R": 3.984591,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-4-1}",
+    "four_index": "{7-4-3-1}",
+    "hkl": [
+     7,
+     -4,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 3.27963,
+    "order": 1,
+    "d_eff": 3.27963,
+    "R": 3.984591,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-1-2}",
+    "four_index": "{3-1-2-2}",
+    "hkl": [
+     3,
+     -1,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 3.21635,
+    "order": 1,
+    "d_eff": 3.21635,
+    "R": 4.062988,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-22}",
+    "four_index": "{3-2-12}",
+    "hkl": [
+     3,
+     -2,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 3.21635,
+    "order": 1,
+    "d_eff": 3.21635,
+    "R": 4.062988,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-1-1}",
+    "four_index": "{7-1-6-1}",
+    "hkl": [
+     7,
+     -1,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 3.09074,
+    "order": 1,
+    "d_eff": 3.09074,
+    "R": 4.228116,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{7-61}",
+    "four_index": "{7-6-11}",
+    "hkl": [
+     7,
+     -6,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 3.09074,
+    "order": 1,
+    "d_eff": 3.09074,
+    "R": 4.228116,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-12}",
+    "four_index": "{4-1-32}",
+    "hkl": [
+     4,
+     -1,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 3.0376,
+    "order": 1,
+    "d_eff": 3.0376,
+    "R": 4.302078,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-3-2}",
+    "four_index": "{4-3-1-2}",
+    "hkl": [
+     4,
+     -3,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 3.0376,
+    "order": 1,
+    "d_eff": 3.0376,
+    "R": 4.302078,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{8-3-1}",
+    "four_index": "{8-3-5-1}",
+    "hkl": [
+     8,
+     -3,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 2.93112,
+    "order": 1,
+    "d_eff": 2.93112,
+    "R": 4.458359,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{8-51}",
+    "four_index": "{8-5-31}",
+    "hkl": [
+     8,
+     -5,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 2.93112,
+    "order": 1,
+    "d_eff": 2.93112,
+    "R": 4.458359,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-2-2}",
+    "four_index": "{5-2-3-2}",
+    "hkl": [
+     5,
+     -2,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 2.88568,
+    "order": 1,
+    "d_eff": 2.88568,
+    "R": 4.528562,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-32}",
+    "four_index": "{5-3-22}",
+    "hkl": [
+     5,
+     -3,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 2.88568,
+    "order": 1,
+    "d_eff": 2.88568,
+    "R": 4.528562,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{8-21}",
+    "four_index": "{8-2-61}",
+    "hkl": [
+     8,
+     -2,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 2.86006,
+    "order": 1,
+    "d_eff": 2.86006,
+    "R": 4.569132,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{8-6-1}",
+    "four_index": "{8-6-2-1}",
+    "hkl": [
+     8,
+     -6,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 2.86006,
+    "order": 1,
+    "d_eff": 2.86006,
+    "R": 4.569132,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-10}",
+    "four_index": "{3-1-20}",
+    "hkl": [
+     3,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 8.55501,
+    "order": 3,
+    "d_eff": 2.85167,
+    "R": 4.582576,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-20}",
+    "four_index": "{3-2-10}",
+    "hkl": [
+     3,
+     -2,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 8.55501,
+    "order": 3,
+    "d_eff": 2.85167,
+    "R": 4.582576,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{502}",
+    "four_index": "{50-52}",
+    "hkl": [
+     5,
+     0,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 2.75449,
+    "order": 1,
+    "d_eff": 2.75449,
+    "R": 4.744247,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{9-41}",
+    "four_index": "{9-4-51}",
+    "hkl": [
+     9,
+     -4,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 2.67436,
+    "order": 1,
+    "d_eff": 2.67436,
+    "R": 4.886407,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{9-5-1}",
+    "four_index": "{9-5-4-1}",
+    "hkl": [
+     9,
+     -5,
+     -1
+    ],
+    "multiplicity": 2,
+    "d": 2.67436,
+    "order": 1,
+    "d_eff": 2.67436,
+    "R": 4.886407,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 12,
+  "habit": "rod",
+  "radii": [
+   1.0,
+   0.479294,
+   0.479294
+  ],
+  "b_over_a": 0.479294,
+  "c_over_b": 1.0,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "sphericity": 0.83462
+ },
+ "ZIF-7": {
+  "file": "ZIF-7.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "sha256": "4102587072048fdab7a5fbfcb35434c5595b821e0da2ec8a6df155256752936d",
+  "n_atoms": 522,
+  "cell": [
+   22.989,
+   22.989,
+   15.763,
+   90.0,
+   90.0,
+   120.0
+  ],
+  "spacegroup": "R-3",
+  "sg_number": 148,
+  "lattice_system": "trigonal",
+  "operations": 18,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": true,
+  "families": [
+   {
+    "label": "{101}",
+    "four_index": "{10-11}",
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 12.35841,
+    "order": 1,
+    "d_eff": 12.35841,
+    "R": 1.0,
+    "area_fraction": 0.560214
+   },
+   {
+    "label": "{2-10}",
+    "four_index": "{2-1-10}",
+    "hkl": [
+     2,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 11.4945,
+    "order": 1,
+    "d_eff": 11.4945,
+    "R": 1.075159,
+    "area_fraction": 0.439786
+   },
+   {
+    "label": "{20-1}",
+    "four_index": "{20-2-1}",
+    "hkl": [
+     2,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 8.4167,
+    "order": 1,
+    "d_eff": 8.4167,
+    "R": 1.468321,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-2}",
+    "four_index": "{10-1-2}",
+    "hkl": [
+     1,
+     0,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 7.32817,
+    "order": 1,
+    "d_eff": 7.32817,
+    "R": 1.686426,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-11}",
+    "four_index": "{3-1-21}",
+    "hkl": [
+     3,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 6.79082,
+    "order": 1,
+    "d_eff": 6.79082,
+    "R": 1.819872,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-2-1}",
+    "four_index": "{3-2-1-1}",
+    "hkl": [
+     3,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 6.79082,
+    "order": 1,
+    "d_eff": 6.79082,
+    "R": 1.819872,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{100}",
+    "four_index": "{10-10}",
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 19.90906,
+    "order": 3,
+    "d_eff": 6.63635,
+    "R": 1.86223,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-1-2}",
+    "four_index": "{3-1-2-2}",
+    "hkl": [
+     3,
+     -1,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 5.44262,
+    "order": 1,
+    "d_eff": 5.44262,
+    "R": 2.270675,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-22}",
+    "four_index": "{3-2-12}",
+    "hkl": [
+     3,
+     -2,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 5.44262,
+    "order": 1,
+    "d_eff": 5.44262,
+    "R": 2.270675,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{001}",
+    "four_index": "{0001}",
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 15.763,
+    "order": 3,
+    "d_eff": 5.25433,
+    "R": 2.352042,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-1-1}",
+    "four_index": "{4-1-3-1}",
+    "hkl": [
+     4,
+     -1,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 5.21129,
+    "order": 1,
+    "d_eff": 5.21129,
+    "R": 2.371469,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-31}",
+    "four_index": "{4-3-11}",
+    "hkl": [
+     4,
+     -3,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 5.21129,
+    "order": 1,
+    "d_eff": 5.21129,
+    "R": 2.371469,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-13}",
+    "four_index": "{2-1-13}",
+    "hkl": [
+     2,
+     -1,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 4.77873,
+    "order": 1,
+    "d_eff": 4.77873,
+    "R": 2.58613,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-1-3}",
+    "four_index": "{2-1-1-3}",
+    "hkl": [
+     2,
+     -1,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 4.77873,
+    "order": 1,
+    "d_eff": 4.77873,
+    "R": 2.58613,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{401}",
+    "four_index": "{40-41}",
+    "hkl": [
+     4,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.74628,
+    "order": 1,
+    "d_eff": 4.74628,
+    "R": 2.603811,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-12}",
+    "four_index": "{4-1-32}",
+    "hkl": [
+     4,
+     -1,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 4.52234,
+    "order": 1,
+    "d_eff": 4.52234,
+    "R": 2.732746,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-3-2}",
+    "four_index": "{4-3-1-2}",
+    "hkl": [
+     4,
+     -3,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 4.52234,
+    "order": 1,
+    "d_eff": 4.52234,
+    "R": 2.732746,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-21}",
+    "four_index": "{5-2-31}",
+    "hkl": [
+     5,
+     -2,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.387,
+    "order": 1,
+    "d_eff": 4.387,
+    "R": 2.817055,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-3-1}",
+    "four_index": "{5-3-2-1}",
+    "hkl": [
+     5,
+     -3,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 4.387,
+    "order": 1,
+    "d_eff": 4.387,
+    "R": 2.817055,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-10}",
+    "four_index": "{5-1-40}",
+    "hkl": [
+     5,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.34451,
+    "order": 1,
+    "d_eff": 4.34451,
+    "R": 2.844603,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-40}",
+    "four_index": "{5-4-10}",
+    "hkl": [
+     5,
+     -4,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.34451,
+    "order": 1,
+    "d_eff": 4.34451,
+    "R": 2.844603,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-1}",
+    "four_index": "{10-1-1}",
+    "hkl": [
+     1,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 12.35841,
+    "order": 3,
+    "d_eff": 4.11947,
+    "R": 3.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-2-2}",
+    "four_index": "{5-2-3-2}",
+    "hkl": [
+     5,
+     -2,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 3.95182,
+    "order": 1,
+    "d_eff": 3.95182,
+    "R": 3.127272,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-32}",
+    "four_index": "{5-3-22}",
+    "hkl": [
+     5,
+     -3,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 3.95182,
+    "order": 1,
+    "d_eff": 3.95182,
+    "R": 3.127272,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-23}",
+    "four_index": "{4-2-23}",
+    "hkl": [
+     4,
+     -2,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 3.87795,
+    "order": 1,
+    "d_eff": 3.87795,
+    "R": 3.186843,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-2-3}",
+    "four_index": "{4-2-2-3}",
+    "hkl": [
+     4,
+     -2,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 3.87795,
+    "order": 1,
+    "d_eff": 3.87795,
+    "R": 3.186843,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": "{10-14}",
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 3.86575,
+    "order": 1,
+    "d_eff": 3.86575,
+    "R": 3.1969,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{50-1}",
+    "four_index": "{50-5-1}",
+    "hkl": [
+     5,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.86055,
+    "order": 1,
+    "d_eff": 3.86055,
+    "R": 3.201208,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-2-1}",
+    "four_index": "{6-2-4-1}",
+    "hkl": [
+     6,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.65965,
+    "order": 1,
+    "d_eff": 3.65965,
+    "R": 3.376936,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-41}",
+    "four_index": "{6-4-21}",
+    "hkl": [
+     6,
+     -4,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 3.65965,
+    "order": 1,
+    "d_eff": 3.65965,
+    "R": 3.376936,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{502}",
+    "four_index": "{50-52}",
+    "hkl": [
+     5,
+     0,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 3.554,
+    "order": 1,
+    "d_eff": 3.554,
+    "R": 3.477321,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-14}",
+    "four_index": "{3-1-24}",
+    "hkl": [
+     3,
+     -1,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 3.49101,
+    "order": 1,
+    "d_eff": 3.49101,
+    "R": 3.540071,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-2-4}",
+    "four_index": "{3-2-1-4}",
+    "hkl": [
+     3,
+     -2,
+     -4
+    ],
+    "multiplicity": 6,
+    "d": 3.49101,
+    "order": 1,
+    "d_eff": 3.49101,
+    "R": 3.540071,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-11}",
+    "four_index": "{6-1-51}",
+    "hkl": [
+     6,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 3.48717,
+    "order": 1,
+    "d_eff": 3.48717,
+    "R": 3.543962,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-5-1}",
+    "four_index": "{6-5-1-1}",
+    "hkl": [
+     6,
+     -5,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 3.48717,
+    "order": 1,
+    "d_eff": 3.48717,
+    "R": 3.543962,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-13}",
+    "four_index": "{5-1-43}",
+    "hkl": [
+     5,
+     -1,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 3.34821,
+    "order": 1,
+    "d_eff": 3.34821,
+    "R": 3.691052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-1-3}",
+    "four_index": "{5-1-4-3}",
+    "hkl": [
+     5,
+     -1,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 3.34821,
+    "order": 1,
+    "d_eff": 3.34821,
+    "R": 3.691052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-43}",
+    "four_index": "{5-4-13}",
+    "hkl": [
+     5,
+     -4,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 3.34821,
+    "order": 1,
+    "d_eff": 3.34821,
+    "R": 3.691052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-4-3}",
+    "four_index": "{5-4-1-3}",
+    "hkl": [
+     5,
+     -4,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 3.34821,
+    "order": 1,
+    "d_eff": 3.34821,
+    "R": 3.691052,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-1-2}",
+    "four_index": "{6-1-5-2}",
+    "hkl": [
+     6,
+     -1,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 3.25631,
+    "order": 1,
+    "d_eff": 3.25631,
+    "R": 3.79522,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 12,
+  "habit": "equant",
+  "radii": [
+   1.0,
+   1.0,
+   0.934294
+  ],
+  "b_over_a": 1.0,
+  "c_over_b": 0.934294,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "sphericity": 0.902657
+ },
+ "MOF5@1x1x0.25": {
+  "file": "MOF5.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   0.25
+  ],
+  "sha256": "6c02e61d0a82f52cc1f93a06f09072d2c780ccaa2645ee54b4baea2c3d8acdbd",
+  "n_atoms": 424,
+  "cell": [
+   25.8658,
+   25.8658,
+   6.4665,
+   90.0,
+   90.0,
+   90.0
+  ],
+  "spacegroup": "Fm-3m",
+  "sg_number": 225,
+  "lattice_system": "cubic",
+  "operations": 64,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": false,
+  "families": [
+   {
+    "label": "{100}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 25.86584,
+    "order": 2,
+    "d_eff": 12.93292,
+    "R": 1.0,
+    "area_fraction": 0.779519
+   },
+   {
+    "label": "{110}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 18.28991,
+    "order": 2,
+    "d_eff": 9.14496,
+    "R": 1.414214,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{111}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 6.09664,
+    "order": 1,
+    "d_eff": 6.09664,
+    "R": 2.12132,
+    "area_fraction": 0.220481
+   },
+   {
+    "label": "{210}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 11.56756,
+    "order": 2,
+    "d_eff": 5.78378,
+    "R": 2.236068,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{311}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 5.07271,
+    "order": 1,
+    "d_eff": 5.07271,
+    "R": 2.54951,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{331}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 4.43595,
+    "order": 1,
+    "d_eff": 4.43595,
+    "R": 2.915476,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{310}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 8.1795,
+    "order": 2,
+    "d_eff": 4.08975,
+    "R": 3.162278,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{511}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 3.99119,
+    "order": 1,
+    "d_eff": 3.99119,
+    "R": 3.24037,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{531}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 3.65798,
+    "order": 1,
+    "d_eff": 3.65798,
+    "R": 3.535534,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{320}",
+    "four_index": null,
+    "hkl": [
+     3,
+     2,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 7.17389,
+    "order": 2,
+    "d_eff": 3.58695,
+    "R": 3.605551,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{001}",
+    "four_index": null,
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 6.46646,
+    "order": 2,
+    "d_eff": 3.23323,
+    "R": 4.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{551}",
+    "four_index": null,
+    "hkl": [
+     5,
+     5,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.18386,
+    "order": 1,
+    "d_eff": 3.18386,
+    "R": 4.062019,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{410}",
+    "four_index": null,
+    "hkl": [
+     4,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 6.27339,
+    "order": 2,
+    "d_eff": 3.13669,
+    "R": 4.123106,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{101}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 6.27339,
+    "order": 2,
+    "d_eff": 3.13669,
+    "R": 4.123106,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 5.78378,
+    "order": 2,
+    "d_eff": 2.89189,
+    "R": 4.472136,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{211}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 5.64439,
+    "order": 2,
+    "d_eff": 2.82219,
+    "R": 4.582576,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{221}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 5.27984,
+    "order": 2,
+    "d_eff": 2.63992,
+    "R": 4.898979,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{430}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 5.17317,
+    "order": 2,
+    "d_eff": 2.58658,
+    "R": 5.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{301}",
+    "four_index": null,
+    "hkl": [
+     3,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 5.17317,
+    "order": 2,
+    "d_eff": 2.58658,
+    "R": 5.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{510}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 5.07271,
+    "order": 2,
+    "d_eff": 2.53635,
+    "R": 5.09902,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{321}",
+    "four_index": null,
+    "hkl": [
+     3,
+     2,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 4.80317,
+    "order": 2,
+    "d_eff": 2.40158,
+    "R": 5.385165,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{520}",
+    "four_index": null,
+    "hkl": [
+     5,
+     2,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 4.80317,
+    "order": 2,
+    "d_eff": 2.40158,
+    "R": 5.385165,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{401}",
+    "four_index": null,
+    "hkl": [
+     4,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 4.57248,
+    "order": 2,
+    "d_eff": 2.28624,
+    "R": 5.656854,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{411}",
+    "four_index": null,
+    "hkl": [
+     4,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 4.50266,
+    "order": 2,
+    "d_eff": 2.25133,
+    "R": 5.744563,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{530}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 4.43595,
+    "order": 2,
+    "d_eff": 2.21798,
+    "R": 5.830952,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{421}",
+    "four_index": null,
+    "hkl": [
+     4,
+     2,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 4.31097,
+    "order": 2,
+    "d_eff": 2.15549,
+    "R": 6.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{113}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 2.14067,
+    "order": 1,
+    "d_eff": 2.14067,
+    "R": 6.041523,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{610}",
+    "four_index": null,
+    "hkl": [
+     6,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 4.25232,
+    "order": 2,
+    "d_eff": 2.12616,
+    "R": 6.082763,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{313}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 2.08433,
+    "order": 1,
+    "d_eff": 2.08433,
+    "R": 6.204837,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{431}",
+    "four_index": null,
+    "hkl": [
+     4,
+     3,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 6.403124,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{540}",
+    "four_index": null,
+    "hkl": [
+     5,
+     4,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 6.403124,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{501}",
+    "four_index": null,
+    "hkl": [
+     5,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 4.03957,
+    "order": 2,
+    "d_eff": 2.01978,
+    "R": 6.403124,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{513}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 1.98382,
+    "order": 1,
+    "d_eff": 1.98382,
+    "R": 6.519202,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{533}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 1.93873,
+    "order": 1,
+    "d_eff": 1.93873,
+    "R": 6.670832,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{521}",
+    "four_index": null,
+    "hkl": [
+     5,
+     2,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 3.85585,
+    "order": 2,
+    "d_eff": 1.92793,
+    "R": 6.708204,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{441}",
+    "four_index": null,
+    "hkl": [
+     4,
+     4,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.73341,
+    "order": 2,
+    "d_eff": 1.86671,
+    "R": 6.928203,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{553}",
+    "four_index": null,
+    "hkl": [
+     5,
+     5,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 1.85706,
+    "order": 1,
+    "d_eff": 1.85706,
+    "R": 6.964194,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{601}",
+    "four_index": null,
+    "hkl": [
+     6,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 3.58695,
+    "order": 2,
+    "d_eff": 1.79347,
+    "R": 7.211103,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{611}",
+    "four_index": null,
+    "hkl": [
+     6,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 3.55295,
+    "order": 2,
+    "d_eff": 1.77647,
+    "R": 7.28011,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{621}",
+    "four_index": null,
+    "hkl": [
+     6,
+     2,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 3.45647,
+    "order": 2,
+    "d_eff": 1.72823,
+    "R": 7.483315,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 12,
+  "habit": "rod",
+  "radii": [
+   1.0,
+   0.490214,
+   0.490214
+  ],
+  "b_over_a": 0.490214,
+  "c_over_b": 1.0,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "sphericity": 0.797877
+ },
+ "MOF5@1x1x2.5": {
+  "file": "MOF5.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   2.5
+  ],
+  "sha256": "6c02e61d0a82f52cc1f93a06f09072d2c780ccaa2645ee54b4baea2c3d8acdbd",
+  "n_atoms": 424,
+  "cell": [
+   25.8658,
+   25.8658,
+   64.6646,
+   90.0,
+   90.0,
+   90.0
+  ],
+  "spacegroup": "Fm-3m",
+  "sg_number": 225,
+  "lattice_system": "cubic",
+  "operations": 64,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": false,
+  "families": [
+   {
+    "label": "{001}",
+    "four_index": null,
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 64.6646,
+    "order": 2,
+    "d_eff": 32.3323,
+    "R": 1.0,
+    "area_fraction": 0.421698
+   },
+   {
+    "label": "{111}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 17.59947,
+    "order": 1,
+    "d_eff": 17.59947,
+    "R": 1.837117,
+    "area_fraction": 0.562359
+   },
+   {
+    "label": "{113}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 13.94593,
+    "order": 1,
+    "d_eff": 13.94593,
+    "R": 2.318405,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{100}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 25.86584,
+    "order": 2,
+    "d_eff": 12.93292,
+    "R": 2.5,
+    "area_fraction": 0.015943
+   },
+   {
+    "label": "{101}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 24.01583,
+    "order": 2,
+    "d_eff": 12.00791,
+    "R": 2.692582,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{115}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     5
+    ],
+    "multiplicity": 8,
+    "d": 10.55968,
+    "order": 1,
+    "d_eff": 10.55968,
+    "R": 3.061862,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{102}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 20.19783,
+    "order": 2,
+    "d_eff": 10.09891,
+    "R": 3.201562,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{110}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     0
+    ],
+    "multiplicity": 4,
+    "d": 18.28991,
+    "order": 2,
+    "d_eff": 9.14496,
+    "R": 3.535534,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{103}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 16.55891,
+    "order": 2,
+    "d_eff": 8.27945,
+    "R": 3.905125,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{311}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 8.11484,
+    "order": 1,
+    "d_eff": 8.11484,
+    "R": 3.984344,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{112}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 15.91932,
+    "order": 2,
+    "d_eff": 7.95966,
+    "R": 4.062019,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{313}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 7.6474,
+    "order": 1,
+    "d_eff": 7.6474,
+    "R": 4.227884,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{315}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     5
+    ],
+    "multiplicity": 16,
+    "d": 6.91294,
+    "order": 1,
+    "d_eff": 6.91294,
+    "R": 4.677072,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 8,
+    "d": 13.70887,
+    "order": 2,
+    "d_eff": 6.85443,
+    "R": 4.716991,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{201}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 12.68177,
+    "order": 2,
+    "d_eff": 6.34089,
+    "R": 5.09902,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{331}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 6.06972,
+    "order": 1,
+    "d_eff": 6.06972,
+    "R": 5.326819,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{114}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     4
+    ],
+    "multiplicity": 8,
+    "d": 12.11279,
+    "order": 2,
+    "d_eff": 6.05639,
+    "R": 5.338539,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{210}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 11.56756,
+    "order": 2,
+    "d_eff": 5.78378,
+    "R": 5.59017,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{105}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     5
+    ],
+    "multiplicity": 8,
+    "d": 11.56756,
+    "order": 2,
+    "d_eff": 5.78378,
+    "R": 5.59017,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{211}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 11.3868,
+    "order": 2,
+    "d_eff": 5.6934,
+    "R": 5.678908,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{203}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 11.08989,
+    "order": 2,
+    "d_eff": 5.54494,
+    "R": 5.830952,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{335}",
+    "four_index": null,
+    "hkl": [
+     3,
+     3,
+     5
+    ],
+    "multiplicity": 8,
+    "d": 5.51462,
+    "order": 1,
+    "d_eff": 5.51462,
+    "R": 5.86302,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{212}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     2
+    ],
+    "multiplicity": 16,
+    "d": 10.89148,
+    "order": 2,
+    "d_eff": 5.44574,
+    "R": 5.937171,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{213}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 10.19257,
+    "order": 2,
+    "d_eff": 5.09628,
+    "R": 6.344289,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{511}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 5.05717,
+    "order": 1,
+    "d_eff": 5.05717,
+    "R": 6.393356,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{106}",
+    "four_index": null,
+    "hkl": [
+     1,
+     0,
+     6
+    ],
+    "multiplicity": 8,
+    "d": 9.9484,
+    "order": 2,
+    "d_eff": 4.9742,
+    "R": 6.5,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{513}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 4.93781,
+    "order": 1,
+    "d_eff": 4.93781,
+    "R": 6.5479,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{515}",
+    "four_index": null,
+    "hkl": [
+     5,
+     1,
+     5
+    ],
+    "multiplicity": 16,
+    "d": 4.72243,
+    "order": 1,
+    "d_eff": 4.72243,
+    "R": 6.846532,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{214}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     4
+    ],
+    "multiplicity": 16,
+    "d": 9.40732,
+    "order": 2,
+    "d_eff": 4.70366,
+    "R": 6.873864,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{116}",
+    "four_index": null,
+    "hkl": [
+     1,
+     1,
+     6
+    ],
+    "multiplicity": 8,
+    "d": 9.2853,
+    "order": 2,
+    "d_eff": 4.64265,
+    "R": 6.964194,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{205}",
+    "four_index": null,
+    "hkl": [
+     2,
+     0,
+     5
+    ],
+    "multiplicity": 8,
+    "d": 9.14496,
+    "order": 2,
+    "d_eff": 4.57248,
+    "R": 7.071068,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{221}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 9.05486,
+    "order": 2,
+    "d_eff": 4.52743,
+    "R": 7.141428,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{531}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     1
+    ],
+    "multiplicity": 16,
+    "d": 4.42555,
+    "order": 1,
+    "d_eff": 4.42555,
+    "R": 7.30582,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{533}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     3
+    ],
+    "multiplicity": 16,
+    "d": 4.3449,
+    "order": 1,
+    "d_eff": 4.3449,
+    "R": 7.441438,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{215}",
+    "four_index": null,
+    "hkl": [
+     2,
+     1,
+     5
+    ],
+    "multiplicity": 16,
+    "d": 8.62195,
+    "order": 2,
+    "d_eff": 4.31097,
+    "R": 7.5,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{301}",
+    "four_index": null,
+    "hkl": [
+     3,
+     0,
+     1
+    ],
+    "multiplicity": 8,
+    "d": 8.54631,
+    "order": 2,
+    "d_eff": 4.27316,
+    "R": 7.566373,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{223}",
+    "four_index": null,
+    "hkl": [
+     2,
+     2,
+     3
+    ],
+    "multiplicity": 8,
+    "d": 8.41861,
+    "order": 2,
+    "d_eff": 4.20931,
+    "R": 7.681146,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{535}",
+    "four_index": null,
+    "hkl": [
+     5,
+     3,
+     5
+    ],
+    "multiplicity": 16,
+    "d": 4.19599,
+    "order": 1,
+    "d_eff": 4.19599,
+    "R": 7.705518,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{302}",
+    "four_index": null,
+    "hkl": [
+     3,
+     0,
+     2
+    ],
+    "multiplicity": 8,
+    "d": 8.33083,
+    "order": 2,
+    "d_eff": 4.16541,
+    "R": 7.762087,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{310}",
+    "four_index": null,
+    "hkl": [
+     3,
+     1,
+     0
+    ],
+    "multiplicity": 8,
+    "d": 8.1795,
+    "order": 2,
+    "d_eff": 4.08975,
+    "R": 7.905694,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 14,
+  "habit": "plate",
+  "radii": [
+   1.0,
+   1.0,
+   0.541632
+  ],
+  "b_over_a": 1.0,
+  "c_over_b": 0.541632,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "sphericity": 0.824005
+ },
+ "MgMOF-74@1x1x3": {
+  "file": "MgMOF-74.cif",
+  "stretch": [
+   1.0,
+   1.0,
+   3.0
+  ],
+  "sha256": "84923453752f66781295f70de4d8eaba8ecc8510d676ebcfd547ee8d68e23e43",
+  "n_atoms": 162,
+  "cell": [
+   26.136,
+   26.136,
+   20.826,
+   90.0,
+   90.0,
+   120.0
+  ],
+  "spacegroup": "R-3",
+  "sg_number": 148,
+  "lattice_system": "trigonal",
+  "operations": 18,
+  "symmetry_with_hydrogen": true,
+  "hexagonal_axes": true,
+  "families": [
+   {
+    "label": "{101}",
+    "four_index": "{10-11}",
+    "hkl": [
+     1,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 15.32572,
+    "order": 1,
+    "d_eff": 15.32572,
+    "R": 1.0,
+    "area_fraction": 0.652485
+   },
+   {
+    "label": "{2-10}",
+    "four_index": "{2-1-10}",
+    "hkl": [
+     2,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 13.068,
+    "order": 1,
+    "d_eff": 13.068,
+    "R": 1.172767,
+    "area_fraction": 0.347515
+   },
+   {
+    "label": "{20-1}",
+    "four_index": "{20-2-1}",
+    "hkl": [
+     2,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 9.94384,
+    "order": 1,
+    "d_eff": 9.94384,
+    "R": 1.541228,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-2}",
+    "four_index": "{10-1-2}",
+    "hkl": [
+     1,
+     0,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 9.45993,
+    "order": 1,
+    "d_eff": 9.45993,
+    "R": 1.620067,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-11}",
+    "four_index": "{3-1-21}",
+    "hkl": [
+     3,
+     -1,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 7.91336,
+    "order": 1,
+    "d_eff": 7.91336,
+    "R": 1.936689,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-2-1}",
+    "four_index": "{3-2-1-1}",
+    "hkl": [
+     3,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 7.91336,
+    "order": 1,
+    "d_eff": 7.91336,
+    "R": 1.936689,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{100}",
+    "four_index": "{10-10}",
+    "hkl": [
+     1,
+     0,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 22.63444,
+    "order": 3,
+    "d_eff": 7.54481,
+    "R": 2.031292,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{001}",
+    "four_index": "{0001}",
+    "hkl": [
+     0,
+     0,
+     1
+    ],
+    "multiplicity": 2,
+    "d": 20.826,
+    "order": 3,
+    "d_eff": 6.942,
+    "R": 2.207681,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-1-2}",
+    "four_index": "{3-1-2-2}",
+    "hkl": [
+     3,
+     -1,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 6.61022,
+    "order": 1,
+    "d_eff": 6.61022,
+    "R": 2.318487,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-22}",
+    "four_index": "{3-2-12}",
+    "hkl": [
+     3,
+     -2,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 6.61022,
+    "order": 1,
+    "d_eff": 6.61022,
+    "R": 2.318487,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-13}",
+    "four_index": "{2-1-13}",
+    "hkl": [
+     2,
+     -1,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 6.13066,
+    "order": 1,
+    "d_eff": 6.13066,
+    "R": 2.499847,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{2-1-3}",
+    "four_index": "{2-1-1-3}",
+    "hkl": [
+     2,
+     -1,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 6.13066,
+    "order": 1,
+    "d_eff": 6.13066,
+    "R": 2.499847,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-1-1}",
+    "four_index": "{4-1-3-1}",
+    "hkl": [
+     4,
+     -1,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 6.01053,
+    "order": 1,
+    "d_eff": 6.01053,
+    "R": 2.54981,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-31}",
+    "four_index": "{4-3-11}",
+    "hkl": [
+     4,
+     -3,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 6.01053,
+    "order": 1,
+    "d_eff": 6.01053,
+    "R": 2.54981,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{401}",
+    "four_index": "{40-41}",
+    "hkl": [
+     4,
+     0,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 5.46063,
+    "order": 1,
+    "d_eff": 5.46063,
+    "R": 2.806584,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-12}",
+    "four_index": "{4-1-32}",
+    "hkl": [
+     4,
+     -1,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 5.37624,
+    "order": 1,
+    "d_eff": 5.37624,
+    "R": 2.85064,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-3-2}",
+    "four_index": "{4-3-1-2}",
+    "hkl": [
+     4,
+     -3,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 5.37624,
+    "order": 1,
+    "d_eff": 5.37624,
+    "R": 2.85064,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-1}",
+    "four_index": "{10-1-1}",
+    "hkl": [
+     1,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 15.32572,
+    "order": 3,
+    "d_eff": 5.10857,
+    "R": 3.0,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{104}",
+    "four_index": "{10-14}",
+    "hkl": [
+     1,
+     0,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 5.07399,
+    "order": 1,
+    "d_eff": 5.07399,
+    "R": 3.020445,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-21}",
+    "four_index": "{5-2-31}",
+    "hkl": [
+     5,
+     -2,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 5.03844,
+    "order": 1,
+    "d_eff": 5.03844,
+    "R": 3.041758,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-3-1}",
+    "four_index": "{5-3-2-1}",
+    "hkl": [
+     5,
+     -3,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 5.03844,
+    "order": 1,
+    "d_eff": 5.03844,
+    "R": 3.041758,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-10}",
+    "four_index": "{5-1-40}",
+    "hkl": [
+     5,
+     -1,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.93924,
+    "order": 1,
+    "d_eff": 4.93924,
+    "R": 3.10285,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-40}",
+    "four_index": "{5-4-10}",
+    "hkl": [
+     5,
+     -4,
+     0
+    ],
+    "multiplicity": 6,
+    "d": 4.93924,
+    "order": 1,
+    "d_eff": 4.93924,
+    "R": 3.10285,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-23}",
+    "four_index": "{4-2-23}",
+    "hkl": [
+     4,
+     -2,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 4.75794,
+    "order": 1,
+    "d_eff": 4.75794,
+    "R": 3.221084,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-2-3}",
+    "four_index": "{4-2-2-3}",
+    "hkl": [
+     4,
+     -2,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 4.75794,
+    "order": 1,
+    "d_eff": 4.75794,
+    "R": 3.221084,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-2-2}",
+    "four_index": "{5-2-3-2}",
+    "hkl": [
+     5,
+     -2,
+     -2
+    ],
+    "multiplicity": 6,
+    "d": 4.64695,
+    "order": 1,
+    "d_eff": 4.64695,
+    "R": 3.298016,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-32}",
+    "four_index": "{5-3-22}",
+    "hkl": [
+     5,
+     -3,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 4.64695,
+    "order": 1,
+    "d_eff": 4.64695,
+    "R": 3.298016,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-14}",
+    "four_index": "{3-1-24}",
+    "hkl": [
+     3,
+     -1,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 4.44759,
+    "order": 1,
+    "d_eff": 4.44759,
+    "R": 3.445846,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{3-2-4}",
+    "four_index": "{3-2-1-4}",
+    "hkl": [
+     3,
+     -2,
+     -4
+    ],
+    "multiplicity": 6,
+    "d": 4.44759,
+    "order": 1,
+    "d_eff": 4.44759,
+    "R": 3.445846,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{50-1}",
+    "four_index": "{50-5-1}",
+    "hkl": [
+     5,
+     0,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 4.42359,
+    "order": 1,
+    "d_eff": 4.42359,
+    "R": 3.464543,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-2-1}",
+    "four_index": "{6-2-4-1}",
+    "hkl": [
+     6,
+     -2,
+     -1
+    ],
+    "multiplicity": 6,
+    "d": 4.19004,
+    "order": 1,
+    "d_eff": 4.19004,
+    "R": 3.657655,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{6-41}",
+    "four_index": "{6-4-21}",
+    "hkl": [
+     6,
+     -4,
+     1
+    ],
+    "multiplicity": 6,
+    "d": 4.19004,
+    "order": 1,
+    "d_eff": 4.19004,
+    "R": 3.657655,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{502}",
+    "four_index": "{50-52}",
+    "hkl": [
+     5,
+     0,
+     2
+    ],
+    "multiplicity": 6,
+    "d": 4.15155,
+    "order": 1,
+    "d_eff": 4.15155,
+    "R": 3.691568,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{10-5}",
+    "four_index": "{10-1-5}",
+    "hkl": [
+     1,
+     0,
+     -5
+    ],
+    "multiplicity": 6,
+    "d": 4.09642,
+    "order": 1,
+    "d_eff": 4.09642,
+    "R": 3.741249,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-13}",
+    "four_index": "{5-1-43}",
+    "hkl": [
+     5,
+     -1,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 4.02452,
+    "order": 1,
+    "d_eff": 4.02452,
+    "R": 3.808087,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-1-3}",
+    "four_index": "{5-1-4-3}",
+    "hkl": [
+     5,
+     -1,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 4.02452,
+    "order": 1,
+    "d_eff": 4.02452,
+    "R": 3.808087,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-43}",
+    "four_index": "{5-4-13}",
+    "hkl": [
+     5,
+     -4,
+     3
+    ],
+    "multiplicity": 6,
+    "d": 4.02452,
+    "order": 1,
+    "d_eff": 4.02452,
+    "R": 3.808087,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{5-4-3}",
+    "four_index": "{5-4-1-3}",
+    "hkl": [
+     5,
+     -4,
+     -3
+    ],
+    "multiplicity": 6,
+    "d": 4.02452,
+    "order": 1,
+    "d_eff": 4.02452,
+    "R": 3.808087,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-1-4}",
+    "four_index": "{4-1-3-4}",
+    "hkl": [
+     4,
+     -1,
+     -4
+    ],
+    "multiplicity": 6,
+    "d": 4.00755,
+    "order": 1,
+    "d_eff": 4.00755,
+    "R": 3.824215,
+    "area_fraction": 0.0
+   },
+   {
+    "label": "{4-34}",
+    "four_index": "{4-3-14}",
+    "hkl": [
+     4,
+     -3,
+     4
+    ],
+    "multiplicity": 6,
+    "d": 4.00755,
+    "order": 1,
+    "d_eff": 4.00755,
+    "R": 3.824215,
+    "area_fraction": 0.0
+   }
+  ],
+  "n_faces": 12,
+  "habit": "equant",
+  "radii": [
+   1.0,
+   1.0,
+   0.878988
+  ],
+  "b_over_a": 1.0,
+  "c_over_b": 0.878988,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "sphericity": 0.892754
+ }
+}

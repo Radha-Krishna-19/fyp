@@ -97,9 +97,11 @@
     host.innerHTML = ''; wrap.appendChild(stage); wrap.appendChild(bar); host.appendChild(wrap);
     function btn(label, title, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'mini'; b.textContent = label; b.title = title; b.addEventListener('click', fn); bar.appendChild(b); return b; }
     btn('Reset', 'Back to the starting view', function () { stopSpin(); v.Q = Q0; v.userTurned = false; if (v.onReset) v.onReset(); if (v.draw) v.draw(); });
-    btn('Look along [100]', 'Look straight down a cube axis', function () { stopSpin(); v.Q = lookAlong([1, 0, 0]); if (v.draw) v.draw(); });
-    btn('[110]', 'Look along a face diagonal', function () { stopSpin(); v.Q = lookAlong([1, 1, 0]); if (v.draw) v.draw(); });
-    btn('[111]', 'Look along a body diagonal', function () { stopSpin(); v.Q = lookAlong([1, 1, 1]); if (v.draw) v.draw(); });
+    // preset directions: cube axes by default; a caller can pass its own, e.g. the a, b and c axes of any cell
+    (opts.dirs || [['Look along [100]', 'Look straight down a cube axis', [1, 0, 0]], ['[110]', 'Look along a face diagonal', [1, 1, 0]],
+                   ['[111]', 'Look along a body diagonal', [1, 1, 1]]]).forEach(function (d) {
+      btn(d[0], d[1], function () { stopSpin(); var dir = typeof d[2] === 'function' ? d[2]() : d[2]; v.Q = lookAlong(dir); if (v.draw) v.draw(); });
+    });
     var spinBtn = btn('Turn slowly', 'Rotate continuously; click again or drag to stop', function () { if (v.spin) stopSpin(); else startSpin(); });
     var hint = document.createElement('span'); hint.className = 'sm c2s-hint'; hint.textContent = 'Drag, or use the arrow keys after clicking the picture.'; bar.appendChild(hint);
     function startSpin() {
@@ -196,7 +198,7 @@
       var pts = f.pts.map(view.rot);
       var hi = opts.highlight && opts.highlight(f);
       var lam = Math.max(0, n[0] * LIGHT[0] + n[1] * LIGHT[1] + n[2] * LIGHT[2]);
-      node('polygon', { points: pts2(pts), style: 'fill:' + (hi ? 'var(--warn)' : colour(f.tag)) + ';stroke:none' }, s);
+      node('polygon', { points: pts2(pts), style: 'fill:' + (hi ? 'var(--warn)' : (opts.colour || colour)(f.tag)) + ';stroke:none' }, s);
       // shading: darken faces turned away from the light, lighten those facing it
       node('polygon', { points: pts2(pts), style: 'fill:#000;fill-opacity:' + (0.07 * (1 - lam)).toFixed(3) + ';stroke:none' }, s);
       node('polygon', { points: pts2(pts), style: 'fill:#fff;fill-opacity:' + (0.18 * lam * lam).toFixed(3) +
@@ -909,15 +911,216 @@
     document.querySelectorAll('#c2s-explain-modes .mode-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-mode') === explainMode); });
   }
 
+  // ---- any lattice: rods, plates and compact crystals (mof_general_shape.js) ----------------------------------------------
+  var GS = window.GENERAL_SHAPE || window.GENSHAPE, GPY = window.GENERAL_SHAPE_PY || {};
+  var anyState = { stem: null, text: null, base: null, R: null, stretch: [1, 1, 1], view: null, pending: false };
+  var RANK_COL = ['var(--linker)', 'var(--node)', 'var(--good)', 'var(--accent2)', 'var(--warn)'];
+  function bar(x) { return x < 0 ? '<span class="c2s-ov">' + (-x) + '</span>' : String(x); }
+  function famHTML(F, hexa) {
+    var k = F.key, three = '{' + k.map(bar).join('') + '}';
+    if (!hexa) return three;
+    return three + ' <span class="sm">= {' + [k[0], k[1], -(k[0] + k[1]), k[2]].map(bar).join('') + '}</span>';
+  }
+  function dirHTML(u) { return u ? '[' + u.map(bar).join('') + ']' : '?'; }
+  function planeHTML(h) { return h ? '(' + h.map(bar).join('') + ')' : '?'; }
+  function axisName(u) {
+    if (!u) return '';
+    var k = JSON.stringify(u);
+    return k === '[1,0,0]' ? ', the <i>a</i> axis' : k === '[0,1,0]' ? ', the <i>b</i> axis' : k === '[0,0,1]' ? ', the <i>c</i> axis' : '';
+  }
+  function anyColourMap(R) {
+    var present = R.families.filter(function (F) { return F.areaFraction > 1e-6; }).sort(function (x, y) { return y.areaFraction - x.areaFraction; });
+    var m = {};
+    present.forEach(function (F, i) { m[F.label] = RANK_COL[i] || 'var(--text-3)'; });
+    return m;
+  }
+  function anyPyKey() {
+    if (!anyState.stem) return null;
+    var st = anyState.stretch;
+    if (st[0] === 1 && st[1] === 1 && st[2] === 1) return GPY[anyState.stem] ? anyState.stem : null;
+    var key = anyState.stem + '@' + st.map(function (x) { return String(+x.toFixed(4)); }).join('x');
+    return GPY[key] ? key : null;
+  }
+  function zingg(R) {
+    var W = 300, H = 300, pad = 42, S = W - pad - 14;
+    var svg = document.createElementNS(SVGNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('class', 'c2s-zingg');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', 'Zingg diagram: middle over longest radius across, shortest over middle up. This crystal: b/a ' + fx(R.bOverA, 2) + ', c/b ' + fx(R.cOverB, 2) + ', ' + R.habit + '.');
+    function X(v) { return pad + v * S; } function Y(v) { return H - pad - v * S; }
+    var t = 2 / 3;
+    [[0, t, 0, t, 'lath'], [t, 1, 0, t, 'plate'], [0, t, t, 1, 'rod'], [t, 1, t, 1, 'compact']].forEach(function (q) {
+      node('rect', { x: X(q[0]), y: Y(q[3]), width: (q[1] - q[0]) * S, height: (q[3] - q[2]) * S,
+        style: 'fill:' + ((q[4] === 'compact' ? 'equant' : q[4]) === R.habit ? 'var(--brand-soft)' : 'var(--surface-1)') + ';stroke:var(--border-strong);stroke-width:1' }, svg);
+      var tx = node('text', { x: X((q[0] + q[1]) / 2), y: Y((q[2] + q[3]) / 2) + 4, 'text-anchor': 'middle',
+        style: 'font:600 13px var(--font-ui, system-ui);fill:var(--text-2)' }, svg);
+      tx.textContent = q[4];
+    });
+    // the bundled examples, faint, so the reader sees where real frameworks fall
+    Object.keys(GPY).forEach(function (k) {
+      if (k.indexOf('@') >= 0) return;
+      var P = GPY[k];
+      node('circle', { cx: X(P.b_over_a), cy: Y(P.c_over_b), r: 3.5, style: 'fill:var(--text-3);fill-opacity:0.55' }, svg);
+    });
+    node('circle', { cx: X(R.bOverA), cy: Y(R.cOverB), r: 7, style: 'fill:var(--node);stroke:var(--surface-0);stroke-width:2' }, svg);
+    var ax = node('text', { x: pad + S / 2, y: H - 8, 'text-anchor': 'middle', style: 'font:12px var(--font-ui, system-ui);fill:var(--text-2)' }, svg);
+    ax.textContent = 'b / a  (middle radius / longest)';
+    var ay = node('text', { x: 12, y: pad + S / 2, 'text-anchor': 'middle', transform: 'rotate(-90 12 ' + (pad + S / 2) + ')', style: 'font:12px var(--font-ui, system-ui);fill:var(--text-2)' }, svg);
+    ay.textContent = 'c / b  (shortest radius / middle)';
+    [0, t, 1].forEach(function (v) {
+      var lx = node('text', { x: X(v), y: H - pad + 14, 'text-anchor': 'middle', style: 'font:11px var(--font-ui, system-ui);fill:var(--text-3)' }, svg);
+      lx.textContent = v === t ? '2/3' : String(v);
+      var ly = node('text', { x: pad - 6, y: Y(v) + 4, 'text-anchor': 'end', style: 'font:11px var(--font-ui, system-ui);fill:var(--text-3)' }, svg);
+      ly.textContent = v === t ? '2/3' : String(v);
+    });
+    return svg;
+  }
+  function anyHeadline(R) {
+    var ratio = 1 / R.bOverA;
+    if (R.habit === 'rod') return '<b>Rod (needle)</b> along ' + dirHTML(R.longAxisUVW) + axisName(R.longAxisUVW) + '. Length about ' + fx(ratio, 1) + ' times the width.';
+    if (R.habit === 'plate') return '<b>Plate</b> with flat faces ' + planeHTML(R.flatFaceHKL) + '. Width about ' + fx(1 / R.cOverB, 1) + ' times the thickness.';
+    if (R.habit === 'lath') return '<b>Lath</b> (a flat rod) along ' + dirHTML(R.longAxisUVW) + axisName(R.longAxisUVW) + ', flat faces ' + planeHTML(R.flatFaceHKL) + '.';
+    return '<b>Compact</b>: no direction is much longer or flatter than the others.';
+  }
+  function anyText(R) {
+    var hexa = R.hexagonal, fams = R.families, sym = R.symmetry, h = '';
+    var c = R.cell;
+    h += '<ol class="c2s-list">';
+    h += '<li><b>Atoms.</b> The file lists ' + R.nAsymmetric + ' atoms and ' + R.ops.length + ' symmetry operation' + (R.ops.length === 1 ? '' : 's') +
+      '; applying the operations gives <b>' + R.nAtoms + '</b> atoms in the cell.</li>';
+    h += '<li><b>Cell.</b> <i>a</i> = ' + fx(c[0], 3) + ', <i>b</i> = ' + fx(c[1], 3) + ', <i>c</i> = ' + fx(c[2], 3) + ' &Aring;, &alpha; = ' + fx(c[3], 2) + '&deg;, &beta; = ' + fx(c[4], 2) + '&deg;, &gamma; = ' + fx(c[5], 2) + '&deg;: ' + R.lattice + '.' +
+      (hexa ? ' With hexagonal axes, faces are also written with four indices {<i>hkil</i>}, <i>i</i> = &minus;(<i>h</i> + <i>k</i>), which makes the six side faces of a hexagonal prism look alike: {100} = {10<span class="c2s-ov">1</span>0}.' : '') + '</li>';
+    var st = R.stretch;
+    if (st[0] !== 1 || st[1] !== 1 || st[2] !== 1) h += '<li><b>Changed cell.</b> <i>a</i>, <i>b</i>, <i>c</i> were multiplied by ' + st.map(function (x) { return fx(x, 2); }).join(', ') +
+      ' with every atom kept at its fractional coordinates, as on the <a href="deform.html">Cell Deform</a> page. This is a hypothetical framework. Which planes cancel is unchanged, because that depends only on the fractional coordinates; ' + R.keptOps + ' of the ' + sym.ops.length + ' operations still keep the stretched cell, and only those make faces equivalent.</li>';
+    h += '<li><b>Symmetry, found from the atoms.</b> ' + sym.ops.length + ' operation' + (sym.ops.length === 1 ? '' : 's') + ' map every non-hydrogen atom onto an atom of the same element within ' + fx(sym.tol, 2) + ' &Aring; (the cell shape alone would allow ' + sym.rotations + ' rotation' + (sym.rotations === 1 ? '' : 's') + ').' +
+      (sym.ops.length <= 2 && sym.rotations > 2 ? ' <span class="c2s-stop">Few operations were found although the cell allows more. Either the crystal really has low symmetry, or the atoms in this file are not exactly symmetric (a P1 file with distorted or disordered atoms). Missed centring or screw axes change which planes cancel, and so the shape: treat this result with caution, and prefer a symmetrised CIF.</span>' : '') + '</li>';
+    var top = fams.slice(0, 3).map(function (F) {
+      return famHTML(F, hexa) + ': <i>d</i> = ' + fx(F.d, 2) + ' &Aring;' + (F.order > 1 ? ', but the first reflection that does not cancel is order ' + F.order + ', so <i>d</i><sub>eff</sub> = ' + fx(F.dEff, 2) + ' &Aring;' : '');
+    });
+    h += '<li><b>Widest planes.</b> ' + top.join('; ') + '. BFDH places each face family at a distance from the centre proportional to 1/<i>d</i><sub>eff</sub>: wide spacing, slow growth, a large face.</li>';
+    var why;
+    if (R.habit === 'rod' || R.habit === 'lath') {
+      var ax = R.axes[0];
+      var side = fams.filter(function (F) { return Math.abs(la.dot(F.members[0].normal, ax)) < 0.2; });
+      var cap = fams.filter(function (F) { return Math.abs(la.dot(F.members[0].normal, ax)) > 0.9; });
+      why = 'The faces parallel to ' + dirHTML(R.longAxisUVW) + (side.length ? ' (the widest is ' + famHTML(side[0], hexa) + ', <i>d</i><sub>eff</sub> = ' + fx(side[0].dEff, 2) + ' &Aring;)' : '') +
+        ' sit close to the centre, while the planes that would close the ends ' + (cap.length ? '(the widest is ' + famHTML(cap[0], hexa) + ', <i>d</i><sub>eff</sub> = ' + fx(cap[0].dEff, 2) + ' &Aring;) ' : '') +
+        'sit far out. So the crystal is long along ' + dirHTML(R.longAxisUVW) + ' and its ends are pointed by sloping faces.';
+    } else if (R.habit === 'plate') {
+      var nrm = R.axes[2], flat = fams.filter(function (F) { return Math.abs(la.dot(F.members[0].normal, nrm)) > 0.9; });
+      why = 'The planes ' + planeHTML(R.flatFaceHKL) + (flat.length ? ' (family ' + famHTML(flat[0], hexa) + ', <i>d</i><sub>eff</sub> = ' + fx(flat[0].dEff, 2) + ' &Aring;)' : '') +
+        ' are the widest-spaced, so they sit closest to the centre and become two large flat faces; the crystal is thin across them.';
+    } else {
+      why = 'The widest families point in many directions at similar distances, so no direction is singled out.';
+    }
+    h += '<li><b>Why this shape.</b> ' + why + ' Principal radii (largest = 1): ' + R.radii.map(function (x) { return fx(x, 3); }).join(', ') +
+      '; <i>b</i>/<i>a</i> = ' + fx(R.bOverA, 3) + ', <i>c</i>/<i>b</i> = ' + fx(R.cOverB, 3) + ', sphericity &Psi; = ' + fx(R.sphericity, 3) + '.</li>';
+    h += '</ol>';
+    var key = anyPyKey();
+    if (key) {
+      var P = GPY[key];
+      h += '<p class="c2s-py"><b>Python check</b> (<code>code/morphology/run_general_shape.py</code>, symmetry by spglib): ' + P.spacegroup + ', ' + P.operations + ' operations, habit <b>' + (P.habit === 'equant' ? 'compact' : P.habit) +
+        '</b>, <i>b</i>/<i>a</i> = ' + fx(P.b_over_a, 3) + ', <i>c</i>/<i>b</i> = ' + fx(P.c_over_b, 3) + '.</p>';
+    }
+    return h;
+  }
+  function anyTable(R) {
+    var col = anyColourMap(R), hexa = R.hexagonal;
+    var rows = R.families.filter(function (F, i) { return i < 10 || F.areaFraction > 1e-6; }).map(function (F) {
+      var sw = col[F.label] ? '<span class="c2s-swatch" style="background:' + col[F.label] + '"></span>' : '';
+      return '<tr><td class="dt-label">' + sw + famHTML(F, hexa) + '</td><td class="dt-value">' + F.multiplicity + '</td><td class="dt-value">' + fx(F.d, 3) + '</td><td class="dt-value">' + F.order +
+        '</td><td class="dt-value">' + fx(F.dEff, 3) + '</td><td class="dt-value">' + fx(F.R, 3) + '</td><td class="dt-value">' + (F.areaFraction > 1e-6 ? fx(100 * F.areaFraction, 1) + ' %' : '&mdash;') +
+        '</td><td class="dt-note">' + (F.role || (F.areaFraction > 1e-6 ? '' : 'cut away')) + '</td></tr>';
+    }).join('');
+    return '<div class="table-wrap"><table class="data-table" id="c2s-any-table"><thead><tr><td>Family</td><td>Faces</td><td><i>d</i> (&Aring;)</td><td><i>n</i></td><td><i>d</i><sub>eff</sub> (&Aring;)</td><td>Distance <i>R</i></td><td>Share of surface</td><td>Role</td></tr></thead><tbody>' +
+      rows + '</tbody></table></div><p class="sm">The ' + R.families.length + ' families with the largest <i>d</i><sub>eff</sub> are used (of ' + R.allFamilies + ' up to index 6); the table shows the first ten and every family that keeps a face.</p>';
+  }
+  function anyDraw() {
+    var R = anyState.R;
+    if (!R) return;
+    var col = anyColourMap(R);
+    anyState.view.draw = function () {
+      drawShape(anyState.view, R.faces, { colour: function (t) { return col[t] || 'var(--surface-2)'; }, label: 'BFDH crystal of ' + (anyState.stem || 'the chosen file') + ': ' + R.habit });
+    };
+    anyState.view.draw();
+  }
+  function anyRun() {
+    anyState.pending = false;
+    if (!anyState.text || !GS) return;
+    var R;
+    try { R = GS.run(anyState.text, { base: anyState.base, stretch: anyState.stretch }); }
+    catch (e) { set('c2s-any-result', '<p class="c2s-stop">This file could not be read: ' + e.message + '</p>'); set('c2s-any-txt', ''); set('c2s-any-faces', ''); return; }
+    if (!anyState.base) anyState.base = R;
+    anyState.R = R;
+    if (!R.bounded) { set('c2s-any-result', '<p class="c2s-stop">The 40 widest families do not close the crystal, so BFDH gives no finite shape for this cell.</p>'); return; }
+    set('c2s-any-result', '<p class="c2s-any-head">' + anyHeadline(R) + '</p>');
+    var z = el('c2s-any-zingg'); if (z) { z.innerHTML = ''; z.appendChild(zingg(R)); }
+    set('c2s-any-txt', anyText(R));
+    set('c2s-any-faces', anyTable(R));
+    anyDraw();
+  }
+  function anySchedule() { if (anyState.pending) return; anyState.pending = true; (window.requestAnimationFrame || setTimeout)(anyRun); }
+  function anySetStretch(st) {
+    anyState.stretch = st.slice();
+    ['a', 'b', 'c'].forEach(function (k, i) {
+      var r = el('c2s-any-s' + k); if (r) r.value = String(Math.round(100 * Math.log(st[i]) / Math.log(4)));
+      set('c2s-any-v' + k, '&times; ' + fx(st[i], 2));
+    });
+    anySchedule();
+  }
+  function anyChoose(stem, text) {
+    anyState.stem = stem; anyState.text = text; anyState.base = null;
+    document.querySelectorAll('#c2s-any-structs .struct-tab').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-stem') === (stem || '__page')); });
+    var ex = (window.GENERAL_EXAMPLES || []).filter(function (e) { return e.stem === stem; })[0];
+    set('c2s-any-about', ex ? ex.about + '. Source and checksum: <code>data/structures/general_lattice/README.md</code>.' : 'The file chosen at the top of the page: ' + (state.name || '') + '.');
+    anySetStretch([1, 1, 1]);
+  }
+  function anyInit() {
+    var bar0 = el('c2s-any-structs');
+    if (!bar0 || !GS) return;
+    (window.GENERAL_EXAMPLES || []).forEach(function (e) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'struct-tab'; b.textContent = e.label; b.setAttribute('data-stem', e.stem);
+      b.addEventListener('click', function () { anyChoose(e.stem, window.GENERAL_CIFS[e.stem]); });
+      bar0.appendChild(b);
+    });
+    var own = document.createElement('button');
+    own.type = 'button'; own.className = 'struct-tab'; own.textContent = 'The file chosen above'; own.setAttribute('data-stem', '__page');
+    own.addEventListener('click', function () { anyChoose(null, state.text); });
+    bar0.appendChild(own);
+    anyState.view = View(el('c2s-any-view'), { dirs: [
+      ['Look along a', 'Look straight down the a axis', function () { return anyState.R ? anyState.R.A[0] : [1, 0, 0]; }],
+      ['b', 'Look straight down the b axis', function () { return anyState.R ? anyState.R.A[1] : [0, 1, 0]; }],
+      ['c', 'Look straight down the c axis', function () { return anyState.R ? anyState.R.A[2] : [0, 0, 1]; }],
+      ['Side view', 'Look across the longest axis of the crystal', function () {
+        var R = anyState.R; if (!R) return [1, 0, 0];
+        var ax = R.axes[0], up = Math.abs(ax[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0], s = la.cross(ax, up);
+        return la.add(la.scale(s, 1 / la.norm(s)), la.scale(R.axes[2], 0.35));
+      }]] });
+    ['a', 'b', 'c'].forEach(function (k, i) {
+      var r = el('c2s-any-s' + k);
+      if (r) r.addEventListener('input', function () { var st = anyState.stretch.slice(); st[i] = +Math.pow(4, +r.value / 100).toFixed(4); anyState.stretch = st; set('c2s-any-v' + k, '&times; ' + fx(st[i], 2)); anySchedule(); });
+    });
+    [['c2s-any-p1', [1, 1, 1]], ['c2s-any-prod', [1, 1, 0.25]], ['c2s-any-pplate', [1, 1, 2.5]]].forEach(function (p) {
+      var b = el(p[0]); if (b) b.addEventListener('click', function () { anySetStretch(p[1]); });
+    });
+    var first = (window.GENERAL_EXAMPLES || [])[0];
+    if (first) anyChoose(first.stem, window.GENERAL_CIFS[first.stem]);
+  }
+
   // ---- run everything ---------------------------------------------------------------------------------------------------
   function render() {
     var R;
-    try { R = CS.run(state.text, { snapshots: true }); }
+    var expanded = null;
+    try { if (GS) expanded = GS.expand(CS.parseCIF(state.text).atoms, GS.parseSymops(state.text), CS.latticeVectors(CS.parseCIF(state.text).cell)); } catch (e) { expanded = null; }
+    try { R = CS.run(state.text, { snapshots: true, atoms: expanded }); }
     catch (e) { set('c2s-summary', '<p class="c2s-stop">This file could not be read: ' + e.message + '</p>'); return; }
     state.R = R;
     var P = py(state.name);
     summary(R); explainBoxes(R); step1(R); step2(R); step3(R, P); cellPicture(R);
     var later = ['c2s-s4', 'c2s-s5', 'c2s-s6', 'c2s-s7', 'c2s-s8', 'c2s-s9', 'c2s-s10', 'c2s-s11'];
+    if (anyState.stem === null && anyState.view) anyChoose(null, state.text);
     if (R.stop) { later.forEach(function (id) { set(id, '<p class="c2s-stop">Not reached: ' + R.stop + '</p>'); }); return; }
     step4(R, P); step5(R, P); step6(R, P); latticePicture(R, state.planes || '100'); step7(R, P); step8(R, P); step9(R); step10(R, P); step11(R, P);
     mapState.x = R.rates['{110}'] / R.rates['{100}'];
@@ -950,6 +1153,7 @@
         state.name = f.name; state.bundled = false; state.text = String(rd.result);
         document.querySelectorAll('#c2s-structs .struct-tab').forEach(function (b) { b.classList.remove('active'); });
         render();
+        if (anyState.view) anyChoose(null, state.text);      // the any-lattice section follows the uploaded file
       };
       rd.readAsText(f);
     });
@@ -988,10 +1192,11 @@
         drawMap(R); mapPreview();
       });
     });
-    window.addEventListener('themechange', function () { mapCache = null; if (state.R) render(); });
+    window.addEventListener('themechange', function () { mapCache = null; if (state.R) render(); if (anyState.R) anyDraw(); });
+    anyInit();
     choose('MOF-5');
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-  window.CIF_SHAPE_PAGE = { state: state, choose: choose, mapShape: mapShape, surd: surd };
+  window.CIF_SHAPE_PAGE = { state: state, choose: choose, mapShape: mapShape, surd: surd, anyState: anyState, anyChoose: anyChoose, anySetStretch: anySetStretch, anyRun: anyRun };
 })();

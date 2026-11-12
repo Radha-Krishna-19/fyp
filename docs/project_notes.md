@@ -400,3 +400,20 @@ root README under "Future work".
 - `code_18` read MOFX-DB metadata from an untracked `.cache/`; a trimmed copy is now in `data/spectrum_descriptors/mofxdb_metadata/`.
 - Not deterministic: `r2_linearity_mean` (the free-intercept fit-quality diagnostic of `code_12.spectrum`) changes between runs, by up to 0.3 for single records, while the widths are identical to 1e-4. No quoted number or conclusion uses it. Do not quote it without fixing the cause first.
 - `modulator_caps.py` (CHGNet, static) reproduces to within 0.003 eV per site.
+
+
+## Any-lattice BFDH (12 November 2026)
+
+- The CIF to Shape page now has an "Any Lattice" section (`website/mof_general_shape.js`, Python
+  reference `code/morphology/run_general_shape.py`, check `website/tests/test_general_shape.js`).
+  Symmetry is found from the atoms at 0.05 Å in both (spglib in Python; a direct search over the
+  rotations allowed by the cell in the browser).
+- On their files, Mg-MOF-74, MIL-53(Cr) lt, MIL-47 and MIL-88A (open) give rods along the chain or
+  channel axis; MIL-88A (dry), ZIF-7 and MOF-5 give compact crystals. RASPA2 survey (93 readable MOF
+  files): 27 rods, 65 compact, 1 plate; 16 files are stored without exact symmetry and are flagged.
+- Fixed on the way: the cubic steps read only the atoms listed in a CIF, so a file that lists the
+  asymmetric unit with symmetry operations (for example RASPA2 `Cu-BTC.cif`) was reported as "not
+  cubic". The page now expands the atoms by the listed operations first.
+- Known limitation: `mofmorph.faces.plain()` sorts the indices of a family label, which is right for
+  cubic families but merges different families in a non-cubic cell (for example (100) and (001)).
+  `run_general_shape.py` therefore labels families by their own indices.

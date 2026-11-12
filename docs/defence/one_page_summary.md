@@ -27,7 +27,7 @@ finite crystal particle, the mass–radius dimension profile identifies the shap
 the compact shapes predicted for MOF-5) and changes monotonically along the morphology map.
 
 **How we know it is right.** Two independent implementations (Python and the browser) agree number by
-number; 13 test suites (2,857 checks) and Python tests pass from any folder; an audit on 12 November
+number; 14 test suites (3,115 checks) and Python tests pass from any folder; an audit on 12 November
 re-ran every script and recomputed every quoted number from its result file. Every mistake (26) is
 recorded with how it was found and fixed.
 

@@ -38,7 +38,15 @@
   .c2s-list li{margin:4px 0}
   .c2s-file{font-size:13px}
   #main code{overflow-wrap:anywhere}
-  @media print{.c2s-svg{cursor:default}#c2s-file-row,#c2s-grow-controls,.c2s-presets,.c2s-viewbar{display:none}}
+  .c2s-any-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start}
+  @media (max-width:860px){.c2s-any-grid{grid-template-columns:minmax(0,1fr)}}
+  .c2s-any-head{font-size:17px;line-height:1.45;margin:4px 0 10px}
+  .c2s-zingg{width:100%;max-width:300px;height:auto;display:block}
+  .c2s-swatch{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--border-strong)}
+  .c2s-stretch{display:grid;grid-template-columns:auto minmax(0,1fr) 4.5em;gap:6px 10px;align-items:center;max-width:520px;margin:8px 0}
+  .c2s-stretch input[type=range]{width:100%}
+  .c2s-stretch .v{font-variant-numeric:tabular-nums;font-size:13px;color:var(--text-2)}
+  @media print{.c2s-svg{cursor:default}#c2s-file-row,#c2s-grow-controls,.c2s-presets,.c2s-viewbar,.c2s-stretch{display:none}}
 </style>
 
       <h2 class="section-title" id="c2s-intro" data-toc="What this page does">What This Page Does</h2>
@@ -48,6 +56,36 @@
         <div class="toolbar" id="c2s-structs"><span class="lbl">CIF file</span></div>
         <div class="toolbar" id="c2s-file-row"><span class="lbl">or your own</span><input type="file" id="c2s-file" class="c2s-file" accept=".cif,.txt"></div>
         <div id="c2s-summary"></div>
+      </div>
+
+      <h2 class="section-title" id="c2s-any" data-toc="Any lattice: rods and plates">Any Lattice: Rods, Plates and Compact Crystals</h2>
+      <p class="c2s-plain">The numbered steps below treat cubic crystals. A cubic cell is the same along all three axes, so BFDH can only give compact shapes (cube, octahedron and the forms between them). A cell with one axis much shorter or longer than the others, or with symmetry that cancels the planes along one axis, can give a rod (needle) or a plate. This section runs the same rule on a file of any lattice: hexagonal, trigonal, tetragonal, orthorhombic, monoclinic or triclinic. It finds the symmetry from the atoms, works out which planes cancel, builds the crystal from its 40 widest plane families, and measures how long or flat the result is.</p>
+      <div class="c2s-rule">For each plane family {<i>hkl</i>}: 1/<i>d<sub>hkl</sub></i> = |<i>h</i><b>a</b>* + <i>k</i><b>b</b>* + <i>l</i><b>c</b>*|, from the metric of any cell. The family is absent at order <i>n</i> if some symmetry operation (<i>R</i>, <b>t</b>) has <i>n</i><b>h</b><i>R</i> = <i>n</i><b>h</b> and <i>n</i><b>h</b>&middot;<b>t</b> not a whole number; <i>d</i><sub>eff</sub> = <i>d<sub>hkl</sub></i>/<i>n</i> for the first order that survives. BFDH puts the faces of each family at distance <i>R</i> = <i>d</i><sub>eff,max</sub>/<i>d</i><sub>eff</sub> from the centre. The shape is then measured by its gyration tensor: principal radii <i>a</i> &ge; <i>b</i> &ge; <i>c</i>, and Zingg's classes: <b>compact</b> if <i>b</i>/<i>a</i> &ge; 2/3 and <i>c</i>/<i>b</i> &ge; 2/3, <b>rod</b> if only <i>b</i>/<i>a</i> &lt; 2/3, <b>plate</b> if only <i>c</i>/<i>b</i> &lt; 2/3, <b>lath</b> if both.</div>
+      <div class="panel">
+        <div class="toolbar" id="c2s-any-structs"><span class="lbl">Example</span></div>
+        <p class="sm" id="c2s-any-about"></p>
+        <div class="c2s-stretch" id="c2s-any-stretch">
+          <label for="c2s-any-sa">Scale <i>a</i></label><input type="range" id="c2s-any-sa" min="-100" max="100" value="0"><span class="v" id="c2s-any-va"></span>
+          <label for="c2s-any-sb">Scale <i>b</i></label><input type="range" id="c2s-any-sb" min="-100" max="100" value="0"><span class="v" id="c2s-any-vb"></span>
+          <label for="c2s-any-sc">Scale <i>c</i></label><input type="range" id="c2s-any-sc" min="-100" max="100" value="0"><span class="v" id="c2s-any-vc"></span>
+        </div>
+        <div class="toolbar c2s-presets"><span class="lbl">Cell</span><button type="button" class="mini" id="c2s-any-p1">As in the file</button><button type="button" class="mini" id="c2s-any-prod"><i>c</i> &times; 1/4</button><button type="button" class="mini" id="c2s-any-pplate"><i>c</i> &times; 2.5</button></div>
+        <div class="c2s-any-grid">
+          <div id="c2s-any-view"></div>
+          <div><div id="c2s-any-result"></div><div id="c2s-any-zingg"></div><p class="sm">Red: this crystal. Grey: the six bundled frameworks and MOF-5 as found in their files.</p></div>
+        </div>
+        <div id="c2s-any-txt"></div>
+        <div id="c2s-any-faces"></div>
+      </div>
+      <ul class="c2s-list">
+        <li><b>What the examples show.</b> In their files, Mg-MOF-74, MIL-53(Cr), MIL-47(V) and the open form of MIL-88A come out as rods; MIL-88A dry, ZIF-7 and MOF-5 come out compact. Each rod lies along the short repeat of its inorganic chain or channel: <i>c</i> for MOF-74 and MIL-88A, <i>c</i> for MIL-53 in its C2/c setting, <i>a</i> for MIL-47. Rod-like crystals are reported in the laboratory for MIL-53(Al), as needles grown along the direction of the Al&ndash;O backbone (Joshi et al., <i>CrystEngComm</i>, 2022), and for MIL-88B and MIL-88C, as spindle-shaped rods (Dawood et al., <i>Phys. Chem. Chem. Phys.</i>, 2021). These are qualitative agreements; the project's laboratory database does not yet hold records for non-cubic MOFs.</li>
+        <li><b>The same framework can change class.</b> MIL-88A swells by about 40 % in <i>a</i> when solvent enters; on these files BFDH gives a rod for the open form and a compact crystal for the dry form. Stretching or squashing a cell with the sliders shows the same effect on any file: MOF-5 with <i>c</i> &times; 1/4 becomes a rod, with <i>c</i> &times; 2.5 a plate. Stretched cells are hypothetical frameworks, as on the <a href="deform.html">Cell Deform</a> page.</li>
+        <li><b>Rods are common; plates are rare.</b> The RASPA2 structure library holds 94 MOF files (and 8 COF files, left out here). Of the 93 that can be read, this section gives 27 rods, 65 compact crystals and 1 plate. The one plate (IRMOF-11) and 15 of the others are stored without exact symmetry, so the page finds too few operations and flags them; their results should not be trusted. A plate needs one long cell axis whose planes do not cancel, which these frameworks do not have. Plate-shaped MOF crystals in the laboratory usually come from layered structures or from additives that block one face, which BFDH does not model. Survey: <code>code/morphology/survey_general_lattice.js</code>, results in <code>code/morphology/results/general_survey_raspa2.json</code>.</li>
+        <li><b>Geometry only.</b> As in the steps below, BFDH ignores bond strengths, solvent, temperature and additives. For a layered framework held together by weak stacking it can predict the wrong habit, because it cannot see that the layers bind weakly.</li>
+      </ul>
+      <div class="callout" data-kind="Where these numbers come from">
+        Browser: <code>website/mof_general_shape.js</code>. Python reference: <code>code/morphology/run_general_shape.py</code> (symmetry by spglib), which writes
+        <code>code/morphology/results/general_shape.json</code>. Check: <code>website/tests/test_general_shape.js</code> compares the two on every bundled file and the three stretched cells: atom count, operations, habit, ratios, spacings and the share of surface of every face family.
       </div>
 
       <h2 class="section-title" id="c2s-explain-sec" data-toc="The five boxes, explained"><span class="stitle-num">0</span>The Five Boxes, Explained</h2>
@@ -192,8 +230,8 @@
       <ul class="c2s-list">
         <li><b>Steps 1 to 7 are exact crystallography of the file.</b> The cell, the cubic lattice, the centring, the point group, the space group and the effective spacings follow from the numbers in the CIF, and for the four bundled files they agree with spglib.</li>
         <li><b>Step 8 is a rule, not a physical model of growth.</b> BFDH ignores the chemistry of the faces, the solvent, the temperature and any modulator. Step 8 also shows that the BFDH shape depends only on the centring and the point group, so MOF-5, HKUST-1 and UiO-66, all face-centred cubic, receive the same truncated octahedron. Laboratories grow these three MOFs in different shapes, so BFDH cannot by itself tell them apart. How the project's other models (graph attachment numbers, force-field and CHGNet surface energies) move each MOF to a different point of the map in Step 12, and how those points compare with laboratory crystals, is on the <a href="morphology.html">Morphology</a>, <a href="surface_energy.html">Surface Energy</a> and <a href="experiment.html">Experiment</a> pages.</li>
-        <li><b>Only equilibrium-like shapes are produced.</b> Every shape here is a convex polytope with flat faces. Rods, plates and spheres grown under kinetic control or with additives that block particular faces are not produced by this construction.</li>
-        <li><b>Cubic crystals only.</b> A file whose lattice is not cubic stops at Step 3 with a message. The Python package handles any lattice, and the <a href="deform.html">Cell Deform</a> page uses it on stretched cells.</li>
+        <li><b>Only equilibrium-like shapes are produced.</b> Every shape here is a convex polytope with flat faces. A rod or a plate appears only when the cell itself is elongated or flattened, or its symmetry cancels the planes along one axis (the "Any Lattice" section). Spheres, and rods or plates grown under kinetic control or with additives that block particular faces, are not produced by this construction.</li>
+        <li><b>The numbered steps are for cubic crystals.</b> A file whose lattice is not cubic stops at Step 3 with a message; the "Any Lattice" section near the top of the page handles it.</li>
       </ul>
       <div class="callout" data-kind="Where every number comes from">
         Browser: <code>website/mof_cif_shape.js</code> (all steps) and <code>website/cif_shape_page.js</code> (this page), with

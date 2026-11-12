@@ -409,7 +409,7 @@ Rating: PARTIALLY DEFENSIBLE (one net). Owners: RK, KV.
 
 **Q39. How do you know the code is correct?**
 Two independent implementations (Python in `code/`, JavaScript in `website/`) written from the same
-specification agree number by number; 13 website test suites (2,857 checks) compare them and load every
+specification agree number by number; 14 website test suites (3,115 checks) compare them and load every
 page; Python tests cover each phase; every proposition is checked numerically; known closed forms are
 reproduced (the regular truncated octahedron at 2/√3, the rhombic dodecahedron face area).
 Evidence: `website/tests/`, `code/morphology/tests*.py`, `_ci_smoke_test.py`; CI on every push.

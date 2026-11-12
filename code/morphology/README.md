@@ -40,6 +40,8 @@ Requirements: `numpy scipy matplotlib ase spglib` (see the root [`requirements.t
 |---|---|---|
 | [`run_phase1.py`](run_phase1.py) | `results/phase1_results.json`, morph-family and graph-rule figures | Morphology |
 | [`run_cif_to_shape.py`](run_cif_to_shape.py) | `results/cif_to_shape.json`: every step from each CIF to its BFDH shape, symmetry found by direct search and checked with spglib | CIF to Shape |
+| [`run_general_shape.py`](run_general_shape.py) | `results/general_shape.json`: BFDH shape for a CIF of any lattice (files in `data/structures/general_lattice/`), symmetry by spglib in the file's own cell, habit by Zingg's ratios (compact, rod, plate, lath), the rod axis and plate face in lattice terms, and three stretched cells | CIF to Shape, "Any Lattice" |
+| [`survey_general_lattice.js`](survey_general_lattice.js) | `results/general_survey_raspa2.json`: the browser engine run on every MOF file of the RASPA2 library (`node survey_general_lattice.js <folder>`) | CIF to Shape, "Any Lattice" |
 | [`run_phase3.py`](run_phase3.py), [`figs_phase3.py`](figs_phase3.py) | `results/phase3_results.json`, slice and shape figures | Graph Faces |
 | [`run_phase4.py`](run_phase4.py), [`figs_phase4.py`](figs_phase4.py) | `results/phase4_results.json`, Wulff shapes | Surface Energy |
 | [`run_deform.py`](run_deform.py), [`figs_deform.py`](figs_deform.py) | `results/deform_results.json`, 52 deformed cells | Cell Deform |

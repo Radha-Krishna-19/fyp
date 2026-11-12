@@ -1,0 +1,2040 @@
+{
+ "CAN-12.cif": {
+  "sha256": "f0131ace7bb2a6902112b970f190875589a8f6c3fdee898d85539d1c8c0b80c9",
+  "kind": "MOF",
+  "atoms": 972,
+  "operations": 8,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.6973,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "COF-1.cif": {
+  "sha256": "ff4161d32bf1921b35fb6730608db7fd214dd5e424cc1bbeb0ba6e1f104f5be8",
+  "kind": "COF",
+  "atoms": 84,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4092,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "COF-102.cif": {
+  "sha256": "faf20fa13c7039391f52fbb4224d9b70bd239ae57def483c1b034ebce7009dff",
+  "kind": "COF",
+  "atoms": 588,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   6,
+   5,
+   4
+  ],
+  "flat_face_hkl": null,
+  "few_operations": false
+ },
+ "COF-103.cif": {
+  "sha256": "80b70e5b211642066643a375a0ac11fe680d50615b8a148ce673f30843a5f9a9",
+  "kind": "COF",
+  "atoms": 588,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": null,
+  "few_operations": false
+ },
+ "COF-105.cif": {
+  "sha256": "5761d78e58e9e71ef4c28472de61b5a76631cc50429e07dfd181108139f6be5b",
+  "kind": "COF",
+  "atoms": 1020,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   6,
+   5,
+   4
+  ],
+  "flat_face_hkl": null,
+  "few_operations": false
+ },
+ "COF-108.cif": {
+  "sha256": "5f07de2be700cb0c66f1c5448c08c21246569afdfea0c1a00d5f2ccf8df81f54",
+  "kind": "COF",
+  "atoms": 255,
+  "operations": 24,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   4,
+   -3
+  ],
+  "flat_face_hkl": [
+   6,
+   -4,
+   -5
+  ],
+  "few_operations": false
+ },
+ "COF-202.cif": {
+  "sha256": "9d41fa1078d6b99a560608a7e59a7aff93709c072380051306a765ee307c5bc5",
+  "kind": "COF",
+  "atoms": 1052,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   5,
+   4,
+   3
+  ],
+  "flat_face_hkl": [
+   -3,
+   4,
+   0
+  ],
+  "few_operations": false
+ },
+ "COF-300.cif": {
+  "sha256": "4a75a34bed3175c3130bdc2406125f4964a99c5c302a9cb30707449c761ec4f3",
+  "kind": "COF",
+  "atoms": 292,
+  "operations": 16,
+  "lattice_rotations": 16,
+  "habit": "rod",
+  "b_over_a": 0.6417,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "COF-5.cif": {
+  "sha256": "2f273710e9d6a0b958762bf907042a7ee64b8be7d8d5576dac00250a05563057",
+  "kind": "COF",
+  "atoms": 96,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.1195,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   5,
+   4,
+   0
+  ],
+  "few_operations": false
+ },
+ "Cd3BTB2.cif": {
+  "sha256": "bcaa1faf1ebec0c3416ccd9755cb6c303e4232945a907fb934d72b2c7ac9d8df",
+  "kind": "MOF",
+  "atoms": 99,
+  "operations": 2,
+  "lattice_rotations": 2,
+  "habit": "equant",
+  "b_over_a": 0.7561,
+  "c_over_b": 0.9145,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   0,
+   -3,
+   5
+  ],
+  "few_operations": false
+ },
+ "Co(2,6-NDP).cif": {
+  "sha256": "a5741956efb690c61b7c20683720b407c665900529875290ec323dbdb751922f",
+  "kind": "MOF",
+  "atoms": 124,
+  "operations": 4,
+  "lattice_rotations": 16,
+  "habit": "rod",
+  "b_over_a": 0.6476,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   4,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "Co-DOBDC.cif": {
+  "sha256": "e1b3b7631fcfaa6ddf16fc8ce33418dffba8b1f1af8e40a07e26308b75b72836",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4746,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   5,
+   2,
+   0
+  ],
+  "few_operations": false
+ },
+ "CoBDP-Dubbeldam.cif": {
+  "sha256": "84c7dcf74a88e6113dd1a5f361bb447ac8321f5e60b0f05c5a2b4298b202a7c3",
+  "kind": "MOF",
+  "atoms": 100,
+  "operations": 4,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.6893,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   0,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "CoBDP.cif": {
+  "sha256": "51e2f534c06e15622fbccfe1d94afe88091758079bd630d4eb44720ea7ecab28",
+  "kind": "MOF",
+  "atoms": 100,
+  "operations": 4,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.6893,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "Cu-BTC.cif": {
+  "sha256": "9d10fe490d6e1cebe384edaf10e9b493096d03cc38427776e57f8db11bb735ac",
+  "kind": "MOF",
+  "atoms": 624,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-1-Ar.cif": {
+  "sha256": "8bbcb1ef3c0ab617243eb0500fad9b125e2e050ea15ee74a470c58d486375fde",
+  "kind": "MOF",
+  "atoms": 424,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-1.cif": {
+  "sha256": "e5d0b3d72445c15cd2ed02a36fa2fdf3d5d13f6c21441984475449d48d3f0ad2",
+  "kind": "MOF",
+  "atoms": 424,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-10.cif": {
+  "sha256": "c354d37fc83996f74b62844670bff2f6c1e7290e882259aad8e3e8270cd63cc7",
+  "kind": "MOF",
+  "atoms": 760,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-11.cif": {
+  "sha256": "d9128f8c3fcddf2868a63a689d09450af2342b07f711986097237049eb8ad34f",
+  "kind": "MOF",
+  "atoms": 2568,
+  "operations": 2,
+  "lattice_rotations": 8,
+  "habit": "plate",
+  "b_over_a": 1,
+  "c_over_b": 0.4151,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": true
+ },
+ "IRMOF-12.cif": {
+  "sha256": "cc15fe1115ba8ac0ddb64d9be1fd4349b5e9e20c3ba4af6b65417868978c8e62",
+  "kind": "MOF",
+  "atoms": 856,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "IRMOF-13.cif": {
+  "sha256": "610f6e4c81aeb9e6973df606206a63e6a632461fb094b691059e5727fe047933",
+  "kind": "MOF",
+  "atoms": 1140,
+  "operations": 36,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 0.9596,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   0,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "IRMOF-14.cif": {
+  "sha256": "0eada2a898a88a55f3f095d6a9d1d2702a2d0baf2c3fc8a86bddf51fe96e0c50",
+  "kind": "MOF",
+  "atoms": 760,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-15.cif": {
+  "sha256": "6c72f92d7d29927e2b27d39ec011365de7ab1cb0865498876fe3629bfbf69ffc",
+  "kind": "MOF",
+  "atoms": 226,
+  "operations": 8,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "IRMOF-16.cif": {
+  "sha256": "e668b7920c32db40f5d1a310453f9d3d625ad5b737a678710f4d6b3888c81520",
+  "kind": "MOF",
+  "atoms": 904,
+  "operations": 24,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   4,
+   -3
+  ],
+  "flat_face_hkl": [
+   6,
+   -4,
+   -5
+  ],
+  "few_operations": false
+ },
+ "IRMOF-2.cif": {
+  "sha256": "da31376f748d20544d63b2e9ac208cf6db28a8458493d723daca4a95e8cbab4d",
+  "kind": "MOF",
+  "atoms": 424,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "IRMOF-3.cif": {
+  "sha256": "bf7839cc9e04294f5aca7a332d47a5a68b39f0837aa2215bbe936b31d4ca4e08",
+  "kind": "MOF",
+  "atoms": 472,
+  "operations": 4,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -1,
+   1,
+   4
+  ],
+  "flat_face_hkl": [
+   0,
+   4,
+   -1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-4.cif": {
+  "sha256": "d2ed701587769a1e58b4ecfbd14d60425554980770c09b6fdf10f1658b942a09",
+  "kind": "MOF",
+  "atoms": 904,
+  "operations": 12,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   4,
+   -3
+  ],
+  "flat_face_hkl": [
+   6,
+   -4,
+   -5
+  ],
+  "few_operations": false
+ },
+ "IRMOF-5.cif": {
+  "sha256": "83b5991533b553d1f7eb99b684d459ed4adf86bab9a9fb373df2900de81759c9",
+  "kind": "MOF",
+  "atoms": 999,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "IRMOF-6.cif": {
+  "sha256": "08281c7a61ea93d688f0796c8b8b645a4ec1fa0942f1bd819ee54296a421cdda",
+  "kind": "MOF",
+  "atoms": 520,
+  "operations": 8,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   -1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-7.cif": {
+  "sha256": "ed376d5abc3d8c8bd8ccefbf69a9ee5e87f4c5b6a594a180fddf3a003e2780a3",
+  "kind": "MOF",
+  "atoms": 568,
+  "operations": 24,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   2,
+   5,
+   2
+  ],
+  "flat_face_hkl": [
+   6,
+   -2,
+   -1
+  ],
+  "few_operations": false
+ },
+ "IRMOF-8.cif": {
+  "sha256": "b0e073ec41e9a5c41631d970fcbc06b91902ff32a42c96fec774aeba88197918",
+  "kind": "MOF",
+  "atoms": 568,
+  "operations": 4,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "IRMOF-9.cif": {
+  "sha256": "6b5092b0c1aaff627fb1298839a81763a0283d503c1ae5245e59d3e34d9027d6",
+  "kind": "MOF",
+  "atoms": 332,
+  "operations": 1,
+  "lattice_rotations": 8,
+  "habit": "equant",
+  "b_over_a": 0.7352,
+  "c_over_b": 0.9235,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": true
+ },
+ "MAF-X8.cif": {
+  "sha256": "46de32b632299c60fb618feb5b43b0a01348112cad3e482e842783e808b773ae",
+  "kind": "MOF",
+  "atoms": 432,
+  "operations": 16,
+  "lattice_rotations": 16,
+  "habit": "rod",
+  "b_over_a": 0.6586,
+  "c_over_b": 0.9993,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-100.cif": {
+  "sha256": "1d4d36004e3af7fd2a1a41d8cf82a15ac4485d65978d986b35e42f6ba5dde675",
+  "kind": "MOF",
+  "atoms": 11152,
+  "operations": 4,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -1,
+   1,
+   4
+  ],
+  "flat_face_hkl": [
+   0,
+   4,
+   -1
+  ],
+  "few_operations": false
+ },
+ "MIL-101.cif": {
+  "sha256": "43e615f7a99d73a729dd870ef2b1ecddb0a09e5c0e5ceccfbb568aff2cad9f8d",
+  "kind": "MOF",
+  "atoms": 14416,
+  "operations": 4,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -1,
+   1,
+   4
+  ],
+  "flat_face_hkl": [
+   0,
+   4,
+   -1
+  ],
+  "few_operations": false
+ },
+ "MIL-140A-DFT.cif": {
+  "sha256": "56d496fe21a03f66373851371fe674232b636560f3f55c581b141fe697964f42",
+  "kind": "MOF",
+  "atoms": 144,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "rod",
+  "b_over_a": 0.5335,
+  "c_over_b": 0.9233,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-140B-DFT.cif": {
+  "sha256": "06210c455516798fdebc80fc91e47f5f362ae6b4683daf31170ed9d954c79215",
+  "kind": "MOF",
+  "atoms": 192,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "rod",
+  "b_over_a": 0.4871,
+  "c_over_b": 0.9061,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-140C-DFT.cif": {
+  "sha256": "a1c7d35368e7226acbd54ae846eca421907f472bff74559a747c023283d5d381",
+  "kind": "MOF",
+  "atoms": 224,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "rod",
+  "b_over_a": 0.4455,
+  "c_over_b": 0.9274,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-140D-DFT.cif": {
+  "sha256": "a93d077ef2f137256585bb3755ecb4bbdb490990fe8f938778ddcd4c279bb577",
+  "kind": "MOF",
+  "atoms": 240,
+  "operations": 4,
+  "lattice_rotations": 4,
+  "habit": "rod",
+  "b_over_a": 0.4088,
+  "c_over_b": 0.9247,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-47.cif": {
+  "sha256": "aa71711c65795fd1b3a0bf7c680ad6568fa451d9bf2625745bde15001e230375",
+  "kind": "MOF",
+  "atoms": 72,
+  "operations": 8,
+  "lattice_rotations": 8,
+  "habit": "rod",
+  "b_over_a": 0.6171,
+  "c_over_b": 0.8706,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "MIL-53(Cr)ht.cif": {
+  "sha256": "046a8f865cc9b59f8db5a9b15b0a315a1c8ff5b21fff38c73af514a73341f8fc",
+  "kind": "MOF",
+  "atoms": 76,
+  "operations": 16,
+  "lattice_rotations": 8,
+  "habit": "rod",
+  "b_over_a": 0.612,
+  "c_over_b": 0.8364,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   0,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-53(Cr)lt.cif": {
+  "sha256": "9a74630f4dbe8854b4ca4b133f92f22102f52d89cf9c504c2feb39cc75e62bf4",
+  "kind": "MOF",
+  "atoms": 76,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "rod",
+  "b_over_a": 0.5697,
+  "c_over_b": 0.8469,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-88A-dry.cif": {
+  "sha256": "2910f39696cc5c93a39dd4cebdacbcfe1fbea6a9088cd55df10b946f40f8e774",
+  "kind": "MOF",
+  "atoms": 74,
+  "operations": 12,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 0.838,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-88A-open.cif": {
+  "sha256": "cd73eef47b05f33f617a036df7c44dc59e34480b7aff6aa0104380b7bd435f7e",
+  "kind": "MOF",
+  "atoms": 74,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.6289,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -2,
+   3,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-88B-dry.cif": {
+  "sha256": "0d49594b6ad5c02f277dd80baac875ec23077c145125a8144caad50f688ba826",
+  "kind": "MOF",
+  "atoms": 110,
+  "operations": 12,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.9362,
+  "long_axis_uvw": [
+   3,
+   2,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "MIL-88B-open.cif": {
+  "sha256": "8590f7a332fee1d8f6934476b669dedd592929b3d1bc0e06d00ff3d9004f7ec6",
+  "kind": "MOF",
+  "atoms": 110,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.6513,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   5,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-88C-dry.cif": {
+  "sha256": "8329a76afb20b5982fa8e8ad66fb99c8dbe61cc952849253fcced2c1b6c386ef",
+  "kind": "MOF",
+  "atoms": 146,
+  "operations": 12,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.7815,
+  "long_axis_uvw": [
+   1,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "MIL-88C-open.cif": {
+  "sha256": "d05b93505a27c3f88171074799c7cefba26e67619c34a8fbf76e268b393f5f94",
+  "kind": "MOF",
+  "atoms": 146,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.6462,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   5,
+   0
+  ],
+  "few_operations": false
+ },
+ "MIL-88D-dry.cif": {
+  "sha256": "5f682a80eef1db9b3b3b97b15b6399c203e3c4334158f75ae0fb5c1529bf6e98",
+  "kind": "MOF",
+  "atoms": 170,
+  "operations": 12,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.6849,
+  "long_axis_uvw": [
+   -1,
+   4,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "MIL-88D-open.cif": {
+  "sha256": "4daa11bd4c857717df0d5a633a420e0329e541f23cc56adacd2fcaf67c1c90a1",
+  "kind": "MOF",
+  "atoms": 170,
+  "operations": 12,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 0.7006,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MOF-1-Dybtsev-dmol.cif": {
+  "sha256": "fc81966b3e9142610556c446c3ba872c207c54c880080241ca19eeb0d71c940f",
+  "kind": "MOF",
+  "atoms": 54,
+  "operations": 2,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.8792,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   6,
+   0
+  ],
+  "few_operations": true
+ },
+ "MOF-177.cif": {
+  "sha256": "c4a696f2bde8d29dd5fc3d286a86c5fda44e2e601f8d3700b9528e1dfb5e3cc5",
+  "kind": "MOF",
+  "atoms": 808,
+  "operations": 6,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.6071,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   5,
+   4,
+   0
+  ],
+  "few_operations": false
+ },
+ "MOF-177_ortho.cif": {
+  "sha256": "f2afa06aa32fcfc19af88aa2f0e417a4c300839c38202af6a100369024169dda",
+  "kind": "MOF",
+  "atoms": 1616,
+  "operations": 4,
+  "lattice_rotations": 8,
+  "habit": "rod",
+  "b_over_a": 0.6071,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   0
+  ],
+  "few_operations": false
+ },
+ "MOF-200.cif": {
+  "sha256": "2d4380d66baa2056d100e424dbcbd5dc419315cdcb580b27f13a5b14411314fb",
+  "kind": "MOF",
+  "atoms": 1288,
+  "operations": 6,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.608,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   5,
+   -4,
+   0
+  ],
+  "few_operations": false
+ },
+ "MOF-205.cif": {
+  "sha256": "534a05d7f9bef59be852e95cc7a1950d2c56bc39a3a95f960e119835b95d54bb",
+  "kind": "MOF",
+  "atoms": 546,
+  "operations": 2,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   1,
+   6,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": true
+ },
+ "MOF-210.cif": {
+  "sha256": "ce9706e9e9483036709315d9abeb84243889a0ab7a74fcafb6fe808d3a631d98",
+  "kind": "MOF",
+  "atoms": 5562,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.7055,
+  "long_axis_uvw": [
+   6,
+   5,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "MOF-69c.cif": {
+  "sha256": "fca249ba50c47f13e5a0d5705700a9ae94f6c620dd828043880c90cd37fe6e7a",
+  "kind": "MOF",
+  "atoms": 234,
+  "operations": 4,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.9116,
+  "c_over_b": 0.8031,
+  "long_axis_uvw": [
+   1,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   0,
+   -1
+  ],
+  "few_operations": false
+ },
+ "MOF-70.cif": {
+  "sha256": "b1e031f3c3b012098d55909f0c0e70bdc2afd578a8c3926cbb3ceaf49111003e",
+  "kind": "MOF",
+  "atoms": 68,
+  "operations": 4,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.857,
+  "c_over_b": 0.9467,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MOF-72.cif": {
+  "sha256": "4835f2afe1404c191b56c7cc7dfe8fc5fdcb3374745a9d6129f841cbd7a03e2e",
+  "kind": "MOF",
+  "atoms": 268,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.7629,
+  "c_over_b": 0.8916,
+  "long_axis_uvw": [
+   1,
+   0,
+   4
+  ],
+  "flat_face_hkl": [
+   4,
+   0,
+   -1
+  ],
+  "few_operations": false
+ },
+ "Mg-DOBDC.cif": {
+  "sha256": "383794481ad60f893af1da8c9daf9a07e09e8cefc4f66e51a4ada01af5871000",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4734,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   2,
+   0
+  ],
+  "few_operations": false
+ },
+ "MgMOF-74-VASP.cif": {
+  "sha256": "cc3848a615facd554a48f6f8578be9e10acecdea0798a82c5e7be550ad75eb6b",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4793,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MgMOF-74-extended-VASP.cif": {
+  "sha256": "1041664a8afffec5530bb81ae1e07a55568e2fd492d6cc72cd5ce883c4b62968",
+  "kind": "MOF",
+  "atoms": 84,
+  "operations": 6,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.3165,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "MgMOF-74.cif": {
+  "sha256": "84923453752f66781295f70de4d8eaba8ecc8510d676ebcfd547ee8d68e23e43",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4793,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "NU-100SP.cif": {
+  "sha256": "7ddad0f89b7f0f51f8250bf415fb53e499300468b3a203de00e9b54aaa9e0616",
+  "kind": "MOF",
+  "atoms": 3168,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "NU-108-Cu.cif": {
+  "sha256": "6c64249774362003af4ef09fcbc7505644aa9a8beaf9ce9caf75a1ec380b605e",
+  "kind": "MOF",
+  "atoms": 3936,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "NU-108-Zn.cif": {
+  "sha256": "01edc1f17c4aef45dd90a45ba8b6a71b712d80e98e9b7cc22f86199700ca54ec",
+  "kind": "MOF",
+  "atoms": 750,
+  "operations": 3,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.8861,
+  "long_axis_uvw": [
+   2,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "Ni-DOBDC.cif": {
+  "sha256": "f61e66215a20fb3b32920521e0be6b0692be48c00c51c601fdd32ebcc7f9bed6",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4739,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "PCN-60.cif": {
+  "sha256": "718dae58c0dddd9bb1b835ea0af3f50a3e2778e4aa1897e69896ac7f34ee4d6b",
+  "kind": "MOF",
+  "atoms": 2112,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "PCN-61.cif": {
+  "sha256": "62f97f63e19abab887554452cd7bc09a9624899d662662e8609ecbbb30e36af2",
+  "kind": "MOF",
+  "atoms": 2112,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "PCN-68.cif": {
+  "sha256": "6b131cc658fca03a885d82da99ac77a7f9893a004b244278d4aed1837cef2cf4",
+  "kind": "MOF",
+  "atoms": 3264,
+  "operations": 192,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": null,
+  "flat_face_hkl": [
+   6,
+   5,
+   1
+  ],
+  "few_operations": false
+ },
+ "UIO-66.cif": {
+  "sha256": "d272f0329766bbe589ff82f76e7d659b69f1bb7d543552dd67a4d211260aef87",
+  "kind": "MOF",
+  "atoms": 432,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "UMCM-1.cif": {
+  "sha256": "cb19c371ce7bb98c44b7b418c870ea0fa5ae3cca0b4cf780b817371a8ba56975",
+  "kind": "MOF",
+  "atoms": 510,
+  "operations": 1,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.444,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   3,
+   0
+  ],
+  "few_operations": true
+ },
+ "ZIF-1.cif": {
+  "sha256": "84794f3e8b03ec0c17cebbb4b52c57a05a605068bf48225014a53cc62a4db5ae",
+  "kind": "MOF",
+  "atoms": 136,
+  "operations": 4,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.8452,
+  "c_over_b": 0.9732,
+  "long_axis_uvw": null,
+  "flat_face_hkl": null,
+  "few_operations": false
+ },
+ "ZIF-10.cif": {
+  "sha256": "0e460042538844a1fc94d3de6e6dc428efcdf871c026ce7bdfd119267c1fd046",
+  "kind": "MOF",
+  "atoms": 544,
+  "operations": 1,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.7171,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   5,
+   0
+  ],
+  "few_operations": true
+ },
+ "ZIF-11.cif": {
+  "sha256": "ce7c81b7cf12b91a4c2e3a163fe5914a3e93fac6774e36e21e5dbac7035ee07f",
+  "kind": "MOF",
+  "atoms": 1416,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "ZIF-12.cif": {
+  "sha256": "5a02e36d0155d31629d62c3bd4ca526ced67a9ba1821ab0b519e822ee11fd70a",
+  "kind": "MOF",
+  "atoms": 1416,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "ZIF-2.cif": {
+  "sha256": "0eb27a0f56b9d5d27230b8fba81e74c745a2aa9540cf8084df02fd9f3cf16854",
+  "kind": "MOF",
+  "atoms": 272,
+  "operations": 8,
+  "lattice_rotations": 8,
+  "habit": "equant",
+  "b_over_a": 0.7105,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-20.cif": {
+  "sha256": "c66c3a47a5aff08778052ae21fa2eb5c0538fbb1b6e15c1193a04e3342d92be2",
+  "kind": "MOF",
+  "atoms": 4800,
+  "operations": 4,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   1,
+   6,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-3.cif": {
+  "sha256": "53a5437d621d4aadfc6a6b9d9297a05aac73f105cc04ed7d616e544fe20b7dc6",
+  "kind": "MOF",
+  "atoms": 272,
+  "operations": 16,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.981,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   2,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZIF-4.cif": {
+  "sha256": "c0358643b19b0583b8d59724a88da713e37d7a1c89abe07ac369c182bd896f90",
+  "kind": "MOF",
+  "atoms": 272,
+  "operations": 4,
+  "lattice_rotations": 8,
+  "habit": "equant",
+  "b_over_a": 0.7855,
+  "c_over_b": 0.6885,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-5.cif": {
+  "sha256": "bf5499572221946cdb5a297ea091b3dc50505ec3eade02c206fd81d2c4a2cfef",
+  "kind": "MOF",
+  "atoms": 808,
+  "operations": 96,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -1,
+   2,
+   0
+  ],
+  "flat_face_hkl": [
+   4,
+   2,
+   -3
+  ],
+  "few_operations": false
+ },
+ "ZIF-6.cif": {
+  "sha256": "bec7785152dda513a0ebfca4ef5beed20dd3f46b61dc202cb2be349fd5bc5e18",
+  "kind": "MOF",
+  "atoms": 272,
+  "operations": 1,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.9145,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": true
+ },
+ "ZIF-68.cif": {
+  "sha256": "e0bb5a0c78ce7303985c78872e71a2886df78d3a5f94dc3d61f9707f9a299e84",
+  "kind": "MOF",
+  "atoms": 600,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.5675,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZIF-69-crystal.cif": {
+  "sha256": "5093db4d6d7109aaa10dcfde36c878d7a990e44bfaf5d9371eac259396979c40",
+  "kind": "MOF",
+  "atoms": 600,
+  "operations": 6,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 0.7843,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   -2,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZIF-69.cif": {
+  "sha256": "830f2d0f1ab9a430470af0a21d52a3d37c584c205aff86df18460a4cf2ec8a98",
+  "kind": "MOF",
+  "atoms": 600,
+  "operations": 6,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 0.7843,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   -2,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZIF-7.cif": {
+  "sha256": "4102587072048fdab7a5fbfcb35434c5595b821e0da2ec8a6df155256752936d",
+  "kind": "MOF",
+  "atoms": 522,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.9343,
+  "long_axis_uvw": [
+   2,
+   3,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-71.cif": {
+  "sha256": "20a5f96d651a8b37d7b9836e4a2e9f74b1a80a749f17f70817d86e4b34d2dc3a",
+  "kind": "MOF",
+  "atoms": 816,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   4,
+   -3
+  ],
+  "flat_face_hkl": [
+   6,
+   -4,
+   -5
+  ],
+  "few_operations": false
+ },
+ "ZIF-77.cif": {
+  "sha256": "581135990bc5db39f451e616df694b6f24922494b49090c5b50fc605f6205f8f",
+  "kind": "MOF",
+  "atoms": 420,
+  "operations": 16,
+  "lattice_rotations": 8,
+  "habit": "equant",
+  "b_over_a": 0.9046,
+  "c_over_b": 0.9585,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-8.cif": {
+  "sha256": "3cbb585b5fcff57f0be9d3c00224b8fe48deb29fd824aac429926bd10a6967ab",
+  "kind": "MOF",
+  "atoms": 276,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   5,
+   -5,
+   2
+  ],
+  "flat_face_hkl": [
+   5,
+   4,
+   -3
+  ],
+  "few_operations": false
+ },
+ "ZIF-80.cif": {
+  "sha256": "b23c34cd989d19a0846cf7ee6cb0e6ef9f3e356a625e3fae1ade5af5ab0e1170",
+  "kind": "MOF",
+  "atoms": 456,
+  "operations": 24,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.5838,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   1,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZIF-9.cif": {
+  "sha256": "d7178a6ad1e633b84172e9fd674329f613eed612f5f126fbda0616d6ded697ab",
+  "kind": "MOF",
+  "atoms": 522,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 0.9338,
+  "long_axis_uvw": [
+   3,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-90.cif": {
+  "sha256": "3726421b14e0cda8048f525af6cce88baed5dff7aa984f911042492e967df026",
+  "kind": "MOF",
+  "atoms": 252,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ },
+ "ZIF-93.cif": {
+  "sha256": "3449bced89018b1e4fcb0f56d3256e186905322f820593683233c29117fb5633",
+  "kind": "MOF",
+  "atoms": 1296,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-96.cif": {
+  "sha256": "84cf5fa30bd8c40dba9fdd913ff9304c97bb1f0457bccb3268ed55dc8412a800",
+  "kind": "MOF",
+  "atoms": 1104,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZIF-97.cif": {
+  "sha256": "c6eca935e8a1994312e39c4ad905d730ee8d247c250105f021ac9fcc74f49691",
+  "kind": "MOF",
+  "atoms": 1488,
+  "operations": 48,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   1,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "Zn-DOBDC.cif": {
+  "sha256": "72d228c23cb75ba596488e0fa427493294ed51faf1b922d649dd8c65073cba21",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4758,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   3,
+   2,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZnBDC.cif": {
+  "sha256": "5e9eab2bc404323cf1b9fb233ea28894495e9d193c1d595fc37136b0b11fdee2",
+  "kind": "MOF",
+  "atoms": 68,
+  "operations": 4,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.7004,
+  "c_over_b": 0.9098,
+  "long_axis_uvw": [
+   1,
+   0,
+   0
+  ],
+  "flat_face_hkl": [
+   0,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZnBDCdabco.cif": {
+  "sha256": "fc81966b3e9142610556c446c3ba872c207c54c880080241ca19eeb0d71c940f",
+  "kind": "MOF",
+  "atoms": 54,
+  "operations": 2,
+  "lattice_rotations": 16,
+  "habit": "equant",
+  "b_over_a": 0.8792,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   -1,
+   6,
+   0
+  ],
+  "few_operations": true
+ },
+ "ZnHBDC.cif": {
+  "sha256": "8e36d4d5cd88c1d1f423c42cd3280dc126fc2fa8d9765b03db9caf8b871ab9c6",
+  "kind": "MOF",
+  "atoms": 196,
+  "operations": 8,
+  "lattice_rotations": 4,
+  "habit": "equant",
+  "b_over_a": 0.9667,
+  "c_over_b": 0.9727,
+  "long_axis_uvw": [
+   -1,
+   0,
+   2
+  ],
+  "flat_face_hkl": [
+   2,
+   0,
+   1
+  ],
+  "few_operations": false
+ },
+ "ZnMOF-74-VASP.cif": {
+  "sha256": "a03e05b001877ae9b0b0a35ff93113986340e4f4c911653b2899ae630d2ae89b",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4779,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "ZnMOF-74.cif": {
+  "sha256": "fcea373e86ca32d4117a0cf637eb8d719c092dc1e94f6755a026fe2d9517f27a",
+  "kind": "MOF",
+  "atoms": 162,
+  "operations": 18,
+  "lattice_rotations": 24,
+  "habit": "rod",
+  "b_over_a": 0.4779,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   0,
+   0,
+   1
+  ],
+  "flat_face_hkl": [
+   1,
+   -1,
+   0
+  ],
+  "few_operations": false
+ },
+ "Zr-TPDC.cif": {
+  "sha256": "f5697b3ef5136753b37b33dbff0dcf1b52945422b035f666980c52b2d40cd80b",
+  "kind": "MOF",
+  "atoms": 920,
+  "operations": 1,
+  "lattice_rotations": 48,
+  "habit": "equant",
+  "b_over_a": 1,
+  "c_over_b": 1,
+  "long_axis_uvw": [
+   -3,
+   4,
+   1
+  ],
+  "flat_face_hkl": null,
+  "few_operations": true
+ }
+}

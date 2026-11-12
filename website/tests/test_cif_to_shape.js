@@ -104,7 +104,7 @@ Object.keys(FILES).forEach(n => ok(Wd.CIF_SHAPE_PY[n].shape.name === PY[n].shape
   `cif_shape_data.js ${n} equals cif_to_shape.json`));
 const body = html.replace(/<script src="[a-zA-Z0-9_./]+\.js"><\/script>/g, '').replace(/^[\s\S]*<body>/, '').replace(/<\/body>[\s\S]*$/, '');
 const dom = new JSDOM(`<!DOCTYPE html><html><body>${body}</body></html>`, { runScripts: 'outside-only' });
-['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'cif_shape_data.js', 'cif_shape_page.js'].forEach(s =>
+['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'general_shape_data.js', 'cif_shape_data.js', 'cif_shape_page.js'].forEach(s =>
   dom.window.eval(fs.readFileSync(path.join(SITE, s), 'utf8')));
 if (dom.window.document.readyState === 'loading') dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
 const D = dom.window.document;
@@ -143,6 +143,27 @@ dom.window.CIF_SHAPE_PAGE.choose('MOF-5');
   ok(/\{100\}.*cancelled/.test(rows[0]) && /\{110\}.*cancelled/.test(rows[1]) && /\{111\}.*allowed/.test(rows[2]), 'MOF-5: face-centring cancels {100} and {110}, keeps {111}'); }
 ok(dom.window.CIF_SHAPE_PAGE.surd(4, 3) === '2/√3' && dom.window.CIF_SHAPE_PAGE.surd(4, 2) === '√2' && dom.window.CIF_SHAPE_PAGE.surd(8, 3) === '2√2/√3',
    'exact surd forms: 2/sqrt3, sqrt2, 2sqrt2/sqrt3');
+
+// ---- 4. the any-lattice section ---------------------------------------------------------------
+{ const pg = dom.window.CIF_SHAPE_PAGE, head = () => D.getElementById('c2s-any-result').textContent;
+  const flush = () => pg.anyRun();
+  pg.anyChoose('MgMOF-74', dom.window.GENERAL_CIFS['MgMOF-74']); flush();
+  ok(/Rod/.test(head()) && /\[001\]/.test(head()), 'Any lattice: Mg-MOF-74 is a rod along [001] (' + head().slice(0, 60) + ')');
+  ok(D.querySelectorAll('#c2s-any-view svg polygon').length > 10, 'Any lattice: the 3D crystal is drawn');
+  ok(D.querySelectorAll('#c2s-any-table tbody tr').length >= 10, 'Any lattice: the face table is filled');
+  ok(/Python check/.test(D.getElementById('c2s-any-txt').textContent), 'Any lattice: the Python check line is shown for a bundled file');
+  pg.anyChoose('MIL-88A-dry', dom.window.GENERAL_CIFS['MIL-88A-dry']); flush();
+  ok(/Compact/.test(head()), 'Any lattice: MIL-88A dry is compact');
+  pg.anyChoose('MOF5', dom.window.GENERAL_CIFS['MOF5']); pg.anySetStretch([1, 1, 2.5]); flush();
+  ok(/Plate/.test(head()) && /\(001\)/.test(head()), 'Any lattice: MOF-5 with c x 2.5 is a plate on (001)');
+  ok(/Python check/.test(D.getElementById('c2s-any-txt').textContent), 'Any lattice: the stretched cell has its Python check');
+  pg.anySetStretch([1, 1, 0.25]); flush();
+  ok(/Rod/.test(head()), 'Any lattice: MOF-5 with c x 1/4 is a rod');
+  // a non-cubic file at the top of the page: the cubic steps stop and point to the section
+  pg.state.name = 'MIL-47.cif'; pg.state.bundled = false; pg.state.text = dom.window.GENERAL_CIFS['MIL-47'];
+  pg.anyChoose(null, pg.state.text); flush();
+  ok(/Rod/.test(head()), 'Any lattice: a non-cubic file chosen at the top is shown as a rod');
+}
 
 console.log(fails ? `\n${fails} FAILURES` : '\nAll CIF to Shape tests passed.');
 process.exit(fails ? 1 : 0);

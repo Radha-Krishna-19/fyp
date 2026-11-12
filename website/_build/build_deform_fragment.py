@@ -53,7 +53,7 @@ html = f'''      <h2 class="section-title" id="df-intro" data-toc="What this pag
         <figcaption>ZIF-8 (rhombic dodecahedron at the real cell) follows the same path with different shapes in between, because its lattice is body-centred.</figcaption>
       </figure>
       {"".join(ctable(n) for n in ORDER)}
-      <p class="sd">Habit follows the Zingg classification from the principal radii of gyration: <b>plate</b> when the smallest radius is under 2/3 of the middle one, <b>rod</b> when the middle one is under 2/3 of the largest, <b>equant</b> otherwise. The three F-centred frameworks have identical rows because the lattice-only rule cannot tell them apart (Proposition 16, consequence iii).</p>
+      <p class="sd">Habit follows the Zingg classification from the principal radii of gyration: <b>plate</b> when the smallest radius is under 2/3 of the middle one, <b>rod</b> when the middle one is under 2/3 of the largest, <b>equant</b> otherwise. The Shape column names the combinatorial type, that is, which face families appear and how many faces each has; in a stretched cell the same type is elongated or flattened, so a rod listed as a truncated cube is a truncated cube drawn out along <i>c</i>. The three F-centred frameworks have identical rows because the lattice-only rule cannot tell them apart (Proposition 16, consequence iii).</p>
       <figure class="fig wide">
         <img src="figures/morph/MOF-5_deform_gamma.png" alt="Five crystal shapes from the MOF-5 cell with the angle gamma set to 60, 75, 90, 105 and 120 degrees, a symmetric truncated octahedron at 90 and progressively leaning, sheared versions on either side.">
         <figcaption>Shearing the cell (changing &gamma;) leans the crystal and lowers the symmetry further.</figcaption>

@@ -84,7 +84,9 @@
           while (j < lines.length && lines[j].trim() && !/^\s*(_|loop_|data_)/.test(lines[j])) {
             var p = lines[j].trim().split(/\s+/);
             if (p.length >= cols.length) {
-              var el = /[A-Z][a-z]?/.exec(p[it])[0];
+              var em = /[A-Z][a-z]?/.exec(p[it] || '');
+              if (!em) { j++; continue; }                  // a row that does not name an element: skip it
+              var el = em[0];
               var f = function (s) { return parseFloat(s.replace(/\(.*\)$/, '')); };
               atoms.push({ el: el, x: [f(p[ix]), f(p[iy]), f(p[iz])], label: p[cols.indexOf('_atom_site_label')] || el,
                            occ: io >= 0 ? f(p[io]) : 1, line: lines[j].trim().replace(/\s+/g, ' ') });
@@ -404,12 +406,18 @@
     opts = opts || {};
     var R = { steps: {} }, t0 = Date.now();
     var cif = parseCIF(text);
+    // a CIF that lists only the asymmetric unit: the caller may pass the atoms expanded by the
+    // file's symmetry operations (mof_general_shape.js does this), so every atom of the cell is used
+    if (opts.atoms && opts.atoms.length > cif.atoms.length) {
+      cif.listedAtoms = cif.atoms.length; cif.atoms = opts.atoms; cif.composition = {};
+      cif.atoms.forEach(function (a) { cif.composition[a.el] = (cif.composition[a.el] || 0) + 1; });
+    }
     R.cif = cif;
     var A = latticeVectors(cif.cell), G = metric(A), V = Math.sqrt(det3(G));
     R.A = A; R.G = G; R.volume = V;
     var conv = conventional(G);
     R.conv = conv;
-    if (!conv) { R.stop = 'The lattice is not cubic (no transformation M gives M G Mᵀ = a²I), so the cubic face construction on this page does not apply.'; return R; }
+    if (!conv) { R.stop = 'The lattice is not cubic (no transformation M gives M G Mᵀ = a²I), so the cubic steps on this page do not apply. The section "Any Lattice: Rods, Plates and Compact Crystals" near the top of the page handles this file.'; return R; }
     var C = toConventional(A, cif.atoms, conv.M);
     R.C = C; R.a = conv.a;
     R.pointsPerCell = Math.round(Math.abs(det3(conv.M)));
