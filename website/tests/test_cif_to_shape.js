@@ -133,6 +133,14 @@ dom.window.CIF_SHAPE_PAGE.choose('UiO-66');
 ok(/tetrahedron/.test(D.getElementById('c2s-grow-txt').textContent), 'UiO-66: the first frame of the build is a tetrahedron');
 dom.window.CIF_SHAPE_PAGE.choose('MOF-5');
 ok(/octahedron/.test(D.getElementById('c2s-grow-txt').textContent), 'MOF-5: the first frame of the build is an octahedron');
+dom.window.CIF_SHAPE_PAGE.choose('ZIF-8');
+{ const rows = [...D.querySelectorAll('#c2s-explain-txt tbody tr')].map(r => r.textContent);
+  ok(rows.length === 3, 'ZIF-8: the five-box explanation lists {100}, {110}, {111}');
+  ok(/\{100\}.*cancelled/.test(rows[0]) && /\{110\}.*allowed/.test(rows[1]) && /\{111\}.*cancelled/.test(rows[2]), 'ZIF-8: body-centring cancels {100} and {111}, keeps {110}');
+  ok(D.querySelectorAll('#c2s-explain-view circle').length >= 9, 'ZIF-8: the centring model is drawn (8 corners and the body centre)'); }
+dom.window.CIF_SHAPE_PAGE.choose('MOF-5');
+{ const rows = [...D.querySelectorAll('#c2s-explain-txt tbody tr')].map(r => r.textContent);
+  ok(/\{100\}.*cancelled/.test(rows[0]) && /\{110\}.*cancelled/.test(rows[1]) && /\{111\}.*allowed/.test(rows[2]), 'MOF-5: face-centring cancels {100} and {110}, keeps {111}'); }
 ok(dom.window.CIF_SHAPE_PAGE.surd(4, 3) === '2/√3' && dom.window.CIF_SHAPE_PAGE.surd(4, 2) === '√2' && dom.window.CIF_SHAPE_PAGE.surd(8, 3) === '2√2/√3',
    'exact surd forms: 2/sqrt3, sqrt2, 2sqrt2/sqrt3');
 

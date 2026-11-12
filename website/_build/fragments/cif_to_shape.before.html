@@ -13,6 +13,11 @@
   .c2s-stage:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
   .c2s-viewbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:2px 0 8px}
   .c2s-hint{color:var(--muted);margin-left:4px}
+  .c2s-explain{display:flex;flex-direction:column;gap:14px;margin:12px 0 8px}
+  .c2s-ex{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;border-top:1px solid var(--border);padding-top:12px}
+  .c2s-ex p{margin:0 0 8px}
+  .c2s-ex-k{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text-3)}
+  @media (max-width:760px){.c2s-ex{grid-template-columns:minmax(0,1fr);gap:4px}}
   .c2s-legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--sans);font-size:13px;color:var(--text-3);margin:6px 0}
   .c2s-legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-1px;font-style:normal}
   .c2s-flat{cursor:crosshair;max-width:400px}
@@ -44,6 +49,15 @@
         <div class="toolbar" id="c2s-file-row"><span class="lbl">or your own</span><input type="file" id="c2s-file" class="c2s-file" accept=".cif,.txt"></div>
         <div id="c2s-summary"></div>
       </div>
+
+      <h2 class="section-title" id="c2s-explain-sec" data-toc="The five boxes, explained"><span class="stitle-num">0</span>The Five Boxes, Explained</h2>
+      <p class="c2s-plain">The strip above is the whole answer in five steps. This section says what each box means for the file you picked, with a 3D model of one unit cell to turn and look at. The later sections give the full mathematics of each step.</p>
+      <div class="panel">
+        <div class="toolbar" id="c2s-explain-modes"><span class="lbl">Show</span><button type="button" class="mode-btn active" data-mode="centring">Centring</button><button type="button" class="mode-btn" data-mode="axes">Symmetry axes</button><button type="button" class="mode-btn" data-mode="100">{100} planes</button><button type="button" class="mode-btn" data-mode="110">{110} planes</button><button type="button" class="mode-btn" data-mode="111">{111} planes</button></div>
+        <div id="c2s-explain-view"></div>
+        <p class="sm" id="c2s-explain-cap"></p>
+      </div>
+      <div id="c2s-explain-txt"></div>
 
       <div class="callout" data-kind="How to read this page">
         <span>Each step has three parts.</span> <b>In plain words</b> says what is being done and why. <b>The rule</b> gives the

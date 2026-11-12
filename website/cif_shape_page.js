@@ -781,6 +781,134 @@
       '<p class="sm">Computed in ' + R.ms + ' ms in this browser by <code>mof_cif_shape.js</code>.</p>');
   }
 
+
+  // ---- the five summary boxes, explained, with a 3D model of the centring and the planes ----------------------------------
+  var explainView = null, explainMode = 'centring';
+  function famOf(R, base) {
+    return R.families.filter(function (f) { return f.label.replace(/[+-]$/, '') === base; })[0];
+  }
+  var CENTRING_T = { P: [], I: [[0.5, 0.5, 0.5]], F: [[0.5, 0.5, 0], [0.5, 0, 0.5], [0, 0.5, 0.5]] };
+  var CENTRING_NAME = { P: 'primitive (P): lattice points only at the corners of the cube',
+    I: 'body-centred (I): a copy of everything at the centre of the cube, shifted by (&frac12;, &frac12;, &frac12;)',
+    F: 'face-centred (F): a copy of everything at the centre of each face, shifted by (&frac12;, &frac12;, 0), (&frac12;, 0, &frac12;) and (0, &frac12;, &frac12;)' };
+  var PG_NAME = { 'm-3m': '<b>m3&#773;m</b>: the full symmetry of a cube (4-fold axes through the faces, 3-fold axes through the corners, mirror planes and a centre of inversion)',
+    '-43m': '<b>4&#773;3m</b>: the symmetry of a tetrahedron inside a cube (the 3-fold axes through the corners and 4&#773; axes through the faces, but no centre of inversion, so a face and its opposite are not equivalent)',
+    'm-3': '<b>m3&#773;</b>: 2-fold axes through the faces, 3-fold axes through the corners, mirrors and inversion',
+    '432': '<b>432</b>: all the rotations of a cube, but no mirrors', '23': '<b>23</b>: 2-fold and 3-fold rotations only' };
+  function explainBoxes(R) {
+    var host = el('c2s-explain-txt');
+    if (!host) return;
+    if (R.stop) { set('c2s-explain-txt', ''); return; }
+    var c = R.cif.cell, nH = R.cif.atoms.filter(function (x) { return x.el === 'H'; }).length;
+    var html = '<div class="c2s-explain">';
+    html += '<div class="c2s-ex"><div class="c2s-ex-k">1 · CIF</div><div><p>The file lists <b>' + R.cif.atoms.length + ' atoms</b> in one repeating box (the unit cell) and the box\'s six numbers: three edges of ' +
+      [0, 1, 2].map(function (i) { return fx(c[i], 2); }).join(', ') + ' &Aring; and three angles of ' + [3, 4, 5].map(function (i) { return fx(c[i], 1); }).join(', ') + '&deg;. ' +
+      'The crystal is this box repeated in every direction. ' + (nH ? nH + ' of the atoms are hydrogens.' : '') + '</p></div></div>';
+    html += '<div class="c2s-ex"><div class="c2s-ex-k">2 · Lattice</div><div><p>' + (R.conv.key === 'P' ? 'All edges are equal and all angles are 90&deg;, so the box is a <b>cube</b> of edge <i>a</i> = ' + fx(R.a, 3) + ' &Aring;.' :
+      'The angles are not 90&deg;, but this box is a known slice of a larger cube (' + R.conv.why + '), so the crystal is <b>cubic</b> with edge <i>a</i> = ' + fx(R.a, 3) + ' &Aring;.') +
+      ' From here on every length is measured in units of <i>a</i>.</p></div></div>';
+    html += '<div class="c2s-ex"><div class="c2s-ex-k">3 · Symmetry ' + (R.sg.sg || '') + '</div><div><p>The name has two parts. The <b>letter ' + R.centring + '</b> is the centring: ' + CENTRING_NAME[R.centring] + '. ' +
+      'The page found it by shifting every atom by that amount and checking that each lands on an identical atom.</p><p>The <b>rest, ' + (PG_NAME[R.pointGroup] || R.pointGroup) + '</b>, is the point group: the rotations and reflections that leave the crystal looking the same. ' +
+      'It decides which faces are copies of one another, so a family such as {110} is always 12 identical faces.' +
+      (R.symmetryWithH ? '' : ' (In this file the hydrogens are placed in a way that breaks the symmetry, so it was found from the other atoms.)') + '</p>' +
+      '<p class="sm">In the model: press <b>Centring</b> to see the copies, or <b>Symmetry axes</b> for the rotation axes.</p></div></div>';
+    var rows = ['{100}', '{110}', '{111}'].map(function (b) {
+      var F = famOf(R, b); if (!F) return '';
+      var h = F.hkl || (b === '{100}' ? [1, 0, 0] : b === '{110}' ? [1, 1, 0] : [1, 1, 1]);
+      var cancelled = F.n > 1;
+      return '<tr><td class="dt-label">' + b + '</td><td class="dt-value">' + fx(F.d, 2) + ' &Aring;</td><td class="dt-note">' +
+        (cancelled ? '<b>cancelled</b>: the centring copy puts an identical layer halfway between these planes, so the true repeat is every ' + F.n + (F.n === 2 ? 'nd' : 'th') + ' order' : 'allowed: the centring copies sit exactly on these planes') +
+        '</td><td class="dt-value"><b>' + fx(F.dEff, 2) + ' &Aring;</b></td></tr>';
+    }).join('');
+    var lead = R.families[0];
+    html += '<div class="c2s-ex"><div class="c2s-ex-k">4 · Widest planes</div><div><p>A crystal face is one of a stack of parallel planes of atoms. The wider apart the planes in a stack, the more slowly that face grows, and slow faces end up the biggest. ' +
+      'The plain spacing of the (<i>hkl</i>) planes in a cube is <i>d</i> = <i>a</i>/&radic;(<i>h</i>&sup2;+<i>k</i>&sup2;+<i>l</i>&sup2;). But the centring can slip a copy of every plane in halfway, which halves the real spacing: that is <i>d</i><sub>eff</sub>.</p>' +
+      '<div class="table-wrap"><table class="data-table"><thead><tr><td>Planes</td><td>Plain spacing <i>d</i></td><td>What the centring does</td><td>Real spacing <i>d</i><sub>eff</sub></td></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p>So the widest real spacing is <b>' + famLabel(lead.label) + '</b>, at ' + fx(lead.dEff, 2) + ' &Aring;. In the model, press each family to see its planes; a cancelled family shows the extra layer in orange.</p></div></div>';
+    var parts = ['{100}', '{110}', '{111}'].map(function (b) { var F = famOf(R, b); return F ? b + ' at ' + fx(F.R, 3) : ''; }).filter(Boolean).join(', ');
+    html += '<div class="c2s-ex"><div class="c2s-ex-k">5 · Shape</div><div><p>BFDH puts each face at a distance from the centre proportional to 1/<i>d</i><sub>eff</sub>: ' + parts + ' (the widest family at 1). ' +
+      'The crystal is everything inside all those planes. Here the result is a <b>' + R.shape.name + '</b>, with faces ' + R.families.filter(function (f) { return f.present; }).map(function (f) { return famLabel(f.label); }).join(', ') + '; ' +
+      'every other family lies outside it. Step 9 below builds it plane by plane.</p></div></div>';
+    html += '</div>';
+    set('c2s-explain-txt', html);
+    drawExplain(R);
+  }
+  function cubeSection(n, c) {
+    // corners of the polygon where the plane n.x = c cuts the unit cube [0,1]^3 (fractional coordinates)
+    var P = [], C = [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[1,1,1]];
+    C.forEach(function (u) { [0, 1, 2].forEach(function (ax) { if (u[ax]) return; var v = u.slice(); v[ax] = 1;
+      var su = la.dot(n, u) - c, sv = la.dot(n, v) - c;
+      if (Math.abs(su) < 1e-9) P.push(u); else if (su * sv < 0) P.push(la.add(u, la.scale(la.sub(v, u), su / (su - sv)))); }); });
+    if (C.some(function (u) { return Math.abs(la.dot(n, u) - c) < 1e-9; })) C.forEach(function (u) { if (Math.abs(la.dot(n, u) - c) < 1e-9) P.push(u); });
+    var Q = []; P.forEach(function (p) { if (!Q.some(function (q) { return la.norm(la.sub(p, q)) < 1e-7; })) Q.push(p); });
+    if (Q.length < 3) return [];
+    var ctr = la.scale(Q.reduce(la.add, [0, 0, 0]), 1 / Q.length), un = la.scale(n, 1 / la.norm(n));
+    var e1 = la.sub(Q[0], ctr); e1 = la.scale(e1, 1 / la.norm(e1)); var e2 = la.cross(un, e1);
+    return Q.sort(function (p, q) { var a = la.sub(p, ctr), b = la.sub(q, ctr); return Math.atan2(la.dot(a, e2), la.dot(a, e1)) - Math.atan2(la.dot(b, e2), la.dot(b, e1)); });
+  }
+  function drawExplain(R) {
+    var host = el('c2s-explain-view');
+    if (!host || R.stop) return;
+    if (!explainView) explainView = View(host, { yaw: 0.55, pitch: 0.32 });
+    var T = CENTRING_T[R.centring];
+    var corners = [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[1,1,1]];
+    var lattice = corners.slice();
+    T.forEach(function (t) { corners.forEach(function (u) { var p = la.add(u, t); if (p.every(function (x) { return x <= 1 + 1e-9; })) lattice.push(p); }); });
+    var metals = { Zn: 1, Cu: 1, Zr: 1, Mg: 1, Co: 1, Ni: 1, Fe: 1, Cr: 1, Al: 1, Cd: 1, Mn: 1, Ti: 1 };
+    // a metal atom whose centring copy stays inside the drawn cell, so atom, copy and shift are visibly parallel
+    var mi = -1;
+    if (T.length) R.C.X.forEach(function (x, i) { if (mi < 0 && metals[R.C.els[i]] && x.every(function (v, j) { var w = v + T[0][j]; return v >= -1e-9 && w <= 1 + 1e-9; })) mi = i; });
+    if (mi < 0) mi = R.C.els.findIndex(function (e) { return metals[e]; });
+    explainView.draw = function () {
+      var W = 520, H = 430, s = explainView.svg(W, H, 'model of the unit cell: ' + explainMode), k = 0.5 * Math.min(W, H);
+      function P(f) { var q = explainView.rot(la.sub(f, [0.5, 0.5, 0.5])); return [W / 2 + k * q[0], H / 2 - k * q[2], q[1]]; }
+      function line(a, b, st) { var p = P(a), q = P(b); node('line', { x1: p[0].toFixed(1), y1: p[1].toFixed(1), x2: q[0].toFixed(1), y2: q[1].toFixed(1), style: st }, s); }
+      function dot(f, r, st) { var p = P(f); node('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: r, style: st }, s); }
+      function label(f, txt, dx, dy) { var p = P(f); var t = node('text', { x: (p[0] + (dx || 6)).toFixed(1), y: (p[1] + (dy || -6)).toFixed(1), style: 'font-family:var(--font-ui, system-ui);font-size:13px;fill:var(--text);paint-order:stroke;stroke:var(--bg);stroke-width:3px' }, s); t.textContent = txt; }
+      function poly(pts, st) { node('polygon', { points: pts.map(function (f) { var p = P(f); return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' '), style: st }, s); }
+      // planes first, so the cube and the points sit on top of them
+      var fam = { '100': [1, 0, 0], '110': [1, 1, 0], '111': [1, 1, 1] }[explainMode];
+      var caption = '';
+      if (fam) {
+        var F = famOf(R, '{' + explainMode + '}'), n = F ? F.n : 1, hsum = fam[0] + fam[1] + fam[2];
+        for (var m = 0; m <= hsum * n; m++) {
+          var c = m / n, main = Math.abs(c - Math.round(c)) < 1e-9, pts = cubeSection(fam, c);
+          if (!pts.length) continue;
+          poly(pts, main ? 'fill:var(--linker);fill-opacity:0.16;stroke:var(--linker);stroke-width:1.4' : 'fill:var(--warn);fill-opacity:0.22;stroke:var(--warn);stroke-width:1.6;stroke-dasharray:6 4');
+        }
+        // the spacing, marked on the normal from the corner (fractional units: a = 1)
+        if (F) {
+          var nn = la.dot(fam, fam), foot1 = la.scale(fam, 1 / nn), footE = la.scale(fam, 1 / (nn * n));
+          line([0, 0, 0], foot1, 'stroke:var(--linker);stroke-width:3'); label(foot1, 'd = ' + fx(F.d, 2) + ' Å', 8, 16);
+          if (n > 1) { line([0, 0, 0], footE, 'stroke:var(--warn);stroke-width:5'); label(footE, 'd_eff = ' + fx(F.dEff, 2) + ' Å', 8, -10); }
+        }
+        caption = (F ? '(' + explainMode + ') planes, plain spacing ' + fx(F.d, 2) + ' Å' + (n > 1 ? '; orange: the extra layer made by the centring, so the real spacing is ' + fx(F.dEff, 2) + ' Å' : '; no extra layer, real spacing ' + fx(F.dEff, 2) + ' Å') : '');
+      }
+      corners.forEach(function (u) { [0, 1, 2].forEach(function (ax) { if (u[ax]) return; var v = u.slice(); v[ax] = 1; line(u, v, 'stroke:var(--text);stroke-width:1.3;stroke-opacity:0.75'); }); });
+      if (explainMode === 'axes') {
+        [[[0,0,0],[1,1,1]],[[1,0,0],[0,1,1]],[[0,1,0],[1,0,1]],[[0,0,1],[1,1,0]]].forEach(function (d) { line(d[0], d[1], 'stroke:var(--node);stroke-width:2.2'); });
+        [[[0.5,0.5,-0.15],[0.5,0.5,1.15]],[[0.5,-0.15,0.5],[0.5,1.15,0.5]],[[-0.15,0.5,0.5],[1.15,0.5,0.5]]].forEach(function (d) { line(d[0], d[1], 'stroke:var(--linker);stroke-width:2.2;stroke-dasharray:7 4'); });
+        label([1, 1, 1], '3-fold axis (×4)'); label([0.5, 0.5, 1.15], (R.pointGroup === '-43m' ? '4̄' : R.pointGroup === 'm-3m' || R.pointGroup === '432' ? '4' : '2') + '-fold axis (×3)');
+        caption = 'Red: the four 3-fold axes through opposite corners. Blue dashed: the three axes through the face centres (' + (R.pointGroup === '-43m' ? '4̄: turn 90° and invert' : R.pointGroup === 'm-3m' || R.pointGroup === '432' ? '4-fold: turn 90°' : '2-fold') + '). Turning the crystal about any of them leaves it unchanged.';
+      }
+      lattice.forEach(function (f) { var isCopy = !corners.some(function (u) { return la.norm(la.sub(u, f)) < 1e-9; });
+        dot(f, isCopy ? 6.5 : 5, isCopy ? 'fill:var(--warn);stroke:var(--text);stroke-width:1' : 'fill:var(--text)'); });
+      if (explainMode === 'centring') {
+        T.forEach(function (t) { line([0, 0, 0], t, 'stroke:var(--warn);stroke-width:2.4'); label(t, '(' + t.map(function (x) { return x ? '½' : '0'; }).join(', ') + ')'); });
+        if (mi >= 0 && T.length) {
+          var x0 = R.C.X[mi], x1 = la.add(x0, T[0]);
+          dot(x0, 7, 'fill:var(--node);stroke:var(--text);stroke-width:1'); dot(x1, 7, 'fill:var(--node);stroke:var(--text);stroke-width:1');
+          line(x0, x1, 'stroke:var(--node);stroke-width:1.6;stroke-dasharray:4 3'); label(x0, R.C.els[mi]); label(x1, R.C.els[mi] + ' copy');
+        }
+        caption = T.length ? 'Black: lattice points at the corners. Orange: the centring points, each a copy of the corner shifted by the vector shown. Red: one ' + (mi >= 0 ? R.C.els[mi] : '') + ' atom of this file and its copy, which the page checked is an identical atom.' :
+          'Primitive: lattice points only at the corners; no copies inside the cell.';
+      }
+      set('c2s-explain-cap', caption);
+    };
+    explainView.draw();
+    document.querySelectorAll('#c2s-explain-modes .mode-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-mode') === explainMode); });
+  }
+
   // ---- run everything ---------------------------------------------------------------------------------------------------
   function render() {
     var R;
@@ -788,7 +916,7 @@
     catch (e) { set('c2s-summary', '<p class="c2s-stop">This file could not be read: ' + e.message + '</p>'); return; }
     state.R = R;
     var P = py(state.name);
-    summary(R); step1(R); step2(R); step3(R, P); cellPicture(R);
+    summary(R); explainBoxes(R); step1(R); step2(R); step3(R, P); cellPicture(R);
     var later = ['c2s-s4', 'c2s-s5', 'c2s-s6', 'c2s-s7', 'c2s-s8', 'c2s-s9', 'c2s-s10', 'c2s-s11'];
     if (R.stop) { later.forEach(function (id) { set(id, '<p class="c2s-stop">Not reached: ' + R.stop + '</p>'); }); return; }
     step4(R, P); step5(R, P); step6(R, P); latticePicture(R, state.planes || '100'); step7(R, P); step8(R, P); step9(R); step10(R, P); step11(R, P);
@@ -832,6 +960,9 @@
         ['100', '110'].forEach(function (q) { var x = el('c2s-planes-' + q); if (x) x.classList.toggle('active', q === w); });
         latticePicture(state.R, w);
       });
+    });
+    document.querySelectorAll('#c2s-explain-modes .mode-btn').forEach(function (b) {
+      b.addEventListener('click', function () { explainMode = b.getAttribute('data-mode'); if (state.R) drawExplain(state.R); });
     });
     var cut = el('c2s-grow-cut');
     if (cut) cut.addEventListener('change', function () { state.showCut = cut.checked; drawFrame(state.R); });
