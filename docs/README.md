@@ -16,3 +16,5 @@ The website, <https://radha-krishna-19.github.io/fyp/>, is the most current acco
 The textbook, concept notes and panel slides describe Part 1 as of September 2026; where they differ
 from the website (for example on the withdrawn band), the website and the
 [Mistakes page](https://radha-krishna-19.github.io/fyp/lessons.html) are the current record.
+
+`audit/2026-11-12_audit_of_completed_work.md`: the audit of all completed work on 12 November 2026 (re-run of every script from another folder, check of every quoted number, and the status of each gap found).
