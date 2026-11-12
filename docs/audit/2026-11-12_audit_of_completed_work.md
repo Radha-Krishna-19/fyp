@@ -62,14 +62,14 @@ Severity: **1** wrong as written; **2** not reproducible; **3** evidence weaker 
 | 17 | 4 | Some result files were committed with Windows line endings, so a rerun shows every line changed although the values are identical. | Cosmetic; rewriting line endings would churn many files. |
 | 18 | — | `code_07a` needs the upstream `mofid` package; the steps 1–8 scripts and `chgnet_wulff.py` need arguments. | By design; usage is in their READMEs. |
 
-### Open: needs a person other than the author
+### Open: needs a person other than the author (check sheets in `docs/defence/`)
 
 | # | Sev. | Gap | Proposed action | Owner |
 |---|---|---|---|---|
 | 19 | 3 | All 134 laboratory records were extracted by one person; 11 remain unverified. The benchmark rests on them. | A second member re-extracts 20 random records blind; report agreement. | Isha (check), Rohith |
 | 20 | 3 | The 16 propositions were proved and checked numerically by one author; no one else has checked the proofs. | Two members check eight proofs each; record who checked what. | Keerthi, Isha |
 | 21 | 3 | Only the Panel Review 1 rubric is in the project; the Phase II and final rubrics are not. | Ask Dr. Ramraj. | Radha |
-| 22 | 3 | The only slide deck (16 September) covers Part 1 only. | A deck for the completed work, from the same numbers (documentation, Phase D). | Team |
+| 22 | 3 | The only slide deck (16 September) covers Part 1 only. | Done 12 November: a 15-slide Phase II deck of the completed work from the same numbers (Claude Slides; downloadable as PowerPoint or PDF). The team should rehearse it with `docs/defence/panel_defence.md`. | Team |
 
 ### Future work, not started (out of the agreed scope)
 
