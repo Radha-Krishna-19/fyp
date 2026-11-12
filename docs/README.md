@@ -18,3 +18,5 @@ from the website (for example on the withdrawn band), the website and the
 [Mistakes page](https://radha-krishna-19.github.io/fyp/lessons.html) are the current record.
 
 `audit/2026-11-12_audit_of_completed_work.md`: the audit of all completed work on 12 November 2026 (re-run of every script from another folder, check of every quoted number, and the status of each gap found).
+
+`defence/`: panel defence document for the completed work, one-page summary, the two check sheets for a second person, and a draft message to the guide.
