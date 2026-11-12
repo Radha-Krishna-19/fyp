@@ -1,0 +1,14 @@
+{
+ "id": 173891,
+ "name": "ACIBIY_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173891.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4594,
+ "surface_area_m2g": 525.866,
+ "surface_area_m2cm3": 912.456,
+ "pld": 3.73403,
+ "lcd": 5.10081
+}

@@ -1,0 +1,14 @@
+{
+ "id": 173882,
+ "name": "ABULOB_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173882.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.5364,
+ "surface_area_m2g": 898.121,
+ "surface_area_m2cm3": 1184.81,
+ "pld": 4.16445,
+ "lcd": 4.86958
+}

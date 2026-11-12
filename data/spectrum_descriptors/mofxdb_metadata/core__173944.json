@@ -1,0 +1,14 @@
+{
+ "id": 173944,
+ "name": "ADAVIM_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173944.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.727,
+ "surface_area_m2g": 3693.81,
+ "surface_area_m2cm3": 2355.11,
+ "pld": 8.90065,
+ "lcd": 10.3456
+}

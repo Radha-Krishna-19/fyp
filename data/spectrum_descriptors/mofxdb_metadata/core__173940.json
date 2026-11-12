@@ -1,0 +1,14 @@
+{
+ "id": 173940,
+ "name": "ADATEG_manual",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173940.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.896,
+ "surface_area_m2g": 6170.7,
+ "surface_area_m2cm3": 1473.42,
+ "pld": 13.339,
+ "lcd": 27.3378
+}

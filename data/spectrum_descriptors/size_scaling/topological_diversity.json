@@ -1,37 +1,37 @@
 {
   "chosen": [
     {
-      "cif": ".\\HKUST-1.cif",
+      "cif": "code/spectrum_pipeline/HKUST-1.cif",
       "name": "HKUST-1",
       "net": "tbo",
       "source": "demonstration set, published net"
     },
     {
-      "cif": ".\\MOF5.cif",
+      "cif": "code/spectrum_pipeline/MOF5.cif",
       "name": "MOF5",
       "net": "pcu",
       "source": "demonstration set, published net"
     },
     {
-      "cif": ".\\ZIF-8.cif",
+      "cif": "code/spectrum_pipeline/ZIF-8.cif",
       "name": "ZIF-8",
       "net": "sod",
       "source": "demonstration set, published net"
     },
     {
-      "cif": ".\\UiO-66.cif",
+      "cif": "code/spectrum_pipeline/UiO-66.cif",
       "name": "UiO-66",
       "net": "fcu",
       "source": "demonstration set, published net"
     },
     {
-      "cif": "..\\..\\_work\\hmof_cifs\\hMOF-0.cif",
+      "cif": "data/structures/hmof/hMOF-0.cif",
       "name": "hMOF-0",
       "net": "pcu",
       "source": "hMOF, connectivity-signature candidate"
     },
     {
-      "cif": "..\\..\\_work\\hmof_cifs\\hMOF-101.cif",
+      "cif": "data/structures/hmof/hMOF-101.cif",
       "name": "hMOF-101",
       "net": "pcu",
       "source": "hMOF, connectivity-signature candidate"

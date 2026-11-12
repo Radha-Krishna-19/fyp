@@ -1,0 +1,14 @@
+{
+ "id": 173943,
+ "name": "ADATUW_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173943.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.73,
+ "surface_area_m2g": 3624.84,
+ "surface_area_m2cm3": 2322.12,
+ "pld": 8.86044,
+ "lcd": 10.3463
+}

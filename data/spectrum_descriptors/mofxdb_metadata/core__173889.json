@@ -1,0 +1,14 @@
+{
+ "id": 173889,
+ "name": "ACALIB_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173889.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4128,
+ "surface_area_m2g": 144.762,
+ "surface_area_m2cm3": 258.645,
+ "pld": 2.41854,
+ "lcd": 3.96462
+}

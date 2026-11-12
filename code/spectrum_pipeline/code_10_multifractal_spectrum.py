@@ -101,7 +101,7 @@ from typing import Dict, List, Sequence
 import numpy as np
 import networkx as nx
 
-from code_01_cif_input import parse_cif
+from code_01_cif_input import parse_cif, resolve_cif
 from code_02_bond_assignment_pbc import compute_geometry
 from code_04a_metal_oxo_algorithm import run_metal_oxo
 from code_09_network_analysis import build_periodic_block_graph
@@ -141,7 +141,7 @@ def supercell_graph(blocks, edges, n=2):
 # ---------------------------------------------------------------- block graph
 def block_graph_from_cif(cif_path: str):
     """CIF -> periodic block graph (FIX 2, 3, 4 all live here)."""
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     node_blocks, linker_blocks = run_metal_oxo(geom)      # FIX 3: real components
     blocks, edges = build_periodic_block_graph(geom, node_blocks, linker_blocks)
     G = nx.MultiGraph()
@@ -398,7 +398,7 @@ def analyse_mof(cif_path, top_percent=0.30, n_box_trials=40, seed=0, min_blocks=
                 tau_mode='paper'):
     """FIX 7: n_box_trials defaults to 40, not 5 -- see spectrum_stability().
        FIX 8: the cell is expanded until the graph is big enough to scale over."""
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     node_blocks, linker_blocks = run_metal_oxo(geom)
     blocks, edges = build_periodic_block_graph(geom, node_blocks, linker_blocks)
 
@@ -478,7 +478,7 @@ def estimator_comparison(cif_path, n_box_trials=40, n_seeds=6, top_percent=0.30,
     reproducing it here, on our own quotient graph, confirms the bug and its
     fix are real and not an artefact of one particular graph construction.
     """
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     node_blocks, linker_blocks = run_metal_oxo(geom)
     blocks, edges = build_periodic_block_graph(geom, node_blocks, linker_blocks)
     n = 1
@@ -566,7 +566,7 @@ def defect_family(cif_path, n_members=6, n_removed=1, seed=0, top_percent=0.30):
     the condition a reference band needs, and one we can satisfy without
     downloading a database.
     """
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     nb_, lb_ = run_metal_oxo(geom)
     blocks_, edges_ = build_periodic_block_graph(geom, nb_, lb_)
     n = 1

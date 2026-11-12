@@ -1,0 +1,14 @@
+{
+ "id": 173952,
+ "name": "ADOBIF_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173952.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4886,
+ "surface_area_m2g": 676.839,
+ "surface_area_m2cm3": 1075.32,
+ "pld": 3.82743,
+ "lcd": 5.54781
+}

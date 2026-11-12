@@ -1,0 +1,14 @@
+{
+ "id": 173937,
+ "name": "ADASAB_charged",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173937.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.8736,
+ "surface_area_m2g": 4829.51,
+ "surface_area_m2cm3": 1661.07,
+ "pld": 13.4901,
+ "lcd": 22.824
+}

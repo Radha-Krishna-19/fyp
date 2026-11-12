@@ -1,0 +1,14 @@
+{
+ "id": 173935,
+ "name": "ADABUE_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173935.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4708,
+ "surface_area_m2g": 299.509,
+ "surface_area_m2cm3": 439.176,
+ "pld": 3.31506,
+ "lcd": 4.54949
+}

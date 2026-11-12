@@ -1,0 +1,14 @@
+{
+ "id": 173894,
+ "name": "ACOCUS_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173894.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.8644,
+ "surface_area_m2g": 4382.42,
+ "surface_area_m2cm3": 1518.48,
+ "pld": 13.2222,
+ "lcd": 24.3842
+}

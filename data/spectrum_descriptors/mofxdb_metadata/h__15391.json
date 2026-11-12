@@ -1,0 +1,14 @@
+{
+ "id": 15391,
+ "name": "hMOF-53",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15391.json",
+ "mofid": "CCc1c(ccc(c1CC)C(=O)[O-])C(=O)[O-].[Zn][O]([Zn])([Zn])[Zn] MOFid-v1.pcu.cat0",
+ "mofkey": "Zn.WWYKARMEFKDXSX.MOFkey-v1.pcu",
+ "void_fraction": 0.738465,
+ "surface_area_m2g": 2930.7,
+ "surface_area_m2cm3": 2197.9,
+ "pld": 8.25,
+ "lcd": 9.25
+}

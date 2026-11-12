@@ -391,3 +391,12 @@ root README under "Future work".
 - Steps 1–8 pipeline: ZIF-8 matches the lab in static and relaxed modes; HKUST-1 stops at a truncated octahedron; UiO-66 and Mg-MOF-74 do not match. Relaxation lowers γ by 60 % to almost 100 %, so face order is fragile until a DFT check. K3 and K11 fixed; K1, K2, K4–K10 open (`morphology_map.html#map-steps`). The HKUST-1 {111} relaxed value is in `results_full_fixed/one_face_HKUST-1_111.log`.
 - `modulator_caps.py` is a first, unrelaxed attempt; its UiO-66 numbers are not physical. Do not quote them as results.
 - `model_points.py` now also writes the exact shape and area fractions of each point (previously added by hand); rerunning it reproduces `model_points.json` exactly.
+
+## Reproducibility audit (2026-11-12)
+
+- Every Python file was rerun from the file-system root. Results that regenerate exactly: all morphology `results/*.json`, `scaling_regimes.json`, `convergence_sweep.json` widths and slopes, `full_band_*_cg.json` widths (r = +0.690, +0.716 unchanged), `size_strata.json`, `slope_sweep_*.json`, `topological_diversity.json` (now with repository-relative paths), `subband_explain_*.json`, the spectrum–shape `run_01`–`run_04` results, the morphology map results, and the steps 1–8 quick run.
+- The capped analyses (`code_14`, `code_15`, `code_16`) ran on the 34 hMOF and 20 CoRE MOF CIFs on disk on 15 September. With all 138 CIFs now in the repository they picked a different sample (CoRE slope mean 0.812 instead of 0.871). They now read `size_scaling/capped_pool_hmof.txt` and `capped_pool_core.txt` by default and reproduce their committed results exactly; `--all` uses every CIF.
+- `code_16` looked for the four demonstration CIFs in the current folder and silently left them out when run from elsewhere; fixed.
+- `code_18` read MOFX-DB metadata from an untracked `.cache/`; a trimmed copy is now in `data/spectrum_descriptors/mofxdb_metadata/`.
+- Not deterministic: `r2_linearity_mean` (the free-intercept fit-quality diagnostic of `code_12.spectrum`) changes between runs, by up to 0.3 for single records, while the widths are identical to 1e-4. No quoted number or conclusion uses it. Do not quote it without fixing the cause first.
+- `modulator_caps.py` (CHGNet, static) reproduces to within 0.003 eV per site.

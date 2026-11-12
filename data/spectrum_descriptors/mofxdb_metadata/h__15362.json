@@ -1,0 +1,14 @@
+{
+ "id": 15362,
+ "name": "hMOF-24",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15362.json",
+ "mofid": "[O-]C(=O)C1=C(Cl)C(=C([C]=C1)C(=O)[O-])Cl.[O-]C(=O)c1cc(Cl)c(c(c1)Cl)C(=O)[O-].ClOC(=O)c1c(Cl)cc(c(c1Cl)Cl)C(=O)[O-].[O-]C(=O)C1=C[C]=C(C(=C1Cl)Cl)C(=O)[O-].[O-]C(=O)c1cc(Cl)c(c(c1)Cl)C(=O)[O-].ClOC(=O)c1c(Cl)cc(c(c1Cl)Cl)C(=O)[O-].[Zn][O]([Zn])([Zn])[Zn] MOFid-v1.UNKNOWN.cat0",
+ "mofkey": "Zn.OGDRTXWVXMHDSH.MOFkey-v1.UNKNOWN",
+ "void_fraction": 0.122479,
+ "surface_area_m2g": 0.0,
+ "surface_area_m2cm3": 0.0,
+ "pld": 2.75,
+ "lcd": 3.25
+}

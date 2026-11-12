@@ -1,0 +1,14 @@
+{
+ "id": 173963,
+ "name": "ADUWON_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173963.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.7844,
+ "surface_area_m2g": 4587.82,
+ "surface_area_m2cm3": 2391.39,
+ "pld": 5.99724,
+ "lcd": 16.3794
+}

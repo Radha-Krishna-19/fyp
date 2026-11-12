@@ -1,0 +1,14 @@
+{
+ "id": 173897,
+ "name": "ACODUT_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173897.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4404,
+ "surface_area_m2g": 293.64,
+ "surface_area_m2cm3": 446.079,
+ "pld": 3.36863,
+ "lcd": 5.4607
+}

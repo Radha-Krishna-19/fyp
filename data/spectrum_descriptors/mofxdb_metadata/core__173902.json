@@ -1,0 +1,14 @@
+{
+ "id": 173902,
+ "name": "ACOLOV_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173902.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.6794,
+ "surface_area_m2g": 2579.3,
+ "surface_area_m2cm3": 2226.99,
+ "pld": 5.53552,
+ "lcd": 8.42183
+}

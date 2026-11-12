@@ -1,0 +1,14 @@
+{
+ "id": 15437,
+ "name": "hMOF-98",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15437.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.719688,
+ "surface_area_m2g": 2950.2,
+ "surface_area_m2cm3": 2228.4,
+ "pld": 8.25,
+ "lcd": 9.25
+}

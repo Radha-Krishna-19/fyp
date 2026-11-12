@@ -1,0 +1,14 @@
+{
+ "id": 173874,
+ "name": "ABEXEN_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173874.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.753,
+ "surface_area_m2g": 2463.35,
+ "surface_area_m2cm3": 1661.21,
+ "pld": 13.7187,
+ "lcd": 18.8079
+}

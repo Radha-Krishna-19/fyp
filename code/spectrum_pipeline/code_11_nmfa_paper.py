@@ -62,7 +62,7 @@ from typing import Dict, List, Sequence
 import numpy as np
 import networkx as nx
 
-from code_01_cif_input import parse_cif
+from code_01_cif_input import parse_cif, resolve_cif
 from code_02_bond_assignment_pbc import compute_geometry
 from code_04a_metal_oxo_algorithm import run_metal_oxo
 from code_09_network_analysis import build_periodic_block_graph
@@ -170,7 +170,7 @@ def analyse_cif(cif_path, top_percent=0.10, min_blocks=60, q_values=None):
     top_percent defaults to 0.10 -- the paper's iNMFA uses the top 10% of
     influential nodes (the earlier notebook used 30%).
     """
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     nb, lb = run_metal_oxo(geom)
     blocks, edges = build_periodic_block_graph(geom, nb, lb)
     n = 1

@@ -1,0 +1,14 @@
+{
+ "id": 15455,
+ "name": "hMOF-116",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15455.json",
+ "mofid": "CCCOc1cc(cc(c1C(=O)[O-])OCCC)C(=O)[O-].[O-]C(=O)c1ccc(cc1)C(=O)[O-].[Zn][O]([Zn])([Zn])[Zn] MOFid-v1.pcu.cat0",
+ "mofkey": "Zn.KKEYFWRCBNTPAC.WQPXDBPVZCEKFI.MOFkey-v1.pcu",
+ "void_fraction": 0.695379,
+ "surface_area_m2g": 2755.4,
+ "surface_area_m2cm3": 2207.5,
+ "pld": 7.25,
+ "lcd": 8.25
+}

@@ -1,0 +1,14 @@
+{
+ "id": 173955,
+ "name": "ADOCEC_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173955.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4904,
+ "surface_area_m2g": 740.345,
+ "surface_area_m2cm3": 1136.75,
+ "pld": 3.83278,
+ "lcd": 5.40135
+}

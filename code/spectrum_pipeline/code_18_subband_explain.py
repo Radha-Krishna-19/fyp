@@ -191,8 +191,10 @@ def run(band_json_path, cache_dir, tag_prefixes, label, out_path):
 
 if __name__ == '__main__':
     import sys
-    out_dir = os.path.join('..', '..', 'data', 'spectrum_descriptors', 'size_scaling')
+    out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'spectrum_descriptors', 'size_scaling')
     cache_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.cache')
+    if not os.path.isdir(cache_dir):   # the committed copy of the MOFX-DB metadata
+        cache_dir = os.path.join(out_dir, '..', 'mofxdb_metadata')
 
     run(os.path.join(out_dir, 'full_band_hmof_cg.json'), cache_dir,
         ('hmof__', 'h__'), 'hMOF (full, CG supercell)',

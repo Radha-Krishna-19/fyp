@@ -1,0 +1,14 @@
+{
+ "id": 173867,
+ "name": "ABAYIO_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173867.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.6636,
+ "surface_area_m2g": 1936.75,
+ "surface_area_m2cm3": 1838.22,
+ "pld": 4.3226,
+ "lcd": 11.3949
+}

@@ -1,0 +1,14 @@
+{
+ "id": 15427,
+ "name": "hMOF-90",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15427.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.75556,
+ "surface_area_m2g": 3411.6,
+ "surface_area_m2cm3": 2236.0,
+ "pld": 9.75,
+ "lcd": 10.75
+}

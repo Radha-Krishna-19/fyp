@@ -1,0 +1,14 @@
+{
+ "id": 173949,
+ "name": "ADIQEL_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173949.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4682,
+ "surface_area_m2g": 634.715,
+ "surface_area_m2cm3": 785.544,
+ "pld": 3.91364,
+ "lcd": 4.43355
+}

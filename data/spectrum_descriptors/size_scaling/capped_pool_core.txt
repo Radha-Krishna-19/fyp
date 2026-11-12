@@ -1,0 +1,23 @@
+# The 20 CoRE MOF 2019 CIF files that were on disk when the capped analyses (code_14, code_15, code_16) ran
+# on 15 September 2026. Recovered from the committed result files on 12 November 2026. The scripts use
+# this list by default so their committed results can be regenerated; pass --all to use every CIF.
+ABIYIV_clean.cif
+ABULOB_clean.cif
+ACAJIZ_clean.cif
+ACALIB_clean.cif
+ACIBIY_clean.cif
+ACODAZ_clean.cif
+ACODUT_clean.cif
+ADABUE_clean.cif
+ADATAC_clean.cif
+ADAXEK_clean.cif
+ADAXIO_clean.cif
+ADOBIF_clean.cif
+ADUWIH_clean.cif
+acs.chemmater.6b02817_cm6b02817_si_004_clean.cif
+acs.inorgchem.6b00894_ic6b00894_si_002_clean.cif
+acs.inorgchem.6b01211_ic6b01211_si_002_clean.cif
+acs.inorgchem.6b02514_ic6b02514_si_002_clean.cif
+acs.jchemed.6b00258_ed6b00258_si_005_clean.cif
+acs.jpcc.6b04690_jp6b04690_si_005_clean.cif
+acs.jpcc.6b08594_UiO66_Ce2Zr4_opt_clean.cif

@@ -1,0 +1,14 @@
+{
+ "id": 173893,
+ "name": "ACOCOM_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173893.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.863,
+ "surface_area_m2g": 4393.52,
+ "surface_area_m2cm3": 1537.41,
+ "pld": 13.0343,
+ "lcd": 24.6064
+}

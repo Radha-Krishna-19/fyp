@@ -1,0 +1,14 @@
+{
+ "id": 173895,
+ "name": "ACODAZ_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173895.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.8618,
+ "surface_area_m2g": 4461.21,
+ "surface_area_m2cm3": 1530.83,
+ "pld": 13.1165,
+ "lcd": 23.2918
+}

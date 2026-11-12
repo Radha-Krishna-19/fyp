@@ -50,6 +50,24 @@ from code_12_converged_band import quotient_graph_from_cif
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
 
+import sys
+_USE_ALL = '--all' in sys.argv
+sys.argv = [a for a in sys.argv if a != '--all']
+
+
+def capped_pool(cif_dir):
+    """The CIFs this capped analysis originally ran on (15 September 2026), so its committed result can
+    be regenerated. Returns None (use every CIF) with --all, or when no list exists for this folder."""
+    if _USE_ALL:
+        return None
+    name = {'hmof': 'capped_pool_hmof.txt', 'core_mof_2019': 'capped_pool_core.txt'}.get(
+        os.path.basename(os.path.normpath(cif_dir)))
+    path = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling', name) if name else None
+    if not path or not os.path.exists(path):
+        return None
+    return set(l.strip() for l in open(path) if l.strip() and not l.startswith('#'))
+
+
 SIGNATURE_TO_NET = {
     (6, 2): 'pcu',
     (4, 3): 'tbo',
@@ -81,7 +99,8 @@ def coordination_signature(cif_path):
 
 
 def classify_directory(cif_dir, max_structures=None):
-    files = sorted(f for f in os.listdir(cif_dir) if f.lower().endswith('.cif'))
+    pool = capped_pool(cif_dir)
+    files = sorted(f for f in os.listdir(cif_dir) if f.lower().endswith('.cif') and (pool is None or f in pool))
     if max_structures:
         files = files[:max_structures]
     out = {}
@@ -100,16 +119,20 @@ def classify_directory(cif_dir, max_structures=None):
     return out
 
 
-def build_diverse_set(demo_dir='.', hmof_dir=None, core_dir=None, target_size=10):
+def build_diverse_set(demo_dir=None, hmof_dir=None, core_dir=None, target_size=10):
     """Assemble up to target_size structures spanning as many of
     {pcu, tbo, sod, fcu, rht} as this local sample allows, from the four
     demonstration structures (ground-truth net) plus already-fetched CIFs."""
     demo_nets = {'HKUST-1.cif': 'tbo', 'MOF5.cif': 'pcu', 'ZIF-8.cif': 'sod', 'UiO-66.cif': 'fcu'}
+    # The demonstration CIFs live next to this script. (Until 12 November the default was the current
+    # folder, so a run started elsewhere silently left all four out of the set.)
+    demo_dir = demo_dir or os.path.dirname(os.path.abspath(__file__))
+    rel = lambda p: os.path.relpath(p, REPO).replace(os.sep, '/')
     chosen = []
     for f, net in demo_nets.items():
         p = os.path.join(demo_dir, f)
         if os.path.exists(p):
-            chosen.append({'cif': p, 'name': f.replace('.cif', ''), 'net': net,
+            chosen.append({'cif': rel(p), 'name': f.replace('.cif', ''), 'net': net,
                             'source': 'demonstration set, published net'})
 
     pools = []
@@ -153,7 +176,7 @@ def build_diverse_set(demo_dir='.', hmof_dir=None, core_dir=None, target_size=10
                 if remaining <= 0 or (net in already_covered and dup_budget <= 0):
                     break
                 cif_dir = hmof_dir if pool_label == 'hMOF' else core_dir
-                added.append({'cif': os.path.join(cif_dir, name + '.cif'), 'name': name,
+                added.append({'cif': rel(os.path.join(cif_dir, name + '.cif')), 'name': name,
                               'net': net, 'source': f'{pool_label}, connectivity-signature candidate'})
                 if net in already_covered:
                     dup_budget -= 1
@@ -180,7 +203,7 @@ if __name__ == '__main__':
     hmof_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, 'data', 'structures', 'hmof')
     core_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, 'data', 'structures', 'core_mof_2019')
 
-    result = build_diverse_set(demo_dir='.', hmof_dir=hmof_dir, core_dir=core_dir, target_size=10)
+    result = build_diverse_set(hmof_dir=hmof_dir, core_dir=core_dir, target_size=10)
 
     print(f"Assembled {len(result['chosen'])} structures:")
     for c in result['chosen']:

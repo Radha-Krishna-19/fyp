@@ -1,0 +1,14 @@
+{
+ "id": 15368,
+ "name": "hMOF-30",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15368.json",
+ "mofid": "* MOFid-v1.NA.NA",
+ "mofkey": "",
+ "void_fraction": 0.142996,
+ "surface_area_m2g": 0.0,
+ "surface_area_m2cm3": 0.0,
+ "pld": 2.25,
+ "lcd": 3.25
+}

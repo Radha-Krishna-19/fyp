@@ -46,6 +46,24 @@ from code_12_converged_band import (quotient_graph_from_cif, replicate,
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
 
+import sys
+_USE_ALL = '--all' in sys.argv
+sys.argv = [a for a in sys.argv if a != '--all']
+
+
+def capped_pool(cif_dir):
+    """The CIFs this capped analysis originally ran on (15 September 2026), so its committed result can
+    be regenerated. Returns None (use every CIF) with --all, or when no list exists for this folder."""
+    if _USE_ALL:
+        return None
+    name = {'hmof': 'capped_pool_hmof.txt', 'core_mof_2019': 'capped_pool_core.txt'}.get(
+        os.path.basename(os.path.normpath(cif_dir)))
+    path = os.path.join(REPO, 'data', 'spectrum_descriptors', 'size_scaling', name) if name else None
+    if not path or not os.path.exists(path):
+        return None
+    return set(l.strip() for l in open(path) if l.strip() and not l.startswith('#'))
+
+
 MAX_NODES = 5000
 N_VALUES = (2, 3, 4)
 
@@ -89,7 +107,8 @@ def slope_for_structure(cif_path, n_values=N_VALUES, max_nodes=MAX_NODES,
 
 
 def run_dataset(cif_dir, label, max_structures=20, out_path=None, verbose=True):
-    files = sorted(f for f in os.listdir(cif_dir) if f.lower().endswith('.cif'))
+    pool = capped_pool(cif_dir)
+    files = sorted(f for f in os.listdir(cif_dir) if f.lower().endswith('.cif') and (pool is None or f in pool))
     files = files[:max_structures]
     if verbose:
         print(f'\n{label}: {len(files)} structures (capped at {max_structures})')

@@ -1,0 +1,14 @@
+{
+ "id": 15441,
+ "name": "hMOF-103",
+ "database": "hMOF",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/15441.json",
+ "mofid": "COc1cc(C(=O)[O-])c(c(c1C(=O)[O-])OC)OC.COc1cc(C(=O)[O-])c(cc1C(=O)[O-])OC.COc1cc(ccc1C(=O)[O-])C(=O)[O-].[Zn][O]([Zn])([Zn])[Zn] MOFid-v1.pcu.cat0",
+ "mofkey": "Zn.HUNYILZBHFNRCK.PXSHXQQBOGFGTK.VQBBXLZPRXHYBO.MOFkey-v1.pcu",
+ "void_fraction": 0.721411,
+ "surface_area_m2g": 3073.3,
+ "surface_area_m2cm3": 2334.0,
+ "pld": 7.25,
+ "lcd": 8.25
+}

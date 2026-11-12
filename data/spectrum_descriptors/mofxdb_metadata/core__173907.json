@@ -1,0 +1,14 @@
+{
+ "id": 173907,
+ "name": "acs.chemrev.6b00346_cr6b00346_si_001_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173907.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.6912,
+ "surface_area_m2g": 2527.25,
+ "surface_area_m2cm3": 2290.66,
+ "pld": 3.959,
+ "lcd": 9.19439
+}

@@ -1,0 +1,14 @@
+{
+ "id": 173939,
+ "name": "ADATAC_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173939.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.871,
+ "surface_area_m2g": 5129.28,
+ "surface_area_m2cm3": 1729.95,
+ "pld": 10.2764,
+ "lcd": 26.3351
+}

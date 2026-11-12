@@ -1,0 +1,14 @@
+{
+ "id": 173880,
+ "name": "ABEYIR_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173880.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.464,
+ "surface_area_m2g": 448.697,
+ "surface_area_m2cm3": 883.765,
+ "pld": 3.92183,
+ "lcd": 4.69665
+}

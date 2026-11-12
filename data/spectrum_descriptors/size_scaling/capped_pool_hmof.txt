@@ -1,0 +1,37 @@
+# The 34 hMOF CIF files that were on disk when the capped analyses (code_14, code_15, code_16) ran
+# on 15 September 2026. Recovered from the committed result files on 12 November 2026. The scripts use
+# this list by default so their committed results can be regenerated; pass --all to use every CIF.
+hMOF-0.cif
+hMOF-101.cif
+hMOF-103.cif
+hMOF-106.cif
+hMOF-117.cif
+hMOF-132.cif
+hMOF-135.cif
+hMOF-138.cif
+hMOF-141.cif
+hMOF-144.cif
+hMOF-146.cif
+hMOF-18.cif
+hMOF-20.cif
+hMOF-22.cif
+hMOF-25.cif
+hMOF-28.cif
+hMOF-40.cif
+hMOF-57.cif
+hMOF-64.cif
+hMOF-66.cif
+hMOF-67.cif
+hMOF-69.cif
+hMOF-71.cif
+hMOF-75.cif
+hMOF-78.cif
+hMOF-80.cif
+hMOF-82.cif
+hMOF-85.cif
+hMOF-87.cif
+hMOF-90.cif
+hMOF-92.cif
+hMOF-94.cif
+hMOF-96.cif
+hMOF-98.cif

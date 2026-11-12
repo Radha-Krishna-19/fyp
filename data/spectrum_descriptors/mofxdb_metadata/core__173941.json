@@ -1,0 +1,14 @@
+{
+ "id": 173941,
+ "name": "ADATIK_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173941.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.8764,
+ "surface_area_m2g": 4535.57,
+ "surface_area_m2cm3": 1712.52,
+ "pld": 12.1743,
+ "lcd": 24.5508
+}

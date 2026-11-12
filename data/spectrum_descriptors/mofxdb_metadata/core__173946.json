@@ -1,0 +1,14 @@
+{
+ "id": 173946,
+ "name": "ADAXIO_clean",
+ "database": "CoREMOF 2019",
+ "mofdb_version": "dc8a0295db",
+ "url": "/mofs/173946.json",
+ "mofid": null,
+ "mofkey": null,
+ "void_fraction": 0.4934,
+ "surface_area_m2g": 890.52,
+ "surface_area_m2cm3": 1140.41,
+ "pld": 5.00855,
+ "lcd": 5.72682
+}
