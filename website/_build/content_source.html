@@ -269,7 +269,7 @@
       <div class="qa">
         <div><b>What:</b> treat the decomposed framework as a graph. Build it periodically, measure coordination numbers, compute centrality three ways, take the Laplacian eigenvalue spectrum, and simulate defects.</div>
         <div><b>Why:</b> this is the extension asked for — influential nodes and a spectrum that could characterise a family of materials.</div>
-        <div><b>Achieved:</b> correct coordination numbers for all four structures (including UiO-66 at 12, which the naive construction gets wrong); the finding that centrality is degenerate in a perfect crystal; a working defect simulation that makes influence measurable; and Laplacian spectra that cleanly separate the four structures.</div>
+        <div><b>Achieved:</b> correct coordination numbers for all four structures (including UiO-66 at 12, which the naive construction gets wrong), and later for four more (ZIF-7, MOF-177, DMOF-1, MIL-88A); the finding that centrality is degenerate in a perfect crystal; a working defect simulation that makes influence measurable; and Laplacian spectra that separate the original four structures, but not all twelve (see Section 11).</div>
       </div>
       <div class="where">→ <a href="#graph">Section 11</a> · <code>code_09_network_analysis.py</code></div>
     </div>
@@ -392,6 +392,7 @@
 
   <div class="cif-row">
     <span>Structure being walked through:</span>
+    <label for="w-cif-pick">Bundled structure</label> <select id="w-cif-pick"></select>
     <input type="file" id="w-cif-file" accept=".cif">
     <button id="w-cif-reset">Reset to HKUST-1</button>
     <span id="w-cif-status" class="cif-status"></span>
@@ -990,7 +991,7 @@
   <div class="panel"><div id="fingerprint-table"></div></div>
 
   <div class="callout warn" data-kind="Caveat">
-    <b>What this does and does not establish.</b> The four structures separate cleanly in spectral space, and λ₂ tracks node connectivity as it should — so the method works. But there is exactly <b>one</b> zirconium structure here. A claim of the form "all Zr-based MOFs occupy this region" cannot be supported from a single example, no matter how clean the separation looks. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per-CIF so it can be run in batch over such a folder without modification.
+    <b>What this does and does not establish.</b> The table now covers twelve structures. The original four separate cleanly in spectral space, and λ₂ tracks node connectivity as it should. With twelve, the separation fails in three places: MIL-53(Cr) and MIL-47(V), which share a net and differ only in the metal, give identical values (λ₂ = 2.438, λ<sub>max</sub> = 9.00); DMOF-1 and MIL-88A also coincide (2.000, 8.00); and UiO-66 shares λ₂ = 2.000 with both. The two zirconium structures, UiO-66 and MIL-140A, sit far apart (λ₂ 2.000 against 1.097). The graph spectrum therefore follows the net, not the metal, and a claim of the form "all Zr-based MOFs occupy this region" is contradicted, not supported, by the one test now possible. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per CIF, so it runs in batch over such a folder without modification.
   </div>
 
   <!-- ================= 5 ================= -->
@@ -1114,6 +1115,10 @@
       </table>
       <p style="font-size:13px;color:var(--muted2);margin-top:6px;">&Delta;&alpha; itself, at every diameter tested, is plotted in the figure above &mdash; not repeated here as text. The UiO-66 line rests on three supercells only (diameters 8, 12, 16), so its R&sup2; says little; the other three nets have five each (<code>data/spectrum_descriptors/size_scaling/convergence_sweep.json</code>).</p>
     </div>
+
+    <!-- diverse-set:start -->
+    <!-- diverse-set:end -->
+
 
     <div class="callout warn" data-kind="Caveat">
     <b>Know what this dataset is.</b> All 77 structures are named <code>hMOF-###</code> &mdash; they come from the <b>hypothetical MOF</b> database: <b>computer-generated candidate structures that have never been synthesised</b>. The notebook requested <code>CoREMOF 2019</code>, which is experimental, but the server returned hMOF records and nothing verified it. A check was added so this cannot recur silently.

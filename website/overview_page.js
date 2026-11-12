@@ -21,6 +21,15 @@
     'UiO-66':  { node: 12, linker: 2, net: 'fcu', sbu: 'Zr₆O₄(OH)₄' },
     'MOF-5':   { node: 6, linker: 2, net: 'pcu', sbu: 'Zn₄O' },
     'ZIF-8':   { node: 4, linker: 2, net: 'sod', sbu: 'single Zn' },
+    'ZIF-7':   { node: 4, linker: 2, net: 'sod', sbu: 'single Zn' },
+    'MOF-177': { node: 6, linker: 3, net: 'qom', sbu: 'Zn₄O' },
+    'DMOF-1':  { node: 6, linker: 2, net: 'pcu', sbu: 'Zn₂ paddlewheel + 2 DABCO' },
+    'MIL-88A': { node: 6, linker: 2, net: 'acs', sbu: 'Fe₃O trimer' },
+    // rod MOFs: an infinite metal-oxide chain has no single published coordination number
+    'Mg-MOF-74':  { node: null, net: '—', sbu: 'Mg–O chain' },
+    'MIL-53(Cr)': { node: null, net: '—', sbu: 'Cr–OH chain' },
+    'MIL-47(V)':  { node: null, net: '—', sbu: 'V=O chain' },
+    'MIL-140A':   { node: null, net: '—', sbu: 'Zr–O chain' },
   };
 
   function fmt(c) {
@@ -79,9 +88,10 @@
       rows2 += '<tr><td class="dt-label">' + name + '</td>' +
         '<td class="dt-value">' + (lit.sbu || '') + '</td>' +
         '<td class="dt-value" style="color:var(--good)">' + nodeDeg.join(',') + '</td>' +
-        '<td class="dt-value">' + lit.node + '</td>' +
+        '<td class="dt-value">' + (lit.node === null ? 'none (chain)' : lit.node) + '</td>' +
         '<td class="dt-value">' + lit.net + '</td>' +
-        '<td class="dt-note">' + (ok ? '<b style="color:var(--good)">✓ matches</b>' : '<b style="color:var(--bad)">✗</b>') +
+        '<td class="dt-note">' + (lit.node === null ? 'rod MOF: the chain is cut into one segment per cell'
+          : ok ? '<b style="color:var(--good)">✓ matches</b>' : '<b style="color:var(--bad)">✗</b>') +
         ' · naive graph would say ' + naiveNode.join(',') + '</td></tr>';
     });
     setHTML('degree-value',

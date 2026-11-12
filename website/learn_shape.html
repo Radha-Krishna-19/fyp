@@ -120,7 +120,7 @@
       </div>
       <figure class="fig wide">
         <img src="figures/learn/mofs.png" alt="Unit cells of MOF-5, HKUST-1, UiO-66 and ZIF-8 viewed down one axis, with metal atoms as large dots and the pores as empty regions.">
-        <figcaption>The four test structures used throughout, drawn from the project's CIF files. Large dots are metal atoms; the empty regions are the pores.</figcaption>
+        <figcaption>The four cubic test structures, drawn from the project's CIF files. Large dots are metal atoms; the empty regions are the pores.</figcaption>
       <p class="provenance"><b>Source:</b> <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/reports/morphology_primer_source/figs3.py"><code>docs/reports/morphology_primer_source/figs3.py</code></a>; data: <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/the four demonstration CIFs in code/spectrum_pipeline/"><code>the four demonstration CIFs in code/spectrum_pipeline/</code></a>.</p></figure>
       <table class="data-table">
         <thead><tr><td>MOF</td><td>Node</td><td>Linker</td><td>Net</td><td>Lattice type</td></tr></thead>
@@ -131,6 +131,20 @@
           <tr><td class="dt-label">ZIF-8</td><td class="dt-note">single Zn atom (tetrahedral)</td><td class="dt-note">2-methylimidazolate</td><td class="dt-note">sod</td><td class="dt-note">I-centred cubic</td></tr>
         </tbody>
       </table>
+      <p class="sd">All four are cubic, so on their own they cannot show a rod or a plate, a metal&ndash;oxide chain, or a framework that changes shape with solvent. Eight more structures were added for comparison. They differ in metal, in the kind of node, in the linker and in the lattice, and are used wherever the method does not depend on cubic symmetry: the graph pages (<a href="decomposition.html">Decomposition</a>, <a href="network.html">From crystal to network</a>), the size study of &Delta;&alpha; (<a href="results.html">Results</a>), and the any-lattice section of <a href="cif_to_shape.html">From a CIF to a shape</a>. The energy calculations (force field, CHGNet, the planned DFT) and the laboratory comparison still cover only the first four.</p>
+      <div class="table-wrap"><table class="data-table" id="learn-more-mofs">
+        <thead><tr><td>MOF</td><td>Node</td><td>Linker</td><td>Net</td><td>Lattice</td><td>What it adds</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">ZIF-7</td><td class="dt-note">single Zn atom</td><td class="dt-note">benzimidazolate</td><td class="dt-note">sod</td><td class="dt-note">trigonal (R)</td><td class="dt-note">the net of ZIF-8 in a lower-symmetry cell</td></tr>
+          <tr><td class="dt-label">MOF-177</td><td class="dt-note">Zn<sub>4</sub>O cluster</td><td class="dt-note">BTB (three-ended, large)</td><td class="dt-note">qom</td><td class="dt-note">trigonal</td><td class="dt-note">the node of MOF-5 with a three-ended linker</td></tr>
+          <tr><td class="dt-label">DMOF-1</td><td class="dt-note">Zn<sub>2</sub> paddlewheel</td><td class="dt-note">BDC and a DABCO pillar</td><td class="dt-note">pcu</td><td class="dt-note">tetragonal</td><td class="dt-note">two different linkers on one node</td></tr>
+          <tr><td class="dt-label">MIL-88A</td><td class="dt-note">Fe<sub>3</sub>O trimer</td><td class="dt-note">fumarate</td><td class="dt-note">acs</td><td class="dt-note">hexagonal</td><td class="dt-note">swells strongly with solvent; open and dry forms</td></tr>
+          <tr><td class="dt-label">Mg-MOF-74</td><td class="dt-note">Mg&ndash;O chain (rod)</td><td class="dt-note">dobdc</td><td class="dt-note">rod net</td><td class="dt-note">trigonal (R)</td><td class="dt-note">an infinite metal&ndash;oxide chain; open metal sites</td></tr>
+          <tr><td class="dt-label">MIL-53(Cr)</td><td class="dt-note">Cr&ndash;OH chain (rod)</td><td class="dt-note">BDC</td><td class="dt-note">rod net</td><td class="dt-note">monoclinic (C)</td><td class="dt-note">a flexible framework that opens and closes</td></tr>
+          <tr><td class="dt-label">MIL-47(V)</td><td class="dt-note">V=O chain (rod)</td><td class="dt-note">BDC</td><td class="dt-note">rod net</td><td class="dt-note">orthorhombic</td><td class="dt-note">the framework of MIL-53 with another metal</td></tr>
+          <tr><td class="dt-label">MIL-140A</td><td class="dt-note">Zr&ndash;O chain (rod)</td><td class="dt-note">BDC</td><td class="dt-note">rod net</td><td class="dt-note">monoclinic (C)</td><td class="dt-note">a second zirconium MOF, with a chain instead of the Zr<sub>6</sub> cluster</td></tr>
+        </tbody>
+      </table></div>
 
       <h2 class="section-title" id="learn-lattice" data-toc="Lattices and unit cells"><span class="stitle-num">3</span>Lattices and Unit Cells</h2>
       <dl class="bridge"><dt>You know</dt><dd>That a crystal repeats.</dd><dt>This section</dt><dd class="now">Defines the lattice, the unit cell, fractional coordinates, and the difference between a primitive and a conventional cell.</dd><dt>Which lets us</dt><dd>Read a CIF file and convert it to the cell in which crystal faces are named.</dd></dl>

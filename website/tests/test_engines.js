@@ -108,7 +108,7 @@ const filled = (D, id) => { const e = D.getElementById(id); return !!e && e.inne
 {
   const { D, errs } = boot('network.html');
   ok(errs.length === 0, `network.html: all scripts ran clean${errs.length ? ' — ' + errs[0] : ''}`);
-  ok(D.querySelectorAll('#net-struct-tabs .struct-tab').length === 4, 'network.html: four demonstration structures offered');
+  ok(D.querySelectorAll('#net-struct-tabs .struct-tab').length === 12, 'network.html: all twelve bundled structures offered');
   ok(filled(D, 'validation'), 'network.html: coordination-number validation computed');
   ok(filled(D, 'centrality'), 'network.html: centrality table computed');
   ok(filled(D, 'fingerprint-table'), 'network.html: Laplacian fingerprint table computed');

@@ -15,6 +15,16 @@
     'UiO-66':  { node: 12, linker: 2, net: 'fcu', sbu: 'Zr₆O₄(OH)₄ cluster' },
     'MOF-5':   { node: 6, linker: 2, net: 'pcu', sbu: 'Zn₄O cluster' },
     'ZIF-8':   { node: 4, linker: 2, net: 'sod', sbu: 'single Zn' },
+    'ZIF-7':   { node: 4, linker: 2, net: 'sod', sbu: 'single Zn' },
+    'MOF-177': { node: 6, linker: 3, net: 'qom', sbu: 'Zn₄O cluster' },
+    'DMOF-1':  { node: 6, linker: 2, net: 'pcu', sbu: 'Zn₂ paddlewheel with two DABCO pillars' },
+    'MIL-88A': { node: 6, linker: 2, net: 'acs', sbu: 'Fe₃O trimer' },
+    // Rod (chain) MOFs: the metal-oxide chain is infinite, so it has no single published coordination
+    // number; the decomposition cuts it into one segment per cell. Listed with node: null.
+    'Mg-MOF-74':  { node: null, linker: null, net: '', sbu: 'Mg–O chain' },
+    'MIL-53(Cr)': { node: null, linker: null, net: '', sbu: 'Cr–OH chain' },
+    'MIL-47(V)':  { node: null, linker: null, net: '', sbu: 'V=O chain' },
+    'MIL-140A':   { node: null, linker: null, net: '', sbu: 'Zr–O chain' },
   };
 
   let structures = {};   // name -> DATA
@@ -487,7 +497,7 @@
     const cent = MOFNetwork.eigenvectorCentrality(G);
     const btw = MOFNetwork.betweenness(G).normalised;
     const spec = MOFNetwork.laplacianSpectrum(G);
-    const lit = LIT[current];
+    const lit = LIT[current] || { node: null, linker: null, net: '', sbu: 'node' };
 
     drawGraph(document.getElementById('graph-canvas'), G, deg,
               cent, defectId !== null ? new Set() : null);
@@ -515,14 +525,16 @@
     G.blocks.forEach((b, i) => (b.type === 'metal' ? nodeCN : linkCN).push(deg[i]));
     const uNode = Array.from(new Set(nodeCN)).sort((a, b) => a - b);
     const uLink = Array.from(new Set(linkCN)).sort((a, b) => a - b);
-    const nodeOK = uNode.length === 1 && uNode[0] === lit.node;
-    const linkOK = uLink.length === 1 && uLink[0] === lit.linker;
+    const rod = lit.node === null;
+    const nodeOK = rod ? null : uNode.length === 1 && uNode[0] === lit.node;
+    const linkOK = rod ? null : uLink.length === 1 && uLink[0] === lit.linker;
 
     document.getElementById('validation').innerHTML =
       '<table class="data-table"><thead><tr><td>Quantity</td><td>Computed</td><td>Published</td><td>Match</td></tr></thead><tbody>' +
-      row('Node coordination (' + lit.sbu + ')', uNode.join(', '), lit.node, nodeOK && mode === 'periodic') +
-      row('Linker coordination', uLink.join(', '), lit.linker, linkOK && mode === 'periodic') +
-      row('Underlying net', '—', lit.net, null) +
+      row('Node coordination (' + lit.sbu + ')', uNode.join(', '), rod ? 'none (infinite chain)' : lit.node, rod ? null : nodeOK && mode === 'periodic') +
+      row('Linker coordination', uLink.join(', '), rod ? '—' : lit.linker, rod ? null : linkOK && mode === 'periodic') +
+      row('Underlying net', '—', lit.net || '—', null) +
+      (rod ? '<tr><td class="dt-note" colspan="4">A rod MOF: the metal&ndash;oxide chain runs through the whole crystal, so there is no finite cluster and no single published coordination number. The decomposition cuts the chain into one segment per cell; each segment counts its linkers and its two neighbours along the chain.</td></tr>' : '') +
       '<tr><td class="dt-label">Blocks / edges</td><td class="dt-value">' + G.n + ' / ' + G.edges.length +
       '</td><td class="dt-note" colspan="2">' +
       (mode === 'naive'

@@ -36,6 +36,7 @@ results and their withdrawal are explained on the website pages
 | [`code_17_full_correct_band.py`](code_17_full_correct_band.py) | The band of all 77 hMOF and 61 CoRE MOF on the coarse-grained graph | `size_scaling/full_band_*_cg.json` |
 | [`code_18_subband_explain.py`](code_18_subband_explain.py) | Nine-category comparison of the classes | `size_scaling/subband_explain_*.json` |
 | [`code_19_spectrum_vs_shape.py`](code_19_spectrum_vs_shape.py) | Spectrum of finite MOF-5 particles (cube, slab, plate, rod) | `size_scaling/spectrum_vs_shape_*.json` |
+| [`code_20_diverse_set.py`](code_20_diverse_set.py) | Quotient graph and the finite-size sweep of Δα on twelve diverse MOFs (four cubic demonstration nets plus eight from `data/structures/general_lattice/`) | `size_scaling/diverse_set.json`, `diverse_set_figure.png` |
 
 Outputs go to [`data/spectrum_descriptors/size_scaling/`](../../data/spectrum_descriptors/size_scaling/);
 the structure sets are read from [`data/structures/`](../../data/structures/). Run each module from this folder.

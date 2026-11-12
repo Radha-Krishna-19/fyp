@@ -1,0 +1,654 @@
+{
+ "MOF-5": {
+  "file": "code/spectrum_pipeline/MOF5.cif",
+  "metal": "Zn",
+  "node": "Zn4O cluster",
+  "linker": "BDC (two-ended)",
+  "lattice": "cubic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 8,
+   "linker_blocks": 24,
+   "edges": 48,
+   "node_degrees": [
+    6
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 256,
+    "diameter": 12,
+    "width_mean": 1.6638489279240123,
+    "width_sd": 0.01909161977776184
+   },
+   {
+    "n": 3,
+    "cg_nodes": 864,
+    "diameter": 18,
+    "width_mean": 1.9632598465834512,
+    "width_sd": 0.03139971949601758
+   },
+   {
+    "n": 4,
+    "cg_nodes": 2048,
+    "diameter": 24,
+    "width_mean": 2.167182116341993,
+    "width_sd": 0.01662484784708683
+   },
+   {
+    "n": 6,
+    "cg_nodes": 6912,
+    "diameter": 36,
+    "width_mean": 2.4668848830486154,
+    "width_sd": 0.018192433042600688
+   },
+   {
+    "n": 8,
+    "cg_nodes": 16384,
+    "diameter": 48,
+    "width_mean": 2.6809183297941317,
+    "width_sd": 0.013540702341818395
+   }
+  ],
+  "fit": {
+   "slope": 0.732320061902436,
+   "intercept": -0.15618473302382854,
+   "r2": 0.999954056364383,
+   "drift_last_two": 0.07983586980881732
+  },
+  "seconds": 125.7
+ },
+ "HKUST-1": {
+  "file": "code/spectrum_pipeline/HKUST-1.cif",
+  "metal": "Cu",
+  "node": "Cu2 paddlewheel",
+  "linker": "BTC (three-ended)",
+  "lattice": "cubic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 6,
+   "linker_blocks": 8,
+   "edges": 24,
+   "node_degrees": [
+    4
+   ],
+   "linker_degrees": [
+    3
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 112,
+    "diameter": 8,
+    "width_mean": 1.3444936297315369,
+    "width_sd": 0.02472757771352897
+   },
+   {
+    "n": 3,
+    "cg_nodes": 378,
+    "diameter": 12,
+    "width_mean": 1.6665607016690938,
+    "width_sd": 0.01777661033473515
+   },
+   {
+    "n": 4,
+    "cg_nodes": 896,
+    "diameter": 16,
+    "width_mean": 1.910405120533131,
+    "width_sd": 0.015228540386452723
+   },
+   {
+    "n": 6,
+    "cg_nodes": 3024,
+    "diameter": 24,
+    "width_mean": 2.206453685119037,
+    "width_sd": 0.018351067576307212
+   },
+   {
+    "n": 8,
+    "cg_nodes": 7168,
+    "diameter": 32,
+    "width_mean": 2.429653589706843,
+    "width_sd": 0.0046870020683279475
+   }
+  ],
+  "fit": {
+   "slope": 0.7817443415933882,
+   "intercept": -0.2743574441566777,
+   "r2": 0.9994722833311472,
+   "drift_last_two": 0.09186490845171759
+  },
+  "seconds": 34.2
+ },
+ "UiO-66": {
+  "file": "code/spectrum_pipeline/UiO-66.cif",
+  "metal": "Zr",
+  "node": "Zr6 cluster",
+  "linker": "BDC",
+  "lattice": "cubic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 1,
+   "linker_blocks": 6,
+   "edges": 12,
+   "node_degrees": [
+    12
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 4,
+    "cg_nodes": 448,
+    "diameter": 8,
+    "width_mean": 2.2294026531480107,
+    "width_sd": 0.048179820641137204
+   },
+   {
+    "n": 6,
+    "cg_nodes": 1512,
+    "diameter": 12,
+    "width_mean": 2.5255123597578275,
+    "width_sd": 0.02915115667450239
+   },
+   {
+    "n": 8,
+    "cg_nodes": 3584,
+    "diameter": 16,
+    "width_mean": 2.7074116565071216,
+    "width_sd": 0.02287699348128011
+   }
+  ],
+  "fit": {
+   "slope": 0.69229092481752,
+   "intercept": 0.7943439426981709,
+   "r2": 0.998457284533009,
+   "drift_last_two": 0.06718568131747112
+  },
+  "seconds": 7.9
+ },
+ "ZIF-8": {
+  "file": "code/spectrum_pipeline/ZIF-8.cif",
+  "metal": "Zn",
+  "node": "single Zn atom",
+  "linker": "2-methylimidazolate",
+  "lattice": "cubic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 12,
+   "linker_blocks": 24,
+   "edges": 48,
+   "node_degrees": [
+    4
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 288,
+    "diameter": 12,
+    "width_mean": 1.4419365195954275,
+    "width_sd": 0.011055690830155184
+   },
+   {
+    "n": 3,
+    "cg_nodes": 972,
+    "diameter": 18,
+    "width_mean": 1.7926247079123623,
+    "width_sd": 0.017860414103042593
+   },
+   {
+    "n": 4,
+    "cg_nodes": 2304,
+    "diameter": 24,
+    "width_mean": 2.0592712739427674,
+    "width_sd": 0.002130074194687555
+   },
+   {
+    "n": 6,
+    "cg_nodes": 7776,
+    "diameter": 36,
+    "width_mean": 2.4172361668177964,
+    "width_sd": 0.012313949493739098
+   },
+   {
+    "n": 8,
+    "cg_nodes": 18432,
+    "diameter": 48,
+    "width_mean": 2.6652244959400875,
+    "width_sd": 0.01849058094306863
+   }
+  ],
+  "fit": {
+   "slope": 0.8859970590099313,
+   "intercept": -0.7613587988604015,
+   "r2": 0.999896652652467,
+   "drift_last_two": 0.09304594397209295
+  },
+  "seconds": 146.3
+ },
+ "ZIF-7": {
+  "file": "data/structures/general_lattice/ZIF-7.cif",
+  "metal": "Zn",
+  "node": "single Zn atom",
+  "linker": "benzimidazolate",
+  "lattice": "trigonal",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 18,
+   "linker_blocks": 36,
+   "edges": 72,
+   "node_degrees": [
+    4
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 432,
+    "diameter": 14,
+    "width_mean": 1.5794574302901339,
+    "width_sd": 0.010102623797427162
+   },
+   {
+    "n": 3,
+    "cg_nodes": 1458,
+    "diameter": 22,
+    "width_mean": 1.935457418915379,
+    "width_sd": 0.007459926737499922
+   },
+   {
+    "n": 4,
+    "cg_nodes": 3456,
+    "diameter": 30,
+    "width_mean": 2.180209546191302,
+    "width_sd": 0.005099857623309556
+   },
+   {
+    "n": 6,
+    "cg_nodes": 11664,
+    "diameter": 44,
+    "width_mean": 2.526932360488196,
+    "width_sd": 0.001112411778617027
+   }
+  ],
+  "fit": {
+   "slope": 0.8236129484211516,
+   "intercept": -0.6038263516416266,
+   "r2": 0.9986806759965623,
+   "drift_last_two": 0.1372109597068551
+  },
+  "seconds": 73.2
+ },
+ "MOF-177": {
+  "file": "data/structures/general_lattice/MOF-177.cif",
+  "metal": "Zn",
+  "node": "Zn4O cluster",
+  "linker": "BTB (three-ended, large)",
+  "lattice": "trigonal",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 8,
+   "linker_blocks": 16,
+   "edges": 48,
+   "node_degrees": [
+    6
+   ],
+   "linker_degrees": [
+    3
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 192,
+    "diameter": 8,
+    "width_mean": 1.4571841041532398,
+    "width_sd": 0.018927772535660196
+   },
+   {
+    "n": 3,
+    "cg_nodes": 648,
+    "diameter": 11,
+    "width_mean": 1.7712099932871688,
+    "width_sd": 0.020565795769689078
+   },
+   {
+    "n": 4,
+    "cg_nodes": 1536,
+    "diameter": 15,
+    "width_mean": 1.9777330018683952,
+    "width_sd": 0.02284886370880282
+   },
+   {
+    "n": 6,
+    "cg_nodes": 5184,
+    "diameter": 22,
+    "width_mean": 2.3135738951023037,
+    "width_sd": 0.020058141310740112
+   },
+   {
+    "n": 8,
+    "cg_nodes": 12288,
+    "diameter": 30,
+    "width_mean": 2.546900275538095,
+    "width_sd": 0.007799143073236918
+   }
+  ],
+  "fit": {
+   "slope": 0.8159348940250438,
+   "intercept": -0.21869034898198567,
+   "r2": 0.997425501004943,
+   "drift_last_two": 0.09161190278111511
+  },
+  "seconds": 61.8
+ },
+ "DMOF-1": {
+  "file": "data/structures/general_lattice/DMOF-1.cif",
+  "metal": "Zn",
+  "node": "Zn2 paddlewheel",
+  "linker": "BDC and DABCO pillar",
+  "lattice": "tetragonal",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 1,
+   "linker_blocks": 3,
+   "edges": 6,
+   "node_degrees": [
+    6
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 3,
+    "cg_nodes": 108,
+    "diameter": 8,
+    "width_mean": 1.4421554035853923,
+    "width_sd": 0.024268189390929923
+   },
+   {
+    "n": 4,
+    "cg_nodes": 256,
+    "diameter": 12,
+    "width_mean": 1.681766095508613,
+    "width_sd": 0.01972322180729486
+   },
+   {
+    "n": 6,
+    "cg_nodes": 864,
+    "diameter": 18,
+    "width_mean": 1.9515469084706407,
+    "width_sd": 0.021608877571934887
+   },
+   {
+    "n": 8,
+    "cg_nodes": 2048,
+    "diameter": 24,
+    "width_mean": 2.1704920688367344,
+    "width_sd": 0.013127352089677278
+   }
+  ],
+  "fit": {
+   "slope": 0.6607935208138819,
+   "intercept": 0.05497311362199862,
+   "r2": 0.9972774070236983,
+   "drift_last_two": 0.10087351320451328
+  },
+  "seconds": 6.7
+ },
+ "MIL-88A (open)": {
+  "file": "data/structures/general_lattice/MIL-88A-open.cif",
+  "metal": "Fe",
+  "node": "Fe3O trimer",
+  "linker": "fumarate",
+  "lattice": "hexagonal",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 2,
+   "linker_blocks": 6,
+   "edges": 12,
+   "node_degrees": [
+    6
+   ],
+   "linker_degrees": [
+    2
+   ],
+   "node_node_edges": 0,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 3,
+    "cg_nodes": 216,
+    "diameter": 8,
+    "width_mean": 1.7698427469340683,
+    "width_sd": 0.007971225509110325
+   },
+   {
+    "n": 4,
+    "cg_nodes": 512,
+    "diameter": 10,
+    "width_mean": 1.9807034987242769,
+    "width_sd": 0.020227795502478798
+   },
+   {
+    "n": 6,
+    "cg_nodes": 1728,
+    "diameter": 16,
+    "width_mean": 2.253811326570464,
+    "width_sd": 0.023704311425730613
+   },
+   {
+    "n": 8,
+    "cg_nodes": 4096,
+    "diameter": 22,
+    "width_mean": 2.409770231224646,
+    "width_sd": 0.01534547506904753
+   }
+  ],
+  "fit": {
+   "slope": 0.6190805511444664,
+   "intercept": 0.517810079858167,
+   "r2": 0.9855990298753168,
+   "drift_last_two": 0.06471940877737704
+  },
+  "seconds": 13.0
+ },
+ "Mg-MOF-74": {
+  "file": "data/structures/general_lattice/MgMOF-74.cif",
+  "metal": "Mg",
+  "node": "Mg-O chain (rod)",
+  "linker": "dobdc",
+  "lattice": "trigonal",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 6,
+   "linker_blocks": 9,
+   "edges": 42,
+   "node_degrees": [
+    8
+   ],
+   "linker_degrees": [
+    4
+   ],
+   "node_node_edges": 6,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 2,
+    "cg_nodes": 120,
+    "diameter": 8,
+    "width_mean": 1.0173570871350937,
+    "width_sd": 0.01851282907221052
+   },
+   {
+    "n": 3,
+    "cg_nodes": 405,
+    "diameter": 12,
+    "width_mean": 1.2824492044163722,
+    "width_sd": 0.033924585944499985
+   },
+   {
+    "n": 4,
+    "cg_nodes": 960,
+    "diameter": 16,
+    "width_mean": 1.4959581670637168,
+    "width_sd": 0.005469082798116921
+   },
+   {
+    "n": 6,
+    "cg_nodes": 3240,
+    "diameter": 24,
+    "width_mean": 1.8547970133826415,
+    "width_sd": 0.006593366545672569
+   },
+   {
+    "n": 8,
+    "cg_nodes": 7680,
+    "diameter": 32,
+    "width_mean": 2.0624870079684654,
+    "width_sd": 0.012236582215331781
+   }
+  ],
+  "fit": {
+   "slope": 0.7681554324535942,
+   "intercept": -0.6052645286928651,
+   "r2": 0.9967985985925619,
+   "drift_last_two": 0.1006988135117501
+  },
+  "seconds": 37.6
+ },
+ "MIL-53(Cr)": {
+  "file": "data/structures/general_lattice/MIL-53Cr-lt.cif",
+  "metal": "Cr",
+  "node": "Cr-OH chain (rod)",
+  "linker": "BDC",
+  "lattice": "monoclinic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 2,
+   "linker_blocks": 4,
+   "edges": 14,
+   "node_degrees": [
+    8
+   ],
+   "linker_degrees": [
+    3
+   ],
+   "node_node_edges": 2,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 4,
+    "cg_nodes": 384,
+    "diameter": 8,
+    "width_mean": 1.6104776674420453,
+    "width_sd": 0.032961923076425
+   },
+   {
+    "n": 6,
+    "cg_nodes": 1296,
+    "diameter": 12,
+    "width_mean": 1.9666450063757022,
+    "width_sd": 0.038886934446371986
+   },
+   {
+    "n": 8,
+    "cg_nodes": 3072,
+    "diameter": 16,
+    "width_mean": 2.2149465291272676,
+    "width_sd": 0.025849875156270612
+   }
+  ],
+  "fit": {
+   "slope": 0.8724811748483714,
+   "intercept": -0.20309004510499679,
+   "r2": 0.9999762729742094,
+   "drift_last_two": 0.11210271647027124
+  },
+  "seconds": 7.3
+ },
+ "MIL-47(V)": {
+  "file": "data/structures/general_lattice/MIL-47.cif",
+  "metal": "V",
+  "node": "V=O chain (rod)",
+  "linker": "BDC",
+  "lattice": "orthorhombic",
+  "graph": {
+   "atoms": null,
+   "node_blocks": 2,
+   "linker_blocks": 4,
+   "edges": 14,
+   "node_degrees": [
+    8
+   ],
+   "linker_degrees": [
+    3
+   ],
+   "node_node_edges": 2,
+   "components_n2": 1
+  },
+  "sweep": [
+   {
+    "n": 4,
+    "cg_nodes": 384,
+    "diameter": 8,
+    "width_mean": 1.6363006037495644,
+    "width_sd": 0.011825990584382558
+   },
+   {
+    "n": 6,
+    "cg_nodes": 1296,
+    "diameter": 12,
+    "width_mean": 1.9402290686789243,
+    "width_sd": 0.024237503072166634
+   },
+   {
+    "n": 8,
+    "cg_nodes": 3072,
+    "diameter": 16,
+    "width_mean": 2.2063460826003976,
+    "width_sd": 0.03533876339463053
+   }
+  ],
+  "fit": {
+   "slope": 0.8176221321956308,
+   "intercept": -0.07198874938052244,
+   "r2": 0.9964620235206834,
+   "drift_last_two": 0.1206143569316324
+  },
+  "seconds": 7.7
+ }
+}
