@@ -7,6 +7,12 @@ scipy>=1.10
 matplotlib>=3.7
 ase>=3.22
 spglib>=2.0
-# Optional: slab_options_check.py and the CHGNet notebooks (run in Google Colab with a GPU)
+# Optional: slab_options_check.py, the CHGNet scripts and notebooks, code/morphology/steps1_8_check and
+# morphology_map/modulator_caps.py (CHGNet runs on a CPU, slowly; the notebooks use a Colab GPU)
 # pymatgen>=2024.1
 # chgnet>=0.3
+# torch
+# Optional: morphology_map/series_test.py, condition_model.py, possible_morphs.py and the map page builder
+# pandas>=2.0
+# Optional: the notebook builders (make_notebook_spectrum_shape_relation.py)
+# nbformat>=5.0
