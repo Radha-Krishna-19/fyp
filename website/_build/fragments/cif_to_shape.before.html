@@ -8,7 +8,13 @@
   .c2s-work p{margin:5px 0}
   .c2s-py{font-size:13px;color:var(--muted);border-top:1px dashed var(--border);padding-top:6px;margin-top:10px}
   .c2s-cif{font-size:12px;overflow-x:auto;background:var(--surface-1) !important;color:var(--text) !important;padding:10px 12px;border:1px solid var(--border)}
-  .c2s-svg{width:100%;max-width:420px;height:auto;display:block;margin:6px auto;cursor:grab;touch-action:none}
+  .c2s-svg{width:100%;max-width:560px;height:auto;display:block;margin:6px auto;cursor:grab;touch-action:none;border-radius:6px}
+  .c2s-svg:active{cursor:grabbing}
+  .c2s-stage:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+  .c2s-viewbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:2px 0 8px}
+  .c2s-hint{color:var(--muted);margin-left:4px}
+  .c2s-legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--sans);font-size:13px;color:var(--text-3);margin:6px 0}
+  .c2s-legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-1px;font-style:normal}
   .c2s-flat{cursor:crosshair;max-width:400px}
   .c2s-ov{text-decoration:overline}
   .c2s-chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:4px 0 8px}
@@ -27,7 +33,7 @@
   .c2s-list li{margin:4px 0}
   .c2s-file{font-size:13px}
   #main code{overflow-wrap:anywhere}
-  @media print{.c2s-svg{cursor:default}#c2s-file-row,#c2s-grow-controls,.c2s-presets{display:none}}
+  @media print{.c2s-svg{cursor:default}#c2s-file-row,#c2s-grow-controls,.c2s-presets,.c2s-viewbar{display:none}}
 </style>
 
       <h2 class="section-title" id="c2s-intro" data-toc="What this page does">What This Page Does</h2>
@@ -122,10 +128,12 @@
       <div class="panel">
         <div class="toolbar" id="c2s-grow-controls"><button type="button" class="mode-btn" id="c2s-grow-play">Play</button>
           <input type="range" id="c2s-grow-slider" min="0" max="1" step="1" value="0" aria-label="cut number" style="flex:1;min-width:140px">
-          <span class="sm" id="c2s-grow-count"></span></div>
+          <span class="sm" id="c2s-grow-count"></span>
+          <label class="sm"><input type="checkbox" id="c2s-grow-cut" checked> show the cutting plane and the removed piece</label></div>
         <div id="c2s-grow-view"></div>
+        <div class="c2s-legend"><span><i style="background:var(--linker)"></i>{100}</span><span><i style="background:var(--node)"></i>{111}</span><span><i style="background:var(--node-ink)"></i>dark red: the second set of {111} faces, used only when the point group splits {111} in two (UiO-66, ZIF-8)</span><span><i style="background:var(--good)"></i>{110}</span><span><i style="background:var(--warn)"></i>the face this cut makes; dashed: the cutting plane and the piece it removes</span></div>
         <p id="c2s-grow-txt"></p>
-        <p class="sm">Face colours: blue {100}, red {111} (dark red: the second half {111}<sub>&minus;</sub> where the point group splits it), green {110}. Drag to rotate.</p>
+        <p class="sm">How to read it: the dashed line runs from the centre of the crystal to the plane, and its length is the plane's distance <i>R</i>. A plane cuts only if some corner of the current shape lies farther out than <i>R</i> in that direction. Each cut is first shown from the side it is made on. Drag the picture to turn it (or click it and use the arrow keys); after that the view stays where you leave it until you press Reset. The buttons look straight down the [100], [110] and [111] directions, where the cubic symmetry is easiest to see.</p>
       </div>
       <div class="c2s-live" id="c2s-s9"></div>
 
@@ -142,7 +150,7 @@
         <p>Sphericity: &Psi; = &pi;<sup>1/3</sup> (6<i>V</i>)<sup>2/3</sup> / <i>A</i>, the area of the sphere of the same volume divided by the actual area (1 for a sphere).</p>
       </div>
       <div class="c2s-two">
-        <figure class="fig"><div id="c2s-final-view"></div><figcaption>The finished BFDH shape for this file, with Miller indices on the front faces. Drag to rotate.</figcaption></figure>
+        <figure class="fig"><div id="c2s-final-view"></div><figcaption>The finished BFDH shape for this file, with Miller indices on the front faces. Drag or use the buttons to turn it.</figcaption></figure>
         <div class="c2s-live" id="c2s-s11"></div>
       </div>
 

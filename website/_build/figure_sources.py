@@ -82,6 +82,10 @@ FIGURE_SOURCES = {
     'figures/relation/02_predicted_crystal_shapes_MOF5.png': (SR + 'make_figures_spectrum_shape_relation.py', SR + 'results/02_predicted_crystal_shapes_MOF5.json (run_02)'),
     'figures/relation/03_core_mof_spectrum_vs_bfdh_shape.png': (SR + 'make_figures_spectrum_shape_relation.py', SR + 'results/03_core_mof_spectrum_vs_bfdh_shape.json (run_03)'),
     'figures/relation/04_dimension_profile_MOF5.png': (SR + 'make_figures_spectrum_shape_relation.py', SR + 'results/04_dimension_profile_MOF5.json (run_04)'),
+    # ---- morphology map (10 November) -----------------------------------------------------------
+    'figures/map/fig_map_regions.png': (MP + 'morphology_map/figures.py', MP + 'morphology_map/phase_grid.npz (phase_grid.py)'),
+    'figures/map/fig_map_models.png': (MP + 'morphology_map/figures.py', MP + 'morphology_map/model_points.json (model_points.py)'),
+    'figures/map/fig_conditions.png': (MP + 'morphology_map/figures.py', MP + 'morphology_map/series_results.json and dimension_along_map.json'),
 }
 
 GITHUB = 'https://github.com/Radha-Krishna-19/fyp/blob/main/'

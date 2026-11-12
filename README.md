@@ -114,7 +114,7 @@ whole spectrum–shape study in Google Colab and writes a run report.
 ```bash
 python website/_build/update_code_sources.py   # refresh the embedded source browser
 python website/_build/build_site.py            # rebuild every page from website/_build/
-cd website/tests && npm install && npm test     # 12 suites
+cd website/tests && npm install && npm test     # 13 suites
 ```
 
 The pages are built from `website/_build/content_source.html`, `website/_build/fragments/` and the

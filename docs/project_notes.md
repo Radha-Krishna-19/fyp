@@ -382,3 +382,12 @@ root README under "Future work".
 - Calibration is essential: a finite graph never reaches 1, 2, 3. Path (4001), square grid 121^2, cubic grid 41^3 give peaks 0.99, 1.83, 2.64 and d(r_half) 0.83, 1.40, 1.78. The first draft blamed linkers for d < 3; wrong, the cubic grid has none.
 - Findings: MOF-5 boxes of ~1000 cells, d(r_half): cube 1.80 (3D ref 1.78), slab 1.55, plate 1.41 (2D ref 1.40), rod 0.94 (1D ref 0.83). r_half/D at ~4000 / ~8000 blocks: cube and UFF Wulff 0.37/0.36, rhombic dodecahedron 0.44/0.44, blend 0.42/0.46, BFDH 0.51/0.51, CHGNet 0.54/0.52, octahedron 0.56/0.53; UFF < blend < BFDH by >= 3.6 seed sd at both sizes.
 - Claim limits: identifies a shape from a particle graph; predicts nothing about which shape grows. One MOF; centroid-inside rule; at most 2.5% of blocks detached at corners (largest piece used).
+
+## Morphology map and the steps 1–8 check (2026-11-10, added to the repository 2026-11-12)
+
+- Code: `code/morphology/morphology_map/` and `code/morphology/steps1_8_check/` (READMEs inside). Page: `website/morphology_map.html`, written by `website/_build/build_map_fragment.py` from the result files.
+- The cubic map: the Wulff shape of a crystal bounded by {100}, {110}, {111} depends only on x = γ110/γ100 and y = γ111/γ100. Cube y ≥ √3 and x ≥ √2; cuboctahedron the line y = 2/√3; octahedron y ≤ 1/√3 and x ≥ √(3/2)·y; rhombic dodecahedron x ≤ 1/√2 and y ≥ √(3/2)·x.
+- Quotable: all 6 lab series that change shape on the map move monotonically (joint chance 2.7e-4 if random; `series_results.json`). Leave-one-paper-out dominant face, 82 records, 25 papers: structure only (M2) 57 % overall, 86 % additive-free, 36 % with additive; additive as a label (M3) 15 % with additive (`condition_model_results.json`). r½/D monotone along both map axes, MOF-5, 3 seeds (`dimension_along_map.json`).
+- Steps 1–8 pipeline: ZIF-8 matches the lab in static and relaxed modes; HKUST-1 stops at a truncated octahedron; UiO-66 and Mg-MOF-74 do not match. Relaxation lowers γ by 60 % to almost 100 %, so face order is fragile until a DFT check. K3 and K11 fixed; K1, K2, K4–K10 open (`morphology_map.html#map-steps`). The HKUST-1 {111} relaxed value is in `results_full_fixed/one_face_HKUST-1_111.log`.
+- `modulator_caps.py` is a first, unrelaxed attempt; its UiO-66 numbers are not physical. Do not quote them as results.
+- `model_points.py` now also writes the exact shape and area fractions of each point (previously added by hand); rerunning it reproduces `model_points.json` exactly.

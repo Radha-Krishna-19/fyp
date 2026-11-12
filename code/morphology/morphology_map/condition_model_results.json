@@ -1,0 +1,121 @@
+{
+ "models": {
+  "M0": {
+   "accuracy": 0.427,
+   "ci95": [
+    0.284,
+    0.611
+   ],
+   "n": 82,
+   "acc_additive_free": 0.486,
+   "n_free": 35,
+   "acc_with_additive": 0.383,
+   "n_add": 47
+  },
+  "M1": {
+   "accuracy": 0.537,
+   "ci95": [
+    0.366,
+    0.718
+   ],
+   "n": 82,
+   "acc_additive_free": 0.886,
+   "n_free": 35,
+   "acc_with_additive": 0.277,
+   "n_add": 47
+  },
+  "M2": {
+   "accuracy": 0.573,
+   "ci95": [
+    0.398,
+    0.771
+   ],
+   "n": 82,
+   "acc_additive_free": 0.857,
+   "n_free": 35,
+   "acc_with_additive": 0.362,
+   "n_add": 47
+  },
+  "M3": {
+   "accuracy": 0.451,
+   "ci95": [
+    0.3,
+    0.62
+   ],
+   "n": 82,
+   "acc_additive_free": 0.857,
+   "n_free": 35,
+   "acc_with_additive": 0.149,
+   "n_add": 47
+  }
+ },
+ "n_sources": 25,
+ "category_face_table": {
+  "100": {
+   "C3_tricarboxylate": 2,
+   "anionic_surfactant": 2,
+   "base_or_buffer": 2,
+   "bent_dicarboxylate_or_terphenyl": 0,
+   "cationic_surfactant": 4,
+   "inorganic_salt": 2,
+   "monocarboxylic_acid_modulator": 6,
+   "none": 17
+  },
+  "110": {
+   "C3_tricarboxylate": 0,
+   "anionic_surfactant": 0,
+   "base_or_buffer": 3,
+   "bent_dicarboxylate_or_terphenyl": 7,
+   "cationic_surfactant": 1,
+   "inorganic_salt": 0,
+   "monocarboxylic_acid_modulator": 0,
+   "none": 11
+  },
+  "111": {
+   "C3_tricarboxylate": 3,
+   "anionic_surfactant": 1,
+   "base_or_buffer": 1,
+   "bent_dicarboxylate_or_terphenyl": 4,
+   "cationic_surfactant": 1,
+   "inorganic_salt": 1,
+   "monocarboxylic_acid_modulator": 7,
+   "none": 7
+  }
+ },
+ "additive_rules": [
+  [
+   "none",
+   "^\\s*$|^none|^nan$|lowest \\(or none\\)"
+  ],
+  [
+   "C3_tricarboxylate",
+   "btb|h3btb"
+  ],
+  [
+   "bent_dicarboxylate_or_terphenyl",
+   "terphenyl|quaterphenyl|biphenyl-3,4|^a6 or a7"
+  ],
+  [
+   "cationic_surfactant",
+   "ctab"
+  ],
+  [
+   "anionic_surfactant",
+   "sds|dodecyl sulfate|sdbs"
+  ],
+  [
+   "inorganic_salt",
+   "inorganic salt|nano3|nacl"
+  ],
+  [
+   "base_or_buffer",
+   "formate|tris|pyridine|sodium acetate"
+  ],
+  [
+   "monocarboxylic_acid_modulator",
+   "acetic|benzoic|formic|lauric|dodecanoic|chloroacetic|citric|hbr|hcl|oxalic|malonic|poly\\(acrylic"
+  ]
+ ],
+ "n_cubic_records": 113,
+ "n_on_map": 82
+}

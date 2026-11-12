@@ -68,34 +68,79 @@
     return 'var(--text3, #94a3b8)';
   }
 
-  // ---- 3D view (SVG, drag to rotate) --------------------------------------------
+  // ---- 3D view (SVG): trackball rotation, preset directions, shading -----------------
+  // The view holds a rotation matrix Q. Screen x = (Qp)[0], screen up = (Qp)[2], and (Qp)[1] < 0 points at the
+  // viewer. Dragging turns the crystal about the screen axes (a trackball), so a drag always moves the part of
+  // the crystal under the pointer in the direction of the drag, whatever the current orientation.
+  function mmul(A, B) { var C = [[0,0,0],[0,0,0],[0,0,0]]; for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) for (var k = 0; k < 3; k++) C[i][j] += A[i][k] * B[k][j]; return C; }
+  function rotZ(t) { var c = Math.cos(t), s = Math.sin(t); return [[c,-s,0],[s,c,0],[0,0,1]]; }
+  function rotX(t) { var c = Math.cos(t), s = Math.sin(t); return [[1,0,0],[0,c,-s],[0,s,c]]; }
+  function lookAlong(d) {
+    // rotation that sends unit vector d to (0,-1,0) (towards the viewer), keeping the crystal's z axis upright when possible
+    var n = la.scale(d, 1 / la.norm(d)), up = Math.abs(n[2]) > 0.95 ? [0, 1, 0] : [0, 0, 1];
+    var x = la.cross(up, n); x = la.scale(x, 1 / la.norm(x)); var z = la.cross(n, x);
+    return [x, la.scale(n, -1), z];               // rows: screen x, depth, screen up
+  }
   function View(host, opts) {
     opts = opts || {};
-    var v = { yaw: opts.yaw || 0.62, pitch: opts.pitch || 0.38, draw: null };
-    function rot(p) {
-      var cy = Math.cos(v.yaw), sy = Math.sin(v.yaw), cp = Math.cos(v.pitch), sp = Math.sin(v.pitch);
-      var x = cy * p[0] - sy * p[1], y = sy * p[0] + cy * p[1], z = p[2];
-      return [x, cp * y - sp * z, sp * y + cp * z];
+    var v = { draw: null, spin: null };
+    var Q0 = mmul(rotX(opts.pitch == null ? 0.38 : opts.pitch), rotZ(opts.yaw == null ? 0.62 : opts.yaw));
+    v.Q = Q0;
+    v.rot = function (p) { var Q = v.Q; return [Q[0][0]*p[0]+Q[0][1]*p[1]+Q[0][2]*p[2], Q[1][0]*p[0]+Q[1][1]*p[1]+Q[1][2]*p[2], Q[2][0]*p[0]+Q[2][1]*p[1]+Q[2][2]*p[2]]; };
+    v.userTurned = false;
+    function turn(dx, dy, auto) { if (!auto) v.userTurned = true; v.Q = mmul(rotX(dy), mmul(rotZ(dx), v.Q)); if (v.draw) v.draw(); }
+    v.turn = turn;
+    // controls under the picture, built once
+    var wrap = document.createElement('div'); wrap.className = 'c2s-view-wrap';
+    var stage = document.createElement('div'); stage.className = 'c2s-stage';
+    var bar = document.createElement('div'); bar.className = 'c2s-viewbar';
+    host.innerHTML = ''; wrap.appendChild(stage); wrap.appendChild(bar); host.appendChild(wrap);
+    function btn(label, title, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'mini'; b.textContent = label; b.title = title; b.addEventListener('click', fn); bar.appendChild(b); return b; }
+    btn('Reset', 'Back to the starting view', function () { stopSpin(); v.Q = Q0; v.userTurned = false; if (v.onReset) v.onReset(); if (v.draw) v.draw(); });
+    btn('Look along [100]', 'Look straight down a cube axis', function () { stopSpin(); v.Q = lookAlong([1, 0, 0]); if (v.draw) v.draw(); });
+    btn('[110]', 'Look along a face diagonal', function () { stopSpin(); v.Q = lookAlong([1, 1, 0]); if (v.draw) v.draw(); });
+    btn('[111]', 'Look along a body diagonal', function () { stopSpin(); v.Q = lookAlong([1, 1, 1]); if (v.draw) v.draw(); });
+    var spinBtn = btn('Turn slowly', 'Rotate continuously; click again or drag to stop', function () { if (v.spin) stopSpin(); else startSpin(); });
+    var hint = document.createElement('span'); hint.className = 'sm c2s-hint'; hint.textContent = 'Drag, or use the arrow keys after clicking the picture.'; bar.appendChild(hint);
+    function startSpin() {
+      var last = null;
+      function step(t) { if (!v.spin) return; if (last != null) turn((t - last) * 0.0006, 0, true); last = t; v.spin = requestAnimationFrame(step); }
+      v.spin = requestAnimationFrame(step); spinBtn.textContent = 'Stop';
     }
-    v.rot = rot;
+    function stopSpin() { if (v.spin) cancelAnimationFrame(v.spin); v.spin = null; spinBtn.textContent = 'Turn slowly'; }
+    // Pointer and key handling live on the stage, which persists, not on the SVG, which is replaced on
+    // every redraw: a handler on the SVG would lose the drag after the first frame.
+    var drag = null;
+    stage.style.touchAction = 'none';
+    stage.addEventListener('pointerdown', function (e) {
+      if (!e.target.closest || !e.target.closest('svg')) return;
+      stopSpin(); drag = [e.clientX, e.clientY];
+      try { stage.setPointerCapture(e.pointerId); } catch (x) {}
+      e.preventDefault();
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag[0], dy = e.clientY - drag[1]; drag = [e.clientX, e.clientY];
+      turn(dx * 0.012, dy * 0.012);
+    });
+    function endDrag() { drag = null; }
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+    stage.addEventListener('lostpointercapture', endDrag);
+    stage.addEventListener('keydown', function (e) {
+      var k = { ArrowLeft: [-0.12, 0], ArrowRight: [0.12, 0], ArrowUp: [0, -0.12], ArrowDown: [0, 0.12] }[e.key];
+      if (k) { e.preventDefault(); stopSpin(); turn(k[0], k[1]); }
+    });
+    stage.setAttribute('tabindex', '0');
+    stage.className = 'c2s-stage';
     v.svg = function (W, H, label) {
-      host.innerHTML = '';
+      stage.innerHTML = '';
       var s = document.createElementNS(SVGNS, 'svg');
       s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       s.setAttribute('role', 'img');
-      s.setAttribute('aria-label', label);
+      s.setAttribute('aria-label', label + '. Drag or use the arrow keys to rotate.');
       s.setAttribute('class', 'c2s-svg');
-      host.appendChild(s);
-      var drag = null;
-      s.addEventListener('pointerdown', function (e) { drag = [e.clientX, e.clientY]; try { s.setPointerCapture(e.pointerId); } catch (x) {} });
-      s.addEventListener('pointermove', function (e) {
-        if (!drag) return;
-        v.yaw += (e.clientX - drag[0]) * 0.01; v.pitch = Math.max(-1.4, Math.min(1.4, v.pitch + (e.clientY - drag[1]) * 0.01));
-        drag = [e.clientX, e.clientY];
-        if (v.draw) v.draw();
-      });
-      s.addEventListener('pointerup', function () { drag = null; });
-      s.addEventListener('pointercancel', function () { drag = null; });
+      stage.appendChild(s);
       return s;
     };
     return v;
@@ -106,31 +151,87 @@
     if (parent) parent.appendChild(e);
     return e;
   }
-  // a convex polytope: visible faces only (convexity means they never overlap)
+  // the part of a polygon on the far side of a plane (n.x >= d), by Sutherland-Hodgman clipping
+  function clipOutside(pts, n, d) {
+    var out = [];
+    for (var i = 0; i < pts.length; i++) {
+      var A = pts[i], B = pts[(i + 1) % pts.length], sA = la.dot(n, A) - d, sB = la.dot(n, B) - d;
+      if (sA >= -1e-12) out.push(A);
+      if ((sA >= -1e-12) !== (sB >= -1e-12)) out.push(la.add(A, la.scale(la.sub(B, A), sA / (sA - sB))));
+    }
+    return out;
+  }
+  var LIGHT = (function () { var l = [-0.45, -0.75, 0.5], n = Math.sqrt(l[0]*l[0]+l[1]*l[1]+l[2]*l[2]); return [l[0]/n, l[1]/n, l[2]/n]; })();
+  function edgesOf(faces) {
+    var E = [];
+    faces.forEach(function (f) { for (var i = 0; i < f.pts.length; i++) E.push([f.pts[i], f.pts[(i + 1) % f.pts.length]]); });
+    return E;
+  }
+  // A convex polytope: back faces are skipped (convexity means front faces never overlap). Optional extras:
+  //   opts.ghost  faces of the shape before this cut, drawn as a faint dashed outline: what is left outside the
+  //               new shape is exactly the piece the plane removed;
+  //   opts.plane  {n, d}: the cutting plane, drawn as a translucent sheet with the distance R marked on its normal.
   function drawShape(view, faces, opts) {
     opts = opts || {};
-    var W = 360, H = 320;
+    var W = 520, H = 430;
     var s = view.svg(W, H, opts.label || 'crystal shape');
     var Rm = opts.scale || 0;
     if (!Rm) faces.forEach(function (f) { f.pts.forEach(function (p) { Rm = Math.max(Rm, la.norm(p)); }); });
-    var k = 0.43 * Math.min(W, H) / (Rm || 1);
+    var k = 0.40 * Math.min(W, H) / (Rm || 1);
+    function P2(p) { return [W / 2 + k * p[0], H / 2 - k * p[2]]; }
+    function pts2(arr) { return arr.map(function (p) { var q = P2(p); return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' '); }
+    var plane = opts.plane, sheet = null;
+    if (plane) {
+      // a square of side 2.4 Rm in the plane, centred on the foot of the normal
+      var n0 = plane.n, foot = la.scale(n0, plane.d), a = Math.abs(n0[0]) < 0.9 ? [1, 0, 0] : [0, 1, 0];
+      var u = la.cross(n0, a); u = la.scale(u, 1 / la.norm(u)); var w = la.cross(n0, u), L = 0.85 * Rm;
+      sheet = [la.add(foot, la.add(la.scale(u, L), la.scale(w, L))), la.add(foot, la.add(la.scale(u, -L), la.scale(w, L))),
+               la.add(foot, la.add(la.scale(u, -L), la.scale(w, -L))), la.add(foot, la.add(la.scale(u, L), la.scale(w, -L)))].map(view.rot);
+      // the sheet behind the crystal is drawn now, in front of it after the faces
+      if (view.rot(n0)[1] > 0) node('polygon', { points: pts2(sheet), style: 'fill:var(--warn);fill-opacity:0.10;stroke:var(--warn);stroke-width:1;stroke-dasharray:6 4' }, s);
+    }
     faces.forEach(function (f) {
       var n = view.rot(f.n);
       if (n[1] > -1e-9) return;                              // facing away
       var pts = f.pts.map(view.rot);
-      var light = Math.max(0, -n[1] * 0.55 + n[2] * 0.45);
       var hi = opts.highlight && opts.highlight(f);
-      node('polygon', {
-        points: pts.map(function (p) { return (W / 2 + k * p[0]).toFixed(1) + ',' + (H / 2 - k * p[2]).toFixed(1); }).join(' '),
-        style: 'fill:' + (hi ? 'var(--warn, #d97706)' : colour(f.tag)) + ';fill-opacity:' + (0.35 + 0.55 * light).toFixed(2) +
-               ';stroke:var(--text);stroke-width:' + (hi ? 2.2 : 0.9) + ';stroke-linejoin:round'
-      }, s);
+      var lam = Math.max(0, n[0] * LIGHT[0] + n[1] * LIGHT[1] + n[2] * LIGHT[2]);
+      node('polygon', { points: pts2(pts), style: 'fill:' + (hi ? 'var(--warn)' : colour(f.tag)) + ';stroke:none' }, s);
+      // shading: darken faces turned away from the light, lighten those facing it
+      node('polygon', { points: pts2(pts), style: 'fill:#000;fill-opacity:' + (0.07 * (1 - lam)).toFixed(3) + ';stroke:none' }, s);
+      node('polygon', { points: pts2(pts), style: 'fill:#fff;fill-opacity:' + (0.18 * lam * lam).toFixed(3) +
+        ';stroke:var(--text);stroke-width:' + (hi ? 2.6 : 1.1) + ';stroke-linejoin:round' }, s);
       if (opts.labels && f.area > (opts.minLabelArea || 0)) {
         var c = pts.reduce(la.add, [0, 0, 0]);
         c = la.scale(c, 1 / pts.length);
         millerLabel(s, W / 2 + k * c[0], H / 2 - k * c[2] + 4, f.hkl);
       }
     });
+    // The piece the plane removed: the previous shape clipped to the far side of the plane (n.x >= R). It is
+    // drawn over the solid with a light fill and dashed edges, so it reads as a block sitting on the new face.
+    if (opts.ghost && plane) {
+      var piece = [];
+      opts.ghost.forEach(function (f) {
+        var q = clipOutside(f.pts, plane.n, plane.d);
+        if (q.length >= 3 && CS.polygonArea(q) > 1e-10) piece.push({ n: f.n, pts: q });
+      });
+      piece.forEach(function (f) {
+        var n = view.rot(f.n), front = n[1] < 0;
+        node('polygon', { points: pts2(f.pts.map(view.rot)), style: 'fill:var(--warn);fill-opacity:' + (front ? 0.22 : 0.08) +
+          ';stroke:var(--warn);stroke-width:' + (front ? 1.6 : 1) + ';stroke-dasharray:5 3;stroke-opacity:' + (front ? 1 : 0.5) }, s);
+      });
+    }
+    if (plane) {
+      if (view.rot(plane.n)[1] <= 0) node('polygon', { points: pts2(sheet), style: 'fill:var(--warn);fill-opacity:0.13;stroke:var(--warn);stroke-width:1;stroke-dasharray:6 4' }, s);
+      // the normal from the centre to the plane, with its length R
+      var o = P2([0, 0, 0]), f2 = P2(view.rot(la.scale(plane.n, plane.d)));
+      node('line', { x1: o[0].toFixed(1), y1: o[1].toFixed(1), x2: f2[0].toFixed(1), y2: f2[1].toFixed(1), style: 'stroke:var(--text);stroke-width:1.6;stroke-dasharray:3 3' }, s);
+      node('circle', { cx: o[0].toFixed(1), cy: o[1].toFixed(1), r: 3, style: 'fill:var(--text)' }, s);
+      node('circle', { cx: f2[0].toFixed(1), cy: f2[1].toFixed(1), r: 3.5, style: 'fill:var(--warn);stroke:var(--text);stroke-width:1' }, s);
+      var t = node('text', { x: ((o[0] + f2[0]) / 2 + 6).toFixed(1), y: ((o[1] + f2[1]) / 2 - 6).toFixed(1),
+        style: 'font-family:var(--font-ui, system-ui);font-size:13px;fill:var(--text);paint-order:stroke;stroke:var(--bg, #fff);stroke-width:3px' }, s);
+      t.textContent = 'R = ' + fx(plane.d, 3);
+    }
     return s;
   }
   // a Miller index label in SVG, with a drawn bar over each negative index
@@ -363,28 +464,60 @@
       var bounded = !sn.faces.some(function (f) { return f.tag === 'bound'; });
       if (!bounded || i < leadEnd) return;
       if (first < 0) { first = i; out.push({ i: i, plane: sn.plane, faces: sn.faces, first: true, before: i + 1 }); skipped = 0; return; }
-      if (sn.changed) { out.push({ i: i, plane: sn.plane, faces: sn.faces, skipped: skipped }); skipped = 0; } else skipped++;
+      if (sn.changed) { out.push({ i: i, plane: sn.plane, faces: sn.faces, prev: S.snapshots[i - 1].faces, skipped: skipped }); skipped = 0; } else skipped++;
     });
     out.after = skipped;
     return out;
+  }
+  // Name a shape only when every face family it shows is complete; a half-built shape is described by its
+  // face counts instead (a partly cut octahedron is not yet a cuboctahedron, whatever its proportions).
+  function frameName(R, faces) {
+    var have = {}, full = {};
+    faces.forEach(function (x) { have[x.tag] = (have[x.tag] || 0) + 1; });
+    R.shape.planes.forEach(function (p) { full[p.tag] = (full[p.tag] || 0) + 1; });
+    var partial = Object.keys(have).filter(function (t) { return have[t] < full[t]; });
+    if (!partial.length) {
+      return M ? M.name({ faces: faces.map(function (x) { return { tag: x.tag, poly: x.pts, area: CS.polygonArea(x.pts) }; }), V: uniq(faces) }) : '';
+    }
+    return 'not finished yet: ' + Object.keys(have).map(function (t) {
+      return have[t] + (have[t] < full[t] ? ' of the ' + full[t] : '') + ' ' + famLabel(t) + ' faces';
+    }).join(', ');
+  }
+  function hMax(faces, n) {           // support function: how far the shape reaches along n
+    var h = -Infinity;
+    faces.forEach(function (f) { f.pts.forEach(function (p) { h = Math.max(h, la.dot(p, n)); }); });
+    return h;
   }
   function drawFrame(R) {
     var Fs = R.frames, k = Math.max(0, Math.min(state.frame, Fs.length - 1)), f = Fs[k];
     var sc = 0; R.shape.faces.forEach(function (x) { x.pts.forEach(function (p) { sc = Math.max(sc, la.norm(p)); }); });
     Fs.forEach(function (fr0) { fr0.faces.forEach(function (x) { x.pts.forEach(function (p) { sc = Math.max(sc, la.norm(p)); }); }); });
+    var showCut = !f.first && state.showCut !== false;
+    // Until the reader turns the picture, each cut is shown from the side it is made on: the view looks along
+    // the plane's normal, tilted so the plane is seen at an angle and the removed piece stands out.
+    if (!growView.userTurned) {
+      var d = f.first ? [1, 0.75, 0.55] : la.add(f.plane.n, (Math.abs(f.plane.n[2]) > 0.9 ? [0.7, 0.45, 0] : [0, 0, 0.85]));
+      growView.Q = lookAlong(la.add(d, [0.35, 0.2, 0.25]));
+    }
     growView.draw = function () {
       drawShape(growView, f.faces, { scale: sc, label: 'the shape after ' + (f.i + 1) + ' planes',
+        ghost: showCut ? f.prev : null, plane: showCut ? f.plane : null,
         highlight: function (x) { return !f.first && x.hkl && x.hkl.join() === f.plane.hkl.join() && x.tag === f.plane.tag; } });
     };
     growView.draw();
-    var nm = M ? M.name({ faces: f.faces.map(function (x) { return { tag: x.tag, poly: x.pts, area: CS.polygonArea(x.pts) }; }), V: uniq(f.faces) }) : '';
+    var nm = frameName(R, f.faces);
     var txt;
     if (f.first) {
       var fam = f.plane.family;
-      txt = '<b>Start.</b> The ' + f.before + ' planes ' + (f.before === fam.multiplicity ? 'of the nearest family, ' : 'up to and including the nearest family, ') + famLabel(fam.label) + ' at <i>R</i> = ' + fx(fam.R, 4) + ', already enclose a closed shape: <b>' + nm + '</b>, ' + f.faces.length + ' faces.';
+      txt = '<b>Start.</b> The ' + f.before + ' planes ' + (f.before === fam.multiplicity ? 'of the nearest family, ' : 'up to and including the nearest family, ') + famLabel(fam.label) + ' at <i>R</i> = ' + fx(fam.R, 4) +
+        ', already enclose a closed shape: <b>' + nm + '</b>, ' + f.faces.length + ' faces. Every later plane can only cut this shape smaller, never make it bigger.';
     } else {
-      txt = '<b>Cut ' + k + '.</b> Plane ' + hkl(f.plane.hkl) + ' of ' + famLabel(f.plane.tag) + ', at distance <i>R</i> = ' + fx(f.plane.d, 4) + ', slices off a corner: the new face is outlined in orange. ' +
-        (f.skipped ? f.skipped + ' plane' + (f.skipped > 1 ? 's' : '') + ' before it missed the shape and changed nothing. ' : '') + 'Now: <b>' + nm + '</b>, ' + f.faces.length + ' faces.';
+      var h = hMax(f.prev, f.plane.n), depth = h - f.plane.d;
+      txt = '<b>Cut ' + k + '.</b> Plane ' + hkl(f.plane.hkl) + ' of ' + famLabel(f.plane.tag) + ' sits at distance <i>R</i> = ' + fx(f.plane.d, 4) + ' from the centre (dashed line). ' +
+        '<b>Why it cuts:</b> before this cut, the shape reached out to <i>h</i> = ' + fx(h, 4) + ' in this direction (its farthest corner). Since <i>R</i> = ' + fx(f.plane.d, 4) + ' &lt; <i>h</i>, ' +
+        'the plane passes through the shape, and the piece beyond it (dashed orange, ' + fx(depth, 4) + ' deep) is removed. The new face is filled orange. ' +
+        (f.skipped ? f.skipped + ' plane' + (f.skipped > 1 ? 's' : '') + ' before it had <i>R</i> &ge; <i>h</i>, so ' + (f.skipped > 1 ? 'they' : 'it') + ' missed the shape and changed nothing. ' : '') +
+        'Now: <b>' + nm + '</b>, ' + f.faces.length + ' faces.';
     }
     if (k === Fs.length - 1) txt += ' The remaining <b>' + Fs.after + '</b> planes all lie outside this shape (Step 10 shows by how much), so this is the final crystal.';
     set('c2s-grow-txt', txt);
@@ -529,7 +662,7 @@
       E.forEach(function (e) {
         var p = P(e[0]), q = P(e[1]);
         node('line', { x1: p[0].toFixed(1), y1: p[1].toFixed(1), x2: q[0].toFixed(1), y2: q[1].toFixed(1),
-          style: e[2] === 'cube' ? 'stroke:var(--linker);stroke-width:1.4' : 'stroke:var(--warn, #d97706);stroke-width:1.6;stroke-dasharray:5 3' }, s);
+          style: e[2] === 'cube' ? 'stroke:var(--linker);stroke-width:1.4' : 'stroke:var(--warn);stroke-width:1.6;stroke-dasharray:5 3' }, s);
       });
     };
     cellView.draw();
@@ -612,7 +745,7 @@
         tb.textContent = 'BFDH ' + state.name;
       }
     }
-    node('circle', { cx: X(mapState.x), cy: Y(mapState.y), r: 6, style: 'fill:var(--warn, #d97706);stroke:var(--surface-0);stroke-width:2' }, svg);
+    node('circle', { cx: X(mapState.x), cy: Y(mapState.y), r: 6, style: 'fill:var(--warn);stroke:var(--surface-0);stroke-width:2' }, svg);
     function pick(e) {
       var rc = svg.getBoundingClientRect(), sx = (e.clientX - rc.left) / rc.width * W, sy = (e.clientY - rc.top) / rc.height * H;
       mapState.x = Math.max(x0, Math.min(x1, x0 + (sx - padL) / (W - padL - padR) * (x1 - x0)));
@@ -700,6 +833,8 @@
         latticePicture(state.R, w);
       });
     });
+    var cut = el('c2s-grow-cut');
+    if (cut) cut.addEventListener('change', function () { state.showCut = cut.checked; drawFrame(state.R); });
     var sl = el('c2s-grow-slider');
     if (sl) sl.addEventListener('input', function () { state.frame = +sl.value; drawFrame(state.R); });
     var play = el('c2s-grow-play');
@@ -711,7 +846,7 @@
       state.timer = setInterval(function () {
         if (state.frame >= state.R.frames.length - 1) { clearInterval(state.timer); state.timer = null; play.textContent = 'Play'; return; }
         state.frame++; drawFrame(state.R);
-      }, 900);
+      }, 1800);
     });
     [['c2s-preset-bfdh', null], ['c2s-preset-cube', [2, 2]], ['c2s-preset-oct', [2, 0.45]], ['c2s-preset-rd', [0.55, 2]], ['c2s-preset-cubo', [2, 2 / Math.sqrt(3)]]].forEach(function (p) {
       var b = el(p[0]);

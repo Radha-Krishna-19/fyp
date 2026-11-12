@@ -1,0 +1,196 @@
+{
+ "MOF-5": {
+  "baseline_source": "UFF Wulff",
+  "baseline": "cube",
+  "paths": {
+   "100": [
+    "cube"
+   ],
+   "110": [
+    "cube",
+    "cube_truncated_edges",
+    "truncated_rhombic_dodecahedron",
+    "rhombic_dodecahedron"
+   ],
+   "111": [
+    "cube",
+    "truncated_cube",
+    "cuboctahedron",
+    "truncated_octahedron",
+    "octahedron"
+   ]
+  },
+  "generated": [
+   "cube",
+   "cube_truncated_edges",
+   "cuboctahedron",
+   "octahedron",
+   "rhombic_dodecahedron",
+   "truncated_cube",
+   "truncated_octahedron",
+   "truncated_rhombic_dodecahedron"
+  ],
+  "lab_on_map": [
+   "cube",
+   "cuboctahedron",
+   "octahedron",
+   "rhombic_dodecahedron"
+  ],
+  "lab_covered": [
+   "cube",
+   "cuboctahedron",
+   "octahedron",
+   "rhombic_dodecahedron"
+  ],
+  "lab_off_map": [
+   "other"
+  ]
+ },
+ "HKUST-1": {
+  "baseline_source": "Kshitij CHGNet, static",
+  "baseline": "truncated_octahedron",
+  "paths": {
+   "100": [
+    "truncated_octahedron",
+    "cuboctahedron",
+    "truncated_cube",
+    "cube"
+   ],
+   "110": [
+    "truncated_octahedron",
+    "all_three_families",
+    "rd_truncated_by_111",
+    "rhombic_dodecahedron"
+   ],
+   "111": [
+    "truncated_octahedron",
+    "octahedron"
+   ]
+  },
+  "generated": [
+   "all_three_families",
+   "cube",
+   "cuboctahedron",
+   "octahedron",
+   "rd_truncated_by_111",
+   "rhombic_dodecahedron",
+   "truncated_cube",
+   "truncated_octahedron"
+  ],
+  "lab_on_map": [
+   "cube",
+   "cuboctahedron",
+   "octahedron"
+  ],
+  "lab_covered": [
+   "cube",
+   "cuboctahedron",
+   "octahedron"
+  ],
+  "lab_off_map": [
+   "bipyramid",
+   "irregular",
+   "plate",
+   "rod"
+  ]
+ },
+ "UiO-66": {
+  "baseline_source": "Kshitij CHGNet, static",
+  "baseline": "truncated_octahedron",
+  "paths": {
+   "100": [
+    "truncated_octahedron",
+    "cuboctahedron",
+    "truncated_cube",
+    "cube"
+   ],
+   "110": [
+    "truncated_octahedron",
+    "all_three_families",
+    "rd_truncated_by_111",
+    "rhombic_dodecahedron"
+   ],
+   "111": [
+    "truncated_octahedron",
+    "octahedron"
+   ]
+  },
+  "generated": [
+   "all_three_families",
+   "cube",
+   "cuboctahedron",
+   "octahedron",
+   "rd_truncated_by_111",
+   "rhombic_dodecahedron",
+   "truncated_cube",
+   "truncated_octahedron"
+  ],
+  "lab_on_map": [
+   "cube",
+   "cuboctahedron",
+   "octahedron"
+  ],
+  "lab_covered": [
+   "cube",
+   "cuboctahedron",
+   "octahedron"
+  ],
+  "lab_off_map": [
+   "intergrown",
+   "irregular",
+   "needle",
+   "sphere"
+  ]
+ },
+ "ZIF-8": {
+  "baseline_source": "Kshitij CHGNet, static",
+  "baseline": "truncated_rhombic_dodecahedron",
+  "paths": {
+   "100": [
+    "truncated_rhombic_dodecahedron",
+    "cube_truncated_edges",
+    "cube"
+   ],
+   "110": [
+    "truncated_rhombic_dodecahedron",
+    "rhombic_dodecahedron"
+   ],
+   "111": [
+    "truncated_rhombic_dodecahedron",
+    "all_three_families",
+    "truncated_octahedron",
+    "octahedron"
+   ]
+  },
+  "generated": [
+   "all_three_families",
+   "cube",
+   "cube_truncated_edges",
+   "octahedron",
+   "rhombic_dodecahedron",
+   "truncated_octahedron",
+   "truncated_rhombic_dodecahedron"
+  ],
+  "lab_on_map": [
+   "cube",
+   "cube_truncated_edges",
+   "octahedron",
+   "rhombic_dodecahedron",
+   "truncated_cube",
+   "truncated_rhombic_dodecahedron"
+  ],
+  "lab_covered": [
+   "cube",
+   "cube_truncated_edges",
+   "octahedron",
+   "rhombic_dodecahedron",
+   "truncated_rhombic_dodecahedron"
+  ],
+  "lab_off_map": [
+   "other",
+   "plate",
+   "rod",
+   "sphere"
+  ]
+ }
+}

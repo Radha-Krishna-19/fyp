@@ -1,0 +1,129 @@
+{
+ "{100}-{111}": {
+  "points": [
+   {
+    "ratio": 0.5,
+    "shape": "octahedron",
+    "blocks": 4266,
+    "diameter": 36,
+    "r_half_over_D": 0.5648,
+    "sd": 0.016,
+    "d_at_r_half": 1.899
+   },
+   {
+    "ratio": 0.65,
+    "shape": "truncated_octahedron",
+    "blocks": 4242,
+    "diameter": 36,
+    "r_half_over_D": 0.5648,
+    "sd": 0.016,
+    "d_at_r_half": 1.858
+   },
+   {
+    "ratio": 0.8,
+    "shape": "truncated_octahedron",
+    "blocks": 4080,
+    "diameter": 36,
+    "r_half_over_D": 0.5556,
+    "sd": 0.0,
+    "d_at_r_half": 1.823
+   },
+   {
+    "ratio": 0.95,
+    "shape": "truncated_octahedron",
+    "blocks": 4068,
+    "diameter": 38,
+    "r_half_over_D": 0.5088,
+    "sd": 0.0152,
+    "d_at_r_half": 1.771
+   },
+   {
+    "ratio": 1.1547,
+    "shape": "cuboctahedron",
+    "blocks": 4700,
+    "diameter": 42,
+    "r_half_over_D": 0.4841,
+    "sd": 0.0137,
+    "d_at_r_half": 1.805
+   },
+   {
+    "ratio": 1.35,
+    "shape": "truncated_cube",
+    "blocks": 4028,
+    "diameter": 46,
+    "r_half_over_D": 0.4233,
+    "sd": 0.0109,
+    "d_at_r_half": 1.737
+   },
+   {
+    "ratio": 1.55,
+    "shape": "truncated_cube",
+    "blocks": 4268,
+    "diameter": 52,
+    "r_half_over_D": 0.3846,
+    "sd": 0.0,
+    "d_at_r_half": 1.77
+   },
+   {
+    "ratio": 1.8,
+    "shape": "cube",
+    "blocks": 4000,
+    "diameter": 54,
+    "r_half_over_D": 0.3647,
+    "sd": 0.006,
+    "d_at_r_half": 1.737
+   }
+  ],
+  "monotone": true
+ },
+ "{100}-{110}": {
+  "points": [
+   {
+    "ratio": 0.6,
+    "shape": "rhombic_dodecahedron",
+    "blocks": 4186,
+    "diameter": 46,
+    "r_half_over_D": 0.4446,
+    "sd": 0.0099,
+    "d_at_r_half": 1.825
+   },
+   {
+    "ratio": 0.8,
+    "shape": "truncated_rhombic_dodecahedron",
+    "blocks": 4146,
+    "diameter": 46,
+    "r_half_over_D": 0.4294,
+    "sd": 0.0093,
+    "d_at_r_half": 1.85
+   },
+   {
+    "ratio": 1.0,
+    "shape": "truncated_rhombic_dodecahedron",
+    "blocks": 4088,
+    "diameter": 46,
+    "r_half_over_D": 0.4192,
+    "sd": 0.0053,
+    "d_at_r_half": 1.794
+   },
+   {
+    "ratio": 1.2,
+    "shape": "cube_truncated_edges",
+    "blocks": 4084,
+    "diameter": 54,
+    "r_half_over_D": 0.3762,
+    "sd": 0.0214,
+    "d_at_r_half": 1.76
+   },
+   {
+    "ratio": 1.45,
+    "shape": "cube",
+    "blocks": 4000,
+    "diameter": 54,
+    "r_half_over_D": 0.3647,
+    "sd": 0.006,
+    "d_at_r_half": 1.737
+   }
+  ],
+  "monotone": true
+ }
+}

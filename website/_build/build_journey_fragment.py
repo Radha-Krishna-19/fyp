@@ -136,16 +136,37 @@ STAGES = [
   fix='Reference lattices were added to the calculation, and particles are compared with them rather than with the ideal 1, 2 and 3.',
   why=[('Why calibrate on lattices of known dimension?', 'On a finite graph d(r) never reaches its ideal value; only a reference computed the same way shows what a 1D, 2D or 3D object gives at that size.'),
        ('Does this predict crystal shape?', 'No. It identifies a shape from a particle graph; which shape a MOF grows still comes from the morphology models.')]),
+ dict(id='j13', purpose="After the guide's question, two teammates proposed the next phase: Kshitij a CIF-to-Wulff pipeline with whole-block slabs, water capping and a DFT plan (steps 1&ndash;8), and Keerthi a model in which shape classes are regions of a space and growth conditions move a crystal through them (steps 9&ndash;10). Before building on either, we checked whether they work and whether they fit the earlier work.", title='Stage 13. Checking the new pipeline and building the morphology map', when='10 November 2026',
+  read='The Gibbs adsorption equation and the Langmuir surface (how an additive lowers the energy of the face it binds); the controlled synthesis series in our own dataset (Umemura 2011, Liu 2016, Wu 2020, Suresh 2021, Zhang 2018, Cravillon 2012).',
+  did='Ran Kshitij\'s notebook unchanged on ZIF-8, HKUST-1, UiO-66 and Mg-MOF-74 in quick (static) and full (relaxed) modes, read its module line by line and wrote a check for each problem found. Made Keerthi\'s idea exact for cubic crystals: the Wulff shape depends only on two energy ratios, so every shape has a region on one map with closed-form boundaries. Placed every model of the project on the map, tested the map against the laboratory series, generated the possible morphologies of each CIF, and measured the dimension profile along the map.',
+  code='<code>code/morphology/steps1_8_check/</code> (runner, checks, fixed module) and <code>code/morphology/morphology_map/</code> (<code>cubic_wulff.py</code>, <code>phase_grid.py</code>, <code>model_points.py</code>, <code>series_test.py</code>, <code>condition_model.py</code>, <code>modulator_caps.py</code>, <code>possible_morphs.py</code>, <code>dimension_along_map.py</code>).',
+  out='All six laboratory series that change shape on the map move one way along one axis (chance 2.7 &times; 10<sup>&minus;4</sup> if the orders were random); a model that uses the additive only as a label does worse than ignoring it; r&frac12;/D changes monotonically along both axes; ZIF-8 agrees with the lab in both modes of the new pipeline, HKUST-1 stops at a truncated octahedron (<a href="morphology_map.html">The morphology map</a>).',
+  mistakes=[('In Kshitij\'s module (K1&ndash;K11): the most serious, K11, re-orients the relaxed cell so faces are converted to the wrong planes; K1 names every shape with y from 0.87 to 1.20 a cuboctahedron; K2 splits the Mg&ndash;O rod of Mg-MOF-74 into single-metal nodes.', None),
+            ('Our own: two runs were killed for memory because a second CHGNet job was started beside them; the first possible-morphology paths skipped the cuboctahedron because it is a single line on the map and was crossed, not sampled.', None)],
+  fix='K3 and K11 fixed with one line each (<code>kshitij_k11fix/mofwulff.py</code>); K1, K2, K4&ndash;K10 listed for Kshitij with a script that shows each. Heavy jobs now run one at a time; a crossing of y = 2/&radic;3 is recorded as a cuboctahedron.',
+  why=[('Why a map instead of a list of shape names?', 'A name hides how close a prediction is to the next shape and in which direction a condition moves it; the map shows both and makes the order of shapes testable.'),
+       ('Why not train a model on the dataset?', 'About 80 usable records with doses in incompatible units are enough to test a method, not to train one; a label-only model already did worse than the structure alone.')]),
+ dict(id='j14', purpose="The guide asked to see every step from a CIF to a shape, and the record had to be usable by anyone in the team on any computer.", title='Stage 14. Every step shown, and a record anyone can run', when='11&ndash;12 November 2026',
+  read='No new papers.',
+  did='Built the page From a CIF to a shape: the browser reads any CIF and shows the lattice, the centring and point group found from the atoms, the structure factors, the BFDH distances, the shape cut plane by plane (with the plane, its distance and the removed piece drawn for every cut) and the map. Made every analysis script independent of the folder it is started from, added a Phase 1 / Phase 2 map of the repository and a README in every folder.',
+  code='<code>code/morphology/run_cif_to_shape.py</code> (Python reference), <code>website/mof_cif_shape.js</code> and <code>cif_shape_page.js</code> (browser), <code>website/tests/test_cif_to_shape.js</code>; <code>PROJECT_MAP.md</code>.',
+  out='The browser and Python agree on every number for the four MOFs; 13 of 13 website test suites and every Python test pass when started from another folder.',
+  mistakes=[('Five Phase 1 analysis scripts (<code>code_13</code>&ndash;<code>code_17</code>) read and wrote paths relative to the folder they were started from, so they failed or wrote to the wrong place when run from elsewhere.', None),
+            ('The step-by-step view named half-built shapes by their proportions, so an octahedron with two corners cut was called a cuboctahedron.', None)],
+  fix='Paths are now taken from each script\'s own location. A half-built shape is described by its face counts and named only when every family is complete.',
+  why=[]),
 ]
 
 OPEN = [
- ('DFT check of MOF-5 and UiO-66 face energies', 'Kshitij', 'Decides between UFF and CHGNet, which disagree for these two MOFs.'),
- ('ZIF-8 CHGNet run', 'Rohith', 'The notebook does not find ZIF-8\'s symmetry with hydrogens; needs a CIF or code fix first.'),
+ ('DFT check of six CHGNet slabs: MOF-5 and UiO-66, where UFF and CHGNet disagree, and HKUST-1 as a control', 'Kshitij (HPC time through the guide)', 'The only discriminating case between the force field and the machine-learned energies; relaxed water-capped energies are close to zero, so no face order is safe without it.'),
+ ('Fix K1, K2 and K4 in the steps 1&ndash;8 module and rerun it relaxed on a Colab GPU', 'Kshitij', 'Relaxed energies for every face of the four MOFs; K2 decides whether the Mg-MOF-74 rod can appear at all.'),
+ ('One dose unit for every additive in the dataset; mark each controlled series', 'Keerthi, Rohith', 'Without it no model of conditions can be compared across papers.'),
+ ('Model of conditions on the map: additive binding energy per face and dose, scored leave one paper out against the structure-only model', 'Keerthi', 'The only route to additive-grown shapes; it must beat the structure alone on records with additives.'),
+ ('More MOFs with known crystal shapes (IRMOF-3, IRMOF-8, SNU-70 and others in the dataset), and the structure-only pipeline on all 138 CIFs as unvalidated predictions', 'Rohith, Radha', 'Four MOFs cannot rank methods.'),
  ('Choose the hybrid weight on some MOFs and test it on others', 'Radha', 'Only then can the blend be called better or worse than either method.'),
- ('More MOFs with known crystal shapes', 'Rohith, Radha', 'Four MOFs cannot rank methods.'),
- ('Solvent, modulator and temperature in the energies', 'Isha', 'Real shapes depend on them; no model here contains them.'),
- ('Spectrum of the deformed-cell plates and rods', 'Radha', 'The one place where the spectrum did respond to shape.'),
- ('One reproducible notebook per topic', 'Radha', 'Every result already has a script; notebooks make each one runnable in one place.'),
+ ('r&frac12;/D with five seeds and on each MOF\'s own net; non-cubic map for Mg-MOF-74 after K2', 'Radha, team', 'Tests whether the graph read-out generalises beyond the MOF-5 net.'),
+ ('One computed link to adsorption: exposed pore windows or diffusion length per predicted shape', 'Team', 'Connects the shape work to the original aim of selectivity and capacity.'),
+ ('Final paper on the morphology work and the spectrum&ndash;shape link', 'Team', 'The project\'s main written output.'),
 ]
 
 UNUSED = [
@@ -182,6 +203,7 @@ NOTEBOOKS = [
  ('<code>notebooks/morphograph_mof/MorphoGraph_MOF_colab_4MOFs.ipynb</code> (Rohith)', 'The same science with the prompts replaced by settings, so the four MOFs run unattended on a GPU', 'The three result folders used on the Experiment page', 'Run; ZIF-8 missing'),
  ('<code>notebooks/morphograph_mof/MorphoGraph_MOF_colab_symmetric_slabs.ipynb</code>', 'Test whether symmetric slabs give individual face energies', 'Nothing yet', 'Written, not run; a dry run showed the symmetric slabs are high-energy, so it is optional'),
  ('<code>code/spectrum_shape_relation/Spectrum_Shape_Relation.ipynb</code>', 'Test whether the first-half spectrum is related to the second-half shapes', 'The three results on the Spectrum &harr; Shape page', 'Run by Radha Krishna, 15/15 checks passed'),
+ ('<code>MOF_Wulff_steps1-8.ipynb</code> (Kshitij, Google Colab)', 'CIF to Wulff shape with whole-block slabs, water-capped bonds and a DFT plan', 'Face energies and shapes; checked outside Colab in <code>code/morphology/steps1_8_check/</code>', 'Run and checked; K3 and K11 fixed, K1, K2, K4&ndash;K10 open'),
 ]
 
 # ---- Defending the key decisions: (decision, purpose, likely objection, answer) -------------------------
@@ -217,7 +239,7 @@ def stage_html(st):
 def main():
     parts = ['''      <h2 class="section-title" id="j0" data-toc="How to read this page"><span class="stitle-num">0</span>How to Read This Page</h2>
       <dl class="bridge"><dt>You know</dt><dd>Nothing yet. This page is the shortest route through the whole project.</dd><dt>This page</dt><dd>Follows the work in the order it happened: the papers we read, what we built from them, which code and notebooks produced which results, every mistake found on the way and how it was corrected, and why each method was chosen over the alternatives.</dd><dt>Which lets us</dt><dd>See how each result depends on the ones before it, and answer "why did you do it this way?" for every step.</dd></dl>
-      <p class="sd">The project has two halves. The <b>first half</b> (Stages 1&ndash;4) asked whether a number computed from a MOF\'s connectivity can rank MOFs. After Panel Review 1 the <b>second half</b> (Stages 5&ndash;9) answers the panel\'s question about crystal shapes. Stage 10 joins the two. Reference numbers in square brackets point to the <a href="references.html">References</a> page; every mistake links to its full entry on the <a href="lessons.html">Mistakes</a> page.</p>
+      <p class="sd">The project has two halves. The <b>first half</b> (Stages 1&ndash;4) asked whether a number computed from a MOF\'s connectivity can rank MOFs. After Panel Review 1 the <b>second half</b> (Stages 5&ndash;9 and 13) answers the panel\'s question about crystal shapes. Stages 10 and 12 join the two; Stages 11 and 14 make the record checkable. Reference numbers in square brackets point to the <a href="references.html">References</a> page; every mistake links to its full entry on the <a href="lessons.html">Mistakes</a> page.</p>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>Stage</td><td>When</td><td>In one line</td></tr></thead><tbody>''' +
              ''.join(f'<tr><td class="dt-label"><a href="#{s["id"]}">{s["title"].split(". ", 1)[0]}</a></td><td class="dt-note">{s["when"]}</td><td class="dt-note">{s["title"].split(". ", 1)[1]}</td></tr>' for s in STAGES) +
              '</tbody></table></div>\n']
@@ -237,9 +259,12 @@ def main():
 ''')
     parts.append('''      <h2 class="section-title" id="j-now" data-toc="Where we are now"><span class="stitle-num">0</span>Where We Are Now</h2>
       <ul class="sd">
-        <li><b>Answered:</b> the panel\'s question. From one established unit cell the project generates several morphologies, by growth rates (BFDH, graph rule), by energies (Wulff with UFF or CHGNet) and by changing the cell, with the mathematics proved and checked.</li>
-        <li><b>Not yet answered:</b> which method predicts real crystals best. Only MOF-5 separates the methods, the force-field cube depends on one constant, and the machine-learned energies are unvalidated for MOF surfaces.</li>
-        <li><b>Carried over from the first half:</b> the periodic quotient graph (used for face counting) and the habit of controlling size. The spectrum itself responds only to flat or long particles, not to compact crystal shapes.</li>
+        <li><b>Answered:</b> the panel\'s question. From one established unit cell the project generates several morphologies, by growth rates (BFDH, graph rule), by energies (Wulff with UFF or CHGNet), by changing the cell, and by lowering one face energy at a time on the morphology map, with the mathematics proved and checked.</li>
+        <li><b>Supported by laboratory data:</b> the order in which a shape changes as an additive or ratio increases (six of six series), and the additive-free shape where it is an equilibrium shape (ZIF-8).</li>
+        <li><b>Not yet answered:</b> which energy model predicts real crystals best. Only MOF-5 separates the models, the force-field cube depends on one constant, and the machine-learned energies are unvalidated for MOF surfaces. No model yet contains the additive.</li>
+        <li><b>Outside every model here:</b> plates, rods and intergrown crystals, which are set by growth kinetics.</li>
+        <li><b>Carried over from the first half:</b> the periodic quotient graph (used for face counting), the habit of controlling size, and the dimension profile, which reads a crystal\'s position on the morphology map.</li>
+        <li><b>Asked of the guide (10 November):</b> no database lists the morphologies a given CIF can form; ours is collected by hand (134 records, about 12 MOFs). Options: narrow the claim to well-studied families, a contact who can grow a controlled series, library access to about five papers, and HPC time for the DFT check.</li>
       </ul>
       <h3 class="sub-head">Open work, in order of importance</h3>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>Task</td><td>Who</td><td>Why it matters</td></tr></thead><tbody>''' +

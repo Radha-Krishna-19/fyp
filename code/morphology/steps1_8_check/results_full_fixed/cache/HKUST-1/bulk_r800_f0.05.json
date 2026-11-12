@@ -1,0 +1,9 @@
+{
+ "n_atoms": 156,
+ "energy_eV": -1138.748291015625,
+ "e_per_atom_eV": -7.2996685321514425,
+ "steps": 40,
+ "final_fmax": 0.03339051455259323,
+ "converged": true,
+ "seconds": 21.3
+}

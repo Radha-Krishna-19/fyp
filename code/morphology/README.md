@@ -81,3 +81,10 @@ are independent second implementations; `website/tests/test_morphology.js`, `tes
 The force-field energies are unrelaxed and have no solvent, charges or temperature; the CHGNet
 energies are upper bounds (cleavage energies) and have not been checked against DFT; the MOF-5 cube of
 the force-field model depends on the flat bond cost; with four MOFs no model can be ranked.
+
+## Added 10 November 2026
+
+| Folder | Contents |
+|---|---|
+| [`morphology_map/`](morphology_map/) | The exact cubic morphology map, every model on it, three tests against laboratory series, possible morphologies of a CIF, the dimension profile along the map (README inside) |
+| [`steps1_8_check/`](steps1_8_check/) | Run and checks of the team's CIF-to-Wulff pipeline (steps 1–8), problems K1–K11, the fixed module (README inside) |

@@ -30,11 +30,12 @@
         (<a href="graph_faces.html">Graph Faces</a>), a force-field Wulff model
         (<a href="surface_energy.html">Surface Energy</a>), a BFDH&times;Wulff blend
         (<a href="hybrid.html">Hybrid</a>) and a machine-learned (CHGNet) cleavage-energy model.
-        No model reproduces all four MOFs. ZIF-8 (rhombic dodecahedron) is reproduced by every model applied to it (the graph rule covers only pcu and fcu nets; CHGNet was not run on ZIF-8);
+        No model reproduces all four MOFs. ZIF-8 (rhombic dodecahedron) is reproduced by every model applied to it (the graph rule covers only pcu and fcu nets; the October CHGNet model was not run on ZIF-8, and the team's newer CHGNet pipeline also gives the rhombic dodecahedron);
         the MOF-5 cube by the graph attachment rule, the broken-bond Wulff model and the force-field Wulff
         model (the last only at the default bond cost); the HKUST-1 octahedron appears in every model that applies to it only
         as the dominant {111} face of a truncated octahedron; and no model gives the additive-free UiO-66
         crystals, which are poorly faceted and reported as cubes in the two available records.
+        All of these were then placed on one exact map of cubic crystal shapes (<a href="morphology_map.html">Morphology map</a>), which also lists the possible morphologies of a given CIF in the order an additive that binds one face should produce them; all six laboratory series in the dataset that change shape on the map follow that order.
         Finally, the spectrum of the first half was tested against crystal shape
         (<a href="relation.html">Spectrum &harr; Shape</a>): the periodic spectrum width carries no shape
         information beyond graph size. On a <i>finite</i> crystal particle the spectrum width separates

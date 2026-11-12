@@ -1,0 +1,145 @@
+{
+ "series": [
+  {
+   "series": "HKUST-1 + lauric acid (umemura2011)",
+   "condition": "modulator: lowest -> intermediate -> highest",
+   "shapes": [
+    "octahedron",
+    "cuboctahedron",
+    "cube"
+   ],
+   "axis": "{100}-{111}",
+   "monotone": true,
+   "result": "moves toward {100}",
+   "leaves_map_at": null,
+   "p_monotone_by_chance": 0.3333
+  },
+  {
+   "series": "HKUST-1 + inorganic salt (liu2016)",
+   "condition": "salt: low -> intermediate -> high",
+   "shapes": [
+    "cube",
+    "cuboctahedron",
+    "octahedron"
+   ],
+   "axis": "{100}-{111}",
+   "monotone": true,
+   "result": "moves toward {111}",
+   "leaves_map_at": null,
+   "p_monotone_by_chance": 0.3333
+  },
+  {
+   "series": "HKUST-1 + SDS (wu2020)",
+   "condition": "SDS: low -> intermediate -> high",
+   "shapes": [
+    "cube",
+    "cuboctahedron",
+    "octahedron"
+   ],
+   "axis": "{100}-{111}",
+   "monotone": true,
+   "result": "moves toward {111}",
+   "leaves_map_at": null,
+   "p_monotone_by_chance": 0.3333
+  },
+  {
+   "series": "HKUST-1 + CTAB (ediati2019)",
+   "condition": "CTAB:H3BTC 0 -> 0.3 -> 0.6",
+   "shapes": [
+    "octahedron",
+    "octahedron",
+    "irregular"
+   ],
+   "axis": "no movement",
+   "monotone": null,
+   "result": "shape does not change on the map",
+   "leaves_map_at": "irregular"
+  },
+  {
+   "series": "MOF-5 + H3BTB (suresh2021)",
+   "condition": "BTB 0 -> ~2 -> ~4 -> >4 mol %",
+   "shapes": [
+    "cube",
+    "cuboctahedron",
+    "octahedron",
+    "other"
+   ],
+   "axis": "{100}-{111}",
+   "monotone": true,
+   "result": "moves toward {111}",
+   "leaves_map_at": "other",
+   "p_monotone_by_chance": 0.3333
+  },
+  {
+   "series": "ZIF-8, Hmim/Zn ratio (zhang2018)",
+   "condition": "Hmim/Zn 1 -> 2 -> 4 -> 8 -> 16",
+   "shapes": [
+    "cube",
+    "truncated_rhombic_dodecahedron",
+    "truncated_rhombic_dodecahedron",
+    "rhombic_dodecahedron",
+    "rhombic_dodecahedron"
+   ],
+   "axis": "{100}-{110}",
+   "monotone": true,
+   "result": "moves toward {110}",
+   "leaves_map_at": null,
+   "p_monotone_by_chance": 0.0667
+  },
+  {
+   "series": "ZIF-8, time (cravillon2012)",
+   "condition": "time 0.25 -> 0.33 -> 0.75 -> 4 h",
+   "shapes": [
+    "cube_truncated_edges",
+    "cube_truncated_edges",
+    "rhombic_dodecahedron",
+    "rhombic_dodecahedron"
+   ],
+   "axis": "{100}-{110}",
+   "monotone": true,
+   "result": "moves toward {110}",
+   "leaves_map_at": null,
+   "p_monotone_by_chance": 0.3333
+  },
+  {
+   "series": "ZIF-8 + TRIS (zheng2017)",
+   "condition": "TRIS 10 -> 50 -> 100 mM",
+   "shapes": [
+    "octahedron",
+    "plate",
+    "other"
+   ],
+   "axis": null,
+   "monotone": null,
+   "result": "fewer than two shapes on the cubic map",
+   "leaves_map_at": "plate"
+  },
+  {
+   "series": "UiO-66, modulator (schaate2011)",
+   "condition": "benzoic/acetic acid low -> high",
+   "shapes": [
+    "intergrown",
+    "octahedron"
+   ],
+   "axis": null,
+   "monotone": null,
+   "result": "fewer than two shapes on the cubic map",
+   "leaves_map_at": "intergrown"
+  },
+  {
+   "series": "UiO-66, temperature (ahmad2025)",
+   "condition": "120 -> 130 -> 140 C",
+   "shapes": [
+    "cube",
+    "cube",
+    "sphere"
+   ],
+   "axis": "no movement",
+   "monotone": null,
+   "result": "shape does not change on the map",
+   "leaves_map_at": "sphere"
+  }
+ ],
+ "n_moving": 6,
+ "joint_chance": 0.0002743484224965706
+}

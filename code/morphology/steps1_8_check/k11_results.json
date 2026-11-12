@@ -1,0 +1,55 @@
+{
+ "HKUST-1": [
+  {
+   "face": "{100}",
+   "primitive_plane_correct": "(-1, -1, 0)",
+   "primitive_plane_used": "(3, 1, 0)",
+   "d_correct": 13.172,
+   "d_used": 5.377
+  },
+  {
+   "face": "{110}",
+   "primitive_plane_correct": "(-2, -1, -1)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 9.314,
+   "d_used": null
+  },
+  {
+   "face": "{111}",
+   "primitive_plane_correct": "(-1, -1, -1)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 15.209,
+   "d_used": null
+  }
+ ],
+ "Mg-MOF-74": [
+  {
+   "face": "{100}",
+   "primitive_plane_correct": "(0, -1, -1)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 7.545,
+   "d_used": null
+  },
+  {
+   "face": "{2\u030510}",
+   "primitive_plane_correct": "(0, 0, -1)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 13.068,
+   "d_used": null
+  },
+  {
+   "face": "{001}",
+   "primitive_plane_correct": "(-3, 1, 1)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 2.314,
+   "d_used": null
+  },
+  {
+   "face": "{101}",
+   "primitive_plane_correct": "(-1, 0, 0)",
+   "primitive_plane_used": "conversion fails -> unrelaxed conventional cell used (K3)",
+   "d_correct": 6.637,
+   "d_used": null
+  }
+ ]
+}

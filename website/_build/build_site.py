@@ -98,6 +98,10 @@ PAGES = [
          title='Experiment, CHGNet and Every Method Compared',
          desc='Real crystals of these MOFs and the conditions they were grown under, the machine-learned (CHGNet) surface energies, the chemistry problems found in the slabs, every shape method scored against experiment, and the pipeline run on CoRE MOF structures.'),
 
+    dict(file='morphology_map.html', nav='Morphology map', sections=[],
+         title='The Morphology Map: Models, Conditions and Possible Shapes',
+         desc='One map on which every shape a cubic crystal can take has its own region: every model of the project placed on it, laboratory series tested against it, the possible morphologies of a given CIF, the graph measurement read along it, and a check of the team\'s CIF-to-Wulff pipeline.'),
+
     dict(file='bridge.html',       nav='Why Shape', sections=[],
          title='Why Shape Matters, and How the Two Halves Connect',
          desc='Why the project changes the shape of MOFs, how the earlier spectrum-based classification relates to morphology, a new test of whether the spectrum sees particle shape, and how the first half can be reused.'),
@@ -156,6 +160,7 @@ SCRIPTS = {
     'surface_energy.html': [],
     'hybrid.html':        [],
     'experiment.html':    [],
+    'morphology_map.html': [],
     'bridge.html':        [],
     'relation.html':      [],
     'lessons.html':       [],
@@ -179,7 +184,7 @@ PARTS = [
                ('cif_to_shape.html', 'From a CIF to a shape'), ('morphology.html', 'Morphology'),
                ('deform.html', 'Changing the cell'), ('graph_faces.html', 'Faces from the graph'),
                ('surface_energy.html', 'Surface energy'), ('hybrid.html', 'Blending BFDH and Wulff'),
-               ('experiment.html', 'Against experiment')]),
+               ('experiment.html', 'Against experiment'), ('morphology_map.html', 'The morphology map')]),
     ('Connecting the two parts', [('bridge.html', 'Why shape'), ('relation.html', 'Spectrum and shape')]),
     ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
                ('resources.html', 'Resources'), ('references.html', 'References'),

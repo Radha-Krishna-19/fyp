@@ -171,6 +171,37 @@ AUDIT = [
   'root <code>README.md</code>'),
 ]
 
+NOVEMBER = [
+ ('l-k11', 'The relaxed cell that turned the crystal round (steps 1&ndash;8 pipeline, K11)',
+  'After the computer relaxed the crystal, it saved and reloaded it, and the reload turned the crystal round. The program then cut the wrong slices, thinking they were the faces it wanted.',
+  'Saving a structure to a file and reading it back is the normal way to pass it between steps, and it looks lossless.',
+  'The CIF round trip re-orients the lattice vectors, while <code>primitive_miller()</code> assumes the conventional and the primitive cell share one frame. HKUST-1 (100) became the primitive plane (3, 1, 0), spacing 5.38 &Aring; instead of 13.17 &Aring;; the other HKUST-1 and Mg-MOF-74 faces failed conversion and fell back to the unrelaxed cell.',
+  'Found because the full (relaxed) run ran out of memory on a 336-atom HKUST-1 slab whose forces needed only 2 GB in a direct test: the rebuilt slab was four times larger than in static mode. <code>k11.py</code> compares the planes used with the correct ones.',
+  'One line: the relaxed fractional coordinates are put back on the original lattice (<code>kshitij_k11fix/mofwulff.py</code>).',
+  '<code>code/morphology/steps1_8_check/k11.py</code>, <code>k11_results.json</code>; <a href="morphology_map.html#map-steps">The morphology map</a>'),
+ ('l-k1', 'A shape named by rough proportions (K1, and our own half-built shapes)',
+  'The pipeline called a shape a cuboctahedron whenever it had a fair share of two kinds of face. A real cuboctahedron needs one exact ratio; everything near it is a different shape. Our own step-by-step page made a similar slip with half-built shapes.',
+  'A threshold such as "more than 20 % of each" is easy to write and gives sensible-looking names.',
+  'On the cubic map the cuboctahedron is the single line y = &gamma;<sub>111</sub>/&gamma;<sub>100</sub> = 2/&radic;3. <code>name_habit()</code> named every shape with y from 0.87 to 1.20 a cuboctahedron, so UiO-66 (77 % {111}, a truncated octahedron) was reported as a cuboctahedron. On the From a CIF to a shape page, an octahedron with two of its six corners cut was called a cuboctahedron because the namer was given an incomplete shape.',
+  'Names come from the exact limits (<code>cubic_wulff.py</code>, <code>checks/naming.py</code> compares them). A half-built shape is described by its face counts and named only when every face family is complete.',
+  'K1 is listed for Kshitij; the page was fixed on 12 November.',
+  '<code>code/morphology/steps1_8_check/checks/naming.py</code>; <code>website/cif_shape_page.js</code> (<code>frameName</code>)'),
+ ('l-k2', 'The metal rod cut into single atoms (K2) and the wrong reference shape (K4)',
+  'Mg-MOF-74 is built from long rods of metal and oxygen. The program treated every Mg as its own block, so it could never find the rod and could never predict the needle-like crystals the rod produces. It also compared UiO-66 against octahedra, which only grow with an additive.',
+  'Counting every metal&ndash;oxygen&ndash;carbon bond as a metal&ndash;linker bond works for MOFs with separate metal clusters, which is what the method was first written for.',
+  'Mg&ndash;O bonds to oxygens shared by two metals belong to the inorganic rod, not to a linker. Splitting them leaves single-Mg nodes and the rod flag never fires; {001} slabs then cut the rod and come out low in energy, giving a block instead of a rod. The reference habit for additive-free UiO-66 in our dataset is a cube; octahedra need benzoic or acetic acid.',
+  'Treat a metal and every O shared by two or more metals as one inorganic unit; take reference shapes from the dataset with their conditions.',
+  'Open; listed for Kshitij with the evidence.',
+  '<a href="morphology_map.html#map-steps">The morphology map</a>, problem table'),
+ ('l-cwd', 'Scripts that worked only from their own folder',
+  'Five analysis programs found their data by looking around the folder they were started in. Started from anywhere else, they failed or wrote their results to the wrong place.',
+  'Each script was always run from its own folder during development, so the problem never showed.',
+  '<code>code_13</code>&ndash;<code>code_17</code> used paths such as <code>../../data/...</code>, which are resolved against the working directory, not against the script.',
+  'Found by running every test and script from the file-system root on 11 November.',
+  'Paths are built from each script\'s own location (<code>__file__</code>); the same rule was applied to the new morphology-map scripts, and every Python and website test now passes from any folder.',
+  '<code>code/spectrum_pipeline/code_13</code>&ndash;<code>code_17</code>; <code>PROJECT_MAP.md</code>'),
+]
+
 SMALL = [
  ('Plot title said "MOF-5" for a different structure', 'The title was a fixed name, not read from the file.', 'Set the NAME field; titles now follow the input.'),
  ('Primitive-cell indices mapped to nothing', 'HKUST-1\'s file is a primitive cell, so (hkl) are not the usual cubic indices.', 'Convert through the transformation matrix between the primitive and the conventional cell.'),
@@ -184,6 +215,10 @@ SMALL = [
  ('A temperature range printed as "125&ndash;125 &deg;C"', 'The range was formatted without checking whether its ends were equal.', 'A single value is printed when both ends are equal.'),
  ('A team member\'s name spelt two ways', 'The name was typed from memory on some pages.', 'Every page now uses the spelling in the paper and the certificate (Kshitij).'),
  ('Website still said 104 records, 28 papers, 14 MOFs', 'The Team page was not updated when the dataset grew.', 'Now 134 records from 35 papers for 12 MOFs, as on the Experiment page.'),
+ ('Two CHGNet jobs killed for memory (10 November)', 'A second CHGNet or MACE job was started beside a running one on an 8 GB machine.', 'Heavy jobs now run one at a time.'),
+ ('The possible-morphology paths skipped the cuboctahedron', 'The cuboctahedron is a single line on the map, so stepping along a path crossed it without landing on it.', 'A crossing of y = 2/&radic;3 is recorded as a cuboctahedron.'),
+ ('The repository export could not be opened (11 November)', 'The bundle was made from a copy with incomplete history, so git reported missing commits.', 'Rebuilt from a complete history and checked by cloning it before it was handed over.'),
+ ('The website stopped at 25 October', 'The 10 November work existed only in a delivery folder and the report.', 'Added to the repository with its scripts and to the site as the Morphology map page (12 November).'),
 ]
 
 PATTERNS = [
@@ -231,6 +266,10 @@ def main():
       <p class="section-sub">Before the next phase every page of the site was compared with the result files and with every other page, and the repository was reorganised. These are the problems that check found; each is now fixed.</p>
 ''')
     p.extend(entry(x) for x in AUDIT)
+    p.append('''      <h2 class="section-title" id="ls-november" data-toc="Part D: 10-12 November 2026"><span class="stitle-num">0</span>Part D: The New Pipeline and the Morphology Map (10&ndash;12 November 2026)</h2>
+      <p class="section-sub">Found while running and reading the team\'s CIF-to-Wulff pipeline (steps 1&ndash;8), building the morphology map, and checking that every script runs from any folder. The full problem list K1&ndash;K11 is on <a href="morphology_map.html#map-steps">The morphology map</a>.</p>
+''')
+    p.extend(entry(x) for x in NOVEMBER)
     p.append('''      <h2 class="section-title" id="ls-small" data-toc="Smaller slips"><span class="stitle-num">0</span>Smaller Slips</h2>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>What went wrong</td><td>Why</td><td>Fix</td></tr></thead><tbody>''' +
              ''.join(f'<tr><td class="dt-label">{a}</td><td class="dt-note">{b}</td><td class="dt-note">{c}</td></tr>' for a, b, c in SMALL) +
@@ -240,11 +279,13 @@ def main():
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
         <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until Kshitij's calculation is done.</li>
         <li>Only four MOFs have a clean experimental shape; no method can yet be ranked as better.</li>
+        <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline are close to zero, so the order of faces rests on small differences; K1, K2 and K4&ndash;K10 are still open in that pipeline.</li>
+        <li>The morphology map is exact only for cubic crystals bounded by {100}, {110} and {111}; the first modulator-cap energies are unrelaxed and not physical for UiO-66.</li>
         <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum &harr; Shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; it cannot yet be used as a stand-alone classifier.</li>
       </ul>
 ''')
     open(OUT, 'w', encoding='utf-8').write(''.join(p))
-    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries,', len(AUDIT), 'audit entries')
+    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries,', len(AUDIT), 'audit entries,', len(NOVEMBER), 'November entries')
 
 
 if __name__ == '__main__':
