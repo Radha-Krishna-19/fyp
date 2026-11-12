@@ -10,7 +10,7 @@ This page says where everything lives. The project has two phases of work and on
 | Data | [`data/structures/`](data/structures/), [`data/spectrum_descriptors/`](data/spectrum_descriptors/) | [`data/experimental_morphology/`](data/experimental_morphology/), [`data/chgnet_morphograph_runs/`](data/chgnet_morphograph_runs/) |
 | Notebooks | [`notebooks/spectrum/`](notebooks/spectrum/) | [`notebooks/morphograph_mof/`](notebooks/morphograph_mof/), [`code/morphology/chgnet_wulff/`](code/morphology/chgnet_wulff/) |
 | Website pages | Spectrum, Network, Decomposition, Results, Methodology | Learn, Maths, CIF to Shape, Morphology, Graph Faces, Deform, Surface Energy, Experiment, Morphology map |
-| Written | [`docs/paper/`](docs/paper/), [`docs/concepts/`](docs/concepts/) | [`docs/reports/`](docs/reports/) (primer and Phase 1 morphology report) |
+| Written | [`docs/paper/`](docs/paper/), [`docs/concepts/`](docs/concepts/) | [`docs/reports/`](docs/reports/) (complete report, CIF to Shape reports, primer, Phase 1 morphology report) |
 
 **The link between the phases:** [`code/spectrum_shape_relation/`](code/spectrum_shape_relation/) computes the spectrum and the
 dimension profile of finite crystal particles of the shapes found in Phase 2. It reads Phase 1 code and Phase 2 code and is

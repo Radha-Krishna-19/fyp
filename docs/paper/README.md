@@ -31,3 +31,25 @@ adsorption property is not tested.
   [`code/spectrum_pipeline/code_14_size_strata.py`](../../code/spectrum_pipeline/code_14_size_strata.py)
   and [`code_15_dataset_sweeps.py`](../../code/spectrum_pipeline/code_15_dataset_sweeps.py).
 * A summary is on the [Resources page](https://radha-krishna-19.github.io/fyp/resources.html).
+
+# Second team paper (October 2026)
+
+[`Team_paper_quotient_graphs_and_multifractal_spectrum.pdf`](Team_paper_quotient_graphs_and_multifractal_spectrum.pdf)
+(32 pages): *Periodic Quotient Graphs, Multifractal Spectra and a Dimensional Theory of Morphism for
+Metal–Organic Frameworks*, manuscript draft of 1 October 2026, by the same five authors with Dr. T.
+Ramraj. It sets out the voltage-graph construction, the proof that coarse-graining commutes with
+supercell lifting, the through-origin τ(q) estimator, and the tail identity that explains why Δα
+grows with supercell size and why the two published bands were withdrawn. Its LaTeX source, ready to
+upload to Overleaf, is [`sources/Team_paper_latex_for_Overleaf.zip`](sources/Team_paper_latex_for_Overleaf.zip).
+
+# Revision of the guide's paper
+
+[`guide_paper_revision/`](guide_paper_revision/) holds a revision of Dr. T. Ramraj's paper
+*Multifractal Spectrum Analysis of Metal-Organic Framework Networks via Topology-Based
+Coarse-Graining* (7 pages):
+
+| File | Content |
+|---|---|
+| `Ramraj_paper_revised_clean.pdf` | The revised text |
+| `Ramraj_paper_revised_redline_red-removed_green-added.pdf` | The same revision with every change marked: red removed, green added |
+| `Ramraj_paper_revision_latex_source.zip` | LaTeX source of the revision |

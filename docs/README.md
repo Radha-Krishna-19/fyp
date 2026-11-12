@@ -2,8 +2,8 @@
 
 | Folder or file | Content |
 |---|---|
-| [`paper/`](paper/) | The team paper, *Topology-Based Coarse-Graining for Multifractal Spectrum Analysis in Metal-Organic Frameworks* (submitted version, unmodified) |
-| [`reports/`](reports/) | The morphology primer and the Phase 1 morphology report, with the primer's LaTeX and figure sources |
+| [`paper/`](paper/) | The two team papers (the submitted eight-page paper, unmodified, and the October 2026 manuscript on periodic quotient graphs) and a marked-up revision of the guide's paper |
+| [`reports/`](reports/) | The complete project report (12 November 2026), the four CIF to Shape reports, the morphology primer and the Phase 1 morphology report, with the primer's LaTeX and figure sources |
 | [`technical_enrichment/`](technical_enrichment/) | Technical-enrichment record: the five course certificates, how each course supports the project, and the group activities |
 | [`presentation/`](presentation/) | Panel-review slides (LaTeX and PDF), the presentation script and the speaking split |
 | [`textbook/`](textbook/) | An eleven-chapter explanation of Part 1 for readers with no background in chemistry, crystallography or network science |
