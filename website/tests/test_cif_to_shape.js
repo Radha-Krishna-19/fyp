@@ -104,7 +104,7 @@ Object.keys(FILES).forEach(n => ok(Wd.CIF_SHAPE_PY[n].shape.name === PY[n].shape
   `cif_shape_data.js ${n} equals cif_to_shape.json`));
 const body = html.replace(/<script src="[a-zA-Z0-9_./]+\.js"><\/script>/g, '').replace(/^[\s\S]*<body>/, '').replace(/<\/body>[\s\S]*$/, '');
 const dom = new JSDOM(`<!DOCTYPE html><html><body>${body}</body></html>`, { runScripts: 'outside-only' });
-['default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'general_shape_data.js', 'cif_shape_data.js', 'cif_shape_page.js'].forEach(s =>
+['face_card.js', 'default_cif_data.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'general_shape_data.js', 'cif_shape_data.js', 'cif_shape_page.js'].forEach(s =>
   dom.window.eval(fs.readFileSync(path.join(SITE, s), 'utf8')));
 if (dom.window.document.readyState === 'loading') dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
 const D = dom.window.document;
@@ -150,6 +150,9 @@ ok(dom.window.CIF_SHAPE_PAGE.surd(4, 3) === '2/√3' && dom.window.CIF_SHAPE_PAG
   pg.anyChoose('MgMOF-74', dom.window.GENERAL_CIFS['MgMOF-74']); flush();
   ok(/Rod/.test(head()) && /\[001\]/.test(head()), 'Any lattice: Mg-MOF-74 is a rod along [001] (' + head().slice(0, 60) + ')');
   ok(D.querySelectorAll('#c2s-any-view svg polygon').length > 10, 'Any lattice: the 3D crystal is drawn');
+  { const html = pg.anyState.view.describeFace(0) || '';
+    ok(/of family/.test(html) && /d<\/i><sub>eff<\/sub>/.test(html) && /% of the surface/.test(html), 'Any lattice: clicking a face describes its family, d_eff and share of the surface');
+    ok(D.querySelectorAll('#c2s-any-view polygon[data-face]').length > 0, 'Any lattice: faces are marked clickable'); }
   ok(D.querySelectorAll('#c2s-any-table tbody tr').length >= 10, 'Any lattice: the face table is filled');
   ok(/Python check/.test(D.getElementById('c2s-any-txt').textContent), 'Any lattice: the Python check line is shown for a bundled file');
   pg.anyChoose('MIL-88A-dry', dom.window.GENERAL_CIFS['MIL-88A-dry']); flush();

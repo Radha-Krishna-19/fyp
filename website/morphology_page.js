@@ -102,6 +102,26 @@
     return [x, cp * y - sp * z, sp * y + cp * z];        // screen: x right, z up, y into the page
   }
 
+
+  // the Miller index of a face from its outward normal n and the cell edges (a, b, c): h is proportional to (a n_x, b n_y, c n_z)
+  function faceIndex(n, edges) {
+    var v = [n[0] * edges[0], n[1] * edges[1], n[2] * edges[2]];
+    var m = Math.min.apply(null, v.map(Math.abs).filter(function (x) { return x > 1e-6; }));
+    for (var k = 1; k <= 6; k++) {
+      var u = v.map(function (x) { return x / m * k; }), r = u.map(Math.round);
+      if (u.every(function (x, i) { return Math.abs(x - r[i]) < 0.02; }) && Math.max.apply(null, r.map(Math.abs)) <= 12)
+        return '(' + r.map(function (x) { return x < 0 ? '<span style="text-decoration:overline">' + (-x) + '</span>' : x; }).join('') + ')';
+    }
+    return '';
+  }
+  function faceInfo(S, i, edges, extra) {
+    var areas = S.faces.map(function (f) { return FaceCard.area(f.poly); }), tot = areas.reduce(function (a, b) { return a + b; }, 0);
+    var f = S.faces[i], fam = S.faces.filter(function (g) { return g.tag === f.tag; });
+    var famArea = 0; S.faces.forEach(function (g, j) { if (g.tag === f.tag) famArea += areas[j]; });
+    return FaceCard.describe({ family: famHTML(f.tag), index: faceIndex(f.n, edges), normal: f.n, faceShare: areas[i] / tot,
+                               familyShare: famArea / tot, count: fam.length, extra: extra });
+  }
+
   function draw(S) {
     var host = document.getElementById('morph-view');
     if (!host) return;
@@ -116,15 +136,16 @@
     svg.setAttribute('aria-label', 'Crystal shape: ' + S.name);
     svg.style.cssText = 'width:100%;max-width:420px;height:auto;display:block;margin:6px auto;cursor:grab;touch-action:none';
     var faces = S.faces.map(function (f) {
-      var n = rotate(f.n), pts = f.poly.map(rotate);
+      var n = rotate(f.n), pts = f.poly.map(rotate), idx = S.faces.indexOf(f);
       var depth = pts.reduce(function (s, p) { return s + p[1]; }, 0) / pts.length;
-      return { f: f, n: n, pts: pts, depth: depth };
+      return { f: f, n: n, pts: pts, depth: depth, idx: idx };
     }).filter(function (F) { return F.n[1] < 0; })          // faces turned towards the viewer
       .sort(function (a, b) { return b.depth - a.depth; });
     faces.forEach(function (F) {
       var light = 0.55 + 0.45 * Math.max(0, -F.n[1] * 0.75 + F.n[2] * 0.45 + F.n[0] * 0.2);
       var poly = document.createElementNS(SVGNS, 'polygon');
       poly.setAttribute('points', F.pts.map(function (p) { return (W / 2 + k * p[0]).toFixed(1) + ',' + (H / 2 - k * p[2]).toFixed(1); }).join(' '));
+      poly.setAttribute('data-face', F.idx);
       poly.setAttribute('style', 'fill:' + (FILL[F.f.tag] || 'var(--accent2)') + ';fill-opacity:' + light.toFixed(2) +
         ';stroke:var(--text);stroke-width:0.8;stroke-linejoin:round');
       var title = document.createElementNS(SVGNS, 'title');
@@ -142,13 +163,14 @@
     });
     svg.addEventListener('pointerup', function () { drag = null; });
     host.appendChild(svg);
+    if (window.FaceCard) FaceCard.wire(svg, host, function (i) { return faceInfo(S, i, [1, 1, 1]); });
     var legend = el('div', { class: 'legend sm', style: 'text-align:center' });
     var seen = {};
     S.faces.forEach(function (f) { seen[f.tag] = true; });
     legend.innerHTML = Object.keys(seen).sort().map(function (t) {
       return '<span style="display:inline-block;margin:0 8px"><span style="display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;background:' +
         (FILL[t] || 'var(--accent2)') + '"></span> ' + famHTML(t) + '</span>';
-    }).join('') + ' &middot; drag to rotate';
+    }).join('') + ' &middot; drag to rotate, click a face';
     host.appendChild(legend);
   }
 

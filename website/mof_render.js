@@ -60,6 +60,55 @@
     return cov ? Math.max(0.26, cov * 0.42) : 0.32;
   }
 
+  // Element properties shown when an atom is clicked: name, atomic number, standard atomic weight
+  // (IUPAC, rounded), Pauling electronegativity (null where no single accepted value), and the
+  // kind of element. Group and period place it in the periodic table.
+  const ELEMENTS = {
+    H: ['Hydrogen', 1, 1.008, 2.20, 'nonmetal', 1, 1], He: ['Helium', 2, 4.0026, null, 'noble gas', 18, 1],
+    Li: ['Lithium', 3, 6.94, 0.98, 'alkali metal', 1, 2], Be: ['Beryllium', 4, 9.0122, 1.57, 'alkaline-earth metal', 2, 2],
+    B: ['Boron', 5, 10.81, 2.04, 'metalloid', 13, 2], C: ['Carbon', 6, 12.011, 2.55, 'nonmetal', 14, 2],
+    N: ['Nitrogen', 7, 14.007, 3.04, 'nonmetal', 15, 2], O: ['Oxygen', 8, 15.999, 3.44, 'nonmetal', 16, 2],
+    F: ['Fluorine', 9, 18.998, 3.98, 'halogen', 17, 2], Na: ['Sodium', 11, 22.990, 0.93, 'alkali metal', 1, 3],
+    Mg: ['Magnesium', 12, 24.305, 1.31, 'alkaline-earth metal', 2, 3], Al: ['Aluminium', 13, 26.982, 1.61, 'post-transition metal', 13, 3],
+    Si: ['Silicon', 14, 28.085, 1.90, 'metalloid', 14, 3], P: ['Phosphorus', 15, 30.974, 2.19, 'nonmetal', 15, 3],
+    S: ['Sulfur', 16, 32.06, 2.58, 'nonmetal', 16, 3], Cl: ['Chlorine', 17, 35.45, 3.16, 'halogen', 17, 3],
+    K: ['Potassium', 19, 39.098, 0.82, 'alkali metal', 1, 4], Ca: ['Calcium', 20, 40.078, 1.00, 'alkaline-earth metal', 2, 4],
+    Sc: ['Scandium', 21, 44.956, 1.36, 'transition metal', 3, 4], Ti: ['Titanium', 22, 47.867, 1.54, 'transition metal', 4, 4],
+    V: ['Vanadium', 23, 50.942, 1.63, 'transition metal', 5, 4], Cr: ['Chromium', 24, 51.996, 1.66, 'transition metal', 6, 4],
+    Mn: ['Manganese', 25, 54.938, 1.55, 'transition metal', 7, 4], Fe: ['Iron', 26, 55.845, 1.83, 'transition metal', 8, 4],
+    Co: ['Cobalt', 27, 58.933, 1.88, 'transition metal', 9, 4], Ni: ['Nickel', 28, 58.693, 1.91, 'transition metal', 10, 4],
+    Cu: ['Copper', 29, 63.546, 1.90, 'transition metal', 11, 4], Zn: ['Zinc', 30, 65.38, 1.65, 'transition metal', 12, 4],
+    Ga: ['Gallium', 31, 69.723, 1.81, 'post-transition metal', 13, 4], Ge: ['Germanium', 32, 72.630, 2.01, 'metalloid', 14, 4],
+    Br: ['Bromine', 35, 79.904, 2.96, 'halogen', 17, 4], Sr: ['Strontium', 38, 87.62, 0.95, 'alkaline-earth metal', 2, 5],
+    Y: ['Yttrium', 39, 88.906, 1.22, 'transition metal', 3, 5], Zr: ['Zirconium', 40, 91.224, 1.33, 'transition metal', 4, 5],
+    Nb: ['Niobium', 41, 92.906, 1.6, 'transition metal', 5, 5], Mo: ['Molybdenum', 42, 95.95, 2.16, 'transition metal', 6, 5],
+    Ru: ['Ruthenium', 44, 101.07, 2.2, 'transition metal', 8, 5], Rh: ['Rhodium', 45, 102.91, 2.28, 'transition metal', 9, 5],
+    Pd: ['Palladium', 46, 106.42, 2.20, 'transition metal', 10, 5], Ag: ['Silver', 47, 107.87, 1.93, 'transition metal', 11, 5],
+    Cd: ['Cadmium', 48, 112.41, 1.69, 'transition metal', 12, 5], In: ['Indium', 49, 114.82, 1.78, 'post-transition metal', 13, 5],
+    Sn: ['Tin', 50, 118.71, 1.96, 'post-transition metal', 14, 5], I: ['Iodine', 53, 126.90, 2.66, 'halogen', 17, 5],
+    Ba: ['Barium', 56, 137.33, 0.89, 'alkaline-earth metal', 2, 6], La: ['Lanthanum', 57, 138.91, 1.10, 'lanthanide', 3, 6],
+    Ce: ['Cerium', 58, 140.12, 1.12, 'lanthanide', null, 6], Nd: ['Neodymium', 60, 144.24, 1.14, 'lanthanide', null, 6],
+    Eu: ['Europium', 63, 151.96, null, 'lanthanide', null, 6], Gd: ['Gadolinium', 64, 157.25, 1.20, 'lanthanide', null, 6],
+    Tb: ['Terbium', 65, 158.93, null, 'lanthanide', null, 6], Dy: ['Dysprosium', 66, 162.50, 1.22, 'lanthanide', null, 6],
+    Er: ['Erbium', 68, 167.26, 1.24, 'lanthanide', null, 6], Yb: ['Ytterbium', 70, 173.05, null, 'lanthanide', null, 6],
+    Hf: ['Hafnium', 72, 178.49, 1.3, 'transition metal', 4, 6], W: ['Tungsten', 74, 183.84, 2.36, 'transition metal', 6, 6],
+    Pt: ['Platinum', 78, 195.08, 2.28, 'transition metal', 10, 6], Au: ['Gold', 79, 196.97, 2.54, 'transition metal', 11, 6],
+    Hg: ['Mercury', 80, 200.59, 2.00, 'transition metal', 12, 6], Pb: ['Lead', 82, 207.2, 2.33, 'post-transition metal', 14, 6],
+    Bi: ['Bismuth', 83, 208.98, 2.02, 'post-transition metal', 15, 6], U: ['Uranium', 92, 238.03, 1.38, 'actinide', null, 7],
+  };
+  function hexMix(a, b, t) {               // blend two 0xRRGGBB colours, t = share of b
+    const ch = (x, k) => (x >> k) & 255;
+    const m = k => Math.round(ch(a, k) * (1 - t) + ch(b, k) * t) << k;
+    return m(16) | m(8) | m(0);
+  }
+  function hexCss(h) { return '#' + ('000000' + h.toString(16)).slice(-6); }
+  // bond drawing: 'cloud' (default) = a smooth tube in the colours of its two atoms, slightly waisted
+  // like a stretched elastic band, inside a soft translucent sheath suggesting the shared electron
+  // density; 'stick' = the earlier thin grey sticks
+  let BOND_STYLE = 'cloud';
+  try { const v = localStorage.getItem('mofBondStyle'); if (v === 'cloud' || v === 'stick') BOND_STYLE = v; } catch (e) { /* storage blocked */ }
+  const _allRenderers = [];
+
   // =================================================================
   // SHARED FRAME TICKER  (fixes the "3D stops working after a few
   // minutes" bug)
@@ -99,7 +148,8 @@
     let canvas, container, labelsLayer, hoverTip;
     let scene, renderer, camera;
     let rotGroup, atomGroup, bondGroup, blockGroup, cellGroup;
-    let sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, sharedGeos;
+    let sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, sharedGeos, bandGeo;
+    let selected = null, infoCard = null, styleBar = null;
     let atomMeshes = [], bondMeshes = [], blockMeshes = [];
     let centerAll = null;
     let camYaw = 0.7, camPitch = 0.45, camDist = 30;
@@ -150,6 +200,34 @@
       const mid = startPos.clone().add(dirVec.clone().multiplyScalar(0.5));
       mesh.position.copy(mid);
       mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dirVec.clone().normalize());
+      return mesh;
+    }
+
+    // A cloud bond from atom A towards the bond midpoint: the waisted tube in A's colour.
+    function makeBand(startPos, dirVec, color, opacity) {
+      const len = dirVec.length();
+      if (len < 0.01) return null;
+      const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.32, metalness: 0.05, transparent: opacity < 1, opacity });
+      const mesh = new THREE.Mesh(bandGeo, mat);
+      mesh.scale.set(1, len, 1);
+      mesh.position.copy(startPos.clone().add(dirVec.clone().multiplyScalar(0.5)));
+      // the cylinder's wide end (bottom, -y) sits at the atom: point +y along the bond
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dirVec.clone().normalize());
+      return mesh;
+    }
+    // The translucent sheath around a whole bond: an elongated soft ellipsoid, added on top of what is
+    // behind it (additive blending), so it reads as a glow of shared electrons rather than a solid.
+    function makeSheath(pa, vec, color) {
+      const len = vec.length();
+      if (len < 0.01) return null;
+      const opt = { color, roughness: 1, metalness: 0, transparent: true, opacity: 0.22, depthWrite: false };
+      if (THREE.AdditiveBlending !== undefined) opt.blending = THREE.AdditiveBlending;
+      const mat = new THREE.MeshStandardMaterial(opt);
+      const mesh = new THREE.Mesh(sphereGeo, mat);
+      mesh.scale.set(0.3, len * 0.56, 0.3);
+      mesh.position.copy(pa.clone().add(vec.clone().multiplyScalar(0.5)));
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec.clone().normalize());
+      mesh.renderOrder = 2;
       return mesh;
     }
 
@@ -329,16 +407,25 @@
       blockGroup = new THREE.Group(); rotGroup.add(blockGroup);
       cellGroup = new THREE.Group(); rotGroup.add(cellGroup);
 
-      scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-      const light1 = new THREE.DirectionalLight(0xffffff, 1.05);
+      // three lights: a soft sky/ground fill, a key light and a weaker rim light from behind,
+      // so the spheres read as round and glossy rather than flat discs
+      if (THREE.HemisphereLight) scene.add(new THREE.HemisphereLight(0xffffff, 0x8a93a6, 0.55));
+      else scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+      scene.add(new THREE.AmbientLight(0xffffff, 0.18));
+      const light1 = new THREE.DirectionalLight(0xffffff, 0.95);
       light1.position.set(1, 1.2, 1);
       scene.add(light1);
+      const light2 = new THREE.DirectionalLight(0xdfe8ff, 0.35);
+      light2.position.set(-1, -0.4, -1.2);
+      scene.add(light2);
 
-      sphereGeo = new THREE.SphereGeometry(1, 20, 16);
+      sphereGeo = new THREE.SphereGeometry(1, 32, 24);
       cylGeo = new THREE.CylinderGeometry(0.07, 0.07, 1, 8);
+      // cloud bonds: a half-bond tube, wider at the atom (bottom) than at the middle (top), and a sheath
+      bandGeo = new THREE.CylinderGeometry(0.105, 0.165, 1, 20, 1, true);
       blockGeoSphere = new THREE.SphereGeometry(1, 24, 18);
       blockGeoBox = new THREE.BoxGeometry(1, 1, 1);
-      sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox]);
+      sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, bandGeo]);
 
       centerAll = new THREE.Vector3();
 
@@ -384,7 +471,8 @@
           if (atomGroup.visible) targets.push(...atomMeshes);
           if (blockGroup.visible) targets.push(...blockMeshes);
           if (bondGroup.visible) targets.push(...bondMeshes);
-          const hits = raycaster.intersectObjects(targets);
+          const atomHits = atomGroup.visible ? raycaster.intersectObjects(atomMeshes) : [];
+          const hits = atomHits.length ? atomHits : raycaster.intersectObjects(targets);
           if (hits.length === 0) { hoverTip.style.display = 'none'; return; }
           const obj = hits[0].object;
           let text = '';
@@ -405,7 +493,7 @@
             text = 'Bond ' + bi.label + (bi.interblock ? ' — cut by this stage’s algorithm' : ' — intra-block') + ' — ' + bi.length.toFixed(2) + ' Å';
           } else if (obj.userData.atom) {
             const a = obj.userData.atom;
-            text = a.el + a.id + (obj.userData.classLabel ? ' — ' + obj.userData.classLabel : '');
+            text = a.el + a.id + (obj.userData.classLabel ? ' — ' + obj.userData.classLabel : '') + ' — click for its properties';
           }
           if (inspect) { renderBlockInspector(hoverTip, inspect, text); }
           else { hoverTip.textContent = text; }
@@ -415,6 +503,32 @@
         });
         canvas.addEventListener('mouseleave', () => { hoverTip.style.display = 'none'; });
       }
+
+      // ---- click an atom (or a block in the net view) to see its properties ----
+      try { if (typeof getComputedStyle !== 'undefined' && getComputedStyle(container).position === 'static') container.style.position = 'relative'; } catch (e) { /* ignore */ }
+      infoCard = document.createElement('div');
+      infoCard.className = 'atom-card';
+      infoCard.setAttribute('role', 'dialog');
+      infoCard.setAttribute('aria-label', 'Properties of the selected atom');
+      infoCard.style.display = 'none';
+      container.appendChild(infoCard);
+      styleBar = document.createElement('div');
+      styleBar.className = 'atom-stylebar';
+      container.appendChild(styleBar);
+      drawStyleBar();
+      canvas.addEventListener('click', e => {
+        if (dragMoved > 6 || !currentData) return;
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        const ah = atomGroup.visible ? raycaster.intersectObjects(atomMeshes) : [];
+        if (ah.length) { selectAtom(ah[0].object.userData.atom.id); return; }
+        const bh = blockGroup.visible ? raycaster.intersectObjects(blockMeshes) : [];
+        if (bh.length && (currentOpts.netOnly || !atomGroup.visible)) { selectBlock(bh[0].object.userData.block); return; }
+        clearSelection();
+      });
+      _allRenderers.push(api);
 
       sizeRenderer();
       window.addEventListener('resize', sizeRenderer);
@@ -459,11 +573,12 @@
           contextLost = false;
           // Rebuild all GPU-side resources, then redraw the last scene.
           try {
-            sphereGeo = new THREE.SphereGeometry(1, 20, 16);
+            sphereGeo = new THREE.SphereGeometry(1, 32, 24);
             cylGeo = new THREE.CylinderGeometry(0.07, 0.07, 1, 8);
+            bandGeo = new THREE.CylinderGeometry(0.105, 0.165, 1, 20, 1, true);
             blockGeoSphere = new THREE.SphereGeometry(1, 24, 18);
             blockGeoBox = new THREE.BoxGeometry(1, 1, 1);
-            sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox]);
+            sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, bandGeo]);
             sizeRenderer();
             if (currentData) load(currentData, currentOpts);
           } catch (e) { /* leave the panel blank rather than throwing */ }
@@ -514,6 +629,7 @@
     function load(DATA, opts) {
       opts = Object.assign({ colorMode: 'element', showBonds: true, showCell: true, netOnly: false, blockColorStyle: 'nodeLinker' }, opts || {});
       currentData = DATA; currentOpts = opts;
+      if (selected) { selected = null; if (infoCard) infoCard.style.display = 'none'; }
 
       disposeGroup(atomGroup); disposeGroup(bondGroup); disposeGroup(blockGroup); disposeGroup(cellGroup);
       labelsLayer.innerHTML = '';
@@ -540,12 +656,14 @@
         DATA.atoms.forEach(atom => {
           const r = elementRadius(atom.el);
           const color = colorForAtom(atom, opts, blockById);
-          const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.05 });
+          const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.3, metalness: METALS.has(atom.el) ? 0.35 : 0.05 });
           const mesh = new THREE.Mesh(sphereGeo, mat);
           mesh.scale.setScalar(r);
+          atom._color = color;
           mesh.position.set(...atom.pos);
           const blk = blockById[atom.block];
           mesh.userData = { atom, classLabel: (opts.colorMode === 'metalNonmetal') ? (METALS.has(atom.el) ? 'metal' : 'nonmetal') : (blk ? (blk.type === 'metal' ? 'node block #' + blk.id : 'linker block #' + blk.id) : '') };
+          mesh.userData._r = r;
           atomGroup.add(mesh);
           atomMeshes.push(mesh);
         });
@@ -557,12 +675,20 @@
             const pa = new THREE.Vector3(...a.pos), pb = new THREE.Vector3(...b.pos);
             const vec = new THREE.Vector3(...bd.vec);
             const cut = bd.interblock;
-            const color = bd.highlight !== undefined ? bd.highlight : (cut ? 0x2ec4d6 : 0x9a9a9a);
-            const bondInfo = { label: a.el + a.id + '–' + b.el + b.id, interblock: cut, length: vec.length() };
-            const s1 = makeStub(pa, vec.clone().multiplyScalar(0.5), color);
-            const s2 = makeStub(pb, vec.clone().multiplyScalar(-0.5), color);
-            if (s1) { s1.userData = { bondInfo }; bondGroup.add(s1); bondMeshes.push(s1); }
-            if (s2) { s2.userData = { bondInfo }; bondGroup.add(s2); bondMeshes.push(s2); }
+            const fixed = bd.highlight !== undefined ? bd.highlight : (cut ? 0x2ec4d6 : null);
+            const bondInfo = { label: a.el + a.id + '–' + b.el + b.id, interblock: cut, length: vec.length(), a: bd.a, b: bd.b };
+            let parts;
+            if (BOND_STYLE === 'cloud') {
+              // each half takes its own atom's colour (lightened), or the stage's highlight colour
+              const ca = fixed !== null ? fixed : hexMix(a._color !== undefined ? a._color : elementColor(a.el), 0xffffff, 0.18);
+              const cb = fixed !== null ? fixed : hexMix(b._color !== undefined ? b._color : elementColor(b.el), 0xffffff, 0.18);
+              parts = [makeBand(pa, vec.clone().multiplyScalar(0.5), ca, 1), makeBand(pb, vec.clone().multiplyScalar(-0.5), cb, 1),
+                       makeSheath(pa, vec, fixed !== null ? fixed : hexMix(ca, cb, 0.5))];
+            } else {
+              const color = fixed !== null ? fixed : 0x9a9a9a;
+              parts = [makeStub(pa, vec.clone().multiplyScalar(0.5), color), makeStub(pb, vec.clone().multiplyScalar(-0.5), color)];
+            }
+            parts.forEach(m => { if (m) { m.userData = { bondInfo }; bondGroup.add(m); bondMeshes.push(m); } });
           });
         }
       }
@@ -641,9 +767,109 @@
       requestRender();   // one redraw for the new scene, then idle again
     }
 
+    function drawStyleBar() {
+      if (!styleBar) return;
+      styleBar.innerHTML = '<span>Bonds</span>' + ['cloud', 'stick'].map(k =>
+        '<button type="button" data-style="' + k + '" aria-pressed="' + (BOND_STYLE === k) + '">' + (k === 'cloud' ? 'Cloud' : 'Stick') + '</button>').join('') +
+        '<span class="hint">Click an atom</span>';
+      styleBar.querySelectorAll('button').forEach(btn => btn.addEventListener('click', ev => {
+        ev.stopPropagation();
+        BOND_STYLE = btn.getAttribute('data-style');
+        try { localStorage.setItem('mofBondStyle', BOND_STYLE); } catch (e2) { /* ignore */ }
+        _allRenderers.forEach(r => r._restyle());           // every 3D view on the page follows
+      }));
+    }
+    function _restyle() { drawStyleBar(); if (currentData) { const keep = selected; load(currentData, currentOpts); if (keep && keep.kind === 'atom') selectAtom(keep.id); } }
+
+    function setGlow(mesh, on) {
+      if (!mesh || !mesh.material) return;
+      if (mesh.material.emissive && mesh.material.emissive.setHex) mesh.material.emissive.setHex(on ? 0x553300 : 0x000000);
+      if (mesh.userData && mesh.userData._r) mesh.scale.setScalar(mesh.userData._r * (on ? 1.22 : 1));
+    }
+    function clearSelection() {
+      if (selected && selected.meshes) selected.meshes.forEach(m => setGlow(m, false));
+      selected = null;
+      if (infoCard) infoCard.style.display = 'none';
+      requestRender();
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+    function f(x, d) { return (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); }
+    function fracOf(pos) {
+      const M = currentData.cell_matrix;            // rows are a, b, c: pos = u M
+      const det = M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) + M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]);
+      const inv = [
+        [(M[1][1] * M[2][2] - M[1][2] * M[2][1]) / det, (M[0][2] * M[2][1] - M[0][1] * M[2][2]) / det, (M[0][1] * M[1][2] - M[0][2] * M[1][1]) / det],
+        [(M[1][2] * M[2][0] - M[1][0] * M[2][2]) / det, (M[0][0] * M[2][2] - M[0][2] * M[2][0]) / det, (M[0][2] * M[1][0] - M[0][0] * M[1][2]) / det],
+        [(M[1][0] * M[2][1] - M[1][1] * M[2][0]) / det, (M[0][1] * M[2][0] - M[0][0] * M[2][1]) / det, (M[0][0] * M[1][1] - M[0][1] * M[1][0]) / det]];
+      return [0, 1, 2].map(j => pos[0] * inv[0][j] + pos[1] * inv[1][j] + pos[2] * inv[2][j]);
+    }
+    // Everything the page knows about one atom: the element's properties, where the atom is,
+    // what it is bonded to, and which building block the current stage puts it in.
+    function atomInfo(id) {
+      const D = currentData, a = D.atoms[id], E = ELEMENTS[a.el] || [a.el, null, null, null, 'element', null, null];
+      const nb = [];
+      D.bonds.forEach(bd => {
+        if (bd.a === id || bd.b === id) {
+          const other = bd.a === id ? bd.b : bd.a, o = D.atoms[other];
+          nb.push({ id: other, el: o.el, d: Math.hypot(bd.vec[0], bd.vec[1], bd.vec[2]), cut: !!bd.interblock, image: !!bd.cross });
+        }
+      });
+      nb.sort((x, y) => x.d - y.d);
+      const blk = D.blocks.filter(b => b.id === a.block)[0];
+      return { atom: a, name: E[0], Z: E[1], mass: E[2], en: E[3], kind: E[4], group: E[5], period: E[6],
+               cov: COVR[a.el], metal: METALS.has(a.el), neighbours: nb, block: blk, frac: fracOf(a.pos) };
+    }
+    function selectAtom(id) {
+      clearSelection();
+      const I = atomInfo(id), a = I.atom;
+      const meshes = atomMeshes.filter(m => m.userData.atom && m.userData.atom.id === id);
+      bondMeshes.forEach(m => { const bi = m.userData.bondInfo; if (bi && (bi.a === id || bi.b === id)) meshes.push(m); });
+      meshes.forEach(m => { if (m.userData.atom) m.userData._r = m.userData._r || m.scale._s || elementRadius(a.el); setGlow(m, true); });
+      selected = { kind: 'atom', id, meshes };
+      const comp = I.block ? Object.entries(I.block.composition).map(([el, n]) => el + (n > 1 ? '<sub>' + n + '</sub>' : '')).join('') : '';
+      const role = I.block ? (I.block.type === 'metal' ? 'node (metal) block #' : 'linker block #') + I.block.id + ' (' + comp + ', ' + I.block.n_atoms + ' atoms, ' + I.block.n_connections + ' connections)' : '—';
+      const nbRows = I.neighbours.slice(0, 8).map(n => '<tr><td>' + esc(n.el + n.id) + '</td><td>' + f(n.d, 3) + ' Å</td><td>' + (n.cut ? 'cut at this stage' : (n.image ? 'to the next cell' : '')) + '</td></tr>').join('');
+      infoCard.innerHTML =
+        '<button type="button" class="close" aria-label="Close">×</button>' +
+        '<div class="head"><span class="sym" style="background:' + hexCss(elementColor(a.el)) + '">' + esc(a.el) + '</span><div><b>' + esc(I.name) + '</b> ' + esc(a.el + a.id) +
+        '<div class="sub">' + esc(I.kind) + (I.group ? ', group ' + I.group : '') + (I.period ? ', period ' + I.period : '') + '</div></div></div>' +
+        '<table class="props">' +
+        '<tr><td>Atomic number</td><td>' + (I.Z || '—') + '</td></tr>' +
+        '<tr><td>Atomic mass</td><td>' + (I.mass ? I.mass + ' u' : '—') + '</td></tr>' +
+        '<tr><td>Electronegativity</td><td>' + (I.en !== null && I.en !== undefined ? f(I.en, 2) : '—') + '</td></tr>' +
+        '<tr><td>Covalent radius (bonding)</td><td>' + (I.cov ? f(I.cov, 2) + ' Å' : '—') + '</td></tr>' +
+        '<tr><td>Treated as a metal</td><td>' + (I.metal ? 'yes' : 'no') + '</td></tr>' +
+        '<tr><td>Bonds (coordination)</td><td>' + I.neighbours.length + '</td></tr>' +
+        '<tr><td>Position (Å)</td><td>' + a.pos.map(x => f(x, 2)).join(', ') + '</td></tr>' +
+        '<tr><td>Fractional (x, y, z)</td><td>' + I.frac.map(x => f(x, 4)).join(', ') + '</td></tr>' +
+        '<tr><td>Building block</td><td>' + role + '</td></tr>' +
+        '</table>' +
+        (nbRows ? '<div class="nbh">Bonded to</div><table class="nb">' + nbRows + '</table>' + (I.neighbours.length > 8 ? '<div class="sub">and ' + (I.neighbours.length - 8) + ' more</div>' : '') : '');
+      infoCard.style.display = 'block';
+      infoCard.querySelector('.close').addEventListener('click', ev => { ev.stopPropagation(); clearSelection(); });
+      requestRender();
+      return I;
+    }
+    function selectBlock(b) {
+      clearSelection();
+      const meshes = blockMeshes.filter(m => m.userData.block === b);
+      selected = { kind: 'block', id: b.id, meshes };
+      const comp = Object.entries(b.composition).map(([el, n]) => el + (n > 1 ? '<sub>' + n + '</sub>' : '')).join('');
+      infoCard.innerHTML = '<button type="button" class="close" aria-label="Close">×</button>' +
+        '<div class="head"><span class="sym" style="background:' + (b.type === 'metal' ? '#c0392b' : '#2e86c1') + '">' + (b.type === 'metal' ? 'M' : 'L') + '</span><div><b>' +
+        (b.type === 'metal' ? 'Node (metal) block' : 'Linker block') + ' #' + b.id + '</b><div class="sub">one vertex of the network</div></div></div>' +
+        '<table class="props"><tr><td>Atoms</td><td>' + b.n_atoms + ' (' + comp + ')</td></tr><tr><td>Connections</td><td>' + b.n_connections + '</td></tr>' +
+        '<tr><td>Centre (Å)</td><td>' + b.centroid.map(x => f(x, 2)).join(', ') + '</td></tr></table>';
+      infoCard.style.display = 'block';
+      infoCard.querySelector('.close').addEventListener('click', ev => { ev.stopPropagation(); clearSelection(); });
+      requestRender();
+    }
+
     function resize() { sizeRenderer(); }
 
-    return { init, load, resize, requestRender };
+    const api = { init, load, resize, requestRender, selectAtom, clearSelection, atomInfo, _restyle,
+                  get bondStyle() { return BOND_STYLE; } };
+    return api;
   }
 
   root.MOFRender = makeRenderer();
