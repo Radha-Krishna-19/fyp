@@ -162,7 +162,8 @@ def quotient_graph_from_cif(cif_path: str):
     with periodic boundaries switched on, and which points at bond cutoffs
     being too tight rather than at the structures being broken.
     """
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    from code_01_cif_input import resolve_cif
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     node_blocks, linker_blocks = run_metal_oxo(geom)
     blocks, edges = build_periodic_block_graph(geom, node_blocks, linker_blocks)
     return blocks, edges, geom

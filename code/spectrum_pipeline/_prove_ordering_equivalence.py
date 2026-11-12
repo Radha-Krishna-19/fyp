@@ -49,7 +49,8 @@ def build_atomic_supercell(cif_path: str, n: int) -> ParsedCIF:
     scale the cell -- the atomic-supercell-first route, using nothing but
     this project's own CIF dataclass so the SAME downstream code (code_02,
     code_04a, code_09) can run on it unmodified."""
-    cif = parse_cif(open(cif_path).read())
+    from code_01_cif_input import resolve_cif
+    cif = parse_cif(open(resolve_cif(cif_path)).read())
     new_atoms: List[Atom] = []
     for i in range(n):
         for j in range(n):

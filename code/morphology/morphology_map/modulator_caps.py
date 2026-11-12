@@ -17,13 +17,15 @@ HERE = _os.path.dirname(_os.path.abspath(__file__))
 REPO_ROOT = _os.path.abspath(_os.path.join(HERE, '..', '..', '..'))
 LAB_CSV = _os.path.join(REPO_ROOT, 'data', 'experimental_morphology', 'dataset', 'experimental_morphology.csv')
 import sys, json, numpy as np, torch; torch.set_num_threads(2)
-sys.path.insert(0, sys.argv[1]); import mofwulff as mw
+_SC = _os.path.join(HERE, '..', 'steps1_8_check')
+sys.path.insert(0, sys.argv[1] if len(sys.argv) > 1 else _os.path.join(_SC, 'kshitij_k11fix')); import mofwulff as mw
 from pymatgen.core import Structure
 from ase.build import molecule
 from pymatgen.io.ase import AseAtomsAdaptor
 from cubic_wulff import shape
 
-CIFD, QDIR = sys.argv[2], sys.argv[3]
+CIFD = sys.argv[2] if len(sys.argv) > 2 else _os.path.join(_SC, 'input_cifs')
+QDIR = sys.argv[3] if len(sys.argv) > 3 else _os.path.join(_SC, 'results_quick')
 eng = mw.Engine(device="cpu")
 
 

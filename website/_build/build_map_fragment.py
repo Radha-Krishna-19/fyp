@@ -164,7 +164,10 @@ def main():
     h.append(f'      <p class="sd"><b>Test 1: laboratory series</b> (<code>series_test.py</code>). Every controlled series in the dataset '
              f'with an increasing dose, ratio or time was placed on the map. {len(mov)} series change shape on the map, and all '
              f'{len(mov)} move one way along one axis. If the same shapes were listed in random order, the chance that all '
-             f'{len(mov)} would be this orderly is {SER["joint_chance"]:.1e}.</p>\n'.replace("e-04", " &times; 10<sup>&minus;4</sup>"))
+             f'{len(mov)} would be this orderly is {SER["joint_chance"]:.1e}. This number is conditional on two choices, stated here: '
+             f'it counts only the {len(mov)} of {len(SER["series"])} series whose shapes all lie on the map, and its null assumes every order '
+             f'of a series\' shapes is equally likely (for three shapes, 2 of the 6 orders are monotone, so 1/3 per series). Shape names '
+             f'are the papers\' own.</p>\n'.replace("e-04", " &times; 10<sup>&minus;4</sup>"))
     h.append(table("map-series", ["Series (source)", "Condition", "Shapes as the condition increases", "Moves toward"],
                    [[("dt-label", E(s["series"])), ("dt-note", E(s["condition"])),
                      ("dt-note", " &rarr; ".join(pretty(x) for x in s["shapes"])), ("dt-note", E(s["result"].replace("moves toward ", "")))] for s in mov]))
@@ -185,6 +188,25 @@ def main():
              'moves different MOFs different ways (monocarboxylic acids push UiO-66 toward octahedra and HKUST-1 toward cubes) and papers '
              'report doses in incompatible units. A model of conditions must therefore predict the move from computed binding energies '
              'and one dose unit, not from labels.</p>\n')
+    # Is M2 better than M3 on records with additives? Exact McNemar test on the paired predictions, and a
+    # bootstrap over papers of the difference in accuracy (records from one paper are not independent).
+    import pandas as pd, numpy as np
+    from math import comb
+    PR = pd.read_csv(os.path.join(MM, "condition_model_predictions.csv"))
+    A = PR[PR.cat != "none"]
+    m2, m3 = (A.M2 == A.truth).to_numpy(), (A.M3 == A.truth).to_numpy()
+    b, c = int((m2 & ~m3).sum()), int((~m2 & m3).sum())
+    p_mc = min(1.0, 2 * sum(comb(b + c, k) for k in range(min(b, c) + 1)) / 2 ** (b + c))
+    rng = np.random.default_rng(0); srcs = A.source.unique(); diffs = []
+    for _ in range(5000):
+        pick = rng.choice(srcs, len(srcs))
+        B = pd.concat([A[A.source == x] for x in pick])
+        diffs.append(((B.M2 == B.truth).mean() - (B.M3 == B.truth).mean()))
+    lo, hi = np.percentile(diffs, [2.5, 97.5])
+    h.append(f'      <p class="sd"><b>How strong is that difference?</b> On the {len(A)} records with an additive, M2 is right where M3 is wrong '
+             f'in {b} records and the reverse in {c} (exact McNemar test, <i>p</i> = {p_mc:.3f}); resampling whole papers gives a 95 % '
+             f'interval of {lo:+.2f} to {hi:+.2f} for M2&rsquo;s advantage in accuracy. The difference is real but only just: it rests on '
+             f'{A.source.nunique()} papers, and its lower end is close to zero.</p>\n')
     eps = {m: CAP["results"][m]["faces"] for m in CAP["results"]}
     def e3(m):
         return " / ".join(f(eps[m][k]["eps_exchange_eV"]) for k in ("100", "110", "111"))

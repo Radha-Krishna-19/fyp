@@ -107,7 +107,8 @@ if __name__ == '__main__':
     from code_01_cif_input import parse_cif
     from code_02_bond_assignment_pbc import compute_geometry
     path = sys.argv[1] if len(sys.argv) > 1 else 'HKUST-1.cif'
-    with open(path) as f:
+    from code_01_cif_input import resolve_cif
+    with open(resolve_cif(path)) as f:
         cif = parse_cif(f.read())
     geom = compute_geometry(cif)
     node_blocks, linker_blocks = run_all_node(geom)

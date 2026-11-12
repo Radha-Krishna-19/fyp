@@ -8,13 +8,14 @@ shape. This folder holds the run of that module outside Colab and the checks of 
 Results and the list of problems (K1–K11) are on the website page "The morphology map", section
 "Checking the team's CIF-to-Wulff pipeline".
 
-Needs: `pip install chgnet pymatgen ase spglib pandas torch`, and the four RASPA2 CIFs the notebook
-downloads (ZIF-8, HKUST-1, Mg-MOF-74, UiO-66).
+Needs: `pip install chgnet pymatgen ase spglib pandas torch`. The four RASPA2 CIFs the notebook downloads
+(ZIF-8, HKUST-1, Mg-MOF-74, UiO-66) are in `input_cifs/` with their source and SHA-256 checksums.
+`MOF_Wulff_steps1-8.ipynb` is a copy of Kshitij's notebook as it was run on 10 November.
 
 | Item | What it is |
 |---|---|
 | `kshitij_k11fix/mofwulff.py` | Kshitij's module with two marked one-line fixes (K11 in `run_mof`, K3 in `block_slabs`); everything else is his |
-| `run_nb.py` | Runs the notebook's cell 5 (steps 1–6 and 8) unchanged: `python run_nb.py kshitij_k11fix <cif folder> <out dir> quick` (static, about 20 s) or `full` (relaxed; needs a GPU or hours of CPU). Environment variable `TOPK` sets RELAX_TOP_K |
+| `run_nb.py` | Runs the notebook's cell 5 (steps 1–6 and 8) unchanged: `python run_nb.py kshitij_k11fix input_cifs <out dir> quick` (static; about 75 s on 2 CPU cores, and checked on 12 November to reproduce `results_quick/` exactly) or `full` (relaxed; needs a GPU or hours of CPU). Environment variable `TOPK` sets RELAX_TOP_K |
 | `one_face.py`, `watch.py` | One face at a time with a memory guard (used for HKUST-1 {111}) |
 | `slabcheck.py` | Slab sizes and plane checks |
 | `k11.py`, `k11_results.json` | K11: after relaxation, HKUST-1 and Mg-MOF-74 faces are converted to the wrong primitive planes |

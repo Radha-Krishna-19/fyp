@@ -6,13 +6,23 @@ from crystal structure alone with no molecular simulation.
 **Version 1.0 · 2026-09-06 · CC BY 4.0**
 23CSE498 Final Year Project · Amrita Vishwa Vidyapeetham, Coimbatore
 
+> **Status (corrected 12 November 2026): the Δα values in these files are withdrawn as structural
+> descriptors.** They were computed on the **atomic** supercell bond graph (one vertex per atom), not on
+> the building-block quotient graph this release was designed for, and on that graph Δα grows with the
+> size of the graph and never converges. The files are kept, unchanged, so the withdrawal can be checked.
+> For the same analysis on the correct graph use `size_scaling/full_band_hmof_cg.json` and
+> `full_band_core_cg.json` (`code/spectrum_pipeline/code_17_full_correct_band.py`); there too Δα follows
+> graph size (r = +0.69 and +0.72). Details: "Known results" below and the project's Results page.
+
 ---
 
 ## What this is
 
-Each row is one MOF reduced to a small set of numbers describing **how its
-building-block network is organised**. The descriptors come from the
-multifractal singularity spectrum of the framework's periodic quotient graph.
+Each row is one MOF reduced to a small set of numbers taken from a multifractal singularity
+spectrum. The release was designed to describe **how the building-block network is organised**,
+using the framework's periodic quotient graph; the numbers in these files were in fact computed on
+the atomic supercell graph (see the status note above and "How the numbers in these files were
+computed" below).
 
 The point of the dataset is that these numbers cost **seconds per framework**,
 where the molecular simulations normally used to characterise a MOF cost
@@ -61,7 +71,20 @@ below.
 
 ---
 
-## How the descriptors were computed
+## How the numbers in these files were computed
+
+These are the settings of the two notebooks that produced the CSV files
+(`notebooks/spectrum/mof_band_analysis.ipynb` for the 77 hMOF, `real_mof_band.ipynb` for the 61 CoRE MOF):
+
+- **Bonds:** fixed distance cutoffs by element pair through ASE's periodic `neighbor_list`: metal–metal
+  2.80 Å, metal–other 2.45 Å, C/N/O–C/N/O 1.70 Å, any pair with H or F 1.45 Å, otherwise 1.90 Å.
+- **Graph analysed:** the **atomic** supercell bond graph, expanded until every lattice direction
+  exceeds 48 Å and capped at 7000 atoms. Coarse-graining was run only to count nodes and linkers
+  (`n_nodes`, `n_linkers`); `graph_diameter` and `n_influential` describe the atomic graph.
+- **Spectrum:** influential vertices = top 10 % by degree; radii fitted from 1 to 0.34 × diameter;
+  q from −10 to 10 in 41 steps; τ(q) fitted through the origin.
+
+## How the descriptors were meant to be computed (the design, now implemented in `code_17`)
 
 1. **Parse the CIF.** Cell parameters, symmetry operators, atom positions. A CIF
    contains no bonds — every bond in this dataset was inferred.

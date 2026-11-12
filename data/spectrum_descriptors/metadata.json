@@ -9,7 +9,7 @@
    "path": "https://creativecommons.org/licenses/by/4.0/"
   }
  ],
- "description": "Graph-theoretic structural descriptors for metal-organic frameworks, computed from crystal structure alone with no molecular simulation. The multifractal singularity spectrum of each framework's periodic quotient graph, reduced to spectrum width, endpoints and asymmetry.",
+ "description": "Multifractal-spectrum numbers (spectrum width, endpoints, asymmetry) for 77 hypothetical (hMOF) and 61 synthesised (CoRE MOF 2019) metal-organic frameworks. STATUS (corrected 2026-11-12): withdrawn as structural descriptors. The values were computed on the atomic supercell bond graph, not on the building-block quotient graph the release was designed for, and on that graph the spectrum width grows with graph size and does not converge. Kept unchanged so the withdrawal can be checked; see README.md.",
  "keywords": [
   "metal-organic framework",
   "MOF",
@@ -176,13 +176,14 @@
   }
  ],
  "methodology": {
-  "bond_perception": "Covalent-radius cutoff (x1.30 metal, x1.15 otherwise) with a minimum-image search over 27 periodic images. CIF files contain no bonds; every bond is inferred.",
+  "bond_perception": "ASE neighbor_list with fixed cutoffs by element pair: metal-metal 2.80 A, metal-other 2.45 A, C/N/O pairs 1.70 A, any pair with H or F 1.45 A, otherwise 1.90 A (notebooks/spectrum/*.ipynb, step 4).",
   "decomposition": "Published metal-oxo algorithm (snurr-group/mofid), used unmodified.",
-  "graph": "Labelled quotient graph: one vertex per block, edges carry the lattice translation crossed.",
-  "supercell_rule": "Expanded until every lattice direction exceeds 48 angstrom.",
+  "graph": "Atomic supercell bond graph, one vertex per atom (the values in these files). The building-block quotient graph was the design; it is implemented in code/spectrum_pipeline/code_17_full_correct_band.py, whose results are in size_scaling/.",
+  "supercell_rule": "Expanded until every lattice direction exceeds 48 angstrom, capped at 7000 atoms.",
   "tau_definition": "tau(q) = ln(partition function) / ln(r / r_N), fitted THROUGH THE ORIGIN. A free-intercept fit gives spectra with no apex for every framework.",
   "q_range": "-10 to +10 in 41 steps",
-  "influential_selection": "Top decile by degree"
+  "influential_selection": "Top 10 % of vertices (atoms) by degree.",
+  "fit_window": "Radii from 1 to 0.34 x graph diameter."
  },
  "known_issues": [
   "The four-structure claim that synthesised MOFs sit clear of the hypothetical band is WITHDRAWN (v2.0). Those structures were 256-972 atoms against the hypothetical set's 3024-6592, and spectrum width correlates with atom count at r=+0.73, so the comparison measured graph size. With 61 size-matched synthesised frameworks the two bands coincide (means differ by 0.018, Welch p=0.38). Control for n_atoms_supercell before reporting any correlation from this dataset.",
@@ -190,5 +191,6 @@
   "The 77-framework file is single-metal (all Zn4O). No cross-family claim is supportable from it.",
   "Hypothetical structures have never been synthesised. Do not describe them as experimental.",
   "The graph is unweighted and untyped: bond order and element identity are discarded by design."
- ]
+ ],
+ "status": "withdrawn as structural descriptors (2026-09-15; description corrected 2026-11-12); data kept for the record"
 }

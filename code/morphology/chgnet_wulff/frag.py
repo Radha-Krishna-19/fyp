@@ -3,7 +3,9 @@ import sys, glob, json, warnings, numpy as np, networkx as nx
 warnings.filterwarnings("ignore")
 from collections import Counter
 from pymatgen.core import Structure
-from chgnet_wulff import LINKER_BONDS
+# Organic bond lengths (A) treated as linker bonds; the same table as code/morphology/slab_options_check.py.
+LINKER_BONDS = {("C", "C"): 1.75, ("C", "H"): 1.25, ("C", "O"): 1.6, ("C", "N"): 1.6,
+                ("N", "N"): 1.6, ("N", "H"): 1.2, ("O", "H"): 1.2}
 MET = {"Zn","Cu","Zr","Mg","Co"}
 def bonded(a,b,d):
     if a in MET or b in MET: return (a in ("O","N") or b in ("O","N")) and d<=2.5

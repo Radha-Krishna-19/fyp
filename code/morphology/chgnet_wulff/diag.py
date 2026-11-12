@@ -2,7 +2,10 @@
 import sys, warnings, numpy as np
 warnings.filterwarnings("ignore")
 from collections import Counter
-from chgnet_wulff import load_conventional, surface_slabs, LINKER_BONDS
+from chgnet_wulff import load_conventional
+# Organic bond lengths (A) treated as linker bonds; the same table as code/morphology/slab_options_check.py.
+LINKER_BONDS = {("C", "C"): 1.75, ("C", "H"): 1.25, ("C", "O"): 1.6, ("C", "N"): 1.6,
+                ("N", "N"): 1.6, ("N", "H"): 1.2, ("O", "H"): 1.2}
 from pymatgen.core.surface import SlabGenerator
 CUT = {("Zn","O"):2.3,("Cu","O"):2.3,("Zr","O"):2.5,("Zn","N"):2.3}
 CUT.update(LINKER_BONDS)

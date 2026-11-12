@@ -215,7 +215,8 @@ def laplacian_spectrum(blocks, edges):
 
 
 def analyse(cif_path: str) -> Dict:
-    geom = compute_geometry(parse_cif(open(cif_path).read()))
+    from code_01_cif_input import resolve_cif
+    geom = compute_geometry(parse_cif(open(resolve_cif(cif_path)).read()))
     nb, lb = run_metal_oxo(geom)
     blocks, edges = build_periodic_block_graph(geom, nb, lb)
     cn = coordination_numbers(blocks, edges)

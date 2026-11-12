@@ -106,7 +106,8 @@ if __name__ == '__main__':
     from code_04a_metal_oxo_algorithm import run_metal_oxo
     from code_05_centroid_simplification import build_blocks
     path = sys.argv[1] if len(sys.argv) > 1 else 'HKUST-1.cif'
-    with open(path) as f:
+    from code_01_cif_input import resolve_cif
+    with open(resolve_cif(path)) as f:
         cif = parse_cif(f.read())
     geom = compute_geometry(cif)
     node_blocks, linker_blocks = run_metal_oxo(geom)

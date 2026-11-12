@@ -36,7 +36,8 @@ def analyze_mof(cif_path: str, output_dir: str = 'Output') -> dict:
     """Real analyzeMOF(filename, output_dir), translated: runs Modules 1-6
     for all three algorithms, Module 7b for metal-oxo specifically (matching
     the real GetMOFkey()'s own restriction), and returns a summary dict."""
-    with open(cif_path) as f:
+    from code_01_cif_input import resolve_cif
+    with open(resolve_cif(cif_path)) as f:
         cif = parse_cif(f.read())                              # Module 1
     geom = compute_geometry(cif, metal_set=METALS)               # Module 2 + 3
 

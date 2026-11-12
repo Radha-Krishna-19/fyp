@@ -205,6 +205,18 @@ def _wrap(v: float) -> float:
     return v
 
 
+
+def resolve_cif(path: str) -> str:
+    """Return a CIF path that exists: the path as given, or, for a bare name such as
+    'HKUST-1.cif', the copy kept next to this module. Lets every script that names one of the
+    four demonstration CIFs run from any working folder."""
+    import os
+    if os.path.exists(path):
+        return path
+    here = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.path.basename(path))
+    return here if os.path.exists(here) else path
+
+
 def parse_cif(text: str) -> ParsedCIF:
     """The Python equivalent of importCIF(&orig_mol, filename, False): reads
     cell parameters + symmetry, expands the asymmetric unit, and returns
@@ -310,7 +322,7 @@ def parse_cif(text: str) -> ParsedCIF:
 if __name__ == '__main__':
     import sys
     path = sys.argv[1] if len(sys.argv) > 1 else 'HKUST-1.cif'
-    with open(path) as f:
+    with open(resolve_cif(path)) as f:
         parsed = parse_cif(f.read())
     print(f'Module 1 result: {len(parsed.atoms)} atoms in the expanded unit cell, '
           f'cell = {parsed.a:.3f} {parsed.b:.3f} {parsed.c:.3f} A, '
