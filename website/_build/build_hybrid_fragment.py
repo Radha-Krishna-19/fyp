@@ -67,7 +67,7 @@ html = f'''      <h2 class="section-title" id="hy-intro" data-toc="What this pag
         <li>The notebook finds the symmetry, lists the allowed faces, computes the UFF energy of each face family with all atoms including hydrogen, and draws the BFDH, blended and Wulff shapes.</li>
         <li>An optional cell accepts energies from another source (for example CHGNet or DFT) and recomputes the same shapes from them.</li>
       </ol>
-      <p class="sd">The notebook differs from Keerthi's CHGNet notebook: it uses the force-field energies and needs seconds, whereas the CHGNet notebook relaxes slabs and needs a GPU for hours. Its limits are those of Phase 4 (no solvent, no charges, no temperature).</p>
+      <p class="sd">The notebook differs from the team's CHGNet notebook: it uses the force-field energies and needs seconds, whereas the CHGNet notebook relaxes slabs and needs a GPU for hours. Its limits are those of Phase 4 (no solvent, no charges, no temperature).</p>
 '''
 open(OUT, 'w', encoding='utf-8').write(html)
 print('wrote', OUT, 'same:', same)

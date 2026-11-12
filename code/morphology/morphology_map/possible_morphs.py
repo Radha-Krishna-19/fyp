@@ -14,7 +14,7 @@ P = json.load(open(_os.path.join(HERE, "model_points.json")))
 lab = pd.read_csv(sys.argv[1] if len(sys.argv) > 1 else LAB_CSV)
 ONMAP = {"cube", "truncated_cube", "cuboctahedron", "truncated_octahedron", "octahedron",
          "cube_truncated_edges", "truncated_rhombic_dodecahedron", "rhombic_dodecahedron"}
-BASE = {"MOF-5": "UFF Wulff", "HKUST-1": "Kshitij CHGNet, static", "UiO-66": "Kshitij CHGNet, static", "ZIF-8": "Kshitij CHGNet, static"}
+BASE = {"MOF-5": "UFF Wulff", "HKUST-1": "Steps 1-8 CHGNet, static", "UiO-66": "Steps 1-8 CHGNet, static", "ZIF-8": "Steps 1-8 CHGNet, static"}
 out = {}
 for m, src in BASE.items():
     g0 = P[m][src]["g"]; g0 = {k.strip("{}"): v for k, v in g0.items()}

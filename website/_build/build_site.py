@@ -130,9 +130,9 @@ PAGES = [
          title='Glossary',
          desc='Every term and symbol used anywhere on this site, defined from first principles and ordered so each one only depends on earlier ones.'),
 
-    dict(file='team.html',         nav='Team',          sections=[],
-         title='Team, Progress and Deliverables',
-         desc='Who did what, how far the implementation has actually got, and where every deliverable lives.'),
+    dict(file='team.html',         nav='Progress',      sections=[],
+         title='Progress and Deliverables',
+         desc='How far the implementation has actually got, what is still open, and where every deliverable lives.'),
 ]
 
 # Which engine scripts each page needs. Loading only what a page uses keeps
@@ -188,7 +188,7 @@ PARTS = [
     ('Connecting the two parts', [('bridge.html', 'Why shape'), ('relation.html', 'Spectrum and shape')]),
     ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
                ('resources.html', 'Resources'), ('references.html', 'References'),
-               ('glossary.html', 'Glossary'), ('team.html', 'Team and progress')]),
+               ('glossary.html', 'Glossary'), ('team.html', 'Progress')]),
 ]
 # Pages outside the numbered reading sequence.
 REFERENCE = ('lessons.html', 'code.html', 'resources.html', 'references.html', 'glossary.html', 'team.html')
@@ -295,6 +295,9 @@ def shell(page, idx, body_html, masthead_html):
         next_a = (f'<a class="next" href="{p["file"]}"><div class="dir">Next</div>'
                   f'<div class="ttl">{p["title"]}</div></a>')
 
+    # team members are named only on the Overview page
+    author_meta = ('<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha Sri Prakash">\n'
+                   if page['file'] == 'index.html' else '')
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -302,8 +305,7 @@ def shell(page, idx, body_html, masthead_html):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{page['title']} &middot; MOF Graphs and Crystal Morphology</title>
 <meta name="description" content="{html.escape(page['desc'], quote=True)}">
-<meta name="author" content="P. M. Radha Krishna, P. Kshitij Varma, G. Rohith Abhinav, J. Keerthi Sree, Isha">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+{author_meta}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 {THEME_INIT}
 <link rel="stylesheet" href="assets/tokens.css">

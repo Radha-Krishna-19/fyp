@@ -2,7 +2,7 @@
 
 For each MOF and each facet class of the CHGNet runs, this builds slabs with pymatgen exactly as
 the notebooks do (same relaxed bulk cell, 15 A slab, 20 A vacuum, ftol 0.1) and counts:
-  as_cut     - Keerthi's notebook: every termination, linkers may be cut;
+  as_cut     - the team's CHGNet notebook: every termination, linkers may be cut;
   intact     - only terminations that break no C-C, C-H, C-O, C-N bond (KEEP_LINKERS_INTACT);
   symmetrized- pymatgen's symmetrize=True slabs (the symmetric-slab notebook adds these).
 For each it reports how many are stoichiometric and how many are symmetric (both faces equal).

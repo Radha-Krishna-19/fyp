@@ -23,8 +23,61 @@
           <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">The 77-framework band, the confound analysis that ended the pore-size claim, the finite-size test that shows the band itself has not converged, and a plain statement of what this work does and does not establish.</p>
         </div>
         <div class="panel">
-          <h4><a href="team.html">Team, progress and deliverables</a></h4>
+          <h4><a href="team.html">Progress and deliverables</a></h4>
           <p style="margin:8px 0 0;color:var(--text-2);font-size:14.5px;">Who did what, an audited implementation-progress figure, instructions for reproducing every number from a clean clone, and where each deliverable is kept.</p>
         </div>
       </div>
+
+      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">0</span>The Team</h2>
+      <p class="section-sub">Five members. The first half of the project (the multifractal spectrum of the MOF graph) and the second half (crystal morphology, from October 2026) were divided as shown; every member can explain the modules they own. The other pages describe the work without naming who did each part.</p>
+
+      <div class="table-wrap"><table class="data-table" id="team-table">
+        <thead><tr><td>Member</td><td>Roll number</td><td>First half: spectrum of the MOF graph</td><td>Second half: crystal morphology</td></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dt-value">Pasupuleti Meena Radha Krishna</td><td class="dt-note">CB.SC.U4CSE23134</td>
+            <td class="dt-note">Problem framing, methodology, integration; pipeline driver, convergence and full-band analyses (code_12 to code_19); this portal, its build and test tooling</td>
+            <td class="dt-note">Morphology Phases 0 to 4 (symmetry, allowed faces, BFDH, graph rule, graph faces, force-field Wulff, deformed cells), the BFDH&times;Wulff blend, the spectrum&ndash;shape study and its notebook run</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Kshitij Varma Pinnamaraju</td><td class="dt-note">CB.SC.U4CSE23122</td>
+            <td class="dt-note">The mathematical model: partition function, &tau;(q), the Legendre transform (<code>code_10_multifractal_spectrum.py</code>, <code>code_11_nmfa_paper.py</code>)</td>
+            <td class="dt-note">DFT check of the faces where the force field and CHGNet disagree (planned; <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/code/morphology/DFT_CHECK_PLAN.md">plan</a>)</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Rohith Abhinav Sai Komal Gullolla</td><td class="dt-note">CB.SC.U4CSE23141</td>
+            <td class="dt-note">The interactive platform: 3D viewer, browser decomposition engine, module walkthrough</td>
+            <td class="dt-note">Experimental morphology dataset (134 records, 35 papers, 12 MOFs); ran the CHGNet notebook for MOF-5, HKUST-1 and UiO-66; added the CHGNet Wulff pipeline (<code>code/morphology/chgnet_wulff/</code>) to the repository</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Keerthi Sree Jonnakuti</td><td class="dt-note">CB.SC.U4CSE23031</td>
+            <td class="dt-note">Results and validation: the band analysis notebook, confound testing, hold-out, dataset provenance checks</td>
+            <td class="dt-note">The MorphoGraph-MOF notebook (CHGNet relaxation of bulk and slabs, surface energies, atomistic particles) and the Colab notebooks for the coarse-grained spectrum, the Wulff shapes and the morphologies (<a href="resources.html#notebooks">Resources</a>)</td>
+          </tr>
+          <tr>
+            <td class="dt-value">Isha Sri Prakash</td><td class="dt-note">CB.SC.U4CSE23029</td>
+            <td class="dt-note">Design decisions, the &tau; defect, network construction, defect simulation, the roadmap</td>
+            <td class="dt-note">Solvent, modulator and temperature effects on face energies (planned)</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <h2 class="section-title" id="certifications" data-toc="Certifications"><span class="stitle-num">0</span>Professional Certifications</h2>
+      <p class="section-sub">Each member completed one online course for the Technical Enrichment component, chosen for the part of the project that member works on. The certificates are in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/"><code>docs/technical_enrichment/certificates/</code></a>; the course contents and the project links are summarised in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/README.md"><code>docs/technical_enrichment/README.md</code></a>.</p>
+      <div class="table-wrap"><table class="data-table" id="cert-table">
+        <thead><tr><td>Member</td><td>Course and provider</td><td>Completed</td><td>How it supports the project and its next steps</td></tr></thead>
+        <tbody>
+          <tr><td class="dt-label">P. M. Radha Krishna</td><td class="dt-note"><a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/G070_23134_OnlineCourse.pdf">Fractals and Scaling</a>, Santa Fe Institute (Complexity Explorer; D. Feldman)</td><td class="dt-note">24 Oct 2026</td><td class="dt-note">Box-counting dimension, power-law fitting and size scaling: the mathematics of the spectrum width &Delta;&alpha; and of its size dependence. Applied directly in the dimension profile of crystal particles (<a href="relation.html#dimension-profile">Spectrum &harr; Shape</a>).</td></tr>
+          <tr><td class="dt-label">Keerthi Sree Jonnakuti</td><td class="dt-note"><a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/G070_23031_OnlineCourse.pdf">Introduction to Complexity</a>, Santa Fe Institute (Complexity Explorer; M. Mitchell)</td><td class="dt-note">23 Oct 2026</td><td class="dt-note">Fractals, networks and scaling in complex systems: the reference models (random, small-world, scale-free networks) against which a MOF graph is judged, and the self-organisation and growth ideas behind crystal habit.</td></tr>
+          <tr><td class="dt-label">Kshitij Varma Pinnamaraju</td><td class="dt-note"><a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/G070_23122_OnlineCourse.pdf">Graph Theory</a>, Udemy (M. Fattah), 10 h</td><td class="dt-note">24 Oct 2026</td><td class="dt-note">Paths, connectivity, trees and graph parameters: the definitions behind the quotient graph, its diameter and the connected-component checks used throughout.</td></tr>
+          <tr><td class="dt-label">Rohith Abhinav Sai Komal Gullolla</td><td class="dt-note"><a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/G070_23141_OnlineCourse.pdf">Advanced Algorithms (Graph Algorithms) in Java</a>, Udemy (H. Balazs), 12.5 h; and Social Network Analysis, Udemy (T. Khan), 3 h</td><td class="dt-note">24 Oct 2026</td><td class="dt-note">Breadth-first search, shortest paths, spanning trees and centrality: the algorithms that make distance and box covering affordable on particle graphs of 10<sup>4</sup> to 10<sup>5</sup> blocks.</td></tr>
+          <tr><td class="dt-label">Isha Sri Prakash</td><td class="dt-note"><a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/G070_23029_OnlineCourse.pdf">Graph Algorithms for Machine Learning</a>, TigerGraph University</td><td class="dt-note">23 Oct 2026</td><td class="dt-note">Graph features, community detection and embeddings for machine learning: the route to learning face energies from graph descriptors (the graph neural network step planned in the MorphoGraph-MOF pipeline).</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout" data-kind="Note">
+        <b>Guide:</b> Dr. T. Ramraj, Assistant Professor (Sl. Gd.), Department of Computer Science
+        and Engineering, School of Computing, Amrita Vishwa Vidyapeetham, Coimbatore. M.E., Ph.D.
+      </div>
+
 

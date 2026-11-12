@@ -47,7 +47,7 @@
   ]
  },
  "HKUST-1": {
-  "baseline_source": "Kshitij CHGNet, static",
+  "baseline_source": "Steps 1-8 CHGNet, static",
   "baseline": "truncated_octahedron",
   "paths": {
    "100": [
@@ -95,7 +95,7 @@
   ]
  },
  "UiO-66": {
-  "baseline_source": "Kshitij CHGNet, static",
+  "baseline_source": "Steps 1-8 CHGNet, static",
   "baseline": "truncated_octahedron",
   "paths": {
    "100": [
@@ -143,7 +143,7 @@
   ]
  },
  "ZIF-8": {
-  "baseline_source": "Kshitij CHGNet, static",
+  "baseline_source": "Steps 1-8 CHGNet, static",
   "baseline": "truncated_rhombic_dodecahedron",
   "paths": {
    "100": [

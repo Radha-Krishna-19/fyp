@@ -27,7 +27,7 @@ for m in ["MOF-5", "HKUST-1", "UiO-66", "ZIF-8"]:
     if m in ch: P["CHGNet cleavage (Oct)"] = {k: get(ch[m]["all_slabs"]["gamma"], k) for k in ("{100}", "{110}", "{111}")}
     pts[m] = {name: dict(x=v["{110}"] / v["{100}"], y=v["{111}"] / v["{100}"], g=v) for name, v in P.items()}
 import csv
-for label, path in (("Kshitij CHGNet, static", KQ), ("Kshitij CHGNet, relaxed", KF)):
+for label, path in (("Steps 1-8 CHGNet, static", KQ), ("Steps 1-8 CHGNet, relaxed", KF)):
     if not path or not os.path.exists(path): continue
     for r in csv.DictReader(open(path)):
         if r["mof"] in pts and r.get("gamma_100") and r.get("gamma_110") and r.get("gamma_111"):

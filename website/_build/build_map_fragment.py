@@ -129,11 +129,11 @@ def main():
     # ---- 2. models on the map ------------------------------------------------------------------------
     h.append(section("map-models", "Every model on the map", "Every Model of the Project on the Map"))
     models = ["BFDH", "Attachment energy", "Broken-bond Wulff", "UFF Wulff", "CHGNet cleavage (Oct)",
-              "Kshitij CHGNet, static", "Kshitij CHGNet, relaxed"]
+              "Steps 1-8 CHGNet, static", "Steps 1-8 CHGNet, relaxed"]
     rows = [[("dt-label", "<b>Lab, no additive</b> <span class=\"sm\">(most common shape)</span>")] +
             [("dt-note", "<b>%s</b> <span class=\"sm\">(%d of %d records)</span>" % (pretty(LABS[m].most_common(1)[0][0]), LABS[m].most_common(1)[0][1], sum(LABS[m].values()))) for m in MOFS]]
     for mod in models:
-        row = [("dt-label", mod)]
+        row = [("dt-label", mod.replace("1-8", "1&ndash;8"))]
         for m in MOFS:
             v = P[m].get(mod)
             row.append(("dt-note", "not run" if v is None else f"{pretty(v['exact'])} <span class=\"sm\">({f(v['x'])}, {f(v['y'])})</span>"))
@@ -265,7 +265,7 @@ def main():
 
     # ---- 6. steps 1-8 pipeline check ------------------------------------------------------------------
     h.append(section("map-steps", "Checking the steps 1-8 pipeline", "Checking the Team's CIF-to-Wulff Pipeline (Steps 1&ndash;8)"))
-    h.append('      <p class="sd">Kshitij\'s notebook <code>MOF_Wulff_steps1-8.ipynb</code> goes from a CIF to a Wulff shape: standardise the '
+    h.append('      <p class="sd">The team notebook <code>MOF_Wulff_steps1-8.ipynb</code> goes from a CIF to a Wulff shape: standardise the '
              'structure, split it into building blocks, list face families and terminations, cut slabs of whole blocks, cap every '
              'broken metal&ndash;linker bond with dissociated water, compute CHGNet energies, and build and name the shape. It answers '
              'three weaknesses of the October CHGNet run (slabs cut through blocks, uncapped bonds, no DFT plan). It was run unchanged '
@@ -336,7 +336,7 @@ def main():
              '<li><b>Data limit:</b> no database lists the morphologies a given CIF can form. Ours is collected by hand from papers '
              '(134 records, about 12 MOFs, doses in incompatible units): enough to test a method, not to train a general model. '
              'This question was put to the guide on 10 November.</li></ul>\n')
-    h.append('      <p class="sd">Next steps are listed with owners on <a href="team.html">Team and progress</a>. Code: '
+    h.append('      <p class="sd">Next steps are listed on <a href="team.html">Progress</a>. Code: '
              '<code>code/morphology/morphology_map/</code> and <code>code/morphology/steps1_8_check/</code>, each with a README.</p>\n')
 
     out = os.path.join(HERE, "fragments", "morphology_map.before.html")

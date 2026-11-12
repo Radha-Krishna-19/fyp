@@ -101,14 +101,14 @@ MORPH = [
   'It matched the experimental shape, and the machine-learning route disagreed, so the simple model looked better.',
   'The Phase 4 energy uses one flat cost of 70 kcal/mol for every bond. At half or a quarter of that cost for metal&ndash;ligand bonds the MOF-5 shape becomes a truncated cube or a truncated octahedron. A match found with a free setting is weak evidence.',
   'Run a sensitivity test on every free constant before quoting the result. The decisive test is a DFT calculation on a few faces.',
-  'Added the bond-cost sensitivity test, quote the cube only with this caveat, and wrote the DFT plan for Kshitij.',
+  'Added the bond-cost sensitivity test, quote the cube only with this caveat, and wrote the DFT plan.',
   '<a href="experiment.html">Experiment</a> section 6; <code>code/morphology/DFT_CHECK_PLAN.md</code>'),
  ('m-oneshape', 'One "correct" shape per MOF',
   'We compared our shapes with a single experimental shape per MOF. In the laboratory the same MOF gives different shapes depending on what it is grown in and for how long.',
   'A short table of expected shapes is easy to use.',
   'ZIF-8 changes from cubes to rhombic dodecahedra over about four hours; HKUST-1 changes from octahedron to cube as modulator is added. UiO-66 forms clean octahedra only with a modulator, and our first source for it was a citation, not a primary image.',
   'The dataset must record solvent, additive, temperature and time. Benchmarks use additive-free crystals because no model here contains an additive.',
-  'Rohith built a dataset of 134 records from 35 papers with every condition; UiO-66 was then confirmed from two primary papers; eleven records with no identifiable source are held out.',
+  'The team built a dataset of 134 records from 35 papers with every condition; UiO-66 was then confirmed from two primary papers; eleven records with no identifiable source are held out.',
   '<code>data/experimental_morphology/</code>; <a href="experiment.html">Experiment</a> section 2'),
  ('m-fragment', 'Misreading broken pieces in the CHGNet slabs',
   'Some computed slabs contained loose pieces. We first thought a metal cluster had been torn in two. It was the organic linker that had been cut.',
@@ -147,7 +147,7 @@ AUDIT = [
   'A reader who opens the Morphology page first sees a project that stopped at Phase 3, and a statement that contradicts the Spectrum &harr; Shape page.',
   'Status was recorded in three places (Morphology page, Team page, project notes) with no single source.',
   'All phase tables were rewritten with one numbering (Phases 0 to 6, with 4b to 4h), and the audit below checks every page against the result files.',
-  '<a href="morphology.html">Morphology</a>, <a href="team.html">Team</a>'),
+  '<a href="morphology.html">Morphology</a>, <a href="team.html">Progress</a>'),
  ('l-provenance', 'Figures that did not say where they came from',
   'Most pictures on the site had a caption saying what they show but not which program drew them or from which data, so a reader could not check them.',
   'The figures were drawn by the same scripts that produced the numbers, so the link seemed obvious to the people who made them.',
@@ -184,14 +184,14 @@ NOVEMBER = [
   'A threshold such as "more than 20 % of each" is easy to write and gives sensible-looking names.',
   'On the cubic map the cuboctahedron is the single line y = &gamma;<sub>111</sub>/&gamma;<sub>100</sub> = 2/&radic;3. <code>name_habit()</code> named every shape with y from 0.87 to 1.20 a cuboctahedron, so UiO-66 (77 % {111}, a truncated octahedron) was reported as a cuboctahedron. On the From a CIF to a shape page, an octahedron with two of its six corners cut was called a cuboctahedron because the namer was given an incomplete shape.',
   'Names come from the exact limits (<code>cubic_wulff.py</code>, <code>checks/naming.py</code> compares them). A half-built shape is described by its face counts and named only when every face family is complete.',
-  'K1 is listed for Kshitij; the page was fixed on 12 November.',
+  'K1 is listed for the module&rsquo;s author; the page was fixed on 12 November.',
   '<code>code/morphology/steps1_8_check/checks/naming.py</code>; <code>website/cif_shape_page.js</code> (<code>frameName</code>)'),
  ('l-k2', 'The metal rod cut into single atoms (K2) and the wrong reference shape (K4)',
   'Mg-MOF-74 is built from long rods of metal and oxygen. The program treated every Mg as its own block, so it could never find the rod and could never predict the needle-like crystals the rod produces. It also compared UiO-66 against octahedra, which only grow with an additive.',
   'Counting every metal&ndash;oxygen&ndash;carbon bond as a metal&ndash;linker bond works for MOFs with separate metal clusters, which is what the method was first written for.',
   'Mg&ndash;O bonds to oxygens shared by two metals belong to the inorganic rod, not to a linker. Splitting them leaves single-Mg nodes and the rod flag never fires; {001} slabs then cut the rod and come out low in energy, giving a block instead of a rod. The reference habit for additive-free UiO-66 in our dataset is a cube; octahedra need benzoic or acetic acid.',
   'Treat a metal and every O shared by two or more metals as one inorganic unit; take reference shapes from the dataset with their conditions.',
-  'Open; listed for Kshitij with the evidence.',
+  'Open; listed for the module&rsquo;s author with the evidence.',
   '<a href="morphology_map.html#map-steps">The morphology map</a>, problem table'),
  ('l-cwd', 'Scripts that worked only from their own folder',
   'Five analysis programs found their data by looking around the folder they were started in. Started from anywhere else, they failed or wrote their results to the wrong place.',
@@ -213,7 +213,7 @@ SMALL = [
  ('"Grows as 0.78 ln D" on the Team page', 'The slope of HKUST-1 was quoted as if it held for every net.', 'Now 0.69&ndash;0.89 depending on the net, as on the Results page.'),
  ('<code>npm test</code> called two test files that no longer existed', 'The test list in <code>package.json</code> was written before the site was split into pages.', 'A runner (<code>run_all_tests.js</code>) now runs every <code>test_*.js</code> file.'),
  ('A temperature range printed as "125&ndash;125 &deg;C"', 'The range was formatted without checking whether its ends were equal.', 'A single value is printed when both ends are equal.'),
- ('A team member\'s name spelt two ways', 'The name was typed from memory on some pages.', 'Every page now uses the spelling in the paper and the certificate (Kshitij).'),
+ ('A team member\'s name spelt two ways', 'The name was typed from memory on some pages.', 'Every page now uses the spelling in the paper and the certificate.'),
  ('Website still said 104 records, 28 papers, 14 MOFs', 'The Team page was not updated when the dataset grew.', 'Now 134 records from 35 papers for 12 MOFs, as on the Experiment page.'),
  ('The released dataset described the wrong graph and the wrong bond rule', 'Its metadata (15 September) said controlling for graph size would fix the descriptor, and its description said the values came from the building-block quotient graph with covalent-radius bonds. The values were computed on the atomic graph with fixed distance cutoffs, and size control does not fix a descriptor that never converges.', 'Corrected twice: the size claim on 15 September (commit 6ec48fd); the graph and bond rule on 12 November, found by the audit. The data were not changed.'),
  ('Two CHGNet jobs killed for memory (10 November)', 'A second CHGNet or MACE job was started beside a running one on an 8 GB machine.', 'Heavy jobs now run one at a time.'),
@@ -278,7 +278,7 @@ def main():
       <h2 class="section-title" id="ls-next" data-toc="What is still not safe"><span class="stitle-num">0</span>What Is Still Not Safe</h2>
       <ul class="sd">
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
-        <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until Kshitij's calculation is done.</li>
+        <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until the DFT calculation is done.</li>
         <li>Only four MOFs have a clean experimental shape; no method can yet be ranked as better.</li>
         <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline are close to zero, so the order of faces rests on small differences; K1, K2 and K4&ndash;K10 are still open in that pipeline.</li>
         <li>The morphology map is exact only for cubic crystals bounded by {100}, {110} and {111}; the first modulator-cap energies are unrelaxed and not physical for UiO-66.</li>

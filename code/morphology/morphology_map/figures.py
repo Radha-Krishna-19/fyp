@@ -20,7 +20,7 @@ SHORT = {"cube": "cube", "truncated_cube": "truncated\ncube", "truncated_octahed
 cmap = ListedColormap([TINT[c] for c in classes])
 INK, INK2 = "#0b0b0b", "#52514e"
 MODELS = ["BFDH", "Attachment energy", "Broken-bond Wulff", "UFF Wulff", "CHGNet cleavage (Oct)",
-          "Kshitij CHGNet, static", "Kshitij CHGNet, relaxed"]
+          "Steps 1-8 CHGNet, static", "Steps 1-8 CHGNet, relaxed"]
 COL = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#6250d6", "#e34948"]
 MK = ["o", "s", "^", "D", "v", "P", "*"]
 LAB = {"MOF-5": "cube", "HKUST-1": "octahedron", "UiO-66": "cube (poorly faceted)", "ZIF-8": "rhombic dodecahedron"}
