@@ -400,3 +400,31 @@ figure.fig:hover{box-shadow:0 3px 18px rgb(15 23 42 / .08)}
   table{break-inside:avoid}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;color:var(--text-2)}
 }
+/* ---- 3D atom viewers (mof_render.js): bond-style switch and the atom properties card ---- */
+.atom-stylebar{position:absolute;left:8px;top:8px;display:flex;gap:5px;align-items:center;z-index:3;font:12px var(--font-ui, system-ui);color:var(--text-2);background:color-mix(in srgb, var(--surface-0) 85%, transparent);border:1px solid var(--border);border-radius:6px;padding:3px 6px;white-space:nowrap}
+.atom-stylebar button{font:inherit;padding:1px 8px;border:1px solid var(--border-strong);border-radius:4px;background:var(--surface-1);color:var(--text);cursor:pointer}
+.atom-stylebar button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--surface-0)}
+.atom-stylebar .hint{color:var(--text-3);margin-left:2px}
+@media (max-width:560px){.atom-stylebar .hint{display:none}}
+.atom-card{position:absolute;right:8px;bottom:8px;z-index:4;width:min(270px,calc(100% - 16px));max-height:62%;overflow:auto;background:var(--surface-0);color:var(--text);border:1px solid var(--border-strong);border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.22);padding:8px 10px;font:12px/1.4 var(--font-ui, system-ui)}
+.atom-card .close{position:absolute;right:4px;top:2px;border:0;background:none;font-size:18px;line-height:1;color:var(--text-2);cursor:pointer;padding:2px 6px}
+.atom-card .head{display:flex;gap:8px;align-items:center;margin-bottom:6px;padding-right:18px;font-size:13px}
+.atom-card .sym{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;border-radius:50%;font-weight:700;font-size:13px;color:#111;border:1px solid rgba(0,0,0,.25);box-shadow:inset -3px -5px 8px rgba(0,0,0,.2),inset 3px 3px 6px rgba(255,255,255,.5)}
+.atom-card .sub{font-size:11.5px;color:var(--text-3);font-weight:400}
+.atom-card table{width:100%;border-collapse:collapse;font-size:12px;margin:0;background:none}
+.atom-card table tr,.atom-card table td{background:none !important;border:0 !important;font-weight:400 !important;padding:1px 0 !important;vertical-align:top}
+.atom-card .props td:first-child{color:var(--text-2);padding-right:8px !important}
+.atom-card .props td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.atom-card .nbh{margin:6px 0 1px;font-weight:600;font-size:12px}
+.atom-card .nb td:nth-child(2){text-align:right;font-variant-numeric:tabular-nums;padding:1px 6px !important}
+.atom-card .nb td:nth-child(3){color:var(--text-3);font-size:11px}
+/* ---- 3D crystal drawings: the card shown when a face is clicked (face_card.js) ---- */
+.face-card{position:absolute;right:6px;top:6px;z-index:4;width:min(280px,calc(100% - 12px));background:var(--surface-0);color:var(--text);border:1px solid var(--border-strong);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.16);padding:8px 10px;font:12px/1.4 var(--font-ui, system-ui);text-align:left}
+.face-card .close{position:absolute;right:4px;top:2px;border:0;background:none;font-size:18px;line-height:1;color:var(--text-2);cursor:pointer;padding:2px 6px}
+.face-card .head{margin-bottom:4px;padding-right:16px;font-size:13px}
+.face-card .sub{color:var(--text-3);font-size:11.5px;margin:4px 0 0}
+.face-card table{width:100%;border-collapse:collapse;margin:0;background:none}
+.face-card table tr,.face-card table td{background:none !important;border:0 !important;font-weight:400 !important;padding:1px 0 !important;vertical-align:top}
+.face-card td:first-child{color:var(--text-2);padding-right:8px !important}
+.face-card td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+svg polygon[data-face]:hover{stroke-width:2px}

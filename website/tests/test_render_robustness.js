@@ -101,6 +101,25 @@ const R = window.MOFRender.create();
 R.init(canvasEl, wrap, window.document.getElementById('labels'), window.document.getElementById('tip'));
 R.load(DATA, { colorMode: 'element', showBonds: true, showCell: true });
 
+// ---------- 0. atom properties on click, and the bond styles ----------
+{
+  const cu = DATA.atoms.findIndex(a => a.el === 'Cu');
+  const I = R.selectAtom(cu);
+  assert(I.name === 'Copper' && I.Z === 29 && Math.abs(I.mass - 63.546) < 1e-9, 'clicking a Cu atom identifies Copper, Z = 29, 63.546 u');
+  assert(I.neighbours.length >= 4 && I.neighbours.every(n => n.d > 1.5 && n.d < 3.0), 'the Cu atom lists its bonded neighbours with sensible distances (' + I.neighbours.length + ')');
+  assert(I.frac.every(x => x > -1e-6 && x < 1 + 1e-6), 'fractional coordinates lie in the cell');
+  assert(I.block && I.block.type === 'metal', 'the Cu atom is placed in a node (metal) block');
+  const card = wrap.querySelector('.atom-card');
+  assert(card && card.style.display === 'block' && /Atomic number/.test(card.textContent) && /Copper/.test(card.textContent), 'the properties card is shown');
+  card.querySelector('.close').click();
+  assert(card.style.display === 'none', 'the card closes');
+  assert(R.bondStyle === 'cloud', 'cloud bonds are the default');
+  wrap.querySelector('.atom-stylebar button[data-style=stick]').click();
+  assert(R.bondStyle === 'stick', 'the style switch changes to sticks');
+  wrap.querySelector('.atom-stylebar button[data-style=cloud]').click();
+  assert(R.bondStyle === 'cloud', 'and back to cloud bonds');
+}
+
 // ---------- 1. on-demand rendering ----------
 runFrames(1);
 const afterFirst = renderCalls;

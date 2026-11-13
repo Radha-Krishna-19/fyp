@@ -114,8 +114,10 @@
     // every redraw: a handler on the SVG would lose the drag after the first frame.
     var drag = null;
     stage.style.touchAction = 'none';
+    var press = null;
     stage.addEventListener('pointerdown', function (e) {
       if (!e.target.closest || !e.target.closest('svg')) return;
+      press = [e.clientX, e.clientY];
       stopSpin(); drag = [e.clientX, e.clientY];
       try { stage.setPointerCapture(e.pointerId); } catch (x) {}
       e.preventDefault();
@@ -126,6 +128,16 @@
       turn(dx * 0.012, dy * 0.012);
     });
     function endDrag() { drag = null; }
+    // a press and release without dragging selects the face under the pointer (face_card.js)
+    stage.addEventListener('pointerup', function (e) {
+      var p0 = press; press = null;
+      if (!p0 || !window.FaceCard || Math.abs(e.clientX - p0[0]) + Math.abs(e.clientY - p0[1]) > 5) return;
+      var el = document.elementFromPoint ? document.elementFromPoint(e.clientX, e.clientY) : e.target;
+      var i = el && el.getAttribute ? el.getAttribute('data-face') : null;
+      if (i === null || !v.describeFace) { FaceCard.hide(wrap); return; }
+      var html = v.describeFace(+i);
+      if (html) FaceCard.show(wrap, html);
+    });
     stage.addEventListener('pointerup', endDrag);
     stage.addEventListener('pointercancel', endDrag);
     stage.addEventListener('lostpointercapture', endDrag);
@@ -173,6 +185,17 @@
   //   opts.ghost  faces of the shape before this cut, drawn as a faint dashed outline: what is left outside the
   //               new shape is exactly the piece the plane removed;
   //   opts.plane  {n, d}: the cutting plane, drawn as a translucent sheet with the distance R marked on its normal.
+  // what the card says about one face: its family, its own Miller index, its share of the surface
+  function describeFace(faces, i, extra) {
+    var areas = faces.map(function (f) { return CS.polygonArea(f.pts); }), tot = areas.reduce(function (a, b) { return a + b; }, 0);
+    var f = faces[i]; if (!f || !tot) return null;
+    var famA = 0, cnt = 0;
+    faces.forEach(function (g, j) { if (g.tag === f.tag) { famA += areas[j]; cnt++; } });
+    var h = f.hkl ? '(' + f.hkl.map(function (x) { return x < 0 ? '<span class="c2s-ov">' + (-x) + '</span>' : x; }).join('') + ')' : '';
+    var fam = f.tag && f.tag !== 'bound' ? String(f.tag).replace(/-(\d)/g, '<span class="c2s-ov">$1</span>') : 'the starting box';
+    return FaceCard.describe({ family: fam, index: h, normal: f.n, faceShare: areas[i] / tot, familyShare: famA / tot, count: cnt,
+                               extra: extra ? extra(f) : null });
+  }
   function drawShape(view, faces, opts) {
     opts = opts || {};
     var W = 520, H = 430;
@@ -192,7 +215,8 @@
       // the sheet behind the crystal is drawn now, in front of it after the faces
       if (view.rot(n0)[1] > 0) node('polygon', { points: pts2(sheet), style: 'fill:var(--warn);fill-opacity:0.10;stroke:var(--warn);stroke-width:1;stroke-dasharray:6 4' }, s);
     }
-    faces.forEach(function (f) {
+    view.describeFace = function (i) { return describeFace(faces, i, opts.faceExtra); };
+    faces.forEach(function (f, fi) {
       var n = view.rot(f.n);
       if (n[1] > -1e-9) return;                              // facing away
       var pts = f.pts.map(view.rot);
@@ -201,7 +225,7 @@
       node('polygon', { points: pts2(pts), style: 'fill:' + (hi ? 'var(--warn)' : (opts.colour || colour)(f.tag)) + ';stroke:none' }, s);
       // shading: darken faces turned away from the light, lighten those facing it
       node('polygon', { points: pts2(pts), style: 'fill:#000;fill-opacity:' + (0.07 * (1 - lam)).toFixed(3) + ';stroke:none' }, s);
-      node('polygon', { points: pts2(pts), style: 'fill:#fff;fill-opacity:' + (0.18 * lam * lam).toFixed(3) +
+      node('polygon', { points: pts2(pts), 'data-face': fi, style: 'cursor:pointer;fill:#fff;fill-opacity:' + (0.18 * lam * lam).toFixed(3) +
         ';stroke:var(--text);stroke-width:' + (hi ? 2.6 : 1.1) + ';stroke-linejoin:round' }, s);
       if (opts.labels && f.area > (opts.minLabelArea || 0)) {
         var c = pts.reduce(la.add, [0, 0, 0]);
@@ -1041,7 +1065,10 @@
     if (!R) return;
     var col = anyColourMap(R);
     anyState.view.draw = function () {
-      drawShape(anyState.view, R.faces, { colour: function (t) { return col[t] || 'var(--surface-2)'; }, label: 'BFDH crystal of ' + (anyState.stem || 'the chosen file') + ': ' + R.habit });
+      drawShape(anyState.view, R.faces, { faceExtra: function (f) {
+        var F = R.families.filter(function (x) { return x.label === f.tag; })[0];
+        return F ? [['<i>d</i>, order <i>n</i>', fx(F.d, 3) + ' &Aring;, ' + F.order], ['<i>d</i><sub>eff</sub>', fx(F.dEff, 3) + ' &Aring;'], ['BFDH distance <i>R</i>', fx(F.R, 3)]] : null;
+      }, colour: function (t) { return col[t] || 'var(--surface-2)'; }, label: 'BFDH crystal of ' + (anyState.stem || 'the chosen file') + ': ' + R.habit });
     };
     anyState.view.draw();
   }

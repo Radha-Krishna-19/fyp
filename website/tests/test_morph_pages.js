@@ -75,7 +75,7 @@ ok(low('MOF-5') === '{100}' && low('HKUST-1') === '{111}' && /^\{111\}/.test(low
 
 // ---- the Cell Deform page: live explorer agrees with the Python results ----------------------
 const DF = JSON.parse(fs.readFileSync(path.join(SITE, '..', 'code', 'morphology', 'results', 'deform_results.json'), 'utf8'));
-const DM = load('deform.html', ['mof_morphology.js', 'mof_deform.js', 'deform_page.js']);
+const DM = load('deform.html', ['face_card.js', 'mof_morphology.js', 'mof_deform.js', 'deform_page.js']);
 ok(DM.D.querySelectorAll('#df-view svg polygon').length > 3, 'deform.html: explorer draws a crystal');
 ok(/equant/.test(DM.D.getElementById('df-name').textContent), 'deform.html: the real cell is equant');
 const CEN = { 'MOF-5': ['F', 'm-3m', 25.866], 'HKUST-1': ['F', 'm-3m', 26.297], 'UiO-66': ['F', '-43m', 20.518], 'ZIF-8': ['I', '-43m', 16.991] };
