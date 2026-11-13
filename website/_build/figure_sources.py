@@ -29,6 +29,7 @@ FIGURE_SOURCES = {
     'figures/fig11_real_spectra61.png': (NB + 'real_mof_band.ipynb, step 9', NB + 'real_results.json'),
     'figures/fig12_size_strata.png': ('code/spectrum_pipeline/_make_strata_figure.py', SS + 'size_strata.json and data/spectrum_descriptors/independent_cg_run/independent_cg_run_76_hmof.csv'),
     'figures/fig13_convergence.png': (SS + 'make_convergence_figure.py', SS + 'convergence_sweep.json (code/spectrum_pipeline/_run_size_scaling.py)'),
+    'figures/diverse_set_figure.png': ('code/spectrum_pipeline/code_20_diverse_set.py', SS + 'diverse_set.json'),
     'figures/fig14_slope_sweep.png': (SS + 'make_slope_figure.py', SS + 'slope_sweep_hmof.json and slope_sweep_core.json (code_15_dataset_sweeps.py)'),
     'figures/fig15_full_band.png': (SS + 'make_full_band_figure.py', SS + 'full_band_hmof_cg.json and full_band_core_cg.json (code_17_full_correct_band.py)'),
     'figures/fig16_full_band_vs_size.png': (SS + 'make_full_band_figure.py', SS + 'full_band_hmof_cg.json and full_band_core_cg.json'),
