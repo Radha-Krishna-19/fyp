@@ -59,9 +59,27 @@
       reader.readAsText(file);
       wFileInput.value = '';
     });
+    // ---------- Section 1: any of the bundled structures ----------
+    const wPick = document.getElementById('w-cif-pick');
+    if (wPick) {
+      Object.keys(window.DEFAULT_CIFS).forEach(function (name) {
+        const o = document.createElement('option'); o.value = name; o.textContent = name; wPick.appendChild(o);
+      });
+      wPick.value = 'HKUST-1';
+      wPick.addEventListener('change', function () {
+        if (wPick.value === 'HKUST-1') { wResetBtn.click(); return; }
+        const parsed = parseDefault(window.DEFAULT_CIFS[wPick.value]);
+        curAtoms = parsed.atoms; curCell = parsed.cellMatrix; curLabel = wPick.value; curDefault = false;
+        renderWalkthrough();
+        wStatus.textContent = 'Now walking through ' + wPick.value + ' (' + parsed.atoms.length + ' atoms after applying the symmetry operations in the file).';
+        wStatus.className = 'cif-status ok';
+      });
+    }
+
     wResetBtn.addEventListener('click', function () {
       curAtoms = hkust.atoms; curCell = hkust.cellMatrix;
       curLabel = 'HKUST-1 (Cu-BTC)'; curDefault = true;
+      if (wPick) wPick.value = 'HKUST-1';
       renderWalkthrough();
       wStatus.textContent = '';
       wStatus.className = 'cif-status';

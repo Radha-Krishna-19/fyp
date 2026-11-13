@@ -16,7 +16,9 @@ EXAMPLES = [
     ('MIL-47(V)', 'MIL-47', 'V(O)(bdc): the same wine-rack net as MIL-53, with vanadium-oxo chains'),
     ('MIL-88A, open', 'MIL-88A-open', 'Fe3O trimers and fumarate, swollen form'),
     ('MIL-88A, dry', 'MIL-88A-dry', 'the same framework, contracted when the solvent leaves'),
-    ('ZIF-7', 'ZIF-7', 'Zn and benzimidazolate, trigonal'),
+    ('ZIF-7', 'ZIF-7', 'Zn and benzimidazolate, trigonal: the same sod net as ZIF-8 with a larger linker'),
+    ('MOF-177', 'MOF-177', 'Zn4O and the large three-ended BTB, trigonal'),
+    ('MIL-140A', 'MIL-140A', 'Zr: chains of zirconium oxide joined by bdc, monoclinic'),
     ('MOF-5 (cubic)', 'MOF5', 'Zn4O and bdc, cubic: the reference compact crystal. The same file as at the top of the page'),
 ]
 

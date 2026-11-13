@@ -123,7 +123,7 @@ assert(defect.lambda2 < perfect.lambda2,
 
 // ---------- page rendering ----------
 const tabs = window.document.querySelectorAll('#net-struct-tabs .struct-tab');
-assert(tabs.length === 4, 'page offers all 4 structures, got ' + tabs.length);
+assert(tabs.length === 12, 'page offers all 12 structures, got ' + tabs.length);
 
 const val = window.document.getElementById('validation').innerHTML;
 assert(val.indexOf('matches') !== -1, 'validation table reports a match against published values');
@@ -135,6 +135,19 @@ for (let i = 0; i < tabs.length; i++) {
   assert(v.length > 100 && c.indexOf('<tr>') !== -1,
     'structure ' + tabs[i].dataset.name + ' renders validation + centrality tables');
 }
+
+// four more structures with published coordination numbers: both node and linker must match
+['ZIF-7', 'MOF-177', 'DMOF-1', 'MIL-88A'].forEach(n => {
+  Array.prototype.filter.call(tabs, t => t.dataset.name === n)[0].click();
+  const v = window.document.getElementById('validation').innerHTML;
+  assert((v.match(/matches/g) || []).length === 2, n + ': node and linker coordination match the published values');
+});
+// rod MOFs: no single published node coordination, said so instead of a false match or mismatch
+['Mg-MOF-74', 'MIL-53(Cr)', 'MIL-47(V)', 'MIL-140A'].forEach(n => {
+  Array.prototype.filter.call(tabs, t => t.dataset.name === n)[0].click();
+  const v = window.document.getElementById('validation').innerHTML;
+  assert(v.indexOf('infinite chain') !== -1 && v.indexOf('differs') === -1, n + ': rod MOF reported as a chain, not as a mismatch');
+});
 
 // naive toggle must flip a match to a mismatch on UiO-66
 Array.prototype.filter.call(tabs, t => t.dataset.name === 'UiO-66')[0].click();

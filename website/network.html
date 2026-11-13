@@ -633,7 +633,7 @@
   <div class="panel"><div id="fingerprint-table"></div></div>
 
   <div class="callout warn" data-kind="Caveat">
-    <b>What this does and does not establish.</b> The four structures separate cleanly in spectral space, and λ₂ tracks node connectivity as it should — so the method works. But there is exactly <b>one</b> zirconium structure here. A claim of the form "all Zr-based MOFs occupy this region" cannot be supported from a single example, no matter how clean the separation looks. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per-CIF so it can be run in batch over such a folder without modification.
+    <b>What this does and does not establish.</b> The table now covers twelve structures. The original four separate cleanly in spectral space, and λ₂ tracks node connectivity as it should. With twelve, the separation fails in three places: MIL-53(Cr) and MIL-47(V), which share a net and differ only in the metal, give identical values (λ₂ = 2.438, λ<sub>max</sub> = 9.00); DMOF-1 and MIL-88A also coincide (2.000, 8.00); and UiO-66 shares λ₂ = 2.000 with both. The two zirconium structures, UiO-66 and MIL-140A, sit far apart (λ₂ 2.000 against 1.097). The graph spectrum therefore follows the net, not the metal, and a claim of the form "all Zr-based MOFs occupy this region" is contradicted, not supported, by the one test now possible. Testing it properly needs a few hundred structures grouped by metal, from a database such as CoRE MOF or QMOF. The analysis code is written per CIF, so it runs in batch over such a folder without modification.
   </div>
 
   <!-- ================= 5 ================= -->
