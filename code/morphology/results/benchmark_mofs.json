@@ -1,0 +1,991 @@
+{
+ "script": "code/morphology/run_benchmark_mofs.py",
+ "lab_file": "data/experimental_morphology/dataset/experimental_morphology.csv",
+ "n_records": 134,
+ "n_mofs": 12,
+ "predictions": {
+  "MOF-5": {
+   "structure": "measured",
+   "file": "website/MOF5.cif",
+   "bfdh": {
+    "cell": [
+     25.8658,
+     25.8658,
+     25.8658,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "Fm-3m",
+    "operations": 192,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     0,
+     1
+    ],
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 0.776,
+     "100": 0.224
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.14786,
+     "{110}": 0.41577,
+     "{111}": 0.25542,
+     "{211}": 0.42135,
+     "{221}": 0.44166,
+     "{310}": 0.37371
+    },
+    "shape": "cube",
+    "dominant_face": "100",
+    "face_shares": {
+     "111": 0.0,
+     "100": 1.0
+    }
+   },
+   "seconds": 5.0
+  },
+  "HKUST-1": {
+   "structure": "measured",
+   "file": "website/HKUST-1.cif",
+   "bfdh": {
+    "cell": [
+     26.2972,
+     26.2973,
+     26.297,
+     90.0,
+     89.9998,
+     90.0
+    ],
+    "spacegroup": "Fm-3m",
+    "operations": 192,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 0.999999,
+    "c_over_b": 0.999997,
+    "long_axis_uvw": [
+     0,
+     1,
+     0
+    ],
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 0.776,
+     "100": 0.224
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.28805,
+     "{110}": 0.30694,
+     "{111}": 0.25106,
+     "{211}": 0.49707,
+     "{221}": 0.6912,
+     "{310}": 0.65599
+    },
+    "shape": "truncated octahedron",
+    "dominant_face": "111",
+    "face_shares": {
+     "110": 0.0033,
+     "100": 0.2309,
+     "111": 0.7658
+    }
+   },
+   "seconds": 5.7
+  },
+  "UiO-66": {
+   "structure": "measured",
+   "file": "website/UiO-66.cif",
+   "bfdh": {
+    "cell": [
+     20.5183,
+     20.5183,
+     20.5183,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "F-43m",
+    "operations": 96,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     0,
+     1
+    ],
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 0.776,
+     "100": 0.224
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.94651,
+     "{110}": 1.00532,
+     "{111}+": 0.42149,
+     "{111}-": 0.42149,
+     "{211}+": 1.29597,
+     "{211}-": 1.29597,
+     "{310}": 1.41166
+    },
+    "shape": "octahedron",
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 1.0
+    }
+   },
+   "seconds": 5.8
+  },
+  "ZIF-8": {
+   "structure": "measured",
+   "file": "website/ZIF-8.cif",
+   "bfdh": {
+    "cell": [
+     16.991,
+     16.991,
+     16.991,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "I-43m",
+    "operations": 48,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     2,
+     -1
+    ],
+    "dominant_face": "110",
+    "face_shares": {
+     "110": 1.0
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.36422,
+     "{110}": 0.26883,
+     "{111}+": 0.61913,
+     "{111}-": 0.6192,
+     "{211}+": 0.58516,
+     "{211}-": 0.58554,
+     "{310}": 0.83194
+    },
+    "shape": "rhombic dodecahedron",
+    "dominant_face": "110",
+    "face_shares": {
+     "100": 0.005,
+     "110": 0.995
+    }
+   },
+   "seconds": 2.9
+  },
+  "Mg-MOF-74": {
+   "structure": "measured",
+   "file": "data/structures/general_lattice/MgMOF-74.cif",
+   "bfdh": {
+    "cell": [
+     26.136,
+     26.136,
+     6.942,
+     90.0,
+     90.0,
+     120.0
+    ],
+    "spacegroup": "R-3",
+    "operations": 18,
+    "lattice_system": "trigonal",
+    "habit": "rod",
+    "b_over_a": 0.479294,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     0,
+     1
+    ]
+   },
+   "seconds": 0.2
+  },
+  "IRMOF-3": {
+   "structure": "measured",
+   "file": "data/structures/benchmark/IRMOF-3.cif",
+   "bfdh": {
+    "cell": [
+     25.7465,
+     25.7465,
+     25.7465,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "P1",
+    "operations": 4,
+    "lattice_system": "triclinic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     1,
+     3
+    ],
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 0.776,
+     "100": 0.224
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.1515,
+     "{110}": 0.21367,
+     "{111}+": 0.26125,
+     "{111}-": 0.26123,
+     "{211}+": 0.45629,
+     "{211}-": 0.45611,
+     "{310}": 0.40171
+    },
+    "shape": "cube",
+    "dominant_face": "100",
+    "face_shares": {
+     "110": 0.0077,
+     "111": 0.0,
+     "100": 0.9923
+    }
+   },
+   "seconds": 2.9
+  },
+  "IRMOF-8": {
+   "structure": "measured",
+   "file": "data/structures/benchmark/IRMOF-8.cif",
+   "bfdh": {
+    "cell": [
+     30.0915,
+     30.0915,
+     30.0915,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "P2_1/c",
+    "operations": 4,
+    "lattice_system": "monoclinic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": null,
+    "dominant_face": "110",
+    "face_shares": {
+     "110": 1.0
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.15537,
+     "{110}": 0.18998,
+     "{111}+": 0.34458,
+     "{111}-": 0.23115,
+     "{211}+": 0.34224,
+     "{211}-": 0.33361,
+     "{310}": 0.30046
+    },
+    "shape": "tetrahedral rhombicuboctahedron-like",
+    "dominant_face": "100",
+    "face_shares": {
+     "110": 0.3697,
+     "111": 0.0244,
+     "100": 0.606
+    }
+   },
+   "seconds": 4.1
+  },
+  "ZIF-67": {
+   "structure": "built",
+   "file": "data/structures/benchmark/ZIF-67.cif",
+   "bfdh": {
+    "cell": [
+     16.991,
+     16.991,
+     16.991,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "I-43m",
+    "operations": 48,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     2,
+     -1
+    ],
+    "dominant_face": "110",
+    "face_shares": {
+     "110": 1.0
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.36281,
+     "{110}": 0.26774,
+     "{111}+": 0.61717,
+     "{111}-": 0.61724,
+     "{211}+": 0.58375,
+     "{211}-": 0.58413,
+     "{310}": 0.83042
+    },
+    "shape": "rhombic dodecahedron",
+    "dominant_face": "110",
+    "face_shares": {
+     "100": 0.005,
+     "110": 0.995
+    }
+   },
+   "seconds": 2.8
+  },
+  "MIL-53(Fe)": {
+   "structure": "stand-in",
+   "file": "data/structures/general_lattice/MIL-53Cr-lt.cif",
+   "bfdh": {
+    "cell": [
+     19.685,
+     7.849,
+     6.782,
+     90.0,
+     104.9,
+     90.0
+    ],
+    "spacegroup": "C2/c",
+    "operations": 8,
+    "lattice_system": "monoclinic",
+    "habit": "rod",
+    "b_over_a": 0.569663,
+    "c_over_b": 0.846876,
+    "long_axis_uvw": [
+     0,
+     0,
+     1
+    ]
+   },
+   "seconds": 0.2
+  },
+  "UiO-66-NH2": {
+   "structure": "stand-in",
+   "file": "website/UiO-66.cif",
+   "bfdh": {
+    "cell": [
+     20.5183,
+     20.5183,
+     20.5183,
+     90.0,
+     90.0,
+     90.0
+    ],
+    "spacegroup": "F-43m",
+    "operations": 96,
+    "lattice_system": "cubic",
+    "habit": "compact",
+    "b_over_a": 1.0,
+    "c_over_b": 1.0,
+    "long_axis_uvw": [
+     0,
+     0,
+     1
+    ],
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 0.776,
+     "100": 0.224
+    }
+   },
+   "uff": {
+    "gamma": {
+     "{100}": 0.94651,
+     "{110}": 1.00532,
+     "{111}+": 0.42149,
+     "{111}-": 0.42149,
+     "{211}+": 1.29597,
+     "{211}-": 1.29597,
+     "{310}": 1.41166
+    },
+    "shape": "octahedron",
+    "dominant_face": "111",
+    "face_shares": {
+     "111": 1.0
+    }
+   },
+   "seconds": 5.9
+  },
+  "SNU-70": {
+   "structure": "none",
+   "file": null
+  },
+  "Zn4O(FMA)3": {
+   "structure": "none",
+   "file": null
+  }
+ },
+ "face_scores": {
+  "measured_and_built/all": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 39,
+    "n": 76,
+    "accuracy": 0.513,
+    "ci95": [
+     0.403,
+     0.622
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 45,
+    "n": 76,
+    "accuracy": 0.592,
+    "ci95": [
+     0.48,
+     0.696
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 41,
+    "n": 76,
+    "accuracy": 0.539,
+    "ci95": [
+     0.428,
+     0.647
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 22,
+    "n": 76,
+    "accuracy": 0.289,
+    "ci95": [
+     0.2,
+     0.4
+    ]
+   }
+  ],
+  "measured_and_built/additive_free": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 18,
+    "n": 32,
+    "accuracy": 0.562,
+    "ci95": [
+     0.393,
+     0.718
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 28,
+    "n": 32,
+    "accuracy": 0.875,
+    "ci95": [
+     0.719,
+     0.95
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 28,
+    "n": 32,
+    "accuracy": 0.875,
+    "ci95": [
+     0.719,
+     0.95
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 5,
+    "n": 32,
+    "accuracy": 0.156,
+    "ci95": [
+     0.069,
+     0.318
+    ]
+   }
+  ],
+  "measured_and_built/with_additive": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 21,
+    "n": 44,
+    "accuracy": 0.477,
+    "ci95": [
+     0.338,
+     0.621
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 17,
+    "n": 44,
+    "accuracy": 0.386,
+    "ci95": [
+     0.257,
+     0.534
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 13,
+    "n": 44,
+    "accuracy": 0.295,
+    "ci95": [
+     0.182,
+     0.442
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 17,
+    "n": 44,
+    "accuracy": 0.386,
+    "ci95": [
+     0.257,
+     0.534
+    ]
+   }
+  ],
+  "stand_in/all": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 0,
+    "n": 1,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.793
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 0,
+    "n": 1,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.793
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 1,
+    "n": 1,
+    "accuracy": 1.0,
+    "ci95": [
+     0.207,
+     1.0
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 1,
+    "n": 1,
+    "accuracy": 1.0,
+    "ci95": [
+     0.207,
+     1.0
+    ]
+   }
+  ],
+  "stand_in/additive_free": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 0,
+    "n": 1,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.793
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 0,
+    "n": 1,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.793
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 1,
+    "n": 1,
+    "accuracy": 1.0,
+    "ci95": [
+     0.207,
+     1.0
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 1,
+    "n": 1,
+    "accuracy": 1.0,
+    "ci95": [
+     0.207,
+     1.0
+    ]
+   }
+  ],
+  "stand_in/with_additive": [
+   {
+    "model": "BFDH (structure only)",
+    "correct": 0,
+    "n": 0,
+    "accuracy": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   {
+    "model": "UFF Wulff (structure only)",
+    "correct": 0,
+    "n": 0,
+    "accuracy": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   {
+    "model": "per-MOF majority, paper held out",
+    "correct": 0,
+    "n": 0,
+    "accuracy": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   {
+    "model": "majority, whole MOF held out",
+    "correct": 0,
+    "n": 0,
+    "accuracy": null,
+    "ci95": [
+     null,
+     null
+    ]
+   }
+  ]
+ },
+ "habit_scores": {
+  "measured_and_built": {
+   "model": "BFDH habit (structure only)",
+   "correct": 85,
+   "n": 97,
+   "accuracy": 0.876,
+   "ci95": [
+    0.796,
+    0.928
+   ]
+  },
+  "measured_and_built/baseline_always_compact": {
+   "model": "always compact",
+   "correct": 76,
+   "n": 97,
+   "accuracy": 0.784,
+   "ci95": [
+    0.692,
+    0.854
+   ]
+  },
+  "measured_and_built/where_bfdh_predicts_non_compact": {
+   "model": "BFDH, MOFs predicted rod or plate",
+   "correct": 9,
+   "n": 10,
+   "accuracy": 0.9,
+   "ci95": [
+    0.596,
+    0.982
+   ]
+  },
+  "stand_in": {
+   "model": "BFDH habit (structure only)",
+   "correct": 3,
+   "n": 4,
+   "accuracy": 0.75,
+   "ci95": [
+    0.301,
+    0.954
+   ]
+  },
+  "stand_in/baseline_always_compact": {
+   "model": "always compact",
+   "correct": 1,
+   "n": 4,
+   "accuracy": 0.25,
+   "ci95": [
+    0.046,
+    0.699
+   ]
+  },
+  "stand_in/where_bfdh_predicts_non_compact": {
+   "model": "BFDH, MOFs predicted rod or plate",
+   "correct": 2,
+   "n": 3,
+   "accuracy": 0.667,
+   "ci95": [
+    0.208,
+    0.939
+   ]
+  }
+ },
+ "per_mof": {
+  "HKUST-1": {
+   "structure": "measured",
+   "records": 29,
+   "on_map": 20,
+   "lab_faces": {
+    "111": 13,
+    "100": 7
+   },
+   "lab_habits": {
+    "compact": 20,
+    "plate": 1,
+    "rod": 2
+   },
+   "bfdh_face": "111",
+   "uff_face": "111",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 13,
+   "uff_face_correct": 13,
+   "habit_correct": 20,
+   "habit_scored": 23
+  },
+  "IRMOF-3": {
+   "structure": "measured",
+   "records": 5,
+   "on_map": 5,
+   "lab_faces": {
+    "100": 1,
+    "111": 3,
+    "110": 1
+   },
+   "lab_habits": {
+    "compact": 5
+   },
+   "bfdh_face": "111",
+   "uff_face": "100",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 3,
+   "uff_face_correct": 1,
+   "habit_correct": 5,
+   "habit_scored": 5
+  },
+  "IRMOF-8": {
+   "structure": "measured",
+   "records": 3,
+   "on_map": 2,
+   "lab_faces": {
+    "110": 2
+   },
+   "lab_habits": {
+    "compact": 2
+   },
+   "bfdh_face": "110",
+   "uff_face": "100",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 2,
+   "uff_face_correct": 0,
+   "habit_correct": 2,
+   "habit_scored": 2
+  },
+  "MIL-53(Fe)": {
+   "structure": "stand-in",
+   "records": 3,
+   "on_map": 0,
+   "lab_faces": {},
+   "lab_habits": {
+    "rod": 2,
+    "plate": 1
+   },
+   "bfdh_face": null,
+   "uff_face": null,
+   "bfdh_habit": "rod",
+   "bfdh_face_correct": null,
+   "uff_face_correct": null,
+   "habit_correct": 2,
+   "habit_scored": 3
+  },
+  "MOF-5": {
+   "structure": "measured",
+   "records": 18,
+   "on_map": 17,
+   "lab_faces": {
+    "100": 12,
+    "111": 2,
+    "110": 3
+   },
+   "lab_habits": {
+    "compact": 17
+   },
+   "bfdh_face": "111",
+   "uff_face": "100",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 2,
+   "uff_face_correct": 12,
+   "habit_correct": 17,
+   "habit_scored": 17
+  },
+  "Mg-MOF-74": {
+   "structure": "measured",
+   "records": 18,
+   "on_map": 0,
+   "lab_faces": {},
+   "lab_habits": {
+    "plate": 1,
+    "rod": 9
+   },
+   "bfdh_face": null,
+   "uff_face": null,
+   "bfdh_habit": "rod",
+   "bfdh_face_correct": null,
+   "uff_face_correct": null,
+   "habit_correct": 9,
+   "habit_scored": 10
+  },
+  "SNU-70": {
+   "structure": "none",
+   "records": 3,
+   "on_map": 3,
+   "lab_faces": {
+    "100": 1,
+    "110": 1,
+    "111": 1
+   },
+   "lab_habits": {
+    "compact": 3
+   },
+   "bfdh_face": null,
+   "uff_face": null,
+   "bfdh_habit": null,
+   "bfdh_face_correct": 0,
+   "uff_face_correct": 0,
+   "habit_correct": 0,
+   "habit_scored": 0
+  },
+  "UiO-66": {
+   "structure": "measured",
+   "records": 14,
+   "on_map": 9,
+   "lab_faces": {
+    "111": 4,
+    "100": 5
+   },
+   "lab_habits": {
+    "compact": 9,
+    "rod": 1
+   },
+   "bfdh_face": "111",
+   "uff_face": "111",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 4,
+   "uff_face_correct": 4,
+   "habit_correct": 9,
+   "habit_scored": 10
+  },
+  "UiO-66-NH2": {
+   "structure": "stand-in",
+   "records": 1,
+   "on_map": 1,
+   "lab_faces": {
+    "100": 1
+   },
+   "lab_habits": {
+    "compact": 1
+   },
+   "bfdh_face": "111",
+   "uff_face": "111",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 0,
+   "uff_face_correct": 0,
+   "habit_correct": 1,
+   "habit_scored": 1
+  },
+  "ZIF-67": {
+   "structure": "built",
+   "records": 3,
+   "on_map": 0,
+   "lab_faces": {},
+   "lab_habits": {
+    "plate": 1
+   },
+   "bfdh_face": "110",
+   "uff_face": "110",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": null,
+   "uff_face_correct": null,
+   "habit_correct": 0,
+   "habit_scored": 1
+  },
+  "ZIF-8": {
+   "structure": "measured",
+   "records": 35,
+   "on_map": 23,
+   "lab_faces": {
+    "100": 7,
+    "110": 15,
+    "111": 1
+   },
+   "lab_habits": {
+    "compact": 23,
+    "plate": 4,
+    "rod": 2
+   },
+   "bfdh_face": "110",
+   "uff_face": "110",
+   "bfdh_habit": "compact",
+   "bfdh_face_correct": 15,
+   "uff_face_correct": 15,
+   "habit_correct": 23,
+   "habit_scored": 29
+  },
+  "Zn4O(FMA)3": {
+   "structure": "none",
+   "records": 2,
+   "on_map": 2,
+   "lab_faces": {
+    "100": 1,
+    "111": 1
+   },
+   "lab_habits": {
+    "compact": 2
+   },
+   "bfdh_face": null,
+   "uff_face": null,
+   "bfdh_habit": null,
+   "bfdh_face_correct": 0,
+   "uff_face_correct": 0,
+   "habit_correct": 0,
+   "habit_scored": 0
+  }
+ },
+ "seconds": 35.6
+}
