@@ -1,0 +1,3432 @@
+{
+ "script": "code/morphology/run_dataset_shapes.py",
+ "status": "unvalidated predictions",
+ "summary": {
+  "hMOF": {
+   "files": 77,
+   "errors": 0,
+   "habits": {
+    "equant": 77
+   },
+   "lattice_systems": {
+    "trigonal": 2,
+    "triclinic": 71,
+    "monoclinic": 4
+   },
+   "p1_files": 71
+  },
+  "CoRE MOF 2019": {
+   "files": 61,
+   "errors": 1,
+   "habits": {
+    "equant": 47,
+    "rod": 13
+   },
+   "lattice_systems": {
+    "monoclinic": 16,
+    "cubic": 20,
+    "tetragonal": 7,
+    "hexagonal": 2,
+    "orthorhombic": 7,
+    "trigonal": 5,
+    "triclinic": 3
+   },
+   "p1_files": 2
+  }
+ },
+ "structures": {
+  "hMOF/hMOF-0.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "R3m",
+   "lattice_system": "trigonal",
+   "operations": 6,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999472,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{001}",
+    "{100}"
+   ],
+   "sphericity": 0.806172,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-100.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 69,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999834,
+   "c_over_b": 0.99952,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80617,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-101.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 73,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-103.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 77,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-104.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 69,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.99985,
+   "c_over_b": 0.999463,
+   "long_axis_uvw": [
+    1,
+    3,
+    4
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806186,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-105.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 85,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999845,
+   "c_over_b": 0.999492,
+   "long_axis_uvw": [
+    -1,
+    -5,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806178,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-106.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 74,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-107.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 95,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-108.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 95,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-109.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 116,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999849,
+   "c_over_b": 0.999469,
+   "long_axis_uvw": [
+    -1,
+    -5,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-110.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 81,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999879,
+   "c_over_b": 0.999495,
+   "long_axis_uvw": [
+    -2,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-111.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 162,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.999663,
+   "c_over_b": 0.99992,
+   "long_axis_uvw": [
+    5,
+    5,
+    6
+   ],
+   "main_faces": [
+    "{01-1}",
+    "{0-11}",
+    "{10-1}",
+    "{-101}",
+    "{1-10}",
+    "{-110}",
+    "{110}",
+    "{-1-10}",
+    "{101}",
+    "{-10-1}",
+    "{011}",
+    "{0-1-1}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-112.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 93,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999798,
+   "c_over_b": 0.99954,
+   "long_axis_uvw": [
+    -4,
+    2,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806168,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-113.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 103,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999786,
+   "c_over_b": 0.999658,
+   "long_axis_uvw": [
+    3,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.806133,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-114.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 93,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-115.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 103,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999843,
+   "c_over_b": 0.999495,
+   "long_axis_uvw": [
+    -1,
+    -5,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806177,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-116.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 93,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999846,
+   "c_over_b": 0.999478,
+   "long_axis_uvw": [
+    4,
+    -1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806182,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-117.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "Cm",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.99952,
+   "c_over_b": 0.74733,
+   "long_axis_uvw": [
+    0,
+    -1,
+    1
+   ],
+   "main_faces": [
+    "{001}",
+    "{010}",
+    "{-100}",
+    "{100}"
+   ],
+   "sphericity": 0.798331,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-132.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999635,
+   "c_over_b": 0.747287,
+   "long_axis_uvw": [
+    1,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.798414,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-134.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 189,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.783879,
+   "c_over_b": 0.908703,
+   "long_axis_uvw": [
+    4,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{-110}",
+    "{01-1}",
+    "{0-11}",
+    "{111}",
+    "{-1-1-1}",
+    "{10-1}",
+    "{-101}"
+   ],
+   "sphericity": 0.876694,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-135.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999481,
+   "c_over_b": 0.747345,
+   "long_axis_uvw": [
+    1,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.798378,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-137.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 189,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.783823,
+   "c_over_b": 0.908642,
+   "long_axis_uvw": [
+    4,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{01-1}",
+    "{0-11}",
+    "{1-10}",
+    "{-110}",
+    "{111}",
+    "{-1-1-1}",
+    "{10-1}",
+    "{-101}"
+   ],
+   "sphericity": 0.876663,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-138.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999655,
+   "c_over_b": 0.747279,
+   "long_axis_uvw": [
+    0,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.798404,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-140.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 189,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.783885,
+   "c_over_b": 0.90871,
+   "long_axis_uvw": [
+    5,
+    4,
+    4
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{-110}",
+    "{10-1}",
+    "{-101}",
+    "{111}",
+    "{-1-1-1}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.876697,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-141.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999729,
+   "c_over_b": 0.747252,
+   "long_axis_uvw": [
+    -1,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.798355,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-143.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 189,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.783791,
+   "c_over_b": 0.908888,
+   "long_axis_uvw": [
+    4,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{-110}",
+    "{01-1}",
+    "{0-11}",
+    "{111}",
+    "{-1-1-1}",
+    "{10-1}",
+    "{-101}"
+   ],
+   "sphericity": 0.87675,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-144.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999635,
+   "c_over_b": 0.747286,
+   "long_axis_uvw": [
+    -1,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.798435,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-146.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 189,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.783891,
+   "c_over_b": 0.908939,
+   "long_axis_uvw": [
+    4,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{-110}",
+    "{01-1}",
+    "{0-11}",
+    "{111}",
+    "{-1-1-1}",
+    "{10-1}",
+    "{-101}"
+   ],
+   "sphericity": 0.876779,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-18.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-2.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 159,
+   "spacegroup": "Cm",
+   "lattice_system": "monoclinic",
+   "operations": 6,
+   "habit": "equant",
+   "b_over_a": 0.745696,
+   "c_over_b": 0.999702,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{10-1}",
+    "{0-11}",
+    "{-1-1-1}",
+    "{111}"
+   ],
+   "sphericity": 0.8419,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-20.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-22.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999882,
+   "c_over_b": 0.999402,
+   "long_axis_uvw": [
+    1,
+    5,
+    4
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.806202,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-24.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 159,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.745712,
+   "c_over_b": 0.999667,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{-1-1-1}",
+    "{10-1}",
+    "{-101}",
+    "{1-10}",
+    "{-110}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.841908,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-25.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-27.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 159,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.745691,
+   "c_over_b": 0.999705,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{-1-1-1}",
+    "{1-10}",
+    "{-110}",
+    "{10-1}",
+    "{-101}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.8419,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-28.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999852,
+   "c_over_b": 0.999503,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-30.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 159,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.74497,
+   "c_over_b": 0.999909,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{-1-1-1}",
+    "{01-1}",
+    "{0-11}",
+    "{10-1}",
+    "{-101}",
+    "{1-10}",
+    "{-110}"
+   ],
+   "sphericity": 0.841822,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-40.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 53,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999852,
+   "c_over_b": 0.999503,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-45.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 59,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-47.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 62,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999862,
+   "c_over_b": 0.999475,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806181,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-49.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 68,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.9999,
+   "c_over_b": 0.999763,
+   "long_axis_uvw": [
+    -6,
+    6,
+    -1
+   ],
+   "main_faces": [
+    "{001}",
+    "{00-1}",
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.806084,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-50.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 77,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    1,
+    6,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-51.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 68,
+   "spacegroup": "Cm",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{00-1}",
+    "{010}",
+    "{-100}",
+    "{100}"
+   ],
+   "sphericity": 0.806138,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-53.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 89,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999849,
+   "c_over_b": 0.999469,
+   "long_axis_uvw": [
+    1,
+    5,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-54.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 89,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999852,
+   "c_over_b": 0.999503,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-55.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 95,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999862,
+   "c_over_b": 0.999475,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806181,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-56.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 83,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-57.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 71,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999885,
+   "c_over_b": 0.999378,
+   "long_axis_uvw": [
+    1,
+    4,
+    3
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.806209,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-58.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 89,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-60.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 98,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999865,
+   "c_over_b": 0.999529,
+   "long_axis_uvw": [
+    -1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806163,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-61.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 98,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-62.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 125,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999862,
+   "c_over_b": 0.999475,
+   "long_axis_uvw": [
+    -4,
+    -1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806181,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-63.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 134,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-64.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 59,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999842,
+   "c_over_b": 0.999473,
+   "long_axis_uvw": [
+    6,
+    -1,
+    6
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-66.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 65,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-67.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 69,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999845,
+   "c_over_b": 0.999501,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806175,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-69.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 59,
+   "spacegroup": "R3",
+   "lattice_system": "trigonal",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999478,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{010}"
+   ],
+   "sphericity": 0.806066,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-71.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 73,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-73.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 83,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999825,
+   "c_over_b": 0.999512,
+   "long_axis_uvw": [
+    5,
+    -2,
+    6
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806174,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-74.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 103,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-75.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 63,
+   "spacegroup": "Cm",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.999852,
+   "c_over_b": 0.999503,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{0-10}",
+    "{100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-76.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 113,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    -4,
+    -1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-77.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 93,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-78.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 57,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.99985,
+   "c_over_b": 0.999506,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806173,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-80.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 58,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    -4,
+    1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-82.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 58,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    -1,
+    -4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-84.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 174,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.744952,
+   "c_over_b": 0.999917,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{-1-1-1}",
+    "{01-1}",
+    "{0-11}",
+    "{10-1}",
+    "{-101}",
+    "{1-10}",
+    "{-110}"
+   ],
+   "sphericity": 0.84182,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-85.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 59,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999909,
+   "c_over_b": 0.999803,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{001}",
+    "{00-1}",
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.80607,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-87.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 58,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.0
+  },
+  "hMOF/hMOF-89.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 174,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 3,
+   "habit": "equant",
+   "b_over_a": 0.745691,
+   "c_over_b": 0.999705,
+   "long_axis_uvw": [
+    1,
+    1,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{-1-1-1}",
+    "{1-10}",
+    "{-110}",
+    "{10-1}",
+    "{-101}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.8419,
+   "low_symmetry_file": true,
+   "seconds": 0.2
+  },
+  "hMOF/hMOF-90.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 55,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999839,
+   "c_over_b": 0.999517,
+   "long_axis_uvw": [
+    5,
+    1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80617,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-92.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 58,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999863,
+   "c_over_b": 0.999479,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.80618,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-93.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 116,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.999652,
+   "c_over_b": 0.999909,
+   "long_axis_uvw": [
+    -3,
+    -4,
+    4
+   ],
+   "main_faces": [
+    "{011}",
+    "{0-1-1}",
+    "{101}",
+    "{-10-1}",
+    "{1-10}",
+    "{-110}",
+    "{110}",
+    "{-1-10}",
+    "{10-1}",
+    "{-101}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-94.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 57,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999862,
+   "c_over_b": 0.999475,
+   "long_axis_uvw": [
+    4,
+    -1,
+    5
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806181,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-96.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 57,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999849,
+   "c_over_b": 0.999469,
+   "long_axis_uvw": [
+    -1,
+    -5,
+    6
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-98.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 60,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.999856,
+   "c_over_b": 0.999468,
+   "long_axis_uvw": [
+    1,
+    4,
+    5
+   ],
+   "main_faces": [
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.806184,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "hMOF/hMOF-99.cif": {
+   "dataset": "hMOF",
+   "n_atoms": 120,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.999645,
+   "c_over_b": 0.999904,
+   "long_axis_uvw": [
+    -3,
+    -4,
+    4
+   ],
+   "main_faces": [
+    "{011}",
+    "{0-1-1}",
+    "{101}",
+    "{-10-1}",
+    "{1-10}",
+    "{-110}",
+    "{110}",
+    "{-1-10}",
+    "{10-1}",
+    "{-101}",
+    "{01-1}",
+    "{0-11}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ABAVIJ_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 108,
+   "spacegroup": "Cc",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.818142,
+   "c_over_b": 0.699903,
+   "long_axis_uvw": [
+    -1,
+    4,
+    0
+   ],
+   "main_faces": [
+    "{001}",
+    "{100}",
+    "{-101}",
+    "{0-11}",
+    "{011}",
+    "{110}",
+    "{-1-11}"
+   ],
+   "sphericity": 0.875443,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ABAYIO_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 672,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 2.5
+  },
+  "CoRE MOF 2019/ABAYOU_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 672,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 2.3
+  },
+  "CoRE MOF 2019/ABETIN_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 784,
+   "spacegroup": "I4_1/acd",
+   "lattice_system": "tetragonal",
+   "operations": 32,
+   "habit": "equant",
+   "b_over_a": 0.865124,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{112}",
+    "{211}"
+   ],
+   "sphericity": 0.928716,
+   "low_symmetry_file": false,
+   "seconds": 2.0
+  },
+  "CoRE MOF 2019/ABEXEN_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 480,
+   "spacegroup": "P6/mcc",
+   "lattice_system": "hexagonal",
+   "operations": 24,
+   "habit": "rod",
+   "b_over_a": 0.597361,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{001}"
+   ],
+   "sphericity": 0.829705,
+   "low_symmetry_file": false,
+   "seconds": 0.8
+  },
+  "CoRE MOF 2019/ABEYIR_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 144,
+   "spacegroup": "Pna2_1",
+   "lattice_system": "orthorhombic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.704081,
+   "c_over_b": 0.895124,
+   "long_axis_uvw": [
+    0,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{110}",
+    "{101}",
+    "{10-1}",
+    "{001}",
+    "{00-1}",
+    "{111}",
+    "{11-1}"
+   ],
+   "sphericity": 0.891931,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ABIYIV_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 356,
+   "spacegroup": "Pccn",
+   "lattice_system": "orthorhombic",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 0.974847,
+   "c_over_b": 0.975086,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{110}",
+    "{111}",
+    "{010}",
+    "{001}",
+    "{012}"
+   ],
+   "sphericity": 0.91849,
+   "low_symmetry_file": false,
+   "seconds": 0.5
+  },
+  "CoRE MOF 2019/ABULOB_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 92,
+   "spacegroup": "Pbcn",
+   "lattice_system": "orthorhombic",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 0.862204,
+   "c_over_b": 0.970176,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{110}",
+    "{111}",
+    "{001}",
+    "{010}",
+    "{021}"
+   ],
+   "sphericity": 0.924987,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ACAJIY_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 384,
+   "spacegroup": "R3",
+   "lattice_system": "trigonal",
+   "operations": 9,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 0.971325,
+   "long_axis_uvw": [
+    2,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{101}",
+    "{1-1-1}"
+   ],
+   "sphericity": 0.81549,
+   "low_symmetry_file": false,
+   "seconds": 0.6
+  },
+  "CoRE MOF 2019/ACAJIZ_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 232,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.5261,
+   "c_over_b": 0.959023,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{110}",
+    "{100}",
+    "{11-1}",
+    "{111}"
+   ],
+   "sphericity": 0.857837,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/ACAJOF_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 244,
+   "spacegroup": "Pccn",
+   "lattice_system": "orthorhombic",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.520957,
+   "c_over_b": 0.886275,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{011}",
+    "{001}",
+    "{111}"
+   ],
+   "sphericity": 0.848003,
+   "low_symmetry_file": false,
+   "seconds": 0.4
+  },
+  "CoRE MOF 2019/ACALIB_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 152,
+   "spacegroup": "P2_1/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.816984,
+   "c_over_b": 0.975785,
+   "long_axis_uvw": [
+    6,
+    -1,
+    0
+   ],
+   "main_faces": [
+    "{101}",
+    "{001}",
+    "{010}",
+    "{011}",
+    "{1-11}"
+   ],
+   "sphericity": 0.906865,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/ACIBIY_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 324,
+   "spacegroup": "P-1",
+   "lattice_system": "triclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.859518,
+   "c_over_b": 0.808474,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{001}",
+    "{100}",
+    "{010}",
+    "{011}",
+    "{110}",
+    "{111}"
+   ],
+   "sphericity": 0.874806,
+   "low_symmetry_file": false,
+   "seconds": 0.5
+  },
+  "CoRE MOF 2019/ACIBOE_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 160,
+   "spacegroup": "I4cm",
+   "lattice_system": "tetragonal",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.612513,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    1,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{1-10}",
+    "{11-1}",
+    "{-1-11}"
+   ],
+   "sphericity": 0.791945,
+   "low_symmetry_file": false,
+   "seconds": 0.3
+  },
+  "CoRE MOF 2019/ACOCOM_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 2112,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 15.4
+  },
+  "CoRE MOF 2019/ACOCUS_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 2112,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 12.8
+  },
+  "CoRE MOF 2019/ACODAZ_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 2112,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 13.2
+  },
+  "CoRE MOF 2019/ACODUT_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 218,
+   "spacegroup": "P-3m1",
+   "lattice_system": "trigonal",
+   "operations": 12,
+   "habit": "rod",
+   "b_over_a": 0.570767,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{001}"
+   ],
+   "sphericity": 0.826274,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/ACOLIP_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 102,
+   "spacegroup": "Cc",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.766445,
+   "c_over_b": 0.842754,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{1-11}",
+    "{10-1}",
+    "{1-10}",
+    "{100}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.896438,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ACOLOV_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 456,
+   "spacegroup": "P2_1/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "rod",
+   "b_over_a": 0.60976,
+   "c_over_b": 0.756498,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{010}",
+    "{001}",
+    "{101}",
+    "{01-2}"
+   ],
+   "sphericity": 0.814675,
+   "low_symmetry_file": false,
+   "seconds": 0.6
+  },
+  "CoRE MOF 2019/ACUJOZ_manual.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 1278,
+   "spacegroup": "R-3",
+   "lattice_system": "trigonal",
+   "operations": 18,
+   "habit": "equant",
+   "b_over_a": 0.796946,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{2-10}",
+    "{101}"
+   ],
+   "sphericity": 0.893738,
+   "low_symmetry_file": false,
+   "seconds": 4.7
+  },
+  "CoRE MOF 2019/ADABIS_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 94,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "rod",
+   "b_over_a": 0.579844,
+   "c_over_b": 0.771733,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{001}",
+    "{11-1}",
+    "{010}",
+    "{110}"
+   ],
+   "sphericity": 0.825701,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ADABUE_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 94,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "rod",
+   "b_over_a": 0.579391,
+   "c_over_b": 0.688798,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{001}",
+    "{010}",
+    "{11-1}",
+    "{110}"
+   ],
+   "sphericity": 0.816949,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ADASAB_charged.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 1088,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 48,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    4,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{110}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 3.5
+  },
+  "CoRE MOF 2019/ADASEF_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 776,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 48,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    -4,
+    5,
+    3
+   ],
+   "main_faces": [
+    "{111}",
+    "{110}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 2.0
+  },
+  "CoRE MOF 2019/ADATAC_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 840,
+   "spacegroup": "Fm-3",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    -2,
+    -1,
+    5
+   ],
+   "main_faces": [
+    "{111}",
+    "{110}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 2.1
+  },
+  "CoRE MOF 2019/ADATEG_manual.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 1160,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    -3,
+    2,
+    4
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}",
+    "{010}",
+    "{001}",
+    "{00-1}",
+    "{0-10}",
+    "{-100}",
+    "{-1-1-1}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": true,
+   "seconds": 3.8
+  },
+  "CoRE MOF 2019/ADATIK_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 872,
+   "spacegroup": "I4/m",
+   "lattice_system": "tetragonal",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 0.999159,
+   "long_axis_uvw": [
+    1,
+    1,
+    0
+   ],
+   "main_faces": [
+    "{100}",
+    "{11-1}",
+    "{001}"
+   ],
+   "sphericity": 0.909917,
+   "low_symmetry_file": false,
+   "seconds": 2.1
+  },
+  "CoRE MOF 2019/ADATOQ_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 692,
+   "spacegroup": "I2_13",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 1.7
+  },
+  "CoRE MOF 2019/ADATUW_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 692,
+   "spacegroup": "I2_13",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 1.8
+  },
+  "CoRE MOF 2019/ADAVIM_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 668,
+   "spacegroup": "I2_13",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 1.5
+  },
+  "CoRE MOF 2019/ADAXEK_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 56,
+   "spacegroup": "C2/m",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.720327,
+   "c_over_b": 0.815565,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{001}",
+    "{010}",
+    "{100}"
+   ],
+   "sphericity": 0.820617,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ADAXIO_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 224,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 0.862544,
+   "c_over_b": 0.909816,
+   "long_axis_uvw": [
+    1,
+    0,
+    2
+   ],
+   "main_faces": [
+    "{110}",
+    "{11-1}"
+   ],
+   "sphericity": 0.84873,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/ADIQEL_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 70,
+   "spacegroup": "P2_1/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.920606,
+   "c_over_b": 0.9861,
+   "long_axis_uvw": [
+    4,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{011}",
+    "{110}",
+    "{10-1}",
+    "{101}"
+   ],
+   "sphericity": 0.896908,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/ADOBIF_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 256,
+   "spacegroup": "P-4n2",
+   "lattice_system": "tetragonal",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 0.971821,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{110}",
+    "{101}",
+    "{10-1}"
+   ],
+   "sphericity": 0.900864,
+   "low_symmetry_file": false,
+   "seconds": 0.3
+  },
+  "CoRE MOF 2019/ADOCEC_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 248,
+   "spacegroup": "P-4n2",
+   "lattice_system": "tetragonal",
+   "operations": 8,
+   "habit": "equant",
+   "b_over_a": 0.970992,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{110}",
+    "{101}",
+    "{10-1}"
+   ],
+   "sphericity": 0.900748,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/ADODAA_charged.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 272,
+   "spacegroup": "F-43c",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.805996,
+   "low_symmetry_file": false,
+   "seconds": 0.4
+  },
+  "CoRE MOF 2019/ADOGEH_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 912,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 3.1
+  },
+  "CoRE MOF 2019/ADUWIH_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 444,
+   "spacegroup": "Pn-3",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 0.8
+  },
+  "CoRE MOF 2019/ADUWON_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 876,
+   "spacegroup": "Im-3m",
+   "lattice_system": "cubic",
+   "operations": 96,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 2.8
+  },
+  "CoRE MOF 2019/ac403674p_si_001_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 210,
+   "spacegroup": "P6_1",
+   "lattice_system": "hexagonal",
+   "operations": 6,
+   "habit": "rod",
+   "b_over_a": 0.630422,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{010}",
+    "{110}",
+    "{-110}"
+   ],
+   "sphericity": 0.902311,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/acs.chemmater.5b03723_cm5b03723_si_004_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 1260,
+   "spacegroup": "P432",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}"
+   ],
+   "sphericity": 0.805996,
+   "low_symmetry_file": false,
+   "seconds": 4.3
+  },
+  "CoRE MOF 2019/acs.chemmater.6b02817_cm6b02817_si_004_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 416,
+   "spacegroup": "P-43n",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 0.7
+  },
+  "CoRE MOF 2019/acs.chemrev.6b00346_cr6b00346_si_001_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 198,
+   "spacegroup": "P-43n",
+   "lattice_system": "cubic",
+   "operations": 24,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    2,
+    -1
+   ],
+   "main_faces": [
+    "{110}"
+   ],
+   "sphericity": 0.9047,
+   "low_symmetry_file": false,
+   "seconds": 0.3
+  },
+  "CoRE MOF 2019/acs.inorgchem.5b02108_ic5b02108_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 144,
+   "spacegroup": "I4_122",
+   "lattice_system": "tetragonal",
+   "operations": 16,
+   "habit": "equant",
+   "b_over_a": 0.936583,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{101}",
+    "{110}"
+   ],
+   "sphericity": 0.895814,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b00894_ic6b00894_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 564,
+   "spacegroup": "C2",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.928718,
+   "c_over_b": 0.724812,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{001}",
+    "{110}",
+    "{1-10}",
+    "{11-1}",
+    "{1-1-1}"
+   ],
+   "sphericity": 0.859582,
+   "low_symmetry_file": false,
+   "seconds": 0.9
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b00894_ic6b00894_si_003_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 564,
+   "spacegroup": "P2_12_12_1",
+   "lattice_system": "orthorhombic",
+   "operations": 4,
+   "habit": "rod",
+   "b_over_a": 0.622516,
+   "c_over_b": 0.998442,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{011}",
+    "{101}",
+    "{001}",
+    "{110}"
+   ],
+   "sphericity": 0.869443,
+   "low_symmetry_file": false,
+   "seconds": 0.9
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b01211_ic6b01211_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 450,
+   "spacegroup": "R-3m",
+   "lattice_system": "trigonal",
+   "operations": 36,
+   "habit": "equant",
+   "b_over_a": 0.913511,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{101}",
+    "{10-2}",
+    "{001}"
+   ],
+   "sphericity": 0.904547,
+   "low_symmetry_file": false,
+   "seconds": 1.0
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b01416_ic6b01416_si_004_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 592,
+   "spacegroup": "Fdd2",
+   "lattice_system": "orthorhombic",
+   "operations": 16,
+   "habit": "equant",
+   "b_over_a": 0.811997,
+   "c_over_b": 0.983785,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{11-1}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.862448,
+   "low_symmetry_file": false,
+   "seconds": 1.0
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b01569_ic6b01569_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 328,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.521353,
+   "c_over_b": 0.805174,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{110}",
+    "{11-1}"
+   ],
+   "sphericity": 0.820585,
+   "low_symmetry_file": false,
+   "seconds": 0.4
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b01740_ic6b01740_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 1320,
+   "spacegroup": "Fm-3m",
+   "lattice_system": "cubic",
+   "operations": 192,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}",
+    "{100}"
+   ],
+   "sphericity": 0.909918,
+   "low_symmetry_file": false,
+   "seconds": 5.3
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b02407_ic6b02407_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 144,
+   "spacegroup": "P2_1/c",
+   "lattice_system": "monoclinic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.78128,
+   "c_over_b": 0.914201,
+   "long_axis_uvw": null,
+   "main_faces": [
+    "{011}",
+    "{100}",
+    "{001}"
+   ],
+   "sphericity": 0.870204,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b02407_ic6b02407_si_003_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 288,
+   "spacegroup": "C2/m",
+   "lattice_system": "monoclinic",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.6353,
+   "c_over_b": 0.915118,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{110}",
+    "{001}",
+    "{100}",
+    "{11-1}"
+   ],
+   "sphericity": 0.830117,
+   "low_symmetry_file": false,
+   "seconds": 0.4
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b02514_ic6b02514_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 124,
+   "spacegroup": "P2_12_12_1",
+   "lattice_system": "orthorhombic",
+   "operations": 4,
+   "habit": "equant",
+   "b_over_a": 0.72156,
+   "c_over_b": 0.94057,
+   "long_axis_uvw": [
+    1,
+    0,
+    0
+   ],
+   "main_faces": [
+    "{011}",
+    "{101}",
+    "{001}",
+    "{110}"
+   ],
+   "sphericity": 0.880279,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/acs.inorgchem.6b02696_ic6b02696_si_002_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 2832,
+   "spacegroup": "Fd-3",
+   "lattice_system": "cubic",
+   "operations": 96,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{111}"
+   ],
+   "sphericity": 0.845583,
+   "low_symmetry_file": false,
+   "seconds": 24.2
+  },
+  "CoRE MOF 2019/acs.jchemed.6b00258_ed6b00258_si_005_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 188,
+   "spacegroup": "C2/c",
+   "lattice_system": "monoclinic",
+   "operations": 8,
+   "habit": "rod",
+   "b_over_a": 0.57939,
+   "c_over_b": 0.688798,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{100}",
+    "{110}",
+    "{11-1}",
+    "{111}"
+   ],
+   "sphericity": 0.816949,
+   "low_symmetry_file": false,
+   "seconds": 0.2
+  },
+  "CoRE MOF 2019/acs.jpcc.6b04690_jp6b04690_si_005_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "error": "AttributeError(\"'NoneType' object has no attribute 'rotations'\")"
+  },
+  "CoRE MOF 2019/acs.jpcc.6b08594_UiO66_Ce2Zr4_opt_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 228,
+   "spacegroup": "I-4m2",
+   "lattice_system": "tetragonal",
+   "operations": 16,
+   "habit": "equant",
+   "b_over_a": 0.999487,
+   "c_over_b": 1.0,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{101}",
+    "{10-1}",
+    "{110}",
+    "{001}"
+   ],
+   "sphericity": 0.909917,
+   "low_symmetry_file": false,
+   "seconds": 0.3
+  },
+  "CoRE MOF 2019/acs.jpcc.6b08594_Zn2Cd6MOF5_opt_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 318,
+   "spacegroup": "R-3m",
+   "lattice_system": "trigonal",
+   "operations": 36,
+   "habit": "equant",
+   "b_over_a": 1.0,
+   "c_over_b": 0.885314,
+   "long_axis_uvw": [
+    1,
+    2,
+    0
+   ],
+   "main_faces": [
+    "{101}",
+    "{001}",
+    "{10-2}"
+   ],
+   "sphericity": 0.904913,
+   "low_symmetry_file": false,
+   "seconds": 0.7
+  },
+  "CoRE MOF 2019/acscombsci.5b00188_24205_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 39,
+   "spacegroup": "P1",
+   "lattice_system": "triclinic",
+   "operations": 1,
+   "habit": "equant",
+   "b_over_a": 0.865187,
+   "c_over_b": 0.803598,
+   "long_axis_uvw": [
+    -1,
+    0,
+    4
+   ],
+   "main_faces": [
+    "{010}",
+    "{0-10}",
+    "{100}",
+    "{-100}",
+    "{001}",
+    "{00-1}"
+   ],
+   "sphericity": 0.851683,
+   "low_symmetry_file": true,
+   "seconds": 0.1
+  },
+  "CoRE MOF 2019/acscombsci.5b00188_34903_clean.cif": {
+   "dataset": "CoRE MOF 2019",
+   "n_atoms": 56,
+   "spacegroup": "Pm",
+   "lattice_system": "monoclinic",
+   "operations": 2,
+   "habit": "equant",
+   "b_over_a": 0.887381,
+   "c_over_b": 0.930944,
+   "long_axis_uvw": [
+    0,
+    0,
+    1
+   ],
+   "main_faces": [
+    "{001}",
+    "{100}",
+    "{-100}",
+    "{010}",
+    "{0-10}"
+   ],
+   "sphericity": 0.818127,
+   "low_symmetry_file": false,
+   "seconds": 0.1
+  }
+ },
+ "seconds": 132.9
+}
