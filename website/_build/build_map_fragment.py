@@ -136,13 +136,14 @@ def main():
         row = [("dt-label", mod.replace("1-8", "1&ndash;8"))]
         for m in MOFS:
             v = P[m].get(mod)
-            row.append(("dt-note", "not run" if v is None else f"{pretty(v['exact'])} <span class=\"sm\">({f(v['x'])}, {f(v['y'])})</span>"))
+            row.append(("dt-note", "&mdash;" if v is None else f"{pretty(v['exact'])} <span class=\"sm\">({f(v['x'])}, {f(v['y'])})</span>"))
         rows.append(row)
     h.append(table("map-model-table", ["Model <span class=\"sm\">(shape, then <i>x</i>, <i>y</i>)</span>"] + MOFS, rows))
     yh = [v["y"] for v in P["HKUST-1"].values()]
     yu = [v["y"] for v in P["UiO-66"].values()]
     bb = P["MOF-5"]["Broken-bond Wulff"]; zb = P["ZIF-8"]["BFDH"]
     zif_all = all(v["exact"] in ("rhombic_dodecahedron", "truncated_rhombic_dodecahedron") for v in P["ZIF-8"].values())
+    h.append('      <p class="sm">A dash means the model was not applied to that MOF: the October CHGNet run did not include ZIF-8, the steps 1&ndash;8 notebook does not include MOF-5, and its relaxed run finished only for ZIF-8 on the available memory.</p>')
     h.append(f'      <p class="sd">What the map shows that a shape name hides. <b>Distance from the lab:</b> every HKUST-1 model sits at '
              f'<i>y</i> = {f(min(yh))}&ndash;{f(max(yh))}, while an octahedron needs <i>y</i> &le; 1/&radic;3 = {f(1/S3, 3)}: right direction, not far enough. '
              f'<b>Fragile predictions:</b> the MOF-5 broken-bond point ({f(bb["x"], 3)}, {f(bb["y"], 3)}) sits on the cube corner (&radic;2, &radic;3), '

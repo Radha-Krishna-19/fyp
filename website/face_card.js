@@ -61,5 +61,52 @@
       '<table>' + rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('') + '</table>' +
       (o.note ? '<p class="sub">' + o.note + '</p>' : '');
   }
-  global.FaceCard = { show: show, hide: hide, wire: wire, area: area, describe: describe };
+  // Drag-to-turn for a picture that is redrawn on every move. The handlers sit on the host element,
+  // which persists; a handler on the picture itself would be lost with the first redraw, and the drag
+  // would stop after one frame. onTurn(dx, dy) receives the pointer movement in pixels.
+  function drag(host, onTurn) {
+    if (host._dragWired) { host._onTurn = onTurn; return; }
+    host._dragWired = true; host._onTurn = onTurn;
+    host.style.touchAction = 'none';
+    var last = null;
+    host.addEventListener('pointerdown', function (e) {
+      if (!e.target.closest || !e.target.closest('svg')) return;
+      last = [e.clientX, e.clientY];
+      try { host.setPointerCapture(e.pointerId); } catch (x) { /* not supported */ }
+    });
+    host.addEventListener('pointermove', function (e) {
+      if (!last) return;
+      var dx = e.clientX - last[0], dy = e.clientY - last[1];
+      if (!dx && !dy) return;
+      last = [e.clientX, e.clientY];
+      host._onTurn(dx, dy);
+    });
+    function end() { last = null; }
+    host.addEventListener('pointerup', end);
+    host.addEventListener('pointercancel', end);
+    host.addEventListener('lostpointercapture', end);
+  }
+  // A click (press and release without moving) on a face of the current picture opens its card.
+  // Wired once on the host, so it keeps working after the picture is redrawn.
+  function wireHost(host, describe) {
+    host._describe = describe;
+    if (host._clickWired) return;
+    host._clickWired = true;
+    var start = null;
+    host.addEventListener('pointerdown', function (e) { start = [e.clientX, e.clientY]; });
+    host.addEventListener('pointerup', function (e) {
+      if (!start) return;
+      var moved = Math.abs(e.clientX - start[0]) + Math.abs(e.clientY - start[1]);
+      start = null;
+      if (moved > 5) return;
+      if (e.target.closest && e.target.closest('.face-card')) return;
+      var el = document.elementFromPoint ? document.elementFromPoint(e.clientX, e.clientY) : e.target;
+      if (!el || !el.getAttribute) el = e.target;
+      var i = el && el.getAttribute ? el.getAttribute('data-face') : null;
+      if (i === null || i === undefined) { hide(host); return; }
+      var html = host._describe(+i);
+      if (html) show(host, html);
+    });
+  }
+  global.FaceCard = { show: show, hide: hide, wire: wire, wireHost: wireHost, drag: drag, area: area, describe: describe };
 })(typeof window !== 'undefined' ? window : this);

@@ -30,7 +30,7 @@ FRAG  = os.path.join(HERE, 'fragments')
 # spectrum sections, so those two pages both load it.
 # ---------------------------------------------------------------------------
 PAGES = [
-    dict(file='index.html',        nav='Overview',      sections=['problem', 'question'],
+    dict(file='index.html',        nav='Overview',      sections=[],
          title='Overview',
          desc='What a metal-organic framework is, the question this project asks, and the honest answer so far.'),
 
@@ -38,7 +38,7 @@ PAGES = [
          title='How We Got Here: The Whole Project in Order',
          desc='From the papers we read to where the project is now: what was built from each, which code and notebooks produced which results, every mistake and its correction, and why each method was chosen over the alternatives.'),
 
-    dict(file='methodology.html',  nav='Methodology',   sections=['why', 'parts', 'implementation', 'roadmap'],
+    dict(file='methodology.html',  nav='Methodology',   sections=['problem', 'question', 'why', 'parts', 'implementation', 'roadmap'],
          title='Methodology and Architecture',
          desc='The full workflow, the system architecture, the datasets, the evaluation strategy, and the justification for each choice.'),
 
@@ -184,18 +184,23 @@ PARTS = [
     ('Part I. Graphs and the spectrum', [('decomposition.html', 'Decomposition'),
                ('network.html', 'From crystal to network'), ('spectrum.html', 'The multifractal spectrum'),
                ('results.html', 'Results: the band')]),
-    ('Part II. Crystal shape', [('learn_shape.html', 'Learn: crystal shapes'),
+    ('Part II. Crystal shape', [('bridge.html', 'Why crystal shape'), ('learn_shape.html', 'Learn: crystal shapes'),
                ('learn_energy.html', 'Learn: surface energy'), ('morph_math.html', 'The mathematics'),
                ('cif_to_shape.html', 'From a CIF to a shape'), ('morphology.html', 'Morphology'),
                ('deform.html', 'Changing the cell'), ('graph_faces.html', 'Faces from the graph'),
                ('surface_energy.html', 'Surface energy'), ('hybrid.html', 'Blending BFDH and Wulff'),
                ('experiment.html', 'Against experiment'), ('morphology_map.html', 'The morphology map'),
                ('advisor.html', 'The shape advisor')]),
-    ('Connecting the two parts', [('bridge.html', 'Why shape'), ('relation.html', 'Spectrum and shape')]),
+    ('Connecting the two parts', [('relation.html', 'Spectrum and shape')]),
     ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
                ('resources.html', 'Resources'), ('references.html', 'References'),
                ('glossary.html', 'Glossary'), ('team.html', 'Progress')]),
 ]
+# The reading order is the order of PARTS: sort PAGES to match, so chapter numbers and the
+# Previous/Next links follow the sidebar.
+_ORDER = [f for _, items in PARTS for f, _ in items]
+PAGES.sort(key=lambda p: _ORDER.index(p['file']))
+
 # Pages outside the numbered reading sequence.
 REFERENCE = ('lessons.html', 'code.html', 'resources.html', 'references.html', 'glossary.html', 'team.html')
 

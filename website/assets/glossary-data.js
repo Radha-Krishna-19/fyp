@@ -358,6 +358,26 @@ window.GLOSSARY = [
   short: 'A molecule with one binding group, such as acetic or benzoic acid, added to a MOF synthesis to compete with the linker and slow or redirect growth.',
   long: 'It caps metal sites on some faces more than others, so it changes which faces survive: HKUST-1 goes from octahedron to cube as more lauric acid is added, and UiO-66 forms octahedra only with a modulator. No model on this site contains one.' },
 
+{ term: 'additive', aka: ['additives'],
+  group: 'Crystal shape', needs: ['modulator'],
+  short: 'Any extra chemical put into a MOF synthesis that is not part of the framework, such as a modulator acid, a surfactant or a polymer.',
+  long: 'An additive sticks to some crystal faces more than others and slows them down, so it changes the crystal shape: UiO-66 grown with nothing added forms cubes, and with benzoic acid it forms octahedra. The structure-only models on this site contain no additive, which is why they are scored separately on crystals grown with and without one.' },
+
+{ term: 'diffusion length', aka: ['diffusion lengths'],
+  group: 'Crystal shape', needs: ['crystal morphology'],
+  short: 'The volume of a crystal divided by its surface area, L = V/A: the usual measure of how far a gas must travel to fill a particle.',
+  long: 'For a sphere it is one third of the radius. The time to fill a crystal grows with L², so a thin plate fills faster than a cube of the same volume. It is a geometric indicator, not a measured diffusion rate.' },
+
+{ term: 'open fraction', aka: ['open fractions'],
+  group: 'Crystal shape', needs: ['termination'],
+  short: 'The share of a crystal face where a gas molecule (CO₂ or N₂, treated as a sphere) can sit without touching a framework atom.',
+  long: 'It is computed on the plane where the crystal most likely stops (its lowest-energy termination). It says how open a face looks to the gas, not whether that opening leads into the pores.' },
+
+{ term: 'Phase 1', aka: ['Phase 1b', 'Phase 2', 'Phase 3', 'Phase 4'],
+  group: 'Crystal shape', needs: ['BFDH'],
+  short: 'Names of the steps of the crystal-shape work (Part II): 1 symmetry and BFDH, 1b changing the cell, 2 the mathematics, 3 faces from the periodic graph, 4 surface energies.',
+  long: 'They are steps inside Part II, not the project phases of the course (Phase I and Phase II). Each has its own page: From a CIF to a shape and Morphology (1), Changing the cell (1b), The mathematics (2), Faces from the graph (3), Surface energy (4).' },
+
 { term: 'surface energy', aka: ['surface energies'],
   group: 'Energies', needs: ['Miller indices'],
   short: 'The energy cost per unit area of exposing a crystal face, in J/m²; cheap faces become large on the crystal.',

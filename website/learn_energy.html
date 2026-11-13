@@ -51,24 +51,24 @@
       <div class="nav-part">
         <p class="nav-part-title">Part II. Crystal shape</p>
         <ol>
-        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
-        <li><a href="learn_energy.html" aria-current="page"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
-        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
-        <li><a href="cif_to_shape.html"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
-        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
-        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
-        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
-        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
-        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
-        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
-        <li><a href="morphology_map.html"><span class="nav-n">18</span><span class="nav-t">The morphology map</span></a></li>
-        <li><a href="advisor.html"><span class="nav-n">19</span><span class="nav-t">The shape advisor</span></a></li>
+        <li><a href="bridge.html"><span class="nav-n">8</span><span class="nav-t">Why crystal shape</span></a></li>
+        <li><a href="learn_shape.html"><span class="nav-n">9</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html" aria-current="page"><span class="nav-n">10</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">11</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html"><span class="nav-n">12</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">13</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">14</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">15</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">16</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">17</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">18</span><span class="nav-t">Against experiment</span></a></li>
+        <li><a href="morphology_map.html"><span class="nav-n">19</span><span class="nav-t">The morphology map</span></a></li>
+        <li><a href="advisor.html"><span class="nav-n">20</span><span class="nav-t">The shape advisor</span></a></li>
         </ol>
       </div>
       <div class="nav-part">
         <p class="nav-part-title">Connecting the two parts</p>
         <ol>
-        <li><a href="bridge.html"><span class="nav-n">20</span><span class="nav-t">Why shape</span></a></li>
         <li><a href="relation.html"><span class="nav-n">21</span><span class="nav-t">Spectrum and shape</span></a></li>
         </ol>
       </div>
@@ -90,7 +90,7 @@
   <div class="page-col">
 <div class="masthead">
   <div class="container">
-<div class="place">Part II. Crystal shape. Chapter 9 of 21.</div>
+<div class="place">Part II. Crystal shape. Chapter 10 of 21.</div>
     <h1>Learn: Energies, Statistics and Tools</h1>
     <p class="lead">Just enough, from scratch, to follow the rest of the project: surface and cleavage energy, slabs and terminations, where energies come from (force field, CHGNet, DFT), combining two shape methods, the statistics used, finite particles, and the software tools.</p>
   </div>
@@ -159,7 +159,7 @@
       <figure class="fig wide"><img src="figures/learn/torus_vs_particle.png" alt="Left: a grid whose right edge joins its left edge. Middle: the same grid cut out as a finite particle with a border. Right: two sets of 25 grid points, a diamond and a square; the diamond's farthest points are 6 steps apart, the square's 8."><figcaption>Left: a periodic tiling. Middle: a finite particle. Right: why a diamond (or an octahedron in 3D) has a smaller graph diameter than a square (or cube) of the same size. <span class="provenance-inline">Drawn by <code>website/_build/make_learn_energy_figures.py</code> (schematic).</span></figcaption></figure>
       <ul class="sd">
         <li><b>Periodic tiling (torus).</b> The spectrum work joined each edge of the supercell to the opposite edge, so the graph has no surface at all. That is right for "the infinite crystal", but it has no shape.</li>
-        <li><b>Finite particle.</b> Cutting the graph out without wrap-around gives a particle with a surface, so it can be a cube, a plate or a rod (<a href="relation.html">Spectrum &harr; Shape</a>).</li>
+        <li><b>Finite particle.</b> Cutting the graph out without wrap-around gives a particle with a surface, so it can be a cube, a plate or a rod (<a href="relation.html">Spectrum and shape</a>).</li>
         <li><b>Graph diameter and taxicab distance.</b> In a grid-like net such as MOF-5's pcu, the number of steps between two blocks is the sum of the steps along each axis (like a taxi on city blocks). So an octahedron, the "taxicab ball", has a much smaller diameter than a cube with the same number of blocks. That is why shapes are compared at equal block count, not equal diameter.</li>
       </ul>
 
@@ -181,7 +181,7 @@
       </tbody></table></div>
 
       <h2 class="section-title" id="le-next" data-toc="Where to go next"><span class="stitle-num">12</span>Where to Go Next</h2>
-      <p class="sd"><a href="surface_energy.html">Surface Energy</a> (the force-field numbers), <a href="hybrid.html">Hybrid</a> (the blend), <a href="experiment.html">Experiment</a> (CHGNet and real crystals), <a href="relation.html">Spectrum &harr; Shape</a> (finite particles and the statistics in use), and <a href="journey.html">How We Got Here</a> (the whole project in order).</p>
+      <p class="sd"><a href="surface_energy.html">Surface Energy</a> (the force-field numbers), <a href="hybrid.html">Hybrid</a> (the blend), <a href="experiment.html">Experiment</a> (CHGNet and real crystals), <a href="relation.html">Spectrum and shape</a> (finite particles and the statistics in use), and <a href="journey.html">How We Got Here</a> (the whole project in order).</p>
 
           <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="learn_shape.html"><div class="dir">Previous</div><div class="ttl">Learn: Crystals and Their Shapes</div></a><a class="next" href="morph_math.html"><div class="dir">Next</div><div class="ttl">Phase 2: The Mathematics of Crystal Shape</div></a></nav>
         </main>

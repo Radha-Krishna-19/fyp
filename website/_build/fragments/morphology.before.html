@@ -1,7 +1,7 @@
       <h2 class="section-title" id="morph-question" data-toc="The panel's second question"><span class="stitle-num">0</span>The Panel's Second Question</h2>
       <p class="section-sub">After Panel Review 1 the panel set a new task, written by hand: <i>&ldquo;We have a MOF (established) with a specified unit cell dimension which gives a unit cell structure. Is it possible to generate at least a few morphologies from the given unit cell structure?&rdquo;</i> They added that the result is known chemically, since laboratories grow the same MOF in different shapes, but that a mathematical and computational demonstration is missing. This page reports Phase 1 of that work.</p>
 
-      <div class="callout good" data-kind="Why change the shape at all?">The outside shape of a crystal decides which faces are open to the gas, how far a molecule must travel to reach the pores and how the particles pack, so the same MOF can perform differently as a cube and as a plate. Predicting the shapes a MOF can take lets us pick a useful one before the laboratory work. The full explanation, in plain and technical words, and how this connects to the earlier spectrum work, is on <a href="bridge.html">Why Shape</a>; the tests of that connection are on <a href="relation.html">Spectrum &harr; Shape</a>.</div>
+      <div class="callout good" data-kind="Why change the shape at all?">The outside shape of a crystal decides which faces are open to the gas, how far a molecule must travel to reach the pores and how the particles pack, so the same MOF can perform differently as a cube and as a plate. Predicting the shapes a MOF can take lets us pick a useful one before the laboratory work. The full explanation, in plain and technical words, and how this connects to the earlier spectrum work, is on <a href="bridge.html">Why Shape</a>; the tests of that connection are on <a href="relation.html">Spectrum and shape</a>.</div>
 
       <div class="callout" data-kind="What &ldquo;morphology&rdquo; means here">
         The word shape is used at three length scales in MOF science: the shape of one building unit
@@ -18,7 +18,7 @@
         (<a href="results.html">Results</a>). The periodic quotient graph, the coordination numbers and the
         decomposition built for that work are reused below. Whether the multifractal spectrum itself
         carries any information about crystal shape is tested separately on the
-        <a href="relation.html">Spectrum &harr; Shape</a> page.
+        <a href="relation.html">Spectrum and shape</a> page.
       </div>
 
       <h2 class="section-title" id="morph-method" data-toc="From unit cell to shape"><span class="stitle-num">0</span>From Unit Cell to Crystal Shape: the Method</h2>
@@ -133,13 +133,13 @@
           <tr><td class="dt-label">ZIF-8</td><td class="dt-note">Cube, truncated rhombic dodecahedron, rhombic dodecahedron as CTAB changes the {100} : {110} ratio</td><td class="dt-note">Liu <i>et al.</i>, <i>Nano Lett.</i> <b>20</b>, 1774 (2020), checked; Pan <i>et al.</i>, <i>CrystEngComm</i> (2011), checked</td><td class="dt-value">Yes, the whole family</td></tr>
         </tbody>
       </table>
-      <p class="sd"><b>Prior work.</b> A literature search found one direct precedent: Pan <i>et al.</i> (2011) predicted ZIF-8 shapes from attachment energies in Materials Studio. Single-facet surface energies exist for ZIF-8 and HKUST-1, and Liu <i>et al.</i> (2020) explained the ZIF-8 cube to dodecahedron switch by the different coordination of Zn on the two facets. The search did not find BFDH applied across several MOFs, shape families measured with descriptors across several MOFs, link counting across several nets, or a link from the periodic graph to the Hartman&ndash;Perdok face classes. That is a search result, not proof of novelty; a Scopus or Google Scholar check is still to be done.</p>
+      <p class="sd"><b>Prior work.</b> A literature search found one direct precedent: Pan <i>et al.</i> (2011) predicted ZIF-8 shapes from attachment energies in Materials Studio. Single-facet surface energies exist for ZIF-8 and HKUST-1, and Liu <i>et al.</i> (2020) explained the ZIF-8 cube to dodecahedron switch by the different coordination of Zn on the two facets. The search did not find BFDH applied across several MOFs, shape families measured with descriptors across several MOFs, link counting across several nets, or a link from the periodic graph to the Hartman&ndash;Perdok face classes. That is a search result, not proof of novelty; a full Scopus search is the stronger check.</p>
 
       <h2 class="section-title" id="morph-limits" data-toc="Limits and next steps"><span class="stitle-num">0</span>Limits and Next Steps</h2>
       <ul class="sd">
         <li>The morph families vary growth rates by hand. Phase 1 shows which shapes a unit cell <b>allows</b>, not which one a given synthesis produces.</li>
         <li>Non-convex shapes (concave and hollow octahedra) and the shapes of a different phase (the Hf<sub>12</sub> nanoplates of Chen <i>et al.</i>) are outside the polytope model.</li>
-        <li>Plates and rods of an undistorted cubic phase need an external cause that breaks the symmetry, such as a surfactant or a substrate; this page does not model that. Plates and rods that follow from a changed unit cell are treated on the <a href="deform.html">Cell Deform</a> page.</li>
+        <li>Plates and rods of an undistorted cubic phase need an external cause that breaks the symmetry, such as a surfactant or a substrate; this page does not model that. Plates and rods that follow from a changed unit cell are treated on the <a href="deform.html">Changing the cell</a> page.</li>
       </ul>
       <table class="data-table">
         <thead><tr><td>Phase</td><td>Content</td><td>State</td></tr></thead>
@@ -148,10 +148,10 @@
           <tr><td class="dt-label">1</td><td class="dt-note">Unit cell to symmetry, allowed faces, BFDH shape, morph families, descriptors; 14 validation checks</td><td class="dt-note" style="color:var(--good)">Done</td></tr>
           <tr><td class="dt-label">2</td><td class="dt-note">Mathematical write-up: the absence rule, the polytope and its symmetry, continuity of the morph, the exact thresholds, the &kappa;&sup2; result, the graph propositions</td><td class="dt-note" style="color:var(--good)">Done: <a href="morph_math.html">Mathematics</a></td></tr>
           <tr><td class="dt-label">3</td><td class="dt-note">Nets from the CIFs, attachment numbers and broken-bond energies for all four nets, Hartman&ndash;Perdok F/S/K classes from slice periodicity rank</td><td class="dt-note" style="color:var(--good)">Done: <a href="graph_faces.html">Graph Faces</a></td></tr>
-          <tr><td class="dt-label">1b</td><td class="dt-note">Deformed unit cells: plates, equant crystals and rods from changed cell parameters</td><td class="dt-note" style="color:var(--good)">Done (BFDH only): <a href="deform.html">Cell Deform</a></td></tr>
+          <tr><td class="dt-label">1b</td><td class="dt-note">Deformed unit cells: plates, equant crystals and rods from changed cell parameters</td><td class="dt-note" style="color:var(--good)">Done (BFDH only): <a href="deform.html">Changing the cell</a></td></tr>
           <tr><td class="dt-label">4</td><td class="dt-note">Force-field (UFF) cleavage energies of every face and the Wulff shapes; bond-cost sensitivity</td><td class="dt-note" style="color:var(--good)">Done (unrelaxed, no electrostatics): <a href="surface_energy.html">Surface Energy</a></td></tr>
           <tr><td class="dt-label">4b&ndash;4d</td><td class="dt-note">Experimental dataset (134 records, 35 papers, 12 MOFs); CHGNet slab energies; BFDH&times;Wulff blend; every method scored against experiment</td><td class="dt-note" style="color:var(--good)">Done: <a href="experiment.html">Experiment</a>, <a href="hybrid.html">Hybrid</a></td></tr>
-          <tr><td class="dt-label">4f</td><td class="dt-note">Spectrum of the first half tested against crystal shape; box-counting dimension of crystal particles</td><td class="dt-note" style="color:var(--good)">Done: <a href="relation.html">Spectrum &harr; Shape</a></td></tr>
+          <tr><td class="dt-label">4f</td><td class="dt-note">Spectrum of the first half tested against crystal shape; box-counting dimension of crystal particles</td><td class="dt-note" style="color:var(--good)">Done: <a href="relation.html">Spectrum and shape</a></td></tr>
           <tr><td class="dt-label">4e</td><td class="dt-note">DFT check of the faces where CHGNet and the force field disagree</td><td class="dt-note">Planned (see <a href="team.html">Progress</a>)</td></tr>
           <tr><td class="dt-label">5</td><td class="dt-note">Growth model with solvent, modulator and temperature; more MOFs with known shapes</td><td class="dt-note">Planned</td></tr>
           <tr><td class="dt-label">6</td><td class="dt-note">Final paper on the morphology work</td><td class="dt-note">Planned</td></tr>

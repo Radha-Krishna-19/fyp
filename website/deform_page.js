@@ -64,16 +64,11 @@
       poly.setAttribute('style', 'fill:' + (FILL[F.f.tag] || 'var(--accent2)') + ';fill-opacity:' + light.toFixed(2) + ';stroke:var(--text);stroke-width:0.8;stroke-linejoin:round');
       svg.appendChild(poly);
     });
-    var drag = null;
-    svg.addEventListener('pointerdown', function (e) { drag = [e.clientX, e.clientY]; svg.setPointerCapture && svg.setPointerCapture(e.pointerId); });
-    svg.addEventListener('pointermove', function (e) {
-      if (!drag) return;
-      state.yaw += (e.clientX - drag[0]) * 0.01; state.pitch = Math.max(-1.4, Math.min(1.4, state.pitch + (e.clientY - drag[1]) * 0.01));
-      drag = [e.clientX, e.clientY]; draw(S);
+    if (window.FaceCard) FaceCard.drag(host, function (dx, dy) {
+      state.yaw += dx * 0.01; state.pitch = Math.max(-1.4, Math.min(1.4, state.pitch + dy * 0.01)); draw(S);
     });
-    svg.addEventListener('pointerup', function () { drag = null; });
     host.appendChild(svg);
-    if (window.FaceCard) FaceCard.wire(svg, host, function (i) { return faceInfo(S, i, [state.la, state.lb, state.lc]); });
+    if (window.FaceCard) { FaceCard.wireHost(host, function (i) { return faceInfo(S, i, [state.la, state.lb, state.lc]); }); svg.querySelectorAll('polygon[data-face]').forEach(function (q) { q.style.cursor = 'pointer'; }); }
     host.appendChild(el('div', { class: 'legend sm', style: 'text-align:center' }, 'blue {100} &middot; red {111} &middot; green {110} &middot; other families purple &middot; drag to rotate, click a face'));
   }
 

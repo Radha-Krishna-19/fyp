@@ -436,8 +436,8 @@
       window.addEventListener('mouseup', () => { dragging = false; canvas.style.cursor = 'grab'; });
       window.addEventListener('mousemove', e => {
         if (!dragging) return;
-        camYaw += (e.clientX - lastX) * 0.006;
-        camPitch = Math.max(-1.4, Math.min(1.4, camPitch + (e.clientY - lastY) * 0.006));
+        camYaw += (e.clientX - lastX) * 0.01;
+        camPitch = Math.max(-1.55, Math.min(1.55, camPitch + (e.clientY - lastY) * 0.01));
         dragMoved += Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY);
         lastX = e.clientX; lastY = e.clientY;
         updateCamera();
@@ -451,8 +451,8 @@
       canvas.addEventListener('touchmove', e => {
         if (e.touches.length === 1 && touchLast) {
           const t = e.touches[0];
-          camYaw += (t.clientX - touchLast.clientX) * 0.006;
-          camPitch = Math.max(-1.4, Math.min(1.4, camPitch + (t.clientY - touchLast.clientY) * 0.006));
+          camYaw += (t.clientX - touchLast.clientX) * 0.01;
+          camPitch = Math.max(-1.55, Math.min(1.55, camPitch + (t.clientY - touchLast.clientY) * 0.01));
           touchLast = t;
           updateCamera();
           e.preventDefault();

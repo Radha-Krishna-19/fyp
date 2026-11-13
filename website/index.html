@@ -52,24 +52,24 @@
       <div class="nav-part">
         <p class="nav-part-title">Part II. Crystal shape</p>
         <ol>
-        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
-        <li><a href="learn_energy.html"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
-        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
-        <li><a href="cif_to_shape.html"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
-        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
-        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
-        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
-        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
-        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
-        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
-        <li><a href="morphology_map.html"><span class="nav-n">18</span><span class="nav-t">The morphology map</span></a></li>
-        <li><a href="advisor.html"><span class="nav-n">19</span><span class="nav-t">The shape advisor</span></a></li>
+        <li><a href="bridge.html"><span class="nav-n">8</span><span class="nav-t">Why crystal shape</span></a></li>
+        <li><a href="learn_shape.html"><span class="nav-n">9</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html"><span class="nav-n">10</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">11</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html"><span class="nav-n">12</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">13</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">14</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">15</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">16</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">17</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">18</span><span class="nav-t">Against experiment</span></a></li>
+        <li><a href="morphology_map.html"><span class="nav-n">19</span><span class="nav-t">The morphology map</span></a></li>
+        <li><a href="advisor.html"><span class="nav-n">20</span><span class="nav-t">The shape advisor</span></a></li>
         </ol>
       </div>
       <div class="nav-part">
         <p class="nav-part-title">Connecting the two parts</p>
         <ol>
-        <li><a href="bridge.html"><span class="nav-n">20</span><span class="nav-t">Why shape</span></a></li>
         <li><a href="relation.html"><span class="nav-n">21</span><span class="nav-t">Spectrum and shape</span></a></li>
         </ol>
       </div>
@@ -107,50 +107,21 @@
     <div class="container">
       <div class="with-toc">
         <main id="main">
-      <h2 class="section-title" id="summary" data-toc="In one paragraph"><span class="stitle-num">1</span>In One Paragraph</h2>
-      <p class="section-sub">
-        A metal&ndash;organic framework is a crystal composed of metal clusters connected by
-        organic linkers. Hundreds of thousands of candidate structures have been proposed, and
-        deciding whether one is worth synthesising ordinarily requires a molecular simulation
-        that takes hours per structure. This project asks a narrower, answerable question:
-        <b>does a descriptor computed from a framework's connectivity alone &mdash; in seconds,
-        with no simulation &mdash; carry enough structural information to be useful for that
-        decision?</b> We construct each framework's periodic graph from its crystal structure,
-        compute the multifractal spectrum of that graph, and reduce each framework to a small
-        set of numbers, principally the spectrum width &Delta;&alpha;. Across 138 frameworks
-        &mdash; 77 hypothetical and 61 that have been experimentally synthesised &mdash; those
-        numbers initially appeared to form a narrow, shared band. A convergence test run after
-        that result showed the band is not stable: &Delta;&alpha; keeps growing as the analysed
-        supercell grows, at every range of the exponent <i>q</i> we tested, so the value reported
-        for each framework is a function of an analysis choice rather than a property of the
-        framework itself. Both what held up under testing and what did not are reported below.
-      </p>
+      <h2 class="section-title" id="summary" data-toc="The project in brief"><span class="stitle-num">1</span>The Project in Brief</h2>
+      <p class="section-sub">A metal&ndash;organic framework (MOF) is a crystal made of metal clusters joined by organic linkers. It is full of small pores, so it can store or separate gases such as CO<sub>2</sub>. The project has two parts.</p>
+      <p class="sd"><b>Part I asked a screening question.</b> Hundreds of thousands of MOFs have been proposed, and checking one by molecular simulation takes hours. We asked whether a single number computed from a MOF's connectivity alone, in seconds, could pick out the frameworks worth simulating. We built each framework's periodic graph from its crystal file and computed the width &Delta;&alpha; of its multifractal spectrum, for 138 frameworks (77 hypothetical and 61 synthesised). The answer is <b>no, as defined</b>: &Delta;&alpha; keeps growing as the analysed piece of crystal grows, so it measures the size of the calculation more than the framework. The bands built from it are withdrawn, with their reasons, on the <a href="results.html">Results</a> page. The graph pipeline itself is verified and is reused in Part II.</p>
+      <p class="sd"><b>Part II answers the panel's question.</b> After Panel Review 1 the panel asked whether a few crystal shapes (morphologies) can be generated from the unit cell of an established MOF, mathematically and computationally. They can, in three steps:</p>
+      <ol class="sd">
+        <li>The symmetry of the unit cell decides which crystal faces may exist (16 propositions, proved on <a href="morph_math.html">The mathematics</a>).</li>
+        <li>Those faces give a family of possible shapes: for MOF-5, HKUST-1 and UiO-66 the family runs cube &rarr; cuboctahedron &rarr; octahedron, and for ZIF-8 cube &rarr; rhombic dodecahedron (<a href="morphology.html">Morphology</a>). Changing the cell lengths adds plates and rods (<a href="deform.html">Changing the cell</a>).</li>
+        <li>A growth model picks the likely member of the family: the BFDH rule from the plane spacings, Wulff shapes from surface energies, and several variants (<a href="surface_energy.html">Surface energy</a>, <a href="graph_faces.html">Faces from the graph</a>).</li>
+      </ol>
+      <p class="sd"><b>How good is it?</b> The predictions were scored against 134 laboratory records from 35 papers on 12 MOFs (<a href="experiment.html">Against experiment</a>). For crystals grown without an additive, the structure alone gives the main crystal face correctly for 4 of 5 MOFs (UiO-66 is the exception), as often as the most common laboratory answer for each MOF, but without using any laboratory data. For crystals grown with an additive no model is reliable, because the additive changes the shape in a way no structure-only model contains. Every shape can be placed on one exact map of cubic crystal shapes, and all six laboratory series that change shape on that map follow the predicted order (<a href="morphology_map.html">The morphology map</a>).</p>
+      <p class="sd"><b>What it is for.</b> The <a href="advisor.html">Shape advisor</a> brings this together for ten MOFs: the predicted shape in 3D, what laboratories saw, how much each face's energy would have to fall to change the shape, and how open each face is to CO<sub>2</sub> and N<sub>2</sub>. This links crystal shape back to the original aim, adsorption, as geometry; adsorption itself is not computed.</p>
+      <p class="sd"><b>What is still open.</b> The surface energies have not yet been checked against DFT, the reference quantum-mechanical method (six slabs are prepared; the calculation needs HPC time). The relaxed rerun of the team's CHGNet pipeline needs a GPU. A second, independent reading of a sample of the laboratory records is planned.</p>
 
-      <div class="callout good" data-kind="The second half: crystal morphology (October 2026 onward)">
-        After Panel Review 1 the panel asked whether an established MOF's unit cell can generate at
-        least a few crystal morphologies, shown mathematically and computationally. It can. From the
-        unit cell and its space group alone, MOF-5, HKUST-1 and UiO-66 each admit the continuous family
-        cube &rarr; cuboctahedron &rarr; octahedron, and ZIF-8 the family cube &rarr; rhombic
-        dodecahedron (<a href="morphology.html">Morphology</a>, proved on <a href="morph_math.html">Maths</a>).
-        Changing the cell parameters adds plates and rods (<a href="deform.html">Cell Deform</a>).
-        To decide which member of the family a crystal takes, seven growth models were built and scored
-        against 134 laboratory records from 35 papers (<a href="experiment.html">Experiment</a>):
-        the lattice-only BFDH rule, the graph attachment rule, two graph-energy Wulff models
-        (<a href="graph_faces.html">Graph Faces</a>), a force-field Wulff model
-        (<a href="surface_energy.html">Surface Energy</a>), a BFDH&times;Wulff blend
-        (<a href="hybrid.html">Hybrid</a>) and a machine-learned (CHGNet) cleavage-energy model.
-        No model reproduces all four MOFs. ZIF-8 (rhombic dodecahedron) is reproduced by every model applied to it (the graph rule covers only pcu and fcu nets; the October CHGNet model was not run on ZIF-8, and the team's newer CHGNet pipeline also gives the rhombic dodecahedron);
-        the MOF-5 cube by the graph attachment rule, the broken-bond Wulff model and the force-field Wulff
-        model (the last only at the default bond cost); the HKUST-1 octahedron appears in every model that applies to it only
-        as the dominant {111} face of a truncated octahedron; and no model gives the additive-free UiO-66
-        crystals, which are poorly faceted and reported as cubes in the two available records.
-        All of these were then placed on one exact map of cubic crystal shapes (<a href="morphology_map.html">Morphology map</a>), which also lists the possible morphologies of a given CIF in the order an additive that binds one face should produce them; all six laboratory series in the dataset that change shape on the map follow that order.
-        Finally, the spectrum of the first half was tested against crystal shape
-        (<a href="relation.html">Spectrum &harr; Shape</a>): the periodic spectrum width carries no shape
-        information beyond graph size. On a <i>finite</i> crystal particle the spectrum width separates
-        plates and rods from compact shapes, and the box-counting dimension profile also separates the
-        compact shapes predicted for MOF-5 (<a href="relation.html#dimension-profile">Test 4</a>).
-      </div>
+      <h3 class="sub-head" id="part1-numbers">Part I in numbers, kept as reported</h3>
+      <p class="sd">The numbers below are the ones Part I reported. They are kept on the site with the reasons they were withdrawn, so the record is complete.</p>
 
       <div class="keynums">
         <div class="keynum"><b>138</b><span>frameworks analysed end to end &mdash; 77 hypothetical, 61 synthesised</span></div>
@@ -210,12 +181,12 @@
       </div>
 
 
-      <h2 class="section-title" id="ladder" data-toc="The pipeline, stage by stage"><span class="stitle-num">2</span>The Pipeline, Stage by Stage</h2>
+      <h2 class="section-title" id="ladder" data-toc="Part I pipeline, stage by stage"><span class="stitle-num">2</span>Part I: The Pipeline, Stage by Stage</h2>
       <p class="section-sub">Six stages take a crystal structure file to a small set of numbers. Each stage depends only on the ones above it, and each is documented in full on the page it links to.</p>
 
       <ol class="ladder">
         <li>
-          <h3><a href="index.html#problem">What a MOF is, and why it matters</a></h3>
+          <h3><a href="methodology.html#problem">What a MOF is, and why it matters</a></h3>
           <p>A metal&ndash;organic framework is a crystal formed by joining metal clusters
           (<b>nodes</b>) to organic molecules (<b>linkers</b>), leaving a regular lattice of
           voids. The internal surface area of a gram of MOF can exceed a football pitch, which is
@@ -290,59 +261,11 @@
         so simulating all of them is not feasible. The aim here is <b>not</b> to replace that
         simulation. It is to compute something in seconds, from the crystal structure alone, that
         is informative enough to decide <i>which few hundred are worth the hours</i>. Every stage
-        above exists to make that number trustworthy &mdash; and the most recent finding is that,
-        as currently defined, it is not yet.
+        above was built to make that number trustworthy. Part I found that, as defined, it is not, and
+        the verified graph pipeline was carried into Part II.
       </div>
 
-<h2 class="st" id="problem"><span class="n">3</span>The Problem: What Is a MOF, and Why Does It Matter?</h2>
-<dl class="bridge"><dt>You know</dt><dd>Nothing yet &mdash; this is the beginning.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what its pores are for, and why there are too many candidate structures to test individually.</dd><dt>Which lets us</dt><dd>State a question narrow enough to be answerable, which is the next section.</dd></dl>
-  <p class="sd">A metal&ndash;organic framework is assembled from a small number of component types, in the way a building is assembled from components: an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b>, which combine into a periodic framework. The properties that make a MOF useful &mdash; surface area, pore size, thermal and chemical stability, catalytic behaviour &mdash; follow from which components were used and how they are connected.</p>
-  <p class="sd">When a MOF exists only as a crystal structure file, the first question is therefore: <b>what building blocks is it made of?</b> A decomposition algorithm answers that question, and every later use of the result &mdash; database search, similarity matching, machine-learning featurisation, inverse design &mdash; inherits whatever answer it gives. If the reported node is not the species actually present in the crystal, everything built on that answer is reasoning about a material that does not exist.</p>
-
-  <div class="callout" data-kind="Note">
-    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file records atomic positions and the unit cell, and contains <b>no bonds at all</b>; the format has no field for them. Every bond used at any step of this pipeline is therefore <i>inferred</i> from interatomic distances rather than read from the file. That one fact is the origin of several of the limitations described later.
-  </div>
-
-  <!-- ============ 1 ============ -->
-
-<h2 class="st" id="question"><span class="n">4</span>The Question We Were Asked, and What We Found</h2>
-<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is too large to test exhaustively.</dd><dt>This section</dt><dd class="now">States the exact question this project answers &mdash; and, as importantly, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was fixed in advance.</dd></dl>
-  <p class="sd">The brief was to <b>find and highlight the influential nodes: those with the highest degree</b>. We implemented this, and the result is more informative than a plain yes or no.</p>
-
-  <h3 class="sub">1a &middot; Ranking blocks by degree does not work, and the reason is structural</h3>
-  <p class="sd">In a perfect crystal, every symmetry-equivalent block is genuinely identical: every copper paddlewheel in HKUST-1 has exactly the same environment as every other. A "top-<i>k</i> by degree" list therefore discovers nothing; it sorts tied values, and which ones appear first depends only on the arbitrary order in which the blocks were numbered.</p>
-
-  <div class="panel"><div id="tie-evidence"></div></div>
-
-  <div class="callout bad" data-kind="Withdrawn">
-    <b>See the "distinct degree values" column.</b> Every structure has exactly <b>two</b> distinct values: one for nodes, one for linkers. There is no third tier and no gradient to rank within. A "top 12 most influential" list drawn from these numbers reports sort order, not chemistry.
-  </div>
-
-  <h3 class="sub">1b &middot; The degree itself, however, is the most useful number in the analysis</h3>
-  <p class="sd">The ranking does not work; the underlying <b>measurement</b> does, and it is not a lesser finding. A block's degree in the periodic graph is its <b>coordination number</b>: the number of connections that building unit makes to the rest of the framework. In reticular chemistry, this number determines which net a given pair of building blocks can form at all &mdash; a 4-connected node with a 3-connected linker gives the net <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor around which the field is organised.</p>
-
-  <div class="panel"><div id="degree-value"></div></div>
-
-  <div class="callout good" data-kind="The result">
-    <b>The deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once: it <b>validates the decomposition</b>, since every value matches published crystallography; it <b>identifies the net</b>, because the node/linker connectivity pair determines the topology; and it <b>separates MOF families</b>, which the spectrum analysis later builds on. What it cannot do is rank identical objects against one another, and establishing that this is not possible is itself a reportable result.
-  </div>
-
-  <div class="callout warn" data-kind="Caveat">
-    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different</i> lattice directions collapse into a single edge unless the lattice translation is recorded on that edge. UiO-66 exposes this most clearly: its primitive cell holds one Zr&#8326; cluster whose twelve connections all run out to periodic images and back, so a naive construction reports <b>6</b> connections instead of <b>12</b>, or degenerates into a star with one hub joined to everything. We instead build the <b>labelled quotient graph</b>, which is also exactly what Systre consumes.
-  </div>
-
-  <h3 class="sub">1c &middot; Where influence does become a measurable quantity</h3>
-  <p class="sd">Symmetry is what flattens centrality; breaking it makes centrality informative. We therefore simulate a <b>missing-linker defect</b>, which is not an artificial test but a real and well-studied feature of MOF chemistry, particularly in UiO-66.</p>
-
-  <div class="panel"><div id="defect-summary"></div></div>
-
-  <div class="callout" data-kind="Note">
-    Removing one linker splits the blocks into several genuinely different classes, and <b>&lambda;&#8322; drops</b> &mdash; a measure of how much more easily the framework can now be cut apart, i.e. how much the defect weakened it. This is the point at which "influential nodes" becomes a real research question: <i>which</i> block, if removed, costs the framework the most.
-  </div>
-
-  <!-- ============ 2 ============ -->
-
-      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">5</span>Where to Start</h2>
+      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">3</span>Where to Start</h2>
       <p class="section-sub">This site is a documentation portal rather than a poster. Each page is self-contained and can be read without prior context.</p>
 
       <div class="grid2">
@@ -372,7 +295,7 @@
         </div>
       </div>
 
-      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">6</span>The Team</h2>
+      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">4</span>The Team</h2>
       <p class="section-sub">Five members. The first half of the project (the multifractal spectrum of the MOF graph) and the second half (crystal morphology, from October 2026) were divided as shown; every member can explain the modules they own. The other pages describe the work without naming who did each part.</p>
 
       <div class="table-wrap"><table class="data-table" id="team-table">
@@ -406,7 +329,7 @@
         </tbody>
       </table></div>
 
-      <h2 class="section-title" id="certifications" data-toc="Certifications"><span class="stitle-num">7</span>Professional Certifications</h2>
+      <h2 class="section-title" id="certifications" data-toc="Certifications"><span class="stitle-num">5</span>Professional Certifications</h2>
       <p class="section-sub">Each member completed one online course for the Technical Enrichment component, chosen for the part of the project that member works on. The certificates are in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/"><code>docs/technical_enrichment/certificates/</code></a>; the course contents and the project links are summarised in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/README.md"><code>docs/technical_enrichment/README.md</code></a>.</p>
       <div class="table-wrap"><table class="data-table" id="cert-table">
         <thead><tr><td>Member</td><td>Course and provider</td><td>Completed</td><td>How it supports the project and its next steps</td></tr></thead>

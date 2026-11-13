@@ -1,47 +1,18 @@
-      <h2 class="section-title" id="summary" data-toc="In one paragraph"><span class="stitle-num">0</span>In One Paragraph</h2>
-      <p class="section-sub">
-        A metal&ndash;organic framework is a crystal composed of metal clusters connected by
-        organic linkers. Hundreds of thousands of candidate structures have been proposed, and
-        deciding whether one is worth synthesising ordinarily requires a molecular simulation
-        that takes hours per structure. This project asks a narrower, answerable question:
-        <b>does a descriptor computed from a framework's connectivity alone &mdash; in seconds,
-        with no simulation &mdash; carry enough structural information to be useful for that
-        decision?</b> We construct each framework's periodic graph from its crystal structure,
-        compute the multifractal spectrum of that graph, and reduce each framework to a small
-        set of numbers, principally the spectrum width &Delta;&alpha;. Across 138 frameworks
-        &mdash; 77 hypothetical and 61 that have been experimentally synthesised &mdash; those
-        numbers initially appeared to form a narrow, shared band. A convergence test run after
-        that result showed the band is not stable: &Delta;&alpha; keeps growing as the analysed
-        supercell grows, at every range of the exponent <i>q</i> we tested, so the value reported
-        for each framework is a function of an analysis choice rather than a property of the
-        framework itself. Both what held up under testing and what did not are reported below.
-      </p>
+      <h2 class="section-title" id="summary" data-toc="The project in brief"><span class="stitle-num">0</span>The Project in Brief</h2>
+      <p class="section-sub">A metal&ndash;organic framework (MOF) is a crystal made of metal clusters joined by organic linkers. It is full of small pores, so it can store or separate gases such as CO<sub>2</sub>. The project has two parts.</p>
+      <p class="sd"><b>Part I asked a screening question.</b> Hundreds of thousands of MOFs have been proposed, and checking one by molecular simulation takes hours. We asked whether a single number computed from a MOF's connectivity alone, in seconds, could pick out the frameworks worth simulating. We built each framework's periodic graph from its crystal file and computed the width &Delta;&alpha; of its multifractal spectrum, for 138 frameworks (77 hypothetical and 61 synthesised). The answer is <b>no, as defined</b>: &Delta;&alpha; keeps growing as the analysed piece of crystal grows, so it measures the size of the calculation more than the framework. The bands built from it are withdrawn, with their reasons, on the <a href="results.html">Results</a> page. The graph pipeline itself is verified and is reused in Part II.</p>
+      <p class="sd"><b>Part II answers the panel's question.</b> After Panel Review 1 the panel asked whether a few crystal shapes (morphologies) can be generated from the unit cell of an established MOF, mathematically and computationally. They can, in three steps:</p>
+      <ol class="sd">
+        <li>The symmetry of the unit cell decides which crystal faces may exist (16 propositions, proved on <a href="morph_math.html">The mathematics</a>).</li>
+        <li>Those faces give a family of possible shapes: for MOF-5, HKUST-1 and UiO-66 the family runs cube &rarr; cuboctahedron &rarr; octahedron, and for ZIF-8 cube &rarr; rhombic dodecahedron (<a href="morphology.html">Morphology</a>). Changing the cell lengths adds plates and rods (<a href="deform.html">Changing the cell</a>).</li>
+        <li>A growth model picks the likely member of the family: the BFDH rule from the plane spacings, Wulff shapes from surface energies, and several variants (<a href="surface_energy.html">Surface energy</a>, <a href="graph_faces.html">Faces from the graph</a>).</li>
+      </ol>
+      <p class="sd"><b>How good is it?</b> The predictions were scored against 134 laboratory records from 35 papers on 12 MOFs (<a href="experiment.html">Against experiment</a>). For crystals grown without an additive, the structure alone gives the main crystal face correctly for 4 of 5 MOFs (UiO-66 is the exception), as often as the most common laboratory answer for each MOF, but without using any laboratory data. For crystals grown with an additive no model is reliable, because the additive changes the shape in a way no structure-only model contains. Every shape can be placed on one exact map of cubic crystal shapes, and all six laboratory series that change shape on that map follow the predicted order (<a href="morphology_map.html">The morphology map</a>).</p>
+      <p class="sd"><b>What it is for.</b> The <a href="advisor.html">Shape advisor</a> brings this together for ten MOFs: the predicted shape in 3D, what laboratories saw, how much each face's energy would have to fall to change the shape, and how open each face is to CO<sub>2</sub> and N<sub>2</sub>. This links crystal shape back to the original aim, adsorption, as geometry; adsorption itself is not computed.</p>
+      <p class="sd"><b>What is still open.</b> The surface energies have not yet been checked against DFT, the reference quantum-mechanical method (six slabs are prepared; the calculation needs HPC time). The relaxed rerun of the team's CHGNet pipeline needs a GPU. A second, independent reading of a sample of the laboratory records is planned.</p>
 
-      <div class="callout good" data-kind="The second half: crystal morphology (October 2026 onward)">
-        After Panel Review 1 the panel asked whether an established MOF's unit cell can generate at
-        least a few crystal morphologies, shown mathematically and computationally. It can. From the
-        unit cell and its space group alone, MOF-5, HKUST-1 and UiO-66 each admit the continuous family
-        cube &rarr; cuboctahedron &rarr; octahedron, and ZIF-8 the family cube &rarr; rhombic
-        dodecahedron (<a href="morphology.html">Morphology</a>, proved on <a href="morph_math.html">Maths</a>).
-        Changing the cell parameters adds plates and rods (<a href="deform.html">Cell Deform</a>).
-        To decide which member of the family a crystal takes, seven growth models were built and scored
-        against 134 laboratory records from 35 papers (<a href="experiment.html">Experiment</a>):
-        the lattice-only BFDH rule, the graph attachment rule, two graph-energy Wulff models
-        (<a href="graph_faces.html">Graph Faces</a>), a force-field Wulff model
-        (<a href="surface_energy.html">Surface Energy</a>), a BFDH&times;Wulff blend
-        (<a href="hybrid.html">Hybrid</a>) and a machine-learned (CHGNet) cleavage-energy model.
-        No model reproduces all four MOFs. ZIF-8 (rhombic dodecahedron) is reproduced by every model applied to it (the graph rule covers only pcu and fcu nets; the October CHGNet model was not run on ZIF-8, and the team's newer CHGNet pipeline also gives the rhombic dodecahedron);
-        the MOF-5 cube by the graph attachment rule, the broken-bond Wulff model and the force-field Wulff
-        model (the last only at the default bond cost); the HKUST-1 octahedron appears in every model that applies to it only
-        as the dominant {111} face of a truncated octahedron; and no model gives the additive-free UiO-66
-        crystals, which are poorly faceted and reported as cubes in the two available records.
-        All of these were then placed on one exact map of cubic crystal shapes (<a href="morphology_map.html">Morphology map</a>), which also lists the possible morphologies of a given CIF in the order an additive that binds one face should produce them; all six laboratory series in the dataset that change shape on the map follow that order.
-        Finally, the spectrum of the first half was tested against crystal shape
-        (<a href="relation.html">Spectrum &harr; Shape</a>): the periodic spectrum width carries no shape
-        information beyond graph size. On a <i>finite</i> crystal particle the spectrum width separates
-        plates and rods from compact shapes, and the box-counting dimension profile also separates the
-        compact shapes predicted for MOF-5 (<a href="relation.html#dimension-profile">Test 4</a>).
-      </div>
+      <h3 class="sub-head" id="part1-numbers">Part I in numbers, kept as reported</h3>
+      <p class="sd">The numbers below are the ones Part I reported. They are kept on the site with the reasons they were withdrawn, so the record is complete.</p>
 
       <div class="keynums">
         <div class="keynum"><b>138</b><span>frameworks analysed end to end &mdash; 77 hypothetical, 61 synthesised</span></div>
@@ -101,12 +72,12 @@
       </div>
 
 
-      <h2 class="section-title" id="ladder" data-toc="The pipeline, stage by stage"><span class="stitle-num">0</span>The Pipeline, Stage by Stage</h2>
+      <h2 class="section-title" id="ladder" data-toc="Part I pipeline, stage by stage"><span class="stitle-num">0</span>Part I: The Pipeline, Stage by Stage</h2>
       <p class="section-sub">Six stages take a crystal structure file to a small set of numbers. Each stage depends only on the ones above it, and each is documented in full on the page it links to.</p>
 
       <ol class="ladder">
         <li>
-          <h3><a href="index.html#problem">What a MOF is, and why it matters</a></h3>
+          <h3><a href="methodology.html#problem">What a MOF is, and why it matters</a></h3>
           <p>A metal&ndash;organic framework is a crystal formed by joining metal clusters
           (<b>nodes</b>) to organic molecules (<b>linkers</b>), leaving a regular lattice of
           voids. The internal surface area of a gram of MOF can exceed a football pitch, which is
@@ -181,6 +152,6 @@
         so simulating all of them is not feasible. The aim here is <b>not</b> to replace that
         simulation. It is to compute something in seconds, from the crystal structure alone, that
         is informative enough to decide <i>which few hundred are worth the hours</i>. Every stage
-        above exists to make that number trustworthy &mdash; and the most recent finding is that,
-        as currently defined, it is not yet.
+        above was built to make that number trustworthy. Part I found that, as defined, it is not, and
+        the verified graph pipeline was carried into Part II.
       </div>

@@ -145,7 +145,7 @@ AUDIT = [
   'The Morphology page still listed the surface-energy work as "Not started" a week after it was finished, and said the spectrum was not used in the morphology half after a page testing exactly that had been added.',
   'Each page was written when its phase was done; earlier pages were not revisited.',
   'A reader who opens the Morphology page first sees a project that stopped at Phase 3, and a statement that contradicts the Spectrum &harr; Shape page.',
-  'Status was recorded in three places (Morphology page, Team page, project notes) with no single source.',
+  'Status was recorded in three places (Morphology page, Progress page, project notes) with no single source.',
   'All phase tables were rewritten with one numbering (Phases 0 to 6, with 4b to 4h), and the audit below checks every page against the result files.',
   '<a href="morphology.html">Morphology</a>, <a href="team.html">Progress</a>'),
  ('l-provenance', 'Figures that did not say where they came from',
@@ -202,7 +202,42 @@ NOVEMBER = [
   '<code>code/spectrum_pipeline/code_13</code>&ndash;<code>code_17</code>; <code>PROJECT_MAP.md</code>'),
 ]
 
+THIRTEEN = [
+ ('l-face-open', 'Every face equally open to gas',
+  'The first version said every face of a crystal was exactly as open to CO<sub>2</sub> as every other face. A cut through a dense layer and a cut through a pore cannot look the same.',
+  'A plane can sit anywhere in the repeat, so the open area was averaged over all positions of the plane, which looked fair.',
+  'A crystal face is one plane, the one where the crystal stops, not an average of all of them.',
+  'Averaging a plane over every offset through one period samples the whole cell evenly, so it returns the bulk open volume fraction, the same for every direction.',
+  'The plane is placed at the termination with the lowest surface energy, and the range over all offsets is shown beside it. <code>check_new_analyses.py</code> confirms that the average over offsets equals the bulk value from random 3D points.',
+  '<a href="advisor.html#adv-gas-h">Shape advisor, gas access</a>; <code>code/morphology/run_shape_adsorption.py</code>'),
+ ('l-primitive', 'A dominant face missing for two MOFs',
+  'In the first run of the ten-MOF benchmark, HKUST-1 and UiO-66 got no predicted main face.',
+  'The benchmark read each structure file as it was stored, which is the simplest choice.',
+  'Their files store the primitive cell, whose axes are not the cubic axes, so the test for a cubic cell failed and the energy step was skipped.',
+  'A face-centred cubic crystal has a primitive cell with angles of 60&deg;; the cubic test needs the conventional cell, a = b = c and all angles 90&deg;.',
+  'The structure is converted to the conventional cubic cell first, with the same conversion the earlier pages use.',
+  '<code>code/morphology/run_benchmark_mofs.py</code> (<code>bfdh_prediction</code>)'),
+ ('l-records', 'Counting records as if they were separate experiments',
+  '&ldquo;Right in 28 of 32 records&rdquo; sounds like 32 tests. The structure-only model makes one prediction per MOF, so those records are five tests, one per MOF: four right and one wrong (UiO-66).',
+  'Scoring records is how the laboratory dataset is organised, and the earlier benchmark did the same.',
+  'Records of the same MOF, and often from the same paper, are not independent, so an interval that treats them as independent overstates the precision.',
+  'A Wilson interval assumes independent trials. Here the prediction is a constant per MOF and the records cluster by paper; the effective sample size is closer to the number of MOFs.',
+  'The benchmark now also reports MOFs right by majority, a bootstrap over whole papers, and the MOFs added after the model was fixed as a separate, clean test.',
+  '<a href="advisor.html#adv-score-h">Shape advisor, how good is the prediction</a>; <code>evidence_units</code> in <code>benchmark_mofs.json</code>'),
+ ('l-uff-name', 'Calling a bond count a force-field energy',
+  'We called the surface energy &ldquo;UFF&rdquo;, the name of a force field. In fact 93&ndash;98 % of it comes from counting the bonds each plane cuts.',
+  'UFF supplies the van der Waals part and the bond energy, so the name seemed natural.',
+  'The name suggests physics the number does not contain: it cannot tell a weak bond from a strong one.',
+  'Every cut bond costs a flat 70 kcal/mol; the van der Waals part is 2&ndash;7 % of &gamma; for the four MOFs (<code>phase4_results.json</code>, columns from bonds and from vdW).',
+  'The Surface energy page now says what the energy counts; the name is kept in file names.',
+  '<a href="surface_energy.html">Surface energy</a>'),
+]
+
 SMALL = [
+ ('&ldquo;144 laboratory records&rdquo; on a new page', 'Written from memory.', 'Read from the CSV: 134 records, 35 papers, 12 MOFs.'),
+ ('Diffusion length described as the mean distance from the surface to the centre', 'A loose description of a formula.', 'Re-derived: it is the volume divided by the surface area, V/A.'),
+ ('&ldquo;With additives every model does worse; BFDH is weaker&rdquo;', 'Written before re-reading the scores.', 'With additives BFDH scores highest (21 of 44); all intervals overlap; the page now says so.'),
+ ('Pictures stopped turning after the first movement of a drag', 'On three pages the drag handler sat on the picture, which is redrawn on every movement, so the handler was lost after one frame.', 'The handler now sits on the box that holds the picture (<code>FaceCard.drag</code> in <code>face_card.js</code>), as the CIF to Shape page already did.'),
  ('Plot title said "MOF-5" for a different structure', 'The title was a fixed name, not read from the file.', 'Set the NAME field; titles now follow the input.'),
  ('Primitive-cell indices mapped to nothing', 'HKUST-1\'s file is a primitive cell, so (hkl) are not the usual cubic indices.', 'Convert through the transformation matrix between the primitive and the conventional cell.'),
  ('Crash looking up a face in the opposite direction', 'A face and its negative are different keys.', 'One canonical family key (<code>family_of</code>).'),
@@ -210,11 +245,11 @@ SMALL = [
  ('Wrong zip uploaded (an older copy)', 'Two project folders looked alike.', 'Noticed because the folder showed no changes in git, then asked for the right zip.'),
  ('CSS tokens that referred to themselves', 'Custom properties such as <code>--node:var(--node)</code> form a cycle and resolve to nothing, so colours vanished on every page.', 'Never alias a token to itself.'),
  ('Sideways scrolling on every page', 'Wide tables and hidden pop-ups stretched the page.', '<code>min-width:0</code> on the content grid and <code>overflow-x:clip</code>.'),
- ('"Grows as 0.78 ln D" on the Team page', 'The slope of HKUST-1 was quoted as if it held for every net.', 'Now 0.69&ndash;0.89 depending on the net, as on the Results page.'),
+ ('"Grows as 0.78 ln D" on the Progress page', 'The slope of HKUST-1 was quoted as if it held for every net.', 'Now 0.69&ndash;0.89 depending on the net, as on the Results page.'),
  ('<code>npm test</code> called two test files that no longer existed', 'The test list in <code>package.json</code> was written before the site was split into pages.', 'A runner (<code>run_all_tests.js</code>) now runs every <code>test_*.js</code> file.'),
  ('A temperature range printed as "125&ndash;125 &deg;C"', 'The range was formatted without checking whether its ends were equal.', 'A single value is printed when both ends are equal.'),
  ('A team member\'s name spelt two ways', 'The name was typed from memory on some pages.', 'Every page now uses the spelling in the paper and the certificate.'),
- ('Website still said 104 records, 28 papers, 14 MOFs', 'The Team page was not updated when the dataset grew.', 'Now 134 records from 35 papers for 12 MOFs, as on the Experiment page.'),
+ ('Website still said 104 records, 28 papers, 14 MOFs', 'The Progress page was not updated when the dataset grew.', 'Now 134 records from 35 papers for 12 MOFs, as on the Experiment page.'),
  ('The released dataset described the wrong graph and the wrong bond rule', 'Its metadata (15 September) said controlling for graph size would fix the descriptor, and its description said the values came from the building-block quotient graph with covalent-radius bonds. The values were computed on the atomic graph with fixed distance cutoffs, and size control does not fix a descriptor that never converges.', 'Corrected twice: the size claim on 15 September (commit 6ec48fd); the graph and bond rule on 12 November, found by the audit. The data were not changed.'),
  ('Two CHGNet jobs killed for memory (10 November)', 'A second CHGNet or MACE job was started beside a running one on an 8 GB machine.', 'Heavy jobs now run one at a time.'),
  ('The possible-morphology paths skipped the cuboctahedron', 'The cuboctahedron is a single line on the map, so stepping along a path crossed it without landing on it.', 'A crossing of y = 2/&radic;3 is recorded as a cuboctahedron.'),
@@ -226,7 +261,7 @@ PATTERNS = [
  ('A number that looks good is trusted before it is stressed.', 'The size correlation, the force-field cube and the "best" weight all looked like results. Each fell when one more thing was varied (size, bond cost, test set).', 'Vary the thing you did not control, then report what survived.'),
  ('Code written for the examples at hand.', 'Cubic labels, hydrogens dropped, one-cell graphs. All four demonstration MOFs share properties that real MOFs do not.', 'Test on a deliberately different case (eight CoRE MOFs of six crystal systems).'),
  ('One value per thing that varies.', 'One shape per MOF, one class per structure. In both cases the real quantity depends on conditions or noise.', 'Record the conditions and the error bar next to every value.'),
- ('Words and numbers drifting apart.', 'The text described one graph and the code used another; the Team page lagged behind the dataset; status tables and shape claims lagged behind the results.', 'Numbers on this site are generated from the data files and checked by tests; claims that summarise results (the experimental shapes, the phase status) are read from the same files or checked in an audit.'),
+ ('Words and numbers drifting apart.', 'The text described one graph and the code used another; the Progress page lagged behind the dataset; status tables and shape claims lagged behind the results.', 'Numbers on this site are generated from the data files and checked by tests; claims that summarise results (the experimental shapes, the phase status) are read from the same files or checked in an audit.'),
 ]
 
 
@@ -271,6 +306,10 @@ def main():
       <p class="section-sub">Found while running and reading the team\'s CIF-to-Wulff pipeline (steps 1&ndash;8), building the morphology map, and checking that every script runs from any folder. The full problem list K1&ndash;K11 is on <a href="morphology_map.html#map-steps">The morphology map</a>.</p>
 ''')
     p.extend(entry(x) for x in NOVEMBER)
+    p.append('''      <h2 class="section-title" id="ls-thirteen" data-toc="Part E: 13 November 2026"><span class="stitle-num">0</span>Part E: Ten MOFs, Gas Access and the Audit (13 November 2026)</h2>
+      <p class="section-sub">Made while extending the benchmark from four MOFs to ten and building the <a href="advisor.html">Shape advisor</a>, and found by checking each number against its result file before the work was committed, or by the audit of the same day (<code>docs/audit/2026-11-13_phase_A_multidisciplinary_audit.md</code>).</p>
+''')
+    p.extend(entry(x) for x in THIRTEEN)
     p.append('''      <h2 class="section-title" id="ls-small" data-toc="Smaller slips"><span class="stitle-num">0</span>Smaller Slips</h2>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>What went wrong</td><td>Why</td><td>Fix</td></tr></thead><tbody>''' +
              ''.join(f'<tr><td class="dt-label">{a}</td><td class="dt-note">{b}</td><td class="dt-note">{c}</td></tr>' for a, b, c in SMALL) +
@@ -279,14 +318,14 @@ def main():
       <ul class="sd">
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
         <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until the DFT calculation is done.</li>
-        <li>Only four MOFs have a clean experimental shape; no method can yet be ranked as better.</li>
+        <li>Only five MOFs have additive-free face records with a structure file, so the energy models cannot be ranked against each other; with additives no model is reliable.</li>
         <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline are close to zero, so the order of faces rests on small differences; K1, K2 and K4&ndash;K10 are still open in that pipeline.</li>
         <li>The morphology map is exact only for cubic crystals bounded by {100}, {110} and {111}; the first modulator-cap energies are unrelaxed and not physical for UiO-66.</li>
-        <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum &harr; Shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; it cannot yet be used as a stand-alone classifier.</li>
+        <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum and shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; so it is not used as a classifier.</li>
       </ul>
 ''')
     open(OUT, 'w', encoding='utf-8').write(''.join(p))
-    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries,', len(AUDIT), 'audit entries,', len(NOVEMBER), 'November entries')
+    print('wrote', OUT, len(SPECTRUM), 'spectrum entries,', len(MORPH), 'morphology entries,', len(AUDIT), 'audit entries,', len(NOVEMBER), 'November entries,', len(THIRTEEN), '13 November entries')
 
 
 if __name__ == '__main__':

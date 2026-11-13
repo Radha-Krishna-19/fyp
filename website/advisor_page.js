@@ -65,19 +65,15 @@
       svg.appendChild(top);
     });
     host.insertBefore(svg, host.firstChild);
-    if (window.FaceCard) FaceCard.wire(svg, host, describeFace);
-    var dragging = null;
-    svg.addEventListener('pointerdown', function (e) { dragging = [e.clientX, e.clientY]; try { svg.setPointerCapture(e.pointerId); } catch (x) { /* jsdom */ } });
-    svg.addEventListener('pointermove', function (e) {
-      if (!dragging) return;
-      var dx = (e.clientX - dragging[0]) * 0.01, dy = (e.clientY - dragging[1]) * 0.01;
-      if (Math.abs(dx) + Math.abs(dy) < 0.02) return;
-      dragging = [e.clientX, e.clientY];
-      var cz = Math.cos(dx), sz = Math.sin(dx), cx = Math.cos(dy), sx = Math.sin(dy);
-      var Rz = [[cz, -sz, 0], [sz, cz, 0], [0, 0, 1]], Rx = [[1, 0, 0], [0, cx, -sx], [0, sx, cx]];
-      state.R = mul(Rx, mul(Rz, state.R)); draw();
-    });
-    svg.addEventListener('pointerup', function () { dragging = null; });
+    if (window.FaceCard) {
+      FaceCard.wireHost(host, describeFace);
+      FaceCard.drag(host, function (dx, dy) {
+        var ax = dx * 0.01, ay = dy * 0.01;
+        var cz = Math.cos(ax), sz = Math.sin(ax), cx = Math.cos(ay), sx = Math.sin(ay);
+        var Rz = [[cz, -sz, 0], [sz, cz, 0], [0, 0, 1]], Rx = [[1, 0, 0], [0, cx, -sx], [0, sx, cx]];
+        state.R = mul(Rx, mul(Rz, state.R)); draw();
+      });
+    }
   }
   function mul(a, b) { var r = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) for (var q = 0; q < 3; q++) r[i][j] += a[i][q] * b[q][j]; return r; }
   function describeFace(i) {

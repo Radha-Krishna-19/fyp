@@ -51,24 +51,24 @@
       <div class="nav-part">
         <p class="nav-part-title">Part II. Crystal shape</p>
         <ol>
-        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
-        <li><a href="learn_energy.html"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
-        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
-        <li><a href="cif_to_shape.html"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
-        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
-        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
-        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
-        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
-        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
-        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
-        <li><a href="morphology_map.html"><span class="nav-n">18</span><span class="nav-t">The morphology map</span></a></li>
-        <li><a href="advisor.html"><span class="nav-n">19</span><span class="nav-t">The shape advisor</span></a></li>
+        <li><a href="bridge.html"><span class="nav-n">8</span><span class="nav-t">Why crystal shape</span></a></li>
+        <li><a href="learn_shape.html"><span class="nav-n">9</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html"><span class="nav-n">10</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">11</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html"><span class="nav-n">12</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">13</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">14</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">15</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">16</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">17</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">18</span><span class="nav-t">Against experiment</span></a></li>
+        <li><a href="morphology_map.html"><span class="nav-n">19</span><span class="nav-t">The morphology map</span></a></li>
+        <li><a href="advisor.html"><span class="nav-n">20</span><span class="nav-t">The shape advisor</span></a></li>
         </ol>
       </div>
       <div class="nav-part">
         <p class="nav-part-title">Connecting the two parts</p>
         <ol>
-        <li><a href="bridge.html"><span class="nav-n">20</span><span class="nav-t">Why shape</span></a></li>
         <li><a href="relation.html"><span class="nav-n">21</span><span class="nav-t">Spectrum and shape</span></a></li>
         </ol>
       </div>
@@ -99,7 +99,55 @@
     <div class="container">
       <div class="with-toc">
         <main id="main">
-<h2 class="st" id="why"><span class="n">1</span>Why This Path — and What a Graph Has To Do With a MOF</h2>
+<h2 class="st" id="problem"><span class="n">1</span>The Problem: What Is a MOF, and Why Does It Matter?</h2>
+<dl class="bridge"><dt>You know</dt><dd>The one-paragraph picture of the project on the <a href="index.html">Overview</a>.</dd><dt>This section</dt><dd class="now">Defines the material: what a <b>metal&ndash;organic framework</b> is, what its pores are for, and why there are too many candidate structures to test individually.</dd><dt>Which lets us</dt><dd>State a question narrow enough to be answerable, which is the next section.</dd></dl>
+  <p class="sd">A metal&ndash;organic framework is assembled from a small number of component types, in the way a building is assembled from components: an inorganic <b>node</b> (a metal cluster) and an organic <b>linker</b>, which combine into a periodic framework. The properties that make a MOF useful &mdash; surface area, pore size, thermal and chemical stability, catalytic behaviour &mdash; follow from which components were used and how they are connected.</p>
+  <p class="sd">When a MOF exists only as a crystal structure file, the first question is therefore: <b>what building blocks is it made of?</b> A decomposition algorithm answers that question, and every later use of the result &mdash; database search, similarity matching, machine-learning featurisation, inverse design &mdash; inherits whatever answer it gives. If the reported node is not the species actually present in the crystal, everything built on that answer is reasoning about a material that does not exist.</p>
+
+  <div class="callout" data-kind="Note">
+    <b>A complication that shapes the whole project.</b> A <code>.cif</code> file records atomic positions and the unit cell, and contains <b>no bonds at all</b>; the format has no field for them. Every bond used at any step of this pipeline is therefore <i>inferred</i> from interatomic distances rather than read from the file. That one fact is the origin of several of the limitations described later.
+  </div>
+
+  <!-- ============ 1 ============ -->
+
+<h2 class="st" id="question"><span class="n">2</span>The Question We Were Asked, and What We Found</h2>
+<dl class="bridge"><dt>You know</dt><dd>What a MOF is, and that the candidate space is too large to test exhaustively.</dd><dt>This section</dt><dd class="now">States the exact question this project answers &mdash; and, as importantly, the questions it does <b>not</b>.</dd><dt>Which lets us</dt><dd>Judge everything that follows against a claim that was fixed in advance.</dd></dl>
+  <p class="sd">The brief was to <b>find and highlight the influential nodes: those with the highest degree</b>. We implemented this, and the result is more informative than a plain yes or no.</p>
+
+  <h3 class="sub">1a &middot; Ranking blocks by degree does not work, and the reason is structural</h3>
+  <p class="sd">In a perfect crystal, every symmetry-equivalent block is genuinely identical: every copper paddlewheel in HKUST-1 has exactly the same environment as every other. A "top-<i>k</i> by degree" list therefore discovers nothing; it sorts tied values, and which ones appear first depends only on the arbitrary order in which the blocks were numbered.</p>
+
+  <div class="panel"><div id="tie-evidence"></div></div>
+
+  <div class="callout bad" data-kind="Withdrawn">
+    <b>See the "distinct degree values" column.</b> Every structure has exactly <b>two</b> distinct values: one for nodes, one for linkers. There is no third tier and no gradient to rank within. A "top 12 most influential" list drawn from these numbers reports sort order, not chemistry.
+  </div>
+
+  <h3 class="sub">1b &middot; The degree itself, however, is the most useful number in the analysis</h3>
+  <p class="sd">The ranking does not work; the underlying <b>measurement</b> does, and it is not a lesser finding. A block's degree in the periodic graph is its <b>coordination number</b>: the number of connections that building unit makes to the rest of the framework. In reticular chemistry, this number determines which net a given pair of building blocks can form at all &mdash; a 4-connected node with a 3-connected linker gives the net <code>tbo</code>; a 6-connected node with a 2-connected linker gives <code>pcu</code>. It is the descriptor around which the field is organised.</p>
+
+  <div class="panel"><div id="degree-value"></div></div>
+
+  <div class="callout good" data-kind="The result">
+    <b>The deliverable is the number, not the ranking.</b> Computing these coordination numbers correctly does three things at once: it <b>validates the decomposition</b>, since every value matches published crystallography; it <b>identifies the net</b>, because the node/linker connectivity pair determines the topology; and it <b>separates MOF families</b>, which the spectrum analysis later builds on. What it cannot do is rank identical objects against one another, and establishing that this is not possible is itself a reportable result.
+  </div>
+
+  <div class="callout warn" data-kind="Caveat">
+    <b>Getting this right was not automatic.</b> The "naive graph" column above shows what a straightforward implementation produces. Because a MOF is infinite, two blocks joined by several bonds running in <i>different</i> lattice directions collapse into a single edge unless the lattice translation is recorded on that edge. UiO-66 exposes this most clearly: its primitive cell holds one Zr&#8326; cluster whose twelve connections all run out to periodic images and back, so a naive construction reports <b>6</b> connections instead of <b>12</b>, or degenerates into a star with one hub joined to everything. We instead build the <b>labelled quotient graph</b>, which is also exactly what Systre consumes.
+  </div>
+
+  <h3 class="sub">1c &middot; Where influence does become a measurable quantity</h3>
+  <p class="sd">Symmetry is what flattens centrality; breaking it makes centrality informative. We therefore simulate a <b>missing-linker defect</b>, which is not an artificial test but a real and well-studied feature of MOF chemistry, particularly in UiO-66.</p>
+
+  <div class="panel"><div id="defect-summary"></div></div>
+
+  <div class="callout" data-kind="Note">
+    Removing one linker splits the blocks into several genuinely different classes, and <b>&lambda;&#8322; drops</b> &mdash; a measure of how much more easily the framework can now be cut apart, i.e. how much the defect weakened it. This is the point at which "influential nodes" becomes a real research question: <i>which</i> block, if removed, costs the framework the most.
+  </div>
+
+  <!-- ============ 2 ============ -->
+
+<h2 class="st" id="why"><span class="n">3</span>Why This Path — and What a Graph Has To Do With a MOF</h2>
 <dl class="bridge"><dt>You know</dt><dd>The question: can connectivity alone carry useful structural information?</dd><dt>This section</dt><dd class="now">Argues why a <b>graph</b> is the right abstraction for a framework, and what is deliberately thrown away by using one.</dd><dt>Which lets us</dt><dd>Justify every later step, all of which operate on a graph rather than on chemistry.</dd></dl>
   <p class="sd">The commonest question about this project is why a chemistry problem is being attacked with network theory. This section answers that, and the questions that usually follow it.</p>
 
@@ -206,7 +254,7 @@
     Removing the size confound (Section 16), then testing the descriptor against measured properties on a set with real metal diversity. Both are concrete next steps, not open research questions.</p>
   </div>
 
-<h2 class="st" id="parts"><span class="n">2</span>Everything We Built, and What Each Part Achieved</h2>
+<h2 class="st" id="parts"><span class="n">4</span>Everything We Built, and What Each Part Achieved</h2>
 <dl class="bridge"><dt>You know</dt><dd>Why the pipeline is built on graphs.</dd><dt>This section</dt><dd class="now">Lists what was actually built, module by module, and what each part achieved or failed to achieve.</dd><dt>Which lets us</dt><dd>See where any number on this site comes from before meeting the number.</dd></dl>
   <p class="sd">Four components. For each: what it does, why it exists, what it achieved, and where to see it.</p>
 
@@ -254,7 +302,7 @@
 
   <!-- ============ 3 ============ -->
 
-<h2 class="st" id="implementation"><span class="n">3</span>Implementation Map</h2>
+<h2 class="st" id="implementation"><span class="n">5</span>Implementation Map</h2>
 <dl class="bridge"><dt>You know</dt><dd>What each module does.</dd><dt>This section</dt><dd class="now">Maps every module to the file that implements it, so a claim can be traced to code.</dd><dt>Which lets us</dt><dd>Check any statement here against the source rather than trusting it.</dd></dl>
   <p class="sd">Every file and what it is responsible for. The Python is the reference implementation and runs standalone; the JavaScript is a port of the same logic so the site can compute everything live in a browser. The two were cross-checked and agree on every value.</p>
 
@@ -311,7 +359,7 @@
 
   <!-- ============ 4 ============ -->
 
-<h2 class="st" id="roadmap"><span class="n">4</span>Roadmap</h2>
+<h2 class="st" id="roadmap"><span class="n">6</span>Roadmap</h2>
 <dl class="bridge"><dt>You know</dt><dd>What exists today.</dd><dt>This section</dt><dd class="now">Sets out what remains, honestly separated into what is built and what is established.</dd><dt>Which lets us</dt><dd>Read the results knowing what was still open when they were produced.</dd></dl>
   <p class="sd">Where the project stands and what the next steps are, including the ones that are blocked and why.</p>
 
@@ -356,7 +404,7 @@
 
   <!-- ================= SECTION 1: FULL PIPELINE WALKTHROUGH ================= -->
 
-      <h2 class="section-title" id="architecture" data-toc="System architecture"><span class="stitle-num">5</span>System Architecture</h2>
+      <h2 class="section-title" id="architecture" data-toc="System architecture"><span class="stitle-num">7</span>System Architecture</h2>
       <p class="section-sub">Eight modules, each with one responsibility and a defined interface to the next. Every module is independently runnable and independently testable, which is what let us find the three defects listed further down &mdash; a monolithic script would have hidden all of them.</p>
 
       <figure class="fig">
@@ -444,7 +492,7 @@
       <h3 class="sub-head">Why two independent implementations</h3>
       <p>The Python modules and the JavaScript engine were written from the same specification but not from each other. Where they disagree, one of them is wrong &mdash; and that disagreement is loud, whereas a single implementation is silently self-consistent even when it is wrong. Two of the three defects we found were caught exactly this way. The cost is roughly a third more code; the benefit is that the numbers on this site are cross-checked rather than asserted.</p>
 
-      <h2 class="section-title" id="datasets" data-toc="Datasets"><span class="stitle-num">6</span>Datasets and Their Provenance</h2>
+      <h2 class="section-title" id="datasets" data-toc="Datasets"><span class="stitle-num">8</span>Datasets and Their Provenance</h2>
       <p class="section-sub">Stating exactly what the data is, including the parts that limit the conclusions.</p>
 
       <table class="data-table">
@@ -478,7 +526,7 @@
         <b>The honest position on the dataset.</b> The 77 hMOF frameworks are computer-generated candidates, not materials anyone has made. They are chemically reasonable &mdash; hMOF structures are assembled from real building blocks under real bonding rules, and they are the same class of structure that MOFDiff and comparable models are trained on &mdash; but no one has synthesised them. Because all 77 share one metal, any band computed on that set is a band <i>within</i> one chemical family, and cannot separate families. The 61 CoRE MOF frameworks exist, but the descriptor computed on either set is withdrawn as a structural finding &mdash; see <a href="results.html#band">Results</a>.
       </div>
 
-      <h2 class="section-title" id="graph-choice" data-toc="Which graph, and why"><span class="stitle-num">7</span>Which Graph the Spectrum Is Taken On, and Why</h2>
+      <h2 class="section-title" id="graph-choice" data-toc="Which graph, and why"><span class="stitle-num">9</span>Which Graph the Spectrum Is Taken On, and Why</h2>
       <p class="section-sub">A reviewer question this site did not answer until now: the pipeline could take the multifractal spectrum of the unit-cell graph, the atomic supercell, the coarse-grained unit cell, or the coarse-grained supercell. It matters which, and the project's published numbers used the wrong one.</p>
 
       <table class="data-table">
@@ -580,7 +628,7 @@
         page. See <code>docs/project_notes.md</code> for the evidence table.
       </div>
 
-      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">8</span>Evaluation Strategy</h2>
+      <h2 class="section-title" id="evaluation" data-toc="Evaluation strategy"><span class="stitle-num">10</span>Evaluation Strategy</h2>
       <p class="section-sub">What would count as the method working, and what would count as it failing. Fixed in advance, so a negative result is a result rather than a reason to change the test.</p>
 
       <table class="data-table">
