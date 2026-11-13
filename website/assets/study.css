@@ -168,6 +168,7 @@
 
 /* ---------- type ---------- */
 html{ overflow-x:clip; scroll-padding-top:calc(var(--top) + 20px); }
+body{ overflow-x:clip; }
 body{ font-family:var(--serif); font-size:18px; line-height:1.68; font-optical-sizing:auto;
   background:var(--page); color:var(--text); }
 .site-header,.site-nav,.place,.meta-strip,.toc,.page-nav,.keynum span,
