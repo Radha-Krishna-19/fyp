@@ -1,6 +1,6 @@
 # Panel defence: completed work
 
-MOF Graphs and Crystal Morphology (23CSE498, G070). Prepared 12 November 2026 for the Phase II review,
+MOF Graphs and Crystal Morphology (23CSE498, G070). Prepared 12 November 2026, updated 13 November, for the Phase II review,
 the final review and the demonstration. Covers only work that is finished; future work is named as such.
 
 **How to use this document.** Each question has a short model answer, the evidence in the repository, the
@@ -43,9 +43,12 @@ Shape decides which faces are exposed to the gas, which pore windows open onto t
 molecule must diffuse into the crystal, and how crystals pack in a bed. These change uptake rate and
 practical selectivity even when the framework is the same.
 Evidence: "Why shape" page (`website/bridge.html`).
-Follow-up: "Did you compute any adsorption quantity from shape?" No. That link is argued from the
-literature, not computed; it is future work.
-Rating: PARTIALLY DEFENSIBLE (argument only). Owners: IS, RK.
+Follow-up: "Did you compute any adsorption quantity from shape?" Not adsorption itself. For eight MOFs
+we compute two geometric indicators per shape (13 November): the fraction of each face open to a CO₂ or
+N₂ probe at the face's lowest-energy termination, and the diffusion length L = V/A. No isotherm, uptake or
+diffusion coefficient is computed (Q47).
+Evidence: Shape advisor page; `code/morphology/run_shape_adsorption.py`.
+Rating: PARTIALLY DEFENSIBLE (indicators, not adsorption). Owners: IS, RK.
 
 **Q3. Why did you not simply run adsorption simulations (GCMC)?**
 Part 1's premise was to avoid them: GCMC costs hours per framework. Part 2 is about shape, which GCMC on a
@@ -265,8 +268,11 @@ plus a flat cost for each broken covalent bond (70 kcal/mol for organic bonds), 
 electrostatics, no solvent. The Wulff shape uses the lowest-energy termination of each face.
 Evidence: `mofmorph/forcefield.py`; `run_phase4.py`; Surface Energy page.
 Follow-up: "MOF-5 comes out a cube. Is that robust?" Only at the default bond cost: scaling metal–ligand
-bonds by 0.5 gives a truncated cube, by 0.25 a truncated octahedron (`run_bond_sensitivity.py`). We say
-so on the Experiment page.
+bonds by 0.5 gives a truncated cube, by 0.25 a truncated octahedron (`run_bond_sensitivity.py`); the
+dominant face stays {100}. We say so on the Experiment page.
+Follow-up: "So is this really a force-field energy?" Mostly not: 93–98 % of γ is the flat bond cost, so the
+face order is the number of bonds cut per area, a broken-bond count; UFF van der Waals adds 2–7 %
+(`phase4_results.json`, columns from bonds and from vdW). Say "bond-count surface energy".
 Rating: PARTIALLY DEFENSIBLE (unrelaxed, one constant decides MOF-5). Owners: RK, KV.
 
 **Q26. What is the CHGNet "cleavage energy" and why is it only a bound?**
@@ -314,6 +320,8 @@ by the graph rule, the broken-bond Wulff and the UFF Wulff models (the last only
 the HKUST-1 octahedron only as the dominant {111} face of a truncated octahedron; the poorly faceted
 additive-free UiO-66 cubes by none.
 Evidence: `data/experimental_morphology/compare/comparison.csv` (`compare_with_project.py`); Experiment page.
+Update, 13 November: the structure-only model was scored on ten MOFs (Q44). On additive-free records it
+gets the dominant face for 4 of 5 MOFs.
 Follow-up: "So which model is best?" We cannot say: ZIF-8 is matched by everything (its I-centring makes
 {110} widest-spaced), HKUST-1 by nothing exactly, UiO-66's target rests on two records; only MOF-5
 separates the models, and there one constant decides. Four MOFs cannot rank models.
@@ -324,7 +332,7 @@ No model here contains an additive; comparing with additive-grown crystals would
 do not represent. The additive records are used separately, on the morphology map (Q34–Q35).
 Rating: DEFENSIBLE. Owners: RA, KS.
 
-**Q32. Why only four MOFs in Part 2, when Part 1 used 138?**
+**Q32. Why only four MOFs in Part 2, when Part 1 used 138?** (Now ten; see Q44.)
 A shape prediction can only be checked against a crystal that has been grown and imaged. The hMOF
 structures are hypothetical and most CoRE MOFs have no reported shape; laboratory shapes exist for about
 12 MOFs, mostly five. The method itself (symmetry → allowed faces → shapes) runs on any CIF and was run on 8
@@ -457,7 +465,9 @@ Rating: DEFENSIBLE. Owners: each member for their own part.
 | One person extracted all laboratory records | A blind second extraction of 20 records is prepared (check sheet). |
 | Proofs checked by one author | Numerical checks pass; a second-person proof check is prepared. |
 | The map is exact only for cubic crystals | Mg-MOF-74 and other non-cubic MOFs are outside it; stated. |
-| No computed link to adsorption | The motivation is argued; nothing is computed. Future work. |
+| No computed adsorption | Two geometric access indicators are computed for eight MOFs (Q47); uptake and selectivity are not. |
+| The clean test of the energy model is small | MOFs added after the model was fixed have one additive-free face record (right); with additives 1 of 7 (Q44). |
+| "28 of 32 records" is 5 MOFs | Quote "4 of 5 MOFs"; the paper bootstrap gives 73–97 % (Q44). |
 | Plates, rods, intergrown crystals are not predicted | They are set by growth kinetics; no Wulff model can produce them. |
 
 ## 12. Questions we cannot yet answer with evidence
@@ -503,8 +513,99 @@ the answer is correct, names its evidence, and survives the follow-up without ch
 | Design justification | Defensible (Journey page, "Defending each key decision"). |
 | Critical reading of results | Defensible: the limits are the claims. |
 | Limits and failure cases | Defensible (sections 11–12). |
-| Original objective ↔ deliverables | Partly: the adsorption link is argued, not computed. |
+| Original objective ↔ deliverables | Partly: geometric access indicators are computed for eight MOFs; adsorption itself is not. |
 
 No question is rated NOT DEFENSIBLE for a claim the project makes. The project is not panel-ready until
 every member passes the mock viva for the questions they own and second, and the two second-person checks
 (records, proofs) are done.
+
+---
+
+## 15. Added 13 November: ten MOFs, steering, gas access, and questions the team asked
+
+**Q43. The panel asked about the unit cell. Why did you work on the whole crystal?**
+The unit cell is the input; the morphology is the output. A unit cell is the repeating box of atoms
+(a, b, c, three angles and the atom positions); a morphology is the shape of a crystal of millions of cells,
+bounded by faces such as {100} and {111}. The panel wrote: "Is it possible to generate at least a few
+morphologies from the given unit cell structure?" (Morphology page). So we go from the cell to the
+crystal shapes it can grow into. Their remark that the CIF values may be changed is answered separately:
+the Changing the cell page keeps the fractional coordinates, changes a, b, c and the angles, and shows the
+allowed faces stay the same while their spacings change, giving plates and rods from a cubic cell.
+Evidence: `morphology.html` (the panel's text), `deform.html`, `mofmorph/deform.py`, `mof_deform.js`,
+`test_morph_pages.js` (52 stretched cases).
+Follow-up: "Is a stretched cell a real MOF?" No; it is a hypothetical framework, and the page says so.
+Rating: DEFENSIBLE. Owners: RK, KS.
+
+**Q44. How well does the prediction do on ten MOFs?**
+Structure files for eight (six published, IRMOF-3 and IRMOF-8 from RASPA2, ZIF-67 built from ZIF-8 by
+replacing Zn with Co); two scored with stand-ins and reported apart. On additive-free records the
+dominant face is right for 4 of 5 MOFs (MOF-5 9/9, ZIF-8 11/12, HKUST-1 7/8, IRMOF-3 1/1; UiO-66 0/2), from
+32 records and 13 papers, the same as the most common laboratory answer for each MOF, but without using
+laboratory data. For a MOF never grown, that laboratory baseline gets 5 of 32. With additives no model is
+reliable (13–21 of 44). Mg-MOF-74: BFDH predicts a rod; 9 of 10 laboratory crystals are elongated.
+Evidence: `run_benchmark_mofs.py` → `benchmark_mofs.json` (`face_scores`, `evidence_units`); Shape advisor.
+Follow-up: "32 records is not 32 tests." Correct: the model makes one prediction per MOF, so it is 5 tests.
+We quote 4 of 5 MOFs and a paper bootstrap (73–97 %).
+Follow-up: "Were the model's settings tuned on those MOFs?" The bond cost and tolerances were fixed on the
+four demonstration MOFs. The MOFs added later are the clean test: one additive-free record (right), and
+1 of 7 with additives. That test is small; say so.
+Rating: PARTIALLY DEFENSIBLE (small clean test). Owners: RA, RK.
+
+**Q45. Why these ten MOFs and not others?**
+They are the MOFs with laboratory shape records in the 134-record dataset (12 MOFs); two (SNU-70,
+Zn₄O(FMA)₃) have no structure file available here. A shape prediction can only be scored where crystals
+were grown and imaged.
+Evidence: `data/experimental_morphology/`; `data/structures/benchmark/README.md`.
+Rating: DEFENSIBLE. Owners: RA, KS.
+
+**Q46. How do you "steer" a shape, and what do the percentages mean?**
+An additive that binds a face lowers that face's surface energy (Gibbs: dγ = −Γ dμ). On the cubic map the
+shape depends only on x = γ110/γ100 and y = γ111/γ100, so for each face we compute how far its energy must
+fall for it to become the main face (bisection on exact Wulff areas) and for the pure shape (closed forms:
+cube needs y ≥ √3 and x ≥ √2; octahedron y ≤ 1/√3 and x ≥ √(3/2)·y; rhombic dodecahedron x ≤ 1/√2 and
+y ≥ √(3/2)·x). The percentages are relative to bond-count energies: they rank how hard a change is; they
+are not binding energies.
+Evidence: `run_shape_steering.py`; `check_new_analyses.py` (each factor gives the pure shape).
+Follow-up: "Derive the octahedron condition." The [110] support of a regular octahedron is √(3/2) times its
+face distance, so {110} does not appear while γ110 ≥ √(3/2)·γ111.
+Rating: DEFENSIBLE as relative indications. Owners: KS, RK.
+
+**Q47. What does "open to CO₂" mean, and is it adsorption?**
+Each face is cut at its lowest-energy termination; every point of that plane is tested for whether a
+probe sphere of radius 1.65 Å (CO₂) or 1.82 Å (N₂) fits without overlapping a framework atom (Bondi
+radii). The open fraction is the share of the face such a molecule can enter. For a whole crystal: open
+surface (area-weighted) and L = V/A; fill time scales as L², initial uptake rate as open fraction × A/V.
+It is not adsorption: no energies, no isotherm, no selectivity, no diffusion coefficient.
+Evidence: `run_shape_adsorption.py`; `check_new_analyses.py` (plane average equals the 3D value).
+Follow-up: "Is an open point really an entrance?" Not necessarily: connection to the pore network is not
+tested (Zeo++ could not be installed). A known limit.
+Rating: PARTIALLY DEFENSIBLE. Owners: KS, IS.
+
+**Q48. Why did you not train a machine-learning model (for example a GNN) to predict shape?**
+Because the structure already determines the allowed faces and, with an energy model, a shape; a learned
+model would need many labelled MOFs, and the laboratory data cover 12 MOFs. A model trained on 12 would
+memorise them. Our leave-whole-MOF-out baseline shows what learning from other MOFs gives: 5 of 32.
+Rating: DEFENSIBLE. Owners: RK, RA.
+
+**Q49. How did you handle missing or unclear data?**
+Records without a dominant face are not scored for faces; habit is scored where given. Three records are
+counted as additive-free by judgement (an amount "lowest (or none)", and two with no additive recorded);
+they are listed in `benchmark_mofs.json`. MOFs without a structure file are not predicted. Nothing is filled in.
+Rating: DEFENSIBLE. Owners: RA, IS.
+
+**Q50. Your IRMOF-8 and hMOF files have broken or no symmetry. Does that matter?**
+Yes. IRMOF-8's file keeps only P2₁/c because its naphthalene linkers are ordered, so planes an ideal
+Fm-3m framework would cancel are kept; its prediction is flagged. 71 of 77 hMOF files are P1, so every hMOF
+comes out compact: a property of the files, not of the frameworks. Nothing is concluded from it.
+Evidence: `data/structures/benchmark/README.md`; `dataset_shapes.json`.
+Rating: DEFENSIBLE as a stated limit. Owners: RK, KV.
+
+**Q51. (Part I) How do you know Δα measures the MOF and not your algorithm?**
+We checked it after the bands were withdrawn: the same box-covering calculation on a simple cubic lattice,
+in which every vertex is identical, gives Δα = 1.86–2.53, growing with size, in the same range as the MOFs.
+In a periodic net every vertex grows as r³ at long range, so a true spectrum of an infinite crystal is a
+single point. So Δα as computed measures the covering algorithm and graph size, which is why Part I is a
+negative result. Do not defend the old wording "Δα is a heterogeneity score".
+Evidence: the audit of 13 November (section 3). The test script is kept outside the repository by team
+decision; it can be rerun on request.
+Rating: DEFENSIBLE as a negative result. Owners: KV, IS.
