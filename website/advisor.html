@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The MOF Shape Advisor: Ten MOFs, Steering and Gas Access &middot; MOF Graphs and Crystal Morphology</title>
+<meta name="description" content="For ten MOFs: the shape predicted from the structure alone, what laboratories saw, how far each face must be stabilised to change the shape, what each shape exposes to CO2 and N2, and the structure-only steps run on all 138 dataset structures.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='18' height='18' rx='3' fill='%2324459a'/%3E%3Cpath d='M8 16V8l4 5 4-5v8' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(){try{var t=localStorage.getItem("mof-theme");if(!t)t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/design.css">
+<link rel="stylesheet" href="assets/study.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>Contents</span>
+  </button>
+  <a class="brand" href="index.html">MOF Graphs and Crystal Morphology</a>
+  <div class="header-tools">
+    <button id="theme-btn" class="icon-btn" type="button" aria-label="Toggle colour theme"></button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Contents">
+    <nav class="site-nav" aria-label="All pages">
+      <div class="nav-part">
+        <p class="nav-part-title">Start</p>
+        <ol>
+        <li><a href="index.html"><span class="nav-n">1</span><span class="nav-t">Overview</span></a></li>
+        <li><a href="journey.html"><span class="nav-n">2</span><span class="nav-t">How we got here</span></a></li>
+        <li><a href="methodology.html"><span class="nav-n">3</span><span class="nav-t">Methodology</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part I. Graphs and the spectrum</p>
+        <ol>
+        <li><a href="decomposition.html"><span class="nav-n">4</span><span class="nav-t">Decomposition</span></a></li>
+        <li><a href="network.html"><span class="nav-n">5</span><span class="nav-t">From crystal to network</span></a></li>
+        <li><a href="spectrum.html"><span class="nav-n">6</span><span class="nav-t">The multifractal spectrum</span></a></li>
+        <li><a href="results.html"><span class="nav-n">7</span><span class="nav-t">Results: the band</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Part II. Crystal shape</p>
+        <ol>
+        <li><a href="learn_shape.html"><span class="nav-n">8</span><span class="nav-t">Learn: crystal shapes</span></a></li>
+        <li><a href="learn_energy.html"><span class="nav-n">9</span><span class="nav-t">Learn: surface energy</span></a></li>
+        <li><a href="morph_math.html"><span class="nav-n">10</span><span class="nav-t">The mathematics</span></a></li>
+        <li><a href="cif_to_shape.html"><span class="nav-n">11</span><span class="nav-t">From a CIF to a shape</span></a></li>
+        <li><a href="morphology.html"><span class="nav-n">12</span><span class="nav-t">Morphology</span></a></li>
+        <li><a href="deform.html"><span class="nav-n">13</span><span class="nav-t">Changing the cell</span></a></li>
+        <li><a href="graph_faces.html"><span class="nav-n">14</span><span class="nav-t">Faces from the graph</span></a></li>
+        <li><a href="surface_energy.html"><span class="nav-n">15</span><span class="nav-t">Surface energy</span></a></li>
+        <li><a href="hybrid.html"><span class="nav-n">16</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
+        <li><a href="experiment.html"><span class="nav-n">17</span><span class="nav-t">Against experiment</span></a></li>
+        <li><a href="morphology_map.html"><span class="nav-n">18</span><span class="nav-t">The morphology map</span></a></li>
+        <li><a href="advisor.html" aria-current="page"><span class="nav-n">19</span><span class="nav-t">The shape advisor</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Connecting the two parts</p>
+        <ol>
+        <li><a href="bridge.html"><span class="nav-n">20</span><span class="nav-t">Why shape</span></a></li>
+        <li><a href="relation.html"><span class="nav-n">21</span><span class="nav-t">Spectrum and shape</span></a></li>
+        </ol>
+      </div>
+      <div class="nav-part">
+        <p class="nav-part-title">Reference</p>
+        <ol>
+        <li><a href="lessons.html"><span class="nav-n"></span><span class="nav-t">Mistakes and fixes</span></a></li>
+        <li><a href="code.html"><span class="nav-n"></span><span class="nav-t">Source code</span></a></li>
+        <li><a href="resources.html"><span class="nav-n"></span><span class="nav-t">Resources</span></a></li>
+        <li><a href="references.html"><span class="nav-n"></span><span class="nav-t">References</span></a></li>
+        <li><a href="glossary.html"><span class="nav-n"></span><span class="nav-t">Glossary</span></a></li>
+        <li><a href="team.html"><span class="nav-n"></span><span class="nav-t">Progress</span></a></li>
+        </ol>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+  <div class="page-col">
+<div class="masthead">
+  <div class="container">
+<div class="place">Part II. Crystal shape. Chapter 19 of 21.</div>
+    <h1>The MOF Shape Advisor: Ten MOFs, Steering and Gas Access</h1>
+    <p class="lead">For ten MOFs: the shape predicted from the structure alone, what laboratories saw, how far each face must be stabilised to change the shape, what each shape exposes to CO2 and N2, and the structure-only steps run on all 138 dataset structures.</p>
+  </div>
+</div>
+
+    <div class="container">
+      <div class="with-toc">
+        <main id="main">
+<style>#adv-steer-table td,#adv-face-table td,#adv-shape-table td,#adv-score-table td{font-size:13.5px;padding:7px 9px;vertical-align:top}
+.adv-grid{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:20px;align-items:start}
+@media (max-width:760px){.adv-grid{grid-template-columns:1fr}}
+#adv-view{position:relative;border:1px solid var(--border);border-radius:8px;background:var(--bg);padding:6px;touch-action:none}
+.adv-svg{width:100%;height:auto;display:block}
+#adv-mofs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.adv-head{font-size:17px;margin:0 0 6px}</style>
+
+      <h2 class="section-title" id="adv-intro" data-toc="What this page is for"><span class="stitle-num">1</span>What This Page Is For</h2>
+      <p class="sd">A MOF powder is a heap of small crystals, and a gas enters each crystal only through its surface. Which faces form that surface, and how much surface the crystal has for its volume, depend on the crystal's shape. Two batches of the same MOF with different shapes can therefore take up gas at different rates even though their pores are identical. Before a chemist spends weeks adjusting a synthesis, it helps to know three things: which shape the structure tends to give on its own, how hard it is to push it to another shape, and whether that other shape would expose more open pores. This page puts the project's answers to those three questions for each MOF in one place. Every number on it is read from a result file named under <a href="#adv-sources">Sources</a>.</p>
+      <dl class="bridge"><dt>You know</dt><dd>How a structure becomes a shape (<a href="cif_to_shape.html">From a CIF to a shape</a>), the surface energies (<a href="surface_energy.html">Surface energy</a>), and the morphology map (<a href="morphology_map.html">The morphology map</a>).</dd><dt>This page adds</dt><dd>Ten MOFs instead of four, a score against the <span id="adv-nrec">134</span> laboratory records, how much each face must be stabilised to change the shape, and what each shape exposes to CO<sub>2</sub> and N<sub>2</sub>.</dd></dl>
+
+      <h2 class="section-title" id="adv-mof" data-toc="One MOF at a time"><span class="stitle-num">2</span>One MOF at a Time</h2>
+      <p class="sd">Choose a MOF. The shape is drawn with the same engines as the other pages: a Wulff shape from structure-only surface energies for cubic MOFs, and the BFDH shape for other lattices, where no energy model is available here. Drag to turn it; click a face for its share of the surface and how open it is to gas. A star marks a MOF scored with a close stand-in structure.</p>
+      <div id="adv-mofs" role="group" aria-label="Choose a MOF"></div>
+      <div class="adv-grid"><div id="adv-view"></div><div id="adv-summary"></div></div>
+
+      <h3 class="sub-title" id="adv-steer-h">Steering the Shape</h3>
+      <p class="sd">An additive that binds one face family lowers that family's surface energy, and a face with lower energy grows slower and takes more of the surface. The table gives, for each face, how far its energy must fall before it becomes the main face and before the crystal becomes that face's pure shape. Below the table are the additive types in the laboratory records that gave each face for this MOF, with the papers. Small numbers mean a mild additive should be enough; large numbers mean strong, face-selective binding is needed.</p>
+      <div id="adv-steer"></div>
+
+      <h3 class="sub-title" id="adv-gas-h">What Each Shape Exposes to a Gas</h3>
+      <p class="sd">Each face is cut at its lowest-energy termination, and every point of that plane is tested for whether a CO<sub>2</sub> or N<sub>2</sub> molecule (probe radius 1.65 or 1.82 &Aring;) can sit there without overlapping a framework atom. The open fraction is the share of the face a molecule can enter through. For a whole crystal, the open surface is the area-weighted open fraction of its faces, and the diffusion length is the crystal's volume divided by its surface area, L = V/A, the usual characteristic length for diffusion into a particle (one third of the radius for a sphere). It is quoted for a crystal of unit volume, so a rounder shape, with less surface for the same volume, has a longer L. A shorter diffusion length means a crystal fills faster (fill time grows with its square); the initial uptake rate grows with the open surface per unit volume (open fraction times A/V). These are geometric indicators of access, not computed uptakes: no adsorption isotherm or diffusion coefficient is calculated here.</p>
+      <div id="adv-gas"></div>
+
+      <h2 class="section-title" id="adv-score-h" data-toc="How good is the prediction"><span class="stitle-num">3</span>How Good Is the Prediction?</h2>
+      <p class="sd">The predicted main face was compared with the dominant face reported in each laboratory record of the laboratory dataset (<a href="experiment.html">Against experiment</a>) for which the structure file exists. Two structure-only models are scored against two baselines that use the laboratory data: the most common face for that MOF in the other papers (each paper held out in turn), and the most common face among the other MOFs (the whole MOF held out, which is the situation of a new MOF nobody has grown yet).</p>
+      <div id="adv-score"></div>
+      <p class="sd">How to read this. On records without an additive, the structure-only Wulff model gets the main face right exactly as often as the most common laboratory answer for that MOF, and it needs no laboratory data; for a MOF that has never been grown, the laboratory baseline (whole MOF held out) is right far less often. BFDH alone is weaker than the Wulff model on these records. On records with an additive, every model is right in fewer than half of the cases and their intervals overlap, so none of them predicts the effect of an additive; BFDH happens to score highest there. The figures in brackets are 95 % Wilson intervals: with 32 and 44 records, differences of a few records are not significant.</p>
+      <p class="sd" id="adv-habit"></p>
+
+      <h2 class="section-title" id="adv-dataset-h" data-toc="All 138 structures"><span class="stitle-num">4</span>All 138 Dataset Structures</h2>
+      <p class="sd">The structure-only steps (symmetry, allowed faces, BFDH shape, overall form) were also run on all 138 CIF files of the first half of the project. These are unvalidated predictions: no laboratory shape is known for these structures.</p>
+      <p class="sd" id="adv-dataset"></p>
+      <p class="sd">Most hMOF files are stored without symmetry (space group P1), so the symmetry-based steps see only a triclinic cell and every hMOF structure comes out compact. This says more about how the hypothetical files were written than about the frameworks.</p>
+
+      <h2 class="section-title" id="adv-limits" data-toc="Limits"><span class="stitle-num">5</span>Limits</h2>
+      <ul class="sd">
+        <li>The surface energies are unrelaxed UFF values without solvent or electrostatics. They rank faces; they are not absolute energies, and the steering percentages are relative indications, not additive binding energies.</li>
+        <li>The IRMOF-8 file keeps only P2<sub>1</sub>/c symmetry because of how its naphthalene linkers are ordered, so its faces are not those of an ideal Fm-3m framework.</li>
+        <li>ZIF-67 is built from ZIF-8 by replacing zinc with cobalt; MIL-53(Fe) and UiO-66-NH<sub>2</sub> are scored with stand-in structures and reported separately. SNU-70 and Zn<sub>4</sub>O(FMA)<sub>3</sub> have no structure file here and are not predicted.</li>
+        <li>Mg-MOF-74 is hexagonal (trigonal R-3); only the BFDH shape is drawn, so its steering is not computed.</li>
+        <li>Plates, spheres and intergrown crystals come from growth kinetics and are outside every equilibrium shape model used here.</li>
+      </ul>
+
+      <h2 class="section-title" id="adv-sources" data-toc="Sources"><span class="stitle-num">6</span>Sources</h2>
+      <p class="sd">Scripts and result files (all under <code>code/morphology/</code>): <code>run_benchmark_mofs.py</code> &rarr; <code>results/benchmark_mofs.json</code>; <code>run_shape_steering.py</code> &rarr; <code>results/shape_steering.json</code>; <code>run_shape_adsorption.py</code> &rarr; <code>results/shape_adsorption.json</code>; <code>run_dataset_shapes.py</code> &rarr; <code>results/dataset_shapes.json</code>; checks in <code>check_new_analyses.py</code>. The page data is written by <code>website/_build/build_advisor_data.py</code>. New structure files and their origin: <code>data/structures/benchmark/README.md</code>.</p>
+
+          <nav class="page-nav" aria-label="Previous and next page"><a class="prev" href="morphology_map.html"><div class="dir">Previous</div><div class="ttl">The Morphology Map: Models, Conditions and Possible Shapes</div></a><a class="next" href="bridge.html"><div class="dir">Next</div><div class="ttl">Why Shape Matters, and How the Two Halves Connect</div></a></nav>
+        </main>
+        <aside id="toc" class="toc" aria-label="On this page"></aside>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        The network, spectrum and shape-explorer numbers are computed in your browser from the CIF
+        files when the page loads; the other pages are generated from the result files of the Python
+        code by <code>website/_build/</code>, and the test suites in <code>website/tests/</code> check every
+        page against those files. Each figure names the script that produced it.
+        23CSE498 Final Year Project, Amrita Vishwa Vidyapeetham, Coimbatore.
+        <a href="https://github.com/Radha-Krishna-19/fyp">Source repository</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/palette.js"></script>
+<script src="assets/glossary-data.js"></script>
+<script src="assets/glossary.js"></script>
+<script src="assets/site.js"></script>
+<script src="face_card.js"></script>
+<script src="mof_morphology.js"></script>
+<script src="mof_cif_shape.js"></script>
+<script src="mof_general_shape.js"></script>
+<script src="advisor_data.js"></script>
+<script src="advisor_page.js"></script>
+</body>
+</html>

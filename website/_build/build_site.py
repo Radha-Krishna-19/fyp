@@ -102,6 +102,10 @@ PAGES = [
          title='The Morphology Map: Models, Conditions and Possible Shapes',
          desc='One map on which every shape a cubic crystal can take has its own region: every model of the project placed on it, laboratory series tested against it, the possible morphologies of a given CIF, the graph measurement read along it, and a check of the team\'s CIF-to-Wulff pipeline.'),
 
+    dict(file='advisor.html',      nav='Shape advisor', sections=[],
+         title='The MOF Shape Advisor: Ten MOFs, Steering and Gas Access',
+         desc='For ten MOFs: the shape predicted from the structure alone, what laboratories saw, how far each face must be stabilised to change the shape, what each shape exposes to CO2 and N2, and the structure-only steps run on all 138 dataset structures.'),
+
     dict(file='bridge.html',       nav='Why Shape', sections=[],
          title='Why Shape Matters, and How the Two Halves Connect',
          desc='Why the project changes the shape of MOFs, how the earlier spectrum-based classification relates to morphology, a new test of whether the spectrum sees particle shape, and how the first half can be reused.'),
@@ -161,6 +165,7 @@ SCRIPTS = {
     'hybrid.html':        [],
     'experiment.html':    [],
     'morphology_map.html': [],
+    'advisor.html':       ['face_card.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'advisor_data.js', 'advisor_page.js'],
     'bridge.html':        [],
     'relation.html':      [],
     'lessons.html':       [],
@@ -184,7 +189,8 @@ PARTS = [
                ('cif_to_shape.html', 'From a CIF to a shape'), ('morphology.html', 'Morphology'),
                ('deform.html', 'Changing the cell'), ('graph_faces.html', 'Faces from the graph'),
                ('surface_energy.html', 'Surface energy'), ('hybrid.html', 'Blending BFDH and Wulff'),
-               ('experiment.html', 'Against experiment'), ('morphology_map.html', 'The morphology map')]),
+               ('experiment.html', 'Against experiment'), ('morphology_map.html', 'The morphology map'),
+               ('advisor.html', 'The shape advisor')]),
     ('Connecting the two parts', [('bridge.html', 'Why shape'), ('relation.html', 'Spectrum and shape')]),
     ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
                ('resources.html', 'Resources'), ('references.html', 'References'),
