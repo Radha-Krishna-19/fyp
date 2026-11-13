@@ -55,6 +55,7 @@ Requirements: `numpy scipy matplotlib ase spglib` (see the root [`requirements.t
 | [`run_shape_adsorption.py`](run_shape_adsorption.py) | `results/shape_adsorption.json`: open fraction of each face for CO₂ and N₂ at its termination; diffusion length V/A per shape | Shape advisor |
 | [`run_dataset_shapes.py`](run_dataset_shapes.py) | `results/dataset_shapes.json`: symmetry, faces and BFDH habit for all 138 dataset CIFs (unvalidated) | Shape advisor |
 | [`check_new_analyses.py`](check_new_analyses.py) | 51 checks of the four scripts above | — |
+| [`check_energy_convergence.py`](check_energy_convergence.py) | `results/energy_convergence.json`: Phase 4 γ at 1600 bins and a 15 Å cutoff (at most 0.4 % change, no face order changes) | Surface Energy |
 | [`slab_options_check.py`](slab_options_check.py) | `results/slab_options.json` (needs pymatgen) | Experiment |
 | [`figs_experiment.py`](figs_experiment.py) | The methods-versus-experiment figure | Experiment |
 

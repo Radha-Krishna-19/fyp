@@ -23,7 +23,7 @@ than their evidence and have been corrected.
 | Discipline | What was checked | Finding |
 |---|---|---|
 | Mathematics | Absence rule, BFDH, Wulff map boundaries (re-derived), steering closed forms, L = V/A (re-derived), τ through the origin, Legendre transform | Correct. The spectrum's measure is unnormalised and D(q) = τ/q is non-standard; Δα is unaffected (Phase A, 3) |
-| Numerical methods | Surface-energy bins and cutoff; grid of the access calculation; box-covering seeds | Access grid checked against a 3D estimate (within 0.003). Surface-energy bin/cutoff convergence not recorded (gap G12) |
+| Numerical methods | Surface-energy bins and cutoff; grid of the access calculation; box-covering seeds | Access grid checked against a 3D estimate (within 0.003). Surface energies converged in bins and cutoff (at most 0.4 %, no face order changes; `check_energy_convergence.py`) |
 | Computer science | Python vs JavaScript, tests from any folder, determinism | Two implementations agree; 15 website suites (over 3,400 checks) and all Python tests pass; 50 of 52 scripts run from any folder (two need arguments or an external package by design); results regenerate except one stale file of the spectrum-and-shape study (G15: ρ +0.001 → −0.007, conclusion unchanged) (Phase A, 1) |
 | Chemistry | Stoichiometry and charge of 21 CIFs; six DFT slabs | Sound, except the dehydroxylated UiO-66 input of steps 1–8 (K5) and two files without hydrogens or guests used only for geometry |
 | Physics | Unrelaxed energies, no electrostatics, CHGNet relaxation | Bond count dominates (93–98 %). Relaxed CHGNet γ falls by 60 % to ~100 %: not credible; correctly excluded |
@@ -101,5 +101,5 @@ are done.
 
 DFT on the six prepared slabs (needs HPC through the guide); the relaxed steps 1–8 rerun with K1, K2,
 K4–K10 fixed (needs a GPU); additive binding energies per face; pore-network accessibility (Zeo++);
-surface-energy bin and cutoff convergence (G12); the stale Test 3 file of the spectrum-and-shape study (G15); a blind second extraction of 20 laboratory records; a
+the stale Test 3 file of the spectrum-and-shape study (G15); a blind second extraction of 20 laboratory records; a
 second check of the 16 proofs; the Phase II and final rubrics; the panel's exact remark on Part I.

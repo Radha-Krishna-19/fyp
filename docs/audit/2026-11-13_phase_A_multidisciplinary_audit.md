@@ -150,7 +150,7 @@ nothing wrong was found; a named problem means it was found; "not tested" means 
 | Dimension | Finding |
 |---|---|
 | Mathematics | γ(s) = ½ (d/V) Σ ε_pair c_pair(s), exact plane counting; the minimum over the offset s gives the termination. Pass. |
-| Numerical | 400 offset bins; cutoff 12 Å for the van der Waals part. Not converged against bins or cutoff in a recorded test. **Gap G12.** |
+| Numerical | 400 offset bins; cutoff 12 Å for the van der Waals part. Checked after the audit (G12, closed): 1600 bins change nothing; 15 Å changes γ by at most 0.4 % and no face order. |
 | Computer science | Reproduces exactly on rerun (12 November). Pass. |
 | Chemistry | **Every bond costs the same 70 kcal/mol**, whether Zn–O, Zr–O or C–C. In `results/phase4_results.json` the bond part is 93–98 % of γ for all four MOFs (for example MOF-5 {100}: 0.145 of 0.148 J/m²). The face order is therefore set by the number of bonds cut per unit area. That is a broken-bond (Hartman–Perdok-type) model, not a force-field energy. The name "UFF Wulff" overstates the physics. **Gap G6.** |
 | Physics | Unrelaxed, no electrostatics, no solvent: stated on the page as an upper bound with only relative meaning. MOF-5's ratio γ111/γ100 = 1.72 lies 0.7 % below the cube boundary √3 = 1.732, so its "cube" prediction sits on a boundary (stated in `DFT_CHECK_PLAN.md`; `bond_sensitivity.json` shows the shape changes when metal–ligand bonds are scaled, while the dominant face stays {100}). |
@@ -305,7 +305,7 @@ Severity classes of the prompt: 1 scientifically incorrect, 2 chemically or phys
 | G9 | 6 | Benchmark | 4.5 | Model choices were made on the four demonstration MOFs | Report the four new MOFs separately as the clean test | RA | Separate row in the result file |
 | G10 | 6 | Steering evidence | 4.4 | One-record classes read as effects | Label counts below 3 records as anecdotal | KS, RA | Page text |
 | G11 | 7 | Additive-free rule | 4.5 | Three judgement calls undocumented | List them in the dataset README and the benchmark output | RA | README |
-| G12 | 7 | Surface-energy numerics | 4.2 | Bin and cutoff convergence not recorded | Rerun one MOF at 800 bins and 15 Å; record the change | KV | Result file |
+| G12 | 7 | Surface-energy numerics | 4.2 | Bin and cutoff convergence not recorded | **Closed 13 November**: `check_energy_convergence.py` → `energy_convergence.json`. 1600 bins change no value; a 15 Å cutoff changes γ by at most 0.4 % (ZIF-8) and the face order of no MOF | KV | Done |
 | G13 | 8 | Advisor page wording on Mg-MOF-74 | Section 5 | Lattice vs crystal system | Reword | RK | Build |
 | G14 | 7 | Mistakes page | Section 7 | 13 November slips missing | Add Part E | RK | Build |
 | G15 | 5 | Spectrum and shape, Test 3 (`03_core_mof_spectrum_vs_bfdh_shape.json`) | Section 1 | The quoted ρ = +0.001 (p = 0.99) is now −0.007 (p = 0.96) on rerun; conclusion unchanged | Rerun `run_03` and the relation page builder, or state the rerun value next to the old one. Not done: the team asked not to rework Part I and its link study | KS, RK | Rerun; relation-page test |
