@@ -1,0 +1,1215 @@
+{
+ "script": "code/morphology/run_shape_adsorption.py",
+ "probes_A": {
+  "CO2": 1.65,
+  "N2": 1.82
+ },
+ "vdw_radii": "Bondi; 2.0 A for unlisted metals",
+ "offsets": 24,
+ "grid_A": 0.3,
+ "mofs": {
+  "MOF-5": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.14786,
+     "surface_cell_area_A2": 669.04,
+     "termination_t": 0.3887,
+     "CO2": {
+      "open_fraction": 0.4591,
+      "windows_per_nm2": 5.0819,
+      "largest_opening_A": 10.98,
+      "open_fraction_range_over_positions": [
+       0.1532,
+       0.681
+      ],
+      "open_fraction_mean_over_positions": 0.4218
+     },
+     "N2": {
+      "open_fraction": 0.4076,
+      "windows_per_nm2": 4.484,
+      "largest_opening_A": 10.98,
+      "open_fraction_range_over_positions": [
+       0.1302,
+       0.6537
+      ],
+      "open_fraction_mean_over_positions": 0.3879
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.41577,
+     "surface_cell_area_A2": 946.17,
+     "termination_t": 0.7438,
+     "CO2": {
+      "open_fraction": 0.4061,
+      "windows_per_nm2": 6.9755,
+      "largest_opening_A": 7.97,
+      "open_fraction_range_over_positions": [
+       0.3807,
+       0.4887
+      ],
+      "open_fraction_mean_over_positions": 0.4285
+     },
+     "N2": {
+      "open_fraction": 0.3583,
+      "windows_per_nm2": 3.3821,
+      "largest_opening_A": 7.97,
+      "open_fraction_range_over_positions": [
+       0.3405,
+       0.4599
+      ],
+      "open_fraction_mean_over_positions": 0.3879
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.25542,
+     "surface_cell_area_A2": 1158.81,
+     "termination_t": 0.0563,
+     "CO2": {
+      "open_fraction": 0.2718,
+      "windows_per_nm2": 6.9036,
+      "largest_opening_A": 10.32,
+      "open_fraction_range_over_positions": [
+       0.2319,
+       0.5378
+      ],
+      "open_fraction_mean_over_positions": 0.426
+     },
+     "N2": {
+      "open_fraction": 0.2292,
+      "windows_per_nm2": 13.5483,
+      "largest_opening_A": 10.32,
+      "open_fraction_range_over_positions": [
+       0.2096,
+       0.497
+      ],
+      "open_fraction_mean_over_positions": 0.3891
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.4289,
+    "N2": 0.3921
+   },
+   "largest_cavity_3D_A": 14.52,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.4591,
+     "open_surface_N2": 0.4076,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.4591,
+     "open_surface_N2": 0.4076,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.2718,
+     "open_surface_N2": 0.2292,
+     "relative_initial_uptake_CO2": 0.564,
+     "relative_fill_time": 1.101
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.4061,
+     "open_surface_N2": 0.3583,
+     "relative_initial_uptake_CO2": 0.788,
+     "relative_fill_time": 1.26
+    }
+   }
+  },
+  "HKUST-1": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.28805,
+     "surface_cell_area_A2": 691.54,
+     "termination_t": 0.3887,
+     "CO2": {
+      "open_fraction": 0.2874,
+      "windows_per_nm2": 2.0245,
+      "largest_opening_A": 9.3,
+      "open_fraction_range_over_positions": [
+       0.0901,
+       0.6048
+      ],
+      "open_fraction_mean_over_positions": 0.296
+     },
+     "N2": {
+      "open_fraction": 0.2565,
+      "windows_per_nm2": 0.8676,
+      "largest_opening_A": 9.3,
+      "open_fraction_range_over_positions": [
+       0.0684,
+       0.5658
+      ],
+      "open_fraction_mean_over_positions": 0.263
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.30694,
+     "surface_cell_area_A2": 977.98,
+     "termination_t": 0.1163,
+     "CO2": {
+      "open_fraction": 0.2712,
+      "windows_per_nm2": 1.8405,
+      "largest_opening_A": 9.32,
+      "open_fraction_range_over_positions": [
+       0.2238,
+       0.3965
+      ],
+      "open_fraction_mean_over_positions": 0.2933
+     },
+     "N2": {
+      "open_fraction": 0.2429,
+      "windows_per_nm2": 0.6135,
+      "largest_opening_A": 9.32,
+      "open_fraction_range_over_positions": [
+       0.1933,
+       0.3606
+      ],
+      "open_fraction_mean_over_positions": 0.2585
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.25106,
+     "surface_cell_area_A2": 1197.78,
+     "termination_t": 0.7438,
+     "CO2": {
+      "open_fraction": 0.406,
+      "windows_per_nm2": 1.7532,
+      "largest_opening_A": 7.34,
+      "open_fraction_range_over_positions": [
+       0.1987,
+       0.3929
+      ],
+      "open_fraction_mean_over_positions": 0.2937
+     },
+     "N2": {
+      "open_fraction": 0.3333,
+      "windows_per_nm2": 3.59,
+      "largest_opening_A": 7.34,
+      "open_fraction_range_over_positions": [
+       0.1782,
+       0.3549
+      ],
+      "open_fraction_mean_over_positions": 0.2596
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.2939,
+    "N2": 0.2596
+   },
+   "largest_cavity_3D_A": 12.85,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.2309,
+      "110": 0.0033,
+      "111": 0.7658
+     },
+     "sphericity": 0.9115,
+     "diffusion_length_per_V13": 0.1885,
+     "diffusion_length_um_for_1um3": 0.1885,
+     "open_surface_CO2": 0.3782,
+     "open_surface_N2": 0.3153,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.2874,
+     "open_surface_N2": 0.2565,
+     "relative_initial_uptake_CO2": 0.859,
+     "relative_fill_time": 0.782
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.406,
+     "open_surface_N2": 0.3333,
+     "relative_initial_uptake_CO2": 1.157,
+     "relative_fill_time": 0.861
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.2712,
+     "open_surface_N2": 0.2429,
+     "relative_initial_uptake_CO2": 0.722,
+     "relative_fill_time": 0.985
+    }
+   }
+  },
+  "UiO-66": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.94651,
+     "surface_cell_area_A2": 421.0,
+     "termination_t": 0.6212,
+     "CO2": {
+      "open_fraction": 0.0254,
+      "windows_per_nm2": 14.2518,
+      "largest_opening_A": 4.38,
+      "open_fraction_range_over_positions": [
+       0.0151,
+       0.132
+      ],
+      "open_fraction_mean_over_positions": 0.0875
+     },
+     "N2": {
+      "open_fraction": 0.0083,
+      "windows_per_nm2": 7.6009,
+      "largest_opening_A": 4.38,
+      "open_fraction_range_over_positions": [
+       0.0026,
+       0.1093
+      ],
+      "open_fraction_mean_over_positions": 0.0674
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 1.00532,
+     "surface_cell_area_A2": 595.38,
+     "termination_t": 0.1762,
+     "CO2": {
+      "open_fraction": 0.0217,
+      "windows_per_nm2": 2.0155,
+      "largest_opening_A": 4.52,
+      "open_fraction_range_over_positions": [
+       0.0055,
+       0.211
+      ],
+      "open_fraction_mean_over_positions": 0.0903
+     },
+     "N2": {
+      "open_fraction": 0.0077,
+      "windows_per_nm2": 2.0155,
+      "largest_opening_A": 4.52,
+      "open_fraction_range_over_positions": [
+       0.0014,
+       0.1676
+      ],
+      "open_fraction_mean_over_positions": 0.0676
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.42149,
+     "surface_cell_area_A2": 729.19,
+     "termination_t": 0.5887,
+     "CO2": {
+      "open_fraction": 0.1675,
+      "windows_per_nm2": 8.7768,
+      "largest_opening_A": 6.52,
+      "open_fraction_range_over_positions": [
+       0.0062,
+       0.184
+      ],
+      "open_fraction_mean_over_positions": 0.0901
+     },
+     "N2": {
+      "open_fraction": 0.1337,
+      "windows_per_nm2": 5.4855,
+      "largest_opening_A": 6.52,
+      "open_fraction_range_over_positions": [
+       0.0018,
+       0.1434
+      ],
+      "open_fraction_mean_over_positions": 0.068
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.0928,
+    "N2": 0.0687
+   },
+   "largest_cavity_3D_A": 7.71,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.1675,
+     "open_surface_N2": 0.1337,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.0254,
+     "open_surface_N2": 0.0083,
+     "relative_initial_uptake_CO2": 0.159,
+     "relative_fill_time": 0.908
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.1675,
+     "open_surface_N2": 0.1337,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.0217,
+     "open_surface_N2": 0.0077,
+     "relative_initial_uptake_CO2": 0.121,
+     "relative_fill_time": 1.144
+    }
+   }
+  },
+  "ZIF-8": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.36422,
+     "surface_cell_area_A2": 288.69,
+     "termination_t": 0.2512,
+     "CO2": {
+      "open_fraction": 0.0311,
+      "windows_per_nm2": 7.9669,
+      "largest_opening_A": 4.04,
+      "open_fraction_range_over_positions": [
+       0.0707,
+       0.2324
+      ],
+      "open_fraction_mean_over_positions": 0.1804
+     },
+     "N2": {
+      "open_fraction": 0.0113,
+      "windows_per_nm2": 7.6205,
+      "largest_opening_A": 4.04,
+      "open_fraction_range_over_positions": [
+       0.0301,
+       0.2113
+      ],
+      "open_fraction_mean_over_positions": 0.1577
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.26883,
+     "surface_cell_area_A2": 408.28,
+     "termination_t": 0.8863,
+     "CO2": {
+      "open_fraction": 0.299,
+      "windows_per_nm2": 1.9595,
+      "largest_opening_A": 9.47,
+      "open_fraction_range_over_positions": [
+       0.0003,
+       0.3732
+      ],
+      "open_fraction_mean_over_positions": 0.1811
+     },
+     "N2": {
+      "open_fraction": 0.2699,
+      "windows_per_nm2": 1.7145,
+      "largest_opening_A": 9.47,
+      "open_fraction_range_over_positions": [
+       0.0,
+       0.3409
+      ],
+      "open_fraction_mean_over_positions": 0.1578
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.61913,
+     "surface_cell_area_A2": 500.03,
+     "termination_t": 0.6813,
+     "CO2": {
+      "open_fraction": 0.1858,
+      "windows_per_nm2": 2.3998,
+      "largest_opening_A": 8.62,
+      "open_fraction_range_over_positions": [
+       0.1611,
+       0.1966
+      ],
+      "open_fraction_mean_over_positions": 0.181
+     },
+     "N2": {
+      "open_fraction": 0.1656,
+      "windows_per_nm2": 1.5999,
+      "largest_opening_A": 8.62,
+      "open_fraction_range_over_positions": [
+       0.1426,
+       0.1668
+      ],
+      "open_fraction_mean_over_positions": 0.1577
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.1816,
+    "N2": 0.158
+   },
+   "largest_cavity_3D_A": 11.35,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.005,
+      "110": 0.995,
+      "111": 0.0
+     },
+     "sphericity": 0.9064,
+     "diffusion_length_per_V13": 0.1874,
+     "diffusion_length_um_for_1um3": 0.1874,
+     "open_surface_CO2": 0.2977,
+     "open_surface_N2": 0.2686,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.0311,
+     "open_surface_N2": 0.0113,
+     "relative_initial_uptake_CO2": 0.117,
+     "relative_fill_time": 0.791
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.1858,
+     "open_surface_N2": 0.1656,
+     "relative_initial_uptake_CO2": 0.669,
+     "relative_fill_time": 0.871
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.299,
+     "open_surface_N2": 0.2699,
+     "relative_initial_uptake_CO2": 1.006,
+     "relative_fill_time": 0.997
+    }
+   }
+  },
+  "Mg-MOF-74": {
+   "structure": "measured",
+   "bfdh_shares": {
+    "2-10": 0.774273,
+    "101": 0.225727
+   },
+   "bfdh_sphericity": 0.83462,
+   "faces": {
+    "2-10": {
+     "hkl": [
+      2,
+      -1,
+      0
+     ],
+     "uff_gamma": 0.4763,
+     "surface_cell_area_A2": 314.26,
+     "termination_t": 0.0238,
+     "CO2": {
+      "open_fraction": 0.563,
+      "windows_per_nm2": 0.9546,
+      "largest_opening_A": 11.32,
+      "open_fraction_range_over_positions": [
+       0.0,
+       0.5635
+      ],
+      "open_fraction_mean_over_positions": 0.3094
+     },
+     "N2": {
+      "open_fraction": 0.5426,
+      "windows_per_nm2": 0.9546,
+      "largest_opening_A": 11.32,
+      "open_fraction_range_over_positions": [
+       0.0,
+       0.5414
+      ],
+      "open_fraction_mean_over_positions": 0.2843
+     }
+    },
+    "101": {
+     "hkl": [
+      1,
+      0,
+      1
+     ],
+     "uff_gamma": 1.31612,
+     "surface_cell_area_A2": 618.77,
+     "termination_t": 0.4338,
+     "CO2": {
+      "open_fraction": 0.291,
+      "windows_per_nm2": 1.4545,
+      "largest_opening_A": 11.01,
+      "open_fraction_range_over_positions": [
+       0.2892,
+       0.3308
+      ],
+      "open_fraction_mean_over_positions": 0.31
+     },
+     "N2": {
+      "open_fraction": 0.2651,
+      "windows_per_nm2": 0.9697,
+      "largest_opening_A": 11.01,
+      "open_fraction_range_over_positions": [
+       0.263,
+       0.3049
+      ],
+      "open_fraction_mean_over_positions": 0.2838
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.3088,
+    "N2": 0.2828
+   },
+   "largest_cavity_3D_A": 11.54,
+   "shapes": {
+    "predicted_BFDH": {
+     "shares": {
+      "2-10": 0.774273,
+      "101": 0.225727
+     },
+     "sphericity": 0.83462,
+     "diffusion_length_per_V13": 0.1726,
+     "diffusion_length_um_for_1um3": 0.1726,
+     "open_surface_CO2": 0.5016,
+     "open_surface_N2": 0.48,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "sphere_of_same_volume": {
+     "shares": null,
+     "sphericity": 1.0,
+     "diffusion_length_per_V13": 0.2068,
+     "diffusion_length_um_for_1um3": 0.2068
+    }
+   }
+  },
+  "IRMOF-3": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.1515,
+     "surface_cell_area_A2": 662.88,
+     "termination_t": 0.0563,
+     "CO2": {
+      "open_fraction": 0.6686,
+      "windows_per_nm2": 0.1509,
+      "largest_opening_A": 12.82,
+      "open_fraction_range_over_positions": [
+       0.1426,
+       0.6581
+      ],
+      "open_fraction_mean_over_positions": 0.4004
+     },
+     "N2": {
+      "open_fraction": 0.6039,
+      "windows_per_nm2": 3.6206,
+      "largest_opening_A": 12.82,
+      "open_fraction_range_over_positions": [
+       0.1189,
+       0.6283
+      ],
+      "open_fraction_mean_over_positions": 0.3625
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.21367,
+     "surface_cell_area_A2": 937.46,
+     "termination_t": 0.8488,
+     "CO2": {
+      "open_fraction": 0.35,
+      "windows_per_nm2": 1.0667,
+      "largest_opening_A": 9.7,
+      "open_fraction_range_over_positions": [
+       0.3479,
+       0.4909
+      ],
+      "open_fraction_mean_over_positions": 0.4055
+     },
+     "N2": {
+      "open_fraction": 0.3117,
+      "windows_per_nm2": 1.2801,
+      "largest_opening_A": 9.7,
+      "open_fraction_range_over_positions": [
+       0.3103,
+       0.4623
+      ],
+      "open_fraction_mean_over_positions": 0.365
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.26125,
+     "surface_cell_area_A2": 1148.15,
+     "termination_t": 0.5837,
+     "CO2": {
+      "open_fraction": 0.2925,
+      "windows_per_nm2": 0.5226,
+      "largest_opening_A": 9.38,
+      "open_fraction_range_over_positions": [
+       0.1998,
+       0.5182
+      ],
+      "open_fraction_mean_over_positions": 0.4033
+     },
+     "N2": {
+      "open_fraction": 0.2477,
+      "windows_per_nm2": 6.4452,
+      "largest_opening_A": 9.38,
+      "open_fraction_range_over_positions": [
+       0.1757,
+       0.477
+      ],
+      "open_fraction_mean_over_positions": 0.366
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.4037,
+    "N2": 0.3659
+   },
+   "largest_cavity_3D_A": 14.47,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.9923,
+      "110": 0.0077,
+      "111": 0.0
+     },
+     "sphericity": 0.8086,
+     "diffusion_length_per_V13": 0.1672,
+     "diffusion_length_um_for_1um3": 0.1672,
+     "open_surface_CO2": 0.6661,
+     "open_surface_N2": 0.6017,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.6686,
+     "open_surface_N2": 0.6039,
+     "relative_initial_uptake_CO2": 1.007,
+     "relative_fill_time": 0.994
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.2925,
+     "open_surface_N2": 0.2477,
+     "relative_initial_uptake_CO2": 0.42,
+     "relative_fill_time": 1.094
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.35,
+     "open_surface_N2": 0.3117,
+     "relative_initial_uptake_CO2": 0.47,
+     "relative_fill_time": 1.252
+    }
+   }
+  },
+  "IRMOF-8": {
+   "structure": "measured",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.15537,
+     "surface_cell_area_A2": 1280.57,
+     "termination_t": 0.8638,
+     "CO2": {
+      "open_fraction": 0.4822,
+      "windows_per_nm2": 2.3427,
+      "largest_opening_A": 12.33,
+      "open_fraction_range_over_positions": [
+       0.4846,
+       0.58
+      ],
+      "open_fraction_mean_over_positions": 0.5271
+     },
+     "N2": {
+      "open_fraction": 0.4457,
+      "windows_per_nm2": 1.6399,
+      "largest_opening_A": 12.33,
+      "open_fraction_range_over_positions": [
+       0.4471,
+       0.5561
+      ],
+      "open_fraction_mean_over_positions": 0.4949
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.18998,
+     "surface_cell_area_A2": 1568.37,
+     "termination_t": 0.3688,
+     "CO2": {
+      "open_fraction": 0.5329,
+      "windows_per_nm2": 0.5738,
+      "largest_opening_A": 10.3,
+      "open_fraction_range_over_positions": [
+       0.3398,
+       0.6441
+      ],
+      "open_fraction_mean_over_positions": 0.53
+     },
+     "N2": {
+      "open_fraction": 0.4992,
+      "windows_per_nm2": 0.3188,
+      "largest_opening_A": 10.3,
+      "open_fraction_range_over_positions": [
+       0.2988,
+       0.6007
+      ],
+      "open_fraction_mean_over_positions": 0.496
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.34458,
+     "surface_cell_area_A2": 2218.01,
+     "termination_t": 0.9688,
+     "CO2": {
+      "open_fraction": 0.527,
+      "windows_per_nm2": 0.4509,
+      "largest_opening_A": 17.24,
+      "open_fraction_range_over_positions": [
+       0.5253,
+       0.5343
+      ],
+      "open_fraction_mean_over_positions": 0.5296
+     },
+     "N2": {
+      "open_fraction": 0.4869,
+      "windows_per_nm2": 1.0821,
+      "largest_opening_A": 17.24,
+      "open_fraction_range_over_positions": [
+       0.4847,
+       0.505
+      ],
+      "open_fraction_mean_over_positions": 0.496
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.5312,
+    "N2": 0.498
+   },
+   "largest_cavity_3D_A": 17.44,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.6355,
+      "110": 0.3641,
+      "111": 0.0004
+     },
+     "sphericity": 0.901,
+     "diffusion_length_per_V13": 0.1863,
+     "diffusion_length_um_for_1um3": 0.1863,
+     "open_surface_CO2": 0.5007,
+     "open_surface_N2": 0.4652,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.4822,
+     "open_surface_N2": 0.4457,
+     "relative_initial_uptake_CO2": 1.076,
+     "relative_fill_time": 0.801
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.527,
+     "open_surface_N2": 0.4869,
+     "relative_initial_uptake_CO2": 1.121,
+     "relative_fill_time": 0.881
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.5329,
+     "open_surface_N2": 0.4992,
+     "relative_initial_uptake_CO2": 1.06,
+     "relative_fill_time": 1.009
+    }
+   }
+  },
+  "ZIF-67": {
+   "structure": "built",
+   "faces": {
+    "100": {
+     "hkl": [
+      1,
+      0,
+      0
+     ],
+     "uff_gamma": 0.36281,
+     "surface_cell_area_A2": 288.69,
+     "termination_t": 0.2238,
+     "CO2": {
+      "open_fraction": 0.0907,
+      "windows_per_nm2": 6.9277,
+      "largest_opening_A": 4.76,
+      "open_fraction_range_over_positions": [
+       0.0707,
+       0.2324
+      ],
+      "open_fraction_mean_over_positions": 0.1804
+     },
+     "N2": {
+      "open_fraction": 0.0452,
+      "windows_per_nm2": 7.9669,
+      "largest_opening_A": 4.76,
+      "open_fraction_range_over_positions": [
+       0.0301,
+       0.2113
+      ],
+      "open_fraction_mean_over_positions": 0.1577
+     }
+    },
+    "110": {
+     "hkl": [
+      1,
+      1,
+      0
+     ],
+     "uff_gamma": 0.26774,
+     "surface_cell_area_A2": 408.28,
+     "termination_t": 0.8863,
+     "CO2": {
+      "open_fraction": 0.299,
+      "windows_per_nm2": 1.9595,
+      "largest_opening_A": 9.47,
+      "open_fraction_range_over_positions": [
+       0.0003,
+       0.3732
+      ],
+      "open_fraction_mean_over_positions": 0.1811
+     },
+     "N2": {
+      "open_fraction": 0.2699,
+      "windows_per_nm2": 1.7145,
+      "largest_opening_A": 9.47,
+      "open_fraction_range_over_positions": [
+       0.0,
+       0.3409
+      ],
+      "open_fraction_mean_over_positions": 0.1578
+     }
+    },
+    "111": {
+     "hkl": [
+      1,
+      1,
+      1
+     ],
+     "uff_gamma": 0.61717,
+     "surface_cell_area_A2": 500.03,
+     "termination_t": 0.6813,
+     "CO2": {
+      "open_fraction": 0.1858,
+      "windows_per_nm2": 2.3998,
+      "largest_opening_A": 8.62,
+      "open_fraction_range_over_positions": [
+       0.1611,
+       0.1966
+      ],
+      "open_fraction_mean_over_positions": 0.181
+     },
+     "N2": {
+      "open_fraction": 0.1656,
+      "windows_per_nm2": 1.5999,
+      "largest_opening_A": 8.62,
+      "open_fraction_range_over_positions": [
+       0.1426,
+       0.1668
+      ],
+      "open_fraction_mean_over_positions": 0.1577
+     }
+    }
+   },
+   "bulk_open_fraction_3D": {
+    "CO2": 0.1816,
+    "N2": 0.158
+   },
+   "largest_cavity_3D_A": 11.35,
+   "shapes": {
+    "predicted_UFF": {
+     "shares": {
+      "100": 0.005,
+      "110": 0.995,
+      "111": 0.0
+     },
+     "sphericity": 0.9064,
+     "diffusion_length_per_V13": 0.1874,
+     "diffusion_length_um_for_1um3": 0.1874,
+     "open_surface_CO2": 0.298,
+     "open_surface_N2": 0.2688,
+     "relative_initial_uptake_CO2": 1.0,
+     "relative_fill_time": 1.0
+    },
+    "cube": {
+     "shares": {
+      "100": 1.0,
+      "110": 0.0,
+      "111": 0.0
+     },
+     "sphericity": 0.806,
+     "diffusion_length_per_V13": 0.1667,
+     "diffusion_length_um_for_1um3": 0.1667,
+     "open_surface_CO2": 0.0907,
+     "open_surface_N2": 0.0452,
+     "relative_initial_uptake_CO2": 0.342,
+     "relative_fill_time": 0.791
+    },
+    "octahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 0.0,
+      "111": 1.0
+     },
+     "sphericity": 0.8456,
+     "diffusion_length_per_V13": 0.1749,
+     "diffusion_length_um_for_1um3": 0.1749,
+     "open_surface_CO2": 0.1858,
+     "open_surface_N2": 0.1656,
+     "relative_initial_uptake_CO2": 0.668,
+     "relative_fill_time": 0.871
+    },
+    "rhombic dodecahedron": {
+     "shares": {
+      "100": 0.0,
+      "110": 1.0,
+      "111": 0.0
+     },
+     "sphericity": 0.9047,
+     "diffusion_length_per_V13": 0.1871,
+     "diffusion_length_um_for_1um3": 0.1871,
+     "open_surface_CO2": 0.299,
+     "open_surface_N2": 0.2699,
+     "relative_initial_uptake_CO2": 1.005,
+     "relative_fill_time": 0.997
+    }
+   }
+  }
+ },
+ "seconds": 93.6
+}

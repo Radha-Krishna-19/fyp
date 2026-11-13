@@ -27,7 +27,9 @@ UFF = {"H": (2.886, 0.044), "C": (3.851, 0.105), "N": (3.660, 0.069), "O": (3.50
        # added 2026-10-14 for CoRE MOF structures (same table). The vdW part is 1-9 % of gamma here,
        # so these enter the face energies only weakly.
        "Co": (2.872, 0.014), "Ni": (2.834, 0.015), "Cd": (2.848, 0.228), "S": (4.035, 0.274),
-       "In": (4.463, 0.599), "Mn": (2.961, 0.013), "Cl": (3.947, 0.227)}
+       "In": (4.463, 0.599), "Mn": (2.961, 0.013), "Cl": (3.947, 0.227),
+       # added 2026-11-13 for Mg-MOF-74 and the chain MOFs (same UFF table, Rappe et al. 1992)
+       "Mg": (3.021, 0.111), "Cr": (3.023, 0.015), "V": (3.144, 0.016), "Fe": (2.912, 0.013)}
 D_BOND = 70.0  # kcal/mol, UFF default Morse well depth
 
 
