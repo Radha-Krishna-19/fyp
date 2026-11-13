@@ -1,0 +1,527 @@
+{
+ "script": "code/morphology/run_shape_steering.py",
+ "inputs": [
+  "code/morphology/results/benchmark_mofs.json",
+  "data/experimental_morphology/dataset/experimental_morphology.csv"
+ ],
+ "note": "factor = multiplier on one family's UFF surface energy; unrelaxed, no solvent: relative indication only",
+ "mofs": {
+  "MOF-5": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.14786,
+    "110": 0.41577,
+    "111": 0.25542
+   },
+   "map_x": 2.8119,
+   "map_y": 1.7274,
+   "predicted_shape": "cube",
+   "predicted_dominant": "100",
+   "shares": {
+    "100": 1.0,
+    "110": 0.0,
+    "111": 0.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.997,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 0.3
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.407,
+     "factor_for_pure_shape": 0.251,
+     "lower_by_percent_to_dominate": 59.3,
+     "lower_by_percent_for_pure_shape": 74.9
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 0.619,
+     "factor_for_pure_shape": 0.334,
+     "lower_by_percent_to_dominate": 38.1,
+     "lower_by_percent_for_pure_shape": 66.6
+    }
+   },
+   "lab_evidence": {
+    "none": {
+     "faces": {
+      "100": 9
+     },
+     "papers": [
+      "mulyati2015",
+      "suresh2021",
+      "suresh2022"
+     ]
+    },
+    "monocarboxylic_acid_modulator": {
+     "faces": {
+      "100": 1
+     },
+     "papers": [
+      "suresh2021"
+     ]
+    },
+    "C3_tricarboxylate": {
+     "faces": {
+      "100": 2,
+      "111": 2
+     },
+     "papers": [
+      "suresh2021",
+      "suresh2022"
+     ]
+    },
+    "bent_dicarboxylate_or_terphenyl": {
+     "faces": {
+      "110": 3
+     },
+     "papers": [
+      "suresh2022"
+     ]
+    }
+   }
+  },
+  "HKUST-1": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.28805,
+    "110": 0.30694,
+    "111": 0.25106
+   },
+   "map_x": 1.0656,
+   "map_y": 0.8716,
+   "predicted_shape": "truncated octahedron",
+   "predicted_dominant": "111",
+   "shares": {
+    "100": 0.2309,
+    "110": 0.0033,
+    "111": 0.7658
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 0.816,
+     "factor_for_pure_shape": 0.503,
+     "lower_by_percent_to_dominate": 18.4,
+     "lower_by_percent_for_pure_shape": 49.7
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.86,
+     "factor_for_pure_shape": 0.664,
+     "lower_by_percent_to_dominate": 14.0,
+     "lower_by_percent_for_pure_shape": 33.6
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.662,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 33.8
+    }
+   },
+   "lab_evidence": {
+    "none": {
+     "faces": {
+      "111": 7,
+      "100": 1
+     },
+     "papers": [
+      "ediati2019",
+      "mao2013",
+      "rubio2014",
+      "umemura2011",
+      "zelenka2024"
+     ]
+    },
+    "monocarboxylic_acid_modulator": {
+     "faces": {
+      "100": 2,
+      "111": 3
+     },
+     "papers": [
+      "liu2018",
+      "umemura2011",
+      "wijaya2021"
+     ]
+    },
+    "inorganic_salt": {
+     "faces": {
+      "100": 2,
+      "111": 1
+     },
+     "papers": [
+      "liu2016"
+     ]
+    },
+    "anionic_surfactant": {
+     "faces": {
+      "100": 2,
+      "111": 1
+     },
+     "papers": [
+      "wu2020"
+     ]
+    },
+    "cationic_surfactant": {
+     "faces": {
+      "111": 1
+     },
+     "papers": [
+      "ediati2019"
+     ]
+    }
+   }
+  },
+  "UiO-66": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.94651,
+    "110": 1.00532,
+    "111": 0.42149
+   },
+   "map_x": 1.0621,
+   "map_y": 0.4453,
+   "predicted_shape": "octahedron",
+   "predicted_dominant": "111",
+   "shares": {
+    "100": 0.0,
+    "110": 0.0,
+    "111": 1.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 0.417,
+     "factor_for_pure_shape": 0.257,
+     "lower_by_percent_to_dominate": 58.3,
+     "lower_by_percent_for_pure_shape": 74.3
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.455,
+     "factor_for_pure_shape": 0.342,
+     "lower_by_percent_to_dominate": 54.5,
+     "lower_by_percent_for_pure_shape": 65.8
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 1.0,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 0.0
+    }
+   },
+   "lab_evidence": {
+    "monocarboxylic_acid_modulator": {
+     "faces": {
+      "111": 4,
+      "100": 3
+     },
+     "papers": [
+      "ahmad2025",
+      "butova2023",
+      "chen2022",
+      "morelli2020",
+      "schaate2011"
+     ]
+    },
+    "none": {
+     "faces": {
+      "100": 2
+     },
+     "papers": [
+      "cao2018",
+      "rahmawati2014"
+     ]
+    }
+   }
+  },
+  "ZIF-8": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.36422,
+    "110": 0.26883,
+    "111": 0.61913
+   },
+   "map_x": 0.7381,
+   "map_y": 1.6999,
+   "predicted_shape": "rhombic dodecahedron",
+   "predicted_dominant": "110",
+   "shares": {
+    "100": 0.005,
+    "110": 0.995,
+    "111": 0.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 0.644,
+     "factor_for_pure_shape": 0.522,
+     "lower_by_percent_to_dominate": 35.6,
+     "lower_by_percent_for_pure_shape": 47.8
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.958,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 4.2
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 0.401,
+     "factor_for_pure_shape": 0.34,
+     "lower_by_percent_to_dominate": 59.9,
+     "lower_by_percent_for_pure_shape": 66.0
+    }
+   },
+   "lab_evidence": {
+    "cationic_surfactant": {
+     "faces": {
+      "100": 4,
+      "110": 1
+     },
+     "papers": [
+      "oh2023",
+      "pan2011ce",
+      "zheng2017"
+     ]
+    },
+    "base_or_buffer": {
+     "faces": {
+      "100": 2,
+      "110": 3,
+      "111": 1
+     },
+     "papers": [
+      "cravillon2012",
+      "zheng2017"
+     ]
+    },
+    "none": {
+     "faces": {
+      "110": 11,
+      "100": 1
+     },
+     "papers": [
+      "oh2023",
+      "tezerjani2021",
+      "zhang2018"
+     ]
+    }
+   }
+  },
+  "IRMOF-3": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.1515,
+    "110": 0.21367,
+    "111": 0.26123
+   },
+   "map_x": 1.4104,
+   "map_y": 1.7243,
+   "predicted_shape": "cube",
+   "predicted_dominant": "100",
+   "shares": {
+    "100": 0.9923,
+    "110": 0.0077,
+    "111": 0.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.996,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 0.4
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.812,
+     "factor_for_pure_shape": 0.501,
+     "lower_by_percent_to_dominate": 18.8,
+     "lower_by_percent_for_pure_shape": 49.9
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 0.62,
+     "factor_for_pure_shape": 0.335,
+     "lower_by_percent_to_dominate": 38.0,
+     "lower_by_percent_for_pure_shape": 66.5
+    }
+   },
+   "lab_evidence": {
+    "none": {
+     "faces": {
+      "100": 1
+     },
+     "papers": [
+      "suresh2022"
+     ]
+    },
+    "bent_dicarboxylate_or_terphenyl": {
+     "faces": {
+      "111": 2,
+      "110": 1
+     },
+     "papers": [
+      "suresh2022"
+     ]
+    },
+    "C3_tricarboxylate": {
+     "faces": {
+      "111": 1
+     },
+     "papers": [
+      "suresh2022"
+     ]
+    }
+   }
+  },
+  "IRMOF-8": {
+   "structure": "measured",
+   "gamma_uff": {
+    "100": 0.15537,
+    "110": 0.18998,
+    "111": 0.23115
+   },
+   "map_x": 1.2228,
+   "map_y": 1.4877,
+   "predicted_shape": "tetrahedral rhombicuboctahedron-like",
+   "predicted_dominant": "100",
+   "shares": {
+    "100": 0.6355,
+    "110": 0.3641,
+    "111": 0.0004
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.859,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 14.1
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.937,
+     "factor_for_pure_shape": 0.578,
+     "lower_by_percent_to_dominate": 6.3,
+     "lower_by_percent_for_pure_shape": 42.2
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 0.709,
+     "factor_for_pure_shape": 0.388,
+     "lower_by_percent_to_dominate": 29.1,
+     "lower_by_percent_for_pure_shape": 61.2
+    }
+   },
+   "lab_evidence": {
+    "bent_dicarboxylate_or_terphenyl": {
+     "faces": {
+      "110": 2
+     },
+     "papers": [
+      "suresh2022"
+     ]
+    }
+   }
+  },
+  "ZIF-67": {
+   "structure": "built",
+   "gamma_uff": {
+    "100": 0.36281,
+    "110": 0.26774,
+    "111": 0.61717
+   },
+   "map_x": 0.738,
+   "map_y": 1.7011,
+   "predicted_shape": "rhombic dodecahedron",
+   "predicted_dominant": "110",
+   "shares": {
+    "100": 0.005,
+    "110": 0.995,
+    "111": 0.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 0.644,
+     "factor_for_pure_shape": 0.522,
+     "lower_by_percent_to_dominate": 35.6,
+     "lower_by_percent_for_pure_shape": 47.8
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 0.958,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 4.2
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 0.4,
+     "factor_for_pure_shape": 0.339,
+     "lower_by_percent_to_dominate": 60.0,
+     "lower_by_percent_for_pure_shape": 66.1
+    }
+   },
+   "lab_evidence": {}
+  },
+  "UiO-66-NH2": {
+   "structure": "stand-in",
+   "gamma_uff": {
+    "100": 0.94651,
+    "110": 1.00532,
+    "111": 0.42149
+   },
+   "map_x": 1.0621,
+   "map_y": 0.4453,
+   "predicted_shape": "octahedron",
+   "predicted_dominant": "111",
+   "shares": {
+    "100": 0.0,
+    "110": 0.0,
+    "111": 1.0
+   },
+   "steering": {
+    "100": {
+     "target_pure_shape": "cube",
+     "factor_to_dominate": 0.417,
+     "factor_for_pure_shape": 0.257,
+     "lower_by_percent_to_dominate": 58.3,
+     "lower_by_percent_for_pure_shape": 74.3
+    },
+    "110": {
+     "target_pure_shape": "rhombic dodecahedron",
+     "factor_to_dominate": 0.455,
+     "factor_for_pure_shape": 0.342,
+     "lower_by_percent_to_dominate": 54.5,
+     "lower_by_percent_for_pure_shape": 65.8
+    },
+    "111": {
+     "target_pure_shape": "octahedron",
+     "factor_to_dominate": 1.0,
+     "factor_for_pure_shape": 1.0,
+     "lower_by_percent_to_dominate": 0.0,
+     "lower_by_percent_for_pure_shape": 0.0
+    }
+   },
+   "lab_evidence": {
+    "none": {
+     "faces": {
+      "100": 1
+     },
+     "papers": [
+      "cao2018"
+     ]
+    }
+   }
+  }
+ }
+}
