@@ -78,3 +78,17 @@ To add a paper, follow "How to add a paper" in `dataset/README.md`.
 The scripts in `tools/` need `pip install requests pypdf`. They query
 OpenAlex, Europe PMC and NCBI (all free, no key) and only download
 open-access copies.
+
+## Additive-free labels that are judgement calls (13 November 2026)
+
+`code/morphology/run_benchmark_mofs.py` counts a record as additive-free when its `additive` is `none` or
+blank, or its `additive_amount` contains "or none". Three records depend on that rule:
+
+| Record | Additive | Amount | Counted as |
+|---|---|---|---|
+| HKUST-1-umemura2011-1 | n-dodecanoic (lauric) acid | lowest (or none) | additive-free |
+| HKUST-1-mao2013-1 | not recorded | not recorded | additive-free |
+| HKUST-1-mao2013-2 | not recorded | not recorded | additive-free |
+
+The list is regenerated in `benchmark_mofs.json` (`additive_free_judgement_calls`). Checking the two
+mao2013 records against the paper is part of the blind second extraction (`docs/defence/check_sheet_records.md`).

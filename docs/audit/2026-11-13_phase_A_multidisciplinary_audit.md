@@ -291,23 +291,25 @@ Withdrawn claims: all earlier withdrawals are on the site. Part I wording is lef
 
 ## 9. Severity-ranked gap list (A8)
 
+Status after Phase B is in the last column (Done, with the commit).
+
 Severity classes of the prompt: 1 scientifically incorrect, 2 chemically or physically invalid,
 3 mathematically incorrect, 4 computationally incorrect, 5 unreproducible, 6 unsupported interpretation,
 7 undocumented, 8 cosmetic.
 
-| # | Sev. | Component | Evidence | Impact | Proposed fix | Owner | Validation |
+| # | Sev. | Component | Evidence | Impact | Proposed fix | Owner | Validation or status |
 |---|---|---|---|---|---|---|---|
-| G3 | 6 | Why shape page, CIF to shape page, defence Q2 | Section 5 | Pages contradict newer results | Update the fragments and the defence document | RK | Build, tests |
-| G4 | 7 | README, PROJECT_MAP, project notes, `code/morphology/README.md`, Progress page, one-page summary | Section 5 | New work undocumented outside its own page | Add the 13 November work | RK | Read-through |
-| G5 | 6 | Benchmark intervals (Advisor, Experiment pages) | 4.5: 32 records = 5 predictions | Precision overstated | Report "4 of 5 MOFs" next to the record count, plus the paper bootstrap; keep Wilson as secondary | RA, KS | Script prints both |
-| G6 | 6 | Name "UFF Wulff" | 4.2: bonds are 93–98 % of γ | Readers infer force-field physics | Say "bond-count surface energy (UFF van der Waals adds 2–7 %)" wherever the model is named; keep the file names | RK, KV | Text search |
+| G3 | 6 | Why shape page, CIF to shape page, defence Q2 | Section 5 | Pages contradict newer results | Update the fragments and the defence document | RK | **Done** (`0d8eede`) |
+| G4 | 7 | README, PROJECT_MAP, project notes, `code/morphology/README.md`, Progress page, one-page summary | Section 5 | New work undocumented outside its own page | Add the 13 November work | RK | **Done** (`0d8eede`) |
+| G5 | 6 | Benchmark intervals (Advisor, Experiment pages) | 4.5: 32 records = 5 predictions | Precision overstated | Report "4 of 5 MOFs" next to the record count, plus the paper bootstrap; keep Wilson as secondary | RA, KS | **Done** (`0d8eede`) |
+| G6 | 6 | Name "UFF Wulff" | 4.2: bonds are 93–98 % of γ | Readers infer force-field physics | Say "bond-count surface energy (UFF van der Waals adds 2–7 %)" wherever the model is named; keep the file names | RK, KV | **Done** (`0d8eede`, `df269ca`) |
 | G8 | 6 | Gas access | 4.6 | Open points may be dead-end pockets | State the limit on the page (done in part); run Zeo++ accessibility when it can be installed | KS | Zeo++ comparison on one MOF |
-| G9 | 6 | Benchmark | 4.5 | Model choices were made on the four demonstration MOFs | Report the four new MOFs separately as the clean test | RA | Separate row in the result file |
-| G10 | 6 | Steering evidence | 4.4 | One-record classes read as effects | Label counts below 3 records as anecdotal | KS, RA | Page text |
-| G11 | 7 | Additive-free rule | 4.5 | Three judgement calls undocumented | List them in the dataset README and the benchmark output | RA | README |
+| G9 | 6 | Benchmark | 4.5 | Model choices were made on the four demonstration MOFs | Report the four new MOFs separately as the clean test | RA | **Done** (`0d8eede`) |
+| G10 | 6 | Steering evidence | 4.4 | One-record classes read as effects | Label counts below 3 records as anecdotal | KS, RA | **Done** (`0d8eede`) |
+| G11 | 7 | Additive-free rule | 4.5 | Three judgement calls undocumented | List them in the dataset README and the benchmark output | RA | **Done** (dataset README) |
 | G12 | 7 | Surface-energy numerics | 4.2 | Bin and cutoff convergence not recorded | **Closed 13 November**: `check_energy_convergence.py` → `energy_convergence.json`. 1600 bins change no value; a 15 Å cutoff changes γ by at most 0.4 % (ZIF-8) and the face order of no MOF | KV | Done |
-| G13 | 8 | Advisor page wording on Mg-MOF-74 | Section 5 | Lattice vs crystal system | Reword | RK | Build |
-| G14 | 7 | Mistakes page | Section 7 | 13 November slips missing | Add Part E | RK | Build |
+| G13 | 8 | Advisor page wording on Mg-MOF-74 | Section 5 | Lattice vs crystal system | Reword | RK | **Done** (`0d8eede`) |
+| G14 | 7 | Mistakes page | Section 7 | 13 November slips missing | Add Part E | RK | **Done** (`0d8eede`) |
 | G15 | 5 | Spectrum and shape, Test 3 (`03_core_mof_spectrum_vs_bfdh_shape.json`) | Section 1 | The quoted ρ = +0.001 (p = 0.99) is now −0.007 (p = 0.96) on rerun; conclusion unchanged | Rerun `run_03` and the relation page builder, or state the rerun value next to the old one. Not done: the team asked not to rework Part I and its link study | KS, RK | Rerun; relation-page test |
 | — | 2 | Relaxed CHGNet energies | 4.3 | Physically implausible values | Already treated as unvalidated; keep out of every conclusion | KV | DFT (needs HPC) |
 | — | 2 | Steps 1–8 UiO-66 input (Zr₆O₆) | 4.1 | Wrong node for as-synthesised UiO-66 | K5, open; use the hydroxylated `website/UiO-66.cif` in the rerun | KV | Composition check |
