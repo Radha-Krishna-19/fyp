@@ -69,7 +69,7 @@ Severity: **1** wrong as written; **2** not reproducible; **3** evidence weaker 
 | 19 | 3 | All 134 laboratory records were extracted by one person; 11 remain unverified. The benchmark rests on them. | A second member re-extracts 20 random records blind; report agreement. | Isha (check), Rohith |
 | 20 | 3 | The 16 propositions were proved and checked numerically by one author; no one else has checked the proofs. | Two members check eight proofs each; record who checked what. | Keerthi, Isha |
 | 21 | 3 | Only the Panel Review 1 rubric is in the project; the Phase II and final rubrics are not. | Ask Dr. Ramraj. | Radha |
-| 22 | 3 | The only slide deck (16 September) covers Part 1 only. | Done 12 November: a 15-slide Phase II deck of the completed work from the same numbers (Claude Slides; downloadable as PowerPoint or PDF). The team should rehearse it with `docs/defence/panel_defence.md`. | Team |
+| 22 | 3 | The only slide deck (16 September) covers Part 1 only. | Done 12 November: a 15-slide Phase II deck of the completed work from the same numbers (an online slide deck, downloadable as PowerPoint or PDF). On 13 November a LaTeX deck in the department template was added: `docs/reports/phase2_latex/slides.tex`. The team should rehearse it with `docs/defence/panel_defence.md`. | Team |
 
 ### Future work, not started (out of the agreed scope)
 
