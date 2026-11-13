@@ -27,7 +27,9 @@
       <p class="sd">The predicted main face was compared with the dominant face reported in each laboratory record of the laboratory dataset (<a href="experiment.html">Against experiment</a>) for which the structure file exists. Two structure-only models are scored against two baselines that use the laboratory data: the most common face for that MOF in the other papers (each paper held out in turn), and the most common face among the other MOFs (the whole MOF held out, which is the situation of a new MOF nobody has grown yet).</p>
       <div id="adv-score"></div>
       <p class="sd">How to read this. On records without an additive, the structure-only Wulff model gets the main face right exactly as often as the most common laboratory answer for that MOF, and it needs no laboratory data; for a MOF that has never been grown, the laboratory baseline (whole MOF held out) is right far less often. BFDH alone is weaker than the Wulff model on these records. On records with an additive, every model is right in fewer than half of the cases and their intervals overlap, so none of them predicts the effect of an additive; BFDH happens to score highest there. The figures in brackets are 95 % Wilson intervals: with 32 and 44 records, differences of a few records are not significant.</p>
+      <p class="sd" id="adv-units"></p>
       <p class="sd" id="adv-habit"></p>
+      <p class="sm" id="adv-judgement"></p>
 
       <h2 class="section-title" id="adv-dataset-h" data-toc="All 138 structures"><span class="stitle-num">0</span>All 138 Dataset Structures</h2>
       <p class="sd">The structure-only steps (symmetry, allowed faces, BFDH shape, overall form) were also run on all 138 CIF files of the first half of the project. These are unvalidated predictions: no laboratory shape is known for these structures.</p>
@@ -39,7 +41,7 @@
         <li>The surface energies are unrelaxed UFF values without solvent or electrostatics. They rank faces; they are not absolute energies, and the steering percentages are relative indications, not additive binding energies.</li>
         <li>The IRMOF-8 file keeps only P2<sub>1</sub>/c symmetry because of how its naphthalene linkers are ordered, so its faces are not those of an ideal Fm-3m framework.</li>
         <li>ZIF-67 is built from ZIF-8 by replacing zinc with cobalt; MIL-53(Fe) and UiO-66-NH<sub>2</sub> are scored with stand-in structures and reported separately. SNU-70 and Zn<sub>4</sub>O(FMA)<sub>3</sub> have no structure file here and are not predicted.</li>
-        <li>Mg-MOF-74 is hexagonal (trigonal R-3); only the BFDH shape is drawn, so its steering is not computed.</li>
+        <li>Mg-MOF-74 has a hexagonal lattice (space group R-3); only the BFDH shape is drawn, so its steering is not computed.</li>
         <li>Plates, spheres and intergrown crystals come from growth kinetics and are outside every equilibrium shape model used here.</li>
       </ul>
 

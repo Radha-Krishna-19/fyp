@@ -55,7 +55,7 @@ ok(/no best weight|Why no best weight/i.test(HD.body.textContent), 'hybrid: refu
 // ---- Mistakes page: every entry has all six rows, and the key admissions are there
 const L = doc('lessons.html');
 const tabs = [...L.querySelectorAll('table.lesson')];
-ok(tabs.length === 26, `lessons: 26 entries: 9 spectrum, 8 morphology, 5 audit, 4 November (found ${tabs.length})`);
+ok(tabs.length === 30, `lessons: 30 entries: 9 spectrum, 8 morphology, 5 audit, 4 November, 4 on 13 November (found ${tabs.length})`);
 const need = ['In simple words', 'Why we chose it', 'Why it was wrong', 'The technical reason', 'How we fixed it', 'Where to see it'];
 ok(tabs.every(t => need.every((n, i) => t.querySelectorAll('tr')[i].querySelector('td').textContent === n)), 'lessons: every entry has the six rows in order');
 ['l-tau', 'l-classes', 'l-size', 'm-hydrogen', 'm-never', 'm-trustuff'].forEach(id => ok(!!L.getElementById(id), `lessons: entry ${id}`));

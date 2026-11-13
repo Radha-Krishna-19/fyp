@@ -48,6 +48,8 @@ const sc = D.querySelectorAll('#adv-score-table tbody tr');
 ok(sc.length === 3, 'score table has three rows');
 const af = BENCH.face_scores['measured_and_built/additive_free'];
 ok(sc[0].querySelectorAll('td')[2].textContent.startsWith(af[1].correct + ' / ' + af[1].n), `UFF additive-free ${af[1].correct}/${af[1].n} shown`);
+const EU = BENCH.evidence_units['uff/additive_free'];
+ok(D.getElementById('adv-units').textContent.includes(`right for ${EU.mofs_right_by_majority} of ${EU.mofs} MOFs`), `evidence units: ${EU.mofs_right_by_majority} of ${EU.mofs} MOFs`);
 ok(D.getElementById('adv-dataset').textContent.includes('77 files'), 'dataset summary shown');
 A.order.forEach(m => {
   P.select(m);

@@ -9,7 +9,7 @@ L = lambda n: json.load(open(os.path.join(RES, n)))
 B, S, A, D = L('benchmark_mofs.json'), L('shape_steering.json'), L('shape_adsorption.json'), L('dataset_shapes.json')
 GEN = os.path.join(REPO, 'data', 'structures', 'general_lattice')
 out = dict(order=list(B['predictions'].keys()), predictions=B['predictions'], per_mof=B['per_mof'],
-           face_scores=B['face_scores'], habit_scores=B['habit_scores'], n_records=B['n_records'],
+           face_scores=B['face_scores'], habit_scores=B['habit_scores'], n_records=B['n_records'], evidence_units=B['evidence_units'], judgement_calls=B['additive_free_judgement_calls'],
            steering=S['mofs'], adsorption=A['mofs'], probes=A['probes_A'], dataset_summary=D['summary'],
            cifs={'Mg-MOF-74': open(os.path.join(GEN, 'MgMOF-74.cif')).read(), 'MIL-53(Fe)': open(os.path.join(GEN, 'MIL-53Cr-lt.cif')).read()},
            sources=dict(benchmark='code/morphology/run_benchmark_mofs.py', steering='code/morphology/run_shape_steering.py',

@@ -50,6 +50,11 @@ Requirements: `numpy scipy matplotlib ase spglib` (see the root [`requirements.t
 | [`run_core.py`](run_core.py) | `results/core_results.json`, shapes of eight CoRE MOFs of six crystal systems | Experiment |
 | [`slab_check.py`](slab_check.py) | `results/slab_pieces.json`: detached pieces in every CHGNet slab | Experiment |
 | [`run_chgnet_cleavage.py`](run_chgnet_cleavage.py) | `results/chgnet_cleavage_results.json` | Experiment |
+| [`run_benchmark_mofs.py`](run_benchmark_mofs.py) | `results/benchmark_mofs.json`: structure-only predictions for ten MOFs scored against the 134 laboratory records, with baselines, MOF-level counts and a paper bootstrap | Shape advisor |
+| [`run_shape_steering.py`](run_shape_steering.py) | `results/shape_steering.json`: energy cut per face to dominate or give the pure shape, with the laboratory additive evidence | Shape advisor |
+| [`run_shape_adsorption.py`](run_shape_adsorption.py) | `results/shape_adsorption.json`: open fraction of each face for CO₂ and N₂ at its termination; diffusion length V/A per shape | Shape advisor |
+| [`run_dataset_shapes.py`](run_dataset_shapes.py) | `results/dataset_shapes.json`: symmetry, faces and BFDH habit for all 138 dataset CIFs (unvalidated) | Shape advisor |
+| [`check_new_analyses.py`](check_new_analyses.py) | 51 checks of the four scripts above | — |
 | [`slab_options_check.py`](slab_options_check.py) | `results/slab_options.json` (needs pymatgen) | Experiment |
 | [`figs_experiment.py`](figs_experiment.py) | The methods-versus-experiment figure | Experiment |
 

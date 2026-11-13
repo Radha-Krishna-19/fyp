@@ -97,7 +97,7 @@
      "111": 0.7658
     }
    },
-   "seconds": 5.7
+   "seconds": 5.8
   },
   "UiO-66": {
    "structure": "measured",
@@ -144,7 +144,7 @@
      "111": 1.0
     }
    },
-   "seconds": 5.8
+   "seconds": 6.1
   },
   "ZIF-8": {
    "structure": "measured",
@@ -191,7 +191,7 @@
      "110": 0.995
     }
    },
-   "seconds": 2.9
+   "seconds": 3.0
   },
   "Mg-MOF-74": {
    "structure": "measured",
@@ -266,7 +266,7 @@
      "100": 0.9923
     }
    },
-   "seconds": 2.9
+   "seconds": 3.1
   },
   "IRMOF-8": {
    "structure": "measured",
@@ -357,7 +357,7 @@
      "110": 0.995
     }
    },
-   "seconds": 2.8
+   "seconds": 2.9
   },
   "MIL-53(Fe)": {
    "structure": "stand-in",
@@ -383,7 +383,7 @@
      1
     ]
    },
-   "seconds": 0.2
+   "seconds": 0.1
   },
   "UiO-66-NH2": {
    "structure": "stand-in",
@@ -430,7 +430,7 @@
      "111": 1.0
     }
    },
-   "seconds": 5.9
+   "seconds": 5.8
   },
   "SNU-70": {
    "structure": "none",
@@ -987,5 +987,178 @@
    "habit_scored": 0
   }
  },
- "seconds": 35.6
+ "evidence_units": {
+  "uff/additive_free": {
+   "records": 32,
+   "papers": 13,
+   "mofs": 5,
+   "mofs_right_by_majority": 4,
+   "paper_bootstrap_ci95": [
+    0.727,
+    0.973
+   ],
+   "per_mof": {
+    "HKUST-1": {
+     "correct": 7,
+     "n": 8,
+     "papers": 5,
+     "predicted": "111",
+     "lab": {
+      "111": 7,
+      "100": 1
+     }
+    },
+    "IRMOF-3": {
+     "correct": 1,
+     "n": 1,
+     "papers": 1,
+     "predicted": "100",
+     "lab": {
+      "100": 1
+     }
+    },
+    "MOF-5": {
+     "correct": 9,
+     "n": 9,
+     "papers": 3,
+     "predicted": "100",
+     "lab": {
+      "100": 9
+     }
+    },
+    "UiO-66": {
+     "correct": 0,
+     "n": 2,
+     "papers": 2,
+     "predicted": "111",
+     "lab": {
+      "100": 2
+     }
+    },
+    "ZIF-8": {
+     "correct": 11,
+     "n": 12,
+     "papers": 3,
+     "predicted": "110",
+     "lab": {
+      "110": 11,
+      "100": 1
+     }
+    }
+   }
+  },
+  "uff/additive_free/new_four_only": {
+   "mofs": [
+    "IRMOF-3"
+   ],
+   "records": 1,
+   "correct": 1,
+   "wrong_with_additive": 0
+  },
+  "uff/all": {
+   "records": 76,
+   "papers": 25,
+   "mofs": 6,
+   "mofs_right_by_majority": 3,
+   "paper_bootstrap_ci95": [
+    0.413,
+    0.771
+   ],
+   "per_mof": {
+    "HKUST-1": {
+     "correct": 13,
+     "n": 20,
+     "papers": 9,
+     "predicted": "111",
+     "lab": {
+      "111": 13,
+      "100": 7
+     }
+    },
+    "IRMOF-3": {
+     "correct": 1,
+     "n": 5,
+     "papers": 1,
+     "predicted": "100",
+     "lab": {
+      "100": 1,
+      "111": 3,
+      "110": 1
+     }
+    },
+    "IRMOF-8": {
+     "correct": 0,
+     "n": 2,
+     "papers": 1,
+     "predicted": "100",
+     "lab": {
+      "110": 2
+     }
+    },
+    "MOF-5": {
+     "correct": 12,
+     "n": 17,
+     "papers": 3,
+     "predicted": "100",
+     "lab": {
+      "100": 12,
+      "111": 2,
+      "110": 3
+     }
+    },
+    "UiO-66": {
+     "correct": 4,
+     "n": 9,
+     "papers": 7,
+     "predicted": "111",
+     "lab": {
+      "111": 4,
+      "100": 5
+     }
+    },
+    "ZIF-8": {
+     "correct": 15,
+     "n": 23,
+     "papers": 6,
+     "predicted": "110",
+     "lab": {
+      "100": 7,
+      "110": 15,
+      "111": 1
+     }
+    }
+   }
+  },
+  "uff/all/new_four_only": {
+   "mofs": [
+    "IRMOF-3",
+    "IRMOF-8"
+   ],
+   "records": 7,
+   "correct": 1,
+   "wrong_with_additive": 6
+  }
+ },
+ "additive_free_judgement_calls": [
+  {
+   "record": "HKUST-1-umemura2011-1",
+   "additive": "n-dodecanoic (lauric) acid",
+   "amount": "lowest (or none)",
+   "counted_as": "additive-free"
+  },
+  {
+   "record": "HKUST-1-mao2013-1",
+   "additive": null,
+   "amount": null,
+   "counted_as": "additive-free"
+  },
+  {
+   "record": "HKUST-1-mao2013-2",
+   "additive": null,
+   "amount": null,
+   "counted_as": "additive-free"
+  }
+ ],
+ "notes": "Wilson intervals in face_scores treat records as independent; the structure-only models make one prediction per MOF, so evidence_units gives MOFs right by majority and a bootstrap over whole papers (5000, seed 0).",
+ "seconds": 104.7
 }

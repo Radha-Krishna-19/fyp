@@ -204,8 +204,52 @@ def main():
                           bfdh_face_correct=int((gf.bfdh_face == gf.lab_face).sum()) if len(gf) else None,
                           uff_face_correct=int((gf.uff_face == gf.lab_face).sum()) if len(gf) else None,
                           habit_correct=int((gh.bfdh_habit == gh.lab_habit).sum()), habit_scored=len(gh))
+    # ---- the honest unit of evidence (audit of 13 November 2026, gaps G5, G9, G11) ----
+    # A structure-only model makes ONE prediction per MOF, so its records are not independent. Report:
+    # (a) MOFs right by majority of their records, (b) a bootstrap that resamples whole papers,
+    # (c) the four MOFs added after every model choice was fixed (the clean test), and
+    # (d) the records whose additive-free label is a judgement call.
+    def by_mof(d, col):
+        out = {}
+        for m, g in d.groupby('mof'):
+            out[m] = dict(correct=int((g[col] == g.lab_face).sum()), n=len(g), papers=int(g.source.nunique()),
+                          predicted=g[col].iloc[0], lab=dict(Counter(g.lab_face)))
+        return out
+
+    def paper_bootstrap(d, col, n_boot=5000, seed=0):
+        rng = np.random.default_rng(seed)
+        P = d.source.unique()
+        if len(P) < 2:
+            return None
+        acc = []
+        for _ in range(n_boot):
+            g = pd.concat([d[d.source == p] for p in rng.choice(P, len(P))])
+            acc.append(float((g[col] == g.lab_face).mean()))
+        return [round(float(x), 3) for x in np.percentile(acc, [2.5, 97.5])]
+
+    NEW_FOUR = ['IRMOF-3', 'IRMOF-8', 'ZIF-67', 'Mg-MOF-74']   # added 13 November, after the model was fixed
+    mb = on[on.structure.isin(['measured', 'built'])]
+    evidence_units = {}
+    for free_name, fmask in (('additive_free', mb.additive_free), ('all', mb.additive_free | ~mb.additive_free)):
+        d = mb[fmask & mb.uff_face.notna()]
+        per = by_mof(d, 'uff_face')
+        evidence_units[f'uff/{free_name}'] = dict(
+            records=len(d), papers=int(d.source.nunique()), mofs=len(per),
+            mofs_right_by_majority=sum(1 for v in per.values() if 2 * v['correct'] > v['n']),
+            paper_bootstrap_ci95=paper_bootstrap(d, 'uff_face'), per_mof=per)
+        dn = d[d.mof.isin(NEW_FOUR)]
+        evidence_units[f'uff/{free_name}/new_four_only'] = dict(
+            mofs=sorted(dn.mof.unique().tolist()), records=len(dn), correct=int((dn.uff_face == dn.lab_face).sum()),
+            wrong_with_additive=int(((dn.uff_face != dn.lab_face) & ~dn.additive_free).sum()))
+    judgement = lab[lab.additive_amount.fillna('').str.contains('or none') | lab.additive.isna()]
+    judgement_calls = [dict(record=r.record_id, additive=None if pd.isna(r.additive) else r.additive,
+                            amount=None if pd.isna(r.additive_amount) else r.additive_amount,
+                            counted_as='additive-free') for r in judgement.itertuples()]
     res = dict(script='code/morphology/run_benchmark_mofs.py', lab_file=os.path.relpath(LAB, REPO), n_records=len(lab),
                n_mofs=lab.mof.nunique(), predictions=pred, face_scores=face_scores, habit_scores=habit_scores, per_mof=per_mof,
+               evidence_units=evidence_units, additive_free_judgement_calls=judgement_calls,
+               notes='Wilson intervals in face_scores treat records as independent; the structure-only models make one prediction '
+                     'per MOF, so evidence_units gives MOFs right by majority and a bootstrap over whole papers (5000, seed 0).',
                seconds=round(time.time() - t0, 1))
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(res, open(OUT, 'w'), indent=1, default=str)
@@ -213,6 +257,8 @@ def main():
     for k, v in face_scores.items():
         print(' ', k, [(s['model'], f"{s['correct']}/{s['n']}") for s in v])
     print('Habit:', habit_scores)
+    for k, v in evidence_units.items():
+        print(' ', k, {x: v[x] for x in v if x != 'per_mof'})
     print('wrote', OUT, f'({res["seconds"]} s)')
 
 

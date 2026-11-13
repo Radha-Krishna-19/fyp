@@ -43,6 +43,15 @@ computationally:
   model (the last only at the default bond cost); the HKUST-1 octahedron only as the dominant {111}
   face of a truncated octahedron; additive-free UiO-66 (poorly faceted cubes) by none. Four MOFs are
   too few to rank the models.
+* **13 November: ten MOFs.** The structure-only prediction was run on ten MOFs (eight with a structure
+  file, two with stand-ins) and scored against every laboratory record. On records without an
+  additive it gives the dominant face for 4 of 5 MOFs (UiO-66 is wrong), about as often as the most
+  common laboratory answer for that MOF, without using any laboratory data; with additives no model is
+  reliable. For each cubic MOF it also gives how far each face's energy must fall to change the shape,
+  and, for each shape, how much of each face is open to CO₂ and N₂ and the diffusion length V/A
+  (geometric indicators, not adsorption). All of this is on the
+  [Shape advisor](https://radha-krishna-19.github.io/fyp/advisor.html) page. The same structure-only
+  steps were run on all 138 dataset structures (unvalidated predictions).
 
 **Linking the parts.** The periodic Δα carries no shape information beyond graph size
 (size-controlled ρ = +0.001, p = 0.99, 55 CoRE MOFs). On a *finite* MOF-5 particle the spectrum

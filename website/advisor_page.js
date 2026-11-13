@@ -127,7 +127,7 @@
         var s = st.steering[F], ev = [];
         Object.keys(st.lab_evidence).forEach(function (c) {
           var e = st.lab_evidence[c];
-          if (c !== 'none' && e.faces[F]) ev.push(c.replace(/_/g, ' ') + ' (' + e.faces[F] + ' of ' + Object.values(e.faces).reduce(function (a, b) { return a + b; }, 0) + ' records; ' + e.papers.join(', ') + ')');
+          if (c !== 'none' && e.faces[F]) ev.push(c.replace(/_/g, ' ') + ' (' + e.faces[F] + ' of ' + Object.values(e.faces).reduce(function (a, b) { return a + b; }, 0) + ' records; ' + e.papers.join(', ') + ')' + (e.faces[F] < 3 ? ' <span class="sm">(fewer than 3 records: an example, not an established effect)</span>' : ''));
         });
         rows += '<tr><td class="dt-label">' + fam(F) + ' &rarr; ' + NAMES[F] + '</td><td class="dt-value">' + pc(s.lower_by_percent_to_dominate) + '</td><td class="dt-value">' + pc(s.lower_by_percent_for_pure_shape) + '</td></tr>';
         evid.push('<li>' + fam(F) + ': ' + (ev.join('; ') || 'no record with an additive gave this face') + '</li>');
@@ -164,6 +164,14 @@
     var head = fs['measured_and_built/all'].map(function (s) { return '<td>' + s.model + '</td>'; }).join('');
     set('adv-score', '<div class="table-wrap"><table class="data-table" id="adv-score-table"><thead><tr><td>Records</td>' + head + '</tr></thead><tbody>' +
       row('measured_and_built/additive_free', 'No additive') + row('measured_and_built/with_additive', 'With an additive') + row('measured_and_built/all', 'All') + '</tbody></table></div>');
+    var eu = A.evidence_units['uff/additive_free'], nf = A.evidence_units['uff/all/new_four_only'], ea = A.evidence_units['uff/all'];
+    set('adv-units', 'The structure-only model gives <b>one prediction per MOF</b>, so its records are not independent. On the records without an additive, the ' +
+      eu.records + ' records come from <b>' + eu.mofs + ' MOFs</b> and ' + eu.papers + ' papers, and the prediction is right for <b>' + eu.mofs_right_by_majority + ' of ' + eu.mofs +
+      ' MOFs</b> (' + Object.keys(eu.per_mof).map(function (m) { var v = eu.per_mof[m]; return m + ' ' + v.correct + '/' + v.n; }).join(', ') +
+      '). Resampling whole papers gives a 95 % interval of ' + Math.round(100 * eu.paper_bootstrap_ci95[0]) + '&ndash;' + Math.round(100 * eu.paper_bootstrap_ci95[1]) +
+      ' %. Over all records, with and without additives, it is right for ' + ea.mofs_right_by_majority + ' of ' + ea.mofs + ' MOFs. The energy model was fixed on the four demonstration MOFs; the MOFs added later are the clean test. Of these, ' +
+      nf.mofs.join(' and ') + ' have face records: the prediction is right in ' + nf.correct + ' of ' + nf.records + (nf.records - nf.correct === nf.wrong_with_additive ? ', and every wrong one was grown with an additive.' : '; ' + nf.wrong_with_additive + ' of the wrong ones were grown with an additive.'));
+    set('adv-judgement', 'Records counted as additive-free by judgement: ' + A.judgement_calls.map(function (j) { return j.record + ' (' + (j.additive ? j.additive + ', amount &ldquo;' + j.amount + '&rdquo;' : 'no additive recorded') + ')'; }).join('; ') + '.');
     var hs = A.habit_scores;
     set('adv-habit', 'Compact, rod or plate, structure only: <b>' + hs.measured_and_built.correct + ' of ' + hs.measured_and_built.n + '</b> records; always guessing "compact" gets ' +
       hs['measured_and_built/baseline_always_compact'].correct + ' of ' + hs['measured_and_built/baseline_always_compact'].n + '. Where the structure predicts a rod (Mg-MOF-74), ' +

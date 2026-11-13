@@ -417,3 +417,25 @@ root README under "Future work".
 - Known limitation: `mofmorph.faces.plain()` sorts the indices of a family label, which is right for
   cubic families but merges different families in a non-cubic cell (for example (100) and (001)).
   `run_general_shape.py` therefore labels families by their own indices.
+
+## Ten MOFs, steering, gas access, the Shape advisor and the audit (13 November 2026)
+
+- Benchmark (`code/morphology/run_benchmark_mofs.py`): ten MOFs, eight with structure files (MOF-5,
+  HKUST-1, UiO-66, ZIF-8, Mg-MOF-74, IRMOF-3, IRMOF-8 from RASPA2, ZIF-67 built from ZIF-8 by Zn → Co),
+  two scored with stand-ins and reported separately. Structure files and caveats in
+  `data/structures/benchmark/README.md`. IRMOF-8's file keeps only P2₁/c (ordered naphthalenes); IRMOF-3 is
+  P1 with the F-centring only.
+- **Quote MOFs, not records.** The structure-only model makes one prediction per MOF. Additive-free: 32
+  records = 5 MOFs, 13 papers, right for 4 of 5 (UiO-66 wrong); paper bootstrap 73–97 %. The MOFs added
+  after the model was fixed (the clean test) have only one additive-free face record (IRMOF-3, right);
+  with additives they are right in 1 of 7. Mg-MOF-74: BFDH rod, 9 of 10 laboratory crystals elongated.
+  `evidence_units` and `additive_free_judgement_calls` in `benchmark_mofs.json`.
+- The "UFF" surface energy is 93–98 % bond count (every cut bond 70 kcal/mol); stated on the Surface
+  energy page since 13 November.
+- Steering (`run_shape_steering.py`): percentages are relative to bond-count energies, not binding
+  energies; additive classes with fewer than 3 records are examples, not effects.
+- Gas access (`run_shape_adsorption.py`): open fraction at the minimum-energy termination, probes 1.65 /
+  1.82 Å, L = V/A. Geometric indicators only; whether an open point connects to the pore network is not
+  tested (Zeo++ not installable here).
+- Audit: `docs/audit/2026-11-13_phase_A_multidisciplinary_audit.md`. Part I is closed by team decision
+  and not reworked; one finding about it is recorded there for preparation only.
