@@ -231,51 +231,6 @@
       return mesh;
     }
 
-    // A soft round spot, bright in the middle and fading to nothing at the edge, used for the bond clouds.
-    let glowTex = null;
-    function glowTexture() {
-      if (glowTex !== null) return glowTex || null;
-      glowTex = false;
-      try {
-        const cv = document.createElement('canvas'); cv.width = cv.height = 64;
-        const g = cv.getContext && cv.getContext('2d');
-        if (!g || !THREE.CanvasTexture) return null;
-        const grd = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-        grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.35, 'rgba(255,255,255,0.55)');
-        grd.addColorStop(0.7, 'rgba(255,255,255,0.15)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
-        g.fillStyle = grd; g.fillRect(0, 0, 64, 64);
-        glowTex = new THREE.CanvasTexture(cv);
-      } catch (e) { glowTex = false; }
-      return glowTex || null;
-    }
-    // The cloud around every bond: soft glowing spots spread along the bond and a little around it,
-    // drawn as one point set (a single draw call however many bonds there are).
-    function makeBondCloud(list) {
-      const tex = glowTexture();
-      if (!tex || !THREE.Points || !THREE.BufferGeometry || !THREE.Float32BufferAttribute || !list.length) return null;
-      const pos = [], col = [];
-      let seed = 7;
-      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; };
-      list.forEach(c => {
-        const len = c.vec.length(), k = Math.max(5, Math.round(len * 5));
-        const r = [(c.ca >> 16 & 255) / 255, (c.ca >> 8 & 255) / 255, (c.ca & 255) / 255];
-        const q = [(c.cb >> 16 & 255) / 255, (c.cb >> 8 & 255) / 255, (c.cb & 255) / 255];
-        for (let i = 0; i < k; i++) {
-          const t = 0.12 + 0.76 * (i + 0.5) / k;
-          pos.push(c.pa.x + c.vec.x * t + rnd() * 0.3, c.pa.y + c.vec.y * t + rnd() * 0.3, c.pa.z + c.vec.z * t + rnd() * 0.3);
-          col.push(r[0] * (1 - t) + q[0] * t, r[1] * (1 - t) + q[1] * t, r[2] * (1 - t) + q[2] * t);
-        }
-      });
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-      geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-      const mat = new THREE.PointsMaterial({ size: 1.9, map: tex, vertexColors: true, transparent: true, opacity: 0.32,
-                                             depthWrite: false, sizeAttenuation: true, blending: THREE.AdditiveBlending });
-      const pts = new THREE.Points(geo, mat);
-      pts.renderOrder = 3;
-      return pts;
-    }
-
     function makeLabelEl(text, cls) {
       const el = document.createElement('div');
       el.className = cls;
@@ -467,7 +422,7 @@
       sphereGeo = new THREE.SphereGeometry(1, 32, 24);
       cylGeo = new THREE.CylinderGeometry(0.07, 0.07, 1, 8);
       // cloud bonds: a half-bond tube, wider at the atom (bottom) than at the middle (top), and a sheath
-      bandGeo = new THREE.CylinderGeometry(0.075, 0.13, 1, 20, 1, true);
+      bandGeo = new THREE.CylinderGeometry(0.105, 0.165, 1, 20, 1, true);
       blockGeoSphere = new THREE.SphereGeometry(1, 24, 18);
       blockGeoBox = new THREE.BoxGeometry(1, 1, 1);
       sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, bandGeo]);
@@ -620,7 +575,7 @@
           try {
             sphereGeo = new THREE.SphereGeometry(1, 32, 24);
             cylGeo = new THREE.CylinderGeometry(0.07, 0.07, 1, 8);
-            bandGeo = new THREE.CylinderGeometry(0.075, 0.13, 1, 20, 1, true);
+            bandGeo = new THREE.CylinderGeometry(0.105, 0.165, 1, 20, 1, true);
             blockGeoSphere = new THREE.SphereGeometry(1, 24, 18);
             blockGeoBox = new THREE.BoxGeometry(1, 1, 1);
             sharedGeos = new Set([sphereGeo, cylGeo, blockGeoSphere, blockGeoBox, bandGeo]);
@@ -715,7 +670,6 @@
 
         // ---- bonds ----
         if (opts.showBonds) {
-          const cloudList = [];
           DATA.bonds.forEach(bd => {
             const a = DATA.atoms[bd.a], b = DATA.atoms[bd.b];
             const pa = new THREE.Vector3(...a.pos), pb = new THREE.Vector3(...b.pos);
@@ -728,22 +682,14 @@
               // each half takes its own atom's colour (lightened), or the stage's highlight colour
               const ca = fixed !== null ? fixed : hexMix(a._color !== undefined ? a._color : elementColor(a.el), 0xffffff, 0.18);
               const cb = fixed !== null ? fixed : hexMix(b._color !== undefined ? b._color : elementColor(b.el), 0xffffff, 0.18);
-              parts = [makeBand(pa, vec.clone().multiplyScalar(0.5), ca, 1), makeBand(pb, vec.clone().multiplyScalar(-0.5), cb, 1)];
-              const glowA = fixed !== null ? fixed : hexMix(ca, 0xffffff, 0.25), glowB = fixed !== null ? fixed : hexMix(cb, 0xffffff, 0.25);
-              cloudList.push({ pa, vec, ca: glowA, cb: glowB });
+              parts = [makeBand(pa, vec.clone().multiplyScalar(0.5), ca, 1), makeBand(pb, vec.clone().multiplyScalar(-0.5), cb, 1),
+                       makeSheath(pa, vec, fixed !== null ? fixed : hexMix(ca, cb, 0.5))];
             } else {
               const color = fixed !== null ? fixed : 0x9a9a9a;
               parts = [makeStub(pa, vec.clone().multiplyScalar(0.5), color), makeStub(pb, vec.clone().multiplyScalar(-0.5), color)];
             }
             parts.forEach(m => { if (m) { m.userData = { bondInfo }; bondGroup.add(m); bondMeshes.push(m); } });
           });
-          if (BOND_STYLE === 'cloud') {
-            const cloud = makeBondCloud(cloudList);
-            if (cloud) bondGroup.add(cloud);                // not in bondMeshes: the cloud is not picked by the mouse
-            else cloudList.forEach(c => {                   // no point sprites available: fall back to the soft sheath
-              const m = makeSheath(c.pa, c.vec, hexMix(c.ca, c.cb, 0.5)); if (m) bondGroup.add(m);
-            });
-          }
         }
       }
 
