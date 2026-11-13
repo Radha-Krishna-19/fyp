@@ -29,7 +29,7 @@
         if (f === '100' || f === '110' || f === '111') g[f] = Math.min(p.uff.gamma[k], g[f] === undefined ? 1e9 : g[f]);
       });
       var S = M.shape({ '{100}': g['100'], '{110}': g['110'], '{111}': g['111'] }, 'm-3m');
-      return { faces: S.faces.map(function (f) { return { n: f.n, pts: f.poly, tag: f.tag }; }), how: 'Wulff shape from unrelaxed UFF surface energies' };
+      return { faces: S.faces.map(function (f) { return { n: f.n, pts: f.poly, tag: f.tag }; }), how: 'Wulff shape from unrelaxed bond-count surface energies with UFF van der Waals terms' };
     }
     if (A.cifs[mof] && GS) {
       var R = GS.run(A.cifs[mof]);
@@ -135,7 +135,7 @@
       var none = st.lab_evidence.none;
       set('adv-steer', '<div class="table-wrap"><table class="data-table" id="adv-steer-table"><thead><tr><td>Face and its pure shape</td><td>Energy cut to become the main face</td><td>Energy cut for the pure shape</td></tr></thead><tbody>' + rows +
         '</tbody></table></div><p class="sd">Additive types in the laboratory records of ' + mof + ' that gave each face' + (none ? ' (without an additive: ' + Object.keys(none.faces).map(function (k) { return none.faces[k] + ' &times; ' + fam(k); }).join(', ') + ')' : '') + ':</p><ul class="sd" id="adv-steer-evidence">' + evid.join('') + '</ul>' +
-        '<p class="sm">An additive that binds one face lowers its surface energy (Gibbs: d&gamma; = &minus;&Gamma; d&mu;). The percentages are relative to unrelaxed UFF surface energies without solvent: they rank how hard each change is, not binding energies.</p>');
+        '<p class="sm">An additive that binds one face lowers its surface energy (Gibbs: d&gamma; = &minus;&Gamma; d&mu;). The percentages are relative to unrelaxed bond-count surface energies without solvent: they rank how hard each change is, not binding energies.</p>');
     } else set('adv-steer', '<p class="sm">Steering needs the cubic surface-energy map; ' + (p.file ? 'this lattice is not cubic.' : 'there is no structure file.') + '</p>');
     // gas access
     if (ad) {

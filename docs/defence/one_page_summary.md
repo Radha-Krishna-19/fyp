@@ -1,6 +1,6 @@
 # MOF Graphs and Crystal Morphology: what we did, what we found, what we could not do
 
-23CSE498 Phase II, team G070, Amrita Vishwa Vidyapeetham, Coimbatore. Guide: Dr. T. Ramraj. 12 November 2026.
+23CSE498 Phase II, team G070, Amrita Vishwa Vidyapeetham, Coimbatore. Guide: Dr. T. Ramraj. 12 November 2026, updated 13 November.
 Repository: github.com/Radha-Krishna-19/fyp. Website: radha-krishna-19.github.io/fyp.
 
 **Part 1. Can a number from a MOF's connectivity replace hours of simulation?** We built the published
@@ -22,18 +22,27 @@ by three models (one only at its default bond cost); HKUST-1 only as the dominan
 octahedron; additive-free UiO-66 by none. All 6 laboratory series whose shapes stay on the map follow the
 predicted order (chance 2.7 × 10⁻⁴ if orders were random).
 
+**Ten MOFs (13 November).** The structure-only prediction was run on ten MOFs (eight with structure
+files) against every laboratory record. Without additives it gives the dominant face for 4 of 5 MOFs
+(UiO-66 wrong), as often as the most common laboratory answer for each MOF but with no laboratory data; a
+MOF never grown gets 5 of 32 records from the laboratory baseline. With additives no model is reliable.
+BFDH predicts the rods of Mg-MOF-74 (9 of 10 crystals elongated). For each cubic MOF the energy cut that
+would change the shape is computed, and for each shape the fraction of each face open to CO₂ and N₂ and
+the diffusion length V/A (geometric indicators, not adsorption). Shape advisor page.
+
 **Linking the parts.** The periodic Δα carries no shape information beyond size (ρ = +0.001). On a
 finite crystal particle, the mass–radius dimension profile identifies the shape (cube, plate, rod; and
 the compact shapes predicted for MOF-5) and changes monotonically along the morphology map.
 
 **How we know it is right.** Two independent implementations (Python and the browser) agree number by
-number; 14 test suites (3,115 checks) and Python tests pass from any folder; an audit on 12 November
-re-ran every script and recomputed every quoted number from its result file. Every mistake (26) is
-recorded with how it was found and fixed.
+number; 15 test suites (over 3,400 checks) and Python tests pass from any folder; audits on 12 and 13
+November re-ran every script and recomputed the quoted numbers from their result files. Every mistake
+(30 entries) is recorded with how it was found and fixed.
 
 **What we could not do.** Rank the models (only MOF-5 separates them); validate machine-learned surface
 energies against DFT; predict shapes set by growth kinetics (plates, rods, intergrown crystals); predict
-the size of an additive's effect; compute any adsorption property from shape. A second-person check of
+the size of an additive's effect; compute adsorption itself (uptake, selectivity) from shape. The
+surface energy we call UFF is 93–98 % a count of cut bonds. A second-person check of
 the laboratory records and of the proofs is prepared but not yet done.
 
 **What we need.** HPC time for a DFT check of six slabs; a laboratory contact for a small controlled
