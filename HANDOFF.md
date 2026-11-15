@@ -62,7 +62,7 @@ come from her own v4 run.
 | Cell stretch → plates and rods (box law 1/λ) | validated as mathematics |
 | Shape steering and gas-access indicators for ten MOFs | computed, scientifically unvalidated |
 | CHGNet slab energies with water caps (team notebook) + GNN surrogate (Isha) | relaxed energies questionable; water correction validated; GNN behind a linear bond baseline in leave-MOF-out CV |
-| Morphology spectrum (Isha, v4): every shape class a face set can reach, with the smallest γ-ratio change needed | new on 15 November; checked in `docs/v4_vs_corrected.md` |
+| Morphology spectrum (Isha, v4): every shape class a face set can reach, with the smallest γ-ratio change needed | 20/20 self-tests pass; on corrected energies UiO-66 octahedron 19.7 %, cube 80.4 %, HKUST-1 octahedron 37.2 % (`nb_2026-11-15_v4_isha/spectrum_corrected_liquid_water.json`) |
 | Part I Δα descriptor | withdrawn (tracks graph size) |
 
 Key corrected-run numbers (GPU, 15 November, `nb_2026-11-14/colab_run_2026-11-15/`): 98 relaxed slabs of

@@ -1,0 +1,546 @@
+{
+ "faces": [
+  "{100}",
+  "{110}",
+  "{111}"
+ ],
+ "face_keys": [
+  "100",
+  "110",
+  "111"
+ ],
+ "ref_face": "{100}",
+ "axes": [
+  "{110}",
+  "{111}"
+ ],
+ "crystal_system": "cubic",
+ "method": "grid",
+ "range": [
+  0.3,
+  2.5
+ ],
+ "step": 0.05,
+ "n_scan_points": 2025,
+ "n_failed": 0,
+ "failure_examples": [],
+ "favoured": {
+  "defined": true,
+  "gammas": {
+   "{100}": 0.435284275,
+   "{110}": 0.44000293999999995,
+   "{111}": 0.36105437
+  },
+  "ratios": {
+   "{110}": 1.010840421469395,
+   "{111}": 0.829467983882487
+  },
+  "ok": true,
+  "habit": "truncated_octahedron",
+  "class_id": "truncated_octahedron | {100}+{111}",
+  "area_fractions": {
+   "{100}": 0.18160172396546315,
+   "{110}": 0.010971697891792108,
+   "{111}": 0.8074265781427447
+  },
+  "reason": null
+ },
+ "bfdh": {
+  "gammas": {
+   "{100}": 0.09661649050259899,
+   "{110}": 0.13663628786533127,
+   "{111}": 0.08367220576668842
+  },
+  "ratios": {
+   "{110}": 1.4142129066637517,
+   "{111}": 0.8660240641263784
+  },
+  "ok": true,
+  "habit": "truncated_octahedron",
+  "class_id": "truncated_octahedron | {100}+{111}",
+  "area_fractions": {
+   "{100}": 0.22400762460739235,
+   "{111}": 0.7759923753926077
+  },
+  "ratio_change_from_favoured_pct": 39.9,
+  "lower_face": "{100}",
+  "raise_face": "{110}"
+ },
+ "classes": [
+  {
+   "class_id": "truncated_octahedron | {100}+{111}",
+   "label": "truncated_octahedron",
+   "faces_present": [
+    "{100}",
+    "{111}"
+   ],
+   "example_habit": "truncated_octahedron",
+   "n_scan_points": 262,
+   "area_min": {
+    "{100}": 0.055327481470940874,
+    "{111}": 0.4346925422545892
+   },
+   "area_max": {
+    "{100}": 0.5478322190059103,
+    "{111}": 0.9446725185290592
+   },
+   "contains_favoured": true,
+   "contains_bfdh": true,
+   "map_fraction": 0.12938271604938273,
+   "spread": 0.0,
+   "lower_face": null,
+   "raise_face": null,
+   "rank": 0,
+   "min_ratio_change_pct": 0.0,
+   "rep_ratios": {
+    "{110}": 1.0108,
+    "{111}": 0.8295
+   },
+   "rep_gammas": {
+    "{100}": 0.435284275,
+    "{110}": 0.44000293999999995,
+    "{111}": 0.36105437
+   }
+  },
+  {
+   "class_id": "mixed_dominant_{111} | {100}+{110}+{111}",
+   "label": "mixed_dominant_{111}",
+   "faces_present": [
+    "{100}",
+    "{110}",
+    "{111}"
+   ],
+   "example_habit": "mixed_dominant_{111}",
+   "n_scan_points": 17,
+   "area_min": {
+    "{100}": 0.08239536868789853,
+    "{110}": 0.06021647896758658,
+    "{111}": 0.3772210162066174
+   },
+   "area_max": {
+    "{100}": 0.4603515227644608,
+    "{110}": 0.4163661280976697,
+    "{111}": 0.8415724427992255
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.008395061728395062,
+   "spread": 0.017522339048574587,
+   "lower_face": "{110}",
+   "raise_face": "{111}",
+   "rank": 1,
+   "min_ratio_change_pct": 1.8,
+   "rep_ratios": {
+    "{110}": 1.0054,
+    "{111}": 0.8396
+   },
+   "rep_gammas": {
+    "{100}": 0.6582886951815424,
+    "{110}": 0.6618663054537912,
+    "{111}": 0.55270978726801
+   }
+  },
+  {
+   "class_id": "truncated_rhombic_dodecahedron | {100}+{110}+{111}",
+   "label": "truncated_rhombic_dodecahedron",
+   "faces_present": [
+    "{100}",
+    "{110}",
+    "{111}"
+   ],
+   "example_habit": "truncated_rhombic_dodecahedron",
+   "n_scan_points": 17,
+   "area_min": {
+    "{100}": 0.08376505808110256,
+    "{110}": 0.3798817799160603,
+    "{111}": 0.05888427440256411
+   },
+   "area_max": {
+    "{100}": 0.4335253693170591,
+    "{110}": 0.8573506675163334,
+    "{111}": 0.4478091995300876
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.008395061728395062,
+   "spread": 0.14290733466808747,
+   "lower_face": "{110}",
+   "raise_face": "{111}",
+   "rank": 2,
+   "min_ratio_change_pct": 15.4,
+   "rep_ratios": {
+    "{110}": 0.8919,
+    "{111}": 0.8443
+   },
+   "rep_gammas": {
+    "{100}": 0.7939916645740533,
+    "{110}": 0.7081231271684839,
+    "{111}": 0.6703315691990079
+   }
+  },
+  {
+   "class_id": "octahedron | {111}",
+   "label": "octahedron",
+   "faces_present": [
+    "{111}"
+   ],
+   "example_habit": "octahedron",
+   "n_scan_points": 312,
+   "area_min": {
+    "{111}": 0.9780145176037935
+   },
+   "area_max": {
+    "{111}": 1.0
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.15407407407407409,
+   "spread": 0.17976384040769372,
+   "lower_face": "{111}",
+   "raise_face": "{100}",
+   "rank": 3,
+   "min_ratio_change_pct": 19.7,
+   "rep_ratios": {
+    "{110}": 0.8507,
+    "{111}": 0.693
+   },
+   "rep_gammas": {
+    "{100}": 0.8037247728963908,
+    "{110}": 0.6837309588331767,
+    "{111}": 0.5569760723436968
+   }
+  },
+  {
+   "class_id": "mixed_dominant_{111} | {110}+{111}",
+   "label": "mixed_dominant_{111}",
+   "faces_present": [
+    "{110}",
+    "{111}"
+   ],
+   "example_habit": "mixed_dominant_{111}",
+   "n_scan_points": 11,
+   "area_min": {
+    "{110}": 0.09717320395843479,
+    "{111}": 0.5192327727639368
+   },
+   "area_max": {
+    "{110}": 0.4807672272360633,
+    "{111}": 0.9028267960415652
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.005432098765432099,
+   "spread": 0.20023537336246527,
+   "lower_face": "{110}",
+   "raise_face": "{100}",
+   "rank": 4,
+   "min_ratio_change_pct": 22.2,
+   "rep_ratios": {
+    "{110}": 0.8274,
+    "{111}": 0.6953
+   },
+   "rep_gammas": {
+    "{100}": 0.6848784232856227,
+    "{110}": 0.5666761917509825,
+    "{111}": 0.47617954357005543
+   }
+  },
+  {
+   "class_id": "mixed_dominant_{100} | {100}+{110}+{111}",
+   "label": "mixed_dominant_{100}",
+   "faces_present": [
+    "{100}",
+    "{110}",
+    "{111}"
+   ],
+   "example_habit": "mixed_dominant_{100}",
+   "n_scan_points": 32,
+   "area_min": {
+    "{100}": 0.40104089436425766,
+    "{110}": 0.050874739246773104,
+    "{111}": 0.052059055009898304
+   },
+   "area_max": {
+    "{100}": 0.848576340161202,
+    "{110}": 0.43279638906295975,
+    "{111}": 0.4136133163525911
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.01580246913580247,
+   "spread": 0.21109046386968344,
+   "lower_face": "{100}",
+   "raise_face": "{111}",
+   "rank": 5,
+   "min_ratio_change_pct": 23.5,
+   "rep_ratios": {
+    "{110}": 1.0768,
+    "{111}": 1.0244
+   },
+   "rep_gammas": {
+    "{100}": 0.8107734765207104,
+    "{110}": 0.8730397843731856,
+    "{111}": 0.830566832316847
+   }
+  },
+  {
+   "class_id": "truncated_rhombic_dodecahedron | {110}+{111}",
+   "label": "truncated_rhombic_dodecahedron",
+   "faces_present": [
+    "{110}",
+    "{111}"
+   ],
+   "example_habit": "truncated_rhombic_dodecahedron",
+   "n_scan_points": 24,
+   "area_min": {
+    "{110}": 0.5045310832035147,
+    "{111}": 0.05007979559733157
+   },
+   "area_max": {
+    "{110}": 0.9358289595507086,
+    "{111}": 0.4954689167964853
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.011851851851851851,
+   "spread": 0.22096149612195093,
+   "lower_face": "{110}",
+   "raise_face": "{100}",
+   "rank": 6,
+   "min_ratio_change_pct": 24.7,
+   "rep_ratios": {
+    "{110}": 0.8104,
+    "{111}": 0.8016
+   },
+   "rep_gammas": {
+    "{100}": 0.954950425731328,
+    "{110}": 0.7739289071135607,
+    "{111}": 0.765493382567437
+   }
+  },
+  {
+   "class_id": "cuboctahedron | {100}+{111}",
+   "label": "cuboctahedron",
+   "faces_present": [
+    "{100}",
+    "{111}"
+   ],
+   "example_habit": "cuboctahedron",
+   "n_scan_points": 25,
+   "area_min": {
+    "{100}": 0.6049653198672514,
+    "{111}": 0.3497799600324948
+   },
+   "area_max": {
+    "{100}": 0.6264307459479618,
+    "{111}": 0.3735692540520383
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.012345679012345678,
+   "spread": 0.30806682703662713,
+   "lower_face": "{100}",
+   "raise_face": "{111}",
+   "rank": 7,
+   "min_ratio_change_pct": 36.1,
+   "rep_ratios": {
+    "{110}": 1.2814,
+    "{111}": 1.1287
+   },
+   "rep_gammas": {
+    "{100}": 0.953593968176162,
+    "{110}": 1.221982257888061,
+    "{111}": 1.076353298356299
+   }
+  },
+  {
+   "class_id": "rhombic_dodecahedron | {110}",
+   "label": "rhombic_dodecahedron",
+   "faces_present": [
+    "{110}"
+   ],
+   "example_habit": "rhombic_dodecahedron",
+   "n_scan_points": 420,
+   "area_min": {
+    "{110}": 0.9491498613770476
+   },
+   "area_max": {
+    "{110}": 1.0
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.2074074074074074,
+   "spread": 0.315189977786955,
+   "lower_face": "{110}",
+   "raise_face": "{111}",
+   "rank": 8,
+   "min_ratio_change_pct": 37.1,
+   "rep_ratios": {
+    "{110}": 0.7554,
+    "{111}": 0.8495
+   },
+   "rep_gammas": {
+    "{100}": 0.980296295127516,
+    "{110}": 0.7404912250717429,
+    "{111}": 0.8327645166652883
+   }
+  },
+  {
+   "class_id": "truncated_rhombic_dodecahedron | {100}+{110}",
+   "label": "truncated_rhombic_dodecahedron",
+   "faces_present": [
+    "{100}",
+    "{110}"
+   ],
+   "example_habit": "truncated_rhombic_dodecahedron",
+   "n_scan_points": 171,
+   "area_min": {
+    "{100}": 0.082670995672343,
+    "{110}": 0.525971426483054
+   },
+   "area_max": {
+    "{100}": 0.42857728321167315,
+    "{110}": 0.917329004327657
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.08444444444444445,
+   "spread": 0.31762386676393795,
+   "lower_face": "{110}",
+   "raise_face": "{111}",
+   "rank": 9,
+   "min_ratio_change_pct": 37.4,
+   "rep_ratios": {
+    "{110}": 0.9102,
+    "{111}": 1.0262
+   },
+   "rep_gammas": {
+    "{100}": 0.9221723870622341,
+    "{110}": 0.8393983262840188,
+    "{111}": 0.946296903623007
+   }
+  },
+  {
+   "class_id": "truncated_cube | {100}+{111}",
+   "label": "truncated_cube",
+   "faces_present": [
+    "{100}",
+    "{111}"
+   ],
+   "example_habit": "truncated_cube",
+   "n_scan_points": 140,
+   "area_min": {
+    "{100}": 0.6803610429458443,
+    "{111}": 0.07255382935836707
+   },
+   "area_max": {
+    "{100}": 0.9274461706416329,
+    "{111}": 0.298771634424785
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.0691358024691358,
+   "spread": 0.34675250909350097,
+   "lower_face": "{100}",
+   "raise_face": "{111}",
+   "rank": 10,
+   "min_ratio_change_pct": 41.4,
+   "rep_ratios": {
+    "{110}": 1.3264,
+    "{111}": 1.1733
+   },
+   "rep_gammas": {
+    "{100}": 0.9505007246067826,
+    "{110}": 1.2607154702131538,
+    "{111}": 1.115179509921608
+   }
+  },
+  {
+   "class_id": "mixed_dominant_{100} | {100}+{110}",
+   "label": "mixed_dominant_{100}",
+   "faces_present": [
+    "{100}",
+    "{110}"
+   ],
+   "example_habit": "mixed_dominant_{100}",
+   "n_scan_points": 111,
+   "area_min": {
+    "{100}": 0.5077451261698619,
+    "{110}": 0.09509828246166284
+   },
+   "area_max": {
+    "{100}": 0.8743097485689089,
+    "{110}": 0.49225487383013805
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.054814814814814816,
+   "spread": 0.43891483195049563,
+   "lower_face": "{100}",
+   "raise_face": "{111}",
+   "rank": 11,
+   "min_ratio_change_pct": 55.1,
+   "rep_ratios": {
+    "{110}": 1.1354,
+    "{111}": 1.2865
+   },
+   "rep_gammas": {
+    "{100}": 0.921049503325556,
+    "{110}": 1.0457844905772762,
+    "{111}": 1.1849523589191373
+   }
+  },
+  {
+   "class_id": "cube | {100}",
+   "label": "cube",
+   "faces_present": [
+    "{100}"
+   ],
+   "example_habit": "cube",
+   "n_scan_points": 483,
+   "area_min": {
+    "{100}": 0.9333883003459891
+   },
+   "area_max": {
+    "{100}": 1.0
+   },
+   "contains_favoured": false,
+   "contains_bfdh": false,
+   "map_fraction": 0.23851851851851852,
+   "spread": 0.5898323971246658,
+   "lower_face": "{100}",
+   "raise_face": "{111}",
+   "rank": 12,
+   "min_ratio_change_pct": 80.4,
+   "rep_ratios": {
+    "{110}": 1.398,
+    "{111}": 1.4961
+   },
+   "rep_gammas": {
+    "{100}": 0.9963514944905888,
+    "{110}": 1.392897073272827,
+    "{111}": 1.490641333624372
+   }
+  }
+ ],
+ "unique_habits": [
+  "truncated_octahedron | {100}+{111}",
+  "mixed_dominant_{111} | {100}+{110}+{111}",
+  "truncated_rhombic_dodecahedron | {100}+{110}+{111}",
+  "octahedron | {111}",
+  "mixed_dominant_{111} | {110}+{111}",
+  "mixed_dominant_{100} | {100}+{110}+{111}",
+  "truncated_rhombic_dodecahedron | {110}+{111}",
+  "cuboctahedron | {100}+{111}",
+  "rhombic_dodecahedron | {110}",
+  "truncated_rhombic_dodecahedron | {100}+{110}",
+  "truncated_cube | {100}+{111}",
+  "mixed_dominant_{100} | {100}+{110}",
+  "cube | {100}"
+ ],
+ "seconds": 4.9,
+ "closed_shape": true,
+ "warnings": [],
+ "mof": "UiO-66",
+ "gamma_source": "corrected CHGNet, liquid water"
+}

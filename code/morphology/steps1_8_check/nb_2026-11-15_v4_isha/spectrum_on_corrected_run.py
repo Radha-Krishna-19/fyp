@@ -3,9 +3,10 @@ the corrected GPU run of 15 November, taken at liquid water, 298 K (delta mu = -
 
 gamma(mu) = gamma_relaxed - water_slope * delta_mu, lowest converged water-capped termination per family.
 Run from this folder:  python spectrum_on_corrected_run.py   (CPU, about 30 s; needs pymatgen, spglib, scipy,
-networkx, torch for the mofgnn import). Writes spectrum_corrected_liquid_water.json.
+networkx, torch for the mofgnn import). Writes spectrum_corrected_liquid_water.json and, for UiO-66 and HKUST-1,
+the full morphspec outputs in spectrum_out/ plus the website figures (website/figures/ml_energies/spectrum/).
 """
-import json, sys
+import json, shutil, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -28,12 +29,22 @@ for mof, cif in [("ZIF-8", "ZIF-8.cif"), ("HKUST-1", "Cu-BTC.cif"), ("UiO-66", "
     gb = {k: 1 / v["d_eff"] for k, v in tbl.items()}
     conv = MS._dummy_conv(info["conv"].lattice.matrix.tolist())
     res = MS.scan_morphology_map(conv, fams, info["rotations"], info["crystal_system"], gam, gb)
+    if mof in ("UiO-66", "HKUST-1"):
+        web = HERE.parents[3] / "website" / "figures" / "ml_energies" / "spectrum"
+        web.mkdir(parents=True, exist_ok=True)
+        MS.plot_map(res, web / f"map_{mof}.png", title=f"{mof}: morphology spectrum (corrected CHGNet energies, liquid water)")
+        _, files = MS.write_outputs(res, HERE / "spectrum_out", mof, conv, fams, info["rotations"],
+                                    "corrected CHGNet, liquid water", [], 4)
+        if mof == "UiO-66":
+            shutil.copy(files["favoured_png"], web / "UiO-66_favoured.png")
+            shutil.copy([p for p in files["class_pngs"] if "octahedron" in p.name and "truncated" not in p.name][0],
+                        web / "UiO-66_octahedron_class.png")
     fav = res["favoured"]
     out[mof] = dict(gamma_liquid_water={keys[k]: round(v, 4) for k, v in gam.items()}, favoured=fav.get("habit"),
                     areas=fav.get("area_fractions"),
                     bfdh=res["bfdh"] and {k: res["bfdh"].get(k) for k in ("habit", "ratio_change_from_favoured_pct", "lower_face", "raise_face")},
                     n_classes=len(res["classes"]),
                     closest=[{k: c[k] for k in ("rank", "class_id", "min_ratio_change_pct", "lower_face", "raise_face", "map_fraction")}
-                             for c in res["classes"][:8]])
+                             for c in res["classes"]])
 json.dump(MS._clean(out), open(HERE / "spectrum_corrected_liquid_water.json", "w"), indent=1)
 print(json.dumps(MS._clean({m: (o["favoured"], o["closest"][1]) for m, o in out.items()}), indent=1))

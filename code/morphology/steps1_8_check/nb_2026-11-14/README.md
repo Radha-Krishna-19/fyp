@@ -1,5 +1,7 @@
 # Team notebook of 14 November 2026: negative surface energies, checked and corrected
 
+Note (16 November): the team's final notebook is version 4 in `../nb_2026-11-15_v4_isha/`. It adds the morphology spectrum and does not contain the corrections below; see `docs/v4_vs_corrected.md`.
+
 `MOF_Wulff_steps1_8_plus_GNN.ipynb` is the team's CIF-to-Wulff notebook (steps 1–8, a MACE-MP-0 check, CP2K inputs, and a GNN surrogate for relaxed surface energies), with its outputs, as received on 15 November 2026 (SHA-256 `518c5d90…4c33c53a117f1856a5cf0f2ea05da74c4be9`). It reported negative relaxed surface energies for six slabs. This folder records what caused them, the fixes, and the corrected results. The explanation for a general reader is on the website page *ML energies and water* (`ml_energies.html`).
 
 ## Findings

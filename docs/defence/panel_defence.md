@@ -662,3 +662,24 @@ is still a truncated octahedron, which misses the cubes seen without additives.
 Follow-up: "Is one more MOF right a validation?" No. It is four MOFs, one energy model and no DFT. What it
 shows is that the change goes the right way, for a stated chemical reason.
 Rating: DEFENSIBLE.
+
+## 17. Added 16 November: the team notebook v4 and the morphology spectrum
+
+**Q57. What is the morphology spectrum?** (Owner: IS; checker: RK)
+For one MOF, the list of every shape class its face set can produce when the ratios of the surface energies change,
+with the smallest change in one energy ratio that reaches each class. Distance s = max_k ln(g_k/g₀k) − min_k ln(g_k/g₀k),
+reported as (eˢ − 1) × 100 %. Cubic MOFs: a 0.3–2.5 grid of γ110/γ100 and γ111/γ100 (2,025 Wulff shapes); four faces:
+Sobol samples. The nearest point of each class is refined by bisection and re-checked. 20 built-in checks pass.
+
+**Q58. For a cube, isn't the list of shapes fixed by symmetry?** (Owner: IS)
+Yes; the module says so. The structure-specific result is the distance from the computed energies to each class.
+
+**Q59. What does it say about your four MOFs?** (Owner: RK)
+On the corrected energies at liquid water: ZIF-8 and Mg-MOF-74 are already in their laboratory class; HKUST-1's
+octahedron is 37.2 % away; UiO-66's octahedron (grown with benzoic or acetic acid) is 19.7 % away, but its additive-free
+cube is 80.4 % away, so that miss is not a small error (`nb_2026-11-15_v4_isha/spectrum_corrected_liquid_water.json`).
+
+**Q60. Which notebook produced your numbers?** (Owner: RK)
+The final team notebook is v4. It keeps the 0 K water reference of 14 November; the surface energies on the slides come
+from the corrected run of 15 November. Isha's spectrum code was run unchanged on those energies and passes its checks
+with either set of modules (`docs/v4_vs_corrected.md`).

@@ -58,16 +58,25 @@ This has been done as a proposal, not as the final code:
 `nb_2026-11-15_v4_isha/spectrum_on_corrected_run.py` runs her `morphspec.py`, unchanged, on the corrected GPU run's
 energies at liquid water (result: `spectrum_corrected_liquid_water.json`).
 
-| MOF | Favoured shape (corrected energies) | Laboratory | Nearest other class | Change needed |
+| MOF | Favoured shape (corrected energies) | Laboratory | Distance to the laboratory shape | Nearest other class |
 |---|---|---|---|---|
-| ZIF-8 | rhombic dodecahedron, {110} 100 % | rhombic dodecahedron | truncated rhombic dodecahedron with {111} | 11.7 % (lower {111} relative to {110}) |
-| HKUST-1 | truncated octahedron, {111} 66 %, {100} 33 % | octahedron | octahedron | 37.2 % (lower {111} relative to {100}) |
-| UiO-66 | truncated octahedron, {111} 81 %, {100} 18 % | octahedron with modulators; poorly faceted without | octahedron | 19.7 % (lower {111} relative to {100}) |
-| Mg-MOF-74 | hexagonal rod, {2̅10} 77 %, {101} 23 % | rod along c | rod with {001} end faces | 29.2 % (lower {001} relative to {101}) |
+| ZIF-8 | rhombic dodecahedron, {110} 100 % | rhombic dodecahedron | 0 % (same class) | truncated rhombic dodecahedron with {111}, 11.7 % |
+| HKUST-1 | truncated octahedron, {111} 66 %, {100} 33 % | octahedron | octahedron 37.2 % (lower {111} relative to {100}) | same shape plus a small {110} facet, 3.0 % |
+| UiO-66 | truncated octahedron, {111} 81 %, {100} 18 % | without additives: cube (2 of 3 records); with benzoic or acetic acid: octahedron (4 records) | octahedron 19.7 % (lower {111}); cube 80.4 % (lower {100}) | same shape plus a small {110} facet, 1.8 % |
+| Mg-MOF-74 | hexagonal rod, {2̅10} 77 %, {101} 23 % | rod along c | 0 % (same class) | rod with {001} end faces, 29.2 % |
 
-This is the most useful new result of the night: for UiO-66, the shape the laboratory reports is reachable by a
-change of about 20 % in one energy ratio, which is well inside the error of an unvalidated machine-learned
-potential. So UiO-66 is a near miss, not a failure of the method.
+"Change" is the smallest change in the ratio of two face energies that reaches the class (Isha's definition). The
+nearest classes are often the same shape with one extra small facet; the distance to the laboratory shape is the
+number that matters.
+
+"Octahedron" here is the spectrum's class name, which follows the project's naming rule: {111} covers at least 95 % of
+the surface. For every {100} facet to vanish, γ{111}/γ{100} must fall to 1/√3 = 0.577; from the corrected values
+(0.829 for UiO-66, 0.951 for HKUST-1) that is a change of 43.7 % and 64.7 %.
+
+What this says about UiO-66, the one MOF the pipeline misses: the octahedra grown with benzoic or acetic acid are
+close (a 19.7 % change in γ{111}/γ{100}, 44 % for a perfect octahedron), but the cubes grown without additives are
+far (80.4 %). An additive that binds {111} would push the shape in the observed direction; the additive-free cube is
+not explained by these energies. This is stated as it is, not as a near miss.
 
 ## 5. Recommendation
 

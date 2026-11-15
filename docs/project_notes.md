@@ -467,3 +467,10 @@ Everything is in `code/morphology/steps1_8_check/nb_2026-11-14/` (README there);
   - K10: a cell checks ZIF-8 {110} at 15, 22 and 30 Å.
   - Tested end to end in quick mode (UiO-66, no errors). The numbers need one more GPU run.
 - **Final GPU run with all fixes (v2, 15 November, completed on a team laptop).** 98 slabs relaxed (85 converged); six are negative at Δμ = 0 and none at liquid water. Shapes are unchanged from v1: ZIF-8 {110}; HKUST-1 {111} 66 %; Mg-MOF-74 a rod ({2̅10} 77 %); UiO-66 {111} 81 %, still the miss even with the hydroxylated input. Thickness check: ZIF-8 {110} at 24 and 36 Å gives γ = 0.0565 and 0.0527 J/m² at liquid water. MACE re-scoring: rank correlation 0.94–1.00 over all slabs. GNN MAE 0.131 J/m², against 0.088 (broken-bond line) and 0.084 (rescaled static). Files: `colab_run_2026-11-15/` (v1 kept in `colab_run_2026-11-15_v1/`). The report and slides use these numbers.
+
+## 16 November 2026: team notebook v4 (morphology spectrum)
+
+- Final team code: `code/morphology/steps1_8_check/nb_2026-11-15_v4_isha/MOF_Wulff_steps1-8_plus_GNN_v4.ipynb` (kept exactly as received). It is the 14 Nov notebook plus `morphspec.py` (cells 14–14c) and `wulff(bounded=)`; it does not contain the 15 Nov corrections. The owner will decide with the team whether to merge (`docs/v4_vs_corrected.md`; proposal notebook in `merge_proposal/`).
+- `morphspec.run_self_tests()`: 20/20 with v4 modules; 22/22 with corrected modules + four CIFs.
+- Spectrum on corrected energies at liquid water: ZIF-8, Mg-MOF-74 distance 0; HKUST-1 octahedron 37.2 %; UiO-66 octahedron 19.7 %, cube 80.4 % (UiO-66 additive-free records: cube ×2, needle ×1).
+- New review deck in the college format: `docs/presentation/review_2026-11-16/` (`presentation.tex`/`.pdf`, `G070_Phase2_Review.pptx` from `make_pptx.js`, `presentation_notes.md`).

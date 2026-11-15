@@ -80,6 +80,46 @@
     "lower_face": "{111}",
     "raise_face": "{110}",
     "map_fraction": 0.15407407407407409
+   },
+   {
+    "rank": 8,
+    "class_id": "mixed_dominant_{100} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 54.1,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.01580246913580247
+   },
+   {
+    "rank": 9,
+    "class_id": "mixed_dominant_{100} | {100}+{110}",
+    "min_ratio_change_pct": 67.3,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.054814814814814816
+   },
+   {
+    "rank": 10,
+    "class_id": "cuboctahedron | {100}+{111}",
+    "min_ratio_change_pct": 89.7,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.012345679012345678
+   },
+   {
+    "rank": 11,
+    "class_id": "truncated_cube | {100}+{111}",
+    "min_ratio_change_pct": 92.5,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.0691358024691358
+   },
+   {
+    "rank": 12,
+    "class_id": "cube | {100}",
+    "min_ratio_change_pct": 102.5,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.23851851851851852
    }
   ]
  },
@@ -166,6 +206,46 @@
     "lower_face": "{110}",
     "raise_face": "{111}",
     "map_fraction": 0.08444444444444445
+   },
+   {
+    "rank": 8,
+    "class_id": "mixed_dominant_{100} | {100}+{110}",
+    "min_ratio_change_pct": 38.3,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.054814814814814816
+   },
+   {
+    "rank": 9,
+    "class_id": "mixed_dominant_{111} | {110}+{111}",
+    "min_ratio_change_pct": 40.7,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.005432098765432099
+   },
+   {
+    "rank": 10,
+    "class_id": "rhombic_dodecahedron | {110}",
+    "min_ratio_change_pct": 42.5,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.2074074074074074
+   },
+   {
+    "rank": 11,
+    "class_id": "truncated_rhombic_dodecahedron | {110}+{111}",
+    "min_ratio_change_pct": 42.8,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.011851851851851851
+   },
+   {
+    "rank": 12,
+    "class_id": "cube | {100}",
+    "min_ratio_change_pct": 57.3,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.23851851851851852
    }
   ]
  },
@@ -252,6 +332,46 @@
     "lower_face": "{100}",
     "raise_face": "{111}",
     "map_fraction": 0.012345679012345678
+   },
+   {
+    "rank": 8,
+    "class_id": "rhombic_dodecahedron | {110}",
+    "min_ratio_change_pct": 37.1,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.2074074074074074
+   },
+   {
+    "rank": 9,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}",
+    "min_ratio_change_pct": 37.4,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.08444444444444445
+   },
+   {
+    "rank": 10,
+    "class_id": "truncated_cube | {100}+{111}",
+    "min_ratio_change_pct": 41.4,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.0691358024691358
+   },
+   {
+    "rank": 11,
+    "class_id": "mixed_dominant_{100} | {100}+{110}",
+    "min_ratio_change_pct": 55.1,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.054814814814814816
+   },
+   {
+    "rank": 12,
+    "class_id": "cube | {100}",
+    "min_ratio_change_pct": 80.4,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.23851851851851852
    }
   ]
  },
@@ -338,6 +458,158 @@
     "lower_face": "{001}",
     "raise_face": "{101}",
     "map_fraction": 0.080078125
+   },
+   {
+    "rank": 8,
+    "class_id": "block/prism | {001}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 97.3,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.01171875
+   },
+   {
+    "rank": 9,
+    "class_id": "block/prism | {100}+{101}",
+    "min_ratio_change_pct": 99.0,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.06510416666666667
+   },
+   {
+    "rank": 10,
+    "class_id": "needle/rod | {001}+{100}+{101}",
+    "min_ratio_change_pct": 99.5,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0032552083333333335
+   },
+   {
+    "rank": 11,
+    "class_id": "needle/rod | {100}+{101}",
+    "min_ratio_change_pct": 99.5,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.043619791666666664
+   },
+   {
+    "rank": 12,
+    "class_id": "needle/rod | {001}+{100}",
+    "min_ratio_change_pct": 99.8,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.038411458333333336
+   },
+   {
+    "rank": 13,
+    "class_id": "block/prism | {001}+{100}+{2\u030510}",
+    "min_ratio_change_pct": 104.5,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.016276041666666668
+   },
+   {
+    "rank": 14,
+    "class_id": "block/prism | {001}+{100}",
+    "min_ratio_change_pct": 123.8,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.07421875
+   },
+   {
+    "rank": 15,
+    "class_id": "block/prism | {001}+{100}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 147.5,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0013020833333333333
+   },
+   {
+    "rank": 16,
+    "class_id": "block/prism | {001}+{100}+{101}",
+    "min_ratio_change_pct": 151.5,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.010416666666666666
+   },
+   {
+    "rank": 17,
+    "class_id": "plate | {100}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 184.5,
+    "lower_face": "{101}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.017578125
+   },
+   {
+    "rank": 18,
+    "class_id": "plate | {101}+{2\u030510}",
+    "min_ratio_change_pct": 186.8,
+    "lower_face": "{101}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0390625
+   },
+   {
+    "rank": 19,
+    "class_id": "plate | {100}+{101}",
+    "min_ratio_change_pct": 216.1,
+    "lower_face": "{101}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.138671875
+   },
+   {
+    "rank": 20,
+    "class_id": "plate | {001}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 310.7,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0026041666666666665
+   },
+   {
+    "rank": 21,
+    "class_id": "plate | {001}+{2\u030510}",
+    "min_ratio_change_pct": 336.2,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.013671875
+   },
+   {
+    "rank": 22,
+    "class_id": "plate | {001}+{100}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 338.0,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0026041666666666665
+   },
+   {
+    "rank": 23,
+    "class_id": "plate | {001}+{100}+{2\u030510}",
+    "min_ratio_change_pct": 365.1,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.013671875
+   },
+   {
+    "rank": 24,
+    "class_id": "needle/rod | {2\u030510}",
+    "min_ratio_change_pct": 396.8,
+    "lower_face": "{2\u030510}",
+    "raise_face": "{101}",
+    "map_fraction": 0.0006510416666666666
+   },
+   {
+    "rank": 25,
+    "class_id": "plate | {001}+{100}",
+    "min_ratio_change_pct": 403.5,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.078125
+   },
+   {
+    "rank": 26,
+    "class_id": "plate | {001}+{100}+{101}",
+    "min_ratio_change_pct": 412.9,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.01953125
    }
   ]
  }

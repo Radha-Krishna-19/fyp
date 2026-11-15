@@ -1,5 +1,7 @@
 # Project map: Phase 1 and Phase 2
 
+New session? Read [`HANDOFF.md`](HANDOFF.md) first.
+
 This page says where everything lives. The project has two phases of work and one piece that joins them.
 
 | | Phase 1: connectivity descriptor | Phase 2: crystal morphology |

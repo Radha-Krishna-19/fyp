@@ -69,6 +69,19 @@
 | **Corrected run (GPU, 15 November)** | At liquid-water conditions none of 98 relaxed slabs is negative (final run, all fixes); slab thickness 24 vs 36 Å changes γ by 0.004 J/m²; MACE-MP-0 ranks all slabs as CHGNet does (0.94–1.00). ZIF-8 (rhombic dodecahedron), HKUST-1 (mainly {111}) and now Mg-MOF-74 (a hexagonal rod along c) match the laboratory habit; UiO-66 (a truncated octahedron) does not. In leave-MOF-out cross-validation the GNN (MAE 0.131 J/m²) is behind a straight line on broken bonds per area (0.088) and rescaled static energies (0.084). Results: `nb_2026-11-14/colab_run_2026-11-15/`. |
 | **Where it stops working** | No DFT check. Relaxation lowers γ by 60–100 %. The result depends on the water condition. In cross-validation the GNN does not beat a linear fit on broken bonds per area. |
 
+## 6b. Morphology spectrum: every shape a MOF's faces can make, and how far each is (team notebook v4)
+
+| | |
+|---|---|
+| **Capability** | Given the surface energies of a MOF's faces (CHGNet, GNN or BFDH), the program lists every shape class the face set can produce when the energy ratios change, and the smallest change in an energy ratio that reaches each class, starting from the computed shape. |
+| **Input** | A CIF (and a γ source), or the cached results of the pipeline. No solvent, temperature or additive inputs. |
+| **Output** | Favoured shape; per class: name, faces present, area-fraction ranges, minimum ratio change (%), which face must become cheaper or dearer; ratio map and Wulff images. |
+| **How to run it** | Notebook v4, cells 14a–14c (`code/morphology/steps1_8_check/nb_2026-11-15_v4_isha/`); `spectrum_on_corrected_run.py` there applies it to the corrected energies. |
+| **How it was checked** | 20 built-in checks (analytic boundaries such as {111} vanishing at γ111/γ100 = √3, the cuboctahedron at 2/√3, bisection distance ≤ a direct 1-D walk, every reported γ vector re-checked): 20/20 pass with the v4 modules and 22/22 (with four real CIFs) with the corrected modules. |
+| **Result** | On the corrected energies at liquid water: ZIF-8 and Mg-MOF-74 sit in the laboratory class (distance 0); HKUST-1's octahedron is 37.2 % away; UiO-66's modulated octahedron is 19.7 % away but its additive-free cube is 80.4 % away (`spectrum_corrected_liquid_water.json`). MIL-125 (team run, 0 K water reference): block/prism of {101}, with a plate 3.5 % away. |
+| **Status** | COMPUTATIONALLY VALID (the scan and its distances); the distances inherit the unvalidated energies |
+| **What it is not** | A prediction of which additive gives which shape. It gives how much an energy ratio must change, not what changes it. |
+
 ## 7. Part I: the multifractal spectrum width Δα
 
 | | |

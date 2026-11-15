@@ -1,0 +1,57 @@
+{
+ "mof": "UiO-66",
+ "gamma_source": "corrected CHGNet, liquid water",
+ "faces": [
+  "{100}",
+  "{110}",
+  "{111}"
+ ],
+ "map_axes": [
+  "{110}",
+  "{111}"
+ ],
+ "ref_face": "{100}",
+ "favoured_defined": true,
+ "gamma_J_m2": {
+  "{100}": 0.435284275,
+  "{110}": 0.44000293999999995,
+  "{111}": 0.36105437
+ },
+ "map_coordinates": {
+  "{110}": 1.010840421469395,
+  "{111}": 0.829467983882487
+ },
+ "habit": "truncated_octahedron",
+ "class_id": "truncated_octahedron | {100}+{111}",
+ "area_fractions": {
+  "{100}": 0.18160172396546315,
+  "{110}": 0.010971697891792108,
+  "{111}": 0.8074265781427447
+ },
+ "reason": null,
+ "bfdh": {
+  "gammas": {
+   "{100}": 0.09661649050259899,
+   "{110}": 0.13663628786533127,
+   "{111}": 0.08367220576668842
+  },
+  "ratios": {
+   "{110}": 1.4142129066637517,
+   "{111}": 0.8660240641263784
+  },
+  "ok": true,
+  "habit": "truncated_octahedron",
+  "class_id": "truncated_octahedron | {100}+{111}",
+  "area_fractions": {
+   "{100}": 0.22400762460739235,
+   "{111}": 0.7759923753926077
+  },
+  "ratio_change_from_favoured_pct": 39.9,
+  "lower_face": "{100}",
+  "raise_face": "{110}"
+ },
+ "warnings": [],
+ "notes": [
+  "Structure only: shapes reachable by changing relative energies of the listed low-index faces. Solvent, temperature and additives are not modelled."
+ ]
+}

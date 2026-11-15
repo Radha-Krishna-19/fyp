@@ -256,6 +256,51 @@ P.append(f'''      <h2 class="section-title" id="mle-gnn" data-toc="What changes
 {gnn_html or gpu_cv_html or '      <p class="sd">The cross-validation itself has not been rerun with the corrected labels: on the two CPU cores available here it takes many hours (three seeds, five folds and pretraining on about 400 slabs). The corrected notebook (<code>MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb</code>) does it in the next Colab GPU session, and <code>gnn_rerun.py</code> repeats it on a CPU with both sets of labels side by side.</p>\n'}      <p class="sd">In the notebook's own run, a straight line fitted to broken bonds per area already beat the GNN (MAE 0.090 against 0.137 J/m&sup2;). That remains the baseline any learned model has to beat.</p>
 ''')
 
+# 5b morphology spectrum (team notebook v4)
+SPJ = json.load(open(os.path.join(ROOT, "code", "morphology", "steps1_8_check", "nb_2026-11-15_v4_isha",
+                                  "spectrum_corrected_liquid_water.json"), encoding="utf-8"))
+LAB = {"ZIF-8": ("rhombic dodecahedron", ["rhombic_dodecahedron"]),
+       "HKUST-1": ("octahedron", ["octahedron"]),
+       "UiO-66": ("cube without additives (2 of 3 records); octahedron with benzoic or acetic acid (4 records)", ["cube", "octahedron"]),
+       "Mg-MOF-74": ("hexagonal rod along c", None)}
+def _cls(c):
+    return esc(c["class_id"].replace("_", " "))
+sp_rows = []
+for m, o in SPJ.items():
+    areas = ", ".join(f"{esc(k)} {100 * v:.0f} %" for k, v in sorted(o["areas"].items(), key=lambda kv: -kv[1]) if v >= 0.05)
+    near = o["closest"][1]
+    labtxt, labcls = LAB[m]
+    if labcls is None:
+        dist = "0 % (favoured shape is a rod)"
+    else:
+        parts = []
+        for lc in labcls:
+            c = next(c for c in o["closest"] if c["class_id"].split(" |")[0] == lc)
+            parts.append(f'{esc(lc.replace("_", " "))}: {c["min_ratio_change_pct"]:.1f} %'
+                         + (f' (lower {esc(c["lower_face"])})' if c["lower_face"] else ""))
+        dist = "; ".join(parts)
+    sp_rows.append([("", esc(m)), ("", esc(o["favoured"].split(":")[0].replace("_", " ")) + f" ({areas})"), ("", esc(labtxt)),
+                    ("", dist), ("", _cls(near) + f' at {near["min_ratio_change_pct"]:.1f} %'), ("num", str(o["n_classes"]))])
+P.append(f'''      <h2 class="section-title" id="mle-spectrum" data-toc="Morphology spectrum"><span class="stitle-num">0</span>The Morphology Spectrum: How Far Is Each Other Shape?</h2>
+      <p class="sd">A Wulff shape depends only on the ratios of the surface energies, not on their scale. The team notebook of 15 November (version 4, <code>nb_2026-11-15_v4_isha/</code>) adds a module, <code>morphspec.py</code>, that scans these ratios and lists <b>every shape class the face set of a MOF can produce</b>. A class is the shape name together with the faces that cover at least 5 % of the surface. For each class it gives <b>the smallest change in an energy ratio that reaches it</b>, starting from the computed (favoured) energies.</p>
+      <p class="sd">The distance between two energy vectors <i>g</i> and <i>g</i><sub>0</sub> is defined as <i>s</i> = max<sub>k</sub> ln(<i>g</i><sub>k</sub>/<i>g</i><sub>0,k</sub>) &minus; min<sub>k</sub> ln(<i>g</i><sub>k</sub>/<i>g</i><sub>0,k</sub>), reported as (e<sup><i>s</i></sup> &minus; 1) &times; 100 %: the ratio of two face energies must change by at least this much. It does not depend on the overall scale or on which face is the reference. The scan is a full grid of ratios from 0.3 to 2.5 in steps of 0.05 for cubic MOFs (three faces, two ratios, 2,025 Wulff shapes) and a Sobol sample for MOFs with four faces; the closest point of each class is refined by bisection and its shape is computed again to confirm the class. The module has 20 built-in checks (for example: &gamma;{{111}}/&gamma;{{100}} = 2/&radic;3 gives a cuboctahedron, and {{111}} vanishes at exactly &radic;3); all pass when run here, and all pass again with the corrected modules.</p>
+      <p class="sd">Run on the corrected GPU energies at liquid water. The nearest classes are often a shape with one extra small facet (for example a few per cent of {{110}}); the column that matters is the distance to the shape the laboratory reports:</p>
+''' + table(["MOF", "Favoured shape (corrected energies)", "Laboratory", "Distance to the laboratory shape", "Nearest other class", "Classes"], sp_rows, "mle-spec") + '''
+      <div class="shape-grid">
+        <figure class="fig"><img src="figures/ml_energies/spectrum/map_UiO-66.png" alt="Map of gamma ratios for UiO-66 coloured by shape class, with the favoured point and the BFDH point"><figcaption>UiO-66: every point of the ratio map coloured by its shape class. Star: the corrected energies. Triangle: BFDH. The octahedron region (bottom) starts 19.7 % away; the cube region (top right) is 80.4 % away.</figcaption></figure>
+        <figure class="fig"><img src="figures/ml_energies/spectrum/UiO-66_octahedron_class.png" alt="The closest octahedron for UiO-66, 95 percent 111 faces"><figcaption>The nearest point of the octahedron class for UiO-66: {111} 95 %, reached by lowering &gamma;{111} relative to &gamma;{100} by 19.7 %. Removing every {100} facet needs &gamma;{111}/&gamma;{100} = 1/&radic;3, a 43.7 % change.</figcaption></figure>
+      </div>
+      <p class="sd"><b>What it says about UiO-66</b>, the MOF the pipeline misses. The octahedra grown with benzoic or acetic acid are close to the computed energies; the cubes grown without additives are far (80.4 %). An additive that binds {111} would move the shape in the observed direction, while the additive-free cube is not explained by these energies.</p>
+      <p class="sd">The same module was run by the team on MIL-125 (titanium, tetragonal; four faces, so a three-ratio Sobol scan), with the GNN energies and with CHGNet energies at the 0 K water reference of version 4:</p>
+      <div class="shape-grid">
+        <figure class="fig"><img src="figures/ml_energies/spectrum/MIL-125_fig_01.jpeg" alt="MIL-125 spectrum with GNN energies: shape classes sorted by distance"><figcaption>MIL-125 with GNN energies: 31 classes. Favoured: block/prism of {101} (58 %) and {110} (41 %), the same class as BFDH. Nearest: a plate at 8.1 %, a rod at 10.7 %.</figcaption></figure>
+        <figure class="fig"><img src="figures/ml_energies/spectrum/MIL-125_fig_11.jpeg" alt="MIL-125 spectrum with CHGNet relaxed energies"><figcaption>MIL-125 with CHGNet relaxed energies (0 K water reference): favoured block/prism, {101} 90 %. Nearest: a plate at 3.5 %, a {101}-only block at 5.1 %.</figcaption></figure>
+        <figure class="fig"><img src="figures/ml_energies/spectrum/MIL-125_fig_02.jpeg" alt="MIL-125 favoured shape from GNN energies"><figcaption>Favoured MIL-125 shape from the GNN.</figcaption></figure>
+        <figure class="fig"><img src="figures/ml_energies/spectrum/MIL-125_fig_21.jpeg" alt="MIL-125 favoured shape from CHGNet energies"><figcaption>Favoured MIL-125 shape from CHGNet.</figcaption></figure>
+      </div>
+      <p class="sd"><b>Limits.</b> For a cubic crystal the list of classes follows from symmetry alone; the structure-specific result is the distances. Only low-index faces are included, so {211} and similar faces can never appear. The MIL-125 CHGNet values use the 0 K water reference and have not been recomputed at liquid water, and no laboratory habit of MIL-125 has been checked against the project's records, so those figures show the method, not a validated prediction. How the version 4 notebook differs from the corrected one is set out in <code>docs/v4_vs_corrected.md</code>.</p>
+''')
+
 # 6 meaning, limits, possibilities
 P.append(f'''      <h2 class="section-title" id="mle-meaning" data-toc="What it means"><span class="stitle-num">0</span>What It Means, Its Limits and the Possibilities</h2>
       <h3 class="sub-head">What can be said</h3>
@@ -281,7 +326,7 @@ P.append(f'''      <h2 class="section-title" id="mle-meaning" data-toc="What it 
 
 # 7 sources
 P.append('''      <h2 class="section-title" id="mle-sources" data-toc="Sources and files"><span class="stitle-num">0</span>Sources and Files</h2>
-      <p class="sd">Everything is in <code>code/morphology/steps1_8_check/nb_2026-11-14/</code> (see its README):</p>
+      <p class="sd">The team notebook of 15 November (version 4, with the morphology spectrum) is in <code>code/morphology/steps1_8_check/nb_2026-11-15_v4_isha/</code>. The analysis and corrections on this page are in <code>code/morphology/steps1_8_check/nb_2026-11-14/</code> (see its README):</p>
       <ul class="sd">
         <li><code>MOF_Wulff_steps1_8_plus_GNN.ipynb</code>: the team notebook of 14 November, with its outputs, as received.</li>
         <li><code>MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb</code>: the same notebook with every correction on this page (and K1, K2, K4), outputs cleared, ready for a Colab GPU session.</li>
