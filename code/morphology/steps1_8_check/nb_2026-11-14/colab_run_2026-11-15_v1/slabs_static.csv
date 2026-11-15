@@ -1,0 +1,404 @@
+mof,family,face,hkl,termination,z0_A,cap,status,n_slab_atoms,n_atoms,n_water,area_A2,thickness_A,n_layers,broken_bonds,bonds_per_A2,cuts_infinite_unit,gamma_static_J_m2,water_slope_J_m2_per_eV,unrelaxed_cif
+MIL-140B-DFT,100,{100},"(1, 0, 0)",0,6.877,water,healed,192,204,4,106.25,27.44,2,"{""ML"": 8}",0.03765,False,0.6516,0.3016,/content/results/structures/MIL-140B-DFT/slab_100_water_f07eb11e96_unrelaxed.cif
+MIL-140B-DFT,010,{010},"(0, 1, 0)",0,-0.15,water,healed,384,420,12,221.74,30.64,2,"{""ML"": 24}",0.05412,False,1.2076,0.43353,/content/results/structures/MIL-140B-DFT/slab_010_water_84419f6caa_unrelaxed.cif
+MIL-140B-DFT,110,{110},"(1, 1, 0)",0,-0.15,water,healed,192,210,6,122.94,23.49,2,"{""ML"": 12}",0.0488,False,1.1538,0.39096,/content/results/structures/MIL-140B-DFT/slab_110_water_3ae4318f78_unrelaxed.cif
+MIL-140B-DFT,001,{001},"(0, 0, 1)",0,3.787,water,healed,192,210,6,189.61,17.65,2,"{""ML"": 8, ""MO"": 4}",0.03164,True,0.5065,0.2535,/content/results/structures/MIL-140B-DFT/slab_001_water_f1f3971a51_unrelaxed.cif
+MIL-140D-DFT,100,{100},"(1, 0, 0)",0,-0.15,water,healed,120,132,4,137.39,16.71,1,"{""ML"": 8}",0.02912,False,0.6461,0.23324,/content/results/structures/MIL-140D-DFT/slab_100_water_cdccc7e8f2_unrelaxed.cif
+MIL-140D-DFT,010,{010},"(0, 1, 0)",0,-0.15,water,healed,240,276,12,274.0,23.52,1,"{""ML"": 24}",0.0438,False,0.8887,0.35084,/content/results/structures/MIL-140D-DFT/slab_010_water_547669ce1d_unrelaxed.cif
+MIL-140D-DFT,110,{110},"(1, 1, 0)",0,-0.15,water,healed,120,138,6,153.26,15.8,1,"{""ML"": 12}",0.03915,False,0.7412,0.31363,/content/results/structures/MIL-140D-DFT/slab_110_water_fd42db6742_unrelaxed.cif
+MIL-140D-DFT,001,{001},"(0, 0, 1)",0,-0.15,water,healed (1 bound H2O),240,255,5,304.68,17.35,2,"{""ML"": 4, ""MO"": 6}",0.01641,True,0.3462,0.13146,/content/results/structures/MIL-140D-DFT/slab_001_water_acb1b8232e_unrelaxed.cif
+MIL-140D-DFT,001,{001},"(0, 0, 1)",1,0.832,water,healed (1 bound H2O),240,273,11,304.68,21.28,2,"{""ML"": 16, ""MO"": 6}",0.0361,True,0.6703,0.28922,/content/results/structures/MIL-140D-DFT/slab_001_water_74c3d50c4e_unrelaxed.cif
+NU-108-Zn,001,{001},"(0, 0, 1)",0,-0.088,water,healed,250,268,6,520.98,24.94,1,"{""ML"": 12}",0.01152,False,0.3143,0.09226,/content/results/structures/NU-108-Zn/slab_001_water_ee2f5d502e_unrelaxed.cif
+NU-108-Zn,100,{100},"(1, 0, 0)",0,4.958,water,healed,250,280,10,608.67,36.13,1,"{""ML"": 20}",0.01643,False,0.3916,0.13161,/content/results/structures/NU-108-Zn/slab_100_water_7779f02923_unrelaxed.cif
+NU-108-Zn,010,{010},"(0, 1, 0)",0,-0.132,water,healed,250,280,10,608.67,36.13,1,"{""ML"": 20}",0.01643,False,0.3598,0.13161,/content/results/structures/NU-108-Zn/slab_010_water_2fb70684b5_unrelaxed.cif
+NU-108-Zn,111,{111},"(1, 1, 1)",0,-0.132,water,healed,250,280,10,608.67,36.13,1,"{""ML"": 20}",0.01643,False,0.3612,0.13161,/content/results/structures/NU-108-Zn/slab_111_water_1d0284726a_unrelaxed.cif
+IRMOF-10,100,{100},"(1, 0, 0)",0,-0.15,water,healed,166,178,4,587.58,15.56,1,"{""ML"": 8}",0.00681,False,0.1753,0.05453,/content/results/structures/IRMOF-10/slab_100_water_de83c62fe8_unrelaxed.cif
+IRMOF-10,110,{110},"(1, 1, 0)",0,-0.15,water,healed,664,712,16,1661.94,24.72,1,"{""ML"": 32}",0.00963,False,0.1976,0.07712,/content/results/structures/IRMOF-10/slab_110_water_5b309b9e2f_unrelaxed.cif
+IRMOF-10,111,{111},"(1, 1, 1)",1,9.746,water,healed,166,184,6,508.86,18.69,1,"{""ML"": 12}",0.01179,False,0.2489,0.09446,/content/results/structures/IRMOF-10/slab_111_water_8ff77688da_unrelaxed.cif
+IRMOF-10,111,{111},"(1, 1, 1)",0,-0.15,water,healed,166,184,6,508.86,20.92,1,"{""ML"": 12}",0.01179,False,0.2548,0.09446,/content/results/structures/IRMOF-10/slab_111_water_beeec5e9f7_unrelaxed.cif
+MIL-88A-dry,001,{001},"(0, 0, 1)",0,3.557,water,healed,148,166,6,82.83,28.31,2,"{""ML"": 12}",0.07244,False,1.4213,0.58029,/content/results/structures/MIL-88A-dry/slab_001_water_ed2bf2390d_unrelaxed.cif
+MIL-88A-dry,100,{100},"(1, 0, 0)",0,2.673,water,healed,148,160,4,145.0,17.56,2,"{""ML"": 8}",0.02759,False,0.5878,0.22099,/content/results/structures/MIL-88A-dry/slab_100_water_3bb491496e_unrelaxed.cif
+MIL-88A-dry,100,{100},"(1, 0, 0)",1,4.08,water,healed,148,172,8,145.0,21.94,2,"{""ML"": 16}",0.05517,False,1.123,0.44198,/content/results/structures/MIL-88A-dry/slab_100_water_9df3fdf565_unrelaxed.cif
+MIL-88A-dry,101,{101},"(1, 0, 1)",0,3.523,water,healed,222,240,6,166.99,24.75,3,"{""ML"": 12}",0.03593,False,0.8327,0.28783,/content/results/structures/MIL-88A-dry/slab_101_water_9e1b952a61_unrelaxed.cif
+MIL-88A-dry,101,{101},"(1, 0, 1)",1,-0.15,water,healed,222,252,10,166.99,24.91,3,"{""ML"": 20}",0.05988,False,1.0065,0.47972,/content/results/structures/MIL-88A-dry/slab_101_water_be4d8847cd_unrelaxed.cif
+MIL-88A-dry,2m10,{2̅10},"(2, -1, 0)",0,-0.15,water,healed,296,320,8,251.15,21.87,2,"{""ML"": 16}",0.03185,False,0.7616,0.25518,/content/results/structures/MIL-88A-dry/slab_2m10_water_6b8ca06b4a_unrelaxed.cif
+IRMOF-14,100,{100},"(1, 0, 0)",0,-0.15,water,healed,190,202,4,591.03,16.35,1,"{""ML"": 8}",0.00677,False,0.1466,0.05422,/content/results/structures/IRMOF-14/slab_100_water_0e1a389ad3_unrelaxed.cif
+IRMOF-14,110,{110},"(1, 1, 0)",0,-0.15,water,healed,760,808,16,1671.68,25.82,1,"{""ML"": 32}",0.00957,False,0.1968,0.07667,/content/results/structures/IRMOF-14/slab_110_water_48d7789bd3_unrelaxed.cif
+IRMOF-14,111,{111},"(1, 1, 1)",1,9.775,water,healed,190,208,6,511.84,20.93,1,"{""ML"": 12}",0.01172,False,0.2544,0.09391,/content/results/structures/IRMOF-14/slab_111_water_ba772d6ab0_unrelaxed.cif
+IRMOF-14,111,{111},"(1, 1, 1)",0,4.812,water,healed,190,208,6,511.84,18.74,1,"{""ML"": 12}",0.01172,False,0.2674,0.09391,/content/results/structures/IRMOF-14/slab_111_water_be7d808c46_unrelaxed.cif
+MIL-88C-open,001,{001},"(0, 0, 1)",0,-0.15,water,healed,146,164,6,304.56,17.63,1,"{""ML"": 12}",0.0197,False,0.608,0.15782,/content/results/structures/MIL-88C-open/slab_001_water_a08bb3827e_unrelaxed.cif
+MIL-88C-open,100,{100},"(1, 0, 0)",0,-0.15,water,healed,146,158,4,351.48,15.99,1,"{""ML"": 8}",0.01138,False,0.2981,0.09117,/content/results/structures/MIL-88C-open/slab_100_water_94fc5eb6ba_unrelaxed.cif
+MIL-88C-open,100,{100},"(1, 0, 0)",1,7.97,water,healed,146,170,8,351.48,19.99,1,"{""ML"": 16}",0.02276,False,0.551,0.18234,/content/results/structures/MIL-88C-open/slab_100_water_3f88217ef5_unrelaxed.cif
+MIL-88C-open,101,{101},"(1, 0, 1)",0,5.987,water,healed,292,310,6,465.07,26.98,2,"{""ML"": 12}",0.0129,False,0.2821,0.10335,/content/results/structures/MIL-88C-open/slab_101_water_3a6ab022c7_unrelaxed.cif
+MIL-88C-open,101,{101},"(1, 0, 1)",1,-0.15,water,healed,292,322,10,465.07,27.72,2,"{""ML"": 20}",0.0215,False,0.5278,0.17225,/content/results/structures/MIL-88C-open/slab_101_water_2a7d5cee8d_unrelaxed.cif
+MIL-88C-open,2m10,{2̅10},"(2, -1, 0)",0,4.538,water,healed,292,316,8,608.77,20.77,1,"{""ML"": 16}",0.01314,False,0.3302,0.10527,/content/results/structures/MIL-88C-open/slab_2m10_water_45273e9945_unrelaxed.cif
+IRMOF-2,100,{100},"(1, 0, 0)",0,-0.077,water,healed,400,424,8,664.19,24.61,1,"{""ML"": 16}",0.01204,False,0.3518,0.09649,/content/results/structures/IRMOF-2/slab_100_water_294bbc2a1a_unrelaxed.cif
+IRMOF-2,010,{010},"(0, 1, 0)",0,-0.077,water,healed,400,424,8,664.19,23.9,1,"{""ML"": 16}",0.01204,False,0.2798,0.09649,/content/results/structures/IRMOF-2/slab_010_water_5fee97d67e_unrelaxed.cif
+IRMOF-2,001,{001},"(0, 0, 1)",0,-0.077,water,healed,400,424,8,664.19,24.61,1,"{""ML"": 16}",0.01204,False,0.2582,0.09649,/content/results/structures/IRMOF-2/slab_001_water_50e0318e69_unrelaxed.cif
+IRMOF-2,110,{110},"(1, 1, 0)",0,-0.15,water,healed,400,448,16,939.3,18.42,1,"{""ML"": 32}",0.01703,False,0.3774,0.13646,/content/results/structures/IRMOF-2/slab_110_water_25ae4bd655_unrelaxed.cif
+IRMOF-4,100,{100},"(1, 0, 0)",0,-0.15,water,healed,424,448,8,668.19,25.21,1,"{""ML"": 16}",0.01197,False,0.3511,0.09591,/content/results/structures/IRMOF-4/slab_100_water_19255ae3b6_unrelaxed.cif
+IRMOF-4,110,{110},"(1, 1, 0)",0,-0.15,water,healed,424,472,16,944.96,18.57,1,"{""ML"": 32}",0.01693,False,0.3838,0.13564,/content/results/structures/IRMOF-4/slab_110_water_9d2cb917b4_unrelaxed.cif
+IRMOF-4,111,{111},"(1, 1, 1)",0,-0.15,water,healed,848,920,24,1157.33,28.76,2,"{""ML"": 48}",0.02074,False,0.4917,0.16612,/content/results/structures/IRMOF-4/slab_111_water_10bc7faa64_unrelaxed.cif
+MIL-140C-DFT,100,{100},"(1, 0, 0)",0,-0.15,water,healed,112,124,4,123.86,14.82,1,"{""ML"": 8}",0.03229,False,0.7311,0.25871,/content/results/structures/MIL-140C-DFT/slab_100_water_ab3fa8a50d_unrelaxed.cif
+MIL-140C-DFT,010,{010},"(0, 1, 0)",0,-0.15,water,healed,224,260,12,252.04,20.67,1,"{""ML"": 24}",0.04761,False,1.0965,0.38142,/content/results/structures/MIL-140C-DFT/slab_010_water_2d6a83fde7_unrelaxed.cif
+MIL-140C-DFT,110,{110},"(1, 1, 0)",1,6.855,water,healed,224,242,6,140.41,27.37,2,"{""ML"": 12}",0.04273,False,1.0213,0.34231,/content/results/structures/MIL-140C-DFT/slab_110_water_afe6ee3700_unrelaxed.cif
+MIL-140C-DFT,110,{110},"(1, 1, 0)",0,-0.028,water,healed,224,242,6,140.41,38.77,2,"{""ML"": 12}",0.04273,False,1.0629,0.34231,/content/results/structures/MIL-140C-DFT/slab_110_water_ef40df07fb_unrelaxed.cif
+MIL-140C-DFT,10m1,{10̅1},"(1, 0, -1)",0,0.838,water,healed (2 bound H2O),448,490,14,497.85,19.63,2,"{""ML"": 16, ""MO"": 12}",0.02812,True,0.4343,0.22527,/content/results/structures/MIL-140C-DFT/slab_10m1_water_a8ff03fce8_unrelaxed.cif
+MIL-140C-DFT,10m1,{10̅1},"(1, 0, -1)",1,1.826,water,healed (2 bound H2O),448,514,22,497.85,21.17,2,"{""ML"": 32, ""MO"": 12}",0.04419,True,0.7854,0.354,/content/results/structures/MIL-140C-DFT/slab_10m1_water_f90784fa8c_unrelaxed.cif
+MOF-205,100,{100},"(1, 0, 0)",0,-0.15,water,healed,546,576,10,921.3,33.37,1,"{""ML"": 20}",0.01085,False,0.2526,0.08695,/content/results/structures/MOF-205/slab_100_water_3104e01d0b_unrelaxed.cif
+MOF-205,010,{010},"(0, 1, 0)",0,-0.15,water,healed,546,576,10,921.3,33.37,1,"{""ML"": 20}",0.01085,False,0.243,0.08695,/content/results/structures/MOF-205/slab_010_water_c298b1e924_unrelaxed.cif
+MOF-205,001,{001},"(0, 0, 1)",0,-0.15,water,healed,546,576,10,921.3,33.37,1,"{""ML"": 20}",0.01085,False,0.2271,0.08695,/content/results/structures/MOF-205/slab_001_water_937cfc3f3a_unrelaxed.cif
+MOF-205,110,{110},"(1, 1, 0)",0,-0.15,water,healed,546,594,16,1302.92,25.76,1,"{""ML"": 32}",0.01228,False,0.2904,0.09837,/content/results/structures/MOF-205/slab_110_water_3633fcf88d_unrelaxed.cif
+IRMOF-8,100,{100},"(1, 0, 0)",0,-0.15,water,healed,568,592,8,905.5,29.02,1,"{""ML"": 16}",0.00883,False,0.2062,0.07078,/content/results/structures/IRMOF-8/slab_100_water_50971e9e4e_unrelaxed.cif
+IRMOF-8,010,{010},"(0, 1, 0)",0,-0.15,water,healed,568,592,8,905.5,29.02,1,"{""ML"": 16}",0.00883,False,0.2043,0.07078,/content/results/structures/IRMOF-8/slab_010_water_9fe8871e0f_unrelaxed.cif
+IRMOF-8,001,{001},"(0, 0, 1)",0,-0.142,water,healed,568,592,8,905.5,29.02,1,"{""ML"": 16}",0.00883,False,0.1925,0.07078,/content/results/structures/IRMOF-8/slab_001_water_7330e2fef9_unrelaxed.cif
+IRMOF-8,110,{110},"(1, 1, 0)",0,-0.15,water,healed,568,616,16,1280.57,22.38,1,"{""ML"": 32}",0.01249,False,0.274,0.10009,/content/results/structures/IRMOF-8/slab_110_water_6ab3569e77_unrelaxed.cif
+MIL-88D-open,001,{001},"(0, 0, 1)",0,5.665,water,healed,170,188,6,333.49,21.89,1,"{""ML"": 12}",0.01799,False,0.317,0.14413,/content/results/structures/MIL-88D-open/slab_001_water_d7031317d9_unrelaxed.cif
+MIL-88D-open,100,{100},"(1, 0, 0)",0,-0.15,water,healed,170,182,4,456.47,17.0,1,"{""ML"": 8}",0.00876,False,0.2115,0.0702,/content/results/structures/MIL-88D-open/slab_100_water_e47871a37f_unrelaxed.cif
+MIL-88D-open,100,{100},"(1, 0, 0)",1,8.18,water,healed,170,194,8,456.47,21.34,1,"{""ML"": 16}",0.01753,False,0.3626,0.1404,/content/results/structures/MIL-88D-open/slab_100_water_6f5dd1f58b_unrelaxed.cif
+MIL-88D-open,100,{100},"(1, 0, 0)",2,8.514,water,healed,170,194,8,456.47,22.17,1,"{""ML"": 16}",0.01753,False,0.3976,0.1404,/content/results/structures/MIL-88D-open/slab_100_water_0b607e29cf_unrelaxed.cif
+MIL-88D-open,101,{101},"(1, 0, 1)",0,6.576,water,healed,340,358,6,565.31,30.37,2,"{""ML"": 12}",0.01061,False,0.181,0.08502,/content/results/structures/MIL-88D-open/slab_101_water_23048e3719_unrelaxed.cif
+MIL-88D-open,101,{101},"(1, 0, 1)",2,0.994,water,healed,340,370,10,565.31,30.55,2,"{""ML"": 20}",0.01769,False,0.3215,0.14171,/content/results/structures/MIL-88D-open/slab_101_water_26fceb0b25_unrelaxed.cif
+MIL-88D-open,101,{101},"(1, 0, 1)",1,-0.015,water,healed,340,370,10,565.31,32.58,2,"{""ML"": 20}",0.01769,False,0.3628,0.14171,/content/results/structures/MIL-88D-open/slab_101_water_c1caa09061_unrelaxed.cif
+MIL-88D-open,2m10,{2̅10},"(2, -1, 0)",0,4.852,water,healed,340,364,8,790.63,21.49,1,"{""ML"": 16}",0.01012,False,0.2367,0.08106,/content/results/structures/MIL-88D-open/slab_2m10_water_9e1f7c386b_unrelaxed.cif
+MIL-88D-open,2m10,{2̅10},"(2, -1, 0)",1,-0.15,water,healed,340,388,16,790.63,24.92,1,"{""ML"": 32}",0.02024,False,0.4077,0.16212,/content/results/structures/MIL-88D-open/slab_2m10_water_c25b1c6c16_unrelaxed.cif
+Zn-DOBDC,100,{100},"(1, 0, 0)",0,-0.15,water,healed (4 bound H2O),162,192,10,177.29,23.04,3,"{""ML"": 20}",0.05641,False,0.9157,0.45186,/content/results/structures/Zn-DOBDC/slab_100_water_fe4c3d40b3_unrelaxed.cif
+Zn-DOBDC,2m10,{2̅10},"(2, -1, 0)",0,4.172,water,healed (2 bound H2O),108,123,5,102.36,25.99,2,"{""ML"": 10}",0.04885,False,0.6574,0.39133,/content/results/structures/Zn-DOBDC/slab_2m10_water_0023ca311d_unrelaxed.cif
+Zn-DOBDC,2m10,{2̅10},"(2, -1, 0)",1,6.333,water,healed (4 bound H2O),108,138,10,102.36,26.89,2,"{""ML"": 20}",0.0977,False,3.5461,0.78265,/content/results/structures/Zn-DOBDC/slab_2m10_water_4dad600269_unrelaxed.cif
+Zn-DOBDC,001,{001},"(0, 0, 1)",0,-0.15,water,healed (4 bound H2O),486,582,32,582.38,24.1,3,"{""ML"": 64}",0.05495,True,0.9231,0.44017,/content/results/structures/Zn-DOBDC/slab_001_water_1cbe78836c_unrelaxed.cif
+Zn-DOBDC,101,{101},"(1, 0, 1)",0,-0.15,water,healed (2 bound H2O),162,198,12,202.92,22.37,3,"{""ML"": 24}",0.05914,True,0.9991,0.47373,/content/results/structures/Zn-DOBDC/slab_101_water_3b9cd10e71_unrelaxed.cif
+ZnMOF-74,100,{100},"(1, 0, 0)",0,-0.15,water,healed (4 bound H2O),108,138,10,181.63,15.42,2,"{""ML"": 20}",0.05506,False,0.806,0.44106,/content/results/structures/ZnMOF-74/slab_100_water_e7faa0ac56_unrelaxed.cif
+ZnMOF-74,2m10,{2̅10},"(2, -1, 0)",0,4.215,water,healed (2 bound H2O),108,123,5,104.86,26.14,2,"{""ML"": 10}",0.04768,False,0.7708,0.38197,/content/results/structures/ZnMOF-74/slab_2m10_water_b7345028ed_unrelaxed.cif
+ZnMOF-74,2m10,{2̅10},"(2, -1, 0)",1,6.397,water,healed (4 bound H2O),108,138,10,104.86,26.75,2,"{""ML"": 20}",0.09536,False,1.5517,0.76394,/content/results/structures/ZnMOF-74/slab_2m10_water_bbb52c128c_unrelaxed.cif
+ZnMOF-74,001,{001},"(0, 0, 1)",1,1.201,water,healed (6 bound H2O),486,585,33,594.02,26.0,3,"{""ML"": 66}",0.05555,True,0.8536,0.44503,/content/results/structures/ZnMOF-74/slab_001_water_2245599554_unrelaxed.cif
+ZnMOF-74,001,{001},"(0, 0, 1)",0,0.811,water,healed (4 bound H2O),486,582,32,594.02,24.65,3,"{""ML"": 64}",0.05387,True,0.9604,0.43155,/content/results/structures/ZnMOF-74/slab_001_water_1e9f2440f8_unrelaxed.cif
+ZnMOF-74,101,{101},"(1, 0, 1)",0,3.166,water,healed (1 bound H2O),162,189,9,207.06,22.89,3,"{""ML"": 18}",0.04347,True,0.7493,0.34821,/content/results/structures/ZnMOF-74/slab_101_water_4f45502b81_unrelaxed.cif
+ZnMOF-74,101,{101},"(1, 0, 1)",1,-0.15,water,healed (3 bound H2O),162,210,16,207.06,24.88,3,"{""ML"": 32}",0.07727,True,1.3559,0.61903,/content/results/structures/ZnMOF-74/slab_101_water_787cf10758_unrelaxed.cif
+MIL-88B-dry,001,{001},"(0, 0, 1)",0,4.625,water,healed,110,128,6,79.81,17.72,1,"{""ML"": 12}",0.07518,False,1.1128,0.60223,/content/results/structures/MIL-88B-dry/slab_001_water_89155467b6_unrelaxed.cif
+MIL-88B-dry,100,{100},"(1, 0, 0)",0,-0.15,water,healed,220,232,4,183.36,17.92,2,"{""ML"": 8}",0.02182,False,0.4957,0.17476,/content/results/structures/MIL-88B-dry/slab_100_water_cb5319c07b_unrelaxed.cif
+MIL-88B-dry,100,{100},"(1, 0, 0)",1,3.301,water,healed,220,244,8,183.36,21.63,2,"{""ML"": 16}",0.04363,False,0.9363,0.34952,/content/results/structures/MIL-88B-dry/slab_100_water_dc1d39149d_unrelaxed.cif
+MIL-88B-dry,101,{101},"(1, 0, 1)",0,3.014,water,healed,220,238,6,199.98,18.71,2,"{""ML"": 12}",0.03,False,0.5567,0.24035,/content/results/structures/MIL-88B-dry/slab_101_water_0b966fd902_unrelaxed.cif
+MIL-88B-dry,101,{101},"(1, 0, 1)",1,3.661,water,healed,220,238,6,199.98,19.48,2,"{""ML"": 12}",0.03,False,0.6111,0.24035,/content/results/structures/MIL-88B-dry/slab_101_water_bbec0d1b13_unrelaxed.cif
+MIL-88B-dry,101,{101},"(1, 0, 1)",2,0.485,water,healed,220,250,10,199.98,19.33,2,"{""ML"": 20}",0.05001,False,1.0115,0.40059,/content/results/structures/MIL-88B-dry/slab_101_water_0ace9688af_unrelaxed.cif
+MIL-88B-dry,2m10,{2̅10},"(2, -1, 0)",0,2.658,water,healed,440,464,8,317.59,20.76,2,"{""ML"": 16}",0.02519,False,0.5741,0.20179,/content/results/structures/MIL-88B-dry/slab_2m10_water_fb9c47c45c_unrelaxed.cif
+MIL-88B-dry,2m10,{2̅10},"(2, -1, 0)",1,3.835,water,healed,440,464,8,317.59,22.48,2,"{""ML"": 16}",0.02519,False,0.5925,0.20179,/content/results/structures/MIL-88B-dry/slab_2m10_water_b73a3e9278_unrelaxed.cif
+MIL-88B-dry,2m10,{2̅10},"(2, -1, 0)",2,-0.15,water,healed,440,488,16,317.59,24.31,2,"{""ML"": 32}",0.05038,False,0.997,0.40359,/content/results/structures/MIL-88B-dry/slab_2m10_water_412b341d3b_unrelaxed.cif
+IRMOF-16,100,{100},"(1, 0, 0)",0,-0.15,water,healed,904,928,8,1847.33,42.05,1,"{""ML"": 16}",0.00433,False,0.0983,0.03469,/content/results/structures/IRMOF-16/slab_100_water_177e78a2d5_unrelaxed.cif
+IRMOF-16,110,{110},"(1, 1, 0)",0,-0.15,water,healed,904,952,16,2612.52,30.85,1,"{""ML"": 32}",0.00612,False,0.1284,0.04906,/content/results/structures/IRMOF-16/slab_110_water_d87d7b69b4_unrelaxed.cif
+IRMOF-16,111,{111},"(1, 1, 1)",0,-0.15,water,healed,904,976,24,3199.67,25.89,1,"{""ML"": 48}",0.0075,False,0.1601,0.06009,/content/results/structures/IRMOF-16/slab_111_water_9f740a3402_unrelaxed.cif
+Co-DOBDC,100,{100},"(1, 0, 0)",0,-0.15,water,healed (4 bound H2O),162,192,10,176.17,22.77,3,"{""ML"": 20}",0.05676,False,1.3644,0.45473,/content/results/structures/Co-DOBDC/slab_100_water_f1a7c90a0c_unrelaxed.cif
+Co-DOBDC,2m10,{2̅10},"(2, -1, 0)",0,4.164,water,healed (2 bound H2O),108,123,5,101.71,25.87,2,"{""ML"": 10}",0.04916,False,1.4089,0.39381,/content/results/structures/Co-DOBDC/slab_2m10_water_82578c6a0d_unrelaxed.cif
+Co-DOBDC,2m10,{2̅10},"(2, -1, 0)",1,6.321,water,healed (4 bound H2O),108,138,10,101.71,26.52,2,"{""ML"": 20}",0.09832,False,1.604,0.78762,/content/results/structures/Co-DOBDC/slab_2m10_water_28241b5a62_unrelaxed.cif
+Co-DOBDC,001,{001},"(0, 0, 1)",0,1.951,water,healed (4 bound H2O),486,582,32,580.27,24.05,3,"{""ML"": 64}",0.05515,True,0.8167,0.44178,/content/results/structures/Co-DOBDC/slab_001_water_de9517426a_unrelaxed.cif
+Co-DOBDC,001,{001},"(0, 0, 1)",1,-0.15,water,healed (6 bound H2O),486,585,33,580.27,25.47,3,"{""ML"": 66}",0.05687,True,0.8218,0.45558,/content/results/structures/Co-DOBDC/slab_001_water_4578c6de37_unrelaxed.cif
+Co-DOBDC,101,{101},"(1, 0, 1)",1,-0.15,water,healed (4 bound H2O),162,201,13,202.14,24.03,3,"{""ML"": 26}",0.06431,True,0.8344,0.5152,/content/results/structures/Co-DOBDC/slab_101_water_2c443628f4_unrelaxed.cif
+Co-DOBDC,101,{101},"(1, 0, 1)",0,3.106,water,healed (2 bound H2O),162,198,12,202.14,22.33,3,"{""ML"": 24}",0.05936,True,0.9234,0.47557,/content/results/structures/Co-DOBDC/slab_101_water_3127d545ca_unrelaxed.cif
+IRMOF-7,001,{001},"(0, 0, 1)",1,3.578,water,healed,213,231,6,288.87,23.83,3,"{""ML"": 12}",0.02077,False,0.4484,0.16639,/content/results/structures/IRMOF-7/slab_001_water_2bc6dcfb16_unrelaxed.cif
+IRMOF-7,001,{001},"(0, 0, 1)",0,0.421,water,healed,213,231,6,288.87,21.25,3,"{""ML"": 12}",0.02077,False,0.4786,0.16639,/content/results/structures/IRMOF-7/slab_001_water_6e8ca833e2_unrelaxed.cif
+IRMOF-7,100,{100},"(1, 0, 0)",3,4.719,water,healed,284,308,8,408.53,25.4,2,"{""ML"": 16}",0.01958,False,0.3901,0.15687,/content/results/structures/IRMOF-7/slab_100_water_2cc8772e75_unrelaxed.cif
+IRMOF-7,100,{100},"(1, 0, 0)",0,-0.15,water,healed,284,308,8,408.53,26.31,2,"{""ML"": 16}",0.01958,False,0.4005,0.15687,/content/results/structures/IRMOF-7/slab_100_water_5a9144fe34_unrelaxed.cif
+IRMOF-7,100,{100},"(1, 0, 0)",1,2.082,water,healed,284,308,8,408.53,24.15,2,"{""ML"": 16}",0.01958,False,0.4205,0.15687,/content/results/structures/IRMOF-7/slab_100_water_c22a417586_unrelaxed.cif
+IRMOF-7,100,{100},"(1, 0, 0)",2,3.294,water,healed,284,308,8,408.53,25.53,2,"{""ML"": 16}",0.01958,False,0.4328,0.15687,/content/results/structures/IRMOF-7/slab_100_water_af7ea4c6cc_unrelaxed.cif
+IRMOF-7,101,{101},"(1, 0, 1)",0,-0.15,water,healed,142,148,2,166.78,27.22,2,"{""ML"": 4}",0.01199,False,0.2266,0.09606,/content/results/structures/IRMOF-7/slab_101_water_2146bff828_unrelaxed.cif
+IRMOF-7,101,{101},"(1, 0, 1)",1,6.307,water,healed,142,148,2,166.78,24.81,2,"{""ML"": 4}",0.01199,False,0.2519,0.09606,/content/results/structures/IRMOF-7/slab_101_water_b266afc6bf_unrelaxed.cif
+IRMOF-7,101,{101},"(1, 0, 1)",2,7.296,water,healed,142,160,6,166.78,28.99,2,"{""ML"": 12}",0.03598,False,0.7284,0.28819,/content/results/structures/IRMOF-7/slab_101_water_7bab7ca926_unrelaxed.cif
+IRMOF-7,10m1,{10̅1},"(1, 0, -1)",0,1.343,water,healed,284,314,10,500.35,20.97,2,"{""ML"": 20}",0.01999,False,0.4123,0.16011,/content/results/structures/IRMOF-7/slab_10m1_water_cd96b89488_unrelaxed.cif
+IRMOF-7,10m1,{10̅1},"(1, 0, -1)",2,3.496,water,healed,284,314,10,500.35,21.46,2,"{""ML"": 20}",0.01999,False,0.4243,0.16011,/content/results/structures/IRMOF-7/slab_10m1_water_504baeb637_unrelaxed.cif
+IRMOF-7,10m1,{10̅1},"(1, 0, -1)",1,2.002,water,healed,284,314,10,500.35,22.77,2,"{""ML"": 20}",0.01999,False,0.4382,0.16011,/content/results/structures/IRMOF-7/slab_10m1_water_484d2810fb_unrelaxed.cif
+IRMOF-6,010,{010},"(0, 1, 0)",0,-0.15,water,healed,260,272,4,333.91,25.54,2,"{""ML"": 8}",0.01198,False,0.2793,0.09597,/content/results/structures/IRMOF-6/slab_010_water_ea3fc54413_unrelaxed.cif
+IRMOF-6,010,{010},"(0, 1, 0)",1,6.311,water,healed,260,296,12,333.91,28.55,2,"{""ML"": 24}",0.03594,False,0.8515,0.2879,/content/results/structures/IRMOF-6/slab_010_water_e2cae225a8_unrelaxed.cif
+IRMOF-6,100,{100},"(1, 0, 0)",0,4.081,water,healed,260,284,8,472.22,18.63,2,"{""ML"": 16}",0.01694,False,0.3931,0.13572,/content/results/structures/IRMOF-6/slab_100_water_965ceb8daf_unrelaxed.cif
+IRMOF-6,100,{100},"(1, 0, 0)",1,4.755,water,healed,260,284,8,472.22,24.3,2,"{""ML"": 16}",0.01694,False,0.4275,0.13572,/content/results/structures/IRMOF-6/slab_100_water_c0cc80c644_unrelaxed.cif
+IRMOF-6,100,{100},"(1, 0, 0)",2,-0.15,water,healed,260,296,12,472.22,21.78,2,"{""ML"": 24}",0.02541,False,0.5836,0.20357,/content/results/structures/IRMOF-6/slab_100_water_ba20eb5383_unrelaxed.cif
+IRMOF-6,10m1,{10̅1},"(1, 0, -1)",0,-0.15,water,healed,260,284,8,472.22,18.62,1,"{""ML"": 16}",0.01694,False,0.3907,0.13572,/content/results/structures/IRMOF-6/slab_10m1_water_52d30af62d_unrelaxed.cif
+IRMOF-6,10m1,{10̅1},"(1, 0, -1)",1,0.524,water,healed,260,296,12,472.22,21.77,1,"{""ML"": 24}",0.02541,False,0.5848,0.20357,/content/results/structures/IRMOF-6/slab_10m1_water_a9141e1b37_unrelaxed.cif
+IRMOF-6,110,{110},"(1, 1, 0)",2,7.31,water,healed,260,278,6,289.17,28.75,2,"{""ML"": 12}",0.02075,False,0.4715,0.16622,/content/results/structures/IRMOF-6/slab_110_water_7b36f9947d_unrelaxed.cif
+IRMOF-6,110,{110},"(1, 1, 0)",3,11.04,water,healed,260,278,6,289.17,28.75,2,"{""ML"": 12}",0.02075,False,0.4751,0.16622,/content/results/structures/IRMOF-6/slab_110_water_1619f9231d_unrelaxed.cif
+IRMOF-6,110,{110},"(1, 1, 0)",1,3.58,water,healed,260,278,6,289.17,31.16,2,"{""ML"": 12}",0.02075,False,0.5777,0.16622,/content/results/structures/IRMOF-6/slab_110_water_a0cb48c342_unrelaxed.cif
+IRMOF-6,110,{110},"(1, 1, 0)",0,0.399,water,healed,260,278,6,289.17,35.7,2,"{""ML"": 12}",0.02075,False,0.6118,0.16622,/content/results/structures/IRMOF-6/slab_110_water_34761c3998_unrelaxed.cif
+IRMOF-9,001,{001},"(0, 0, 1)",0,-0.15,water,healed,332,356,8,399.9,25.5,1,"{""ML"": 16}",0.02,False,0.4704,0.16026,/content/results/structures/IRMOF-9/slab_001_water_7e01be966e_unrelaxed.cif
+IRMOF-9,010,{010},"(0, 1, 0)",0,2.169,water,healed,332,356,8,433.05,27.37,1,"{""ML"": 16}",0.01847,False,0.3866,0.14799,/content/results/structures/IRMOF-9/slab_010_water_a5d6313cc8_unrelaxed.cif
+IRMOF-9,010,{010},"(0, 1, 0)",2,7.996,water,healed,332,356,8,433.05,24.83,1,"{""ML"": 16}",0.01847,False,0.3872,0.14799,/content/results/structures/IRMOF-9/slab_010_water_28e7d4c2a2_unrelaxed.cif
+IRMOF-9,010,{010},"(0, 1, 0)",1,3.06,water,healed,332,356,8,433.05,28.56,1,"{""ML"": 16}",0.01847,False,0.3993,0.14799,/content/results/structures/IRMOF-9/slab_010_water_725ae44f8b_unrelaxed.cif
+IRMOF-9,010,{010},"(0, 1, 0)",3,3.366,water,healed,332,368,12,433.05,28.02,1,"{""ML"": 24}",0.02771,False,0.6185,0.22199,/content/results/structures/IRMOF-9/slab_010_water_14cafb7d3c_unrelaxed.cif
+IRMOF-9,100,{100},"(1, 0, 0)",0,3.79,water,healed,332,356,8,589.01,20.44,1,"{""ML"": 16}",0.01358,False,0.2739,0.10881,/content/results/structures/IRMOF-9/slab_100_water_73764fd2ae_unrelaxed.cif
+IRMOF-9,011,{011},"(0, 1, 1)",2,10.99,water,healed,332,356,8,589.45,23.17,1,"{""ML"": 16}",0.01357,False,0.3166,0.10872,/content/results/structures/IRMOF-9/slab_011_water_a12662e460_unrelaxed.cif
+IRMOF-9,011,{011},"(0, 1, 1)",0,2.208,water,healed,332,356,8,589.45,16.44,1,"{""ML"": 16}",0.01357,False,0.3384,0.10872,/content/results/structures/IRMOF-9/slab_011_water_f0af1e44e7_unrelaxed.cif
+IRMOF-9,011,{011},"(0, 1, 1)",1,5.843,water,healed,332,356,8,589.45,21.29,1,"{""ML"": 16}",0.01357,False,0.346,0.10872,/content/results/structures/IRMOF-9/slab_011_water_6dcd54a488_unrelaxed.cif
+MIL-88C-dry,001,{001},"(0, 0, 1)",0,-0.15,water,healed,146,164,6,84.88,22.39,1,"{""ML"": 12}",0.07069,False,1.1267,0.56628,/content/results/structures/MIL-88C-dry/slab_001_water_3d7e3235c7_unrelaxed.cif
+MIL-88C-dry,100,{100},"(1, 0, 0)",0,2.708,water,healed,292,304,4,235.62,20.35,2,"{""ML"": 8}",0.01698,False,0.4735,0.136,/content/results/structures/MIL-88C-dry/slab_100_water_b1405214d5_unrelaxed.cif
+MIL-88C-dry,100,{100},"(1, 0, 0)",1,5.464,water,healed,292,316,8,235.62,20.77,2,"{""ML"": 16}",0.03395,False,0.8351,0.27199,/content/results/structures/MIL-88C-dry/slab_100_water_0aa766a411_unrelaxed.cif
+MIL-88C-dry,101,{101},"(1, 0, 1)",0,2.635,water,healed,292,310,6,250.44,19.83,2,"{""ML"": 12}",0.02396,False,0.5196,0.19192,/content/results/structures/MIL-88C-dry/slab_101_water_8a2b2f7068_unrelaxed.cif
+MIL-88C-dry,101,{101},"(1, 0, 1)",1,3.883,water,healed,292,310,6,250.44,20.83,2,"{""ML"": 12}",0.02396,False,0.5801,0.19192,/content/results/structures/MIL-88C-dry/slab_101_water_93741ac50b_unrelaxed.cif
+MIL-88C-dry,101,{101},"(1, 0, 1)",2,-0.15,water,healed,292,322,10,250.44,21.44,2,"{""ML"": 20}",0.03993,False,0.8754,0.31987,/content/results/structures/MIL-88C-dry/slab_101_water_21a55fe3f0_unrelaxed.cif
+MIL-88C-dry,101,{101},"(1, 0, 1)",3,1.098,water,healed,292,322,10,250.44,21.0,2,"{""ML"": 20}",0.03993,False,0.9208,0.31987,/content/results/structures/MIL-88C-dry/slab_101_water_62e955bb1f_unrelaxed.cif
+MIL-88C-dry,2m10,{2̅10},"(2, -1, 0)",0,3.091,water,healed,584,608,8,408.11,20.83,2,"{""ML"": 16}",0.0196,False,0.5221,0.15704,/content/results/structures/MIL-88C-dry/slab_2m10_water_a11cd51542_unrelaxed.cif
+MIL-88C-dry,2m10,{2̅10},"(2, -1, 0)",1,-0.15,water,healed,584,632,16,408.11,24.32,2,"{""ML"": 32}",0.03921,False,0.8966,0.31407,/content/results/structures/MIL-88C-dry/slab_2m10_water_4fb6303efc_unrelaxed.cif
+IRMOF-12,100,{100},"(1, 0, 0)",0,-0.144,water,healed,856,880,8,1175.17,34.07,1,"{""ML"": 16}",0.00681,False,0.1524,0.05453,/content/results/structures/IRMOF-12/slab_100_water_860dcfad01_unrelaxed.cif
+IRMOF-12,010,{010},"(0, 1, 0)",0,-0.133,water,healed,856,880,8,1175.17,34.1,1,"{""ML"": 16}",0.00681,False,0.1532,0.05453,/content/results/structures/IRMOF-12/slab_010_water_5ed90050cc_unrelaxed.cif
+IRMOF-12,001,{001},"(0, 0, 1)",0,-0.149,water,healed,856,880,8,1175.17,34.1,1,"{""ML"": 16}",0.00681,False,0.1457,0.05453,/content/results/structures/IRMOF-12/slab_001_water_f56f4911b2_unrelaxed.cif
+IRMOF-12,110,{110},"(1, 1, 0)",0,5.879,water,healed,856,904,16,1661.94,25.81,1,"{""ML"": 32}",0.00963,False,0.2152,0.07712,/content/results/structures/IRMOF-12/slab_110_water_bcbd960ea4_unrelaxed.cif
+ZnHBDC,010,{010},"(0, 1, 0)",0,4.737,water,healed,196,208,4,241.0,23.32,2,"{""ML"": 8}",0.0166,False,0.4076,0.13296,/content/results/structures/ZnHBDC/slab_010_water_d46af6147d_unrelaxed.cif
+ZnHBDC,010,{010},"(0, 1, 0)",1,-0.15,water,healed,196,214,6,241.0,19.29,2,"{""ML"": 12}",0.0249,False,1.3046,0.19944,/content/results/structures/ZnHBDC/slab_010_water_2326327c2b_unrelaxed.cif
+ZnHBDC,010,{010},"(0, 1, 0)",2,3.821,water,healed,196,214,6,241.0,19.29,2,"{""ML"": 12}",0.0249,False,1.3558,0.19944,/content/results/structures/ZnHBDC/slab_010_water_af753d7f0a_unrelaxed.cif
+ZnHBDC,100,{100},"(1, 0, 0)",0,4.248,water,healed,196,208,4,254.69,22.12,2,"{""ML"": 8}",0.01571,False,0.3176,0.12582,/content/results/structures/ZnHBDC/slab_100_water_8b9596b504_unrelaxed.cif
+ZnHBDC,100,{100},"(1, 0, 0)",2,-0.15,water,healed,196,220,8,254.69,17.35,2,"{""ML"": 16}",0.03141,False,0.5769,0.25163,/content/results/structures/ZnHBDC/slab_100_water_6e9ba51018_unrelaxed.cif
+ZnHBDC,100,{100},"(1, 0, 0)",1,3.834,water,healed,196,214,6,254.69,16.9,2,"{""ML"": 12}",0.02356,False,1.7664,0.18872,/content/results/structures/ZnHBDC/slab_100_water_23291c1069_unrelaxed.cif
+ZnHBDC,10m1,{10̅1},"(1, 0, -1)",0,3.991,water,healed,392,398,2,297.97,29.96,2,"{""ML"": 4}",0.00671,False,0.1776,0.05377,/content/results/structures/ZnHBDC/slab_10m1_water_2ab6a43bb1_unrelaxed.cif
+ZnHBDC,10m1,{10̅1},"(1, 0, -1)",1,2.874,water,healed,392,401,3,297.97,29.49,2,"{""ML"": 6}",0.01007,False,0.2673,0.08066,/content/results/structures/ZnHBDC/slab_10m1_water_4c669ac6ac_unrelaxed.cif
+ZnHBDC,10m1,{10̅1},"(1, 0, -1)",2,1.345,water,healed,392,410,6,297.97,29.58,2,"{""ML"": 12}",0.02014,False,0.5084,0.16131,/content/results/structures/ZnHBDC/slab_10m1_water_e6d1b576a8_unrelaxed.cif
+ZnHBDC,10m1,{10̅1},"(1, 0, -1)",3,0.39,water,healed,392,416,8,297.97,31.76,2,"{""ML"": 16}",0.02685,False,0.6251,0.21508,/content/results/structures/ZnHBDC/slab_10m1_water_cc82483c5b_unrelaxed.cif
+ZnHBDC,110,{110},"(1, 1, 0)",0,6.403,water,healed,196,202,2,175.32,30.26,2,"{""ML"": 4}",0.01141,False,0.2305,0.09139,/content/results/structures/ZnHBDC/slab_110_water_b0697eb312_unrelaxed.cif
+ZnHBDC,110,{110},"(1, 1, 0)",1,5.473,water,healed,196,205,3,175.32,25.45,2,"{""ML"": 6}",0.01711,False,0.3408,0.13708,/content/results/structures/ZnHBDC/slab_110_water_46ae500771_unrelaxed.cif
+ZnHBDC,110,{110},"(1, 1, 0)",2,1.121,water,healed,196,211,5,175.32,25.98,2,"{""ML"": 10}",0.02852,False,0.5512,0.22847,/content/results/structures/ZnHBDC/slab_110_water_ff284a81e7_unrelaxed.cif
+ZnHBDC,110,{110},"(1, 1, 0)",3,0.015,water,healed,196,214,6,175.32,28.84,2,"{""ML"": 12}",0.03422,False,0.5465,0.27416,/content/results/structures/ZnHBDC/slab_110_water_8edfe5be9a_unrelaxed.cif
+Zr-TPDC,100,{100},"(1, 0, 0)",0,8.044,water,healed,920,968,16,1074.31,33.31,1,"{""ML"": 32}",0.01489,False,0.3604,0.11931,/content/results/structures/Zr-TPDC/slab_100_water_3970586279_unrelaxed.cif
+Zr-TPDC,010,{010},"(0, 1, 0)",0,-0.15,water,healed,920,968,16,1074.31,33.31,1,"{""ML"": 32}",0.01489,False,0.3498,0.11931,/content/results/structures/Zr-TPDC/slab_010_water_99915f5fbe_unrelaxed.cif
+Zr-TPDC,001,{001},"(0, 0, 1)",0,8.044,water,healed,920,968,16,1074.31,33.31,1,"{""ML"": 32}",0.01489,False,0.3429,0.11931,/content/results/structures/Zr-TPDC/slab_001_water_56b7934f43_unrelaxed.cif
+Zr-TPDC,110,{110},"(1, 1, 0)",0,-0.15,water,healed,920,992,24,1519.31,29.51,1,"{""ML"": 48}",0.0158,False,0.3997,0.12655,/content/results/structures/Zr-TPDC/slab_110_water_cd2c24d001_unrelaxed.cif
+MOF-69c,001,{001},"(0, 0, 1)",0,3.989,water,healed (2 bound H2O),234,264,10,262.28,20.0,1,"{""ML"": 16, ""MO"": 4}",0.03813,True,0.6166,0.30544,/content/results/structures/MOF-69c/slab_001_water_09c23307e5_unrelaxed.cif
+MOF-69c,001,{001},"(0, 0, 1)",1,1.224,water,healed (2 bound H2O),234,276,14,262.28,21.17,1,"{""ML"": 24, ""MO"": 4}",0.05338,True,1.0112,0.42761,/content/results/structures/MOF-69c/slab_001_water_f64a89b7ec_unrelaxed.cif
+MOF-69c,001,{001},"(0, 0, 1)",2,9.62,water,healed (2 bound H2O),234,300,22,262.28,28.75,1,"{""ML"": 40, ""MO"": 4}",0.08388,True,1.7178,0.67197,/content/results/structures/MOF-69c/slab_001_water_c4dc929038_unrelaxed.cif
+MOF-69c,10m1,{10̅1},"(1, 0, -1)",1,3.877,water,healed,234,270,12,269.18,22.17,1,"{""ML"": 24}",0.04458,False,0.9936,0.35713,/content/results/structures/MOF-69c/slab_10m1_water_a6f4773ae3_unrelaxed.cif
+MOF-69c,10m1,{10̅1},"(1, 0, -1)",0,3.502,water,healed,234,270,12,269.18,17.14,1,"{""ML"": 24}",0.04458,False,1.0013,0.35713,/content/results/structures/MOF-69c/slab_10m1_water_f2d5ebc150_unrelaxed.cif
+MOF-69c,010,{010},"(0, 1, 0)",0,-0.15,water,healed,468,504,12,296.62,30.43,2,"{""ML"": 24}",0.04046,False,0.8845,0.32409,/content/results/structures/MOF-69c/slab_010_water_23deddcd38_unrelaxed.cif
+MOF-69c,010,{010},"(0, 1, 0)",1,3.531,water,healed,468,504,12,296.62,34.19,2,"{""ML"": 24}",0.04046,False,0.9686,0.32409,/content/results/structures/MOF-69c/slab_010_water_fea3b4e13f_unrelaxed.cif
+MOF-69c,100,{100},"(1, 0, 0)",0,2.292,water,healed (2 bound H2O),468,498,10,296.7,33.97,2,"{""MO"": 4, ""ML"": 16}",0.0337,True,0.665,0.27,/content/results/structures/MOF-69c/slab_100_water_8ae92175b1_unrelaxed.cif
+MOF-69c,100,{100},"(1, 0, 0)",2,7.618,water,healed (2 bound H2O),468,522,18,296.7,38.89,2,"{""ML"": 32, ""MO"": 4}",0.06067,True,1.2644,0.486,/content/results/structures/MOF-69c/slab_100_water_8ecef5602f_unrelaxed.cif
+MOF-69c,100,{100},"(1, 0, 0)",1,6.926,water,healed (2 bound H2O),468,522,18,296.7,38.89,2,"{""ML"": 32, ""MO"": 4}",0.06067,True,1.2696,0.486,/content/results/structures/MOF-69c/slab_100_water_18097f8bf5_unrelaxed.cif
+MAF-X8,001,{001},"(0, 0, 1)",0,5.686,water,healed,432,456,8,329.14,24.25,2,"{""ML"": 16}",0.02431,False,0.4896,0.19471,/content/results/structures/MAF-X8/slab_001_water_5d9bf398ea_unrelaxed.cif
+MAF-X8,001,{001},"(0, 0, 1)",1,-0.15,water,healed,432,480,16,329.14,24.69,2,"{""ML"": 32}",0.04861,False,0.9542,0.38942,/content/results/structures/MAF-X8/slab_001_water_d7f43dc26e_unrelaxed.cif
+MAF-X8,010,{010},"(0, 1, 0)",0,0.71,water,healed,432,456,8,329.37,31.73,2,"{""ML"": 16}",0.02429,False,0.4705,0.19458,/content/results/structures/MAF-X8/slab_010_water_53a38a0c9a_unrelaxed.cif
+MAF-X8,010,{010},"(0, 1, 0)",1,5.594,water,healed,432,456,8,329.37,23.66,2,"{""ML"": 16}",0.02429,False,0.6254,0.19458,/content/results/structures/MAF-X8/slab_010_water_3574355e40_unrelaxed.cif
+MAF-X8,010,{010},"(0, 1, 0)",2,5.925,water,healed,432,480,16,329.37,24.94,2,"{""ML"": 32}",0.04858,False,1.2863,0.38916,/content/results/structures/MAF-X8/slab_010_water_3d45614305_unrelaxed.cif
+MAF-X8,011,{011},"(0, 1, 1)",2,4.351,water,healed,216,240,8,232.82,16.21,1,"{""ML"": 16}",0.03436,False,0.6168,0.27527,/content/results/structures/MAF-X8/slab_011_water_1e38d0619c_unrelaxed.cif
+MAF-X8,011,{011},"(0, 1, 1)",0,-0.095,water,healed,216,240,8,232.82,24.11,1,"{""ML"": 16}",0.03436,False,0.6758,0.27527,/content/results/structures/MAF-X8/slab_011_water_a389f93b69_unrelaxed.cif
+MAF-X8,011,{011},"(0, 1, 1)",1,3.475,water,healed,216,240,8,232.82,17.02,1,"{""ML"": 16}",0.03436,False,0.7019,0.27527,/content/results/structures/MAF-X8/slab_011_water_56f3ea0dcd_unrelaxed.cif
+MAF-X8,100,{100},"(1, 0, 0)",0,-0.15,water,healed,864,888,8,559.09,30.4,2,"{""ML"": 16}",0.01431,False,0.2779,0.11463,/content/results/structures/MAF-X8/slab_100_water_fcdb7c999d_unrelaxed.cif
+IRMOF-3,100,{100},"(1, 0, 0)",0,6.04,water,healed,472,496,8,662.88,25.0,1,"{""ML"": 16}",0.01207,False,0.2671,0.09668,/content/results/structures/IRMOF-3/slab_100_water_368fd18c77_unrelaxed.cif
+IRMOF-3,100,{100},"(1, 0, 0)",1,6.531,water,healed,472,520,16,662.88,28.54,1,"{""ML"": 32}",0.02414,False,0.5192,0.19336,/content/results/structures/IRMOF-3/slab_100_water_9445cafd69_unrelaxed.cif
+IRMOF-3,110,{110},"(1, 1, 0)",0,4.34,water,healed,472,520,16,937.46,18.63,1,"{""ML"": 32}",0.01707,False,0.3422,0.13673,/content/results/structures/IRMOF-3/slab_110_water_00ba84ae97_unrelaxed.cif
+IRMOF-3,110,{110},"(1, 1, 0)",1,-0.15,water,healed,472,544,24,937.46,21.77,1,"{""ML"": 48}",0.0256,False,0.5412,0.20509,/content/results/structures/IRMOF-3/slab_110_water_fb338f86aa_unrelaxed.cif
+IRMOF-3,111,{111},"(1, 1, 1)",0,0.041,water,healed,944,1016,24,1148.15,35.54,2,"{""ML"": 48}",0.0209,False,0.4348,0.16745,/content/results/structures/IRMOF-3/slab_111_water_3e30583c84_unrelaxed.cif
+IRMOF-3,111,{111},"(1, 1, 1)",1,3.566,water,healed,944,1016,24,1148.15,30.85,2,"{""ML"": 48}",0.0209,False,0.4442,0.16745,/content/results/structures/IRMOF-3/slab_111_water_5e06c5352f_unrelaxed.cif
+ZIF-90,100,{100},"(1, 0, 0)",0,2.183,water,healed,252,264,4,298.3,18.66,1,"{""ML"": 8}",0.01341,False,0.2167,0.10742,/content/results/structures/ZIF-90/slab_100_water_12e9aee6e5_unrelaxed.cif
+ZIF-90,100,{100},"(1, 0, 0)",1,4.168,water,healed,252,264,4,298.3,16.91,1,"{""ML"": 8}",0.01341,False,0.2278,0.10742,/content/results/structures/ZIF-90/slab_100_water_7403342580_unrelaxed.cif
+ZIF-90,100,{100},"(1, 0, 0)",2,0.297,water,healed,252,276,8,298.3,21.17,1,"{""ML"": 16}",0.02682,False,0.4811,0.21484,/content/results/structures/ZIF-90/slab_100_water_f2f3f31311_unrelaxed.cif
+ZIF-90,110,{110},"(1, 1, 0)",0,-0.116,water,healed,504,516,4,421.87,23.94,2,"{""ML"": 8}",0.00948,False,0.1465,0.07596,/content/results/structures/ZIF-90/slab_110_water_817492bf5d_unrelaxed.cif
+ZIF-90,110,{110},"(1, 1, 0)",2,4.581,water,healed,504,528,8,421.87,27.95,2,"{""ML"": 16}",0.01896,False,0.2963,0.15191,/content/results/structures/ZIF-90/slab_110_water_b1d86326fe_unrelaxed.cif
+ZIF-90,110,{110},"(1, 1, 0)",1,3.957,water,healed,504,528,8,421.87,27.21,2,"{""ML"": 16}",0.01896,False,0.3227,0.15191,/content/results/structures/ZIF-90/slab_110_water_ae518388b1_unrelaxed.cif
+ZIF-90,110,{110},"(1, 1, 0)",3,5.956,water,healed,504,528,8,421.87,25.93,2,"{""ML"": 16}",0.01896,False,0.3257,0.15191,/content/results/structures/ZIF-90/slab_110_water_9abce2ec7b_unrelaxed.cif
+ZIF-90,111,{111},"(1, 1, 1)",1,4.55,water,healed,504,522,6,516.68,22.16,2,"{""ML"": 12}",0.01161,False,0.1809,0.09303,/content/results/structures/ZIF-90/slab_111_water_6aec9ae322_unrelaxed.cif
+ZIF-90,111,{111},"(1, 1, 1)",0,2.343,water,healed,504,522,6,516.68,21.17,2,"{""ML"": 12}",0.01161,False,0.1872,0.09303,/content/results/structures/ZIF-90/slab_111_water_2769652a29_unrelaxed.cif
+ZIF-90,111,{111},"(1, 1, 1)",2,2.83,water,healed,504,540,12,516.68,22.06,2,"{""ML"": 24}",0.02323,False,0.4076,0.18606,/content/results/structures/ZIF-90/slab_111_water_4ad7be267c_unrelaxed.cif
+MIL-88D-dry,001,{001},"(0, 0, 1)",0,-0.15,water,healed,170,188,6,88.34,26.4,1,"{""ML"": 12}",0.06792,False,1.0132,0.54408,/content/results/structures/MIL-88D-dry/slab_001_water_8595018abe_unrelaxed.cif
+MIL-88D-dry,100,{100},"(1, 0, 0)",0,-0.15,water,healed,340,352,4,280.78,19.42,2,"{""ML"": 8}",0.01425,False,0.3368,0.11412,/content/results/structures/MIL-88D-dry/slab_100_water_8a94c9548d_unrelaxed.cif
+MIL-88D-dry,100,{100},"(1, 0, 0)",1,3.129,water,healed,340,364,8,280.78,22.93,2,"{""ML"": 16}",0.02849,False,0.5809,0.22825,/content/results/structures/MIL-88D-dry/slab_100_water_a4a992e9ae_unrelaxed.cif
+MIL-88D-dry,100,{100},"(1, 0, 0)",2,5.317,water,healed,340,364,8,280.78,21.56,2,"{""ML"": 16}",0.02849,False,0.7256,0.22825,/content/results/structures/MIL-88D-dry/slab_100_water_a8ad625fd4_unrelaxed.cif
+MIL-88D-dry,101,{101},"(1, 0, 1)",1,4.022,water,healed,340,358,6,294.35,21.76,2,"{""ML"": 12}",0.02038,False,0.4139,0.16329,/content/results/structures/MIL-88D-dry/slab_101_water_0243a93106_unrelaxed.cif
+MIL-88D-dry,101,{101},"(1, 0, 1)",0,2.978,water,healed,340,358,6,294.35,20.8,2,"{""ML"": 12}",0.02038,False,0.4176,0.16329,/content/results/structures/MIL-88D-dry/slab_101_water_c84ca9ee8f_unrelaxed.cif
+MIL-88D-dry,101,{101},"(1, 0, 1)",2,-0.15,water,healed,340,370,10,294.35,21.66,2,"{""ML"": 20}",0.03397,False,0.7567,0.27216,/content/results/structures/MIL-88D-dry/slab_101_water_8ef5dba885_unrelaxed.cif
+MIL-88D-dry,101,{101},"(1, 0, 1)",3,0.894,water,healed,340,370,10,294.35,22.57,2,"{""ML"": 20}",0.03397,False,0.8032,0.27216,/content/results/structures/MIL-88D-dry/slab_101_water_edf9579e4e_unrelaxed.cif
+MIL-88D-dry,2m10,{2̅10},"(2, -1, 0)",0,3.007,water,healed,680,704,8,486.33,21.2,2,"{""ML"": 16}",0.01645,False,0.4036,0.13178,/content/results/structures/MIL-88D-dry/slab_2m10_water_512364d218_unrelaxed.cif
+MIL-88D-dry,2m10,{2̅10},"(2, -1, 0)",1,3.637,water,healed,680,704,8,486.33,24.23,2,"{""ML"": 16}",0.01645,False,0.4294,0.13178,/content/results/structures/MIL-88D-dry/slab_2m10_water_b4e646a092_unrelaxed.cif
+MIL-88D-dry,2m10,{2̅10},"(2, -1, 0)",2,-0.15,water,healed,680,728,16,486.33,24.85,2,"{""ML"": 32}",0.0329,False,0.7612,0.26356,/content/results/structures/MIL-88D-dry/slab_2m10_water_c5b14da205_unrelaxed.cif
+ZIF-1,010,{010},"(0, 1, 0)",0,0.951,water,healed,136,142,2,143.84,16.77,1,"{""ML"": 4}",0.0139,False,0.1148,0.11139,/content/results/structures/ZIF-1/slab_010_water_2e70b2b59d_unrelaxed.cif
+ZIF-1,010,{010},"(0, 1, 0)",2,2.202,water,healed,136,148,4,143.84,17.01,1,"{""ML"": 8}",0.02781,False,0.2424,0.22277,/content/results/structures/ZIF-1/slab_010_water_0e2663bb88_unrelaxed.cif
+ZIF-1,010,{010},"(0, 1, 0)",1,1.722,water,healed,136,148,4,143.84,17.67,1,"{""ML"": 8}",0.02781,False,0.249,0.22277,/content/results/structures/ZIF-1/slab_010_water_a13d43ddfe_unrelaxed.cif
+ZIF-1,010,{010},"(0, 1, 0)",3,3.3,water,healed,136,148,4,143.84,16.83,1,"{""ML"": 8}",0.02781,False,0.2587,0.22277,/content/results/structures/ZIF-1/slab_010_water_c7adfe5655_unrelaxed.cif
+ZIF-1,010,{010},"(0, 1, 0)",4,4.032,water,healed,136,148,4,143.84,17.83,1,"{""ML"": 8}",0.02781,False,0.2936,0.22277,/content/results/structures/ZIF-1/slab_010_water_43f92a9e9c_unrelaxed.cif
+ZIF-1,001,{001},"(0, 0, 1)",0,1.013,water,healed,272,278,2,148.7,30.73,2,"{""ML"": 4}",0.01345,False,0.1033,0.10775,/content/results/structures/ZIF-1/slab_001_water_7427e48b54_unrelaxed.cif
+ZIF-1,001,{001},"(0, 0, 1)",3,3.258,water,healed,272,284,4,148.7,31.05,2,"{""ML"": 8}",0.0269,False,0.2391,0.21549,/content/results/structures/ZIF-1/slab_001_water_7f6b1de489_unrelaxed.cif
+ZIF-1,001,{001},"(0, 0, 1)",2,2.055,water,healed,272,284,4,148.7,31.25,2,"{""ML"": 8}",0.0269,False,0.2508,0.21549,/content/results/structures/ZIF-1/slab_001_water_5a4da1fb37_unrelaxed.cif
+ZIF-1,001,{001},"(0, 0, 1)",1,1.472,water,healed,272,284,4,148.7,31.92,2,"{""ML"": 8}",0.0269,False,0.2513,0.21549,/content/results/structures/ZIF-1/slab_001_water_4f8c71d8c4_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",4,5.956,water,healed,272,284,4,206.88,22.89,2,"{""ML"": 8}",0.01933,False,0.1451,0.15489,/content/results/structures/ZIF-1/slab_011_water_89e0ca4c47_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",2,3.415,water,healed,272,284,4,206.88,23.7,2,"{""ML"": 8}",0.01933,False,0.1472,0.15489,/content/results/structures/ZIF-1/slab_011_water_32b2cbfb45_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",0,0.998,water,healed,272,284,4,206.88,21.41,2,"{""ML"": 8}",0.01933,False,0.1473,0.15489,/content/results/structures/ZIF-1/slab_011_water_bdd6b2ebd3_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",1,1.813,water,healed,272,284,4,206.88,22.99,2,"{""ML"": 8}",0.01933,False,0.1492,0.15489,/content/results/structures/ZIF-1/slab_011_water_f7c66b18ea_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",3,4.338,water,healed,272,284,4,206.88,24.02,2,"{""ML"": 8}",0.01933,False,0.2053,0.15489,/content/results/structures/ZIF-1/slab_011_water_c428413106_unrelaxed.cif
+ZIF-1,011,{011},"(0, 1, 1)",5,2.686,water,healed,272,296,8,206.88,22.99,2,"{""ML"": 16}",0.03867,False,0.4913,0.30977,/content/results/structures/ZIF-1/slab_011_water_987f924076_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",0,1.119,water,healed,272,284,4,228.01,21.97,2,"{""ML"": 8}",0.01754,False,0.1393,0.14053,/content/results/structures/ZIF-1/slab_10m1_water_387b6ae0c0_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",1,3.396,water,healed,272,284,4,228.01,19.28,2,"{""ML"": 8}",0.01754,False,0.1406,0.14053,/content/results/structures/ZIF-1/slab_10m1_water_7232dd5c4c_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",2,3.851,water,healed,272,284,4,228.01,21.45,2,"{""ML"": 8}",0.01754,False,0.142,0.14053,/content/results/structures/ZIF-1/slab_10m1_water_3dfa1b7624_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",3,0.664,water,healed,272,290,6,228.01,21.45,2,"{""ML"": 12}",0.02631,False,0.2691,0.2108,/content/results/structures/ZIF-1/slab_10m1_water_2cfef8c716_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",4,0.301,water,healed,272,296,8,228.01,21.45,2,"{""ML"": 16}",0.03509,False,0.4031,0.28107,/content/results/structures/ZIF-1/slab_10m1_water_0e00b22268_unrelaxed.cif
+ZIF-1,10m1,{10̅1},"(1, 0, -1)",5,-0.035,water,healed,272,302,10,228.01,21.91,2,"{""ML"": 20}",0.04386,False,0.5416,0.35134,/content/results/structures/ZIF-1/slab_10m1_water_6ebb4b97e1_unrelaxed.cif
+ZIF-77,001,{001},"(0, 0, 1)",0,-0.15,water,healed,340,352,4,248.6,24.09,2,"{""ML"": 8}",0.01609,False,0.1693,0.12889,/content/results/structures/ZIF-77/slab_001_water_5f84ac134a_unrelaxed.cif
+ZIF-77,001,{001},"(0, 0, 1)",1,6.077,water,healed,340,352,4,248.6,24.72,2,"{""ML"": 8}",0.01609,False,0.2058,0.12889,/content/results/structures/ZIF-77/slab_001_water_ba31980052_unrelaxed.cif
+ZIF-77,001,{001},"(0, 0, 1)",2,3.793,water,healed,340,376,12,248.6,25.97,2,"{""ML"": 24}",0.04827,False,0.6138,0.38668,/content/results/structures/ZIF-77/slab_001_water_24e66fc250_unrelaxed.cif
+ZIF-77,010,{010},"(0, 1, 0)",1,4.26,water,healed,340,352,4,277.1,22.01,2,"{""ML"": 8}",0.01443,False,0.1681,0.11564,/content/results/structures/ZIF-77/slab_010_water_9c2e9dd5ce_unrelaxed.cif
+ZIF-77,010,{010},"(0, 1, 0)",0,-0.15,water,healed,340,352,4,277.1,23.32,2,"{""ML"": 8}",0.01443,False,0.1698,0.11564,/content/results/structures/ZIF-77/slab_010_water_f8669ce933_unrelaxed.cif
+ZIF-77,010,{010},"(0, 1, 0)",2,5.817,water,healed,340,364,8,277.1,25.35,2,"{""ML"": 16}",0.02887,False,0.292,0.23127,/content/results/structures/ZIF-77/slab_010_water_fd01120ab6_unrelaxed.cif
+ZIF-77,010,{010},"(0, 1, 0)",3,4.83,water,healed,340,376,12,277.1,23.51,2,"{""ML"": 24}",0.0433,False,0.5842,0.34691,/content/results/structures/ZIF-77/slab_010_water_462bacb760_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",0,0.871,water,healed,170,176,2,186.14,18.22,1,"{""ML"": 4}",0.01074,False,0.127,0.08607,/content/results/structures/ZIF-77/slab_011_water_87f9f2a99c_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",4,3.494,water,healed,170,182,4,186.14,18.21,1,"{""ML"": 8}",0.02149,False,0.2418,0.17215,/content/results/structures/ZIF-77/slab_011_water_4c8ca03b70_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",3,2.796,water,healed,170,182,4,186.14,18.21,1,"{""ML"": 8}",0.02149,False,0.2451,0.17215,/content/results/structures/ZIF-77/slab_011_water_1a3ba323a8_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",1,1.472,water,healed,170,182,4,186.14,19.65,1,"{""ML"": 8}",0.02149,False,0.2467,0.17215,/content/results/structures/ZIF-77/slab_011_water_c684f57d2b_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",2,1.775,water,healed,170,182,4,186.14,18.87,1,"{""ML"": 8}",0.02149,False,0.247,0.17215,/content/results/structures/ZIF-77/slab_011_water_4157fda3e9_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",6,4.523,water,healed,170,188,6,186.14,20.72,1,"{""ML"": 12}",0.03223,False,0.3738,0.25822,/content/results/structures/ZIF-77/slab_011_water_61f3ac9090_unrelaxed.cif
+ZIF-77,011,{011},"(0, 1, 1)",5,4.008,water,healed,170,188,6,186.14,20.72,1,"{""ML"": 12}",0.03223,False,0.418,0.25822,/content/results/structures/ZIF-77/slab_011_water_e0d48dbe04_unrelaxed.cif
+ZIF-77,100,{100},"(1, 0, 0)",0,2.973,water,healed,680,704,8,556.63,24.24,2,"{""ML"": 16}",0.01437,False,0.1616,0.11513,/content/results/structures/ZIF-77/slab_100_water_24cf9c5c57_unrelaxed.cif
+ZIF-77,100,{100},"(1, 0, 0)",1,-0.15,water,healed,680,716,12,556.63,23.08,2,"{""ML"": 24}",0.02156,False,0.2336,0.1727,/content/results/structures/ZIF-77/slab_100_water_77739d41fa_unrelaxed.cif
+ZIF-77,100,{100},"(1, 0, 0)",2,2.29,water,healed,680,728,16,556.63,24.24,2,"{""ML"": 32}",0.02874,False,0.3641,0.23027,/content/results/structures/ZIF-77/slab_100_water_5119d0705f_unrelaxed.cif
+ZIF-2,001,{001},"(0, 0, 1)",3,6.82,water,healed,272,284,4,233.4,25.64,1,"{""ML"": 8}",0.01714,False,0.1245,0.13729,/content/results/structures/ZIF-2/slab_001_water_a5df6feb99_unrelaxed.cif
+ZIF-2,001,{001},"(0, 0, 1)",0,2.514,water,healed,272,284,4,233.4,25.16,1,"{""ML"": 8}",0.01714,False,0.1392,0.13729,/content/results/structures/ZIF-2/slab_001_water_d1369308c2_unrelaxed.cif
+ZIF-2,001,{001},"(0, 0, 1)",2,5.105,water,healed,272,284,4,233.4,25.61,1,"{""ML"": 8}",0.01714,False,0.1905,0.13729,/content/results/structures/ZIF-2/slab_001_water_0f04958abe_unrelaxed.cif
+ZIF-2,001,{001},"(0, 0, 1)",1,4.156,water,healed,272,284,4,233.4,25.61,1,"{""ML"": 8}",0.01714,False,0.2042,0.13729,/content/results/structures/ZIF-2/slab_001_water_6dba7ab0c2_unrelaxed.cif
+ZIF-2,001,{001},"(0, 0, 1)",4,-0.12,water,healed,272,296,8,233.4,26.06,1,"{""ML"": 16}",0.03428,False,0.3674,0.27458,/content/results/structures/ZIF-2/slab_001_water_ccbc7ce9d5_unrelaxed.cif
+ZIF-2,010,{010},"(0, 1, 0)",3,6.433,water,healed,272,284,4,236.65,25.26,1,"{""ML"": 8}",0.0169,False,0.1277,0.1354,/content/results/structures/ZIF-2/slab_010_water_4b3a605ccf_unrelaxed.cif
+ZIF-2,010,{010},"(0, 1, 0)",0,2.488,water,healed,272,284,4,236.65,24.05,1,"{""ML"": 8}",0.0169,False,0.1365,0.1354,/content/results/structures/ZIF-2/slab_010_water_cad9136122_unrelaxed.cif
+ZIF-2,010,{010},"(0, 1, 0)",1,4.062,water,healed,272,284,4,236.65,24.76,1,"{""ML"": 8}",0.0169,False,0.1864,0.1354,/content/results/structures/ZIF-2/slab_010_water_db59531112_unrelaxed.cif
+ZIF-2,010,{010},"(0, 1, 0)",2,5.324,water,healed,272,284,4,236.65,24.76,1,"{""ML"": 8}",0.0169,False,0.1922,0.1354,/content/results/structures/ZIF-2/slab_010_water_245c562044_unrelaxed.cif
+ZIF-2,010,{010},"(0, 1, 0)",4,-0.107,water,healed,272,296,8,236.65,25.79,1,"{""ML"": 16}",0.0338,False,0.4129,0.27081,/content/results/structures/ZIF-2/slab_010_water_fcbd5053cb_unrelaxed.cif
+ZIF-2,011,{011},"(0, 1, 1)",0,-0.142,water,healed,272,284,4,332.38,17.14,1,"{""ML"": 8}",0.01203,False,0.096,0.09641,/content/results/structures/ZIF-2/slab_011_water_a019b75aec_unrelaxed.cif
+ZIF-2,011,{011},"(0, 1, 1)",1,4.381,water,healed,272,296,8,332.38,19.36,1,"{""ML"": 16}",0.02407,False,0.1798,0.19281,/content/results/structures/ZIF-2/slab_011_water_3ab335de32_unrelaxed.cif
+ZIF-2,011,{011},"(0, 1, 1)",2,3.904,water,healed,272,302,10,332.38,20.55,1,"{""ML"": 20}",0.03009,False,0.3091,0.24101,/content/results/structures/ZIF-2/slab_011_water_a2cbd8ac50_unrelaxed.cif
+ZIF-2,011,{011},"(0, 1, 1)",4,3.598,water,healed,272,308,12,332.38,20.55,1,"{""ML"": 24}",0.0361,False,0.4165,0.28922,/content/results/structures/ZIF-2/slab_011_water_91293058c6_unrelaxed.cif
+ZIF-2,011,{011},"(0, 1, 1)",3,3.251,water,healed,272,308,12,332.38,18.88,1,"{""ML"": 24}",0.0361,False,0.4876,0.28922,/content/results/structures/ZIF-2/slab_011_water_85e2e50f14_unrelaxed.cif
+ZIF-2,100,{100},"(1, 0, 0)",0,1.651,water,healed,544,568,8,589.59,21.16,2,"{""ML"": 16}",0.01357,False,0.1132,0.1087,/content/results/structures/ZIF-2/slab_100_water_9d06509490_unrelaxed.cif
+ZIF-2,100,{100},"(1, 0, 0)",1,2.851,water,healed,544,568,8,589.59,20.44,2,"{""ML"": 16}",0.01357,False,0.1182,0.1087,/content/results/structures/ZIF-2/slab_100_water_e7586968a5_unrelaxed.cif
+ZIF-2,100,{100},"(1, 0, 0)",2,-0.13,water,healed,544,592,16,589.59,20.79,2,"{""ML"": 32}",0.02714,False,0.3095,0.2174,/content/results/structures/ZIF-2/slab_100_water_313ea66dfa_unrelaxed.cif
+ZIF-2,100,{100},"(1, 0, 0)",3,0.525,water,healed,544,592,16,589.59,20.79,2,"{""ML"": 32}",0.02714,False,0.321,0.2174,/content/results/structures/ZIF-2/slab_100_water_fcacdaff3c_unrelaxed.cif
+MOF-72,010,{010},"(0, 1, 0)",0,0.313,water,healed,268,292,8,200.21,22.36,2,"{""ML"": 16}",0.03996,False,1.1477,0.3201,/content/results/structures/MOF-72/slab_010_water_2500b538b3_unrelaxed.cif
+MOF-72,010,{010},"(0, 1, 0)",1,3.167,water,healed (2 bound H2O),268,298,10,200.21,19.61,2,"{""ML"": 20}",0.04995,False,2.0905,0.40013,/content/results/structures/MOF-72/slab_010_water_b833b9db07_unrelaxed.cif
+MOF-72,010,{010},"(0, 1, 0)",2,4.413,water,healed (4 bound H2O),268,328,20,200.21,19.43,2,"{""ML"": 40}",0.0999,False,3.1148,0.80026,/content/results/structures/MOF-72/slab_010_water_aa363cb112_unrelaxed.cif
+MOF-72,001,{001},"(0, 0, 1)",1,2.114,water,healed (2 bound H2O),268,304,12,124.9,34.76,2,"{""ML"": 24}",0.09608,True,2.19,0.76967,/content/results/structures/MOF-72/slab_001_water_45343c062d_unrelaxed.cif
+MOF-72,001,{001},"(0, 0, 1)",0,1.131,water,healed (1 bound H2O),268,295,9,124.9,31.96,2,"{""ML"": 18}",0.07206,True,3.7787,0.57725,/content/results/structures/MOF-72/slab_001_water_fcc2f4788e_unrelaxed.cif
+MOF-72,001,{001},"(0, 0, 1)",2,4.726,water,healed (3 bound H2O),268,319,17,124.9,35.16,2,"{""ML"": 34}",0.13611,True,3.5545,1.09037,/content/results/structures/MOF-72/slab_001_water_b41731ac9e_unrelaxed.cif
+MOF-72,001,{001},"(0, 0, 1)",3,5.884,water,healed (3 bound H2O),268,322,18,124.9,37.33,2,"{""ML"": 36}",0.14412,True,3.7373,1.15451,/content/results/structures/MOF-72/slab_001_water_fba7aabc54_unrelaxed.cif
+MOF-72,100,{100},"(1, 0, 0)",1,2.94,water,healed (3 bound H2O),402,474,24,272.06,25.29,3,"{""ML"": 48}",0.08821,True,2.0491,0.70668,/content/results/structures/MOF-72/slab_100_water_99f994890b_unrelaxed.cif
+MOF-72,100,{100},"(1, 0, 0)",2,3.475,water,healed (4 bound H2O),402,474,24,272.06,25.76,3,"{""ML"": 48}",0.08821,True,2.0594,0.70668,/content/results/structures/MOF-72/slab_100_water_39f8ba4c8c_unrelaxed.cif
+MOF-72,100,{100},"(1, 0, 0)",0,2.592,water,healed (3 bound H2O),402,468,22,272.06,24.77,3,"{""ML"": 44}",0.08086,True,2.1877,0.64779,/content/results/structures/MOF-72/slab_100_water_a4df06501e_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",0,1.906,water,healed (2 bound H2O),536,608,24,320.13,28.76,2,"{""ML"": 48}",0.07497,True,2.0353,0.60058,/content/results/structures/MOF-72/slab_011_water_938f2a63b5_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",1,1.327,water,healed (3 bound H2O),536,611,25,320.13,28.1,2,"{""ML"": 50}",0.07809,True,2.1919,0.6256,/content/results/structures/MOF-72/slab_011_water_14f674e3e0_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",2,2.924,water,healed (3 bound H2O),536,614,26,320.13,28.87,2,"{""ML"": 52}",0.08122,True,2.2514,0.65063,/content/results/structures/MOF-72/slab_011_water_1ecb95e710_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",3,0.925,water,healed (4 bound H2O),536,620,28,320.13,28.1,2,"{""ML"": 56}",0.08747,True,2.399,0.70067,/content/results/structures/MOF-72/slab_011_water_62aa43ddfa_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",4,4.08,water,healed (5 bound H2O),536,638,34,320.13,29.8,2,"{""ML"": 68}",0.10621,True,2.8856,0.85082,/content/results/structures/MOF-72/slab_011_water_2e83bfe662_unrelaxed.cif
+MOF-72,011,{011},"(0, 1, 1)",5,4.482,water,healed (6 bound H2O),536,641,35,320.13,31.45,2,"{""ML"": 70}",0.10933,True,3.1441,0.87584,/content/results/structures/MOF-72/slab_011_water_c10f2a49b2_unrelaxed.cif
+IRMOF-13,001,{001},"(0, 0, 1)",0,0.092,water,healed,380,416,12,533.57,19.72,1,"{""ML"": 24}",0.02249,False,0.4972,0.18016,/content/results/structures/IRMOF-13/slab_001_water_9c264a717b_unrelaxed.cif
+IRMOF-13,001,{001},"(0, 0, 1)",1,4.252,water,healed,380,416,12,533.57,19.98,1,"{""ML"": 24}",0.02249,False,0.5175,0.18016,/content/results/structures/IRMOF-13/slab_001_water_176c2d2e38_unrelaxed.cif
+IRMOF-13,001,{001},"(0, 0, 1)",2,4.982,water,healed,380,416,12,533.57,25.23,1,"{""ML"": 24}",0.02249,False,0.5431,0.18016,/content/results/structures/IRMOF-13/slab_001_water_b69fe76f91_unrelaxed.cif
+IRMOF-13,100,{100},"(1, 0, 0)",0,-0.15,water,healed,1520,1616,32,1408.24,33.85,2,"{""ML"": 64}",0.02272,False,0.4888,0.18203,/content/results/structures/IRMOF-13/slab_100_water_3a8c6571d3_unrelaxed.cif
+IRMOF-13,101,{101},"(1, 0, 1)",3,8.364,water,healed,380,416,12,501.98,24.36,1,"{""ML"": 24}",0.02391,False,0.5179,0.1915,/content/results/structures/IRMOF-13/slab_101_water_38532fe8e7_unrelaxed.cif
+IRMOF-13,101,{101},"(1, 0, 1)",2,6.465,water,healed,380,416,12,501.98,21.13,1,"{""ML"": 24}",0.02391,False,0.5193,0.1915,/content/results/structures/IRMOF-13/slab_101_water_bddc1e9814_unrelaxed.cif
+IRMOF-13,101,{101},"(1, 0, 1)",4,11.326,water,healed,380,416,12,501.98,25.55,1,"{""ML"": 24}",0.02391,False,0.5313,0.1915,/content/results/structures/IRMOF-13/slab_101_water_465ed02719_unrelaxed.cif
+IRMOF-13,101,{101},"(1, 0, 1)",1,3.278,water,healed,380,416,12,501.98,22.33,1,"{""ML"": 24}",0.02391,False,0.5533,0.1915,/content/results/structures/IRMOF-13/slab_101_water_e77f9bd7fa_unrelaxed.cif
+IRMOF-13,101,{101},"(1, 0, 1)",0,1.436,water,healed,380,416,12,501.98,23.7,1,"{""ML"": 24}",0.02391,False,0.5738,0.1915,/content/results/structures/IRMOF-13/slab_101_water_3dc22548fe_unrelaxed.cif
+IRMOF-13,10m1,{10̅1},"(1, 0, -1)",0,-0.064,water,healed,1520,1604,28,1505.94,34.77,2,"{""ML"": 56}",0.01859,False,0.3836,0.14895,/content/results/structures/IRMOF-13/slab_10m1_water_56dc8c8388_unrelaxed.cif
+IRMOF-13,10m1,{10̅1},"(1, 0, -1)",1,1.328,water,healed,1520,1604,28,1505.94,34.77,2,"{""ML"": 56}",0.01859,False,0.3849,0.14895,/content/results/structures/IRMOF-13/slab_10m1_water_a3c9de9d31_unrelaxed.cif
+ZIF-6,001,{001},"(0, 0, 1)",0,-0.016,water,healed,272,284,4,342.81,22.15,1,"{""ML"": 8}",0.01167,False,0.1045,0.09347,/content/results/structures/ZIF-6/slab_001_water_738262604c_unrelaxed.cif
+ZIF-6,001,{001},"(0, 0, 1)",1,2.119,water,healed,272,284,4,342.81,19.69,1,"{""ML"": 8}",0.01167,False,0.1097,0.09347,/content/results/structures/ZIF-6/slab_001_water_787dab4a9b_unrelaxed.cif
+ZIF-6,001,{001},"(0, 0, 1)",2,2.642,water,healed,272,296,8,342.81,21.16,1,"{""ML"": 16}",0.02334,False,0.2597,0.18695,/content/results/structures/ZIF-6/slab_001_water_6d3e31a316_unrelaxed.cif
+ZIF-6,100,{100},"(1, 0, 0)",0,2.877,water,healed,272,284,4,374.84,17.77,1,"{""ML"": 8}",0.01067,False,0.0847,0.08549,/content/results/structures/ZIF-6/slab_100_water_1be611d3c1_unrelaxed.cif
+ZIF-6,100,{100},"(1, 0, 0)",2,4.65,water,healed,272,284,4,374.84,20.69,1,"{""ML"": 8}",0.01067,False,0.1038,0.08549,/content/results/structures/ZIF-6/slab_100_water_e5b611735c_unrelaxed.cif
+ZIF-6,100,{100},"(1, 0, 0)",1,4.307,water,healed,272,284,4,374.84,20.69,1,"{""ML"": 8}",0.01067,False,0.1078,0.08549,/content/results/structures/ZIF-6/slab_100_water_1334b097df_unrelaxed.cif
+ZIF-6,100,{100},"(1, 0, 0)",3,5.063,water,healed,272,296,8,374.84,22.03,1,"{""ML"": 16}",0.02134,False,0.2534,0.17097,/content/results/structures/ZIF-6/slab_100_water_75dd0d03a9_unrelaxed.cif
+ZIF-6,100,{100},"(1, 0, 0)",4,3.895,water,healed,272,308,12,374.84,19.56,1,"{""ML"": 24}",0.03201,False,0.426,0.25646,/content/results/structures/ZIF-6/slab_100_water_52ed592803_unrelaxed.cif
+ZIF-6,010,{010},"(0, 1, 0)",1,4.479,water,healed,272,284,4,374.84,17.77,1,"{""ML"": 8}",0.01067,False,0.0942,0.08549,/content/results/structures/ZIF-6/slab_010_water_92a6944502_unrelaxed.cif
+ZIF-6,010,{010},"(0, 1, 0)",0,0.021,water,healed,272,284,4,374.84,20.69,1,"{""ML"": 8}",0.01067,False,0.0977,0.08549,/content/results/structures/ZIF-6/slab_010_water_cab831a49d_unrelaxed.cif
+ZIF-6,010,{010},"(0, 1, 0)",2,8.936,water,healed,272,284,4,374.84,20.69,1,"{""ML"": 8}",0.01067,False,0.1,0.08549,/content/results/structures/ZIF-6/slab_010_water_4c7a0444ad_unrelaxed.cif
+ZIF-6,010,{010},"(0, 1, 0)",3,0.434,water,healed,272,296,8,374.84,22.03,1,"{""ML"": 16}",0.02134,False,0.2428,0.17097,/content/results/structures/ZIF-6/slab_010_water_4ac5b4a8bb_unrelaxed.cif
+ZIF-6,010,{010},"(0, 1, 0)",4,1.452,water,healed,272,308,12,374.84,19.56,1,"{""ML"": 24}",0.03201,False,0.4511,0.25646,/content/results/structures/ZIF-6/slab_010_water_207615995c_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",0,-0.114,water,healed,544,556,4,507.95,27.14,2,"{""ML"": 8}",0.00787,False,0.0724,0.06308,/content/results/structures/ZIF-6/slab_101_water_c452650e0e_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",4,5.228,water,healed,544,568,8,507.95,29.04,2,"{""ML"": 16}",0.01575,False,0.1404,0.12617,/content/results/structures/ZIF-6/slab_101_water_869371278c_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",3,4.797,water,healed,544,568,8,507.95,28.85,2,"{""ML"": 16}",0.01575,False,0.142,0.12617,/content/results/structures/ZIF-6/slab_101_water_a3065aa46f_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",2,3.489,water,healed,544,568,8,507.95,28.98,2,"{""ML"": 16}",0.01575,False,0.1742,0.12617,/content/results/structures/ZIF-6/slab_101_water_c9a5687dda_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",1,2.74,water,healed,544,568,8,507.95,28.98,2,"{""ML"": 16}",0.01575,False,0.1755,0.12617,/content/results/structures/ZIF-6/slab_101_water_cbca5a911a_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",5,6.156,water,healed,544,580,12,507.95,28.7,2,"{""ML"": 24}",0.02362,False,0.2354,0.18925,/content/results/structures/ZIF-6/slab_101_water_f87bf55155_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",7,6.899,water,healed,544,580,12,507.95,28.43,2,"{""ML"": 24}",0.02362,False,0.2374,0.18925,/content/results/structures/ZIF-6/slab_101_water_39468c2f33_unrelaxed.cif
+ZIF-6,101,{101},"(1, 0, 1)",6,6.464,water,healed,544,580,12,507.95,28.7,2,"{""ML"": 24}",0.02362,False,0.2398,0.18925,/content/results/structures/ZIF-6/slab_101_water_d47f149b82_unrelaxed.cif
+ZIF-4,001,{001},"(0, 0, 1)",1,7.718,water,healed,272,284,4,235.66,20.24,1,"{""ML"": 8}",0.01697,False,0.138,0.13598,/content/results/structures/ZIF-4/slab_001_water_c906e3b185_unrelaxed.cif
+ZIF-4,001,{001},"(0, 0, 1)",0,1.335,water,healed,272,284,4,235.66,18.0,1,"{""ML"": 8}",0.01697,False,0.1403,0.13598,/content/results/structures/ZIF-4/slab_001_water_9834342487_unrelaxed.cif
+ZIF-4,001,{001},"(0, 0, 1)",4,3.282,water,healed,272,296,8,235.66,20.86,1,"{""ML"": 16}",0.03395,False,0.3156,0.27195,/content/results/structures/ZIF-4/slab_001_water_3a2be06da2_unrelaxed.cif
+ZIF-4,001,{001},"(0, 0, 1)",3,2.774,water,healed,272,296,8,235.66,20.54,1,"{""ML"": 16}",0.03395,False,0.3625,0.27195,/content/results/structures/ZIF-4/slab_001_water_ecee674dce_unrelaxed.cif
+ZIF-4,001,{001},"(0, 0, 1)",2,2.028,water,healed,272,296,8,235.66,20.54,1,"{""ML"": 16}",0.03395,False,0.4151,0.27195,/content/results/structures/ZIF-4/slab_001_water_6dd37d52b5_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",0,4.435,water,healed,272,284,4,282.05,16.47,1,"{""ML"": 8}",0.01418,False,0.1184,0.11361,/content/results/structures/ZIF-4/slab_100_water_69e45660f2_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",3,1.977,water,healed,272,296,8,282.05,17.18,1,"{""ML"": 16}",0.02836,False,0.2084,0.22722,/content/results/structures/ZIF-4/slab_100_water_ff7a8739ab_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",6,5.42,water,healed,272,296,8,282.05,18.09,1,"{""ML"": 16}",0.02836,False,0.2524,0.22722,/content/results/structures/ZIF-4/slab_100_water_3edf6982cf_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",4,2.437,water,healed,272,296,8,282.05,18.31,1,"{""ML"": 16}",0.02836,False,0.302,0.22722,/content/results/structures/ZIF-4/slab_100_water_08443bdaa3_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",1,-0.002,water,healed,272,296,8,282.05,16.28,1,"{""ML"": 16}",0.02836,False,0.3142,0.22722,/content/results/structures/ZIF-4/slab_100_water_068be3d20e_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",2,1.297,water,healed,272,296,8,282.05,16.28,1,"{""ML"": 16}",0.02836,False,0.3227,0.22722,/content/results/structures/ZIF-4/slab_100_water_a1e2a50cfa_unrelaxed.cif
+ZIF-4,100,{100},"(1, 0, 0)",5,2.962,water,healed,272,296,8,282.05,16.67,1,"{""ML"": 16}",0.02836,False,0.3456,0.22722,/content/results/structures/ZIF-4/slab_100_water_ca2b1dbf4f_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",1,1.351,water,healed,272,284,4,283.67,16.15,1,"{""ML"": 8}",0.0141,False,0.1154,0.11296,/content/results/structures/ZIF-4/slab_010_water_96c3ee364e_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",0,0.098,water,healed,272,284,4,283.67,16.45,1,"{""ML"": 8}",0.0141,False,0.1172,0.11296,/content/results/structures/ZIF-4/slab_010_water_c94d4fa9ac_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",2,1.687,water,healed,272,290,6,283.67,17.32,1,"{""ML"": 12}",0.02115,False,0.2089,0.16944,/content/results/structures/ZIF-4/slab_010_water_d94ad7a5af_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",5,4.507,water,healed,272,296,8,283.67,17.24,1,"{""ML"": 16}",0.0282,False,0.2017,0.22592,/content/results/structures/ZIF-4/slab_010_water_55c1c38014_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",4,2.847,water,healed,272,296,8,283.67,18.44,1,"{""ML"": 16}",0.0282,False,0.2643,0.22592,/content/results/structures/ZIF-4/slab_010_water_0f2f6ee9f2_unrelaxed.cif
+ZIF-4,010,{010},"(0, 1, 0)",3,2.36,water,healed,272,296,8,283.67,17.32,1,"{""ML"": 16}",0.0282,False,0.3105,0.22592,/content/results/structures/ZIF-4/slab_010_water_0acc72551b_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",4,2.882,water,healed,544,568,8,367.54,26.29,2,"{""ML"": 16}",0.02177,False,0.17,0.17437,/content/results/structures/ZIF-4/slab_101_water_f52be12a4a_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",1,0.53,water,healed,544,568,8,367.54,26.15,2,"{""ML"": 16}",0.02177,False,0.1971,0.17437,/content/results/structures/ZIF-4/slab_101_water_7165a36b54_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",0,0.136,water,healed,544,568,8,367.54,25.35,2,"{""ML"": 16}",0.02177,False,0.2003,0.17437,/content/results/structures/ZIF-4/slab_101_water_423f84f6c1_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",2,0.883,water,healed,544,568,8,367.54,25.64,2,"{""ML"": 16}",0.02177,False,0.2026,0.17437,/content/results/structures/ZIF-4/slab_101_water_b68e5778c2_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",3,1.812,water,healed,544,568,8,367.54,25.99,2,"{""ML"": 16}",0.02177,False,0.204,0.17437,/content/results/structures/ZIF-4/slab_101_water_c0bd036e59_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",5,4.777,water,healed,544,568,8,367.54,25.85,2,"{""ML"": 16}",0.02177,False,0.206,0.17437,/content/results/structures/ZIF-4/slab_101_water_d373f6f540_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",6,5.471,water,healed,544,568,8,367.54,26.15,2,"{""ML"": 16}",0.02177,False,0.206,0.17437,/content/results/structures/ZIF-4/slab_101_water_57bb12292a_unrelaxed.cif
+ZIF-4,101,{101},"(1, 0, 1)",7,6.043,water,healed,544,568,8,367.54,25.35,2,"{""ML"": 16}",0.02177,False,0.2088,0.17437,/content/results/structures/ZIF-4/slab_101_water_5f34f8cdc5_unrelaxed.cif
+ZIF-9,100,{100},"(1, 0, 0)",0,3.758,water,healed,696,708,4,361.29,28.68,2,"{""ML"": 8}",0.01107,False,0.0948,0.08869,/content/results/structures/ZIF-9/slab_100_water_1c5c801fab_unrelaxed.cif
+ZIF-9,100,{100},"(1, 0, 0)",1,2.565,water,healed,696,714,6,361.29,30.25,2,"{""ML"": 12}",0.01661,False,0.1565,0.13304,/content/results/structures/ZIF-9/slab_100_water_0edbd7bedb_unrelaxed.cif
+ZIF-9,100,{100},"(1, 0, 0)",2,1.632,water,healed,696,720,8,361.29,31.73,2,"{""ML"": 16}",0.02214,False,0.2023,0.17738,/content/results/structures/ZIF-9/slab_100_water_65011111f4_unrelaxed.cif
+ZIF-9,100,{100},"(1, 0, 0)",4,1.152,water,healed,696,726,10,361.29,29.31,2,"{""ML"": 20}",0.02768,False,0.2289,0.22173,/content/results/structures/ZIF-9/slab_100_water_84c9974015_unrelaxed.cif
+ZIF-9,100,{100},"(1, 0, 0)",3,-0.06,water,healed,696,726,10,361.29,29.31,2,"{""ML"": 20}",0.02768,False,0.2527,0.22173,/content/results/structures/ZIF-9/slab_100_water_da3ccd2c6e_unrelaxed.cif
+ZIF-9,001,{001},"(0, 0, 1)",0,2.805,water,healed,522,540,6,455.89,19.18,3,"{""ML"": 12}",0.01316,False,0.1208,0.10543,/content/results/structures/ZIF-9/slab_001_water_4686c10203_unrelaxed.cif
+ZIF-9,001,{001},"(0, 0, 1)",1,-0.033,water,healed,522,558,12,455.89,17.46,3,"{""ML"": 24}",0.02632,False,0.2484,0.21087,/content/results/structures/ZIF-9/slab_001_water_e5ac4f85f6_unrelaxed.cif
+ZIF-9,001,{001},"(0, 0, 1)",2,1.856,water,healed,522,558,12,455.89,17.46,3,"{""ML"": 24}",0.02632,False,0.2823,0.21087,/content/results/structures/ZIF-9/slab_001_water_517a56eaed_unrelaxed.cif
+ZIF-9,101,{101},"(1, 0, 1)",0,5.947,water,healed,348,354,2,193.9,26.5,2,"{""ML"": 4}",0.01031,False,0.0942,0.08263,/content/results/structures/ZIF-9/slab_101_water_021edb5392_unrelaxed.cif
+ZIF-9,101,{101},"(1, 0, 1)",1,2.57,water,healed,348,360,4,193.9,26.67,2,"{""ML"": 8}",0.02063,False,0.1492,0.16526,/content/results/structures/ZIF-9/slab_101_water_a112198554_unrelaxed.cif
+ZIF-9,101,{101},"(1, 0, 1)",2,3.064,water,healed,348,360,4,193.9,27.99,2,"{""ML"": 8}",0.02063,False,0.192,0.16526,/content/results/structures/ZIF-9/slab_101_water_f1e1ecddb1_unrelaxed.cif
+ZIF-9,101,{101},"(1, 0, 1)",3,3.85,water,healed,348,360,4,193.9,27.26,2,"{""ML"": 8}",0.02063,False,0.1949,0.16526,/content/results/structures/ZIF-9/slab_101_water_9ec74295fa_unrelaxed.cif
+ZIF-9,101,{101},"(1, 0, 1)",4,-0.002,water,healed,348,372,8,193.9,29.89,2,"{""ML"": 16}",0.04126,False,0.3097,0.33052,/content/results/structures/ZIF-9/slab_101_water_dc1a8a1359_unrelaxed.cif
+ZIF-9,10m1,{10̅1},"(1, 0, -1)",0,-0.115,water,healed,696,720,8,581.69,20.01,2,"{""ML"": 16}",0.01375,False,0.1296,0.11017,/content/results/structures/ZIF-9/slab_10m1_water_6ea1974cd0_unrelaxed.cif
+ZIF-9,10m1,{10̅1},"(1, 0, -1)",2,1.463,water,healed,696,738,14,581.69,21.11,2,"{""ML"": 28}",0.02407,False,0.1782,0.1928,/content/results/structures/ZIF-9/slab_10m1_water_63e2faecf5_unrelaxed.cif
+ZIF-9,10m1,{10̅1},"(1, 0, -1)",3,2.351,water,healed,696,738,14,581.69,21.11,2,"{""ML"": 28}",0.02407,False,0.1798,0.1928,/content/results/structures/ZIF-9/slab_10m1_water_d5f5a6b642_unrelaxed.cif
+ZIF-9,10m1,{10̅1},"(1, 0, -1)",1,1.059,water,healed,696,738,14,581.69,21.94,2,"{""ML"": 28}",0.02407,False,0.2271,0.1928,/content/results/structures/ZIF-9/slab_10m1_water_4ec2f1a850_unrelaxed.cif
+ZIF-7,100,{100},"(1, 0, 0)",0,3.74,water,healed,696,708,4,362.38,28.71,2,"{""ML"": 8}",0.01104,False,0.1039,0.08843,/content/results/structures/ZIF-7/slab_100_water_aeb2119618_unrelaxed.cif
+ZIF-7,100,{100},"(1, 0, 0)",1,2.596,water,healed,696,714,6,362.38,30.31,2,"{""ML"": 12}",0.01656,False,0.1797,0.13264,/content/results/structures/ZIF-7/slab_100_water_75e01c62a2_unrelaxed.cif
+ZIF-7,100,{100},"(1, 0, 0)",2,1.631,water,healed,696,720,8,362.38,31.78,2,"{""ML"": 16}",0.02208,False,0.2513,0.17685,/content/results/structures/ZIF-7/slab_100_water_cd6b6199e8_unrelaxed.cif
+ZIF-7,100,{100},"(1, 0, 0)",3,-0.046,water,healed,696,726,10,362.38,29.39,2,"{""ML"": 20}",0.0276,False,0.2856,0.22107,/content/results/structures/ZIF-7/slab_100_water_c4c4838ae3_unrelaxed.cif
+ZIF-7,100,{100},"(1, 0, 0)",4,1.149,water,healed,696,726,10,362.38,29.39,2,"{""ML"": 20}",0.0276,False,0.3001,0.22107,/content/results/structures/ZIF-7/slab_100_water_b7b87e010a_unrelaxed.cif
+ZIF-7,001,{001},"(0, 0, 1)",0,2.82,water,healed,522,540,6,457.69,19.23,3,"{""ML"": 12}",0.01311,False,0.1321,0.10502,/content/results/structures/ZIF-7/slab_001_water_ee05c41cc8_unrelaxed.cif
+ZIF-7,001,{001},"(0, 0, 1)",1,-0.02,water,healed,522,558,12,457.69,17.46,3,"{""ML"": 24}",0.02622,False,0.2933,0.21004,/content/results/structures/ZIF-7/slab_001_water_538f93f508_unrelaxed.cif
+ZIF-7,001,{001},"(0, 0, 1)",2,1.848,water,healed,522,558,12,457.69,17.46,3,"{""ML"": 24}",0.02622,False,0.297,0.21004,/content/results/structures/ZIF-7/slab_001_water_f16d09eb48_unrelaxed.cif
+ZIF-7,101,{101},"(1, 0, 1)",0,5.937,water,healed,348,354,2,194.59,26.6,2,"{""ML"": 4}",0.01028,False,0.1028,0.08234,/content/results/structures/ZIF-7/slab_101_water_1c4202c350_unrelaxed.cif
+ZIF-7,101,{101},"(1, 0, 1)",1,2.57,water,healed,348,360,4,194.59,26.74,2,"{""ML"": 8}",0.02056,False,0.1626,0.16467,/content/results/structures/ZIF-7/slab_101_water_1f67bfab70_unrelaxed.cif
+ZIF-7,101,{101},"(1, 0, 1)",2,3.061,water,healed,348,360,4,194.59,28.03,2,"{""ML"": 8}",0.02056,False,0.2034,0.16467,/content/results/structures/ZIF-7/slab_101_water_4b6d224b42_unrelaxed.cif
+ZIF-7,101,{101},"(1, 0, 1)",3,3.831,water,healed,348,360,4,194.59,27.32,2,"{""ML"": 8}",0.02056,False,0.2489,0.16467,/content/results/structures/ZIF-7/slab_101_water_e3a28315f8_unrelaxed.cif
+ZIF-7,101,{101},"(1, 0, 1)",4,0.017,water,healed,348,372,8,194.59,29.94,2,"{""ML"": 16}",0.04111,False,0.3462,0.32934,/content/results/structures/ZIF-7/slab_101_water_aab6b0e5ac_unrelaxed.cif
+ZIF-7,10m1,{10̅1},"(1, 0, -1)",0,-0.113,water,healed,696,720,8,583.78,20.05,2,"{""ML"": 16}",0.0137,False,0.1517,0.10978,/content/results/structures/ZIF-7/slab_10m1_water_cd5374964d_unrelaxed.cif
+ZIF-7,10m1,{10̅1},"(1, 0, -1)",3,2.355,water,healed,696,738,14,583.78,21.14,2,"{""ML"": 28}",0.02398,False,0.2034,0.19212,/content/results/structures/ZIF-7/slab_10m1_water_5fe0ea2f06_unrelaxed.cif
+ZIF-7,10m1,{10̅1},"(1, 0, -1)",2,1.465,water,healed,696,738,14,583.78,21.14,2,"{""ML"": 28}",0.02398,False,0.2109,0.19212,/content/results/structures/ZIF-7/slab_10m1_water_30822b8b61_unrelaxed.cif
+ZIF-7,10m1,{10̅1},"(1, 0, -1)",1,1.073,water,healed,696,738,14,583.78,21.97,2,"{""ML"": 28}",0.02398,False,0.269,0.19212,/content/results/structures/ZIF-7/slab_10m1_water_7021dc3a04_unrelaxed.cif
+ZIF-3,100,{100},"(1, 0, 0)",0,1.013,water,healed,272,284,4,317.56,19.05,1,"{""ML"": 8}",0.0126,False,0.0994,0.10091,/content/results/structures/ZIF-3/slab_100_water_5aa6860116_unrelaxed.cif
+ZIF-3,100,{100},"(1, 0, 0)",1,1.851,water,healed,272,284,4,317.56,20.79,1,"{""ML"": 8}",0.0126,False,0.1021,0.10091,/content/results/structures/ZIF-3/slab_100_water_95fe2e7d6b_unrelaxed.cif
+ZIF-3,100,{100},"(1, 0, 0)",3,3.139,water,healed,272,296,8,317.56,21.05,1,"{""ML"": 16}",0.02519,False,0.2927,0.20181,/content/results/structures/ZIF-3/slab_100_water_107ded9f9b_unrelaxed.cif
+ZIF-3,100,{100},"(1, 0, 0)",2,2.355,water,healed,272,296,8,317.56,20.79,1,"{""ML"": 16}",0.02519,False,0.3085,0.20181,/content/results/structures/ZIF-3/slab_100_water_a8e6654c4f_unrelaxed.cif
+ZIF-3,100,{100},"(1, 0, 0)",4,2.689,water,healed,272,302,10,317.56,21.67,1,"{""ML"": 20}",0.03149,False,0.4002,0.25226,/content/results/structures/ZIF-3/slab_100_water_08fb00e021_unrelaxed.cif
+ZIF-3,001,{001},"(0, 0, 1)",0,-0.15,water,healed,272,284,4,359.86,15.94,1,"{""ML"": 8}",0.01112,False,0.0941,0.08904,/content/results/structures/ZIF-3/slab_001_water_cea3b576ef_unrelaxed.cif
+ZIF-3,001,{001},"(0, 0, 1)",1,4.356,water,healed,272,296,8,359.86,18.47,1,"{""ML"": 16}",0.02223,False,0.1665,0.17809,/content/results/structures/ZIF-3/slab_001_water_f02588e21e_unrelaxed.cif
+ZIF-3,001,{001},"(0, 0, 1)",3,3.714,water,healed,272,308,12,359.86,19.27,1,"{""ML"": 24}",0.03335,False,0.3478,0.26713,/content/results/structures/ZIF-3/slab_001_water_c8a845d468_unrelaxed.cif
+ZIF-3,001,{001},"(0, 0, 1)",2,3.277,water,healed,272,308,12,359.86,17.69,1,"{""ML"": 24}",0.03335,False,0.4544,0.26713,/content/results/structures/ZIF-3/slab_001_water_08247de5e6_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",0,-0.15,water,healed,544,556,4,449.1,26.32,2,"{""ML"": 8}",0.00891,False,0.0776,0.07135,/content/results/structures/ZIF-3/slab_110_water_7ce0977368_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",2,4.743,water,healed,544,568,8,449.1,28.11,2,"{""ML"": 16}",0.01781,False,0.1343,0.1427,/content/results/structures/ZIF-3/slab_110_water_a5b6db2592_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",1,3.295,water,healed,544,568,8,449.1,28.37,2,"{""ML"": 16}",0.01781,False,0.203,0.1427,/content/results/structures/ZIF-3/slab_110_water_2c0b5a343c_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",3,5.647,water,healed,544,580,12,449.1,28.28,2,"{""ML"": 24}",0.02672,False,0.2743,0.21405,/content/results/structures/ZIF-3/slab_110_water_8fa2729198_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",4,6.321,water,healed,544,580,12,449.1,28.28,2,"{""ML"": 24}",0.02672,False,0.2751,0.21405,/content/results/structures/ZIF-3/slab_110_water_0b0ff9756b_unrelaxed.cif
+ZIF-3,110,{110},"(1, 1, 0)",5,6.793,water,healed,544,592,16,449.1,30.64,2,"{""ML"": 32}",0.03563,False,0.4052,0.2854,/content/results/structures/ZIF-3/slab_110_water_1fef6bd06f_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",7,6.734,water,healed,544,568,8,479.94,27.68,2,"{""ML"": 16}",0.01667,False,0.1398,0.13353,/content/results/structures/ZIF-3/slab_101_water_f2013776e9_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",5,4.703,water,healed,544,568,8,479.94,27.28,2,"{""ML"": 16}",0.01667,False,0.1545,0.13353,/content/results/structures/ZIF-3/slab_101_water_c957052873_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",4,4.248,water,healed,544,568,8,479.94,26.67,2,"{""ML"": 16}",0.01667,False,0.157,0.13353,/content/results/structures/ZIF-3/slab_101_water_9a912eab11_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",1,0.939,water,healed,544,568,8,479.94,27.27,2,"{""ML"": 16}",0.01667,False,0.1581,0.13353,/content/results/structures/ZIF-3/slab_101_water_b473336a63_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",2,1.507,water,healed,544,568,8,479.94,27.2,2,"{""ML"": 16}",0.01667,False,0.1621,0.13353,/content/results/structures/ZIF-3/slab_101_water_1f004faf1a_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",3,2.552,water,healed,544,568,8,479.94,25.97,2,"{""ML"": 16}",0.01667,False,0.1657,0.13353,/content/results/structures/ZIF-3/slab_101_water_0e51b23362_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",6,5.517,water,healed,544,568,8,479.94,27.28,2,"{""ML"": 16}",0.01667,False,0.1683,0.13353,/content/results/structures/ZIF-3/slab_101_water_c0458862a3_unrelaxed.cif
+ZIF-3,101,{101},"(1, 0, 1)",0,-0.076,water,healed,544,568,8,479.94,28.32,2,"{""ML"": 16}",0.01667,False,0.2006,0.13353,/content/results/structures/ZIF-3/slab_101_water_5601bad97d_unrelaxed.cif
+ZIF-5,100,{100},"(1, 0, 0)",1,2.595,water,healed,808,844,12,482.33,23.34,2,"{""ML"": 24}",0.02488,False,0.1549,0.19931,/content/results/structures/ZIF-5/slab_100_water_0798d7ed9a_unrelaxed.cif
+ZIF-5,100,{100},"(1, 0, 0)",0,2.236,water,healed,808,844,12,482.33,23.48,2,"{""ML"": 24}",0.02488,False,0.1741,0.19931,/content/results/structures/ZIF-5/slab_100_water_78e6ad0d1f_unrelaxed.cif
+ZIF-5,100,{100},"(1, 0, 0)",2,-0.15,water,healed,808,868,20,482.33,23.7,2,"{""ML"": 40}",0.04147,False,0.4753,0.33218,/content/results/structures/ZIF-5/slab_100_water_3e4f1bffcf_unrelaxed.cif
+ZIF-5,110,{110},"(1, 1, 0)",0,2.707,water,healed,404,428,8,341.06,16.8,1,"{""ML"": 16}",0.02346,False,0.1401,0.18791,/content/results/structures/ZIF-5/slab_110_water_49b37fd443_unrelaxed.cif
+ZIF-5,110,{110},"(1, 1, 0)",1,3.732,water,healed,404,428,8,341.06,17.68,1,"{""ML"": 16}",0.02346,False,0.2107,0.18791,/content/results/structures/ZIF-5/slab_110_water_1d6083ec1c_unrelaxed.cif
+ZIF-5,110,{110},"(1, 1, 0)",3,1.791,water,healed,404,440,12,341.06,16.8,1,"{""ML"": 24}",0.03518,False,0.3062,0.28186,/content/results/structures/ZIF-5/slab_110_water_072804e416_unrelaxed.cif
+ZIF-5,110,{110},"(1, 1, 0)",2,1.211,water,healed,404,440,12,341.06,17.64,1,"{""ML"": 24}",0.03518,False,0.3511,0.28186,/content/results/structures/ZIF-5/slab_110_water_ded13d4e14_unrelaxed.cif
+ZIF-5,110,{110},"(1, 1, 0)",4,-0.15,water,healed,404,452,16,341.06,18.99,1,"{""ML"": 32}",0.04691,False,0.4941,0.37582,/content/results/structures/ZIF-5/slab_110_water_e09ed1086f_unrelaxed.cif
+ZIF-5,111,{111},"(1, 1, 1)",2,1.087,water,healed,1616,1688,24,835.41,27.15,2,"{""ML"": 48}",0.02873,False,0.2512,0.23014,/content/results/structures/ZIF-5/slab_111_water_466e1ea2e5_unrelaxed.cif
+ZIF-5,111,{111},"(1, 1, 1)",1,0.421,water,healed,1616,1688,24,835.41,27.15,2,"{""ML"": 48}",0.02873,False,0.2627,0.23014,/content/results/structures/ZIF-5/slab_111_water_a46070e2cb_unrelaxed.cif
+ZIF-5,111,{111},"(1, 1, 1)",0,-0.15,water,healed,1616,1688,24,835.41,28.43,2,"{""ML"": 48}",0.02873,False,0.2781,0.23014,/content/results/structures/ZIF-5/slab_111_water_3f349c8a78_unrelaxed.cif
+ZIF-5,111,{111},"(1, 1, 1)",3,1.435,water,healed,1616,1706,30,835.41,28.58,2,"{""ML"": 60}",0.03591,False,0.3479,0.28767,/content/results/structures/ZIF-5/slab_111_water_389facbddd_unrelaxed.cif

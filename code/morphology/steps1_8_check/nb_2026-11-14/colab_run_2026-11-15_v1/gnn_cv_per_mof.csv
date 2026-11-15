@@ -1,0 +1,97 @@
+mof,model,n_labelled,n_families,MAE_J_m2,spearman_families,lowest_face_agrees,true_habit,pred_habit,habit_agrees,dominant_agrees
+HKUST-1,gnn,6,3,0.06335495079197169,0.5,False,mixed_dominant_{111},truncated_octahedron,False,False
+HKUST-1,mean,6,3,0.10526134235414651,,False,mixed_dominant_{111},truncated_rhombic_dodecahedron,False,False
+HKUST-1,bonds_linear,6,3,0.10019303972086473,1.0,True,mixed_dominant_{111},mixed_dominant_{111},True,True
+HKUST-1,bfdh_linear,6,3,0.10787931566942133,1.0,True,mixed_dominant_{111},truncated_rhombic_dodecahedron,False,False
+HKUST-1,static_chgnet,6,3,0.48306666666666676,1.0,True,mixed_dominant_{111},truncated_octahedron,False,True
+HKUST-1,static_calibrated,6,3,0.07200859048930666,1.0,True,mixed_dominant_{111},truncated_octahedron,False,True
+MOF-1-Dybtsev-dmol,gnn,4,3,0.11980187708998448,0.5,True,"plate: {010} 50%, {001} 27%, {100} 23%","plate: {010} 46%, {100} 28%, {001} 26%",True,True
+MOF-1-Dybtsev-dmol,mean,4,3,0.09831193449949893,,False,"plate: {010} 50%, {001} 27%, {100} 23%","block/prism: {100} 33%, {001} 33%, {010} 33%",False,False
+MOF-1-Dybtsev-dmol,bonds_linear,4,3,0.04272266940326034,0.8660254037844387,True,"plate: {010} 50%, {001} 27%, {100} 23%","plate: {010} 48%, {100} 26%, {001} 26%",True,True
+MOF-1-Dybtsev-dmol,bfdh_linear,4,3,0.09290088171634435,-0.8660254037844387,False,"plate: {010} 50%, {001} 27%, {100} 23%","block/prism: {100} 33%, {001} 33%, {010} 33%",False,False
+MOF-1-Dybtsev-dmol,static_chgnet,4,3,0.484025,0.5,True,"plate: {010} 50%, {001} 27%, {100} 23%","lath: {010} 66%, {100} 26%, {001} 8%",False,True
+MOF-1-Dybtsev-dmol,static_calibrated,4,3,0.10578281525624748,0.5,True,"plate: {010} 50%, {001} 27%, {100} 23%","lath: {010} 60%, {100} 29%, {001} 11%",False,True
+UiO-66,gnn,3,3,0.2117705464373381,1.0,True,truncated_octahedron,truncated_octahedron,True,True
+UiO-66,mean,3,3,0.10581459222826504,,False,truncated_octahedron,truncated_rhombic_dodecahedron,False,False
+UiO-66,bonds_linear,3,3,0.08898181029934005,1.0,True,truncated_octahedron,mixed_dominant_{111},False,True
+UiO-66,bfdh_linear,3,3,0.1139915788480486,1.0,True,truncated_octahedron,mixed_dominant_{111},False,True
+UiO-66,static_chgnet,3,3,0.5386333333333333,1.0,True,truncated_octahedron,mixed_dominant_{111},False,True
+UiO-66,static_calibrated,3,3,0.0757255596989958,1.0,True,truncated_octahedron,mixed_dominant_{111},False,True
+MIL-140A-DFT,gnn,6,4,0.41921909189545287,0.39999999999999997,False,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","lath: {100} 48%, {110} 32%, {10̅1} 19%",False,False
+MIL-140A-DFT,mean,6,4,0.37003717155181853,,False,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","block/prism: {10̅1} 33%, {110} 33%, {100} 25%",True,True
+MIL-140A-DFT,bonds_linear,6,4,0.16961220704144012,0.7999999999999999,False,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","plate: {110} 36%, {10̅1} 33%, {100} 30%",False,False
+MIL-140A-DFT,bfdh_linear,6,4,0.3654195338281278,-0.19999999999999998,False,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","block/prism: {110} 41%, {10̅1} 31%, {100} 26%",True,False
+MIL-140A-DFT,static_chgnet,6,4,1.1293666666666666,0.39999999999999997,True,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","needle/rod: {110} 45%, {10̅1} 43%, {100} 11%",False,False
+MIL-140A-DFT,static_calibrated,6,4,0.10769602740588813,0.39999999999999997,True,"block/prism: {10̅1} 42%, {110} 32%, {100} 26%","needle/rod: {110} 45%, {10̅1} 43%, {100} 12%",False,False
+MIL-47,gnn,6,4,0.16203328732921982,0.6000000000000001,False,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 73%, {100} 27%",False,False
+MIL-47,mean,6,4,0.0846986383283,,False,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 33%, {100} 33%, {001} 18%",False,False
+MIL-47,bonds_linear,6,4,0.09325740209571876,0.7999999999999999,True,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 59%, {100} 35%, {001} 3%",False,False
+MIL-47,bfdh_linear,6,4,0.0896237251464501,-0.19999999999999998,False,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 38%, {100} 30%, {001} 18%",False,False
+MIL-47,static_chgnet,6,4,0.6289833333333333,0.7999999999999999,True,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 64%, {100} 36%",False,False
+MIL-47,static_calibrated,6,4,0.06988041723181417,0.7999999999999999,True,"lath: {100} 54%, {011} 46%, {001} 0%","block/prism: {011} 65%, {100} 35%, {001} 0%",False,False
+ZnBDC,gnn,8,4,0.17796591088621833,0.39999999999999997,False,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","block/prism: {011} 70%, {10̅1} 30%",False,False
+ZnBDC,mean,8,4,0.14230446652287781,,False,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","block/prism: {10̅1} 33%, {011} 33%, {010} 20%",False,True
+ZnBDC,bonds_linear,8,4,0.14761617146502914,0.7999999999999999,True,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","block/prism: {011} 54%, {10̅1} 41%, {010} 3%",False,False
+ZnBDC,bfdh_linear,8,4,0.15381330942127747,-0.7999999999999999,False,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","needle/rod: {011} 39%, {10̅1} 30%, {010} 19%",True,False
+ZnBDC,static_chgnet,8,4,0.5886,0.7999999999999999,True,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","block/prism: {011} 55%, {10̅1} 42%, {001} 3%",False,False
+ZnBDC,static_calibrated,8,4,0.13475427111712718,0.7999999999999999,True,"needle/rod: {10̅1} 49%, {011} 29%, {001} 23%","block/prism: {011} 54%, {10̅1} 41%, {001} 4%",False,False
+Cd3BTB2,gnn,8,4,0.09235758586607035,0.6000000000000001,False,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","block/prism: {100} 36%, {01̅1} 34%, {010} 19%",True,True
+Cd3BTB2,mean,8,4,0.09251664135084028,,False,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","block/prism: {100} 33%, {001} 23%, {010} 23%",True,True
+Cd3BTB2,bonds_linear,8,4,0.08665372517754907,0.7999999999999999,True,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","needle/rod: {100} 39%, {01̅1} 27%, {010} 24%",False,True
+Cd3BTB2,bfdh_linear,8,4,0.09712810539240657,-0.7999999999999999,False,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","block/prism: {100} 33%, {001} 24%, {010} 23%",True,True
+Cd3BTB2,static_chgnet,8,4,0.46335,0.7999999999999999,True,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","block/prism: {100} 38%, {01̅1} 25%, {010} 23%",True,True
+Cd3BTB2,static_calibrated,8,4,0.08911870085106322,0.7999999999999999,True,"block/prism: {100} 37%, {01̅1} 26%, {001} 22%","block/prism: {100} 38%, {01̅1} 25%, {010} 23%",True,True
+IRMOF-1,gnn,3,3,0.16476324526605357,1.0,True,mixed_dominant_{100},mixed_dominant_{100},True,True
+IRMOF-1,mean,3,3,0.10715966502990348,,True,mixed_dominant_{100},truncated_rhombic_dodecahedron,False,False
+IRMOF-1,bonds_linear,3,3,0.055707901326687015,1.0,True,mixed_dominant_{100},mixed_dominant_{100},True,True
+IRMOF-1,bfdh_linear,3,3,0.09754427875004719,-0.5,False,mixed_dominant_{100},truncated_rhombic_dodecahedron,False,False
+IRMOF-1,static_chgnet,3,3,0.21616666666666665,1.0,True,mixed_dominant_{100},mixed_dominant_{100},True,True
+IRMOF-1,static_calibrated,3,3,0.05424487026239772,1.0,True,mixed_dominant_{100},mixed_dominant_{100},True,True
+IRMOF-15,gnn,4,4,0.33522333888939143,-0.7999999999999999,False,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {110} 48%, {001} 31%, {010} 10%",True,False
+IRMOF-15,mean,4,4,0.20036334733923072,,True,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {001} 33%, {110} 33%, {100} 17%",True,True
+IRMOF-15,bonds_linear,4,4,0.019936993707189155,0.7745966692414834,True,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {001} 34%, {100} 28%, {010} 28%",True,True
+IRMOF-15,bfdh_linear,4,4,0.19097068818980262,-0.7745966692414834,False,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {110} 34%, {001} 33%, {100} 16%",True,False
+IRMOF-15,static_chgnet,4,4,0.12705,0.19999999999999998,False,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {001} 32%, {010} 32%, {100} 28%",True,True
+IRMOF-15,static_calibrated,4,4,0.02045892271262594,0.19999999999999998,False,"block/prism: {001} 33%, {100} 33%, {010} 33%","block/prism: {001} 33%, {010} 28%, {100} 25%",True,True
+MIL-88A-open,gnn,2,2,0.061745949020382496,,False,"block/prism: {100} 63%, {001} 37%","needle/rod: {100} 74%, {001} 26%",False,True
+MIL-88A-open,mean,2,2,0.12676162029238197,,True,"block/prism: {100} 63%, {001} 37%","block/prism: {100} 67%, {001} 33%",True,True
+MIL-88A-open,bonds_linear,2,2,0.09049600007671771,,False,"block/prism: {100} 63%, {001} 37%","needle/rod: {100} 75%, {001} 25%",False,True
+MIL-88A-open,bfdh_linear,2,2,0.13172124522400736,,False,"block/prism: {100} 63%, {001} 37%","block/prism: {100} 67%, {001} 33%",True,True
+MIL-88A-open,static_chgnet,2,2,0.7153999999999998,,False,"block/prism: {100} 63%, {001} 37%","needle/rod: {100} 75%, {001} 25%",False,True
+MIL-88A-open,static_calibrated,2,2,0.04923294317207186,,False,"block/prism: {100} 63%, {001} 37%","needle/rod: {100} 74%, {001} 26%",False,True
+MIL-88B-open,gnn,6,4,0.18581205707597823,0.7999999999999999,True,"needle/rod: {100} 55%, {101} 44%, {001} 1%","needle/rod: {100} 49%, {101} 48%, {001} 3%",True,True
+MIL-88B-open,mean,6,4,0.09852037185268366,,False,"needle/rod: {100} 55%, {101} 44%, {001} 1%","block/prism: {101} 53%, {2̅10} 20%, {100} 16%",False,False
+MIL-88B-open,bonds_linear,6,4,0.017056290257094552,0.7999999999999999,True,"needle/rod: {100} 55%, {101} 44%, {001} 1%","block/prism: {101} 58%, {100} 37%, {2̅10} 4%",False,False
+MIL-88B-open,bfdh_linear,6,4,0.09078182054253137,0.39999999999999997,True,"needle/rod: {100} 55%, {101} 44%, {001} 1%","block/prism: {101} 54%, {100} 19%, {2̅10} 17%",False,False
+MIL-88B-open,static_chgnet,6,4,0.403,0.39999999999999997,False,"needle/rod: {100} 55%, {101} 44%, {001} 1%","plate: {101} 73%, {100} 23%, {2̅10} 4%",False,False
+MIL-88B-open,static_calibrated,6,4,0.01737979538799689,0.39999999999999997,False,"needle/rod: {100} 55%, {101} 44%, {001} 1%","plate: {101} 72%, {100} 22%, {2̅10} 6%",False,False
+Mg-MOF-74,gnn,7,4,0.21930306500088,0.39999999999999997,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {2̅10} 57%, {101} 43%",False,True
+Mg-MOF-74,mean,7,4,0.18900114563128353,,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {101} 38%, {100} 30%, {2̅10} 30%",False,False
+Mg-MOF-74,bonds_linear,7,4,0.14633563631915322,0.0,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {2̅10} 55%, {101} 43%, {100} 2%",False,True
+Mg-MOF-74,bfdh_linear,7,4,0.2158748951755646,-1.0,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {001} 40%, {100} 39%, {2̅10} 19%",False,False
+Mg-MOF-74,static_chgnet,7,4,0.8403428571428571,0.39999999999999997,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {2̅10} 45%, {101} 41%, {100} 14%",False,True
+Mg-MOF-74,static_calibrated,7,4,0.08461307511766743,0.39999999999999997,False,"needle/rod: {2̅10} 75%, {101} 25%","block/prism: {2̅10} 43%, {101} 41%, {100} 16%",False,True
+Ni-DOBDC,gnn,5,4,0.07253196351356933,0.39999999999999997,True,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","block/prism: {2̅10} 65%, {101} 35%",False,True
+Ni-DOBDC,mean,5,4,0.14022870077227742,,False,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","block/prism: {101} 38%, {100} 30%, {2̅10} 30%",False,False
+Ni-DOBDC,bonds_linear,5,4,0.11406833066643199,0.19999999999999998,True,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","block/prism: {2̅10} 61%, {101} 36%, {100} 2%",False,True
+Ni-DOBDC,bfdh_linear,5,4,0.1893502709858163,-0.7999999999999999,False,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","plate: {001} 61%, {100} 26%, {2̅10} 13%",False,False
+Ni-DOBDC,static_chgnet,5,4,0.78164,0.6000000000000001,False,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","block/prism: {100} 39%, {101} 35%, {2̅10} 26%",False,False
+Ni-DOBDC,static_calibrated,5,4,0.07041224432415356,0.6000000000000001,False,"needle/rod: {2̅10} 78%, {001} 14%, {101} 9%","block/prism: {100} 38%, {101} 36%, {2̅10} 27%",False,False
+ZIF-8,gnn,5,3,0.016153277054869374,0.5,True,rhombic_dodecahedron,rhombic_dodecahedron,True,True
+ZIF-8,mean,5,3,0.23167884558341445,,False,rhombic_dodecahedron,truncated_rhombic_dodecahedron,False,True
+ZIF-8,bonds_linear,5,3,0.07676071835532425,1.0,True,rhombic_dodecahedron,truncated_rhombic_dodecahedron,False,True
+ZIF-8,bfdh_linear,5,3,0.23293788690509315,-0.5,False,rhombic_dodecahedron,mixed_dominant_{111},False,False
+ZIF-8,static_chgnet,5,3,0.09519999999999999,1.0,True,rhombic_dodecahedron,truncated_rhombic_dodecahedron,False,True
+ZIF-8,static_calibrated,5,3,0.020576817037268776,1.0,True,rhombic_dodecahedron,truncated_rhombic_dodecahedron,False,True
+CoBDP,gnn,5,4,0.19300834130944455,1.0,True,"plate: {101} 50%, {010} 25%, {001} 22%","block/prism: {001} 31%, {010} 30%, {101} 22%",False,False
+CoBDP,mean,5,4,0.2192547542366406,,True,"plate: {101} 50%, {010} 25%, {001} 22%","block/prism: {101} 33%, {010} 33%, {001} 17%",False,True
+CoBDP,bonds_linear,5,4,0.08069477169333276,0.9486832980505139,True,"plate: {101} 50%, {010} 25%, {001} 22%","plate: {101} 41%, {010} 28%, {001} 26%",True,True
+CoBDP,bfdh_linear,5,4,0.21196176025952956,-0.9486832980505139,False,"plate: {101} 50%, {010} 25%, {001} 22%","block/prism: {010} 34%, {101} 33%, {100} 17%",False,False
+CoBDP,static_chgnet,5,4,0.5094000000000001,1.0,True,"plate: {101} 50%, {010} 25%, {001} 22%","lath: {001} 49%, {101} 40%, {010} 11%",False,False
+CoBDP,static_calibrated,5,4,0.13386968621908185,1.0,True,"plate: {101} 50%, {010} 25%, {001} 22%","lath: {101} 48%, {001} 37%, {010} 16%",False,True
+MOF-70,gnn,9,4,0.043401551724614545,0.7999999999999999,True,"plate: {10̅1} 35%, {001} 30%, {011} 19%","block/prism: {011} 35%, {10̅1} 31%, {001} 19%",False,False
+MOF-70,mean,9,4,0.1665438563296533,,True,"plate: {10̅1} 35%, {001} 30%, {011} 19%","block/prism: {011} 33%, {10̅1} 33%, {010} 23%",False,False
+MOF-70,bonds_linear,9,4,0.030549072595456188,0.39999999999999997,False,"plate: {10̅1} 35%, {001} 30%, {011} 19%","block/prism: {011} 54%, {10̅1} 36%, {010} 7%",False,False
+MOF-70,bfdh_linear,9,4,0.17187889664226882,-0.7999999999999999,False,"plate: {10̅1} 35%, {001} 30%, {011} 19%","block/prism: {011} 38%, {10̅1} 32%, {010} 24%",False,False
+MOF-70,static_chgnet,9,4,0.4611444444444444,1.0,True,"plate: {10̅1} 35%, {001} 30%, {011} 19%","plate: {011} 38%, {10̅1} 37%, {001} 19%",True,False
+MOF-70,static_calibrated,9,4,0.07460138899553251,1.0,True,"plate: {10̅1} 35%, {001} 30%, {011} 19%","block/prism: {10̅1} 37%, {011} 37%, {001} 16%",False,True

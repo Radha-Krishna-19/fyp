@@ -237,23 +237,24 @@
     \end{block}
 \end{frame}
 
-\begin{frame}[shrink=6]{7b. Machine-Learned Energies and the GNN Surrogate}
+\begin{frame}[shrink=8]{7b. Machine-Learned Energies and the GNN Surrogate}
     \framesubtitle{Team notebook (steps 1--8 + GNN), checked and corrected on 15 November}
     \begin{columns}[T]
-        \column{0.62\textwidth}
+        \column{0.63\textwidth}
         \scriptsize
         \begin{itemize}
-            \item Six negative CHGNet surface energies, reproduced exactly from the notebook's own code.
-            \item Cause: water caps paid for at a free molecule at 0~K. With $\gamma(\Delta\mu)=\gamma_{0\,\mathrm{K}}-n\Delta\mu/2A$ and liquid water ($\Delta\mu=-0.57$~eV, NIST-JANAF/CODATA): \textbf{none negative}.
-            \item Also fixed: two protons on one O; two lost fixes; the Mg--O rod kept whole.
-            \item Corrected GPU run: ZIF-8 and HKUST-1 agree; \textbf{Mg-MOF-74 becomes the observed hexagonal rod}; UiO-66 still missed.
-            \item GNN (Isha), leave-MOF-out, 16 MOFs: MAE 0.159~J/m$^2$ vs 0.085 (broken-bond line) and 0.074 (rescaled static CHGNet): not yet better than simple baselines.
-            \item Not checked by DFT.
+            \item \textbf{Problem:} six negative surface energies (a crystal cannot have one); reproduced exactly from the notebook's own code.
+            \item \textbf{Cause:} water caps priced as a free molecule at 0~K. Real price: $\gamma(\Delta\mu)=\gamma_{0\,\mathrm{K}}-n\Delta\mu/2A$, liquid water $\Delta\mu=-0.57$~eV (NIST-JANAF, CODATA).
+            \item \textbf{Also fixed:} two H on one O; lost relaxed-cell fixes; Mg--O rod kept whole; UiO-66 input with its OH groups.
+            \item \textbf{Corrected GPU run:} 98 slabs, 16 MOFs, \textbf{none negative}; thicker slab changes $\gamma$ by 0.004~J/m$^2$; MACE ranks slabs the same (0.94--1.00).
+            \item \textbf{Shapes:} ZIF-8 \checkmark, HKUST-1 \checkmark, \textbf{Mg-MOF-74 becomes the observed rod} \checkmark, UiO-66 $\times$.
+            \item \textbf{GNN:} MAE 0.131 vs 0.088 (broken-bond line), 0.084 (rescaled static): not yet better.
+            \item No DFT check yet.
         \end{itemize}
-        \column{0.36\textwidth}
+        \column{0.35\textwidth}
         \centering
-        \includegraphics[height=4.2cm]{figures/gpu_wulff_Mg-MOF-74.png}\\
-        \tiny Mg-MOF-74, corrected run (liquid water)
+        \includegraphics[height=4.0cm]{figures/gpu_wulff_Mg-MOF-74.png}\\
+        \tiny Mg-MOF-74, corrected run: hexagonal rod along $c$
     \end{columns}
 \end{frame}
 

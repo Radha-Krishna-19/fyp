@@ -657,7 +657,7 @@ Rating: DEFENSIBLE.
 Yes. In the corrected GPU run (15 November), Mg-MOF-74 changed from "no shape" (a negative γ) to a hexagonal
 rod along c, which is the habit in the laboratory records. Two corrections did this. The water reference is
 now realistic. The Mg–O rod is now kept as one inorganic unit, so faces that cut it ({001}) become expensive,
-and the prism face {2̅10} covers 75 % of the surface. ZIF-8 and HKUST-1 still agree with experiment. UiO-66
+and the prism face {2̅10} covers 77 % of the surface (final run). ZIF-8 and HKUST-1 still agree with experiment. UiO-66
 is still a truncated octahedron, which misses the cubes seen without additives.
 Follow-up: "Is one more MOF right a validation?" No. It is four MOFs, one energy model and no DFT. What it
 shows is that the change goes the right way, for a stated chemical reason.

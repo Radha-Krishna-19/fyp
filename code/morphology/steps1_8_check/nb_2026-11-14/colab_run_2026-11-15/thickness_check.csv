@@ -1,0 +1,4 @@
+min_thickness_A,face,termination,n_atoms,thickness_A,gamma_static_J_m2,gamma_relaxed_0K_J_m2,gamma_relaxed_at_mu_J_m2,converged
+15.0,{110},0,564,24.13,0.0883,0.0118,0.056496850690702455,True
+22.0,{110},0,564,24.13,0.0883,0.0118,0.056496850690702455,True
+30.0,{110},0,840,36.14,0.0883,0.008,0.05269685069070246,True

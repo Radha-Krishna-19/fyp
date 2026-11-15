@@ -69,7 +69,7 @@
 
 \section{Abstract}
 \noindent
-A metal--organic framework (MOF) is used as a powder of small crystals, and the faces and size of those crystals affect how fast a gas enters them. After Panel Review~1 the panel asked whether a few crystal morphologies can be generated from the unit cell of an established MOF, mathematically and computationally. We answer in three steps. The space group decides which crystal faces may exist and gives a family of possible shapes (16 propositions, each proved and checked numerically). A growth model selects a member of the family: the Bravais--Friedel--Donnay--Harker (BFDH) rule for any lattice, and a Wulff construction from unrelaxed surface energies that are, in effect, a count of the bonds each plane cuts. The predictions are scored against 134 laboratory records from 35 papers on 12 MOFs. For crystals grown without additives the dominant face is predicted correctly for 4 of 5 MOFs, as often as the most common laboratory answer for each MOF, without using laboratory data; with additives no model is reliable. For eight MOFs we also compute how far each face's energy must fall to change the shape and, for each shape, the fraction of each face open to CO$_2$ and N$_2$ and the diffusion length $V/A$. Everything runs from a CIF in seconds, in two independent implementations (Python and a browser engine) that agree. The team's machine-learned (CHGNet) pipeline and graph-neural-network surrogate were checked independently: six negative surface energies were traced to an unrealistic water reference and corrected with tabulated thermochemistry, after which Mg-MOF-74 comes out as the observed hexagonal rod; the GNN does not beat simple baselines. An earlier connectivity descriptor (Part~I) was tested and withdrawn because it follows graph size.
+A metal--organic framework (MOF) is used as a powder of small crystals, and the faces and size of those crystals affect how fast a gas enters them. After Panel Review~1 the panel asked whether a few crystal morphologies can be generated from the unit cell of an established MOF, mathematically and computationally. We answer in three steps. The space group decides which crystal faces may exist and gives a family of possible shapes (16 propositions, each proved and checked numerically). A growth model selects a member of the family: the Bravais--Friedel--Donnay--Harker (BFDH) rule for any lattice, and a Wulff construction from unrelaxed surface energies that are, in effect, a count of the bonds each plane cuts. The predictions are scored against 134 laboratory records from 35 papers on 12 MOFs. For crystals grown without additives the dominant face is predicted correctly for 4 of 5 MOFs, as often as the most common laboratory answer for each MOF, without using laboratory data; with additives no model is reliable. For eight MOFs we also compute how far each face's energy must fall to change the shape and, for each shape, the fraction of each face open to CO$_2$ and N$_2$ and the diffusion length $V/A$. Everything runs from a CIF in seconds, in two independent implementations (Python and a browser engine) that agree. The team's machine-learned (CHGNet) pipeline and graph-neural-network surrogate were checked independently: six negative surface energies were traced to an unrealistic water reference and corrected with tabulated thermochemistry, after which Mg-MOF-74 comes out as the observed hexagonal rod; the GNN does not yet beat simple baselines. An earlier connectivity descriptor (Part~I) was tested and withdrawn because it follows graph size.
 
 \section{Problem Definition, Research Motivation \& Literature Review}
 
@@ -207,28 +207,32 @@ Every script finds its inputs from its own location and writes a result file tha
 The structure-only model makes one prediction per MOF, so the 32 additive-free records are five tests: MOF-5 9/9, ZIF-8 11/12, HKUST-1 7/8, IRMOF-3 1/1 and UiO-66 0/2, from 13 papers; 4 of 5 MOFs are right, and a bootstrap over whole papers gives 73--97\%. The MOFs added after the model was fixed are a small clean test: one additive-free record (right) and 1 of 7 with additives. For the habit, BFDH is right for 85 of 97 records against 76 for always guessing ``compact'', and predicts the rods of Mg-MOF-74, where 9 of 10 laboratory crystals are elongated.
 
 \subsection{Machine-Learned Surface Energies and the GNN Surrogate}
-The team notebook (steps 1--8 plus a GNN) reported six negative relaxed CHGNet surface energies, which a stable crystal cannot have. Rebuilding every slab from the notebook's own code reproduced them exactly (118 slabs; static $\gamma$ within 0.0005~J/m$^2$). The cause was the water used to cap cut bonds: $\gamma=[E_\text{slab}-Ne_\text{bulk}-n\mu_{\text{H}_2\text{O}}]/2A$ took $\mu_{\text{H}_2\text{O}}$ from a free molecule at 0~K. With $\gamma(\Delta\mu)=\gamma_{0\,\text{K}}-n\Delta\mu/2A$ and $\Delta\mu=-0.57$~eV for liquid water at 25\,$^\circ$C (NIST-JANAF, CODATA), no slab is negative. A capping error (two protons on one oxygen) and two lost fixes were also corrected. The corrected notebook was run on a GPU:
+\textbf{What was wrong.} The team notebook (steps 1--8: CIF $\to$ slabs $\to$ CHGNet energies $\to$ Wulff shape, plus a graph-neural-network surrogate) reported six negative relaxed surface energies. A surface energy is the cost of cutting a crystal open, so it must be positive; a negative value would mean the crystal falls apart on its own. Rebuilding all 118 slabs from the notebook's own code reproduced every value (static $\gamma$ within 0.0005~J/m$^2$), so the problem was in the method, not in one run.
+
+\textbf{Why.} Each cut metal--oxygen bond is capped with one water molecule split into OH$^-$ (on the metal) and H$^+$ (on the oxygen). The energy is $\gamma=[E_\text{slab}-Ne_\text{bulk}-n\,\mu_{\text{H}_2\text{O}}]/2A$, and the notebook priced each water at one free molecule at 0~K, the cheapest water can ever be, so binding it always looked like pure gain. Under real conditions water costs more: $\gamma(\Delta\mu)=\gamma_{0\,\text{K}}-n\Delta\mu/2A$, with $\Delta\mu=-0.57$~eV for liquid water at 25\,$^\circ$C (NIST-JANAF and CODATA tables). Four further errors were corrected: a capping rule that put two H on one oxygen, two lost fixes (slab and bulk from different cells), the Mg--O rod of Mg-MOF-74 cut into single atoms, and a UiO-66 input without its OH groups.
+
+\textbf{Corrected run (Colab GPU, 15 November).} 98 slabs of 16 MOFs relaxed (85 converged); six are negative at the old reference and \textbf{none at liquid water}. A thicker slab (ZIF-8 \{110\}, 24 vs 36~\AA) changes $\gamma$ by 0.004~J/m$^2$, so the slabs are thick enough; the independent MACE-MP-0 model ranks all slabs the same way as CHGNet (rank correlation 0.94--1.00, mean difference 0.010--0.028~J/m$^2$).
 \begin{table}[H]
     \centering
     \footnotesize
     \renewcommand{\arraystretch}{1.15}
-    \begin{tabular}{|l|p{3.3cm}|p{3.6cm}|p{3.6cm}|}
+    \begin{tabular}{|l|p{3.0cm}|p{4.2cm}|p{3.4cm}|}
         \hline
         \textbf{MOF} & \textbf{Before (14 Nov)} & \textbf{Corrected (liquid water)} & \textbf{Laboratory} \\
         \hline
-        ZIF-8 & rhombic dodecahedron & rhombic dodecahedron & rhombic dodecahedron \\
+        ZIF-8 & rhombic dodecahedron & rhombic dodecahedron, \{110\} 100\% & rhombic dodecahedron \checkmark \\
         \hline
-        HKUST-1 & truncated octahedron & mainly \{111\} & octahedron \{111\} \\
+        HKUST-1 & truncated octahedron & \{111\} 66\%, \{100\} 33\% & octahedron \{111\} \checkmark \\
         \hline
-        Mg-MOF-74 & no shape ($\gamma<0$) & \textbf{hexagonal rod along $c$} & rods along $c$ \\
+        Mg-MOF-74 & no shape ($\gamma<0$) & \textbf{hexagonal rod along $c$}, \{2$\bar1$0\} 77\% & rods along $c$ \checkmark \\
         \hline
-        UiO-66 & truncated octahedron & truncated octahedron & cube (no additive) \\
+        UiO-66 & truncated octahedron & \{111\} 81\%, \{100\} 18\% & cube, no additive $\times$ \\
         \hline
     \end{tabular}
-    \caption{CHGNet Wulff shapes before and after the corrections (97 relaxed slabs of 16 MOFs, 87 converged). Source: \texttt{nb\_2026-11-14/colab\_run\_2026-11-15/wulff\_summary.csv}.}
+    \caption{CHGNet Wulff shapes before and after the corrections. Source: \texttt{nb\_2026-11-14/colab\_run\_2026-11-15/} and the website page \emph{ML energies and water}.}
 \end{table}
 \noindent
-In leave-MOF-out cross-validation on 16 MOFs with the corrected labels, the GNN has a mean absolute error of 0.159~J/m$^2$, against 0.085 for a straight line on broken bonds per area and 0.074 for rescaled static CHGNet energies; it names the whole shape slightly more often (7 of 16 against 5 of 16). No learned model is yet shown to help.
+\textbf{GNN surrogate.} Trained to predict relaxed $\gamma$ from the slab structure and tested by leaving each MOF out in turn (16 MOFs), it has a mean absolute error of 0.131~J/m$^2$, against 0.088 for a straight line on broken bonds per area and 0.084 for rescaled unrelaxed CHGNet energies; the line also names the main face more often (14 of 16 against 12). A learned model is not yet better than these simple baselines. None of these energies has been checked by DFT.
 
 \subsection{Visual Results \& Prototype Demonstration}
 \begin{figure}[H]
