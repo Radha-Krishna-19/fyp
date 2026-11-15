@@ -588,7 +588,7 @@ def slabs_only(name, cif, symprec=0.1, disorder="majority", max_index=1, n_famil
     """Steps 1-5 of the pipeline (same rules, same order), no energies. Yields slab rows + structures.
     Note: slabs are cut from the unrelaxed bulk; the training slabs came from the CHGNet-relaxed bulk."""
     info = mw.standardize(cif, symprec, disorder)
-    fams = mw.face_families(info["conv"], info["rotations"], max_index, n_families, faces)
+    fams = mw.face_families(info["conv"], info["rotations"], max_index, n_families, faces, ops=info["ops"])
     meta = dict(mof=name, conv_lattice=info["conv"].lattice.matrix.tolist(), crystal_system=info["crystal_system"],
                 families=[{"key": f["key"], "name": f["name"], "rep": f["rep"]} for f in fams],
                 _rotations=[R.tolist() for R in info["rotations"]], formula=info["formula"],

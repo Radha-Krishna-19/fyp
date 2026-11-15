@@ -354,7 +354,7 @@ def main():
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
         <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until the DFT calculation is done.</li>
         <li>Only five MOFs have additive-free face records with a structure file, so the energy models cannot be ranked against each other; with additives no model is reliable.</li>
-        <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline depend on the water condition, which must always be stated; K5&ndash;K10 are still open in that pipeline (K1&ndash;K4, K11 and K12 are fixed in the corrected module).</li>
+        <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline depend on the water condition, which must always be stated; all known problems (K1&ndash;K12) are fixed in the corrected notebook; the numbers from the last six need a GPU run.</li>
         <li>The morphology map is exact only for cubic crystals bounded by {100}, {110} and {111}; the first modulator-cap energies are unrelaxed and not physical for UiO-66.</li>
         <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum and shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; so it is not used as a classifier.</li>
       </ul>

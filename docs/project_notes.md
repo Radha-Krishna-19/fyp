@@ -458,3 +458,11 @@ Everything is in `code/morphology/steps1_8_check/nb_2026-11-14/` (README there);
 - **Not done here.** The relaxed rerun of all slabs and the GNN cross-validation with corrected labels need a GPU or many CPU hours. No DFT check has been made.
 - **All relaxations finished (15 November, afternoon).** With every fix applied and water still at Δμ = 0, the relaxed γ is still negative for ZnBDC {001} (−0.028) and {011} (−0.042), MIL-47 {100} (−0.024) and Mg-MOF-74 {2̅10} (−0.012). Cd3BTB2 {010} becomes positive (+0.126): for Cd3BTB2 the capping error, not only the water reference, made γ negative. Every bare (uncapped) slab relaxes to a positive γ (0.15–0.46 J/m²). All of them are positive at liquid-water Δμ. Results: `nb_2026-11-14/results/relax_cases.json`.
 - **Corrected notebook on a Colab GPU (15 November, run by a team member).** It relaxed 97 slabs of 16 MOFs (87 converged) at liquid-water Δμ. The three slabs still negative at Δμ = 0 (MIL-47 {100}, ZnBDC {001} and {011}) are identical to our CPU values, and none is negative at liquid water. Shapes: ZIF-8 rhombic dodecahedron; HKUST-1 mainly {111}; Mg-MOF-74 a hexagonal rod along c ({2̅10} 75 %, {101} 25 %), matching the laboratory habit for the first time, because the Mg–O rod is kept whole; UiO-66 truncated octahedron (still the miss). GNN cross-validation with corrected labels: MAE 0.159 J/m², against 0.085 for the broken-bond line and 0.074 for rescaled static CHGNet. Files: `nb_2026-11-14/colab_run_2026-11-15/`.
+- **K5–K10 fixed in the corrected notebook (15 November, after the GPU run).**
+  - K5: UiO-66 input with the Zr₆O₄(OH)₄ node (`website/UiO-66.cif`, embedded in the notebook; F-43m).
+  - K6: an open Wulff shape is named open, not a rod.
+  - K7: faces are ranked by d/n with exact systematic absences from the space-group operations. The kept faces of the four benchmark MOFs are unchanged.
+  - K8: the MACE rank correlation is also computed over all slabs.
+  - K9: DFT slab inputs are turned so the normal lies along z, with the surface dipole correction and a stated ferromagnetic multiplicity (Cu²⁺: one unpaired electron per Cu).
+  - K10: a cell checks ZIF-8 {110} at 15, 22 and 30 Å.
+  - Tested end to end in quick mode (UiO-66, no errors). The numbers need one more GPU run.

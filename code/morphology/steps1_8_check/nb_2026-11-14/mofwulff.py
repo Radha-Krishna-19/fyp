@@ -171,7 +171,9 @@ def standardize(cif, symprec=0.1, disorder="majority", remove_guests=True, overl
         R = np.round(op.rotation_matrix).astype(int)
         if not any(np.array_equal(R, q) for q in rots):
             rots.append(R)
-    return dict(structure=s, conv=conv, prim=prim, rotations=rots, space_group=sgsym,
+    # full operations (R, t) in the basis of conv, for the systematic-absence test of face_families (K7)
+    sym_ops = [(np.round(op.rotation_matrix).astype(int), np.array(op.translation_vector, float)) for op in ops]
+    return dict(structure=s, conv=conv, prim=prim, rotations=rots, ops=sym_ops, space_group=sgsym,
                 symmetry_source=sym_src, crystal_system=cs, formula=s.composition.reduced_formula,
                 n_atoms_conv=len(conv), n_atoms_prim=len(prim), notes=notes)
 
@@ -249,7 +251,7 @@ def _reduce(v):
     return tuple(int(x) for x in v // g)
 
 
-def face_families(conv, rotations, max_index=1, n_keep=6, faces=None):
+def face_families(conv, rotations, max_index=1, n_keep=6, faces=None, ops=None):
     """Symmetry-unique face families.
 
     Miller indices transform as h' = h R^-1 for each point operation R (fractional), plus
@@ -277,10 +279,32 @@ def face_families(conv, rotations, max_index=1, n_keep=6, faces=None):
         orb = orbit(h); seen.update(orb)
         rep = max(orb)                      # canonical representative: lexicographically largest
         d = conv.lattice.d_hkl(rep)
-        fams.append(dict(rep=rep, members=orb, d_hkl=d, name="{" + "".join(map(str, rep)).replace("-", "̅") + "}",
+        order = 1 if faces else absence_order(conv, rep, ops)
+        fams.append(dict(rep=rep, members=orb, d_hkl=d, order=order, d_eff=d / order,
+                         name="{" + "".join(map(str, rep)).replace("-", "̅") + "}",
                          key="".join(str(x) for x in rep).replace("-", "m")))
-    fams.sort(key=lambda f: -f["d_hkl"])
+    # K7 (15 Nov 2026): rank by the effective spacing d_hkl / n (Donnay-Harker), where n is the first order
+    # of the reflection that symmetry does not extinguish; ranking by d_hkl kept faces that centring or
+    # screw axes forbid.
+    fams.sort(key=lambda f: (-f["d_eff"], -f["d_hkl"]))
     return fams if faces else fams[:n_keep]
+
+
+def absence_order(conv, hkl, ops=None, n_max=6, symprec=0.1):
+    """Smallest n (1..n_max) for which the reflection n*(hkl) is not a systematic absence.
+    Uses the space-group operations (R, t) of the cell (fractional, same basis as hkl): a reflection h is
+    extinguished when some operation leaves it fixed (h R = h) while h.t is not an integer. This is exact
+    and, unlike a structure factor of the file's atoms, not disturbed by small deviations of the atoms
+    from their ideal positions."""
+    if ops is None:
+        ops = [(o.rotation_matrix, o.translation_vector)
+               for o in SpacegroupAnalyzer(conv, symprec=symprec).get_symmetry_operations(cartesian=False)]
+    for n in range(1, n_max + 1):
+        h = n * np.array(hkl, float)
+        extinct = any(np.allclose(h @ R, h, atol=1e-6) and abs((h @ t) - round(h @ t)) > 1e-3 for R, t in ops)
+        if not extinct:
+            return n
+    return n_max
 
 
 # ----------------------------------------------------------------------------- step 4
@@ -628,7 +652,9 @@ def name_habit(w, families, crystal_system, conv):
     fr = {fam_name.get(k, k): v for k, v in w["area_fractions"].items()}
     if not w["bounded"]:
         d = np.array(w["open_dirs"][0]); fd = conv.lattice.get_fractional_coords(d)
-        return f"rod/needle (no bounding face along [{', '.join(f'{x:.2f}' for x in fd / np.abs(fd).max())}])"
+        # K6 (15 Nov 2026): an unbounded Wulff shape means a face family that would close the crystal is
+        # missing from the list (too few families kept, or no energy for it); it is not a rod.
+        return f"open: no face closes the crystal along [{', '.join(f'{x:.2f}' for x in fd / np.abs(fd).max())}] (a face family is missing)"
     if crystal_system == "cubic":
         f = lambda k: fr.get(k, 0.0)
         # K1 (15 Nov 2026): the pure shapes and the cuboctahedron are single points of the map, so the names
@@ -688,9 +714,30 @@ def write_obj(w, path):
 
 
 # ----------------------------------------------------------------------------- step 7 helpers
-def cp2k_input(struct, project, charge=0):
-    """Minimal CP2K PBE-D3(BJ) single-point input (DZVP-MOLOPT-SR, GTH) for a slab or bulk cell."""
+# unpaired d electrons of the usual MOF oxidation states (high spin); K9 (15 Nov 2026)
+UNPAIRED = {"Cu": 1, "Co": 3, "Ni": 2, "Fe": 5, "Mn": 5, "Cr": 3, "V": 1, "Ti": 0, "Zn": 0, "Zr": 0, "Hf": 0,
+            "Mg": 0, "Ca": 0, "Al": 0, "Cd": 0, "In": 0, "Sc": 0}
+
+
+def cp2k_input(struct, project, charge=0, slab=False):
+    """Minimal CP2K PBE-D3(BJ) single-point input (DZVP-MOLOPT-SR, GTH) for a slab or bulk cell.
+
+    K9 (15 Nov 2026): a slab is turned so that its normal (the third lattice vector, perpendicular to the
+    first two) lies along z, and the surface dipole correction is switched on, because a slab with two
+    different terminations carries a dipole that the periodic cell would otherwise repeat. Open-shell
+    metals get a ferromagnetic high-spin multiplicity from UNPAIRED (Cu2+ d9: one unpaired electron each).
+    The true ground state of the Cu2 paddlewheel is antiferromagnetic; using the same ferromagnetic state
+    for bulk and slab makes most of that difference cancel in gamma. A metal not in UNPAIRED is flagged."""
+    if slab:
+        L = struct.lattice
+        struct = Structure(Lattice.from_parameters(*L.abc, *L.angles), struct.species, struct.frac_coords)
     els = sorted({x.specie.symbol for x in struct})
+    unknown = sorted({e for e in els if is_metal(e) and e not in UNPAIRED})
+    n_up = sum(UNPAIRED.get(x.specie.symbol, 0) for x in struct)
+    spin = f"    MULTIPLICITY {n_up + 1}\n" if n_up else ""
+    if unknown:
+        spin += f"    ! unpaired electrons of {', '.join(unknown)} not known: set MULTIPLICITY by hand\n"
+    dip = "    SURFACE_DIPOLE_CORRECTION .TRUE.\n    SURF_DIP_DIR Z\n" if slab else ""
     kinds = "\n".join(f"    &KIND {e}\n      BASIS_SET DZVP-MOLOPT-SR-GTH\n      POTENTIAL GTH-PBE\n    &END KIND" for e in els)
     a, b, c = struct.lattice.matrix
     xyz = "\n".join(f"      {x.specie.symbol} {x.coords[0]:.6f} {x.coords[1]:.6f} {x.coords[2]:.6f}" for x in struct)
@@ -705,8 +752,7 @@ def cp2k_input(struct, project, charge=0):
     POTENTIAL_FILE_NAME GTH_POTENTIALS
     CHARGE {charge}
     UKS .TRUE.
-    ! open-shell metals (Cu2+, Co2+, Ni2+, Fe, Cr, Mn): add MULTIPLICITY <2S+1> here
-    &MGRID
+{spin}{dip}    &MGRID
       CUTOFF 500
       REL_CUTOFF 50
     &END MGRID
@@ -782,7 +828,7 @@ def run_mof(engine, name, cif, out, **cfg):
     bs = summarize_blocks(blocks)
     log("   step2 blocks:", bs["blocks"], "| infinite inorganic unit" if bs["infinite_inorganic_unit"] else "")
     # Step 3 (families)
-    fams = face_families(info["conv"], info["rotations"], c["max_index"], c["n_families"], c["faces"])
+    fams = face_families(info["conv"], info["rotations"], c["max_index"], c["n_families"], c["faces"], ops=info["ops"])
     log("   step3 families:", ", ".join(f"{f['name']}(d={f['d_hkl']:.1f})" for f in fams))
     meta = dict(mof=name, cif=str(cif), formula=info["formula"], space_group=info["space_group"],
                 crystal_system=info["crystal_system"], symmetry_source=info["symmetry_source"],

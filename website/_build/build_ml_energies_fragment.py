@@ -167,10 +167,11 @@ P.append(f'''      <h2 class="section-title" id="mle-causes" data-toc="Three cau
 K2 = J("k2_check.json")
 if K2:
     mg = K2["mg_mof_74_static"]
-    P.append(f'''      <h3 class="sub-head">Three older problems fixed in the same module (K1, K2, K4)</h3>
+    P.append(f'''      <h3 class="sub-head">Older problems fixed in the same module (K1, K2, K4&ndash;K10)</h3>
       <ul class="sd">
         <li><b>K1, shape names.</b> Names now come from the exact limits of the cubic map: a pure cube, octahedron or rhombic dodecahedron only within numerical noise (0.1 % of the area), the cuboctahedron only within 0.005 of its exact {{100}} share 6/(6 + 2&radic;3). All 14 test ratios of <code>checks/naming.py</code> are named correctly (the notebook version misnamed 3).</li>
         <li><b>K2, the metal rod of MOF-74.</b> Two metals bonded to the same linker oxygen now belong to one inorganic unit, so the Mg&ndash;O rod of Mg-MOF-74 (and of Ni-DOBDC) is recognised as one infinite unit, and Cd3BTB2 gets its Cd<sub>3</sub> cluster; the other eight MOFs checked are unchanged. With static energies only, the Mg-MOF-74 shape is still a block ({esc(mg["liquid_298K"]["habit"])} at liquid water); with relaxed energies from the GPU run it becomes a hexagonal rod along <i>c</i>, as in the laboratory (Section 5).</li>
+        <li><b>K5&ndash;K10, six smaller problems</b>, fixed in the corrected notebook after the GPU run: the UiO-66 input now has its Zr<sub>6</sub>O<sub>4</sub>(OH)<sub>4</sub> node; an open Wulff shape is called open, not a rod; faces are ranked by the effective spacing <i>d</i>/<i>n</i>, so faces forbidden by symmetry are not kept ahead of allowed ones (for the four benchmark MOFs the kept faces do not change); the MACE rank correlation is also taken over all slabs; the DFT inputs get the surface dipole correction and a stated spin state; and a cell checks one face at three slab thicknesses. Their numbers need the next GPU run.</li>
         <li><b>K4, a wrong reference shape.</b> The notebook compared UiO-66 with octahedra; additive-free UiO-66 gives cubes in our records, and octahedra need benzoic or acetic acid. Corrected in the notebook's input table.</li>
       </ul>
 ''')

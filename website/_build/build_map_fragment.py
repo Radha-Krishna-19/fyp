@@ -320,7 +320,7 @@ def main():
         [("dt-label", "K5&ndash;K10"), ("dt-note", "Dehydroxylated UiO-66 nodes in the input (K5); a missing face family named a rod (K6, <code>checks/open_shape.py</code>); "
                                                  "absences ignored in the spacing ranking (K7); Spearman over three faces can only be &plusmn;1 or &plusmn;0.5 (K8); "
                                                  "CP2K inputs lack a dipole correction and the Cu<sup>2+</sup> spin state (K9); slab thickness not checked for convergence (K10)"),
-         ("dt-note", "Reading the code and its output"), ("dt-note", "Limit trust in individual numbers"), ("dt-note", "Open")],
+         ("dt-note", "Reading the code and its output"), ("dt-note", "Limit trust in individual numbers"), ("dt-note", "Fixed 15 November in the corrected notebook: hydroxylated UiO-66 input, open shapes named as open, ranking by d/n, rank correlation over all slabs, dipole correction and spin in the DFT inputs, and a thickness-check cell. The numbers from these fixes need the next GPU run")],
         [("dt-label", "K12"), ("dt-note", "<code>heal()</code> puts one H on a linker O per lost metal bond, so a bridging O that loses two bonds becomes C&ndash;OH<sub>2</sub><sup>+</sup>"),
          ("dt-note", "Classifying every O of the healed slabs (<code>nb_2026-11-14/k12_count.py</code>): 26 of 118 slabs"), ("dt-note", "An unstable starting group; relaxation moves the protons"),
          ("dt-note", "Fixed 15 November (<code>nb_2026-11-14/mofwulff.py</code>)")],

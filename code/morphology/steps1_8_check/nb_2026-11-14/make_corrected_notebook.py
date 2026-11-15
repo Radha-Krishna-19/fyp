@@ -128,6 +128,40 @@ for i in (22, 24):
                        "    if NEW_CIF:\n        fname = NEW_CIF\n    else:\n        from google.colab import files\n        fname = list(files.upload())[0]\n    cif = os.path.join(BASE, fname);")
     put(i, s)
 
+# UiO-66 input with its hydroxide groups (K5): the RASPA2 file has Zr6O6 nodes, the as-synthesised node is
+# Zr6O4(OH)4. The file below (website/UiO-66.cif, PBEsol-optimised, Zr6H28C48O32 per primitive cell) is embedded
+# so the notebook does not depend on a private download.
+UIO = open(os.path.join(HERE, "..", "..", "..", "..", "website", "UiO-66.cif"), encoding="utf-8").read()
+sub(5, 'dict(mof="UiO-66",    source=RASPA + "UIO-66.cif",', 'dict(mof="UiO-66",    source="embedded:UiO-66",')
+sub(5, "def get_cif(row):", "EMBEDDED = {\"UiO-66\": " + repr(UIO) + "}   # Zr6O4(OH)4 node (website/UiO-66.cif)\n\ndef get_cif(row):")
+sub(5, '    if src.startswith("core:"):', '    if src.startswith("embedded:"):\n        open(out, "w").write(EMBEDDED[src[9:]])\n    elif src.startswith("core:"):')
+# K8: rank correlation over all slabs of a MOF, not only the three lowest faces
+sub(10, '            stats.append(dict(mof=m, cap=cap, n_faces=len(best), spearman_faces=rho, lowest_face_agrees=same_min,',
+    '            rho_all = spearmanr(g["gamma_chgnet"], g["gamma_mace"]).correlation if len(g) > 2 else np.nan\n'
+    '            stats.append(dict(mof=m, cap=cap, n_faces=len(best), spearman_faces=rho, n_slabs=len(g), spearman_all_slabs=rho_all,\n'
+    '                              lowest_face_agrees=same_min,')
+# K9: slab inputs with the dipole correction and the slab normal along z
+sub(11, 'open(f"{dft_dir}/{f}", "w").write(mw.cp2k_input(st, f[:-4]))', 'open(f"{dft_dir}/{f}", "w").write(mw.cp2k_input(st, f[:-4], slab=True))')
+# K10: slab thickness check (one face, three thicknesses), after the shape table
+C.insert(9, {"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [], "source": """# 5b. Slab thickness check: does a thicker slab change gamma? (one face; about 20 min on a T4)
+THICKNESS_CHECK = True  #@param {type:"boolean"}
+CHECK_MOF, CHECK_FACE = "ZIF-8", (1, 1, 0)
+if THICKNESS_CHECK and CHECK_MOF in CIF and not QUICK_TEST:
+    rows = []
+    for t in (15.0, 22.0, 30.0):
+        cfg_t = dict(cfg, faces=[CHECK_FACE], thickness=t, relax_top_k=1)
+        meta_t, fams_t, recs_t, bulk_t = mw.run_mof(eng, CHECK_MOF, CIF[CHECK_MOF], f"{OUT_DIR}/thickness_{int(t)}A", **cfg_t)
+        for r in recs_t:
+            if r.get("gamma_relaxed_J_m2") is not None:
+                rows.append(dict(min_thickness_A=t, face=r["face"], termination=r["termination"], n_atoms=r["n_atoms"],
+                                 thickness_A=r["thickness_A"], gamma_static_J_m2=r["gamma_static_J_m2"],
+                                 gamma_relaxed_0K_J_m2=r["gamma_relaxed_J_m2"],
+                                 gamma_relaxed_at_mu_J_m2=mw.gamma_at_mu(r, "gamma_relaxed_J_m2", WATER_DMU_EV),
+                                 converged=r["converged"]))
+    THICK = pd.DataFrame(rows); THICK.to_csv(f"{OUT_DIR}/thickness_check.csv", index=False); display(THICK)
+    print("Converged in thickness if gamma changes by less than about 0.01 J/m2 between 22 and 30 A.")
+""".splitlines(keepends=True)})
+
 for c in C:
     if c["cell_type"] == "code":
         c["outputs"] = []; c["execution_count"] = None
@@ -146,7 +180,7 @@ Send the zip called `..._final_...` back; it holds every result. The earlier zip
 - **Water caps.** A linker oxygen gets at most one hydrogen; a surplus hydrogen turns the nearest metal–OH cap into a water molecule on the metal (before, a bridging oxygen could get two).
 - **Metal rods.** Metals that share a linker oxygen form one inorganic unit, so the Mg–O rod of Mg-MOF-74 is kept whole.
 - **Shape names** come from the exact limits of the cubic shape map.
-- **UiO-66 reference shape** is a cube without additives (octahedra need an acid modulator).
+- **UiO-66 reference shape** is a cube without additives (octahedra need an acid modulator), and the UiO-66 input now has the Zr6O4(OH)4 node (the RASPA2 file lacks the hydroxide groups); it is embedded in cell 3.\n- **Face ranking** uses the effective spacing d/n, so faces forbidden by centring or screw axes are no longer kept ahead of allowed ones.\n- **An open Wulff shape** (a missing face family) is reported as open, not as a rod.\n- **MACE check:** the rank correlation is also computed over all slabs of a MOF, not only over three faces.\n- **DFT inputs:** slabs are turned so the normal is along z and get the surface dipole correction; open-shell metals get a spin multiplicity (Cu2+: one unpaired electron each, ferromagnetic; stated in the input).\n- **Slab thickness check** (cell 5b): ZIF-8 {110} at 15, 22 and 30 A.
 - **GNN.** Labels at `WATER_DMU_EV`; labels ≤ 0 are dropped and listed.
 - Runs on Colab or locally; results go to Downloads; Google Drive is optional.
 """.splitlines(keepends=True)})
