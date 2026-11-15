@@ -10,295 +10,51 @@
  "slabs": [
   {
    "variant": "notebook",
-   "mof": "ZnBDC",
-   "face": "{010}",
-   "termination": 0,
-   "cap": "water",
-   "status": "healed",
-   "n_atoms": 80,
-   "n_water": 4,
-   "area_A2": 81.51,
-   "gamma_static": 1.9566,
-   "gamma_relaxed": -0.0301,
-   "steps": 269,
-   "converged": true,
-   "caps_before": {
-    "C-O(-M)": 12,
-    "C-O-H": 4,
-    "M-OH": 4
-   },
-   "caps_after": {
-    "C-O(-M)": 13,
-    "C-O-H": 3,
-    "M-OH": 3,
-    "H2O on metal": 1
-   },
-   "n_free_water_after": 0,
-   "gamma_relaxed_at": {
-    "0 K molecule (notebook)": {
-     "all_caps_bound": -0.0301,
-     "free_water_left": -0.0301
-    },
-    "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.1589,
-     "free_water_left": 0.1589
-    },
-    "liquid water, 298 K": {
-     "all_caps_bound": 0.1938,
-     "free_water_left": 0.1938
-    },
-    "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.2008,
-     "free_water_left": 0.2008
-    },
-    "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.2395,
-     "free_water_left": 0.2395
-    }
-   }
-  },
-  {
-   "variant": "notebook",
-   "mof": "ZnBDC",
-   "face": "{001}",
-   "termination": 0,
-   "cap": "water",
-   "status": "healed",
-   "n_atoms": 148,
-   "n_water": 4,
-   "area_A2": 104.08,
-   "gamma_static": 2.2966,
-   "gamma_relaxed": -0.0237,
-   "steps": 251,
-   "converged": true,
-   "caps_before": {
-    "C-O(-M)": 28,
-    "C-O-H": 4,
-    "M-OH": 4
-   },
-   "caps_after": {
-    "C-O(-M)": 30,
-    "C-O-H": 2,
-    "H2O on metal": 2,
-    "M-OH": 2
-   },
-   "n_free_water_after": 0,
-   "gamma_relaxed_at": {
-    "0 K molecule (notebook)": {
-     "all_caps_bound": -0.0237,
-     "free_water_left": -0.0237
-    },
-    "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.1243,
-     "free_water_left": 0.1243
-    },
-    "liquid water, 298 K": {
-     "all_caps_bound": 0.1516,
-     "free_water_left": 0.1516
-    },
-    "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.1571,
-     "free_water_left": 0.1571
-    },
-    "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.1874,
-     "free_water_left": 0.1874
-    }
-   }
-  },
-  {
-   "variant": "notebook",
-   "mof": "ZnBDC",
-   "face": "{011}",
-   "termination": 0,
-   "cap": "water",
-   "status": "healed",
-   "n_atoms": 148,
-   "n_water": 4,
-   "area_A2": 132.2,
-   "gamma_static": 1.8956,
-   "gamma_relaxed": 0.2604,
-   "steps": 218,
-   "converged": true,
-   "caps_before": {
-    "C-O(-M)": 28,
-    "C-O-H": 4,
-    "M-OH": 4
-   },
-   "caps_after": {
-    "C-O(-M)": 28,
-    "C-O-H": 4,
-    "M-OH": 4
-   },
-   "n_free_water_after": 0,
-   "gamma_relaxed_at": {
-    "0 K molecule (notebook)": {
-     "all_caps_bound": 0.2604,
-     "free_water_left": 0.2604
-    },
-    "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.377,
-     "free_water_left": 0.377
-    },
-    "liquid water, 298 K": {
-     "all_caps_bound": 0.3984,
-     "free_water_left": 0.3984
-    },
-    "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.4028,
-     "free_water_left": 0.4028
-    },
-    "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.4266,
-     "free_water_left": 0.4266
-    }
-   }
-  },
-  {
-   "variant": "notebook",
-   "mof": "ZnBDC",
-   "face": "{011}",
+   "mof": "Mg-MOF-74",
+   "face": "{2\u030510}",
    "termination": 1,
    "cap": "water",
    "status": "healed",
-   "n_atoms": 160,
-   "n_water": 8,
-   "area_A2": 132.2,
-   "gamma_static": 2.2962,
-   "gamma_relaxed": -0.0351,
-   "steps": 308,
+   "n_atoms": 378,
+   "n_water": 18,
+   "area_A2": 314.26,
+   "gamma_static": 1.2162,
+   "gamma_relaxed": -0.0135,
+   "steps": 191,
    "converged": true,
    "caps_before": {
-    "C-O(-M)": 24,
-    "C-O-H": 8,
-    "M-OH": 8
+    "C-O(-M)": 93,
+    "C-O-H": 12,
+    "O with 2 H": 3,
+    "M-OH": 18
    },
    "caps_after": {
-    "C-O(-M)": 25,
-    "C-O-H": 7,
-    "M-OH": 7,
-    "H2O on metal": 1
+    "C-O(-M)": 99,
+    "C-O-H": 9,
+    "M-OH": 9,
+    "H2O on metal": 9
    },
    "n_free_water_after": 0,
    "gamma_relaxed_at": {
     "0 K molecule (notebook)": {
-     "all_caps_bound": -0.0351,
-     "free_water_left": -0.0351
+     "all_caps_bound": -0.0135,
+     "free_water_left": -0.0135
     },
     "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.198,
-     "free_water_left": 0.198
+     "all_caps_bound": 0.2071,
+     "free_water_left": 0.2071
     },
     "liquid water, 298 K": {
-     "all_caps_bound": 0.241,
-     "free_water_left": 0.241
+     "all_caps_bound": 0.2478,
+     "free_water_left": 0.2478
     },
     "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.2496,
-     "free_water_left": 0.2496
+     "all_caps_bound": 0.256,
+     "free_water_left": 0.256
     },
     "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.2973,
-     "free_water_left": 0.2973
-    }
-   }
-  },
-  {
-   "variant": "notebook",
-   "mof": "Cd3BTB2",
-   "face": "{010}",
-   "termination": 0,
-   "cap": "water",
-   "status": "healed",
-   "n_atoms": 210,
-   "n_water": 4,
-   "area_A2": 153.09,
-   "gamma_static": 1.9606,
-   "gamma_relaxed": -0.0087,
-   "steps": 634,
-   "converged": true,
-   "caps_before": {
-    "C-O(-M)": 20,
-    "C-O-H": 4,
-    "M-OH": 4
-   },
-   "caps_after": {
-    "C-O(-M)": 22,
-    "C-O-H": 2,
-    "H2O on metal": 2,
-    "M-OH": 2
-   },
-   "n_free_water_after": 0,
-   "gamma_relaxed_at": {
-    "0 K molecule (notebook)": {
-     "all_caps_bound": -0.0087,
-     "free_water_left": -0.0087
-    },
-    "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.092,
-     "free_water_left": 0.092
-    },
-    "liquid water, 298 K": {
-     "all_caps_bound": 0.1105,
-     "free_water_left": 0.1105
-    },
-    "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.1142,
-     "free_water_left": 0.1142
-    },
-    "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.1348,
-     "free_water_left": 0.1348
-    }
-   }
-  },
-  {
-   "variant": "notebook",
-   "mof": "MIL-47",
-   "face": "{100}",
-   "termination": 0,
-   "cap": "water",
-   "status": "healed",
-   "n_atoms": 234,
-   "n_water": 6,
-   "area_A2": 225.02,
-   "gamma_static": 1.5831,
-   "gamma_relaxed": -0.0209,
-   "steps": 190,
-   "converged": true,
-   "caps_before": {
-    "M-OH": 8,
-    "O other": 10,
-    "C-O(-M)": 44,
-    "C-O-H": 4
-   },
-   "caps_after": {
-    "M-OH": 8,
-    "O other": 10,
-    "C-O(-M)": 44,
-    "C-O-H": 4
-   },
-   "n_free_water_after": 0,
-   "gamma_relaxed_at": {
-    "0 K molecule (notebook)": {
-     "all_caps_bound": -0.0209,
-     "free_water_left": -0.0209
-    },
-    "vapour, 298 K, 1 bar": {
-     "all_caps_bound": 0.0818,
-     "free_water_left": 0.0818
-    },
-    "liquid water, 298 K": {
-     "all_caps_bound": 0.1007,
-     "free_water_left": 0.1007
-    },
-    "vapour, 298 K, 50 % RH": {
-     "all_caps_bound": 0.1046,
-     "free_water_left": 0.1046
-    },
-    "vapour, 400 K, 1 bar": {
-     "all_caps_bound": 0.1256,
-     "free_water_left": 0.1256
+     "all_caps_bound": 0.3011,
+     "free_water_left": 0.3011
     }
    }
   },
@@ -484,6 +240,475 @@
     "vapour, 400 K, 1 bar": {
      "all_caps_bound": 0.1508,
      "free_water_left": 0.1508
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "ZnBDC",
+   "face": "{011}",
+   "termination": 0,
+   "cap": "water",
+   "status": "healed",
+   "n_atoms": 148,
+   "n_water": 4,
+   "area_A2": 132.2,
+   "gamma_static": 0.5726,
+   "gamma_relaxed": 0.2614,
+   "steps": 200,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 28,
+    "C-O-H": 4,
+    "M-OH": 4
+   },
+   "caps_after": {
+    "C-O(-M)": 28,
+    "C-O-H": 4,
+    "M-OH": 4
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.2614,
+     "free_water_left": 0.2614
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.378,
+     "free_water_left": 0.378
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.3994,
+     "free_water_left": 0.3994
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.4038,
+     "free_water_left": 0.4038
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.4276,
+     "free_water_left": 0.4276
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "ZnBDC",
+   "face": "{011}",
+   "termination": 1,
+   "cap": "water",
+   "status": "healed",
+   "n_atoms": 160,
+   "n_water": 8,
+   "area_A2": 132.2,
+   "gamma_static": 0.9922,
+   "gamma_relaxed": -0.0415,
+   "steps": 511,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 24,
+    "C-O-H": 8,
+    "M-OH": 8
+   },
+   "caps_after": {
+    "C-O(-M)": 25,
+    "C-O-H": 7,
+    "M-OH": 7,
+    "H2O on metal": 1
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": -0.0415,
+     "free_water_left": -0.0415
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.1916,
+     "free_water_left": 0.1916
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2346,
+     "free_water_left": 0.2346
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.2432,
+     "free_water_left": 0.2432
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2909,
+     "free_water_left": 0.2909
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "ZnBDC",
+   "face": "{011}",
+   "termination": 0,
+   "cap": "bare",
+   "status": "bare",
+   "n_atoms": 136,
+   "n_water": 0,
+   "area_A2": 132.2,
+   "gamma_static": 0.3318,
+   "gamma_relaxed": 0.2876,
+   "steps": 67,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 32
+   },
+   "caps_after": {
+    "C-O(-M)": 32
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.2876,
+     "free_water_left": 0.2876
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.2876,
+     "free_water_left": 0.2876
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2876,
+     "free_water_left": 0.2876
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.2876,
+     "free_water_left": 0.2876
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2876,
+     "free_water_left": 0.2876
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "ZnBDC",
+   "face": "{011}",
+   "termination": 2,
+   "cap": "bare",
+   "status": "bare",
+   "n_atoms": 136,
+   "n_water": 0,
+   "area_A2": 132.2,
+   "gamma_static": 0.4835,
+   "gamma_relaxed": 0.3293,
+   "steps": 95,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 32
+   },
+   "caps_after": {
+    "C-O(-M)": 32
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.3293,
+     "free_water_left": 0.3293
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.3293,
+     "free_water_left": 0.3293
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.3293,
+     "free_water_left": 0.3293
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.3293,
+     "free_water_left": 0.3293
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.3293,
+     "free_water_left": 0.3293
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "Cd3BTB2",
+   "face": "{010}",
+   "termination": 0,
+   "cap": "water",
+   "status": "healed",
+   "n_atoms": 210,
+   "n_water": 4,
+   "area_A2": 153.09,
+   "gamma_static": 0.488,
+   "gamma_relaxed": 0.126,
+   "steps": 405,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 20,
+    "C-O-H": 4,
+    "M-OH": 4
+   },
+   "caps_after": {
+    "C-O(-M)": 21,
+    "C-O-H": 3,
+    "M-OH": 3,
+    "H2O on metal": 1
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.126,
+     "free_water_left": 0.126
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.2267,
+     "free_water_left": 0.2267
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2452,
+     "free_water_left": 0.2452
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.2489,
+     "free_water_left": 0.2489
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2695,
+     "free_water_left": 0.2695
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "Cd3BTB2",
+   "face": "{010}",
+   "termination": 0,
+   "cap": "bare",
+   "status": "bare",
+   "n_atoms": 198,
+   "n_water": 0,
+   "area_A2": 153.09,
+   "gamma_static": 0.196,
+   "gamma_relaxed": 0.1594,
+   "steps": 90,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 24
+   },
+   "caps_after": {
+    "C-O(-M)": 24
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.1594,
+     "free_water_left": 0.1594
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.1594,
+     "free_water_left": 0.1594
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.1594,
+     "free_water_left": 0.1594
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.1594,
+     "free_water_left": 0.1594
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.1594,
+     "free_water_left": 0.1594
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "MIL-47",
+   "face": "{100}",
+   "termination": 0,
+   "cap": "water",
+   "status": "healed",
+   "n_atoms": 234,
+   "n_water": 6,
+   "area_A2": 225.02,
+   "gamma_static": 0.4268,
+   "gamma_relaxed": -0.0236,
+   "steps": 152,
+   "converged": true,
+   "caps_before": {
+    "M-OH": 8,
+    "O other": 10,
+    "C-O(-M)": 44,
+    "C-O-H": 4
+   },
+   "caps_after": {
+    "H2O on metal": 2,
+    "O other": 10,
+    "C-O(-M)": 46,
+    "C-O-H": 2,
+    "M-OH": 6
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": -0.0236,
+     "free_water_left": -0.0236
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.0791,
+     "free_water_left": 0.0791
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.098,
+     "free_water_left": 0.098
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.1019,
+     "free_water_left": 0.1019
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.1229,
+     "free_water_left": 0.1229
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "MIL-47",
+   "face": "{100}",
+   "termination": 0,
+   "cap": "bare",
+   "status": "bare",
+   "n_atoms": 216,
+   "n_water": 0,
+   "area_A2": 225.02,
+   "gamma_static": 0.3844,
+   "gamma_relaxed": 0.2521,
+   "steps": 68,
+   "converged": true,
+   "caps_before": {
+    "O other": 12,
+    "C-O(-M)": 48
+   },
+   "caps_after": {
+    "O other": 12,
+    "C-O(-M)": 48
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.2521,
+     "free_water_left": 0.2521
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.2521,
+     "free_water_left": 0.2521
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2521,
+     "free_water_left": 0.2521
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.2521,
+     "free_water_left": 0.2521
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2521,
+     "free_water_left": 0.2521
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "Mg-MOF-74",
+   "face": "{2\u030510}",
+   "termination": 0,
+   "cap": "water",
+   "status": "healed (2 bound H2O)",
+   "n_atoms": 123,
+   "n_water": 5,
+   "area_A2": 104.75,
+   "gamma_static": 0.6115,
+   "gamma_relaxed": -0.0116,
+   "steps": 226,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 33,
+    "C-O-H": 3,
+    "H2O on metal": 2,
+    "M-OH": 3
+   },
+   "caps_after": {
+    "C-O(-M)": 33,
+    "C-O-H": 3,
+    "M-OH": 3,
+    "H2O on metal": 2
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": -0.0116,
+     "free_water_left": -0.0116
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.1723,
+     "free_water_left": 0.1723
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2061,
+     "free_water_left": 0.2061
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.213,
+     "free_water_left": 0.213
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2506,
+     "free_water_left": 0.2506
+    }
+   }
+  },
+  {
+   "variant": "fixed",
+   "mof": "Mg-MOF-74",
+   "face": "{2\u030510}",
+   "termination": 1,
+   "cap": "bare",
+   "status": "bare",
+   "n_atoms": 108,
+   "n_water": 0,
+   "area_A2": 104.75,
+   "gamma_static": 0.4136,
+   "gamma_relaxed": 0.2906,
+   "steps": 119,
+   "converged": true,
+   "caps_before": {
+    "C-O(-M)": 36
+   },
+   "caps_after": {
+    "C-O(-M)": 36
+   },
+   "n_free_water_after": 0,
+   "gamma_relaxed_at": {
+    "0 K molecule (notebook)": {
+     "all_caps_bound": 0.2906,
+     "free_water_left": 0.2906
+    },
+    "vapour, 298 K, 1 bar": {
+     "all_caps_bound": 0.2906,
+     "free_water_left": 0.2906
+    },
+    "liquid water, 298 K": {
+     "all_caps_bound": 0.2906,
+     "free_water_left": 0.2906
+    },
+    "vapour, 298 K, 50 % RH": {
+     "all_caps_bound": 0.2906,
+     "free_water_left": 0.2906
+    },
+    "vapour, 400 K, 1 bar": {
+     "all_caps_bound": 0.2906,
+     "free_water_left": 0.2906
     }
    }
   }

@@ -456,3 +456,4 @@ Everything is in `code/morphology/steps1_8_check/nb_2026-11-14/` (README there);
   - GNN labels: moved to a stated Δμ; labels ≤ 0 are dropped.
 - **Corrected notebook for the GPU session:** `MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb`.
 - **Not done here.** The relaxed rerun of all slabs and the GNN cross-validation with corrected labels need a GPU or many CPU hours. No DFT check has been made.
+- **All relaxations finished (15 November, afternoon).** With every fix applied and water still at Δμ = 0, the relaxed γ is still negative for ZnBDC {001} (−0.028) and {011} (−0.042), MIL-47 {100} (−0.024) and Mg-MOF-74 {2̅10} (−0.012). Cd3BTB2 {010} becomes positive (+0.126): for Cd3BTB2 the capping error, not only the water reference, made γ negative. Every bare (uncapped) slab relaxes to a positive γ (0.15–0.46 J/m²). All of them are positive at liquid-water Δμ. Results: `nb_2026-11-14/results/relax_cases.json`.
