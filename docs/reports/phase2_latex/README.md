@@ -6,7 +6,7 @@ Compile with `pdflatex`, `bibtex`, `pdflatex`, `pdflatex` (or upload the folder 
 
 | File | What it is |
 |---|---|
-| `report.tex`, `report.pdf` | The report (5 pages with references) |
+| `report.tex`, `report.pdf` | The report (6 pages with references) |
 | `slides.tex`, `slides.pdf` | The slides (13 frames); frame 2 waits for the guide's approval screenshot |
 | `ref.bib` | References |
 | `logo.png`, `logo_square.png` | From the department template |
@@ -21,6 +21,6 @@ Where the numbers come from:
 | Bond share 93–98 %, van der Waals 2–7 % | `code/morphology/results/phase4_results.json` |
 | MOF-5 γ111/γ100 = 1.72 | `phase4_results.json` (0.25542 / 0.14786) |
 | Map boundaries | `code/morphology/morphology_map/cubic_wulff.py`; derivation in the audit of 13 November |
-| 27 pages, over 3,400 checks | `website/_build/build_site.py`; `website/tests/` |
+| 28 pages, over 3,400 checks | `website/_build/build_site.py`; `website/tests/` |
 
 If a result file changes, change the number here and in both `.tex` files, then recompile.

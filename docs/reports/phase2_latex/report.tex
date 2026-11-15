@@ -69,7 +69,7 @@
 
 \section{Abstract}
 \noindent
-A metal--organic framework (MOF) is used as a powder of small crystals, and the faces and size of those crystals affect how fast a gas enters them. After Panel Review~1 the panel asked whether a few crystal morphologies can be generated from the unit cell of an established MOF, mathematically and computationally. We answer in three steps. The space group decides which crystal faces may exist and gives a family of possible shapes (16 propositions, each proved and checked numerically). A growth model selects a member of the family: the Bravais--Friedel--Donnay--Harker (BFDH) rule for any lattice, and a Wulff construction from unrelaxed surface energies that are, in effect, a count of the bonds each plane cuts. The predictions are scored against 134 laboratory records from 35 papers on 12 MOFs. For crystals grown without additives the dominant face is predicted correctly for 4 of 5 MOFs, as often as the most common laboratory answer for each MOF, without using laboratory data; with additives no model is reliable. For eight MOFs we also compute how far each face's energy must fall to change the shape and, for each shape, the fraction of each face open to CO$_2$ and N$_2$ and the diffusion length $V/A$. Everything runs from a CIF in seconds, in two independent implementations (Python and a browser engine) that agree. An earlier connectivity descriptor (Part~I) was tested and withdrawn because it follows graph size.
+A metal--organic framework (MOF) is used as a powder of small crystals, and the faces and size of those crystals affect how fast a gas enters them. After Panel Review~1 the panel asked whether a few crystal morphologies can be generated from the unit cell of an established MOF, mathematically and computationally. We answer in three steps. The space group decides which crystal faces may exist and gives a family of possible shapes (16 propositions, each proved and checked numerically). A growth model selects a member of the family: the Bravais--Friedel--Donnay--Harker (BFDH) rule for any lattice, and a Wulff construction from unrelaxed surface energies that are, in effect, a count of the bonds each plane cuts. The predictions are scored against 134 laboratory records from 35 papers on 12 MOFs. For crystals grown without additives the dominant face is predicted correctly for 4 of 5 MOFs, as often as the most common laboratory answer for each MOF, without using laboratory data; with additives no model is reliable. For eight MOFs we also compute how far each face's energy must fall to change the shape and, for each shape, the fraction of each face open to CO$_2$ and N$_2$ and the diffusion length $V/A$. Everything runs from a CIF in seconds, in two independent implementations (Python and a browser engine) that agree. The team's machine-learned (CHGNet) pipeline and graph-neural-network surrogate were checked independently: six negative surface energies were traced to an unrealistic water reference and corrected with tabulated thermochemistry, after which Mg-MOF-74 comes out as the observed hexagonal rod; the GNN does not beat simple baselines. An earlier connectivity descriptor (Part~I) was tested and withdrawn because it follows graph size.
 
 \section{Problem Definition, Research Motivation \& Literature Review}
 
@@ -167,11 +167,13 @@ A metal--organic framework (MOF) is used as a powder of small crystals, and the 
         \hline
         Faces and shapes & Absences, $d_\text{eff}$, BFDH, shape families, deformed cells, any lattice (\texttt{faces.py}, \texttt{deform.py}, \texttt{mof\_general\_shape.js}) & Integrated \\
         \hline
-        Energies & Bond-count/UFF cleavage energies (\texttt{forcefield.py}); CHGNet slabs (\texttt{chgnet\_wulff/}, unvalidated) & Integrated \\
+        Energies & Bond-count/UFF cleavage energies (\texttt{forcefield.py}); CHGNet water-capped slabs with a stated water chemical potential (\texttt{steps1\_8\_check/nb\_2026-11-14/}, not checked by DFT) & Integrated \\
+        \hline
+        GNN surrogate & Graph neural network predicting relaxed $\gamma$ from the slab structure, leave-MOF-out cross-validation against baselines (\texttt{mofgnn.py}; GNN part of the notebook by Isha) & Functional \\
         \hline
         Benchmark, steering, access & \texttt{run\_benchmark\_mofs.py}, \texttt{run\_shape\_steering.py}, \texttt{run\_shape\_adsorption.py}, \texttt{run\_dataset\_shapes.py} & Integrated \\
         \hline
-        Website and tests & 27 pages built from fragments; 15 jsdom suites (over 3\,400 checks) and the Python tests pass & Functional \\
+        Website and tests & 28 pages built from fragments; 15 jsdom suites (over 3\,400 checks) and the Python tests pass & Functional \\
         \hline
     \end{tabular}
     \caption{Module-wise implementation status.}
@@ -204,6 +206,30 @@ Every script finds its inputs from its own location and writes a result file tha
 \noindent
 The structure-only model makes one prediction per MOF, so the 32 additive-free records are five tests: MOF-5 9/9, ZIF-8 11/12, HKUST-1 7/8, IRMOF-3 1/1 and UiO-66 0/2, from 13 papers; 4 of 5 MOFs are right, and a bootstrap over whole papers gives 73--97\%. The MOFs added after the model was fixed are a small clean test: one additive-free record (right) and 1 of 7 with additives. For the habit, BFDH is right for 85 of 97 records against 76 for always guessing ``compact'', and predicts the rods of Mg-MOF-74, where 9 of 10 laboratory crystals are elongated.
 
+\subsection{Machine-Learned Surface Energies and the GNN Surrogate}
+The team notebook (steps 1--8 plus a GNN) reported six negative relaxed CHGNet surface energies, which a stable crystal cannot have. Rebuilding every slab from the notebook's own code reproduced them exactly (118 slabs; static $\gamma$ within 0.0005~J/m$^2$). The cause was the water used to cap cut bonds: $\gamma=[E_\text{slab}-Ne_\text{bulk}-n\mu_{\text{H}_2\text{O}}]/2A$ took $\mu_{\text{H}_2\text{O}}$ from a free molecule at 0~K. With $\gamma(\Delta\mu)=\gamma_{0\,\text{K}}-n\Delta\mu/2A$ and $\Delta\mu=-0.57$~eV for liquid water at 25\,$^\circ$C (NIST-JANAF, CODATA), no slab is negative. A capping error (two protons on one oxygen) and two lost fixes were also corrected. The corrected notebook was run on a GPU:
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular}{|l|p{3.3cm}|p{3.6cm}|p{3.6cm}|}
+        \hline
+        \textbf{MOF} & \textbf{Before (14 Nov)} & \textbf{Corrected (liquid water)} & \textbf{Laboratory} \\
+        \hline
+        ZIF-8 & rhombic dodecahedron & rhombic dodecahedron & rhombic dodecahedron \\
+        \hline
+        HKUST-1 & truncated octahedron & mainly \{111\} & octahedron \{111\} \\
+        \hline
+        Mg-MOF-74 & no shape ($\gamma<0$) & \textbf{hexagonal rod along $c$} & rods along $c$ \\
+        \hline
+        UiO-66 & truncated octahedron & truncated octahedron & cube (no additive) \\
+        \hline
+    \end{tabular}
+    \caption{CHGNet Wulff shapes before and after the corrections (97 relaxed slabs of 16 MOFs, 87 converged). Source: \texttt{nb\_2026-11-14/colab\_run\_2026-11-15/wulff\_summary.csv}.}
+\end{table}
+\noindent
+In leave-MOF-out cross-validation on 16 MOFs with the corrected labels, the GNN has a mean absolute error of 0.159~J/m$^2$, against 0.085 for a straight line on broken bonds per area and 0.074 for rescaled static CHGNet energies; it names the whole shape slightly more often (7 of 16 against 5 of 16). No learned model is yet shown to help.
+
 \subsection{Visual Results \& Prototype Demonstration}
 \begin{figure}[H]
     \centering
@@ -216,7 +242,7 @@ The structure-only model makes one prediction per MOF, so the 32 additive-free r
 
 \section{Technical Justification, Design Trade-offs \& Insights}
 \begin{itemize}[noitemsep, topsep=2pt]
-    \item \textbf{Why these models:} BFDH needs only symmetry and runs on any CIF; the bond-count energy adds what BFDH lacks with no fitting; DFT would be the reference but needs HPC time we do not have, and CHGNet, the fast alternative, is not validated for MOF surfaces. No learned model is trained: laboratory shapes exist for 12 MOFs, and learning from other MOFs gives 5 of 32.
+    \item \textbf{Why these models:} BFDH needs only symmetry and runs on any CIF; the bond-count energy adds what BFDH lacks with no fitting; DFT would be the reference but needs HPC time we do not have, and CHGNet, the fast alternative, is not validated for MOF surfaces. No learned model predicts laboratory shapes: they exist for only 12 MOFs, and learning from other MOFs gives 5 of 32. The GNN surrogate learns CHGNet surface energies instead, and is judged against simple baselines.
     \item \textbf{Complexity:} absences and BFDH are $O(|G|\,h^3)$ for $|G|$ operations and index limit $h$; a cleavage curve is $O(P)$ for $P$ atom pairs within 12~\AA; a Wulff shape is a half-space intersection; everything runs in seconds per MOF.
     \item \textbf{Edge cases:} primitive cells are converted to the conventional cell; files stored in P1 or with ordered substituents (IRMOF-3, IRMOF-8, 71 of 77 hMOF files) have broken symmetry and are flagged; records without a dominant face are not scored for faces; three additive-free labels that are judgement calls are listed.
 \end{itemize}
@@ -224,8 +250,8 @@ The structure-only model makes one prediction per MOF, so the 32 additive-free r
 \section{Conclusion, Limitations \& Future Scope}
 \begin{itemize}[noitemsep, topsep=2pt]
     \item \textbf{Conclusion:} from one unit cell the project generates the allowed faces, the family of shapes and the favoured shape of a MOF, mathematically and by program, and shows on 8 MOFs and 134 records that the structure alone gives the dominant face of additive-free crystals for 4 of 5 MOFs.
-    \item \textbf{Limitations:} unrelaxed energies without electrostatics or solvent; only MOF-5 separates the energy models; no model predicts additives; gas access is geometric (an open point may not connect to the pore network), not adsorption; one person extracted the laboratory records and checked the proofs.
-    \item \textbf{Future scope:} DFT on six prepared slabs (MOF-5, UiO-66, HKUST-1); a relaxed CHGNet run with the steps 1--8 fixes; additive binding energies per face; pore-network accessibility (Zeo++); a blind second extraction of 20 laboratory records.
+    \item \textbf{Limitations:} unrelaxed energies without electrostatics or solvent; CHGNet energies depend on the stated water condition and are not checked by DFT; only MOF-5 separates the energy models; no model predicts additives; gas access is geometric (an open point may not connect to the pore network), not adsorption; one person extracted the laboratory records and checked the proofs.
+    \item \textbf{Future scope:} DFT on six prepared slabs (MOF-5, UiO-66, HKUST-1); a second GPU run of the corrected notebook with the last six fixes (hydroxylated UiO-66 input, slab-thickness check); additive binding energies per face; pore-network accessibility (Zeo++); a blind second extraction of 20 laboratory records.
 \end{itemize}
 
 \section{Project Deliverables \& Technical Enrichment Summary}
@@ -241,7 +267,7 @@ The structure-only model makes one prediction per MOF, so the 32 additive-free r
         \hline
         Online certifications & Fractals and Scaling; Introduction to Complexity (Santa Fe Institute); Graph Theory; Graph Algorithms in Java and Social Network Analysis (Udemy); Graph Algorithms for Machine Learning (TigerGraph) & Completed \\
         \hline
-        Group activity: website & Documentation portal, 27 pages, two engines, tests & Completed \\
+        Group activity: website & Documentation portal, 28 pages, two engines, tests & Completed \\
         \hline
         Group activity: dataset release & Spectrum descriptors (CC BY 4.0) and the 134-record morphology dataset & Completed \\
         \hline

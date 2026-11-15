@@ -237,6 +237,26 @@
     \end{block}
 \end{frame}
 
+\begin{frame}[shrink=6]{7b. Machine-Learned Energies and the GNN Surrogate}
+    \framesubtitle{Team notebook (steps 1--8 + GNN), checked and corrected on 15 November}
+    \begin{columns}[T]
+        \column{0.62\textwidth}
+        \scriptsize
+        \begin{itemize}
+            \item Six negative CHGNet surface energies, reproduced exactly from the notebook's own code.
+            \item Cause: water caps paid for at a free molecule at 0~K. With $\gamma(\Delta\mu)=\gamma_{0\,\mathrm{K}}-n\Delta\mu/2A$ and liquid water ($\Delta\mu=-0.57$~eV, NIST-JANAF/CODATA): \textbf{none negative}.
+            \item Also fixed: two protons on one O; two lost fixes; the Mg--O rod kept whole.
+            \item Corrected GPU run: ZIF-8 and HKUST-1 agree; \textbf{Mg-MOF-74 becomes the observed hexagonal rod}; UiO-66 still missed.
+            \item GNN (Isha), leave-MOF-out, 16 MOFs: MAE 0.159~J/m$^2$ vs 0.085 (broken-bond line) and 0.074 (rescaled static CHGNet): not yet better than simple baselines.
+            \item Not checked by DFT.
+        \end{itemize}
+        \column{0.36\textwidth}
+        \centering
+        \includegraphics[height=4.2cm]{figures/gpu_wulff_Mg-MOF-74.png}\\
+        \tiny Mg-MOF-74, corrected run (liquid water)
+    \end{columns}
+\end{frame}
+
 \begin{frame}{8. Technical Justification, Design Trade-offs \& Insights}
     \framesubtitle{Rationale, trade-offs and limits}
     \begin{columns}[T]
@@ -245,7 +265,7 @@
             \scriptsize
             \begin{itemize}
                 \item BFDH runs on any CIF; the bond-count energy adds what it lacks, with no fitting.
-                \item No learned model: shapes exist for 12 MOFs; learning from other MOFs gives 5 of 32.
+                \item No model learns lab shapes (12 MOFs only); the GNN learns CHGNet energies instead.
             \end{itemize}
         \end{block}
         \begin{block}{Trade-offs}
@@ -266,7 +286,7 @@
         \begin{block}{Limitations and future work}
             \scriptsize
             \begin{itemize}
-                \item DFT on six prepared slabs; relaxed CHGNet rerun.
+                \item DFT on six prepared slabs; second GPU run with the last six fixes.
                 \item Gas access is geometric, not adsorption.
                 \item Part I descriptor withdrawn: it follows graph size.
             \end{itemize}
