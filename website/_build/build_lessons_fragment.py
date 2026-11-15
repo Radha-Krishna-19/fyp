@@ -191,7 +191,7 @@ NOVEMBER = [
   'Counting every metal&ndash;oxygen&ndash;carbon bond as a metal&ndash;linker bond works for MOFs with separate metal clusters, which is what the method was first written for.',
   'Mg&ndash;O bonds to oxygens shared by two metals belong to the inorganic rod, not to a linker. Splitting them leaves single-Mg nodes and the rod flag never fires; {001} slabs then cut the rod and come out low in energy, giving a block instead of a rod. The reference habit for additive-free UiO-66 in our dataset is a cube; octahedra need benzoic or acetic acid.',
   'Treat a metal and every O shared by two or more metals as one inorganic unit; take reference shapes from the dataset with their conditions.',
-  'Fixed on 15 November in the corrected module (<code>nb_2026-11-14/mofwulff.py</code>): metals sharing a linker O form one unit, so the Mg&ndash;O rod is found; the UiO-66 reference is a cube. With static energies Mg-MOF-74 is still a block; the relaxed run needs a GPU.',
+  'Fixed on 15 November in the corrected module (<code>nb_2026-11-14/mofwulff.py</code>): metals sharing a linker O form one unit, so the Mg&ndash;O rod is found; the UiO-66 reference is a cube. With relaxed energies (GPU run of 15 November) Mg-MOF-74 comes out a hexagonal rod along c, as in the laboratory.',
   '<a href="morphology_map.html#map-steps">The morphology map</a>, problem table'),
  ('l-cwd', 'Scripts that worked only from their own folder',
   'Five analysis programs found their data by looking around the folder they were started in. Started from anywhere else, they failed or wrote their results to the wrong place.',

@@ -919,6 +919,8 @@ dfn.gloss.open .gloss-pop {
 .bridge dd b { color: var(--text); font-weight: 600; }
 .bridge .now { color: var(--text); }
 .reading-guide { margin: 20px 0 0; }
+.shape-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.shape-grid .fig { margin: 0; }
 .reading-guide dd { color: var(--text); }
 
 @media (max-width: 640px) {

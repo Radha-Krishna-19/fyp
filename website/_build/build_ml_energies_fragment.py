@@ -170,7 +170,7 @@ if K2:
     P.append(f'''      <h3 class="sub-head">Three older problems fixed in the same module (K1, K2, K4)</h3>
       <ul class="sd">
         <li><b>K1, shape names.</b> Names now come from the exact limits of the cubic map: a pure cube, octahedron or rhombic dodecahedron only within numerical noise (0.1 % of the area), the cuboctahedron only within 0.005 of its exact {{100}} share 6/(6 + 2&radic;3). All 14 test ratios of <code>checks/naming.py</code> are named correctly (the notebook version misnamed 3).</li>
-        <li><b>K2, the metal rod of MOF-74.</b> Two metals bonded to the same linker oxygen now belong to one inorganic unit, so the Mg&ndash;O rod of Mg-MOF-74 (and of Ni-DOBDC) is recognised as one infinite unit, and Cd3BTB2 gets its Cd<sub>3</sub> cluster; the other eight MOFs checked are unchanged. With static energies only, the Mg-MOF-74 shape is still a block ({esc(mg["liquid_298K"]["habit"])} at liquid water), so the rod habit seen in laboratories is not yet reproduced; relaxed energies need the GPU run.</li>
+        <li><b>K2, the metal rod of MOF-74.</b> Two metals bonded to the same linker oxygen now belong to one inorganic unit, so the Mg&ndash;O rod of Mg-MOF-74 (and of Ni-DOBDC) is recognised as one infinite unit, and Cd3BTB2 gets its Cd<sub>3</sub> cluster; the other eight MOFs checked are unchanged. With static energies only, the Mg-MOF-74 shape is still a block ({esc(mg["liquid_298K"]["habit"])} at liquid water); with relaxed energies from the GPU run it becomes a hexagonal rod along <i>c</i>, as in the laboratory (Section 5).</li>
         <li><b>K4, a wrong reference shape.</b> The notebook compared UiO-66 with octahedra; additive-free UiO-66 gives cubes in our records, and octahedra need benzoic or acetic acid. Corrected in the notebook's input table.</li>
       </ul>
 ''')
@@ -193,6 +193,33 @@ P.append(f'''      <h2 class="section-title" id="mle-effect" data-toc="Effect on
                      f"{esc(m)}: &gamma; of each face (lowest termination) against &Delta;&mu;. The lines cross: the order of the faces depends on the water condition.")
                  for m in ("Mg-MOF-74", "ZnBDC", "MIL-47", "Cd3BTB2")))
 
+# 4b the corrected notebook on a GPU
+CR = os.path.join(D, "colab_run_2026-11-15")
+if os.path.exists(os.path.join(CR, "wulff_summary.csv")):
+    WS = list(csv.DictReader(open(os.path.join(CR, "wulff_summary.csv"), encoding="utf-8")))
+    SA = list(csv.DictReader(open(os.path.join(CR, "slabs_all.csv"), encoding="utf-8")))
+    srel = [r for r in SA if r["gamma_relaxed_J_m2"] not in ("", "nan")]
+    sconv = [r for r in srel if r["converged"] == "True"]
+    neg0 = [r for r in srel if float(r["gamma_relaxed_J_m2"]) <= 0]
+    negl = [r for r in srel if float(r["gamma_relaxed_J_m2"]) + float(r["n_water"]) / (2 * float(r["area_A2"])) * 16.0218 * 0.5695 <= 0]
+    rows = []
+    for w in WS:
+        old_h = MU["mofs"].get(w["mof"], {}).get("conditions", {}).get(A0, {}).get("habit", "&ndash;")
+        fr = json.loads(w["area_fractions"]) if w["area_fractions"] else {}
+        rows.append([("dt-label", esc(w["mof"])), ("dt-note", esc(old_h)), ("dt-note", esc(w["habit"])),
+                     ("dt-note", ", ".join(f"{esc(k)} {v:.0%}" for k, v in fr.items())), ("dt-note", esc(w["reference_habit"]))])
+    imgs = "".join(f'<figure class="fig"><img src="figures/ml_energies/colab/wulff_{m}_water.png" alt="Wulff shape of {m} from the corrected notebook at liquid-water chemical potential."><figcaption>{m}, corrected notebook, liquid water (GPU run of 15 November).</figcaption></figure>'
+                   for m in ("ZIF-8", "HKUST-1", "Mg-MOF-74", "UiO-66"))
+    P.append(f'''      <h2 class="section-title" id="mle-gpu" data-toc="The corrected notebook on a GPU"><span class="stitle-num">0</span>The Corrected Notebook on a GPU</h2>
+      <p class="sd">A team member ran the corrected notebook (<code>MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb</code>) end to end on a Colab GPU on 15 November, with the water condition set to liquid water at 25 &deg;C. It relaxed {len(srel)} slabs of {len({r["mof"] for r in srel})} MOFs ({len(sconv)} converged). At the old reference (a free molecule at 0 K) {len(neg0)} of them are still slightly negative ({", ".join(f"{r['mof']} {r['face']} {f(r['gamma_relaxed_J_m2'], 4, True)}" for r in neg0)}); at liquid water {'none is' if not negl else str(len(negl)) + ' are'}. The negative values are identical to those of our CPU runs in Section 3, so the result does not depend on the hardware.</p>
+''' + table(["MOF", "Shape, notebook of 14 November", "Shape, corrected notebook (liquid water)", "Faces (share of surface)", "Laboratory shape (reference)"], rows, "mle-gpu-shapes") + f'''
+      <p class="sd">ZIF-8 (rhombic dodecahedron, {{110}}) and HKUST-1 (mainly {{111}}) agree with the laboratory shape, as before. <b>Mg-MOF-74 changes from no shape at all to a hexagonal rod along <i>c</i>, the habit seen in the laboratory</b>: its metal rod is now kept whole (K2), so faces that would cut it, such as {{001}}, are expensive and drop out of the shape, and the prism face {{2&#773;10}} takes three quarters of the surface. UiO-66 still comes out a truncated octahedron, mainly {{111}}, while additive-free UiO-66 grows as cubes; this remains the model's miss, as in the benchmark (<a href="experiment.html">Against experiment</a>). These are four MOFs and one energy model with no DFT check, so the agreement is encouraging but is not a validation.</p>
+      <div class="shape-grid">{imgs}</div>
+''')
+    GPU_CV = list(csv.DictReader(open(os.path.join(CR, "gnn_cv_summary.csv"), encoding="utf-8")))
+else:
+    GPU_CV = None
+
 # 5 GNN
 gnn_html = ""
 if GNN:
@@ -210,9 +237,21 @@ if GNN:
 ''' + table(["Labels", "Model", "MAE (J/m&sup2;)", "Spearman (faces)", "Lowest face right", "Shape right"], rows, "mle-gnn") +
         '''      <p class="sd">MAE is the mean absolute error over the held-out MOFs; the other three columns are fractions of held-out MOFs. Lower MAE and higher fractions are better. With 16 MOFs, differences of a few hundredths are within the run-to-run spread of the GNN.</p>
 ''')
+gpu_cv_html = ""
+if GPU_CV:
+    names = dict(gnn="GNN", bonds_linear="straight line on broken bonds per area", static_calibrated="static CHGNet &gamma;, rescaled",
+                 mean="mean of the training labels", bfdh_linear="straight line on BFDH spacing", static_chgnet="static CHGNet &gamma;, as computed")
+    rows = [[("dt-note", names.get(r["model"], esc(r["model"]))), ("dt-value", f(r["MAE_J_m2"])),
+             ("dt-value", f(r["spearman_families"], 2) if r["spearman_families"] else "&ndash;"),
+             ("dt-value", f(r["lowest_face_agrees"], 2)), ("dt-value", f(r["habit_agrees"], 2)), ("dt-value", f(r["dominant_agrees"], 2))]
+            for r in sorted(GPU_CV, key=lambda r: float(r["MAE_J_m2"]))]
+    gpu_cv_html = ("      <p class=\"sd\">The GPU run repeated the cross-validation with the corrected labels (liquid water, labels &le; 0 dropped): each of the " + GPU_CV[0]["n_mofs"] + " MOFs is held out in turn and predicted by models trained on the others.</p>\n"
+                   + table(["Model", "MAE (J/m&sup2;)", "Rank correlation (faces)", "Lowest face right", "Shape right", "Main face right"], rows, "mle-gpu-cv")
+                   + "      <p class=\"sd\">MAE is the mean absolute error on the held-out MOFs; the other columns are averages over the held-out MOFs. With the corrected labels the GNN is still behind the two simple baselines on error and on getting the lowest face right (MAE 0.159 against 0.085 for the broken-bond line and 0.074 for the rescaled static energy), although it names the whole shape slightly more often. On 16 MOFs these differences are a few MOFs, so no learned model is shown to help yet. The labels differ from the notebook's (a different water condition), so the MAE values cannot be compared with the notebook's 0.137 and 0.090 directly.</p>\n")
+
 P.append(f'''      <h2 class="section-title" id="mle-gnn" data-toc="What changes for the GNN"><span class="stitle-num">0</span>What Changes for the GNN</h2>
       <p class="sd">This section is written from the machine-learning side. The GNN learns relaxed &gamma; from the unrelaxed slab structure. Its output passes through a softplus function, so it can only predict positive values, yet the notebook trained it on the {len(neg)} negative labels as if they were real. A model cannot fit a label it cannot output, and the label itself was an artefact of the water reference. The corrected <code>mofgnn.py</code> moves every label (relaxed and static, used for pretraining) to a stated water condition with <code>at_water_mu()</code>, and <code>load_dataset()</code> now drops any label &le; 0 and prints which ones it dropped.</p>
-{gnn_html or '      <p class="sd">The cross-validation itself has not been rerun with the corrected labels: on the two CPU cores available here it takes many hours (three seeds, five folds and pretraining on about 400 slabs). The corrected notebook (<code>MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb</code>) does it in the next Colab GPU session, and <code>gnn_rerun.py</code> repeats it on a CPU with both sets of labels side by side.</p>\n'}      <p class="sd">In the notebook's own run, a straight line fitted to broken bonds per area already beat the GNN (MAE 0.090 against 0.137 J/m&sup2;). That remains the baseline any learned model has to beat.</p>
+{gnn_html or gpu_cv_html or '      <p class="sd">The cross-validation itself has not been rerun with the corrected labels: on the two CPU cores available here it takes many hours (three seeds, five folds and pretraining on about 400 slabs). The corrected notebook (<code>MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb</code>) does it in the next Colab GPU session, and <code>gnn_rerun.py</code> repeats it on a CPU with both sets of labels side by side.</p>\n'}      <p class="sd">In the notebook's own run, a straight line fitted to broken bonds per area already beat the GNN (MAE 0.090 against 0.137 J/m&sup2;). That remains the baseline any learned model has to beat.</p>
 ''')
 
 # 6 meaning, limits, possibilities

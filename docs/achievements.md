@@ -66,6 +66,7 @@
 | **How to run it** | `code/morphology/steps1_8_check/nb_2026-11-14/` (README there) or the notebook on Colab. |
 | **How it was checked** | Every slab was rebuilt independently on CPU: atom counts identical, static γ within 0.0005 J/m². The negative relaxed values were reproduced and traced to the water reference, the missing K3/K11 fixes and a capping error (K12), all corrected. The MACE-MP-0 re-scoring gives the same face order for all four benchmark MOFs. |
 | **Status** | CHEMICALLY OR PHYSICALLY QUESTIONABLE (the relaxed energies); the correction is VALIDATED as thermodynamics |
+| **Corrected run (GPU, 15 November)** | At liquid-water conditions none of 97 relaxed slabs is negative. ZIF-8 (rhombic dodecahedron), HKUST-1 (mainly {111}) and now Mg-MOF-74 (a hexagonal rod along c) match the laboratory habit; UiO-66 (a truncated octahedron) does not. In leave-MOF-out cross-validation the GNN (MAE 0.159 J/m²) is behind a straight line on broken bonds per area (0.085) and rescaled static energies (0.074). Results: `nb_2026-11-14/colab_run_2026-11-15/`. |
 | **Where it stops working** | No DFT check. Relaxation lowers γ by 60–100 %. The result depends on the water condition. In cross-validation the GNN does not beat a linear fit on broken bonds per area. |
 
 ## 7. Part I: the multifractal spectrum width Δα

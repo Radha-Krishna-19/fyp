@@ -312,7 +312,7 @@ def main():
          ("dt-note", "<code>checks/naming.py</code> against the exact limits: every shape with <i>y</i> from 0.87 to 1.20 is named cuboctahedron, though the true cuboctahedron is the single value 2/&radic;3"),
          ("dt-note", "UiO-66 (77 % {111}, a truncated octahedron) reported as a cuboctahedron"), ("dt-note", "Fixed 15 November: names from the exact limits (<code>nb_2026-11-14/mofwulff.py</code>)")],
         [("dt-label", "K2"), ("dt-note", "Mg&ndash;O bonds count as metal&ndash;linker bonds, so the Mg&ndash;O rod of Mg-MOF-74 is split into single-Mg nodes"),
-         ("dt-note", "Step 2 output: six single-Mg nodes, rod flag false"), ("dt-note", "{001} slabs cut the rod; the shape comes out a block, not a rod"), ("dt-note", "Fixed 15 November (the rod is one unit); static shape still a block, relaxed run pending")],
+         ("dt-note", "Step 2 output: six single-Mg nodes, rod flag false"), ("dt-note", "{001} slabs cut the rod; the shape comes out a block, not a rod"), ("dt-note", "Fixed 15 November: the rod is one unit, and the relaxed GPU run gives a hexagonal rod along c")],
         [("dt-label", "K3"), ("dt-note", "Slabs may come from the unrelaxed cell while the bulk energy comes from the relaxed one"),
          ("dt-note", "Bulk relaxation lowers the CHGNet energy by 0.0995 eV/atom (HKUST-1)"), ("dt-note", "Adds up to +0.51 J/m&sup2; to a static &gamma;"), ("dt-note", "Fixed (one line); missing again on 14 November and restored")],
         [("dt-label", "K4"), ("dt-note", "UiO-66's reference habit is given as an additive-free octahedron"),

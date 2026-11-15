@@ -15,6 +15,10 @@ NB = 'notebooks/spectrum/'
 SR = 'code/spectrum_shape_relation/'
 
 FIGURE_SOURCES = {
+    'figures/ml_energies/colab/wulff_ZIF-8_water.png': ('code/morphology/steps1_8_check/nb_2026-11-14/MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb (Colab GPU run, 15 Nov 2026)', 'code/morphology/steps1_8_check/nb_2026-11-14/colab_run_2026-11-15/wulff_summary.csv'),
+    'figures/ml_energies/colab/wulff_HKUST-1_water.png': ('code/morphology/steps1_8_check/nb_2026-11-14/MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb (Colab GPU run, 15 Nov 2026)', 'code/morphology/steps1_8_check/nb_2026-11-14/colab_run_2026-11-15/wulff_summary.csv'),
+    'figures/ml_energies/colab/wulff_Mg-MOF-74_water.png': ('code/morphology/steps1_8_check/nb_2026-11-14/MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb (Colab GPU run, 15 Nov 2026)', 'code/morphology/steps1_8_check/nb_2026-11-14/colab_run_2026-11-15/wulff_summary.csv'),
+    'figures/ml_energies/colab/wulff_UiO-66_water.png': ('code/morphology/steps1_8_check/nb_2026-11-14/MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb (Colab GPU run, 15 Nov 2026)', 'code/morphology/steps1_8_check/nb_2026-11-14/colab_run_2026-11-15/wulff_summary.csv'),
     # ---- machine-learned energies and water (team notebook of 14 November) -------------------
     'figures/ml_energies/fig_capping_schematic.png': ('code/morphology/steps1_8_check/nb_2026-11-14/make_water_figures.py', None),
     'figures/ml_energies/fig_water_price.png': ('code/morphology/steps1_8_check/nb_2026-11-14/make_water_figures.py', 'NIST-JANAF table H-064 and CODATA (values in the script)'),

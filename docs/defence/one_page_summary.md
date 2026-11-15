@@ -42,7 +42,8 @@ We rebuilt every slab from its code (identical) and traced the cause: the water 
 price of a free molecule at 0 K. With water at a realistic chemical potential (liquid water, 25 °C, from
 NIST-JANAF and CODATA tables), none of the 109 relaxed slabs is negative. For several MOFs, however, the
 predicted face depends on the water condition. A capping error (two protons on one oxygen) and two lost
-fixes were also corrected, and a corrected notebook is ready for a GPU run. The energies are still not
+fixes were also corrected. A team member ran the corrected notebook on a GPU: no slab is negative at liquid
+water, and Mg-MOF-74 now comes out a hexagonal rod along c, as observed (UiO-66 is still missed). The energies are still not
 checked against DFT.
 
 **Linking the parts.** The periodic Δα carries no shape information beyond size (ρ = +0.001). On a
