@@ -16,6 +16,7 @@
 | `notebook_module/mofwulff.py`, `notebook_module/mofgnn.py` | The modules exactly as the notebook writes them (cells 3 and 16) |
 | `notebook_module/run_static.py` | Rebuilds every slab with the notebook module: bulk relaxed as in the notebook, slabs static |
 | `mofwulff.py` | Corrected module: K3, K11, K12 (`heal(..., one_proton_per_donor=True)`), `gamma_J_m2(..., dmu_water)`, `WATER_DMU_EV`, `gamma_at_mu()`, and step 8 at `config["water_dmu_eV"]` (default liquid water, 298 K). Stored `gamma_*_J_m2` columns stay at Δμ = 0, so they remain comparable with older runs |
+| `MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb`, `make_corrected_notebook.py` | The team notebook with every correction, outputs cleared; runs on Colab or any Jupyter and puts a results zip in the Downloads folder after each stage. Rebuild it with `python make_corrected_notebook.py`. Checked on 15 November by running it end to end (quick mode, ZIF-8) with nbclient: no errors, four zips written |
 | `mofgnn.py` | Corrected GNN module: `at_water_mu()`, `load_dataset(drop_nonpositive=True)`, and pretraining on positive static γ only |
 | `run_static.py`, `relax_cases.py` | The slab rebuild; the relaxations of the negative slabs (`notebook` = the notebook module; `fixed` = corrected module, water caps and bare) |
 | `water_mu_analysis.py` | Joins the notebook's printed γ with the rebuilt slabs (n, A), checks that they are the same slabs, applies γ(Δμ) and recomputes the shapes. Writes `results/water_mu.json` and `.csv` |

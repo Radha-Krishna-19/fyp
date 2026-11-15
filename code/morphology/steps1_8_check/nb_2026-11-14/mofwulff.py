@@ -507,7 +507,8 @@ class Engine:
         self.model = CHGNet.load(use_device=self.device, verbose=False)
 
     def static(self, structs):
-        preds = self.model.predict_structure(list(structs), task="e", batch_size=4)
+        # batches of 4 on a GPU; one at a time on a CPU, where a batch of large slabs can exhaust the memory
+        preds = self.model.predict_structure(list(structs), task="e", batch_size=4 if self.device == "cuda" else 1)
         preds = preds if isinstance(preds, list) else [preds]
         return [float(p["e"]) * len(s) for p, s in zip(preds, structs)]
 
