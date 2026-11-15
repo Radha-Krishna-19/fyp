@@ -1,0 +1,344 @@
+{
+ "ZIF-8": {
+  "gamma_liquid_water": {
+   "{100}": 0.0829,
+   "{110}": 0.0565,
+   "{111}": 0.0709
+  },
+  "favoured": "rhombic_dodecahedron",
+  "areas": {
+   "{110}": 1.0
+  },
+  "bfdh": {
+   "habit": "rhombic_dodecahedron",
+   "ratio_change_from_favoured_pct": 102.4,
+   "lower_face": "{100}",
+   "raise_face": "{111}"
+  },
+  "n_classes": 13,
+  "closest": [
+   {
+    "rank": 0,
+    "class_id": "rhombic_dodecahedron | {110}",
+    "min_ratio_change_pct": 0.0,
+    "lower_face": null,
+    "raise_face": null,
+    "map_fraction": 0.2074074074074074
+   },
+   {
+    "rank": 1,
+    "class_id": "truncated_rhombic_dodecahedron | {110}+{111}",
+    "min_ratio_change_pct": 11.7,
+    "lower_face": "{111}",
+    "raise_face": "{110}",
+    "map_fraction": 0.011851851851851851
+   },
+   {
+    "rank": 2,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}+{111}",
+    "min_ratio_change_pct": 19.3,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 3,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}",
+    "min_ratio_change_pct": 19.5,
+    "lower_face": "{100}",
+    "raise_face": "{110}",
+    "map_fraction": 0.08444444444444445
+   },
+   {
+    "rank": 4,
+    "class_id": "mixed_dominant_{111} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 32.5,
+    "lower_face": "{111}",
+    "raise_face": "{110}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 5,
+    "class_id": "mixed_dominant_{111} | {110}+{111}",
+    "min_ratio_change_pct": 35.4,
+    "lower_face": "{111}",
+    "raise_face": "{110}",
+    "map_fraction": 0.005432098765432099
+   },
+   {
+    "rank": 6,
+    "class_id": "truncated_octahedron | {100}+{111}",
+    "min_ratio_change_pct": 50.2,
+    "lower_face": "{111}",
+    "raise_face": "{110}",
+    "map_fraction": 0.12938271604938273
+   },
+   {
+    "rank": 7,
+    "class_id": "octahedron | {111}",
+    "min_ratio_change_pct": 51.8,
+    "lower_face": "{111}",
+    "raise_face": "{110}",
+    "map_fraction": 0.15407407407407409
+   }
+  ]
+ },
+ "HKUST-1": {
+  "gamma_liquid_water": {
+   "{100}": 0.2747,
+   "{110}": 0.3187,
+   "{111}": 0.2612
+  },
+  "favoured": "truncated_octahedron",
+  "areas": {
+   "{100}": 0.33262826062164574,
+   "{110}": 0.005112025825190963,
+   "{111}": 0.6622597135531634
+  },
+  "bfdh": {
+   "habit": "truncated_octahedron",
+   "ratio_change_from_favoured_pct": 33.8,
+   "lower_face": "{111}",
+   "raise_face": "{110}"
+  },
+  "n_classes": 13,
+  "closest": [
+   {
+    "rank": 0,
+    "class_id": "truncated_octahedron | {100}+{111}",
+    "min_ratio_change_pct": 0.0,
+    "lower_face": null,
+    "raise_face": null,
+    "map_fraction": 0.12938271604938273
+   },
+   {
+    "rank": 1,
+    "class_id": "mixed_dominant_{111} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 3.0,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 2,
+    "class_id": "mixed_dominant_{100} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 10.3,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.01580246913580247
+   },
+   {
+    "rank": 3,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}+{111}",
+    "min_ratio_change_pct": 17.5,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 4,
+    "class_id": "cuboctahedron | {100}+{111}",
+    "min_ratio_change_pct": 18.7,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.012345679012345678
+   },
+   {
+    "rank": 5,
+    "class_id": "truncated_cube | {100}+{111}",
+    "min_ratio_change_pct": 23.4,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.0691358024691358
+   },
+   {
+    "rank": 6,
+    "class_id": "octahedron | {111}",
+    "min_ratio_change_pct": 37.2,
+    "lower_face": "{111}",
+    "raise_face": "{100}",
+    "map_fraction": 0.15407407407407409
+   },
+   {
+    "rank": 7,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}",
+    "min_ratio_change_pct": 37.8,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.08444444444444445
+   }
+  ]
+ },
+ "UiO-66": {
+  "gamma_liquid_water": {
+   "{100}": 0.4353,
+   "{110}": 0.44,
+   "{111}": 0.3611
+  },
+  "favoured": "truncated_octahedron",
+  "areas": {
+   "{100}": 0.18160172396546315,
+   "{110}": 0.010971697891792108,
+   "{111}": 0.8074265781427447
+  },
+  "bfdh": {
+   "habit": "truncated_octahedron",
+   "ratio_change_from_favoured_pct": 39.9,
+   "lower_face": "{100}",
+   "raise_face": "{110}"
+  },
+  "n_classes": 13,
+  "closest": [
+   {
+    "rank": 0,
+    "class_id": "truncated_octahedron | {100}+{111}",
+    "min_ratio_change_pct": 0.0,
+    "lower_face": null,
+    "raise_face": null,
+    "map_fraction": 0.12938271604938273
+   },
+   {
+    "rank": 1,
+    "class_id": "mixed_dominant_{111} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 1.8,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 2,
+    "class_id": "truncated_rhombic_dodecahedron | {100}+{110}+{111}",
+    "min_ratio_change_pct": 15.4,
+    "lower_face": "{110}",
+    "raise_face": "{111}",
+    "map_fraction": 0.008395061728395062
+   },
+   {
+    "rank": 3,
+    "class_id": "octahedron | {111}",
+    "min_ratio_change_pct": 19.7,
+    "lower_face": "{111}",
+    "raise_face": "{100}",
+    "map_fraction": 0.15407407407407409
+   },
+   {
+    "rank": 4,
+    "class_id": "mixed_dominant_{111} | {110}+{111}",
+    "min_ratio_change_pct": 22.2,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.005432098765432099
+   },
+   {
+    "rank": 5,
+    "class_id": "mixed_dominant_{100} | {100}+{110}+{111}",
+    "min_ratio_change_pct": 23.5,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.01580246913580247
+   },
+   {
+    "rank": 6,
+    "class_id": "truncated_rhombic_dodecahedron | {110}+{111}",
+    "min_ratio_change_pct": 24.7,
+    "lower_face": "{110}",
+    "raise_face": "{100}",
+    "map_fraction": 0.011851851851851851
+   },
+   {
+    "rank": 7,
+    "class_id": "cuboctahedron | {100}+{111}",
+    "min_ratio_change_pct": 36.1,
+    "lower_face": "{100}",
+    "raise_face": "{111}",
+    "map_fraction": 0.012345679012345678
+   }
+  ]
+ },
+ "Mg-MOF-74": {
+  "gamma_liquid_water": {
+   "{001}": 0.4871,
+   "{100}": 0.362,
+   "{101}": 0.4029,
+   "{2\u030510}": 0.2052
+  },
+  "favoured": "needle/rod: {2\u030510} 77%, {101} 23%",
+  "areas": {
+   "{2\u030510}": 0.7737298181601544,
+   "{101}": 0.22627018183984562
+  },
+  "bfdh": {
+   "habit": "needle/rod: {2\u030510} 77%, {101} 23%",
+   "ratio_change_from_favoured_pct": 142.3,
+   "lower_face": "{100}",
+   "raise_face": "{001}"
+  },
+  "n_classes": 27,
+  "closest": [
+   {
+    "rank": 0,
+    "class_id": "needle/rod | {101}+{2\u030510}",
+    "min_ratio_change_pct": 0.0,
+    "lower_face": null,
+    "raise_face": null,
+    "map_fraction": 0.10677083333333333
+   },
+   {
+    "rank": 1,
+    "class_id": "needle/rod | {001}+{2\u030510}",
+    "min_ratio_change_pct": 29.2,
+    "lower_face": "{001}",
+    "raise_face": "{101}",
+    "map_fraction": 0.10286458333333333
+   },
+   {
+    "rank": 2,
+    "class_id": "needle/rod | {001}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 36.8,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.0032552083333333335
+   },
+   {
+    "rank": 3,
+    "class_id": "block/prism | {101}+{2\u030510}",
+    "min_ratio_change_pct": 51.6,
+    "lower_face": "{101}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.080078125
+   },
+   {
+    "rank": 4,
+    "class_id": "needle/rod | {001}+{100}+{2\u030510}",
+    "min_ratio_change_pct": 55.7,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.013020833333333334
+   },
+   {
+    "rank": 5,
+    "class_id": "needle/rod | {100}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 55.8,
+    "lower_face": "{100}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.010416666666666666
+   },
+   {
+    "rank": 6,
+    "class_id": "block/prism | {100}+{101}+{2\u030510}",
+    "min_ratio_change_pct": 59.2,
+    "lower_face": "{001}",
+    "raise_face": "{2\u030510}",
+    "map_fraction": 0.013020833333333334
+   },
+   {
+    "rank": 7,
+    "class_id": "block/prism | {001}+{2\u030510}",
+    "min_ratio_change_pct": 95.0,
+    "lower_face": "{001}",
+    "raise_face": "{101}",
+    "map_fraction": 0.080078125
+   }
+  ]
+ }
+}
