@@ -102,6 +102,10 @@ PAGES = [
          title='The Morphology Map: Models, Conditions and Possible Shapes',
          desc='One map on which every shape a cubic crystal can take has its own region: every model of the project placed on it, laboratory series tested against it, the possible morphologies of a given CIF, the graph measurement read along it, and a check of the team\'s CIF-to-Wulff pipeline.'),
 
+    dict(file='ml_energies.html',  nav='ML energies', sections=[],
+         title='Machine-Learned Surface Energies, Water and Negative Values',
+         desc="The team's CHGNet pipeline and GNN surrogate (notebook of 14 November): why six faces came out with a negative surface energy, the three causes found, the corrected energies for every MOF, and what changes for the GNN."),
+
     dict(file='advisor.html',      nav='Shape advisor', sections=[],
          title='The MOF Shape Advisor: Ten MOFs, Steering and Gas Access',
          desc='For ten MOFs: the shape predicted from the structure alone, what laboratories saw, how far each face must be stabilised to change the shape, what each shape exposes to CO2 and N2, and the structure-only steps run on all 138 dataset structures.'),
@@ -165,6 +169,7 @@ SCRIPTS = {
     'hybrid.html':        [],
     'experiment.html':    [],
     'morphology_map.html': [],
+    'ml_energies.html':   [],
     'advisor.html':       ['face_card.js', 'mof_morphology.js', 'mof_cif_shape.js', 'mof_general_shape.js', 'advisor_data.js', 'advisor_page.js'],
     'bridge.html':        [],
     'relation.html':      [],
@@ -190,7 +195,7 @@ PARTS = [
                ('deform.html', 'Changing the cell'), ('graph_faces.html', 'Faces from the graph'),
                ('surface_energy.html', 'Surface energy'), ('hybrid.html', 'Blending BFDH and Wulff'),
                ('experiment.html', 'Against experiment'), ('morphology_map.html', 'The morphology map'),
-               ('advisor.html', 'The shape advisor')]),
+               ('ml_energies.html', 'ML energies and water'), ('advisor.html', 'The shape advisor')]),
     ('Connecting the two parts', [('relation.html', 'Spectrum and shape')]),
     ('Reference', [('lessons.html', 'Mistakes and fixes'), ('code.html', 'Source code'),
                ('resources.html', 'Resources'), ('references.html', 'References'),
@@ -479,7 +484,8 @@ def main():
 
         assembled = add_figure_sources(assembled, p['file'])
 
-        head_extra = extras.get(p['file'], {}).get('masthead', '')
+        from reading_guides import guide_html
+        head_extra = extras.get(p['file'], {}).get('masthead', '') + guide_html(p['file'])
         out = shell(p, i, assembled, masthead(p, i, head_extra))
         open(os.path.join(OUT, p['file']), 'w', encoding='utf-8').write(out)
         print(f'{p["file"]:20s} {len(out)//1024:4d} KB  {len(p["sections"])} sections')

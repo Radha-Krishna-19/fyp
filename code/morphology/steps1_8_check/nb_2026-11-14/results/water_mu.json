@@ -1,0 +1,4313 @@
+{
+ "script": "water_mu_analysis.py",
+ "notebook": "MOF_Wulff_steps1_8_plus_GNN.ipynb",
+ "conditions_dmu_eV": {
+  "0 K molecule (notebook)": 0.0,
+  "vapour, 298 K, 1 bar": -0.4809,
+  "liquid water, 298 K": -0.5695,
+  "vapour, 298 K, 50 % RH": -0.5874,
+  "vapour, 400 K, 1 bar": -0.6857
+ },
+ "reference": "liquid water, 298 K",
+ "check": {
+  "slabs_in_log": 540,
+  "slabs_matched": 118,
+  "unmatched": [
+   {
+    "mof": "MIL-140B-DFT",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140B-DFT",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140B-DFT",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140B-DFT",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140D-DFT",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140D-DFT",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140D-DFT",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140D-DFT",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140D-DFT",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "NU-108-Zn",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "NU-108-Zn",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "NU-108-Zn",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "NU-108-Zn",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-10",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-10",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-10",
+    "face": "{111}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-10",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88A-dry",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-14",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-14",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-14",
+    "face": "{111}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-14",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88C-open",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-2",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-2",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-2",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-2",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-4",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-4",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-4",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-140C-DFT",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-205",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-205",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-205",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-205",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-8",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-8",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-8",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-8",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-open",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 2
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 3
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "Zn-DOBDC",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{2\u030510}",
+    "termination": 2
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{2\u030510}",
+    "termination": 3
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnMOF-74",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88B-dry",
+    "face": "{2\u030510}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-16",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-16",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-16",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 2
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{2\u030510}",
+    "termination": 3
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "Co-DOBDC",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{10\u03051}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-7",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{110}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{110}",
+    "termination": 3
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-6",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-9",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88C-dry",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-12",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-12",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-12",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-12",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{10\u03051}",
+    "termination": 2
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{10\u03051}",
+    "termination": 3
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{110}",
+    "termination": 3
+   },
+   {
+    "mof": "ZnHBDC",
+    "face": "{110}",
+    "termination": 2
+   },
+   {
+    "mof": "Zr-TPDC",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "Zr-TPDC",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "Zr-TPDC",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "Zr-TPDC",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-69c",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "MAF-X8",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-3",
+    "face": "{111}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{110}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{110}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{111}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-90",
+    "face": "{111}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{2\u030510}",
+    "termination": 0
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{2\u030510}",
+    "termination": 1
+   },
+   {
+    "mof": "MIL-88D-dry",
+    "face": "{2\u030510}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{010}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{001}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{011}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-1",
+    "face": "{10\u03051}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 6
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{011}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-77",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{001}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{001}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{010}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{011}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{011}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-2",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{011}",
+    "termination": 0
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{011}",
+    "termination": 4
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{011}",
+    "termination": 3
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{011}",
+    "termination": 2
+   },
+   {
+    "mof": "MOF-72",
+    "face": "{011}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "IRMOF-13",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{100}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{010}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 7
+   },
+   {
+    "mof": "ZIF-6",
+    "face": "{101}",
+    "termination": 6
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{001}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{001}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 6
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{100}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{010}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 6
+   },
+   {
+    "mof": "ZIF-4",
+    "face": "{101}",
+    "termination": 7
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{100}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{10\u03051}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{10\u03051}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-9",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{100}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{10\u03051}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{10\u03051}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{10\u03051}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-7",
+    "face": "{10\u03051}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{100}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{100}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{001}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{001}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{001}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{001}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{110}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 7
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 5
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 6
+   },
+   {
+    "mof": "ZIF-3",
+    "face": "{101}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{100}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{100}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{100}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{110}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{110}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{110}",
+    "termination": 3
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{110}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{110}",
+    "termination": 4
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{111}",
+    "termination": 2
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{111}",
+    "termination": 1
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{111}",
+    "termination": 0
+   },
+   {
+    "mof": "ZIF-5",
+    "face": "{111}",
+    "termination": 3
+   }
+  ],
+  "atom_count_mismatch": 0,
+  "max_static_gamma_difference_J_m2": 0.000500000000000167,
+  "median_static_gamma_difference_J_m2": 0.00019999999999997797
+ },
+ "relaxed_slabs": 109,
+ "negative_relaxed": {
+  "0 K molecule (notebook)": [
+   {
+    "mof": "Mg-MOF-74",
+    "face": "{2\u030510}",
+    "termination": 1,
+    "gamma": -0.013
+   },
+   {
+    "mof": "MIL-47",
+    "face": "{100}",
+    "termination": 0,
+    "gamma": -0.021
+   },
+   {
+    "mof": "Cd3BTB2",
+    "face": "{010}",
+    "termination": 0,
+    "gamma": -0.008
+   },
+   {
+    "mof": "ZnBDC",
+    "face": "{010}",
+    "termination": 0,
+    "gamma": -0.03
+   },
+   {
+    "mof": "ZnBDC",
+    "face": "{001}",
+    "termination": 0,
+    "gamma": -0.024
+   },
+   {
+    "mof": "ZnBDC",
+    "face": "{011}",
+    "termination": 1,
+    "gamma": -0.035
+   }
+  ],
+  "vapour, 298 K, 1 bar": [],
+  "liquid water, 298 K": [],
+  "vapour, 298 K, 50 % RH": [],
+  "vapour, 400 K, 1 bar": []
+ },
+ "mofs": {
+  "ZIF-8": {
+   "space_group": "I-43m",
+   "crystal_system": "cubic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.02,
+      "{110}": 0.012,
+      "{111}": 0.016
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ],
+     "habit": "rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 1.0
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.0734,
+      "{110}": 0.0497,
+      "{111}": 0.0622
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ],
+     "habit": "rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 1.0
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.0832,
+      "{110}": 0.0567,
+      "{111}": 0.0707
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ],
+     "habit": "rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 1.0
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.0852,
+      "{110}": 0.0581,
+      "{111}": 0.0725
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ],
+     "habit": "rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 1.0
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.0961,
+      "{110}": 0.0658,
+      "{111}": 0.0819
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ],
+     "habit": "rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 1.0
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "HKUST-1": {
+   "space_group": "Fm-3m",
+   "crystal_system": "cubic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.228,
+      "{110}": 0.264,
+      "{111}": 0.17
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{110}": 1,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.906,
+      "{100}": 0.094
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.3368,
+      "{110}": 0.3896,
+      "{111}": 0.2469
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{110}": 1,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.917,
+      "{100}": 0.083
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.3568,
+      "{110}": 0.4127,
+      "{111}": 0.2611
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{110}": 1,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.918,
+      "{100}": 0.082
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.3609,
+      "{110}": 0.4174,
+      "{111}": 0.264
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{110}": 1,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.919,
+      "{100}": 0.081
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.3831,
+      "{110}": 0.4431,
+      "{111}": 0.2797
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{110}": 1,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.92,
+      "{100}": 0.08
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "Mg-MOF-74": {
+   "space_group": "R-3",
+   "crystal_system": "trigonal",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.121,
+      "{2\u030510}": -0.013,
+      "{001}": 0.097,
+      "{101}": 0.093
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "undefined (gamma <= 0)",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.3545,
+      "{2\u030510}": 0.2076,
+      "{001}": 0.2533,
+      "{101}": 0.2424
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "needle/rod: {2\u030510} 65%, {101} 35%, {001} 0%",
+     "dominant_face": "{2\u030510}",
+     "area_fractions": {
+      "{2\u030510}": 0.646,
+      "{101}": 0.354,
+      "{001}": 0.0
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.3976,
+      "{2\u030510}": 0.2483,
+      "{001}": 0.2821,
+      "{101}": 0.2699
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "block/prism: {2\u030510} 62%, {101} 38%, {001} 0%",
+     "dominant_face": "{2\u030510}",
+     "area_fractions": {
+      "{2\u030510}": 0.625,
+      "{101}": 0.375,
+      "{001}": 0.0
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.4063,
+      "{2\u030510}": 0.2565,
+      "{001}": 0.2879,
+      "{101}": 0.2755
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "block/prism: {2\u030510} 62%, {101} 38%, {001} 0%",
+     "dominant_face": "{2\u030510}",
+     "area_fractions": {
+      "{2\u030510}": 0.621,
+      "{101}": 0.379,
+      "{001}": 0.0
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.454,
+      "{2\u030510}": 0.3016,
+      "{001}": 0.3199,
+      "{101}": 0.3061
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "block/prism: {2\u030510} 60%, {101} 40%, {001} 0%",
+     "dominant_face": "{2\u030510}",
+     "area_fractions": {
+      "{2\u030510}": 0.603,
+      "{101}": 0.397,
+      "{001}": 0.0
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": true
+  },
+  "UiO-66": {
+   "space_group": "Fm-3m",
+   "crystal_system": "cubic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.267,
+      "{110}": 0.3,
+      "{111}": 0.201
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.899,
+      "{100}": 0.101
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.4108,
+      "{110}": 0.4526,
+      "{111}": 0.3256
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.859,
+      "{100}": 0.141
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.4373,
+      "{110}": 0.4807,
+      "{111}": 0.3485
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.855,
+      "{100}": 0.145
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.4427,
+      "{110}": 0.4863,
+      "{111}": 0.3532
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.854,
+      "{100}": 0.146
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.4721,
+      "{110}": 0.5175,
+      "{111}": 0.3786
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ],
+     "habit": "truncated_octahedron",
+     "dominant_face": "{111}",
+     "area_fractions": {
+      "{111}": 0.849,
+      "{100}": 0.151
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "MOF-1-Dybtsev-dmol": {
+   "space_group": "Pm",
+   "crystal_system": "monoclinic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.177,
+      "{001}": 0.133,
+      "{010}": 0.082
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{001}": 0,
+      "{010}": 0
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.481,
+      "{001}": 0.296,
+      "{100}": 0.223
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.2504,
+      "{001}": 0.2064,
+      "{010}": 0.1143
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{001}": 0,
+      "{010}": 0
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "plate: {010} 50%, {001} 28%, {100} 23%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.498,
+      "{001}": 0.275,
+      "{100}": 0.227
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.2639,
+      "{001}": 0.2199,
+      "{010}": 0.1202
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{001}": 0,
+      "{010}": 0
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.499,
+      "{001}": 0.273,
+      "{100}": 0.228
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.2666,
+      "{001}": 0.2226,
+      "{010}": 0.1214
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{001}": 0,
+      "{010}": 0
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.5,
+      "{001}": 0.273,
+      "{100}": 0.228
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.2816,
+      "{001}": 0.2376,
+      "{010}": 0.128
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{001}": 0,
+      "{010}": 0
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ],
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.502,
+      "{001}": 0.27,
+      "{100}": 0.228
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "IRMOF-1": {
+   "space_group": "Fm-3m",
+   "crystal_system": "cubic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.186,
+      "{110}": 0.151,
+      "{111}": 0.194
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ],
+     "habit": "truncated_rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 0.952,
+      "{100}": 0.048
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.2614,
+      "{110}": 0.2163,
+      "{111}": 0.274
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ],
+     "habit": "truncated_rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 0.939,
+      "{100}": 0.061
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.2753,
+      "{110}": 0.2283,
+      "{111}": 0.2887
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ],
+     "habit": "truncated_rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 0.937,
+      "{100}": 0.063
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.2781,
+      "{110}": 0.2308,
+      "{111}": 0.2917
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ],
+     "habit": "truncated_rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 0.937,
+      "{100}": 0.063
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.2935,
+      "{110}": 0.2441,
+      "{111}": 0.3081
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{110}": 0,
+      "{111}": 0
+     },
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ],
+     "habit": "truncated_rhombic_dodecahedron",
+     "dominant_face": "{110}",
+     "area_fractions": {
+      "{110}": 0.935,
+      "{100}": 0.065
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "IRMOF-15": {
+   "space_group": "I222",
+   "crystal_system": "orthorhombic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.077,
+      "{010}": 0.116,
+      "{001}": 0.078,
+      "{110}": 0.111
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{001}": 0,
+      "{110}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.382,
+      "{100}": 0.288,
+      "{110}": 0.183,
+      "{010}": 0.147
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.1105,
+      "{010}": 0.1633,
+      "{001}": 0.1115,
+      "{110}": 0.1583
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{001}": 0,
+      "{110}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.381,
+      "{100}": 0.287,
+      "{110}": 0.178,
+      "{010}": 0.153
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.1166,
+      "{010}": 0.172,
+      "{001}": 0.1176,
+      "{110}": 0.167
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{001}": 0,
+      "{110}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.381,
+      "{100}": 0.287,
+      "{110}": 0.178,
+      "{010}": 0.154
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.1179,
+      "{010}": 0.1738,
+      "{001}": 0.1189,
+      "{110}": 0.1688
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{001}": 0,
+      "{110}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.381,
+      "{100}": 0.287,
+      "{110}": 0.178,
+      "{010}": 0.154
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.1247,
+      "{010}": 0.1835,
+      "{001}": 0.1257,
+      "{110}": 0.1785
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{001}": 0,
+      "{110}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.381,
+      "{100}": 0.287,
+      "{110}": 0.177,
+      "{010}": 0.155
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "MIL-140A-DFT": {
+   "space_group": "C2/c",
+   "crystal_system": "monoclinic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.369,
+      "{010}": 0.5,
+      "{110}": 0.405,
+      "{10\u03051}": 0.196
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{110}": 0,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "plate: {10\u03051} 50%, {110} 30%, {100} 20%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.499,
+      "{110}": 0.3,
+      "{100}": 0.201
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.5449,
+      "{010}": 0.7486,
+      "{110}": 0.6299,
+      "{10\u03051}": 0.3978
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{110}": 0,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.427,
+      "{110}": 0.331,
+      "{100}": 0.242
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.5773,
+      "{010}": 0.7944,
+      "{110}": 0.6713,
+      "{10\u03051}": 0.435
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{110}": 0,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 25%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.421,
+      "{110}": 0.334,
+      "{100}": 0.246
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.5838,
+      "{010}": 0.8037,
+      "{110}": 0.6797,
+      "{10\u03051}": 0.4425
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{110}": 0,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 25%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.419,
+      "{110}": 0.334,
+      "{100}": 0.247
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.6198,
+      "{010}": 0.8545,
+      "{110}": 0.7257,
+      "{10\u03051}": 0.4838
+     },
+     "termination_per_face": {
+      "{100}": 0,
+      "{010}": 0,
+      "{110}": 0,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ],
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.413,
+      "{110}": 0.337,
+      "{100}": 0.251
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "MIL-47": {
+   "space_group": "Pnma",
+   "crystal_system": "orthorhombic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{001}": 0.14,
+      "{010}": 0.134,
+      "{011}": 0.105,
+      "{100}": -0.021
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{011}": 0,
+      "{100}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ],
+     "habit": "undefined (gamma <= 0)",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.3021,
+      "{010}": 0.274,
+      "{011}": 0.211,
+      "{100}": 0.0817
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{011}": 0,
+      "{100}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ],
+     "habit": "plate: {100} 57%, {011} 41%, {001} 2%",
+     "dominant_face": "{100}",
+     "area_fractions": {
+      "{100}": 0.569,
+      "{011}": 0.407,
+      "{001}": 0.019,
+      "{010}": 0.006
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{001}": 0.332,
+      "{010}": 0.2998,
+      "{011}": 0.2305,
+      "{100}": 0.1006
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{011}": 0,
+      "{100}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ],
+     "habit": "plate: {100} 54%, {011} 44%, {001} 2%",
+     "dominant_face": "{100}",
+     "area_fractions": {
+      "{100}": 0.539,
+      "{011}": 0.437,
+      "{001}": 0.018,
+      "{010}": 0.006
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{001}": 0.3381,
+      "{010}": 0.305,
+      "{011}": 0.2344,
+      "{100}": 0.1045
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{011}": 0,
+      "{100}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ],
+     "habit": "plate: {100} 53%, {011} 44%, {001} 2%",
+     "dominant_face": "{100}",
+     "area_fractions": {
+      "{100}": 0.534,
+      "{011}": 0.443,
+      "{001}": 0.018,
+      "{010}": 0.006
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.3712,
+      "{010}": 0.3336,
+      "{011}": 0.2561,
+      "{100}": 0.1255
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{011}": 0,
+      "{100}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ],
+     "habit": "plate: {100} 51%, {011} 47%, {001} 2%",
+     "dominant_face": "{100}",
+     "area_fractions": {
+      "{100}": 0.51,
+      "{011}": 0.468,
+      "{001}": 0.017,
+      "{010}": 0.005
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": true
+  },
+  "MOF-70": {
+   "space_group": "P2_1/c",
+   "crystal_system": "monoclinic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{010}": 0.079,
+      "{001}": 0.048,
+      "{011}": 0.104,
+      "{10\u03051}": 0.082
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 1
+     },
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ],
+     "habit": "plate: {001} 46%, {010} 28%, {10\u03051} 27%",
+     "dominant_face": "{001}",
+     "area_fractions": {
+      "{001}": 0.456,
+      "{010}": 0.277,
+      "{10\u03051}": 0.267
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{010}": 0.1738,
+      "{001}": 0.0992,
+      "{011}": 0.149,
+      "{10\u03051}": 0.125
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 1
+     },
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ],
+     "habit": "plate: {10\u03051} 34%, {001} 33%, {010} 19%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.344,
+      "{001}": 0.334,
+      "{010}": 0.194,
+      "{011}": 0.128
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{010}": 0.1912,
+      "{001}": 0.1086,
+      "{011}": 0.1573,
+      "{10\u03051}": 0.1329
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 1
+     },
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ],
+     "habit": "plate: {10\u03051} 35%, {001} 31%, {010} 18%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.351,
+      "{001}": 0.307,
+      "{010}": 0.178,
+      "{011}": 0.164
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{010}": 0.1948,
+      "{001}": 0.1105,
+      "{011}": 0.159,
+      "{10\u03051}": 0.1345
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 1
+     },
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ],
+     "habit": "plate: {10\u03051} 35%, {001} 30%, {010} 18%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.352,
+      "{001}": 0.302,
+      "{010}": 0.175,
+      "{011}": 0.171
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{010}": 0.2142,
+      "{001}": 0.121,
+      "{011}": 0.1682,
+      "{10\u03051}": 0.1433
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 1
+     },
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ],
+     "habit": "plate: {10\u03051} 36%, {001} 28%, {011} 20%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.357,
+      "{001}": 0.277,
+      "{011}": 0.204,
+      "{010}": 0.161
+     }
+    }
+   },
+   "face_order_changes_at_reference": true,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": true
+  },
+  "MIL-88A-open": {
+   "space_group": "P6_3/mmc",
+   "crystal_system": "hexagonal",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{101}": 0.149
+     },
+     "termination_per_face": {
+      "{101}": 1
+     },
+     "face_order": [
+      "{101}"
+     ],
+     "habit": "not enough faces",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{101}": 0.3081
+     },
+     "termination_per_face": {
+      "{101}": 1
+     },
+     "face_order": [
+      "{101}"
+     ],
+     "habit": "not enough faces",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{101}": 0.3374
+     },
+     "termination_per_face": {
+      "{101}": 1
+     },
+     "face_order": [
+      "{101}"
+     ],
+     "habit": "not enough faces",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{101}": 0.3433
+     },
+     "termination_per_face": {
+      "{101}": 1
+     },
+     "face_order": [
+      "{101}"
+     ],
+     "habit": "not enough faces",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{101}": 0.3759
+     },
+     "termination_per_face": {
+      "{101}": 1
+     },
+     "face_order": [
+      "{101}"
+     ],
+     "habit": "not enough faces",
+     "dominant_face": null,
+     "area_fractions": null
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "MIL-88B-open": {
+   "space_group": "P6_3/mmc",
+   "crystal_system": "hexagonal",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{001}": 0.159,
+      "{100}": 0.089,
+      "{101}": 0.111,
+      "{2\u030510}": 0.113
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{101}": 0,
+      "{2\u030510}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ],
+     "habit": "needle/rod: {101} 50%, {100} 49%, {001} 0%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.502,
+      "{100}": 0.493,
+      "{001}": 0.005
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.2683,
+      "{100}": 0.1508,
+      "{101}": 0.1817,
+      "{2\u030510}": 0.1843
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{101}": 0,
+      "{2\u030510}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ],
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.528,
+      "{100}": 0.47,
+      "{001}": 0.002
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{001}": 0.2884,
+      "{100}": 0.1622,
+      "{101}": 0.1947,
+      "{2\u030510}": 0.1975
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{101}": 0,
+      "{2\u030510}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ],
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.531,
+      "{100}": 0.467,
+      "{001}": 0.002
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{001}": 0.2925,
+      "{100}": 0.1645,
+      "{101}": 0.1973,
+      "{2\u030510}": 0.2001
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{101}": 0,
+      "{2\u030510}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ],
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.532,
+      "{100}": 0.467,
+      "{001}": 0.001
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.3149,
+      "{100}": 0.1771,
+      "{101}": 0.2118,
+      "{2\u030510}": 0.2147
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{101}": 0,
+      "{2\u030510}": 0
+     },
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ],
+     "habit": "needle/rod: {101} 53%, {100} 46%, {001} 0%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.534,
+      "{100}": 0.465,
+      "{001}": 0.001
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "CoBDP": {
+   "space_group": "P222_1",
+   "crystal_system": "orthorhombic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{001}": 0.045,
+      "{100}": 0.068,
+      "{010}": 0.055,
+      "{101}": 0.036
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{010}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ],
+     "habit": "block/prism: {101} 67%, {010} 25%, {001} 8%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.673,
+      "{010}": 0.251,
+      "{001}": 0.076
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.0889,
+      "{100}": 0.1511,
+      "{010}": 0.1381,
+      "{101}": 0.0963
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{010}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ],
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 21%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.534,
+      "{010}": 0.254,
+      "{001}": 0.212
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{001}": 0.0969,
+      "{100}": 0.1664,
+      "{010}": 0.1534,
+      "{101}": 0.1074
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{010}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ],
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 22%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.525,
+      "{010}": 0.254,
+      "{001}": 0.221
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{001}": 0.0986,
+      "{100}": 0.1695,
+      "{010}": 0.1565,
+      "{101}": 0.1097
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{010}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ],
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 22%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.524,
+      "{010}": 0.254,
+      "{001}": 0.223
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.1075,
+      "{100}": 0.1865,
+      "{010}": 0.1735,
+      "{101}": 0.122
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{100}": 0,
+      "{010}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ],
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 23%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.516,
+      "{010}": 0.253,
+      "{001}": 0.231
+     }
+    }
+   },
+   "face_order_changes_at_reference": true,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "Ni-DOBDC": {
+   "space_group": "R-3",
+   "crystal_system": "trigonal",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{100}": 0.159,
+      "{2\u030510}": 0.085,
+      "{001}": 0.077,
+      "{101}": 0.059
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ],
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.53,
+      "{2\u030510}": 0.47
+     }
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.4017,
+      "{2\u030510}": 0.3143,
+      "{001}": 0.2376,
+      "{101}": 0.2127
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ],
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.54,
+      "{2\u030510}": 0.46
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{100}": 0.4465,
+      "{2\u030510}": 0.3566,
+      "{001}": 0.2671,
+      "{101}": 0.241
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ],
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.541,
+      "{2\u030510}": 0.459
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{100}": 0.4555,
+      "{2\u030510}": 0.3651,
+      "{001}": 0.2731,
+      "{101}": 0.2467
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ],
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.541,
+      "{2\u030510}": 0.459
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{100}": 0.5051,
+      "{2\u030510}": 0.412,
+      "{001}": 0.3059,
+      "{101}": 0.2781
+     },
+     "termination_per_face": {
+      "{100}": 1,
+      "{2\u030510}": 1,
+      "{001}": 0,
+      "{101}": 0
+     },
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ],
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "dominant_face": "{101}",
+     "area_fractions": {
+      "{101}": 0.541,
+      "{2\u030510}": 0.459
+     }
+    }
+   },
+   "face_order_changes_at_reference": false,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": false
+  },
+  "Cd3BTB2": {
+   "space_group": "P-1",
+   "crystal_system": "triclinic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{001}": 0.114,
+      "{010}": -0.008,
+      "{01\u03051}": 0.114,
+      "{100}": 0.131
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{01\u03051}": 2,
+      "{100}": 1
+     },
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ],
+     "habit": "undefined (gamma <= 0)",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.2676,
+      "{010}": 0.0927,
+      "{01\u03051}": 0.2917,
+      "{100}": 0.2471
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{01\u03051}": 2,
+      "{100}": 1
+     },
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ],
+     "habit": "plate: {010} 57%, {100} 22%, {001} 18%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.567,
+      "{100}": 0.222,
+      "{001}": 0.178,
+      "{01\u03051}": 0.032
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{001}": 0.2959,
+      "{010}": 0.1112,
+      "{01\u03051}": 0.3212,
+      "{100}": 0.2684
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{01\u03051}": 0,
+      "{100}": 1
+     },
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ],
+     "habit": "plate: {010} 54%, {100} 24%, {001} 18%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.54,
+      "{100}": 0.237,
+      "{001}": 0.18,
+      "{01\u03051}": 0.043
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{001}": 0.3016,
+      "{010}": 0.1149,
+      "{01\u03051}": 0.3245,
+      "{100}": 0.2728
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{01\u03051}": 0,
+      "{100}": 1
+     },
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ],
+     "habit": "plate: {010} 53%, {100} 24%, {001} 18%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.534,
+      "{100}": 0.24,
+      "{001}": 0.178,
+      "{01\u03051}": 0.048
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{001}": 0.3331,
+      "{010}": 0.1355,
+      "{01\u03051}": 0.3427,
+      "{100}": 0.2965
+     },
+     "termination_per_face": {
+      "{001}": 0,
+      "{010}": 0,
+      "{01\u03051}": 0,
+      "{100}": 1
+     },
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ],
+     "habit": "plate: {010} 51%, {100} 25%, {001} 17%",
+     "dominant_face": "{010}",
+     "area_fractions": {
+      "{010}": 0.505,
+      "{100}": 0.253,
+      "{001}": 0.168,
+      "{01\u03051}": 0.074
+     }
+    }
+   },
+   "face_order_changes_at_reference": true,
+   "termination_changes_at_reference": true,
+   "dominant_face_changes_at_reference": true
+  },
+  "ZnBDC": {
+   "space_group": "P2_1/c",
+   "crystal_system": "monoclinic",
+   "conditions": {
+    "0 K molecule (notebook)": {
+     "gamma_per_face": {
+      "{010}": -0.03,
+      "{001}": -0.024,
+      "{011}": -0.035,
+      "{10\u03051}": 0.009
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ],
+     "habit": "undefined (gamma <= 0)",
+     "dominant_face": null,
+     "area_fractions": null
+    },
+    "vapour, 298 K, 1 bar": {
+     "gamma_per_face": {
+      "{010}": 0.159,
+      "{001}": 0.124,
+      "{011}": 0.1981,
+      "{10\u03051}": 0.089
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ],
+     "habit": "block/prism: {10\u03051} 44%, {001} 32%, {010} 25%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.439,
+      "{001}": 0.315,
+      "{010}": 0.246
+     }
+    },
+    "liquid water, 298 K": {
+     "gamma_per_face": {
+      "{010}": 0.1939,
+      "{001}": 0.1513,
+      "{011}": 0.2411,
+      "{10\u03051}": 0.1038
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ],
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.45,
+      "{001}": 0.309,
+      "{010}": 0.241
+     }
+    },
+    "vapour, 298 K, 50 % RH": {
+     "gamma_per_face": {
+      "{010}": 0.2009,
+      "{001}": 0.1568,
+      "{011}": 0.2497,
+      "{10\u03051}": 0.1068
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ],
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.452,
+      "{001}": 0.308,
+      "{010}": 0.24
+     }
+    },
+    "vapour, 400 K, 1 bar": {
+     "gamma_per_face": {
+      "{010}": 0.2396,
+      "{001}": 0.1871,
+      "{011}": 0.2974,
+      "{10\u03051}": 0.1231
+     },
+     "termination_per_face": {
+      "{010}": 0,
+      "{001}": 0,
+      "{011}": 1,
+      "{10\u03051}": 0
+     },
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ],
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 24%",
+     "dominant_face": "{10\u03051}",
+     "area_fractions": {
+      "{10\u03051}": 0.46,
+      "{001}": 0.303,
+      "{010}": 0.237
+     }
+    }
+   },
+   "face_order_changes_at_reference": true,
+   "termination_changes_at_reference": false,
+   "dominant_face_changes_at_reference": true
+  }
+ }
+}

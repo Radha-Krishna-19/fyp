@@ -439,3 +439,20 @@ root README under "Future work".
   tested (Zeo++ not installable here).
 - Audit: `docs/audit/2026-11-13_phase_A_multidisciplinary_audit.md`. Part I is closed by team decision
   and not reworked; one finding about it is recorded there for preparation only.
+
+## Negative surface energies in the team notebook of 14 November (15 November 2026)
+
+Everything is in `code/morphology/steps1_8_check/nb_2026-11-14/` (README there); the explanation is on the page *ML energies and water*.
+
+- **Six negative relaxed γ.** Mg-MOF-74 {2̅10} (−0.0135 J/m²), MIL-47 {100} (−0.021), Cd3BTB2 {010} (−0.008), and ZnBDC {010}, {001} and {011} (−0.030, −0.024, −0.035).
+- **Reproduction.** All 118 slabs of the 16 relaxed MOFs were rebuilt with the notebook's own module (atom counts identical; static γ within 0.0005 J/m²), and five negative slabs were relaxed again with the same results (the Cd3BTB2 rerun gives −0.009).
+- **Cause 1: the water reference.** μ_H₂O was set to a free molecule at 0 K. With γ(Δμ) = γ₀K − nΔμ/2A and Δμ from NIST-JANAF and CODATA (vapour 298 K −0.481 eV; liquid 298 K −0.5695 eV; 400 K −0.686 eV), none of the 109 relaxed slabs is negative at any realistic condition. The main face changes with Δμ for several MOFs, so the water condition must always be stated.
+- **Cause 2: K3 and K11 were missing** from this notebook version (they were restored). With them, the ZnBDC {001} static γ falls from 2.297 to 0.663, while the relaxed γ stays close to zero at Δμ = 0 (−0.028). The water reference is therefore the cause of the negative relaxed values, not the missing fixes.
+- **Cause 3: K12.** Two protons were put on a bridging O in 26 of 118 slabs. During relaxation the split caps recombine into H₂O bound to the metal, and occasionally a free molecule.
+- **Also fixed:**
+  - K1: exact shape names; 14 of 14 test ratios correct.
+  - K2: metals sharing a linker O form one unit. The Mg–O rod is found, but the static Mg-MOF-74 shape is still a block.
+  - K4: the UiO-66 reference shape (cube without additives).
+  - GNN labels: moved to a stated Δμ; labels ≤ 0 are dropped.
+- **Corrected notebook for the GPU session:** `MOF_Wulff_steps1_8_plus_GNN_corrected.ipynb`.
+- **Not done here.** The relaxed rerun of all slabs and the GNN cross-validation with corrected labels need a GPU or many CPU hours. No DFT check has been made.

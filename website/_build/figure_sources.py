@@ -15,6 +15,15 @@ NB = 'notebooks/spectrum/'
 SR = 'code/spectrum_shape_relation/'
 
 FIGURE_SOURCES = {
+    # ---- machine-learned energies and water (team notebook of 14 November) -------------------
+    'figures/ml_energies/fig_capping_schematic.png': ('code/morphology/steps1_8_check/nb_2026-11-14/make_water_figures.py', None),
+    'figures/ml_energies/fig_water_price.png': ('code/morphology/steps1_8_check/nb_2026-11-14/make_water_figures.py', 'NIST-JANAF table H-064 and CODATA (values in the script)'),
+    'figures/ml_energies/fig_main_face_vs_mu.png': ('code/morphology/steps1_8_check/nb_2026-11-14/water_mu_sweep.py', 'code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.csv (water_mu_analysis.py)'),
+    'figures/ml_energies/fig_gamma_vs_mu_Mg-MOF-74.png': ('code/morphology/steps1_8_check/nb_2026-11-14/water_mu_sweep.py', 'code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.csv (water_mu_analysis.py)'),
+    'figures/ml_energies/fig_gamma_vs_mu_ZnBDC.png': ('code/morphology/steps1_8_check/nb_2026-11-14/water_mu_sweep.py', 'code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.csv (water_mu_analysis.py)'),
+    'figures/ml_energies/fig_gamma_vs_mu_MIL-47.png': ('code/morphology/steps1_8_check/nb_2026-11-14/water_mu_sweep.py', 'code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.csv (water_mu_analysis.py)'),
+    'figures/ml_energies/fig_gamma_vs_mu_Cd3BTB2.png': ('code/morphology/steps1_8_check/nb_2026-11-14/water_mu_sweep.py', 'code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.csv (water_mu_analysis.py)'),
+
     # ---- first half: spectrum of the MOF graph ----------------------------------------------
     'figures/fig01_mof_concept.png': ('Schematic drawn in Matplotlib; the drawing script was not kept', None),
     'figures/fig02_pipeline.png': ('Schematic drawn in Matplotlib; the drawing script was not kept', None),

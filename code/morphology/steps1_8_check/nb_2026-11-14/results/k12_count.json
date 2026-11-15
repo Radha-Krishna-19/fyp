@@ -1,0 +1,94 @@
+{
+ "script": "k12_count.py",
+ "total": {
+  "slabs": 118,
+  "slabs_with_C_OH2": 26,
+  "mofs_affected": [
+   "Cd3BTB2",
+   "Mg-MOF-74",
+   "Ni-DOBDC"
+  ]
+ },
+ "per_mof": {
+  "Cd3BTB2": {
+   "slabs": 12,
+   "slabs_with_C_OH2": 6,
+   "groups": 7
+  },
+  "CoBDP": {
+   "slabs": 7,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "HKUST-1": {
+   "slabs": 8,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "IRMOF-1": {
+   "slabs": 3,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "IRMOF-15": {
+   "slabs": 4,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MIL-140A-DFT": {
+   "slabs": 6,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MIL-47": {
+   "slabs": 6,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MIL-88A-open": {
+   "slabs": 6,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MIL-88B-open": {
+   "slabs": 6,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MOF-1-Dybtsev-dmol": {
+   "slabs": 5,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "MOF-70": {
+   "slabs": 9,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "Mg-MOF-74": {
+   "slabs": 12,
+   "slabs_with_C_OH2": 10,
+   "groups": 45
+  },
+  "Ni-DOBDC": {
+   "slabs": 12,
+   "slabs_with_C_OH2": 10,
+   "groups": 45
+  },
+  "UiO-66": {
+   "slabs": 3,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "ZIF-8": {
+   "slabs": 8,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  },
+  "ZnBDC": {
+   "slabs": 11,
+   "slabs_with_C_OH2": 0,
+   "groups": 0
+  }
+ }
+}

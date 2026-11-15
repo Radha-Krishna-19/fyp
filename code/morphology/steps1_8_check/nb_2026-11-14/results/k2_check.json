@@ -1,0 +1,203 @@
+{
+ "script": "k2_check.py",
+ "blocks": {
+  "MgMOF-74": {
+   "notebook": {
+    "blocks": {
+     "linker:H2C8O6": 3,
+     "node:Mg1": 6
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "linker:H2C8O6": 3,
+     "node:Mg3": 2
+    },
+    "infinite_inorganic_unit": true
+   }
+  },
+  "Ni-DOBDC": {
+   "notebook": {
+    "blocks": {
+     "linker:H2C8O6": 3,
+     "node:Ni1": 6
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "linker:H2C8O6": 3,
+     "node:Ni3": 2
+    },
+    "infinite_inorganic_unit": true
+   }
+  },
+  "Cu-BTC": {
+   "notebook": {
+    "blocks": {
+     "linker:H3C9O6": 8,
+     "node:Cu2": 6
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "linker:H3C9O6": 8,
+     "node:Cu2": 6
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "ZIF-8": {
+   "notebook": {
+    "blocks": {
+     "node:Zn1": 12,
+     "linker:H5C4N2": 24
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "node:Zn1": 12,
+     "linker:H5C4N2": 24
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "UIO-66": {
+   "notebook": {
+    "blocks": {
+     "node:Zr6O6": 4,
+     "linker:H4C8O4": 24
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "node:Zr6O6": 4,
+     "linker:H4C8O4": 24
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "IRMOF-1": {
+   "notebook": {
+    "blocks": {
+     "linker:H4C8O4": 6,
+     "node:Zn4O1": 2
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "linker:H4C8O4": 6,
+     "node:Zn4O1": 2
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "ZnBDC": {
+   "notebook": {
+    "blocks": {
+     "node:Zn1": 4,
+     "linker:H4C8O4": 4
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "node:Zn1": 4,
+     "linker:H4C8O4": 4
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "Cd3BTB2": {
+   "notebook": {
+    "blocks": {
+     "node:Cd1": 3,
+     "linker:H15C27O6": 2
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "node:Cd3": 1,
+     "linker:H15C27O6": 2
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "MIL-47": {
+   "notebook": {
+    "blocks": {
+     "node:V2O2": 2,
+     "linker:H4C8O4": 4
+    },
+    "infinite_inorganic_unit": true
+   },
+   "with_K2": {
+    "blocks": {
+     "node:V2O2": 2,
+     "linker:H4C8O4": 4
+    },
+    "infinite_inorganic_unit": true
+   }
+  },
+  "MOF-70": {
+   "notebook": {
+    "blocks": {
+     "linker:H4C8O4": 4,
+     "node:Pb1": 4
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "linker:H4C8O4": 4,
+     "node:Pb1": 4
+    },
+    "infinite_inorganic_unit": false
+   }
+  },
+  "CoBDP": {
+   "notebook": {
+    "blocks": {
+     "node:Co1": 4,
+     "linker:H8C12N4": 4
+    },
+    "infinite_inorganic_unit": false
+   },
+   "with_K2": {
+    "blocks": {
+     "node:Co1": 4,
+     "linker:H8C12N4": 4
+    },
+    "infinite_inorganic_unit": false
+   }
+  }
+ },
+ "mg_mof_74_static": {
+  "0K_molecule": {
+   "gamma": {
+    "{100}": 0.7307,
+    "{2\u030510}": 0.6923,
+    "{001}": 1.0258,
+    "{101}": 0.6926
+   },
+   "habit": "block/prism: {2\u030510} 41%, {101} 40%, {100} 19%",
+   "main_face": "{2\u030510}"
+  },
+  "liquid_298K": {
+   "gamma": {
+    "{100}": 0.9821,
+    "{2\u030510}": 0.9101,
+    "{001}": 1.2803,
+    "{101}": 0.8917
+   },
+   "habit": "block/prism: {2\u030510} 45%, {101} 41%, {100} 14%",
+   "main_face": "{2\u030510}"
+  }
+ }
+}

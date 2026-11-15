@@ -1,7 +1,14 @@
 # MOF Graphs and Crystal Morphology: what we did, what we found, what we could not do
 
-23CSE498 Phase II, team G070, Amrita Vishwa Vidyapeetham, Coimbatore. Guide: Dr. T. Ramraj. 12 November 2026, updated 13 November.
+23CSE498 Phase II, team G070, Amrita Vishwa Vidyapeetham, Coimbatore. Guide: Dr. T. Ramraj. 12 November 2026, updated 13 and 15 November.
 Repository: github.com/Radha-Krishna-19/fyp. Website: radha-krishna-19.github.io/fyp.
+
+**What we achieved.** A program that takes the CIF file of any MOF and gives its space group, the crystal
+faces its symmetry allows, the BFDH shape and, for a cubic crystal, the whole family of shapes it can take
+(`python3 code/morphology/cif_shape.py <file.cif>`, or the website page *From a CIF to a shape*). It is
+written twice (Python and JavaScript) and the two agree. Without additives it gives the main face of 4 of 5
+MOFs in 134 laboratory records. Each capability, with how it was checked and where it stops working, is in
+`docs/achievements.md`.
 
 **Part 1. Can a number from a MOF's connectivity replace hours of simulation?** We built the published
 metal-oxo decomposition, a periodic (labelled quotient) graph of building blocks, and the influential-node
@@ -30,6 +37,14 @@ BFDH predicts the rods of Mg-MOF-74 (9 of 10 crystals elongated). For each cubic
 would change the shape is computed, and for each shape the fraction of each face open to CO₂ and N₂ and
 the diffusion length V/A (geometric indicators, not adsorption). Shape advisor page.
 
+**Machine-learned energies (15 November).** The team's CHGNet notebook gave six negative surface energies.
+We rebuilt every slab from its code (identical) and traced the cause: the water caps were paid for at the
+price of a free molecule at 0 K. With water at a realistic chemical potential (liquid water, 25 °C, from
+NIST-JANAF and CODATA tables), none of the 109 relaxed slabs is negative. For several MOFs, however, the
+predicted face depends on the water condition. A capping error (two protons on one oxygen) and two lost
+fixes were also corrected, and a corrected notebook is ready for a GPU run. The energies are still not
+checked against DFT.
+
 **Linking the parts.** The periodic Δα carries no shape information beyond size (ρ = +0.001). On a
 finite crystal particle, the mass–radius dimension profile identifies the shape (cube, plate, rod; and
 the compact shapes predicted for MOF-5) and changes monotonically along the morphology map.
@@ -37,7 +52,7 @@ the compact shapes predicted for MOF-5) and changes monotonically along the morp
 **How we know it is right.** Two independent implementations (Python and the browser) agree number by
 number; 15 test suites (over 3,400 checks) and Python tests pass from any folder; audits on 12 and 13
 November re-ran every script and recomputed the quoted numbers from their result files. Every mistake
-(30 entries) is recorded with how it was found and fixed.
+(34 entries) is recorded with how it was found and fixed.
 
 **What we could not do.** Rank the models (only MOF-5 separates them); validate machine-learned surface
 energies against DFT; predict shapes set by growth kinetics (plates, rods, intergrown crystals); predict

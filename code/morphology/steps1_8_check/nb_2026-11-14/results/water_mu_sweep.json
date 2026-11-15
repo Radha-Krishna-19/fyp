@@ -1,0 +1,8485 @@
+{
+ "script": "water_mu_sweep.py",
+ "grid_eV": [
+  -1.0,
+  -0.975,
+  -0.95,
+  -0.925,
+  -0.9,
+  -0.875,
+  -0.85,
+  -0.825,
+  -0.8,
+  -0.775,
+  -0.75,
+  -0.725,
+  -0.7,
+  -0.675,
+  -0.65,
+  -0.625,
+  -0.6,
+  -0.575,
+  -0.55,
+  -0.525,
+  -0.5,
+  -0.475,
+  -0.45,
+  -0.425,
+  -0.4,
+  -0.375,
+  -0.35,
+  -0.325,
+  -0.3,
+  -0.275,
+  -0.25,
+  -0.225,
+  -0.2,
+  -0.175,
+  -0.15,
+  -0.125,
+  -0.1,
+  -0.075,
+  -0.05,
+  -0.025,
+  0.0,
+  0.025,
+  0.05,
+  0.075,
+  0.1
+ ],
+ "conditions_dmu_eV": {
+  "0 K molecule (notebook)": 0.0,
+  "vapour, 298 K, 1 bar": -0.4808696982856455,
+  "liquid water, 298 K": -0.5694531405302155,
+  "vapour, 298 K, 50 % RH": -0.5873629379744875,
+  "vapour, 400 K, 1 bar": -0.6856920173332104
+ },
+ "mofs": {
+  "ZIF-8": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.09048437346918779,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.08852226413245809,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.0865601547957284,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.08459804545899871,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.08263593612226902,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.08067382678553932,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.07871171744880961,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.07674960811207993,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.07478749877535024,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.07282538943862055,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.07086328010189084,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.06890117076516115,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.06693906142843145,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.06497695209170176,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.06301484275497207,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.06105273341824237,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.05909062408151268,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.05712851474478298,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.05516640540805329,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.0532042960713236,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.051242186734593895,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.049280077397864205,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.047317968061134516,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.04535585872440481,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.04339374938767512,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.04143164005094542,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.03946953071421573,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.037507421377486035,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.03554531204075634,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.03358320270402665,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.031621093367296946,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.029658984030567256,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.02769687469383756,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.025734765357107864,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.023772656020378168,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.021810546683648475,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.019848437346918782,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.017886328010189086,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.01592421867345939,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.013962109336729695,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.012,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.010037890663270306,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.008075781326540611,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.006113671989810916,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.00415156265308122,
+     "face_order": [
+      "{110}",
+      "{111}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{110}"
+   ],
+   "n_families": 3
+  },
+  "HKUST-1": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3299567373290292,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3259578188958035,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.32195890046257775,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.31795998202935205,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3139610635961263,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.30996214516290055,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3059632267296748,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3019643082964491,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2979653898632234,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.29396647142999766,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2899675529967719,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.28596863456354615,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.28196971613032046,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.27797079769709476,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.273971879263869,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.26997296083064326,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2659740423974175,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2619751239641918,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2579762055309661,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.25397728709774037,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.24997836866451462,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.24597945023128887,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.24198053179806317,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.23798161336483742,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2339826949316117,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.22998377649838597,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.22598485806516022,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2219859396319345,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.21798702119870877,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.21398810276548305,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.20998918433225733,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.20599026589903158,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.20199134746580585,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.19799242903258013,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.19399351059935438,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.18999459216612866,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.18599567373290293,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.1819967552996772,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.1779978368664515,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.17399891843322574,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.17,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.1660010815667743,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.16200216313354854,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.15800324470032281,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.1540043262670971,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{111}"
+   ],
+   "n_families": 3
+  },
+  "Mg-MOF-74": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "block/prism: {2\u030510} 57%, {101} 43%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.4037157748436414,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "block/prism: {2\u030510} 57%, {101} 43%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.39594788047255036,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "block/prism: {2\u030510} 57%, {101} 43%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3881799861014593,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "block/prism: {2\u030510} 57%, {101} 43%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3804120917303683,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "block/prism: {2\u030510} 58%, {101} 42%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.37264419735927723,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "block/prism: {2\u030510} 58%, {101} 42%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3648763029881862,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "block/prism: {2\u030510} 58%, {101} 42%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.35710840861709514,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "block/prism: {2\u030510} 58%, {101} 42%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3493405142460041,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "block/prism: {2\u030510} 59%, {101} 41%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3415726198749131,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "block/prism: {2\u030510} 59%, {101} 41%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.33380472550382206,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "block/prism: {2\u030510} 59%, {101} 41%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3260368311327311,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "block/prism: {2\u030510} 60%, {101} 40%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.31826893676164003,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "block/prism: {2\u030510} 60%, {101} 40%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.3081905428625978,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "block/prism: {2\u030510} 61%, {101} 39%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.29671945204607647,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "block/prism: {2\u030510} 61%, {101} 39%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.2852483612295551,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "block/prism: {2\u030510} 61%, {101} 39%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.27377727041303374,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "block/prism: {2\u030510} 62%, {101} 38%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.26230617959651237,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "block/prism: {2\u030510} 62%, {101} 38%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.250835088779991,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "block/prism: {2\u030510} 63%, {101} 37%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.2393639979634697,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "needle/rod: {2\u030510} 64%, {101} 36%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.22789290714694835,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "needle/rod: {2\u030510} 64%, {101} 36%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.21642181633042698,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "needle/rod: {2\u030510} 65%, {101} 35%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.2049507255139056,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "needle/rod: {2\u030510} 66%, {101} 34%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.19347963469738427,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "needle/rod: {2\u030510} 66%, {101} 34%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.18200854388086293,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "needle/rod: {2\u030510} 67%, {101} 33%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.1705374530643416,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "needle/rod: {2\u030510} 68%, {101} 32%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.15906636224782023,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "needle/rod: {2\u030510} 69%, {101} 31%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.14759527143129889,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "needle/rod: {2\u030510} 70%, {101} 30%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.13612418061477755,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "needle/rod: {2\u030510} 71%, {101} 29%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.12465308979825619,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "needle/rod: {2\u030510} 73%, {101} 27%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.11318199898173485,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "needle/rod: {2\u030510} 74%, {101} 26%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.1017109081652135,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "needle/rod: {2\u030510} 76%, {101} 24%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.09023981734869214,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "needle/rod: {2\u030510} 77%, {101} 23%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.0787687265321708,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "needle/rod: {2\u030510} 79%, {101} 21%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.06729763571564945,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "needle/rod: {2\u030510} 82%, {101} 18%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.0558265448991281,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "needle/rod: {2\u030510} 84%, {101} 16%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.04435545408260675,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "needle/rod: {2\u030510} 88%, {101} 12%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.032884363266085403,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "needle/rod: {2\u030510} 91%, {101} 9%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.02141327244956405,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "needle/rod: {2\u030510} 96%, {101} 4%, {001} 0%",
+     "main_face": "{2\u030510}",
+     "min_gamma": 0.009942181633042701,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.0015289091834786491,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.013,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.02447109081652135,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.0359421816330427,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.047413272449564045,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.0588843632660854,
+     "face_order": [
+      "{2\u030510}",
+      "{101}",
+      "{001}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": -0.025,
+   "main_faces_seen": [
+    "{2\u030510}"
+   ],
+   "n_families": 4
+  },
+  "UiO-66": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.4600428455941794,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.4535667744543249,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.44709070331447043,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.44061463217461594,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.43413856103476145,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.42766248989490696,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.42118641875505247,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.414710347615198,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.40823427647534355,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.40175820533548906,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.39528213419563457,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.38880606305578,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.38232999191592554,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3758539207760711,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3693778496362166,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3629017784963621,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.35642570735650764,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.34994963621665315,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3434735650767987,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3369974939369442,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.33052142279708974,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.32404535165723525,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.31756928051738076,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.31109320937752627,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.3046171382376718,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2981410670978173,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2916649959579628,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2851889248181083,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2787128536782538,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.27223678253839934,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.26576071139854485,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.25928464025869036,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.25280856911883587,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2463324979789814,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.23985642683912692,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.23338035569927243,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.22690428455941797,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.22042821341956348,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.213952142279709,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.2074760711398545,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.201,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.19452392886014552,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.18804785772029103,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.18157178658043654,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "truncated_octahedron",
+     "main_face": "{111}",
+     "min_gamma": 0.17509571544058206,
+     "face_order": [
+      "{111}",
+      "{100}",
+      "{110}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{111}"
+   ],
+   "n_families": 3
+  },
+  "MOF-1-Dybtsev-dmol": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {010} 51%, {001} 26%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1490704956463496,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {010} 51%, {001} 26%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.14739373325519087,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {010} 51%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.14571697086403212,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {010} 51%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.14404020847287338,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {010} 51%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.14236344608171464,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.14068668369055592,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.13900992129939715,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.13733315890823844,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1356563965170797,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.13397963412592095,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1323028717347622,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.13062610934360347,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.12894934695244473,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.12727258456128598,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.12559582217012724,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1239190597789685,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.12224229738780976,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.12056553499665103,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1188887726054923,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.11721201021433356,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {010} 50%, {001} 27%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.11553524782317481,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "plate: {010} 50%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.11385848543201607,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "plate: {010} 50%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.11218172304085733,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "plate: {010} 50%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.11050496064969859,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "plate: {010} 50%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.10882819825853984,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.1071514358673811,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.10547467347622236,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.10379791108506363,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.10212114869390489,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.10044438630274614,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.0987676239115874,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "plate: {010} 49%, {001} 28%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.09709086152042867,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "plate: {010} 49%, {001} 29%, {100} 23%",
+     "main_face": "{010}",
+     "min_gamma": 0.09541409912926993,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "plate: {010} 49%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.09373733673811119,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "plate: {010} 49%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.09206057434695245,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "plate: {010} 49%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.0903838119557937,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "plate: {010} 49%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.08870704956463496,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "plate: {010} 48%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.08703028717347622,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "plate: {010} 48%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.08535352478231749,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "plate: {010} 48%, {001} 29%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.08367676239115875,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.082,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.08032323760884126,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.07864647521768252,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.07696971282652379,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "plate: {010} 48%, {001} 30%, {100} 22%",
+     "main_face": "{010}",
+     "min_gamma": 0.07529295043536505,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{010}"
+   ],
+   "n_families": 3
+  },
+  "IRMOF-1": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.28682256885205937,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2834270046307579,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2800314404094564,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.27663587618815494,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.27324031196685344,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.269844747745552,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2664491835242505,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.263053619302949,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2596580550816475,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.256262490860346,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.25286692663904453,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.24947136241774304,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.24607579819644157,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2426802339751401,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2392846697538386,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2358891055325371,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.23249354131123562,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.22909797708993412,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.22570241286863268,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2223068486473312,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2189112844260297,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.2155157202047282,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.21212015598342673,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.20872459176212524,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.20532902754082377,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.20193346331952228,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.19853789909822078,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.1951423348769193,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.19174677065561782,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.18835120643431633,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.18495564221301486,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.18156007799171336,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.17816451377041187,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.17476894954911038,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.1713733853278089,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.1679778211065074,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.16458225688520595,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.16118669266390445,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.15779112844260296,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.1543955642213015,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.151,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.1476044357786985,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.14420887155739703,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.14081330733609554,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "truncated_rhombic_dodecahedron",
+     "main_face": "{110}",
+     "min_gamma": 0.13741774311479404,
+     "face_order": [
+      "{110}",
+      "{100}",
+      "{111}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{110}"
+   ],
+   "n_families": 3
+  },
+  "IRMOF-15": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.1465828537925343,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.14484328244772093,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.1431037111029076,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.14136413975809423,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13962456841328086,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13788499706846752,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13614542572365415,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13440585437884078,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13266628303402744,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.13092671168921408,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.1291871403444007,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.12744756899958737,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.125707997654774,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.12396842630996066,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.1222288549651473,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.12048928362033394,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11874971227552059,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11701014093070722,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11527056958589388,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11353099824108051,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11179142689626714,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.11005185555145379,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.10831228420664044,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.10657271286182707,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.10483314151701373,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.10309357017220036,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.101353998827387,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09961442748257365,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09787485613776029,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09613528479294693,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09439571344813358,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09265614210332021,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.09091657075850686,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.0891769994136935,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.08743742806888015,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.08569785672406678,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.08395828537925343,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.08221871403444007,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.08047914268962672,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.07873957134481335,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.077,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.07526042865518665,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.07352085731037328,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.07178128596555992,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "block/prism: {001} 38%, {100} 29%, {110} 18%",
+     "main_face": "{001}",
+     "min_gamma": 0.07004171462074657,
+     "face_order": [
+      "{100}",
+      "{001}",
+      "{110}",
+      "{010}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{001}"
+   ],
+   "n_families": 4
+  },
+  "MIL-140A-DFT": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.6156542563143124,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.6051628999064547,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5946715434985967,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.584180187090739,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5736888306828811,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5631974742750234,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "block/prism: {10\u03051} 40%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5527061178671655,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5422147614593078,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5317234050514499,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5212320486435922,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5107406922357343,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.5002493358278766,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4897579794200187,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "block/prism: {10\u03051} 41%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4792666230121609,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "block/prism: {10\u03051} 42%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4687752666043031,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "block/prism: {10\u03051} 42%, {110} 34%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.45828391019644527,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.44779255378858746,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4373011973807296,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4268098409728719,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "block/prism: {10\u03051} 42%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.416318484565014,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.4058271281571562,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.3953357717492984,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.3848444153414406,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.3743530589335828,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "block/prism: {10\u03051} 43%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.363861702525725,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "block/prism: {10\u03051} 44%, {110} 33%, {100} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.35337034611786716,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "block/prism: {10\u03051} 44%, {110} 33%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.34287898971000935,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "block/prism: {10\u03051} 44%, {110} 32%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.33238763330215154,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "block/prism: {10\u03051} 45%, {110} 32%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.32189627689429373,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "block/prism: {10\u03051} 45%, {110} 32%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.3114049204864359,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "block/prism: {10\u03051} 45%, {110} 32%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.3009135640785781,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "block/prism: {10\u03051} 46%, {110} 32%, {100} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.2904222076707203,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "block/prism: {10\u03051} 46%, {110} 32%, {100} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.2799308512628625,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "block/prism: {10\u03051} 46%, {110} 32%, {100} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.2694394948550047,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "block/prism: {10\u03051} 47%, {110} 31%, {100} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.25894813844714687,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "block/prism: {10\u03051} 47%, {110} 31%, {100} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.24845678203928906,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "block/prism: {10\u03051} 48%, {110} 31%, {100} 21%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.23796542563143125,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "block/prism: {10\u03051} 48%, {110} 31%, {100} 21%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.22747406922357344,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "block/prism: {10\u03051} 49%, {110} 31%, {100} 21%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.21698271281571563,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "plate: {10\u03051} 49%, {110} 30%, {100} 20%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.20649135640785782,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "plate: {10\u03051} 50%, {110} 30%, {100} 20%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.196,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "plate: {10\u03051} 51%, {110} 30%, {100} 20%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1855086435921422,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "plate: {10\u03051} 51%, {110} 29%, {100} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1750172871842844,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "plate: {10\u03051} 52%, {110} 29%, {100} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.16452593077642658,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "plate: {10\u03051} 53%, {110} 28%, {100} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.15403457436856877,
+     "face_order": [
+      "{10\u03051}",
+      "{100}",
+      "{110}",
+      "{010}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{10\u03051}"
+   ],
+   "n_families": 4
+  },
+  "MIL-47": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {011} 52%, {100} 46%, {001} 1%",
+     "main_face": "{011}",
+     "min_gamma": 0.1926050128877432,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {011} 52%, {100} 46%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.18726488756554963,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {011} 51%, {100} 47%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.18192476224335605,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {011} 51%, {100} 47%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.17658463692116247,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {011} 51%, {100} 47%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.1712445115989689,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {011} 50%, {100} 48%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.1659043862767753,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {011} 50%, {100} 48%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.16056426095458173,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {011} 49%, {100} 48%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.15522413563238813,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {011} 49%, {100} 49%, {001} 2%",
+     "main_face": "{011}",
+     "min_gamma": 0.14988401031019458,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {100} 49%, {011} 49%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.144543884988001,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {100} 50%, {011} 48%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.13920375966580742,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {100} 50%, {011} 48%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.1338636343436138,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {100} 51%, {011} 47%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.12852350902142023,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {100} 51%, {011} 47%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.12318338369922667,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {100} 52%, {011} 46%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.11784325837703306,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {100} 52%, {011} 45%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.11250313305483949,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {100} 53%, {011} 45%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.1071630077326459,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {100} 54%, {011} 44%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.10182288241045233,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {100} 54%, {011} 43%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.09648275708825876,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {100} 55%, {011} 42%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.09114263176606517,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {100} 56%, {011} 41%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.08580250644387159,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "plate: {100} 57%, {011} 40%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.08046238112167801,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "plate: {100} 58%, {011} 39%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.07512225579948444,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "plate: {100} 59%, {011} 38%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.06978213047729086,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "plate: {100} 61%, {011} 37%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.06444200515509728,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "plate: {100} 62%, {011} 36%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.0591018798329037,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "plate: {100} 63%, {011} 34%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.05376175451071011,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "plate: {100} 65%, {011} 32%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.04842162918851653,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "plate: {100} 67%, {011} 31%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.04308150386632295,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "plate: {100} 69%, {011} 29%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.037741378544129386,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "plate: {100} 72%, {011} 26%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.032401253221935794,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "plate: {100} 75%, {011} 23%, {001} 2%",
+     "main_face": "{100}",
+     "min_gamma": 0.02706112789974222,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "plate: {100} 78%, {011} 20%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.02172100257754864,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "plate: {100} 82%, {011} 17%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.016380877255355055,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "plate: {100} 87%, {011} 12%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.011040751933161477,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "plate: {100} 92%, {011} 7%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.005700626610967898,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "undefined (gamma ~ 0)",
+     "main_face": null,
+     "min_gamma": 0.0003605012887743196,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.004979624033419262,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.01031974935561284,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.01565987467780642,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.021,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.026340125322193583,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.03168025064438716,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.03702037596658074,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.04236050128877432,
+     "face_order": [
+      "{100}",
+      "{011}",
+      "{010}",
+      "{001}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": -0.075,
+   "main_faces_seen": [
+    "{011}",
+    "{100}"
+   ],
+   "n_families": 4
+  },
+  "MOF-70": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {10\u03051} 37%, {011} 28%, {001} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1544712918660287,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {10\u03051} 37%, {011} 28%, {001} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.151809509569378,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {10\u03051} 37%, {011} 27%, {001} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.14914772727272727,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {10\u03051} 37%, {011} 27%, {001} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.14648594497607656,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {10\u03051} 36%, {011} 26%, {001} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.14382416267942583,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {10\u03051} 36%, {011} 26%, {001} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.14116238038277512,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {10\u03051} 36%, {011} 25%, {001} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.13850059808612442,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {10\u03051} 36%, {001} 25%, {011} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.13583881578947368,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {10\u03051} 36%, {001} 25%, {011} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.13317703349282295,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {10\u03051} 36%, {001} 26%, {011} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.13051525119617224,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {10\u03051} 36%, {001} 26%, {011} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.12785346889952154,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {10\u03051} 36%, {001} 27%, {011} 22%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1251916866028708,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {10\u03051} 36%, {001} 27%, {011} 21%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.12252990430622009,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {10\u03051} 36%, {001} 28%, {011} 20%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11986812200956938,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {10\u03051} 36%, {001} 29%, {011} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11720633971291866,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {10\u03051} 35%, {001} 29%, {011} 18%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11454455741626794,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {10\u03051} 35%, {001} 30%, {011} 18%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11188277511961722,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {10\u03051} 35%, {001} 31%, {010} 18%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1092209928229665,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {10\u03051} 35%, {001} 31%, {010} 18%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10655921052631578,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {10\u03051} 35%, {001} 32%, {010} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10389742822966508,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {10\u03051} 35%, {001} 33%, {010} 19%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10123564593301435,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "plate: {10\u03051} 34%, {001} 34%, {010} 20%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.09857386363636364,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "plate: {001} 34%, {10\u03051} 34%, {010} 20%",
+     "main_face": "{001}",
+     "min_gamma": 0.09591208133971292,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "plate: {001} 35%, {10\u03051} 34%, {010} 21%",
+     "main_face": "{001}",
+     "min_gamma": 0.0932502990430622,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "plate: {001} 36%, {10\u03051} 34%, {010} 21%",
+     "main_face": "{001}",
+     "min_gamma": 0.09058851674641148,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "plate: {001} 37%, {10\u03051} 33%, {010} 22%",
+     "main_face": "{001}",
+     "min_gamma": 0.08792673444976076,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "plate: {001} 39%, {10\u03051} 33%, {010} 22%",
+     "main_face": "{001}",
+     "min_gamma": 0.08526495215311004,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "plate: {001} 40%, {10\u03051} 32%, {010} 23%",
+     "main_face": "{001}",
+     "min_gamma": 0.08260316985645932,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "plate: {001} 41%, {10\u03051} 32%, {010} 24%",
+     "main_face": "{001}",
+     "min_gamma": 0.07994138755980862,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "block/prism: {001} 43%, {10\u03051} 32%, {010} 25%",
+     "main_face": "{001}",
+     "min_gamma": 0.0772796052631579,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "block/prism: {001} 44%, {10\u03051} 31%, {010} 25%",
+     "main_face": "{001}",
+     "min_gamma": 0.07461782296650718,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{011}",
+      "{010}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "plate: {001} 44%, {10\u03051} 31%, {010} 25%",
+     "main_face": "{001}",
+     "min_gamma": 0.07195604066985646,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "plate: {001} 44%, {10\u03051} 30%, {010} 26%",
+     "main_face": "{001}",
+     "min_gamma": 0.06929425837320574,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "plate: {001} 44%, {10\u03051} 30%, {010} 26%",
+     "main_face": "{001}",
+     "min_gamma": 0.06663247607655502,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "plate: {001} 44%, {10\u03051} 30%, {010} 26%",
+     "main_face": "{001}",
+     "min_gamma": 0.0639706937799043,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "plate: {001} 44%, {10\u03051} 29%, {010} 26%",
+     "main_face": "{001}",
+     "min_gamma": 0.06130891148325359,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "plate: {001} 45%, {10\u03051} 29%, {010} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.05864712918660287,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "plate: {001} 45%, {10\u03051} 28%, {010} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.05598534688995215,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "plate: {001} 45%, {10\u03051} 28%, {010} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.05332356459330144,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "plate: {001} 45%, {010} 27%, {10\u03051} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.05066178229665072,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "plate: {001} 46%, {010} 28%, {10\u03051} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.048,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "plate: {001} 46%, {010} 28%, {10\u03051} 26%",
+     "main_face": "{001}",
+     "min_gamma": 0.04533821770334928,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "plate: {001} 46%, {010} 28%, {10\u03051} 25%",
+     "main_face": "{001}",
+     "min_gamma": 0.04267643540669856,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "plate: {001} 46%, {010} 29%, {10\u03051} 25%",
+     "main_face": "{001}",
+     "min_gamma": 0.04001465311004785,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "plate: {001} 47%, {010} 29%, {10\u03051} 24%",
+     "main_face": "{001}",
+     "min_gamma": 0.03735287081339713,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{001}",
+    "{10\u03051}"
+   ],
+   "n_families": 4
+  },
+  "MIL-88A-open": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.47987852628970296,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.4716065631324604,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.46333459997521786,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.4550626368179753,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.44679067366073266,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.4385187105034901,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.43024674734624757,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.4219747841890049,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.41370282103176237,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.4054308578745198,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3971588947172773,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3888869315600346,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3806149684027921,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.37234300524554953,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.364071042088307,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3557990789310643,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3475271157738218,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.33925515261657924,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3309831894593367,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.32271122630209403,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.3144392631448515,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.30616729998760894,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.29789533683036634,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.28962337367312374,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.2813514105158812,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.27307944735863865,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.26480748420139605,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.25653552104415345,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.2482635578869109,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.23999159472966833,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.23171963157242575,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.22344766841518315,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.2151757052579406,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.206903742100698,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.19863177894345543,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.19035981578621286,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.1820878526289703,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.1738158894717277,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.16554392631448514,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.15727196315724257,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.149,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.14072803684275742,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.13245607368551485,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.12418411052827227,
+     "face_order": [
+      "{101}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "not enough faces",
+     "main_face": null,
+     "min_gamma": 0.1159121473710297,
+     "face_order": [
+      "{101}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [],
+   "n_families": 1
+  },
+  "MIL-88B-open": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.2174827586206896,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.21427068965517237,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.21105862068965514,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.2078465517241379,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.20463448275862064,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.2014224137931034,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.19821034482758615,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.19499827586206891,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.19178620689655168,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.18857413793103445,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1853620689655172,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "needle/rod: {101} 54%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.18214999999999998,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "needle/rod: {101} 53%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.17893793103448272,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "needle/rod: {101} 53%, {100} 46%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1757258620689655,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.17251379310344825,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.169301724137931,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.16608965517241375,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.16287758620689652,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.15966551724137928,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.15645344827586205,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.15324137931034482,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.15002931034482755,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.14681724137931032,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1436051724137931,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "needle/rod: {101} 53%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.14039310344827585,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "needle/rod: {101} 52%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1371810344827586,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "needle/rod: {101} 52%, {100} 47%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.13396896551724136,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.13075689655172412,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1275448275862069,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.12433275862068964,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.12112068965517239,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.11790862068965516,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "needle/rod: {101} 52%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.11469655172413792,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "needle/rod: {101} 51%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.11148448275862068,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "needle/rod: {101} 51%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.10827241379310344,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "needle/rod: {101} 51%, {100} 48%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.1050603448275862,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "needle/rod: {101} 51%, {100} 49%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.10184827586206896,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "needle/rod: {101} 51%, {100} 49%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.09863620689655171,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "needle/rod: {101} 51%, {100} 49%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.09542413793103448,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "needle/rod: {101} 50%, {100} 49%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.09221206896551723,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "needle/rod: {101} 50%, {100} 49%, {001} 0%",
+     "main_face": "{101}",
+     "min_gamma": 0.089,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "needle/rod: {101} 50%, {100} 50%, {001} 1%",
+     "main_face": "{101}",
+     "min_gamma": 0.08578793103448276,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "needle/rod: {100} 50%, {101} 50%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.08257586206896551,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "needle/rod: {100} 50%, {101} 49%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.07936379310344828,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "needle/rod: {100} 50%, {101} 49%, {001} 1%",
+     "main_face": "{100}",
+     "min_gamma": 0.07615172413793103,
+     "face_order": [
+      "{100}",
+      "{101}",
+      "{2\u030510}",
+      "{001}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{100}",
+    "{101}"
+   ],
+   "n_families": 4
+  },
+  "CoBDP": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "needle/rod: {101} 50%, {010} 25%, {001} 25%",
+     "main_face": "{101}",
+     "min_gamma": 0.1362195399681166,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "needle/rod: {101} 50%, {010} 25%, {001} 25%",
+     "main_face": "{101}",
+     "min_gamma": 0.1339390514689137,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "needle/rod: {101} 50%, {010} 25%, {001} 25%",
+     "main_face": "{101}",
+     "min_gamma": 0.13165856296971076,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "needle/rod: {101} 50%, {010} 25%, {001} 25%",
+     "main_face": "{101}",
+     "min_gamma": 0.12937807447050786,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "needle/rod: {101} 50%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.12709758597130494,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.12481709747210203,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.12253660897289911,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.12025612047369619,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.11797563197449329,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.11569514347529036,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.11341465497608745,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "needle/rod: {101} 51%, {010} 25%, {001} 23%",
+     "main_face": "{101}",
+     "min_gamma": 0.11113416647688454,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 23%",
+     "main_face": "{101}",
+     "min_gamma": 0.10885367797768161,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 23%",
+     "main_face": "{101}",
+     "min_gamma": 0.10657318947847871,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 23%",
+     "main_face": "{101}",
+     "min_gamma": 0.10429270097927579,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 23%",
+     "main_face": "{101}",
+     "min_gamma": 0.10201221248007288,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 22%",
+     "main_face": "{101}",
+     "min_gamma": 0.09973172398086996,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "needle/rod: {101} 52%, {010} 25%, {001} 22%",
+     "main_face": "{101}",
+     "min_gamma": 0.09745123548166704,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 22%",
+     "main_face": "{101}",
+     "min_gamma": 0.09517074698246414,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 22%",
+     "main_face": "{101}",
+     "min_gamma": 0.09289025848326121,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 21%",
+     "main_face": "{101}",
+     "min_gamma": 0.0906097699840583,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "needle/rod: {101} 53%, {010} 25%, {001} 21%",
+     "main_face": "{101}",
+     "min_gamma": 0.08832928148485539,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "needle/rod: {101} 54%, {010} 25%, {001} 21%",
+     "main_face": "{101}",
+     "min_gamma": 0.08604879298565246,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "needle/rod: {101} 54%, {010} 25%, {001} 20%",
+     "main_face": "{101}",
+     "min_gamma": 0.08376830448644956,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "needle/rod: {101} 54%, {010} 25%, {001} 20%",
+     "main_face": "{101}",
+     "min_gamma": 0.08148781598724664,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "needle/rod: {101} 55%, {010} 26%, {001} 20%",
+     "main_face": "{101}",
+     "min_gamma": 0.07920732748804372,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "needle/rod: {101} 55%, {010} 26%, {001} 19%",
+     "main_face": "{101}",
+     "min_gamma": 0.07692683898884081,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "needle/rod: {101} 56%, {010} 26%, {001} 19%",
+     "main_face": "{101}",
+     "min_gamma": 0.0746463504896379,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "needle/rod: {101} 56%, {010} 26%, {001} 18%",
+     "main_face": "{101}",
+     "min_gamma": 0.07236586199043497,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "needle/rod: {101} 56%, {010} 26%, {001} 18%",
+     "main_face": "{101}",
+     "min_gamma": 0.07008537349123206,
+     "face_order": [
+      "{001}",
+      "{101}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "needle/rod: {101} 57%, {010} 26%, {001} 17%",
+     "main_face": "{101}",
+     "min_gamma": 0.0673611807077983,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "needle/rod: {101} 58%, {010} 26%, {001} 17%",
+     "main_face": "{101}",
+     "min_gamma": 0.06422506263701847,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "needle/rod: {101} 58%, {010} 26%, {001} 16%",
+     "main_face": "{101}",
+     "min_gamma": 0.06108894456623864,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "needle/rod: {101} 59%, {010} 26%, {001} 15%",
+     "main_face": "{101}",
+     "min_gamma": 0.05795282649545881,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "needle/rod: {101} 60%, {010} 26%, {001} 15%",
+     "main_face": "{101}",
+     "min_gamma": 0.05481670842467898,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "needle/rod: {101} 61%, {010} 26%, {001} 14%",
+     "main_face": "{101}",
+     "min_gamma": 0.051680590353899145,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "needle/rod: {101} 62%, {010} 26%, {001} 13%",
+     "main_face": "{101}",
+     "min_gamma": 0.04854447228311932,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "needle/rod: {101} 63%, {010} 25%, {001} 12%",
+     "main_face": "{101}",
+     "min_gamma": 0.04540835421233949,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "needle/rod: {101} 64%, {010} 25%, {001} 11%",
+     "main_face": "{101}",
+     "min_gamma": 0.04227223614155966,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "needle/rod: {101} 66%, {010} 25%, {001} 9%",
+     "main_face": "{101}",
+     "min_gamma": 0.039136118070779824,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "block/prism: {101} 67%, {010} 25%, {001} 8%",
+     "main_face": "{101}",
+     "min_gamma": 0.036,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "block/prism: {101} 69%, {010} 25%, {001} 6%",
+     "main_face": "{101}",
+     "min_gamma": 0.03286388192922017,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "block/prism: {101} 72%, {010} 25%, {001} 3%",
+     "main_face": "{101}",
+     "min_gamma": 0.029727763858440337,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "block/prism: {101} 75%, {010} 24%, {001} 1%",
+     "main_face": "{101}",
+     "min_gamma": 0.026591645787660507,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "needle/rod: {101} 76%, {010} 24%",
+     "main_face": "{101}",
+     "min_gamma": 0.023455527716880677,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{010}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{101}"
+   ],
+   "n_families": 4
+  },
+  "Ni-DOBDC": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.3785306631211567,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.37054239654312776,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.36255412996509884,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.35456586338706997,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.34657759680904104,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.3385893302310121,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.3306010636529832,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.32261279707495427,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.31462453049692535,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.3066362639188964,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.2986479973408675,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.2906597307628386,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.28267146418480965,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.2746831976067808,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.26669493102875186,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.25870666445072293,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.250718397872694,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.24273013129466509,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.2347418647166362,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.22675359813860727,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.21876533156057834,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.21077706498254942,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.20278879840452052,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.1948005318264916,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.18681226524846267,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.17882399867043375,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.17083573209240482,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.16284746551437593,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.154859198936347,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.1468709323583181,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.13888266578028918,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.13089439920226026,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.12290613262423133,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.11491786604620241,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "plate: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.1069295994681735,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "block/prism: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.09894133289014459,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "block/prism: {101} 54%, {2\u030510} 46%",
+     "main_face": "{101}",
+     "min_gamma": 0.09095306631211567,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.08296479973408674,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.07497653315605783,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.06698826657802892,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.059,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.05101173342197108,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "block/prism: {101} 53%, {2\u030510} 47%",
+     "main_face": "{101}",
+     "min_gamma": 0.04302346684394216,
+     "face_order": [
+      "{101}",
+      "{001}",
+      "{2\u030510}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "block/prism: {101} 52%, {2\u030510} 48%",
+     "main_face": "{101}",
+     "min_gamma": 0.035035200265913245,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "block/prism: {101} 51%, {2\u030510} 49%",
+     "main_face": "{101}",
+     "min_gamma": 0.027046933687884328,
+     "face_order": [
+      "{101}",
+      "{2\u030510}",
+      "{001}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": null,
+   "main_faces_seen": [
+    "{101}"
+   ],
+   "n_families": 4
+  },
+  "Cd3BTB2": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {010} 45%, {100} 28%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.2013121693121693,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {010} 45%, {100} 28%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.19607936507936508,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {010} 45%, {100} 27%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.19084656084656082,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {010} 46%, {100} 27%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.18561375661375662,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {010} 46%, {100} 27%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.18038095238095236,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {010} 47%, {100} 27%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.17514814814814814,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {010} 47%, {100} 27%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.1699153439153439,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {010} 47%, {100} 27%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.16468253968253965,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {010} 48%, {100} 26%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.15944973544973545,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {010} 48%, {100} 26%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.15421693121693122,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{01\u03051}",
+      "{001}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {010} 49%, {100} 26%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.14898412698412697,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {010} 50%, {100} 26%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.14375132275132274,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {010} 50%, {100} 25%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.1385185185185185,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {010} 51%, {100} 25%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.13328571428571429,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {010} 52%, {100} 25%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.12805291005291006,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {010} 52%, {100} 25%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.1228201058201058,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {010} 53%, {100} 24%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.11758730158730157,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {010} 54%, {100} 24%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.11235449735449735,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {010} 55%, {100} 23%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.10712169312169312,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {010} 55%, {100} 23%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.10188888888888889,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {010} 56%, {100} 23%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.09665608465608466,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "plate: {010} 57%, {100} 22%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.0914232804232804,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "plate: {010} 58%, {100} 22%, {001} 18%",
+     "main_face": "{010}",
+     "min_gamma": 0.08619047619047618,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "plate: {010} 59%, {100} 21%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.08095767195767195,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "plate: {010} 60%, {100} 21%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.07572486772486772,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "plate: {010} 61%, {100} 20%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.0704920634920635,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "plate: {010} 62%, {100} 19%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.06525925925925927,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "plate: {010} 63%, {100} 19%, {001} 17%",
+     "main_face": "{010}",
+     "min_gamma": 0.06002645502645503,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "plate: {010} 65%, {100} 18%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.05479365079365079,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "plate: {010} 67%, {100} 17%, {001} 16%",
+     "main_face": "{010}",
+     "min_gamma": 0.04956084656084656,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "plate: {010} 68%, {100} 16%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.04432804232804233,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "plate: {010} 70%, {100} 15%, {001} 15%",
+     "main_face": "{010}",
+     "min_gamma": 0.03909523809523809,
+     "face_order": [
+      "{010}",
+      "{100}",
+      "{001}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "plate: {010} 73%, {001} 14%, {100} 14%",
+     "main_face": "{010}",
+     "min_gamma": 0.033862433862433865,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "plate: {010} 75%, {001} 13%, {100} 12%",
+     "main_face": "{010}",
+     "min_gamma": 0.02862962962962963,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "plate: {010} 78%, {001} 11%, {100} 11%",
+     "main_face": "{010}",
+     "min_gamma": 0.023396825396825395,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{100}",
+      "{01\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "plate: {010} 81%, {001} 10%, {100} 9%",
+     "main_face": "{010}",
+     "min_gamma": 0.018164021164021164,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "plate: {010} 85%, {001} 8%, {100} 7%",
+     "main_face": "{010}",
+     "min_gamma": 0.012931216931216932,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "plate: {010} 90%, {001} 5%, {100} 5%",
+     "main_face": "{010}",
+     "min_gamma": 0.007698412698412697,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "plate: {010} 97%, {001} 2%, {100} 2%",
+     "main_face": "{010}",
+     "min_gamma": 0.002465608465608466,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.002767195767195767,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.008,
+     "face_order": [
+      "{010}",
+      "{001}",
+      "{01\u03051}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.013232804232804233,
+     "face_order": [
+      "{010}",
+      "{01\u03051}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.018465608465608466,
+     "face_order": [
+      "{010}",
+      "{01\u03051}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.023698412698412698,
+     "face_order": [
+      "{010}",
+      "{01\u03051}",
+      "{001}",
+      "{100}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.028931216931216933,
+     "face_order": [
+      "{010}",
+      "{01\u03051}",
+      "{001}",
+      "{100}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": -0.025,
+   "main_faces_seen": [
+    "{010}"
+   ],
+   "n_families": 4
+  },
+  "ZnBDC": {
+   "sweep": [
+    {
+     "dmu": -1.0,
+     "habit": "plate: {10\u03051} 48%, {001} 29%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1754516129032258,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.975,
+     "habit": "plate: {10\u03051} 48%, {001} 29%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.17129032258064517,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.95,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1671290322580645,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.925,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.16296774193548388,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.9,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.15880645161290324,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.875,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.15464516129032257,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.85,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.15048387096774193,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.825,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1463225806451613,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.8,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.14216129032258065,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.775,
+     "habit": "plate: {10\u03051} 47%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.138,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.75,
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 23%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.13383870967741934,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.725,
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.1296774193548387,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.7,
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.12551612903225806,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.675,
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.12135483870967742,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.65,
+     "habit": "plate: {10\u03051} 46%, {001} 30%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11719354838709677,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.625,
+     "habit": "plate: {10\u03051} 46%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.11303225806451613,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.6,
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10887096774193547,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.575,
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10470967741935482,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.55,
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.10054838709677419,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.525,
+     "habit": "plate: {10\u03051} 45%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.09638709677419355,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.5,
+     "habit": "plate: {10\u03051} 44%, {001} 31%, {010} 24%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.0922258064516129,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.475,
+     "habit": "block/prism: {10\u03051} 44%, {001} 32%, {010} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.08806451612903224,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.45,
+     "habit": "block/prism: {10\u03051} 43%, {001} 32%, {010} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.08390322580645161,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.425,
+     "habit": "block/prism: {10\u03051} 43%, {001} 32%, {010} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.07974193548387096,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.4,
+     "habit": "block/prism: {10\u03051} 42%, {001} 32%, {010} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.07558064516129032,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.375,
+     "habit": "block/prism: {10\u03051} 42%, {001} 33%, {010} 25%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.07141935483870968,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.35,
+     "habit": "block/prism: {10\u03051} 41%, {001} 33%, {010} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.06725806451612902,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.325,
+     "habit": "block/prism: {10\u03051} 40%, {001} 34%, {010} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.06309677419354838,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.3,
+     "habit": "block/prism: {10\u03051} 39%, {001} 34%, {010} 26%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.05893548387096774,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.275,
+     "habit": "block/prism: {10\u03051} 38%, {001} 35%, {010} 27%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.0547741935483871,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.25,
+     "habit": "block/prism: {10\u03051} 37%, {001} 35%, {010} 27%",
+     "main_face": "{10\u03051}",
+     "min_gamma": 0.05061290322580645,
+     "face_order": [
+      "{10\u03051}",
+      "{001}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.225,
+     "habit": "block/prism: {001} 36%, {10\u03051} 35%, {010} 28%",
+     "main_face": "{001}",
+     "min_gamma": 0.04527181014604149,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.2,
+     "habit": "block/prism: {001} 38%, {10\u03051} 33%, {010} 29%",
+     "main_face": "{001}",
+     "min_gamma": 0.03757494235203688,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.175,
+     "habit": "block/prism: {001} 39%, {10\u03051} 31%, {010} 30%",
+     "main_face": "{001}",
+     "min_gamma": 0.029878074558032264,
+     "face_order": [
+      "{001}",
+      "{10\u03051}",
+      "{010}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.15,
+     "habit": "block/prism: {001} 41%, {010} 32%, {10\u03051} 27%",
+     "main_face": "{001}",
+     "min_gamma": 0.022181206764027656,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{10\u03051}",
+      "{011}"
+     ]
+    },
+    {
+     "dmu": -0.125,
+     "habit": "needle/rod: {001} 45%, {010} 34%, {10\u03051} 22%",
+     "main_face": "{001}",
+     "min_gamma": 0.014484338970023047,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{011}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.1,
+     "habit": "needle/rod: {001} 50%, {010} 37%, {10\u03051} 13%",
+     "main_face": "{001}",
+     "min_gamma": 0.006787471176018439,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{011}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.0009093966179861725,
+     "face_order": [
+      "{001}",
+      "{010}",
+      "{011}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.010761270801815433,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": -0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.02288063540090772,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": 0.0,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.035,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": 0.025,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.04711936459909229,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": 0.05,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.05923872919818457,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": 0.075,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.07135809379727685,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    },
+    {
+     "dmu": 0.1,
+     "habit": "undefined (gamma <= 0)",
+     "main_face": null,
+     "min_gamma": -0.08347745839636914,
+     "face_order": [
+      "{011}",
+      "{010}",
+      "{001}",
+      "{10\u03051}"
+     ]
+    }
+   ],
+   "no_shape_from_dmu": -0.075,
+   "main_faces_seen": [
+    "{001}",
+    "{10\u03051}"
+   ],
+   "n_families": 4
+  }
+ }
+}

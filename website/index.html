@@ -64,13 +64,14 @@
         <li><a href="hybrid.html"><span class="nav-n">17</span><span class="nav-t">Blending BFDH and Wulff</span></a></li>
         <li><a href="experiment.html"><span class="nav-n">18</span><span class="nav-t">Against experiment</span></a></li>
         <li><a href="morphology_map.html"><span class="nav-n">19</span><span class="nav-t">The morphology map</span></a></li>
-        <li><a href="advisor.html"><span class="nav-n">20</span><span class="nav-t">The shape advisor</span></a></li>
+        <li><a href="ml_energies.html"><span class="nav-n">20</span><span class="nav-t">ML energies and water</span></a></li>
+        <li><a href="advisor.html"><span class="nav-n">21</span><span class="nav-t">The shape advisor</span></a></li>
         </ol>
       </div>
       <div class="nav-part">
         <p class="nav-part-title">Connecting the two parts</p>
         <ol>
-        <li><a href="relation.html"><span class="nav-n">21</span><span class="nav-t">Spectrum and shape</span></a></li>
+        <li><a href="relation.html"><span class="nav-n">22</span><span class="nav-t">Spectrum and shape</span></a></li>
         </ol>
       </div>
       <div class="nav-part">
@@ -91,7 +92,7 @@
   <div class="page-col">
 <div class="masthead">
   <div class="container">
-<div class="place">Start. Chapter 1 of 21.</div>
+<div class="place">Start. Chapter 1 of 22.</div>
     <h1>Overview</h1>
     <p class="lead">What a metal-organic framework is, the question this project asks, and the honest answer so far.</p>
     <div class="meta-strip">
@@ -101,6 +102,7 @@
       <div><div class="k">Category</div><div class="v">Research-based project</div></div>
       <div><div class="k">Repository</div><div class="v"><a href="https://github.com/Radha-Krishna-19/fyp">github.com/Radha-Krishna-19/fyp</a></div></div>
     </div>
+<dl class="bridge reading-guide"><dt>In plain words</dt><dd>A MOF is a crystal full of tiny holes, built like a scaffold from metal joints and organic rods. Gases go in and out of those holes, so MOFs can store or clean gases. This project asked two questions: can a quick graph measurement pick out promising MOFs (Part I), and can we work out, from a MOF's crystal file alone, which crystal shapes it can grow into (Part II).</dd><dt>Known before us (background)</dt><dd>MOFs, crystal symmetry, the BFDH rule and the Wulff construction are established science.</dd><dt>Our work here (foreground)</dt><dd>A program that takes a MOF's crystal file (CIF) and computes the faces its symmetry allows and the shapes it can take, written twice (Python and JavaScript) and scored against 134 laboratory records. Part I is a documented negative result.</dd><dt>Written as</dt><dd>the whole team, for a reader who has never met the subject</dd></dl>
   </div>
 </div>
 
@@ -181,7 +183,18 @@
       </div>
 
 
-      <h2 class="section-title" id="ladder" data-toc="Part I pipeline, stage by stage"><span class="stitle-num">2</span>Part I: The Pipeline, Stage by Stage</h2>
+            <h2 class="section-title" id="achieved" data-toc="What we achieved"><span class="stitle-num">2</span>What We Achieved</h2>
+      <p class="sd">Each line below is something the project's programs actually do, with how it was checked and where it stops working. The full register, with commands, is in <code>docs/achievements.md</code>.</p>
+      <div class="table-wrap"><table class="data-table" id="achieved-table"><thead><tr><td style="width:24%">Given</td><td style="width:26%">The program gives</td><td style="width:26%">Checked by</td><td>Where it stops working</td></tr></thead><tbody>
+        <tr><td class="dt-note">The CIF file of any MOF (<a href="cif_to_shape.html">From a CIF to a shape</a>; upload your own)</td><td class="dt-note">Its space group, the crystal faces its symmetry allows, the BFDH shape, and for a cubic crystal the whole family of shapes it can take</td><td class="dt-note">Two independent programs (Python and JavaScript) that agree; 16 proved propositions; run on all 138 dataset CIFs</td><td class="dt-note">Files stored without symmetry (space group P1, as 71 of 77 hMOF files are) give only a triclinic cell. The shape family is not a prediction of which shape a laboratory will get</td></tr>
+        <tr><td class="dt-note">A cubic MOF</td><td class="dt-note">Surface energies from a broken-bond count and the Wulff shape they select</td><td class="dt-note">134 laboratory records: right main face for 4 of 5 MOFs grown without additives (<a href="experiment.html">Against experiment</a>)</td><td class="dt-note">Crystals grown with additives (no model predicts them); non-cubic lattices get BFDH only; energies not checked against DFT</td></tr>
+        <tr><td class="dt-note">A MOF and a change of its unit cell</td><td class="dt-note">The plates and rods that the stretched or sheared cell would form (<a href="deform.html">Changing the cell</a>)</td><td class="dt-note">Exact rules (Propositions 14&ndash;16) and 52 cases compared between Python and JavaScript</td><td class="dt-note">The stretched cells are hypothetical frameworks, not synthesised ones</td></tr>
+        <tr><td class="dt-note">The three surface energies of a cubic crystal</td><td class="dt-note">Its place on one exact map of every cubic shape (<a href="morphology_map.html">The morphology map</a>)</td><td class="dt-note">Map boundaries derived by hand and in code; six laboratory series follow the predicted order</td><td class="dt-note">Cubic crystals only; six series is a small sample</td></tr>
+        <tr><td class="dt-note">Ten MOFs</td><td class="dt-note">How far each face's energy must fall to change the shape, and how open each shape's surface is to CO<sub>2</sub> and N<sub>2</sub> (<a href="advisor.html">The shape advisor</a>)</td><td class="dt-note">Closed-form factors checked numerically; open fractions checked against an independent 3D estimate</td><td class="dt-note">Relative to unvalidated energies; geometric indicators only, no adsorption is computed</td></tr>
+        <tr><td class="dt-note">A CIF, through the team's CHGNet notebook</td><td class="dt-note">Machine-learned surface energies of water-capped slabs, the Wulff shape, and a GNN that predicts them faster (<a href="ml_energies.html">ML energies and water</a>)</td><td class="dt-note">Rebuilt and rerun independently; negative values traced to the water reference and corrected</td><td class="dt-note">Not checked against DFT; relaxation lowers the energies by 60&ndash;100 %; the GNN does not beat a broken-bond baseline</td></tr>
+        <tr><td class="dt-note">138 MOF graphs (Part I)</td><td class="dt-note">The multifractal spectrum width &Delta;&alpha;</td><td class="dt-note">Size-scaling tests and a structureless lattice</td><td class="dt-note">&Delta;&alpha; tracks system size, not the framework: a documented negative result (<a href="results.html">Results</a>)</td></tr>
+      </tbody></table></div>
+<h2 class="section-title" id="ladder" data-toc="Part I pipeline, stage by stage"><span class="stitle-num">3</span>Part I: The Pipeline, Stage by Stage</h2>
       <p class="section-sub">Six stages take a crystal structure file to a small set of numbers. Each stage depends only on the ones above it, and each is documented in full on the page it links to.</p>
 
       <ol class="ladder">
@@ -265,7 +278,7 @@
         the verified graph pipeline was carried into Part II.
       </div>
 
-      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">3</span>Where to Start</h2>
+      <h2 class="section-title" id="start" data-toc="Where to start"><span class="stitle-num">4</span>Where to Start</h2>
       <p class="section-sub">This site is a documentation portal rather than a poster. Each page is self-contained and can be read without prior context.</p>
 
       <div class="grid2">
@@ -295,7 +308,7 @@
         </div>
       </div>
 
-      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">4</span>The Team</h2>
+      <h2 class="section-title" id="team" data-toc="The team"><span class="stitle-num">5</span>The Team</h2>
       <p class="section-sub">Five members. The first half of the project (the multifractal spectrum of the MOF graph) and the second half (crystal morphology, from October 2026) were divided as shown; every member can explain the modules they own. The other pages describe the work without naming who did each part.</p>
 
       <div class="table-wrap"><table class="data-table" id="team-table">
@@ -329,7 +342,7 @@
         </tbody>
       </table></div>
 
-      <h2 class="section-title" id="certifications" data-toc="Certifications"><span class="stitle-num">5</span>Professional Certifications</h2>
+      <h2 class="section-title" id="certifications" data-toc="Certifications"><span class="stitle-num">6</span>Professional Certifications</h2>
       <p class="section-sub">Each member completed one online course for the Technical Enrichment component, chosen for the part of the project that member works on. The certificates are in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/certificates/"><code>docs/technical_enrichment/certificates/</code></a>; the course contents and the project links are summarised in <a href="https://github.com/Radha-Krishna-19/fyp/blob/main/docs/technical_enrichment/README.md"><code>docs/technical_enrichment/README.md</code></a>.</p>
       <div class="table-wrap"><table class="data-table" id="cert-table">
         <thead><tr><td>Member</td><td>Course and provider</td><td>Completed</td><td>How it supports the project and its next steps</td></tr></thead>

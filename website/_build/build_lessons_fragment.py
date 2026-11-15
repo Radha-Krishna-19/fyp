@@ -184,14 +184,14 @@ NOVEMBER = [
   'A threshold such as "more than 20 % of each" is easy to write and gives sensible-looking names.',
   'On the cubic map the cuboctahedron is the single line y = &gamma;<sub>111</sub>/&gamma;<sub>100</sub> = 2/&radic;3. <code>name_habit()</code> named every shape with y from 0.87 to 1.20 a cuboctahedron, so UiO-66 (77 % {111}, a truncated octahedron) was reported as a cuboctahedron. On the From a CIF to a shape page, an octahedron with two of its six corners cut was called a cuboctahedron because the namer was given an incomplete shape.',
   'Names come from the exact limits (<code>cubic_wulff.py</code>, <code>checks/naming.py</code> compares them). A half-built shape is described by its face counts and named only when every face family is complete.',
-  'K1 is listed for the module&rsquo;s author; the page was fixed on 12 November.',
+  'The page was fixed on 12 November; K1 in the module on 15 November (exact limits; all 14 test ratios named correctly).',
   '<code>code/morphology/steps1_8_check/checks/naming.py</code>; <code>website/cif_shape_page.js</code> (<code>frameName</code>)'),
  ('l-k2', 'The metal rod cut into single atoms (K2) and the wrong reference shape (K4)',
   'Mg-MOF-74 is built from long rods of metal and oxygen. The program treated every Mg as its own block, so it could never find the rod and could never predict the needle-like crystals the rod produces. It also compared UiO-66 against octahedra, which only grow with an additive.',
   'Counting every metal&ndash;oxygen&ndash;carbon bond as a metal&ndash;linker bond works for MOFs with separate metal clusters, which is what the method was first written for.',
   'Mg&ndash;O bonds to oxygens shared by two metals belong to the inorganic rod, not to a linker. Splitting them leaves single-Mg nodes and the rod flag never fires; {001} slabs then cut the rod and come out low in energy, giving a block instead of a rod. The reference habit for additive-free UiO-66 in our dataset is a cube; octahedra need benzoic or acetic acid.',
   'Treat a metal and every O shared by two or more metals as one inorganic unit; take reference shapes from the dataset with their conditions.',
-  'Open; listed for the module&rsquo;s author with the evidence.',
+  'Fixed on 15 November in the corrected module (<code>nb_2026-11-14/mofwulff.py</code>): metals sharing a linker O form one unit, so the Mg&ndash;O rod is found; the UiO-66 reference is a cube. With static energies Mg-MOF-74 is still a block; the relaxed run needs a GPU.',
   '<a href="morphology_map.html#map-steps">The morphology map</a>, problem table'),
  ('l-cwd', 'Scripts that worked only from their own folder',
   'Five analysis programs found their data by looking around the folder they were started in. Started from anywhere else, they failed or wrote their results to the wrong place.',
@@ -269,6 +269,37 @@ def e(s):
     return s
 
 
+FIFTEEN = [
+ ('l-water', 'Water that cost nothing: negative surface energies (team notebook of 14 November)',
+  'To close the bonds a cut breaks, the program adds water. It paid for that water as if water were free. With free water, covering a surface is pure gain, so six faces came out with a negative energy, which a real crystal cannot have.',
+  'The energy of one water molecule computed by the same model is the simplest reference, and it needs no data from outside the model.',
+  'The surface energy subtracts n&middot;E<sub>H&#8322;O</sub>, the energy of an isolated molecule at 0 K: the highest chemical potential water can have. Under any real condition &mu;<sub>H&#8322;O</sub> is lower by 0.48&ndash;0.69 eV (NIST-JANAF, CODATA), and &gamma;(&Delta;&mu;) = &gamma;<sub>0 K</sub> &minus; n&Delta;&mu;/2A rises by up to several tenths of a J/m&sup2;. At liquid water, 25 &deg;C, none of the 109 relaxed slabs is negative, and the face order changes for several MOFs.',
+  'Found when a teammate asked about the negative values. Every slab was rebuilt with the notebook\'s own code (identical atom counts, static &gamma; within 0.0005 J/m&sup2;) and the negative relaxed values were reproduced before the cause was tested.',
+  '<code>gamma_J_m2()</code> takes &Delta;&mu;; step 8 uses a stated water condition (liquid water, 25 &deg;C, by default); the GNN labels are moved to the same condition.',
+  '<code>code/morphology/steps1_8_check/nb_2026-11-14/</code>; <a href="ml_energies.html">ML energies and water</a>'),
+ ('l-k12', 'Two protons on one oxygen (K12)',
+  'Where a cut breaks two metal bonds to the same oxygen, the program put two hydrogens on that oxygen. That group is not stable, and the model then moved the hydrogens away during relaxation.',
+  'One proton per broken bond keeps the charge balanced and is simple to apply bond by bond.',
+  'A bridging O that loses two M&ndash;O bonds becomes C&ndash;OH&#8322;&#8314;. This occurs in 26 of the 118 slabs of the 16 relaxed MOFs (Cd3BTB2, Mg-MOF-74, Ni-DOBDC).',
+  'Found by classifying every O of the healed and relaxed slabs by its H, metal and C neighbours (<code>cap_chemistry.py</code>, <code>k12_count.py</code>).',
+  'At most one H per donor atom; each surplus proton turns the nearest metal&ndash;OH cap into H&#8322;O bound to the metal. Atoms, charge balance and n are unchanged.',
+  '<code>heal()</code> in <code>nb_2026-11-14/mofwulff.py</code>'),
+ ('l-lostfix', 'Fixes lost in a newer version of a notebook (K3, K11)',
+  'Two bugs fixed on 10 November came back, because the next version of the notebook was edited from a copy made before the fixes.',
+  'Each team member edits the notebook in Colab, where it is easy to work from an older copy.',
+  'Without K11 the Mg-MOF-74 and HKUST-1 slabs are cut from the unrelaxed conventional cell (Mg-MOF-74 {2&#773;10}: 378 atoms against 126), and without K3 slab and bulk energies come from different geometries.',
+  'Found by comparing the module written by the new notebook with the fixed one line by line.',
+  'The corrected module carries K3, K11 and K12. The module should be kept in the repository and the notebook should import it, not rewrite it.',
+  '<code>nb_2026-11-14/README.md</code>'),
+ ('l-softplus', 'A network trained on values it could not produce',
+  'The neural network can only output positive numbers, but six of its training answers were negative.',
+  'All relaxed values were used as labels without checking their range.',
+  'The GNN output is softplus(&middot;) &gt; 0; a label &le; 0 cannot be fitted and pulls the model towards zero for similar slabs. The labels were artefacts of the water reference in any case.',
+  'Found while tracing the negative values to where they were used.',
+  '<code>load_dataset(drop_nonpositive=True)</code> drops and lists such labels; <code>at_water_mu()</code> moves all labels to one water condition.',
+  '<code>nb_2026-11-14/mofgnn.py</code>'),
+]
+
 def entry(x):
     i, title, plain, why, wrong, tech, fix, where = x
     rows = [('In simple words', plain), ('Why we chose it', why), ('Why it was wrong', wrong),
@@ -310,6 +341,10 @@ def main():
       <p class="section-sub">Made while extending the benchmark from four MOFs to ten and building the <a href="advisor.html">Shape advisor</a>, and found by checking each number against its result file before the work was committed, or by the audit of the same day (<code>docs/audit/2026-11-13_phase_A_multidisciplinary_audit.md</code>).</p>
 ''')
     p.extend(entry(x) for x in THIRTEEN)
+    p.append('''      <h2 class="section-title" id="ls-fifteen" data-toc="Part F: 15 November 2026"><span class="stitle-num">0</span>Part F: Negative Surface Energies in the Team Notebook (15 November 2026)</h2>
+      <p class="section-sub">Found while answering a teammate's question about negative surface energies in the notebook of 14 November. The full account is on <a href="ml_energies.html">ML energies and water</a>.</p>
+''')
+    p.extend(entry(x) for x in FIFTEEN)
     p.append('''      <h2 class="section-title" id="ls-small" data-toc="Smaller slips"><span class="stitle-num">0</span>Smaller Slips</h2>
       <div class="table-wrap"><table class="data-table"><thead><tr><td>What went wrong</td><td>Why</td><td>Fix</td></tr></thead><tbody>''' +
              ''.join(f'<tr><td class="dt-label">{a}</td><td class="dt-note">{b}</td><td class="dt-note">{c}</td></tr>' for a, b, c in SMALL) +
@@ -319,7 +354,7 @@ def main():
         <li>The force-field energies are unrelaxed, with no solvent, charges or temperature. They are a baseline, not a measurement.</li>
         <li>CHGNet has not been checked against DFT for MOF surfaces, so its shapes are not trusted either way until the DFT calculation is done.</li>
         <li>Only five MOFs have additive-free face records with a structure file, so the energy models cannot be ranked against each other; with additives no model is reliable.</li>
-        <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline are close to zero, so the order of faces rests on small differences; K1, K2 and K4&ndash;K10 are still open in that pipeline.</li>
+        <li>Relaxed, water-capped CHGNet surface energies from the steps 1&ndash;8 pipeline depend on the water condition, which must always be stated; K5&ndash;K10 are still open in that pipeline (K1&ndash;K4, K11 and K12 are fixed in the corrected module).</li>
         <li>The morphology map is exact only for cubic crystals bounded by {100}, {110} and {111}; the first modulator-cap energies are unrelaxed and not physical for UiO-66.</li>
         <li>The spectrum width still depends on size (see <a href="relation.html">Spectrum and shape</a>), and across 55 CoRE MOFs it carries no shape information beyond size; so it is not used as a classifier.</li>
       </ul>

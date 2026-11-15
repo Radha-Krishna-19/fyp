@@ -307,20 +307,26 @@ def main():
     h.append(table("map-k", ["#", "Problem", "How it was found", "Effect", "Status"], [
         [("dt-label", "K11"), ("dt-note", "After the bulk relaxation the relaxed cell is written to CIF and read back, which re-orients the lattice; faces are then converted to the wrong primitive planes"),
          ("dt-note", f'Full mode ran out of memory on HKUST-1 with a slab four times too large. <code>k11.py</code>: HKUST-1 (100) becomes {E(hk["{100}"]["primitive_plane_used"])}, spacing {hk["{100}"]["d_used"]} &Aring; instead of {hk["{100}"]["d_correct"]} &Aring;; the other HKUST-1 and Mg-MOF-74 faces fail conversion'),
-         ("dt-note", "Relaxed mode cuts the wrong planes or falls back to the unrelaxed cell"), ("dt-note", "Fixed (one line, <code>kshitij_k11fix/mofwulff.py</code>)")],
+         ("dt-note", "Relaxed mode cuts the wrong planes or falls back to the unrelaxed cell"), ("dt-note", "Fixed (one line, <code>kshitij_k11fix/mofwulff.py</code>); missing again in the notebook of 14 November and restored (<a href=\"ml_energies.html\">ML energies and water</a>)")],
         [("dt-label", "K1"), ("dt-note", "<code>name_habit()</code> calls any shape with more than 20 % {100} and 20 % {111} a cuboctahedron"),
          ("dt-note", "<code>checks/naming.py</code> against the exact limits: every shape with <i>y</i> from 0.87 to 1.20 is named cuboctahedron, though the true cuboctahedron is the single value 2/&radic;3"),
-         ("dt-note", "UiO-66 (77 % {111}, a truncated octahedron) reported as a cuboctahedron"), ("dt-note", "Open: name from the exact limits (<code>cubic_wulff.py</code>)")],
+         ("dt-note", "UiO-66 (77 % {111}, a truncated octahedron) reported as a cuboctahedron"), ("dt-note", "Fixed 15 November: names from the exact limits (<code>nb_2026-11-14/mofwulff.py</code>)")],
         [("dt-label", "K2"), ("dt-note", "Mg&ndash;O bonds count as metal&ndash;linker bonds, so the Mg&ndash;O rod of Mg-MOF-74 is split into single-Mg nodes"),
-         ("dt-note", "Step 2 output: six single-Mg nodes, rod flag false"), ("dt-note", "{001} slabs cut the rod; the shape comes out a block, not a rod"), ("dt-note", "Open")],
+         ("dt-note", "Step 2 output: six single-Mg nodes, rod flag false"), ("dt-note", "{001} slabs cut the rod; the shape comes out a block, not a rod"), ("dt-note", "Fixed 15 November (the rod is one unit); static shape still a block, relaxed run pending")],
         [("dt-label", "K3"), ("dt-note", "Slabs may come from the unrelaxed cell while the bulk energy comes from the relaxed one"),
-         ("dt-note", "Bulk relaxation lowers the CHGNet energy by 0.0995 eV/atom (HKUST-1)"), ("dt-note", "Adds up to +0.51 J/m&sup2; to a static &gamma;"), ("dt-note", "Fixed (one line)")],
+         ("dt-note", "Bulk relaxation lowers the CHGNet energy by 0.0995 eV/atom (HKUST-1)"), ("dt-note", "Adds up to +0.51 J/m&sup2; to a static &gamma;"), ("dt-note", "Fixed (one line); missing again on 14 November and restored")],
         [("dt-label", "K4"), ("dt-note", "UiO-66's reference habit is given as an additive-free octahedron"),
-         ("dt-note", "Our dataset: additive-free UiO-66 gives cubes; octahedra only with benzoic or acetic acid"), ("dt-note", "A wrong target makes a wrong prediction look right"), ("dt-note", "Open")],
+         ("dt-note", "Our dataset: additive-free UiO-66 gives cubes; octahedra only with benzoic or acetic acid"), ("dt-note", "A wrong target makes a wrong prediction look right"), ("dt-note", "Fixed 15 November in the corrected notebook")],
         [("dt-label", "K5&ndash;K10"), ("dt-note", "Dehydroxylated UiO-66 nodes in the input (K5); a missing face family named a rod (K6, <code>checks/open_shape.py</code>); "
                                                  "absences ignored in the spacing ranking (K7); Spearman over three faces can only be &plusmn;1 or &plusmn;0.5 (K8); "
                                                  "CP2K inputs lack a dipole correction and the Cu<sup>2+</sup> spin state (K9); slab thickness not checked for convergence (K10)"),
          ("dt-note", "Reading the code and its output"), ("dt-note", "Limit trust in individual numbers"), ("dt-note", "Open")],
+        [("dt-label", "K12"), ("dt-note", "<code>heal()</code> puts one H on a linker O per lost metal bond, so a bridging O that loses two bonds becomes C&ndash;OH<sub>2</sub><sup>+</sup>"),
+         ("dt-note", "Classifying every O of the healed slabs (<code>nb_2026-11-14/k12_count.py</code>): 26 of 118 slabs"), ("dt-note", "An unstable starting group; relaxation moves the protons"),
+         ("dt-note", "Fixed 15 November (<code>nb_2026-11-14/mofwulff.py</code>)")],
+        [("dt-label", "Water"), ("dt-note", "&gamma; uses a free water molecule at 0 K as the source of the caps"),
+         ("dt-note", "Six relaxed slabs of the 14 November notebook came out negative"), ("dt-note", "&gamma; too low by n&Delta;&mu;/2A; face order depends on the water condition"),
+         ("dt-note", "Fixed 15 November: &gamma;(&Delta;&mu;) at a stated water condition (<a href=\"ml_energies.html\">ML energies and water</a>)")],
     ]))
 
     # ---- 7. limits and next ---------------------------------------------------------------------------

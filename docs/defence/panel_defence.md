@@ -585,6 +585,8 @@ Rating: PARTIALLY DEFENSIBLE. Owners: KS, IS.
 Because the structure already determines the allowed faces and, with an energy model, a shape; a learned
 model would need many labelled MOFs, and the laboratory data cover 12 MOFs. A model trained on 12 would
 memorise them. Our leave-whole-MOF-out baseline shows what learning from other MOFs gives: 5 of 32.
+Update (15 November): the team notebook does train a GNN, for *surface energies* (not shapes), on 16 MOFs.
+In leave-MOF-out cross-validation a straight line fitted to broken bonds per area beats it (Q54).
 Rating: DEFENSIBLE. Owners: RK, RA.
 
 **Q49. How did you handle missing or unclear data?**
@@ -609,3 +611,44 @@ negative result. Do not defend the old wording "Δα is a heterogeneity score".
 Evidence: the audit of 13 November (section 3). The test script is kept outside the repository by team
 decision; it can be rerun on request.
 Rating: DEFENSIBLE as a negative result. Owners: KV, IS.
+
+
+## 16. Added 15 November: negative surface energies in the team notebook
+
+**Q52. Your notebook reported negative surface energies. Is the method broken?**
+No; the reference for the water caps was. γ = (E_slab − N·e_bulk − n·μ_H₂O)/2A, and the notebook set
+μ_H₂O to the energy of one water molecule at 0 K, which is the cheapest water can ever be. Under real
+conditions μ is lower by Δμ: −0.48 eV for vapour at 25 °C and 1 bar, −0.57 eV for liquid water (NIST-JANAF
+and CODATA). So γ(Δμ) = γ₀K − nΔμ/2A. At liquid water, none of the 109 relaxed slabs is negative. A negative γ
+means that, in the model, the crystal would gain energy by splitting, so no Wulff shape exists; the code
+rightly refused to draw one.
+Follow-up: "Why should the water be liquid?" It is a stated choice, not a truth. MOFs often grow in DMF.
+The page therefore shows the shape for every Δμ from −1 to +0.1 eV, and for several MOFs the main face
+depends on it. The water condition is an input that must always be stated.
+Evidence: `code/morphology/steps1_8_check/nb_2026-11-14/results/water_mu.json`; the website page
+*ML energies and water*.
+Rating: DEFENSIBLE.
+
+**Q53. How do you know your numbers are the notebook's numbers?**
+Every slab was rebuilt on CPU with the notebook's own module and settings. The atom counts are identical,
+and the static γ agrees within 0.0005 J/m² (the rounding of the printed log) for all 118 slabs of the 16
+relaxed MOFs. The negative slabs were then relaxed again and gave the same relaxed values: ZnBDC {010}
+−0.030, {001} −0.024, {011} −0.035; Cd3BTB2 {010} −0.009 against −0.008 in the notebook.
+Rating: DEFENSIBLE.
+
+**Q54. Does correcting the water make the energies right?**
+No. It removes an impossible result. The energies are still CHGNet's, with no DFT check. Relaxation lowers
+them by 60–100 %. During relaxation the split caps (OH⁻ on the metal, H⁺ on the linker O) recombine into
+water bound to the metal, so the split-water picture is not what the model finds stable. Two further
+problems were fixed on the way: the K3/K11 fixes were missing from this notebook version, and the capping
+rule put two protons on one bridging oxygen (K12, in 26 of 118 slabs).
+Follow-up: "What would disprove the correction?" A DFT γ for one of these slabs that is still negative at
+liquid-water Δμ.
+Rating: PARTIALLY DEFENSIBLE (needs DFT).
+
+**Q55. The GNN can only output positive numbers. What did it learn from negative labels?**
+Nothing useful: a softplus output cannot fit a label ≤ 0, and the labels were artefacts. The corrected
+`mofgnn.py` moves all labels to the stated water condition and drops any label ≤ 0, listing which ones.
+In the notebook's own run the broken-bond baseline beat the GNN (MAE 0.090 against 0.137 J/m²), so no claim
+rests on the GNN.
+Rating: DEFENSIBLE.

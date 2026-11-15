@@ -353,6 +353,21 @@ window.GLOSSARY = [
   short: 'A machine-learned interatomic potential that predicts energies and forces from atomic positions, trained on DFT calculations of inorganic materials.',
   long: 'It is much faster than DFT, so whole MOF slabs of 300&ndash;900 atoms can be relaxed on a GPU in minutes. It has not been validated for MOF surfaces, which is why a DFT check of a few faces is planned.' },
 
+{ term: 'chemical potential', aka: ['water chemical potential', 'Δμ'],
+  group: 'Crystal shape', needs: ['surface energy'],
+  short: 'The energy it costs to take one molecule from its surroundings (a gas, a liquid) and put it somewhere else: in effect, the price of that molecule.',
+  long: 'A surface energy computed with water caps depends on where the water comes from. Water from a free molecule at 0 K is the cheapest there is (Δμ = 0); from liquid water at 25 °C it is 0.57 eV dearer per molecule (Δμ = −0.57 eV, NIST-JANAF and CODATA tables). The surface energy is then γ(Δμ) = γ<sub>0 K</sub> − nΔμ/2A, where n is the number of water caps on area A.' },
+
+{ term: 'water cap', aka: ['water caps', 'water capping', 'heterolytic capping', 'healed slab'],
+  group: 'Crystal shape', needs: ['slab', 'linker'],
+  short: 'The OH⁻ and H⁺ added to a cut surface to close the metal–linker bonds the cut broke: one water molecule, split in two, per broken bond.',
+  long: 'It mimics the solvent that covers a real crystal surface. The rule used in the team notebook put two H on an oxygen that lost two bonds (K12); since 15 November an oxygen gets at most one H and the surplus forms a water molecule bound to the metal.' },
+
+{ term: 'GNN', aka: ['graph neural network', 'GNN surrogate'],
+  group: 'Statistics', needs: ['CHGNet'],
+  short: 'A neural network that reads a structure as a graph of atoms and bonds; here it is trained to predict a slab\'s relaxed surface energy without the slow relaxation.',
+  long: 'It is scored by leave-MOF-out cross-validation against simple baselines. In the team notebook a straight line fitted to broken bonds per area beat it (mean absolute error 0.090 against 0.137 J/m²).' },
+
 { term: 'modulator', aka: ['modulators', 'coordination modulator'],
   group: 'Crystal shape', needs: ['linker'],
   short: 'A molecule with one binding group, such as acetic or benzoic acid, added to a MOF synthesis to compete with the linker and slow or redirect growth.',

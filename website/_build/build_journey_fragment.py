@@ -155,6 +155,17 @@ STAGES = [
             ('The step-by-step view named half-built shapes by their proportions, so an octahedron with two corners cut was called a cuboctahedron.', None)],
   fix='Paths are now taken from each script\'s own location. A half-built shape is described by its face counts and named only when every family is complete.',
   why=[]),
+ dict(id='j15', purpose="A team member asked why the team notebook of 14 November reported negative surface energies, which a stable crystal cannot have.", title='Stage 15. Negative surface energies and the water reference', when='15 November 2026',
+  read='Ab initio thermodynamics of surfaces in contact with a gas or liquid (Reuter and Scheffler 2001); the NIST-JANAF table for water vapour and the CODATA key values for liquid water.',
+  did='Rebuilt every slab of the notebook on a CPU with its own module (atom counts identical, static energies within 0.0005 J/m&sup2;), relaxed the negative slabs again and got the same values, put the water chemical potential into the surface energy, and recomputed every shape across the range of water conditions. Checked what the water caps become during relaxation.',
+  code='<code>code/morphology/steps1_8_check/nb_2026-11-14/</code> (corrected modules, analysis scripts, results, the corrected notebook).',
+  out='With water taken from liquid water at 25 &deg;C none of the 109 relaxed slabs is negative; for several MOFs the main face depends on the water condition (<a href="ml_energies.html">ML energies and water</a>).',
+  mistakes=[('The notebook paid for the water caps at the price of a free molecule at 0 K, the cheapest water there can be.', None),
+            ('The capping rule put two protons on a bridging oxygen (K12), and the K3 and K11 fixes of 10 November were missing from this version.', None),
+            ('The GNN was trained on the six negative labels, which its positive-only output cannot fit.', None)],
+  fix='Surface energies are reported at a stated water chemical potential; K1&ndash;K4, K11 and K12 are fixed in one corrected module, and the GNN labels are moved to the same water condition with labels &le; 0 dropped.',
+  why=[('Why liquid water as the reference?', 'It is a realistic, tabulated condition; the page shows every condition from &minus;1 to +0.1 eV so the choice can be judged.'),
+       ('Does this make the energies right?', 'No. It removes an impossible result; the energies still need a DFT check.')]),
 ]
 
 OPEN = [

@@ -918,6 +918,8 @@ dfn.gloss.open .gloss-pop {
 .bridge dd { margin: 0; color: var(--text-2); }
 .bridge dd b { color: var(--text); font-weight: 600; }
 .bridge .now { color: var(--text); }
+.reading-guide { margin: 20px 0 0; }
+.reading-guide dd { color: var(--text); }
 
 @media (max-width: 640px) {
   .bridge { grid-template-columns: 1fr; gap: 2px; }
