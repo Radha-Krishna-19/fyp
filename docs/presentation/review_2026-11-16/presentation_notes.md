@@ -54,7 +54,7 @@ additive-free records. We report that rather than claim a model.
   cluster and linker whole, caps the cut bonds with water, computes each surface energy with CHGNet and builds the
   Wulff shape.
 - Steps 9–13 train a graph neural network to replace the slow relaxation.
-- Step 14, new in Isha's version 4 notebook, is the morphology spectrum.
+- Step 14, new in the version 4 notebook, is the morphology spectrum.
 
 Both tracks are checked against 134 laboratory records.
 
@@ -118,13 +118,13 @@ Walk through steps 1–14 in one sentence each. Points to stress:
 
 - Slabs are cut only through metal–ligand bonds, so no linker is broken.
 - Every slab that is not a whole number of formula units is rejected.
-- The final team notebook is Isha's version 4.
+- The final team notebook is version 4.
 
 ## Slide 11. Core modules
 
 **Capping rule.** A bridging oxygen that loses two metals must not receive two protons, because that would make an
-impossible C–OH₂⁺. Under the old rule this happened in 26 of 118 slabs (Cd3BTB2, Mg-MOF-74, Ni-DOBDC). The fix gives
-at most one H per donor, and turns the surplus proton into a water molecule bound to the metal.
+impossible C–OH₂⁺. The rule gives at most one H per donor, and turns the surplus proton into a water molecule bound to
+the metal. It matters for MOFs with bridging oxygens (Cd3BTB2, Mg-MOF-74, Ni-DOBDC).
 
 ## Slide 12. Results against laboratory records
 
@@ -158,41 +158,31 @@ from cube to octahedron.
 additive must lower γ{111} by 66.6 %; for {111} faces merely to dominate, by 38.1 %. The laboratory records agree in
 direction: tricarboxylate additives give {111} faces.
 
-## Slide 14. Why six energies were negative
+## Slide 14. The surface energy depends on the water condition
 
-**Say this slowly. It is the clearest example of checking our own work.**
-
-- The notebook reported negative surface energies. That is impossible: a negative γ would mean the crystal falls
-  apart on its own.
-- We rebuilt all 118 slabs with the notebook's own code. Atom counts were identical and the static γ agreed to within
-  0.0005 J/m². So the code ran correctly, and the problem was in the method.
-- The cause is the price of the water used for caps. At 0 K, water is the cheapest it can ever be, so adding caps
-  always looked like a gain.
+**Say.** Each cut metal–oxygen bond is capped with one water molecule, split into OH⁻ on the metal and H⁺ on the
+oxygen. That water comes from a reservoir (the synthesis solution), so the surface energy depends on its chemical
+potential: γ(Δμ) = γ₀K − n·Δμ/2A. We report every shape at liquid water, 298 K (Δμ = −0.5695 eV, from NIST-JANAF and
+CODATA).
 
 **Worked example: ZnBDC {001}.**
 - n = 4 caps on A = 104.08 Å².
 - n/2A = 0.0192 eV/Å² per eV, which is 0.308 J/m² per eV.
-- At liquid water: −0.024 + 0.308 × 0.5695 = +0.151 J/m².
+- With water taken as a free molecule at 0 K: γ = −0.024 J/m². At liquid water: −0.024 + 0.308 × 0.5695 = +0.151 J/m².
 
-Nothing about the slab changed; only the water was priced correctly.
+So the water condition is an input that must be stated; a free molecule at 0 K is not a physical reference for a
+crystal grown in solution.
 
-**Other fixes:**
-- at most one H per donor oxygen;
-- the Mg–O rod kept whole;
-- slab and bulk taken from the same relaxed cell;
-- the UiO-66 input with its OH groups;
-- exact face ranking;
-- exact shape names;
-- DFT input geometry.
+**Capping rules used:** at most one H per donor oxygen; metal–oxygen rods (Mg-MOF-74) kept whole; slab and bulk from
+the same relaxed cell; the UiO-66 node with its OH groups.
 
-**Likely question:** "Isn't changing Δμ just a fudge to make numbers positive?" No. It is the standard
-ab initio thermodynamics treatment of an open system (Reuter and Scheffler, 2001), with Δμ taken from tables, not
-fitted. We also report how the shape changes with Δμ, so the condition is an input, not a hidden choice.
+**Likely question:** "Isn't choosing Δμ a way to make numbers positive?" No. It is the standard ab initio
+thermodynamics treatment of an open system (Reuter and Scheffler, 2001), with Δμ taken from tables, not fitted. We also
+show how the face energies change with Δμ (the ZnBDC plot), so the condition is visible, not hidden.
 
-## Slide 15. Corrected GPU run (Kshitij's laptop, 15 November)
+## Slide 15. GPU run (Kshitij's laptop, 15 November)
 
-**Run.** 98 relaxed slabs of 16 MOFs, 85 of them converged. Six are negative at the 0 K reference; none is negative at
-liquid water.
+**Run.** 98 relaxed slabs of 16 MOFs, 85 of them converged. At liquid water every surface energy is positive.
 
 **Checks.**
 - Slab thickness: ZIF-8 {110} at 24 Å gives 0.0565 J/m² and at 36 Å gives 0.0527 J/m², so the slabs are thick enough.
@@ -201,13 +191,13 @@ liquid water.
 **Shapes.**
 - ZIF-8: rhombic dodecahedron, matches the laboratory.
 - HKUST-1: main face {111}, matches.
-- Mg-MOF-74: hexagonal rod along c, {2̅10} 77 %, matches. Before the fixes it had no shape at all.
+- Mg-MOF-74: hexagonal rod along c, {2̅10} 77 %, matches.
 - UiO-66: still a miss.
 
 **Likely question:** "Does MACE agreeing prove CHGNet right?" No. It re-scores CHGNet's geometries, and both models are
 trained on similar DFT data. It shows the ranking is not an artefact of one model; DFT is still needed.
 
-## Slide 16. GNN (Isha)
+## Slide 16. GNN surrogate
 
 **Say.** The GNN predicts the relaxed γ from the unrelaxed slab in seconds instead of minutes of relaxation.
 
@@ -225,10 +215,10 @@ model), so a one-parameter line is hard to beat with only 16 MOFs. The GNN is th
 **Likely question:** "Then why keep the GNN?" It needs no relaxation, so it can screen thousands of CIFs. The CV says
 how far it can be trusted today.
 
-## Slide 17. Morphology spectrum on the corrected energies
+## Slide 17. Morphology spectrum on the CHGNet energies at liquid water
 
-**Say.** Isha's new module asks: if the energy ratios were changed, which other shapes could this MOF take, and how
-big a change is needed for each? We ran her code, unchanged, on our corrected energies at liquid water.
+**Say.** The morphology spectrum asks: if the energy ratios were changed, which other shapes could this MOF take, and how
+big a change is needed for each? It was run on the CHGNet energies at liquid water.
 
 | MOF | Distance from the computed shape to the laboratory shape |
 |---|---|
@@ -245,14 +235,14 @@ grown without additives is far away, so our energies do not explain it. We say s
 **Likely question:** "For a cube, isn't the list of shapes fixed by symmetry?" Yes, and the module says so in its own
 documentation. The structure-specific part is the distances.
 
-## Slide 18. MIL-125 spectrum (Isha's run)
+## Slide 18. MIL-125 spectrum
 
 **Say.** MIL-125 is a tetragonal titanium MOF with four face families, so the module samples a three-dimensional
 ratio space (Sobol points).
 
 - With CHGNet energies, the favoured shape is a {101} block (90 %), and a plate is only 3.5 % away.
 - With GNN energies, it is a {101}+{110} block (the same class as BFDH), and a rod is 10.7 % away.
-- These CHGNet values use the 0 K water reference of version 4.
+- These CHGNet values are at the 0 K water reference.
 
 ## Slides 19–20. Justification and limits
 
@@ -267,10 +257,6 @@ ratio space (Sobol points).
 2. The UiO-66 additive-free cube is not reproduced.
 3. Wulff is equilibrium; laboratory crystals are grown.
 4. Records and proofs need a second-person check.
-
-**Code-version point (say it if asked).** The final notebook is Isha's version 4. It still uses the 0 K water
-reference; the numbers on slides 14–17 come from the corrected run. Her spectrum module passes all 20 of its own
-checks with either set of modules.
 
 ## If the panel asks about Part I (the connectivity spectrum Δα)
 

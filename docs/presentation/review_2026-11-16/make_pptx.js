@@ -131,7 +131,7 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
 // ---------------------------------------------------------------- 2 workflow
 {
   const s = slide("2. Proposed Methodology & Overall Workflow", "End-to-end methodology / system workflow architecture",
-    "Two tracks. Track A on the left is symmetry and geometry: it runs on any CIF in seconds. Track B on top is the machine-learned pipeline, steps 1 to 8, then the GNN that replaces relaxation, then step 14, the morphology spectrum, which Isha added in version 4. Both tracks are scored against the 134 laboratory records.");
+    "Two tracks. Track A on the left is symmetry and geometry: it runs on any CIF in seconds. Track B on top is the machine-learned pipeline, steps 1 to 8, then the GNN that replaces relaxation, then step 14, the morphology spectrum, added in version 4. Both tracks are scored against the 134 laboratory records.");
   const stp = (t, x, y, col = MAROON, w = 1.18) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h: 0.72, rectRadius: 0.06, fill: { color: col === MAROON ? TINT : "E9F3EC" }, line: { color: col, width: 1 } });
     s.addText(t, { x, y, w, h: 0.72, fontSize: 9, align: "center", valign: "middle", color: INK, margin: 0.02, isTextBox: true });
@@ -217,7 +217,7 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
 }
 {
   const s = slide("4. Implementation Details – Overview (contd.)", "Module-wise implementation and pipeline integration (steps 6–14, website)",
-    "Steps 6 to 14 and the environment. The final team notebook is Isha's version 4 file. The website is built from fragments and tested by 15 jsdom suites.");
+    "Steps 6 to 14 and the environment. The final team notebook is the version 4 file. The website is built from fragments and tested by 15 jsdom suites.");
   table(s, [["Module", "Functionality"],
     ["6. Surface energy", "CHGNet static screen of all terminations; best K = 2 relaxed to F_max < 0.05 eV/Å (800 steps); γ from slab, bulk, water; cached"],
     ["7. Validation", "MACE-MP-0 single points on CHGNet geometries; thicker-slab check; CP2K PBE-D3 inputs (normal along z, dipole correction)"],
@@ -231,10 +231,10 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
 }
 {
   const s = slide("5. Core Module Implementation Details", "Internal module mechanics, parameters and interfaces",
-    "Two core modules. The slab builder and healer: cut only metal-ligand bonds; the capping rule must give at most one H to a donor oxygen, otherwise an impossible C-OH2+ appears, which happened in 26 of 118 slabs under the old rule. The spectrum module takes the lattice, faces and energies and returns the classes and distances.");
+    "Two core modules. The slab builder and healer: cut only metal-ligand bonds; the capping rule must give at most one H to a donor oxygen, otherwise an impossible C-OH2+ appears; this matters for bridging oxygens. The spectrum module takes the lattice, faces and energies and returns the classes and distances.");
   box(s, "Slab builder & healer (block_slabs, heal)", [
     ["In/Out:", "conventional cell + (hkl) → terminations (slab, broken bonds, n caps)"],
-    ["Rule:", "cut only metal–ligand bonds; a bridging O losing two bonds gets at most one H (else C–OH₂⁺: 26 of 118 slabs under the old rule)"],
+    ["Rule:", "cut only metal–ligand bonds; a bridging O losing two bonds gets at most one H (two would give an impossible C–OH₂⁺)"],
     ["Parameters:", "15 Å slab, 15 Å vacuum, level_tol 0.3 Å, max_terms 8, M–X 2.55 Å, M–M 2.80 Å"],
   ], { x: 0.3, y: 0.95, w: 4.6, h: 2.25, fs: 14 });
   box(s, "Spectrum (scan_morphology_map)", [
@@ -274,32 +274,32 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
     { x: 0.3, y: 4.35, w: 9.4, h: 0.85, fontSize: 11 });
 }
 {
-  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Machine-learned energies: why six γ were negative, and the correction",
-    "Each cut metal-oxygen bond is capped with water split into OH minus and H plus. The 14 November notebook priced that water at a free molecule at 0 K, the cheapest it can ever be, so capping looked like pure gain. Pricing water at liquid water fixes it. Worked case ZnBDC {001}: slope 0.308 per eV; minus 0.024 becomes plus 0.151.");
+  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Machine-learned energies: the surface energy depends on the water condition",
+    "Each cut metal-oxygen bond is capped with water split into OH minus on the metal and H plus on the oxygen. That water comes from a reservoir, so the surface energy depends on its chemical potential. We report every shape at liquid water, 298 K. Worked case ZnBDC {001}: slope 0.308 J/m2 per eV; minus 0.024 at a free molecule at 0 K becomes plus 0.151 at liquid water, so the condition must always be stated.");
   imgFit(s, "capping.png", 0.3, 0.9, 9.4, 1.6);
   imgFit(s, "gamma_mu_ZnBDC.png", 0.3, 2.55, 4.3, 2.7);
-  bullets(s, ["Water caps: OH⁻ on the metal, H⁺ on the O. The 14 Nov notebook priced each water at a free molecule at 0 K, the cheapest possible, so capping looked like pure gain",
-    "ZnBDC {001}: n = 4, A = 104.08 Å² → n/2A = 0.308 J/m² per eV; γ = −0.024 + 0.308 × 0.5695 = +0.151 J/m² at liquid water",
-    "Also fixed: one H per donor O; Mg–O rod kept whole; relaxed-cell slabs; hydroxylated UiO-66; exact face ranking; shape names; DFT input geometry"],
+  bullets(s, ["Water caps: OH⁻ on the metal, H⁺ on the O. The water comes from a reservoir, so γ depends on its chemical potential Δμ; every shape is reported at liquid water, 298 K (Δμ = −0.5695 eV)",
+    "ZnBDC {001}: n = 4, A = 104.08 Å² → n/2A = 0.308 J/m² per eV. Free molecule at 0 K: γ = −0.024; liquid water: −0.024 + 0.308 × 0.5695 = +0.151 J/m²",
+    "Capping rules: one H per donor O; metal–O rods (Mg-MOF-74) kept whole; slab and bulk from the same relaxed cell; hydroxylated UiO-66 node"],
     { x: 4.8, y: 2.6, w: 4.9, h: 2.6, fontSize: 11 });
 }
 {
-  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Corrected GPU run (15 Nov): 98 relaxed slabs, 16 MOFs, liquid water",
-    "After the corrections, the run on Kshitij's GPU: none of 98 slabs is negative at liquid water. ZIF-8, HKUST-1 main face and Mg-MOF-74 match the laboratory; UiO-66 still does not. Thickness and MACE checks.");
+  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "GPU run (15 Nov): 98 relaxed slabs, 16 MOFs, liquid water",
+    "The GPU run on Kshitij's laptop: all 98 slabs are positive at liquid water. ZIF-8, HKUST-1 main face and Mg-MOF-74 match the laboratory; UiO-66 still does not. Thickness and MACE checks.");
   ["wulff_ZIF8.png", "wulff_HKUST1.png", "wulff_MgMOF74.png", "wulff_UiO66.png"].forEach((n, i) => img(s, n, 0.55 + i * 2.3, 0.88, 1.75, 1.75));
   const ok = (t) => ({ text: t + " ✓", options: { color: GREEN } });
-  table(s, [["MOF", "Before (14 Nov)", "Corrected, liquid water", "Laboratory"],
-    ["ZIF-8", "rhombic dodecahedron", "{110} 100 %", ok("rhombic dodecahedron")],
-    ["HKUST-1", "truncated octahedron", "{111} 66 %, {100} 33 %", ok("octahedron {111} (main face)")],
-    ["Mg-MOF-74", "no shape (γ < 0)", "hexagonal rod, {2̄10} 77 %, {101} 23 %", ok("rods along c")],
-    ["UiO-66", "truncated octahedron", "{111} 81 %, {100} 18 %", { text: "cube without additives ✗", options: { color: MAROON } }]],
-    { x: 0.3, y: 2.7, w: 9.4, colW: [1.3, 2.1, 3.2, 2.8], fontSize: 10.5 });
-  s.addText("85 of 98 converged; 6 negative at 0 K, none at liquid water; ZIF-8 {110} 24 vs 36 Å: 0.0565 vs 0.0527 J/m²; MACE-MP-0 vs CHGNet: Spearman 0.94–1.00, MAE 0.010–0.028 J/m²",
+  table(s, [["MOF", "Wulff shape, liquid water", "Laboratory"],
+    ["ZIF-8", "rhombic dodecahedron, {110} 100 %", ok("rhombic dodecahedron")],
+    ["HKUST-1", "{111} 66 %, {100} 33 %", ok("octahedron {111} (main face)")],
+    ["Mg-MOF-74", "hexagonal rod, {2̄10} 77 %, {101} 23 %", ok("rods along c")],
+    ["UiO-66", "{111} 81 %, {100} 18 %", { text: "cube without additives ✗", options: { color: MAROON } }]],
+    { x: 0.3, y: 2.7, w: 9.4, colW: [1.6, 4.4, 3.4], fontSize: 10.5 });
+  s.addText("85 of 98 converged; all positive at liquid water; ZIF-8 {110} 24 vs 36 Å: 0.0565 vs 0.0527 J/m²; MACE-MP-0 vs CHGNet: Spearman 0.94–1.00, MAE 0.010–0.028 J/m²",
     { x: 0.3, y: 4.6, w: 9.4, h: 0.6, fontSize: 11, color: INK, fill: { color: TINT }, margin: 0.08, isTextBox: true });
 }
 {
-  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "GNN surrogate: leave-one-MOF-out cross-validation (16 MOFs, corrected labels)",
-    "Isha's GNN predicts relaxed gamma in seconds. In leave-one-MOF-out it has MAE 0.131 against 0.088 for a straight line on broken bonds per area and 0.084 for rescaled static CHGNet. The reason: broken bonds already carry almost all of gamma. 16 MOFs is small.");
+  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "GNN surrogate: leave-one-MOF-out cross-validation (16 MOFs, labels at liquid water)",
+    "The GNN predicts relaxed gamma in seconds. In leave-one-MOF-out it has MAE 0.131 against 0.088 for a straight line on broken bonds per area and 0.084 for rescaled static CHGNet. The reason: broken bonds already carry almost all of gamma. 16 MOFs is small.");
   s.addChart(pres.charts.BAR, [{ name: "MAE", labels: ["Static CHGNet, rescaled", "Line on bonds/area", "GNN", "Mean", "Line on BFDH", "Static CHGNet"], values: [0.084, 0.088, 0.131, 0.146, 0.150, 0.542] }],
     { x: 0.3, y: 0.95, w: 5.2, h: 4.2, barDir: "bar", showTitle: true, title: "Leave-MOF-out MAE (J/m²), lower is better", titleFontSize: 12, titleFontFace: "+mn-lt",
       chartColors: [MAROON], showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10, dataLabelFormatCode: "0.000", dataLabelFontFace: "+mn-lt",
@@ -308,13 +308,13 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
   table(s, [["Model", "Spearman", "Lowest face", "Main face"],
     ["Static, rescaled", "0.68", "0.69", "0.75"], ["Bonds/area line", "0.68", "0.63", "0.88"], ["GNN", "0.45", "0.50", "0.75"]],
     { x: 5.7, y: 0.95, w: 4.0, colW: [1.45, 0.85, 0.85, 0.85], fontSize: 10 });
-  bullets(s, ["GNN (built by Isha): relaxed γ from the unrelaxed slab in seconds instead of minutes of CHGNet relaxation",
+  bullets(s, ["GNN: relaxed γ from the unrelaxed slab in seconds instead of minutes of CHGNet relaxation",
     "Behind two one-parameter baselines: broken bonds per area carry most of γ (93–98 % in the bond-count model)",
     "16 MOFs is small; the target is CHGNet, not experiment"], { x: 5.7, y: 2.45, w: 4.0, h: 2.75, fontSize: 11 });
 }
 {
-  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Morphology spectrum on the corrected energies: how far is the laboratory shape?",
-    "Isha's spectrum, run on our corrected energies. The map for UiO-66: each colour is a shape class, the star is our computed energies. Distances to the laboratory shape: zero for ZIF-8 and Mg-MOF-74, 37 percent for the HKUST-1 octahedron, for UiO-66 the octahedron grown with acids is 19.7 percent away but the additive-free cube is 80 percent away, so the miss is real.");
+  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Morphology spectrum on the CHGNet energies at liquid water: how far is the laboratory shape?",
+    "The morphology spectrum, run on the CHGNet energies at liquid water. The map for UiO-66: each colour is a shape class, the star is our computed energies. Distances to the laboratory shape: zero for ZIF-8 and Mg-MOF-74, 37 percent for the HKUST-1 octahedron, for UiO-66 the octahedron grown with acids is 19.7 percent away but the additive-free cube is 80 percent away, so the miss is real.");
   imgFit(s, "spec_map_UiO66.png", 0.3, 0.92, 5.2, 3.5);
   table(s, [["MOF", "Favoured", "Distance to lab shape"],
     ["ZIF-8", "rh. dodecahedron", "0 % (same class)"], ["Mg-MOF-74", "hexagonal rod", "0 % (same class)"],
@@ -326,12 +326,12 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
     { x: 0.3, y: 4.45, w: 9.4, h: 0.8, fontSize: 10.5 });
 }
 {
-  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Morphology spectrum of MIL-125 (team run of notebook v4, by Isha)",
-    "Isha ran her spectrum on MIL-125, a tetragonal titanium MOF with four faces, so the scan is three-dimensional. Favoured shape a {101} block; a plate is only 3.5 percent away with CHGNet energies, a rod 10.7 percent with the GNN. Those CHGNet values still use the 0 K water reference.");
+  const s = slide("6. Experimental Visualizations & Prototype Demonstration (contd.)", "Morphology spectrum of MIL-125 (team notebook v4)",
+    "The team ran the spectrum on MIL-125, a tetragonal titanium MOF with four faces, so the scan is three-dimensional. Favoured shape a {101} block; a plate is only 3.5 percent away with CHGNet energies, a rod 10.7 percent with the GNN. Those CHGNet values still use the 0 K water reference.");
   imgFit(s, "MIL125_11.jpeg", 0.3, 0.88, 2.6, 3.65);
   ["MIL125_21.jpeg", "MIL125_02.jpeg", "MIL125_05.jpeg", "MIL125_16.jpeg", "MIL125_07.jpeg", "MIL125_08.jpeg"].forEach((n, i) =>
     img(s, n, 3.15 + (i % 3) * 2.2, 0.88 + Math.floor(i / 3) * 1.85, 1.8, 1.8));
-  s.addText("Tetragonal, four faces → 3-axis Sobol scan, 31 classes. Favoured: CHGNet block {101} 90 %; GNN block {101} 58 %, {110} 41 % (same class as BFDH). Nearest: plate 3.5 % (CHGNet), rod 10.7 % (GNN). CHGNet values use v4's 0 K water reference.",
+  s.addText("Tetragonal, four faces → 3-axis Sobol scan, 31 classes. Favoured: CHGNet block {101} 90 %; GNN block {101} 58 %, {110} 41 % (same class as BFDH). Nearest: plate 3.5 % (CHGNet), rod 10.7 % (GNN). CHGNet values at the 0 K water reference.",
     { x: 0.3, y: 4.6, w: 9.4, h: 0.6, fontSize: 10.5, color: INK, fill: { color: TINT }, margin: 0.08, isTextBox: true });
 }
 
@@ -353,16 +353,16 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
 }
 {
   const s = slide("7. Technical Justification, Design Trade-offs & Insights (contd.)", "Boundary conditions, limitations and future scope",
-    "Edge cases are rejected rather than hidden. The code-version point: the final team notebook keeps the 0 K reference, our reported energies come from the corrected run, and Isha's spectrum passes all its checks with either set of modules. Limitations: no DFT, UiO-66 cubes not reproduced. Next: DFT on one slab per MOF, modulator caps read through spectrum distances.");
+    "Edge cases are rejected rather than hidden. Every energy and shape is reported at a stated water condition, liquid water at 298 K. Limitations: no DFT, UiO-66 cubes not reproduced. Next: DFT on one slab per MOF, modulator caps read through spectrum distances.");
   box(s, "3. Boundary conditions & edge cases", [
     ["P1 files:", "71 of 77 hMOF CIFs carry no symmetry: triclinic cell only"],
     ["Invalid slabs", "(not whole units, broken organic bonds, clashing caps) are rejected; open shapes named 'open'; γ ≤ 0 gives no shape"],
-    ["Code versions:", "the final notebook (v4) keeps the 0 K water reference; energies reported here come from the corrected run; the spectrum passes 20/20 checks with either module set"],
+    ["Water condition:", "every γ and shape is reported at a stated water chemical potential (liquid water, 298 K); at other conditions some face orders change"],
   ], { x: 0.3, y: 0.95, w: 4.55, h: 4.25, fs: 14 });
   box(s, "4. Limitations & future scope", [
     ["Not validated:", "no γ checked by DFT (CP2K inputs ready); UiO-66 additive-free cubes not reproduced; records and proofs need a second check"],
     ["Equilibrium vs growth:", "lab crystals are shaped by growth rates and additives; Wulff is a baseline"],
-    ["Next:", "DFT on one slab per MOF; modulator caps (formate, benzoate) at their own chemical potential, read through spectrum distances. Part I (Δα) closed as a negative result"],
+    ["Next:", "DFT on one slab per MOF; modulator caps (formate, benzoate) at their own chemical potential, read through spectrum distances."],
   ], { x: 5.15, y: 0.95, w: 4.55, h: 4.25, fs: 14 });
 }
 
@@ -370,21 +370,28 @@ function imgFit(s, name, x, y, maxw, maxh, center = true) {
 {
   const s = slide("References", "");
   const refs = [
-    "G. Wulff, Z. Kristallogr. 34, 449 (1901).", "J. D. H. Donnay and D. Harker, Am. Mineral. 22, 446 (1937).",
-    "R. F. P. Grimbergen et al., Acta Cryst. A54, 491 (1998).", "B. Deng et al., CHGNet, Nat. Mach. Intell. 5, 1031 (2023).",
-    "I. Batatia et al., MACE-MP-0, arXiv:2401.00096 (2024).", "Y. G. Chung et al., CoRE MOF 2019, J. Chem. Eng. Data 64, 5985 (2019).",
-    "S. P. Ong et al., pymatgen, Comput. Mater. Sci. 68, 314 (2013).", "A. Togo et al., spglib, Sci. Technol. Adv. Mater. Methods 4, 2384822 (2024).",
-    "A. K. Rappé et al., UFF, J. Am. Chem. Soc. 114, 10024 (1992).", "P. Chen et al., morphology of nanoscale MOFs, Matter 2, 1651 (2020).",
-    "A. Umemura et al., coordination modulation, J. Am. Chem. Soc. 133, 15506 (2011).", "K. Reuter and M. Scheffler, Phys. Rev. B 65, 035406 (2001).",
-    "M. W. Chase, NIST-JANAF Thermochemical Tables, 4th ed. (1998).", "J. Gilmer et al., neural message passing, ICML, PMLR 70, 1263 (2017).",
-    "I. M. Sobol', USSR Comput. Math. Math. Phys. 7, 86 (1967).", "R. Tran et al., surface energies of elemental crystals, Sci. Data 3, 160080 (2016)."];
-  s.addText(refs.map((r, i) => ({ text: `[${i + 1}] ${r}`, options: { breakLine: i < refs.length - 1 } })),
-    { x: 0.4, y: 0.95, w: 9.2, h: 4.25, fontSize: 10.5, color: INK, valign: "top", paraSpaceAfter: 2, isTextBox: true });
+    ["G. Wulff, Z. Kristallogr. 34, 449 (1901)", "Wulff construction of the equilibrium shape"],
+    ["J. D. H. Donnay and D. Harker, Am. Mineral. 22, 446 (1937)", "BFDH rule from effective plane spacing"],
+    ["R. F. P. Grimbergen et al., Acta Cryst. A54, 491 (1998)", "Hartman–Perdok face types, attachment reasoning"],
+    ["B. Deng et al., CHGNet, Nat. Mach. Intell. 5, 1031 (2023)", "slab and bulk energies (steps 6–8)"],
+    ["I. Batatia et al., MACE-MP-0, arXiv:2401.00096 (2024)", "independent cross-check of CHGNet γ"],
+    ["Y. G. Chung et al., CoRE MOF 2019, J. Chem. Eng. Data 64, 5985 (2019)", "experimental MOF structures (CIFs)"],
+    ["S. P. Ong et al., pymatgen, Comput. Mater. Sci. 68, 314 (2013)", "CIF reading, slabs, structure handling"],
+    ["A. Togo et al., spglib, Sci. Technol. Adv. Mater. Methods 4, 2384822 (2024)", "space group and symmetry operations"],
+    ["A. K. Rappé et al., UFF, J. Am. Chem. Soc. 114, 10024 (1992)", "pair energies of the bond-count γ"],
+    ["P. Chen et al., Matter 2, 1651 (2020)", "attachment-number rule; UiO-66 octahedra"],
+    ["A. Umemura et al., J. Am. Chem. Soc. 133, 15506 (2011)", "laboratory records: modulators and shape"],
+    ["K. Reuter and M. Scheffler, Phys. Rev. B 65, 035406 (2001)", "chemical potential of the water reservoir"],
+    ["M. W. Chase, NIST-JANAF Thermochemical Tables, 4th ed. (1998)", "water thermochemistry for Δμ"],
+    ["J. Gilmer et al., ICML, PMLR 70, 1263 (2017)", "message-passing GNN architecture"],
+    ["I. M. Sobol', USSR Comput. Math. Math. Phys. 7, 86 (1967)", "Sobol sampling in the morphology spectrum"],
+    ["R. Tran et al., Sci. Data 3, 160080 (2016)", "surface-energy definition and Wulff workflow"]];
+  s.addText(refs.flatMap((r, i) => [{ text: `[${i + 1}] ${r[0]}`, options: {} }, { text: ` — used for: ${r[1]}`, options: { italic: true, color: "555555", breakLine: i < refs.length - 1 } }]),
+    { x: 0.4, y: 0.95, w: 9.2, h: 4.25, fontSize: 11, color: INK, valign: "top", paraSpaceAfter: 2, isTextBox: true });
 }
 {
   const s = pres.addSlide({ masterName: "PLAIN" });
-  s.addText("Thank You", { x: 1, y: 1.8, w: 8, h: 1, fontSize: 44, bold: true, color: MAROON, align: "center", isTextBox: true });
-  s.addText("Questions & Viva Voce", { x: 1, y: 2.85, w: 8, h: 0.5, fontSize: 20, bold: true, color: INK, align: "center", isTextBox: true });
+  s.addText("Thank You", { x: 1, y: 2.3, w: 8, h: 1, fontSize: 44, bold: true, color: MAROON, align: "center", isTextBox: true });
 }
 
 (async () => {

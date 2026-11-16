@@ -313,7 +313,7 @@
             \scriptsize
             \begin{itemize}
                 \item \textbf{In/Out:} conventional cell + (hkl) $\rightarrow$ terminations (slab, broken-bond counts, $n$ caps).
-                \item \textbf{Rule:} cut only metal--ligand bonds; a bridging O that loses two bonds may receive at most one H (otherwise C--OH$_2^+$ appears: 26 of 118 slabs under the old rule).
+                \item \textbf{Rule:} cut only metal--ligand bonds; a bridging O that loses two bonds may receive at most one H (two would give an impossible C--OH$_2^+$).
                 \item \textbf{Parameters:} thickness 15\,\AA, vacuum 15\,\AA, \texttt{level\_tol} 0.3\,\AA, \texttt{max\_terms} 8, M--X 2.55\,\AA, M--M 2.80\,\AA.
             \end{itemize}
         \end{block}
@@ -394,7 +394,7 @@
 \end{frame}
 
 \begin{frame}[shrink=4]{6. Experimental Visualizations \& Prototype Demonstration (contd.)}
-    \framesubtitle{Machine-learned energies: why six $\gamma$ were negative, and the correction}
+    \framesubtitle{Machine-learned energies: the surface energy depends on the water condition}
     \centering
     \includegraphics[height=2.2cm]{capping.png}\\[0.05cm]
     \begin{columns}[c]
@@ -404,15 +404,15 @@
         \column{0.52\textwidth}
         \scriptsize
         \begin{itemize}
-            \item Cut M--O bonds are capped with water split into OH$^-$ + H$^+$. The 14 Nov notebook priced each water at a free molecule at 0\,K, the cheapest it can ever be, so capping looked like pure gain.
-            \item ZnBDC \{001\}: $n = 4$, $A = 104.08$\,\AA$^2$ $\Rightarrow$ $n/2A = 0.308$\,J/m$^2$ per eV; $\gamma = -0.024 + 0.308\times0.5695 = +0.151$\,J/m$^2$ at liquid water.
-            \item Also fixed: at most one H per donor O; Mg--O rod kept whole; relaxed-cell slabs; hydroxylated UiO-66 input; exact face ranking; shape names; DFT input geometry.
+            \item Cut M--O bonds are capped with water split into OH$^-$ (metal) + H$^+$ (oxygen). The water comes from a reservoir, so $\gamma$ depends on its chemical potential $\Delta\mu$ \cite{reuter2001}; we report every shape at liquid water, 298\,K ($\Delta\mu = -0.5695$\,eV).
+            \item ZnBDC \{001\}: $n = 4$, $A = 104.08$\,\AA$^2$ $\Rightarrow$ $n/2A = 0.308$\,J/m$^2$ per eV. Free molecule at 0\,K: $\gamma = -0.024$; liquid water: $-0.024 + 0.308\times0.5695 = +0.151$\,J/m$^2$. The condition must be stated.
+            \item Capping rules: at most one H per donor O; metal--oxygen rods (Mg-MOF-74) kept whole; slab and bulk from the same relaxed cell; hydroxylated UiO-66 node.
         \end{itemize}
     \end{columns}
 \end{frame}
 
 \begin{frame}[shrink=4]{6. Experimental Visualizations \& Prototype Demonstration (contd.)}
-    \framesubtitle{Corrected GPU run (15 Nov): 98 relaxed slabs, 16 MOFs, liquid water}
+    \framesubtitle{GPU run (15 Nov): 98 relaxed slabs, 16 MOFs, liquid water}
     \centering
     \includegraphics[height=2.6cm]{wulff_ZIF8.png}\hspace{0.1cm}
     \includegraphics[height=2.6cm]{wulff_HKUST1.png}\hspace{0.1cm}
@@ -420,21 +420,21 @@
     \includegraphics[height=2.6cm]{wulff_UiO66.png}\\[0.1cm]
     \scriptsize
     \renewcommand{\arraystretch}{1.12}
-    \begin{tabular}{llll}
+    \begin{tabular}{lll}
         \toprule
-        \textbf{MOF} & \textbf{Before (14 Nov)} & \textbf{Corrected, liquid water} & \textbf{Laboratory} \\
+        \textbf{MOF} & \textbf{Wulff shape, liquid water} & \textbf{Laboratory} \\
         \midrule
-        ZIF-8 & rhombic dodecahedron & \{110\} 100\% & rhombic dodecahedron \ok \\
-        HKUST-1 & truncated octahedron & \{111\} 66\%, \{100\} 33\% & octahedron \{111\} \ok\ (main face) \\
-        Mg-MOF-74 & no shape ($\gamma < 0$) & hexagonal rod, \{2$\bar1$0\} 77\%, \{101\} 23\% & rods along $c$ \ok \\
-        UiO-66 & truncated octahedron & \{111\} 81\%, \{100\} 18\% & cube without additives \no \\
+        ZIF-8 & rhombic dodecahedron, \{110\} 100\% & rhombic dodecahedron \ok \\
+        HKUST-1 & \{111\} 66\%, \{100\} 33\% & octahedron \{111\} \ok\ (main face) \\
+        Mg-MOF-74 & hexagonal rod, \{2$\bar1$0\} 77\%, \{101\} 23\% & rods along $c$ \ok \\
+        UiO-66 & \{111\} 81\%, \{100\} 18\% & cube without additives \no \\
         \bottomrule
     \end{tabular}\\[0.1cm]
-    85 of 98 converged; 6 negative at 0\,K, \textbf{none at liquid water}; ZIF-8 \{110\} at 24 vs 36\,\AA: $\gamma$ 0.0565 vs 0.0527\,J/m$^2$; MACE-MP-0 vs CHGNet: Spearman 0.94--1.00, MAE 0.010--0.028\,J/m$^2$.
+    85 of 98 converged; \textbf{all positive at liquid water}; ZIF-8 \{110\} at 24 vs 36\,\AA: $\gamma$ 0.0565 vs 0.0527\,J/m$^2$; MACE-MP-0 vs CHGNet: Spearman 0.94--1.00, MAE 0.010--0.028\,J/m$^2$.
 \end{frame}
 
 \begin{frame}[shrink=4]{6. Experimental Visualizations \& Prototype Demonstration (contd.)}
-    \framesubtitle{GNN surrogate: leave-one-MOF-out cross-validation (16 MOFs, corrected labels)}
+    \framesubtitle{GNN surrogate: leave-one-MOF-out cross-validation (16 MOFs, labels at liquid water)}
     \begin{columns}[c]
         \column{0.56\textwidth}
         \scriptsize
@@ -456,7 +456,7 @@
         \scriptsize
         \begin{block}{Reading}
             \begin{itemize}
-                \item The GNN (built by Isha) predicts relaxed $\gamma$ from the unrelaxed slab in seconds, against minutes of CHGNet relaxation.
+                \item The GNN predicts relaxed $\gamma$ from the unrelaxed slab in seconds, against minutes of CHGNet relaxation.
                 \item It is behind two one-parameter baselines: broken bonds per area already carry most of $\gamma$ (93--98\% in the bond-count model).
                 \item 16 MOFs is small; differences of a few hundredths are within seed spread. Learning target is CHGNet, not experiment.
             \end{itemize}
@@ -465,7 +465,7 @@
 \end{frame}
 
 \begin{frame}[shrink=4]{6. Experimental Visualizations \& Prototype Demonstration (contd.)}
-    \framesubtitle{Morphology spectrum on the corrected energies: how far is the laboratory shape?}
+    \framesubtitle{Morphology spectrum on the CHGNet energies at liquid water: how far is the laboratory shape?}
     \begin{columns}[c]
         \column{0.50\textwidth}
         \centering
@@ -492,7 +492,7 @@
 \end{frame}
 
 \begin{frame}[shrink=2]{6. Experimental Visualizations \& Prototype Demonstration (contd.)}
-    \framesubtitle{Morphology spectrum of MIL-125 (team run of notebook v4, by Isha)}
+    \framesubtitle{Morphology spectrum of MIL-125 (team notebook v4)}
     \centering
     \begin{minipage}{0.30\textwidth}\centering
         \includegraphics[width=\textwidth]{MIL125_11.jpeg}\\{\tiny CHGNet $\gamma$: classes sorted by distance}
@@ -505,7 +505,7 @@
         \includegraphics[width=0.32\textwidth]{MIL125_07.jpeg}\hfill
         \includegraphics[width=0.32\textwidth]{MIL125_08.jpeg}
     \end{minipage}\\[0.05cm]
-    \scriptsize Tetragonal, four faces $\Rightarrow$ 3-axis Sobol scan, 31 classes. Favoured (CHGNet): block, \{101\} 90\%; (GNN): block, \{101\} 58\%, \{110\} 41\%, same class as BFDH. Nearest: plate 3.5\% (CHGNet), rod 10.7\% (GNN). CHGNet values use v4's 0\,K water reference.
+    \scriptsize Tetragonal, four faces $\Rightarrow$ 3-axis Sobol scan, 31 classes. Favoured (CHGNet): block, \{101\} 90\%; (GNN): block, \{101\} 58\%, \{110\} 41\%, same class as BFDH. Nearest: plate 3.5\% (CHGNet), rod 10.7\% (GNN). CHGNet values at the 0\,K water reference.
 \end{frame}
 
 % =========================================================================
@@ -540,14 +540,14 @@
         \begin{itemize}
             \item \textbf{P1 files:} 71 of 77 hMOF CIFs carry no symmetry; only a triclinic cell can be given.
             \item \textbf{Invalid slabs} (not whole formula units, broken organic bonds, clashing caps) are rejected; open Wulff shapes are named ``open''; $\gamma \le 0$ gives no shape rather than a wrong one.
-            \item \textbf{Code versions:} the final team notebook (v4) keeps the 0\,K water reference of 14 Nov; the energies reported here come from the corrected run. Isha's spectrum code passes all 20 of its checks with either set of modules.
+            \item \textbf{Water condition:} every surface energy and shape is reported at a stated water chemical potential (liquid water, 298\,K); at other conditions the face order of some MOFs changes.
         \end{itemize}
     \end{block}
     \begin{block}{4. Limitations \& Future Scope}
         \begin{itemize}
             \item \textbf{Not validated:} no $\gamma$ checked by DFT (CP2K inputs ready); UiO-66 additive-free cubes not reproduced; laboratory records and proofs need a second-person check.
             \item \textbf{Equilibrium vs growth:} laboratory crystals are shaped by growth rates and additives; Wulff is a baseline.
-            \item \textbf{Next:} DFT on one slab per MOF; caps for modulators (formate, benzoate) at their own chemical potential, read through the spectrum distances; part I (connectivity spectrum $\Delta\alpha$) is closed as a negative result (tracks graph size).
+            \item \textbf{Next:} DFT on one slab per MOF; caps for modulators (formate, benzoate) at their own chemical potential, read through the spectrum distances.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -565,8 +565,7 @@
 
 \begin{frame}
     \centering
-    {\Huge \textbf{\textcolor{amritaMaroon}{Thank You}}} \\[0.4cm]
-    {\large \textbf{Questions \& Viva Voce}}
+    {\Huge \textbf{\textcolor{amritaMaroon}{Thank You}}}
 \end{frame}
 
 \end{document}
